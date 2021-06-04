@@ -1,4 +1,4 @@
-import MobileDropdown from "./MobileDropdown"
+import MobileDropdown from "./mobileDropdown"
 
 const MobileNav = () => {
     return (
