@@ -1,4 +1,4 @@
-import Modal from "../components/modal";
+import DonateButton from "../components/donateButton";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
@@ -10,7 +10,7 @@ export default function Home() {
         <img className="m-auto" src="/images/ben-logo.svg" />
         <h1 className="text-center text-4xl md:text-6xl font-black max-w-7xl m-auto pt-10 text-benblack-500 leading-snug">Providing borderless blockchain education</h1>
         <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
-          <Modal />
+          <DonateButton />
           <button className="border hover:bg-benorange-500 transition duration-500 hover:text-white font-bold text-xl px-8 rounded-full py-4 text-benblack-500">
             Get involved
         </button>

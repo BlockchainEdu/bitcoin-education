@@ -1,4 +1,4 @@
-import Modal from "../components/modal";
+import DonateButton from "../components/DonateButton";
 import Footer from "../components/footer";
 import HeaderWithLogo from "../components/headerWithLogo";
 
@@ -9,7 +9,7 @@ export default function About() {
             <div className="about-header p-60 -mt-24">
                 <div className="flex max-w-7xl m-auto">
                     <div>
-                        <h1 className="text-4xl md:text-6xl font-black text-white max-w-3xl m-auto pt-10 text-benblack-500 leading-normal">
+                        <h1 className="text-4xl md:text-6xl font-black text-white max-w-3xl m-auto pt-10 leading-snug">
                             The Blockchain Education Network (BEN)
                         </h1>
                         <p className="text-white text-md pt-10 max-w-xl">
