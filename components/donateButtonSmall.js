@@ -39,12 +39,16 @@ export default function Modal() {
                     Thank you for considering donating to Bitcoing Education Network. We appreciate your support and enablement of our mission. Please find available donation options below.
                   </p>
                   <div className="flex flex-col md:flex-row gap-y-7 md:gap-y-0 pt-10 gap-x-10">
+                  <a className="text-center" target="_blank" href="https://www.paypal.com/donate/?hosted_button_id=JZT2VJ5WA6GJJ">
                     <button className="border font-bold text-xl px-8 rounded-full py-4 text-benblack-500">
                       Give with PayPal
                     </button>
+                    </a>
+                    <a className="text-center" target="_blank" href="https://commerce.coinbase.com/checkout/041362e5-b215-4484-82d9-fb27e513563a">
                     <button className="border font-bold text-xl px-8 rounded-full py-4 text-benblack-500">
                       Give with Crypto
                     </button>
+                    </a>
                   </div>
                 </div>
                 <p className="p-6 text-black">By donating, you agree to our <b>terms of service</b> and <b>privacy policy</b></p>
