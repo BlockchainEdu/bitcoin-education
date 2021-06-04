@@ -31,8 +31,8 @@ export default function Footer() {
                 </div>
             </div>
             <div className="bg-benblack-500 py-14 px-7">
-                <div className="flex flex-col justify-between max-w-7xl m-auto">
-                    <ul className="flex flex-col justify-between items-center text-white font-mont w-full md:w-2/6">
+                <div className="flex flex-col md:flex-row justify-between max-w-7xl m-auto">
+                    <ul className="flex flex-col md:flex-row justify-between items-center text-white font-mont w-full md:w-2/6">
                         <li>Home</li>
                         <li>About</li>
                         <li>Blog</li>

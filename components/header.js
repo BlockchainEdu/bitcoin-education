@@ -2,7 +2,7 @@ import MobileNav from "./mobileNav";
 
 export default function HeaderWithLogo() {
     return (
-        <section className="pt-10 mx-7">
+        <section className="pt-3 md:pt-10 mx-7">
             <div className="block md:hidden">
              <MobileNav />   
             </div>

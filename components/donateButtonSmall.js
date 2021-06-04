@@ -14,7 +14,7 @@ export default function Modal() {
       {showModal ? (
         <>
           <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none mx-3"
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
@@ -38,7 +38,7 @@ export default function Modal() {
                   <p className="my-4 text-black text-lg leading-relaxed">
                     Thank you for considering donating to Bitcoing Education Network. We appreciate your support and enablement of our mission. Please find available donation options below.
                   </p>
-                  <div className="flex pt-10 gap-x-10">
+                  <div className="flex flex-col md:flex-row gap-y-7 md:gap-y-0 pt-10 gap-x-10">
                     <button className="border font-bold text-xl px-8 rounded-full py-4 text-benblack-500">
                       Give with PayPal
                     </button>
@@ -51,7 +51,7 @@ export default function Modal() {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="button-overlay opacity-75 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
     </>
