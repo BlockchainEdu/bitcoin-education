@@ -1,3 +1,4 @@
+import Modal from "../components/modal";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
@@ -5,31 +6,30 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="pt-24">
+      <div className="pt-40">
         <img className="m-auto" src="/images/ben-logo.svg" />
         <h1 className="text-center text-4xl md:text-6xl font-black max-w-7xl m-auto pt-10 text-benblack-500 leading-snug">Providing borderless blockchain education</h1>
         <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
-          <button className="bg-benorange-500 text-white font-bold text-xl px-16 rounded-full py-4">
-            Donate
+          <Modal />
+          <button className="border hover:bg-benorange-500 transition duration-500 hover:text-white font-bold text-xl px-8 rounded-full py-4 text-benblack-500">
+            Get involved
         </button>
-          <button className="border font-bold text-xl px-8 rounded-full py-4 text-benblack-500">
-            Get involved TEST
-        </button>
+
         </div>
       </div>
       <div className="max-w-7xl m-auto py-24 pt-48">
         <div className="grid grid-cols-5 gap-x-3 max-w-xs mx-auto md:mx-0">
-          <a href=""><img src="/images/facebook-light.svg" /></a>
-          <a href=""><img src="/images/twitter-light.svg" /></a>
-          <a href=""><img src="/images/instagram-light.svg" /></a>
-          <a href=""><img src="/images/medium-light.svg" /></a>
-          <a href=""><img src="/images/discord-light.svg" /></a>
+          <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook-light.svg" /></a>
+          <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter-light.svg" /></a>
+          <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/instagram-light.svg" /></a>
+          <a target="_blank" href="https://medium.com/blockchainedu"><img src="/images/medium-light.svg" /></a>
+          <a target="_blank" href="https://blockchainedu.org/discord"><img src="/images/discord-light.svg" /></a>
         </div>
         <div className="mt-14 md:-mt-8">
-          <img className="m-auto" src="/images/scroll.svg" />
+          <a href="/#what-is-ben"><img className="m-auto" src="/images/scroll.svg" /></a>
         </div>
       </div>
-      <section className="bg-benorange-500 py-20">
+      <section id="what-is-ben" className="bg-benorange-500 py-20">
         <h2 className="font-black text-4xl md:text-5xl text-black text-center">
           What is BEN?
       </h2>
@@ -41,24 +41,24 @@ export default function Home() {
         <h2 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
           Our impact
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 pt-20 max-w-7xl m-auto align-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 pt-20 gap-x-20 max-w-7xl m-auto align-center">
           <div className="">
             <img src="/images/ambassadors.svg" />
             <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">200+</div>
             <div className="uppercase font-mont text-sm">Ambassadors</div>
           </div>
           <div className="">
-            <img src="/images/ambassadors.svg" />
+            <img src="/images/companies-founded.svg" />
             <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">250</div>
             <div className="uppercase font-mont text-sm">Companies Founded</div>
           </div>
           <div className="">
-            <img src="/images/ambassadors.svg" />
+            <img src="/images/valuation.svg" />
             <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">$100m</div>
             <div className="uppercase font-mont text-sm max w-60">Valuation of Companies Founded Through BEN</div>
           </div>
           <div className="">
-            <img src="/images/ambassadors.svg" />
+            <img src="/images/jobs-matched.svg" />
             <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">1500+</div>
             <div className="uppercase font-mont text-sm">Jobs Matches</div>
           </div>
@@ -83,7 +83,7 @@ export default function Home() {
                  </p>
               </div>
             </div>
-            <button className="bg-benorange-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
+            <button className="bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
               Learn more
             </button>
           </div>
@@ -123,7 +123,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-4/5">
-            <img className="m-auto" src="/images/static-map.svg"/>
+            <img className="m-auto" src="/images/static-map.svg" />
           </div>
         </div>
       </section>

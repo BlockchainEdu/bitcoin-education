@@ -12,6 +12,7 @@ module.exports = {
           '500': '#333333'
         },
         bengrey: {
+          '300': '#9FA9B9',
           '400': '#626363',
           '500': '#e5e5e5'
         }
@@ -19,6 +20,9 @@ module.exports = {
       fontFamily: {
         'mont' : ['Montserrat'],
       },
+      boxShadow: {
+        button: '0px 10px 24px rgba(0, 0, 0, 0.08)',
+      }
     }
   },
   variants: {

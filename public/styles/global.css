@@ -9,6 +9,21 @@
   font-family: "Montser"
 }
 
+
+.social-icon {
+    margin-right: 1.2rem;
+}
+
+.about-header {
+    background-image: url("/images/about-header.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.donation-modal {
+    padding: 1rem !important;
+}
+
 .what-is-ben {
   max-width: 52rem;
 }

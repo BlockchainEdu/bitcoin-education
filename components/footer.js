@@ -7,7 +7,7 @@ export default function Footer() {
                     Subscribe to the BEN newsletter to keep up to date with everything happening in the Blockchain and Education.
                 </div>
                 <div>
-                    <button className="bg-benorange-500 text-white font-bold text-xl px-12 rounded-full py-4">
+                    <button className="bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl px-12 rounded-full py-4">
                         Subscribe
                     </button>
                 </div>
@@ -23,11 +23,11 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="grid grid-cols-5 w-1/6 ml-auto gap-x-3">
-                    <a href=""><img src="/images/facebook.svg" /></a>
-                    <a href=""><img src="/images/twitter.svg" /></a>
-                    <a href=""><img src="/images/instagram.svg" /></a>
-                    <a href=""><img src="/images/medium.svg" /></a>
-                    <a href=""><img src="/images/discord.svg" /></a>
+                    <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook.svg" /></a>
+                    <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter.svg" /></a>
+                    <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/instagram.svg" /></a>
+                    <a target="_blank" href="https://medium.com/blockchainedu"><img src="/images/medium.svg" /></a>
+                    <a target="_blank" href="https://blockchainedu.org/discord"><img src="/images/discord.svg" /></a>
                 </div>
             </div>
             <div className="bg-benblack-500 py-14">
