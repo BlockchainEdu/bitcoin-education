@@ -6,8 +6,8 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="pt-40 px-7">
-        <img className="m-auto" src="/images/ben-logo.svg" />
+      <div className="pt-10 md:pt-40 px-7">
+        <img className="hidden md:block m-auto" src="/images/ben-logo.svg" />
         <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-7xl m-auto pt-10 text-benblack-500 leading-snug">Providing borderless blockchain education</h1>
         <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
           <DonateButton />
