@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="pt-40">
+      <div className="pt-40 px-7">
         <img className="m-auto" src="/images/ben-logo.svg" />
-        <h1 className="text-center text-4xl md:text-6xl font-black max-w-7xl m-auto pt-10 text-benblack-500 leading-snug">Providing borderless blockchain education</h1>
+        <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-7xl m-auto pt-10 text-benblack-500 leading-snug">Providing borderless blockchain education</h1>
         <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
           <DonateButton />
           <button className="border hover:bg-benorange-500 transition duration-500 hover:text-white font-bold text-xl px-8 rounded-full py-4 text-benblack-500">
@@ -17,7 +17,7 @@ export default function Home() {
 
         </div>
       </div>
-      <div className="max-w-7xl m-auto py-24 pt-48">
+      <div className="max-w-7xl m-auto py-24 pt-48 px-7">
         <div className="grid grid-cols-5 gap-x-3 max-w-xs mx-auto md:mx-0">
           <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook-light.svg" /></a>
           <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter-light.svg" /></a>
@@ -37,27 +37,27 @@ export default function Home() {
           The Blockchain  Education Network (BEN)  is the largest and longest running network  of students, alumni, professors, teachers,  professionals, and community leaders  excited about blockchain across the world.  We are on a journey to spur blockchain  adoption by empowering our leaders to  bring blockchain to their companies and  communities.
       </p>
       </section>
-      <section className="max-w-7xl m-auto py-24">
+      <section className="max-w-7xl m-auto py-24 px-7">
         <h2 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
           Our impact
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pt-20 gap-x-20 gap-y-20 md:gap-y-0 max-w-7xl m-auto align-center">
-          <div className="text-center m-auto md:text-left md:m-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pt-20 gap-x-20 gap-y-20 lg:gap-y-0 max-w-7xl m-auto align-center">
+          <div className="text-center m-auto lg:text-left lg:m-0">
             <img src="/images/ambassadors.svg" />
             <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">200+</div>
             <div className="uppercase font-mont text-sm">Ambassadors</div>
           </div>
-          <div className="text-center m-auto md:text-left md:m-0">
+          <div className="text-center m-auto lg:text-left lg:m-0">
             <img src="/images/companies-founded.svg" />
             <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">250</div>
             <div className="uppercase font-mont text-sm">Companies Founded</div>
           </div>
-          <div className="text-center m-auto md:text-left md:m-0">
-            <img src="/images/valuation.svg" />
+          <div className="text-center m-auto lg:text-left lg:m-0">
+            <img className="m-auto lg:m-0" src="/images/valuation.svg" />
             <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">$100m</div>
             <div className="uppercase font-mont text-sm max w-60">Valuation of Companies Founded Through BEN</div>
           </div>
-          <div className="text-center m-auto md:text-left md:m-0">
+          <div className="text-center m-auto lg:text-left lg:m-0">
             <img src="/images/jobs-matched.svg" />
             <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">1500+</div>
             <div className="uppercase font-mont text-sm">Jobs Matches</div>
