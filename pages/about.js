@@ -1,4 +1,3 @@
-import DonateButton from "../components/DonateButton";
 import Footer from "../components/footer";
 import HeaderWithLogo from "../components/headerWithLogo";
 
