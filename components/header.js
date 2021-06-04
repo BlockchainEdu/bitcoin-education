@@ -2,11 +2,11 @@ import MobileNav from "./mobileNav";
 
 export default function HeaderWithLogo() {
     return (
-        <section className="pt-10">
-            <div>
+        <section className="pt-10 mx-7">
+            <div className="block md:hidden">
              <MobileNav />   
             </div>
-            <nav className="flex max-w-7xl m-auto justify-between items-center">
+            <nav className="hidden md:flex max-w-7xl m-auto justify-between items-center">
                 <ul className="font-mont text-black transition duration-500 w-1/3">
                     <li className="flex gap-x-14">
                       <a className="hover:text-benorange-500 transition duration-500" href="/">Home </a>

@@ -44,24 +44,24 @@ export default function MobileDropdown() {
                 aria-hidden="true"
               />
             </Popover.Button>
-            <Popover.Panel className="absolute z-10 w-screen md:max-w-none pt-5 px-4 right-0 sm:px-0 lg:max-w-3xl">
+            <Popover.Panel className="absolute z-40 w-screen md:max-w-none pt-5 px-4 right-0 sm:px-0 lg:max-w-3xl">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="space-y-4 font-proximasemi text-chablack-300 hover:text-chablack-500">
                     <li>
-                      <a href="" className="text-xl">product</a>
-                    </li>
-                    <li>
-                      <a href="" className="text-xl">pricing</a>
-                    </li>
-                    <li>
-                    </li>
-                    <li>
                       <a href="" className="text-xl">about</a>
+                    </li>
+                    <li>
+                      <a href="" className="text-xl">blog</a>
+                    </li>
+                    <li>
+                    </li>
+                    <li>
+                      <a href="" className="text-xl">login</a>
                     </li>
                   </ul>
                 </div>
-                <div>
+                <div className="bg-white pb-7 text-center">
                   <DonationButtonSmall />
                 </div>
               </div>

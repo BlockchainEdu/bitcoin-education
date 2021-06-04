@@ -1,4 +1,4 @@
-import DonateButton from "../components/DonateButton";
+import DonateButton from "../components/donateButton";
 import Footer from "../components/footer";
 import HeaderWithLogo from "../components/headerWithLogo";
 
