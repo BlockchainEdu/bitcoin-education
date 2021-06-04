@@ -23,9 +23,9 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="grid grid-cols-5 pt-10 md:pt-0 w-full md:w-2/6 gap-x-0 ml-3 md:ml-0">
-                    <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook.svg" /></a>
-                    <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter.svg" /></a>
-                    <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/instagram.svg" /></a>
+                    <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/Facebook.svg" /></a>
+                    <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/Twitter.svg" /></a>
+                    <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/Instagram.svg" /></a>
                     <a target="_blank" href="https://medium.com/blockchainedu"><img src="/images/medium.svg" /></a>
                     <a target="_blank" href="https://blockchainedu.org/discord"><img src="/images/discord.svg" /></a>
                 </div>
