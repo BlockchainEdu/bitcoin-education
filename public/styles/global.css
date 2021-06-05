@@ -25,11 +25,40 @@ h1, h2 {
   line-height: 1.3em !important;
 }
 
+.subscribe-form input {
+  border: 1px solid #CCCCCC;
+  border-radius: 100px;
+  padding: .75rem;
+  margin: 0 1rem 3rem 0;
+}
+
+.subscribe-form button {
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #FF936B;
+  color: #fff;
+  padding: .75rem 2rem;
+  border-radius: 100px;
+  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08);
+  transition-duration: 500ms;
+}
+
+.subscribe-form button:hover {
+  background-color: #9FA9B9;
+}
+
 .about-header {
     background-image: url("/images/about-header-image.png");
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: -7rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .subscribe-form input {
+    margin: 0 0 2rem 0;
+  }
 }
 
 @media only screen and (max-width: 1050px) {

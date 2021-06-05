@@ -1,3 +1,4 @@
+import Subscribe from '../components/subscribe'
 
 export default function Footer() {
     return (
@@ -7,9 +8,7 @@ export default function Footer() {
                     Subscribe to the BEN newsletter to keep up to date with everything happening in the Blockchain and Education.
                 </div>
                 <div>
-                    <button className="mt-10 mb-4 md:mb-0 md:mt-0 bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl px-12 rounded-full py-4">
-                        Subscribe
-                    </button>
+                    <Subscribe />
                 </div>
             </div>
             <div className="flex flex-col md:flex-row max-w-7xl m-auto border-t py-14 px-7">
