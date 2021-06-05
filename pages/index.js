@@ -11,9 +11,6 @@ export default function Home() {
         <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-7xl m-auto pt-10 text-benblack-500 leading-snug">Providing borderless blockchain education</h1>
         <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
           <DonateButton />
-          <button className="border hover:bg-benorange-500 transition duration-500 hover:text-white font-bold text-xl px-8 rounded-full py-4 text-benblack-500">
-            Get involved
-        </button>
 
         </div>
       </div>
