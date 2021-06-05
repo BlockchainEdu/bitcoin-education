@@ -10,7 +10,8 @@ export default function HeaderWithLogo() {
             <nav className="hidden lg:flex max-w-7xl m-auto justify-between items-center">
                 <ul className="font-mont text-white transition duration-500 w-1/3">
                     <li className="flex gap-x-14">
-                      <a className="hover:text-benorange-500 transition duration-500" href="/">Home </a>
+                      <a className="hover:text-benorange-500 transition duration-500" href="/">Home</a>
+                      <a className="hover:text-benorange-500 transition duration-500" href="/about">About </a>
                     </li>
                 </ul>
                 <div className="w-1/3"><a href="/"><img className="m-auto" src="/images/white-menu-logo.svg"/></a></div>
