@@ -21,8 +21,12 @@
   color: #fff;
 }
 
+h1, h2 {
+  line-height: 1.3em !important;
+}
+
 .about-header {
-    background-image: url("/images/about-header.png");
+    background-image: url("/images/about-header-image.png");
     background-repeat: no-repeat;
     background-size: cover;
     margin-top: -7rem;

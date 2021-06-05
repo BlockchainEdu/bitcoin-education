@@ -51,7 +51,7 @@ export default function Home() {
           </div>
           <div className="text-center m-auto lg:text-left lg:m-0">
             <img className="m-auto lg:m-0" src="/images/valuation.svg" />
-            <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">$100m</div>
+            <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">$2 billion</div>
             <div className="uppercase font-mont text-sm max w-60">Valuation of Companies Founded Through BEN</div>
           </div>
           <div className="text-center m-auto lg:text-left lg:m-0">

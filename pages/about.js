@@ -19,13 +19,13 @@ export default function About() {
                 </div>
             </div>
             <section>
-                <div className="flex flex-col lg:flex-row max-w-7xl m-auto justify-between py-36 px-7">
-                    <div><img className="m-auto lg:m-0 pb-20 lg:pb-0" src="/images/temp-image.png" /></div>
-                    <div>
+                <div className="flex flex-col lg:flex-row max-w-7xl m-auto justify-between items-center py-24 pb-10 px-7">
+                    <div className="w-full lg:w-3/5"><img className="m-auto lg:m-0 pb-20 lg:pb-0" src="/images/about-globe.png" /></div>
+                    <div className="w-full lg:w-2/5">
                         <div className="font-mont text-center lg:text-left text-xs uppercase pb-7">
                             About
                         </div>
-                        <h2 className="font-black text-center lg:text-left m-auto lg:m-0 text-4xl md:text-5xl text-black pb-10 max-w-md md:max-w-xs leading-snug">
+                        <h2 className="font-black text-center lg:text-left m-auto lg:m-0 text-4xl md:text-5xl text-black pb-10 max-w-md md:max-w-xs leading-10">
                             501(c)(3) non-profit charitable organization
                         </h2>
                         <p className="font-mont text-center lg:text-left m-auto lg:m-0 max-w-2xl text-bengrey-400 max-w-lg">
@@ -33,8 +33,8 @@ export default function About() {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto justify-between pt-0 lg:pt-36 py-36 pb-24 px-7">
-                    <div>
+                <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto justify-between items-center pt-0 lg:pt-20 py-36 pb-10 px-7">
+                    <div className="w-3/5">
                         <div className="font-mont text-center lg:text-left text-xs uppercase pb-7">
                             Our Work
                         </div>
@@ -45,7 +45,7 @@ export default function About() {
                             Since blockchain was ﬁrst invented in 2008, most universities around the world haven't been able to create a dedicated curriculum around  it , thus creating a high demand from students to learn about blockchain. We address students' desire to learn about blockchain and pursue opportunities in the industry.
                         </p>
                     </div>
-                    <div><img className="m-auto lg:m-0 pb-20 md:pb-0" src="/images/temp-image.png" /></div>
+                    <div className=""><img className="m-auto lg:m-0 pb-20 md:pb-0" src="/images/about-computer.png" /></div>
                 </div>
             </section>
             <Footer />
