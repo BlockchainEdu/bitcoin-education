@@ -24,7 +24,7 @@ export default function About() {
                 <h2 className="font-black text-4xl md:text-5xl text-black text-center pb-8">
                     Global Team
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl m-auto gap-y-14">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
                     {TeamMembers.global.map(global =>
                         <NationalTeamCard 
                         image={global.image}

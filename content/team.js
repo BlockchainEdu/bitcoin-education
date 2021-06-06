@@ -1,34 +1,34 @@
 const TeamMembers = {
     global: [
         {
-            image: "/images/team/erick-pinos.jpg",
+            image: "/images/team/erick.jpg",
             name: "Erick Pinos",
             title: "President",
         },
         {
-            image: "/images/team/kate-stapleton.jpg",
+            image: "/images/team/kate.jpg",
             name: "Kate Stapleton",
             title: "Vice-President",
         },
         {
-            image: "/images/team/jeremy-guzman.jpg",
+            image: "/images/team/jeremy.jpg",
             name: "Jeremy Guzmán",
             title: "President",
         },
         {
-            image: "/images/team/ba-minuzzi.jpg",
+            image: "/images/team/ba.jpg",
             name: "Ba Minuzzi",
             title: "Chief Architect Officer",
         },
         {
-            image: "/images/team/antonio-gomes.jpg",
+            image: "/images/team/antonio.jpg",
             name: "António Gomes",
             title: "Director of Global Operations",
         },
     ],
     usa: [
         {
-            image: "/images/team/temp-image.jpg",
+            image: "/images/team/ashton.jpg",
             name: "Ashston Barger",
             title: "President"
         },
