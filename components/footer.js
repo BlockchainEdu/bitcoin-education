@@ -7,7 +7,7 @@ export default function Footer() {
                 <div className="text-center md:text-left font-mont text-black max-w-lg">
                     Subscribe to the BEN newsletter to keep up to date with everything happening in the Blockchain and Education.
                 </div>
-                <div>
+                <div className="pt-10 md:pt-0">
                     <Subscribe />
                 </div>
             </div>
