@@ -44,6 +44,7 @@ export default function About() {
                         image={usa.image}
                         name={usa.name}
                         title={usa.title}
+                        bio={usa.bio}
                         />    
                     )}
                 </div>

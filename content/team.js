@@ -28,9 +28,10 @@ const TeamMembers = {
     ],
     usa: [
         {
-            image: "/images/team/ashton.jpg",
+            image: "/images/team/ashton-barger.jpg",
             name: "Ashston Barger",
-            title: "President"
+            title: "President",
+            bio: "Ashton Barger is a Past President of the Miami University Blockchain Club and a 2020 Graduate of Miami University of Ohio. He currently works full time as an Account Manager for Zebu Digital, a Crypto and Blockchain Marketing Agency. He has been volunteering as the President of BEN USA since January of 2021 and is loving the progress the team has made since joining BEN. In his free time he enjoys hiking, skiing."
         },
         {
             image: "/images/team/alec-shaw.jpg",
