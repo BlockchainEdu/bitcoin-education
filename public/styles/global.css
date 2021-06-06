@@ -10,6 +10,18 @@
 }
 
 
+.about-illustration {
+  max-width: 900px !important;
+  width: 900px !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .about-illustration {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
 .flip-card {
   background-color: transparent;
   width: 263px;
@@ -93,9 +105,7 @@ h1, h2 {
 }
 
 .about-header {
-    background-image: url("/images/about-header-image.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(181.36deg, #FF5E36 1.16%, #FFA381 98.86%);
     margin-top: -7rem;
 }
 
