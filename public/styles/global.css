@@ -9,6 +9,9 @@
   font-family: "Montser"
 }
 
+#about-page .menu-dropdown {
+  color: #fff !important;
+}
 
 .about-illustration {
   max-width: 900px !important;
