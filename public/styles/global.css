@@ -57,6 +57,7 @@
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  /* transform: rotateY(0deg); */
 }
 
 /* Style the back side */
@@ -107,6 +108,14 @@ h1, h2 {
 .about-header {
     background: linear-gradient(181.36deg, #FF5E36 1.16%, #FFA381 98.86%);
     margin-top: -7rem;
+}
+@media only screen and (max-width: 560px) {
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(0deg);
+  }
+  .flip-card.hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
 }
 
 @media only screen and (max-width: 800px) {

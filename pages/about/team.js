@@ -4,9 +4,24 @@ import Header from '../../components/header'
 import NationalTeamCard from '../../components/nationalTeamCard'
 import TeamMembers from '../../content/team'
 
+import React, {useState} from 'react';
+
 export default function About() {
+
+    const [globalClick, setGlobalClick] = useState(false);
+
     return (
-        <div id="team-page">
+        <div id="team-page" onClick={(e) => { 
+                if(e.target.getAttribute('filp-card-container') == "true"){
+                    //find object   
+                    console.log('inbounds', globalClick);
+                    setGlobalClick(true);
+                }else{
+                    //remove object
+                    setGlobalClick(false);
+                    console.log('outbounds', globalClick);
+                }
+            }}>
             <HeaderWithLogoDark />
             <div className="pt-10 pb-24 md:py-36 px-7">
                 <div className="max-w-7xl m-auto">
@@ -30,7 +45,9 @@ export default function About() {
                         image={global.image}
                         name={global.name}
                         title={global.title}
-                        />    
+                        globalClick = {globalClick}
+                        setGlobalClick = {setGlobalClick}
+                        />
                     )}
                 </div>
             </section>
@@ -45,6 +62,8 @@ export default function About() {
                         name={usa.name}
                         title={usa.title}
                         bio={usa.bio}
+                        globalClick = {globalClick}
+                        setGlobalClick = {setGlobalClick}
                         />    
                     )}
                 </div>
@@ -59,6 +78,8 @@ export default function About() {
                         image={italy.image}
                         name={italy.name}
                         title={italy.title}
+                        globalClick = {globalClick}
+                        setGlobalClick = {setGlobalClick}
                         />    
                     )}
                 </div>
@@ -73,6 +94,8 @@ export default function About() {
                         image={advisors.image}
                         name={advisors.name}
                         title={advisors.title}
+                        globalClick = {globalClick}
+                        setGlobalClick = {setGlobalClick}
                         />    
                     )}
                 </div>
