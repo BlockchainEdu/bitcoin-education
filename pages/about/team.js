@@ -3,12 +3,41 @@ import HeaderWithLogoDark from '../../components/headerWithLogoDark';
 import Header from '../../components/header'
 import NationalTeamCard from '../../components/nationalTeamCard'
 import TeamMembers from '../../content/team'
+import { TeamMemberService } from '../../services';
 
-import React, {useState} from 'react';
+
+import React, {useState, useEffect} from 'react';
 
 export default function About() {
 
     const [globalClick, setGlobalClick] = useState(false);
+    const [teamMembers, setTeamMembers] = useState([]);
+
+    useEffect( async () => {
+        // Get Members list
+        let body = {
+            query: `{
+            boards (ids: 1383021348) {
+              items {
+                id
+                name
+                column_values {
+                  id
+                  title
+                  value
+                }
+              }
+            }
+          }`}
+        let result = await TeamMemberService.getMembers(body);
+        if(result?.data?.data?.boards){
+            console.log(result.data.data.boards[0].items);
+            setTeamMembers(result.data.data.boards[0].items);
+        } else {
+            setTeamMembers([]);
+        }
+        
+    }, [setTeamMembers]);
 
     return (
         <div id="team-page" onClick={(e) => { 
@@ -40,7 +69,17 @@ export default function About() {
                     Global Team
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
-                    {TeamMembers.global.map(global =>
+                    
+                    {teamMembers.length > 0 && teamMembers.map(global =>
+                        <NationalTeamCard 
+                        image={global.image}
+                        name={global.name}
+                        title={global.column_values[1].value}
+                        globalClick = {globalClick}
+                        setGlobalClick = {setGlobalClick}
+                        />
+                    )}
+                    {/* {TeamMembers.global.map(global =>
                         <NationalTeamCard 
                         image={global.image}
                         name={global.name}
@@ -48,7 +87,7 @@ export default function About() {
                         globalClick = {globalClick}
                         setGlobalClick = {setGlobalClick}
                         />
-                    )}
+                    )} */}
                 </div>
             </section>
             <section className="py-24">
