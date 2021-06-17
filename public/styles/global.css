@@ -109,6 +109,15 @@ h1, h2 {
     background: linear-gradient(181.36deg, #FF5E36 1.16%, #FFA381 98.86%);
     margin-top: -7rem;
 }
+.social-icons {
+  display: inline-flex;
+  margin: 0 auto;
+}
+
+.social-icons a {
+  padding: 0 5px;
+}
+
 @media only screen and (max-width: 560px) {
   .flip-card:hover .flip-card-inner {
     transform: rotateY(0deg);

@@ -26,11 +26,15 @@ export default function About() {
                   title
                   value
                 }
+                assets {
+                    public_url 
+                }
               }
             }
           }`}
         let result = await TeamMemberService.getMembers(body);
         if(result?.data?.data?.boards){
+            console.log('test');
             console.log(result.data.data.boards[0].items);
             setTeamMembers(result.data.data.boards[0].items);
         } else {
@@ -43,12 +47,10 @@ export default function About() {
         <div id="team-page" onClick={(e) => { 
                 if(e.target.getAttribute('filp-card-container') == "true"){
                     //find object   
-                    console.log('inbounds', globalClick);
                     setGlobalClick(true);
                 }else{
                     //remove object
                     setGlobalClick(false);
-                    console.log('outbounds', globalClick);
                 }
             }}>
             <HeaderWithLogoDark />
@@ -72,9 +74,12 @@ export default function About() {
                     
                     {teamMembers.length > 0 && teamMembers.map(global =>
                         <NationalTeamCard 
-                        image={global.image}
+                        image={global.assets.length > 0 ? global.assets[0]?.public_url : ""}
                         name={global.name}
-                        title={global.column_values[1].value}
+                        title={JSON.parse(global.column_values[1].value)}
+                        bio={JSON.parse(global.column_values[2].value)}
+                        linkedin={JSON.parse(global.column_values[4].value)}
+                        twitter={JSON.parse(global.column_values[5].value)}
                         globalClick = {globalClick}
                         setGlobalClick = {setGlobalClick}
                         />
