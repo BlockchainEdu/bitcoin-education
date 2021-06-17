@@ -35,8 +35,12 @@ class NationalTeamCard extends React.Component {
                 <h3 className="font-mont font-bold text-xl text-black pt-5">{this.props.name}</h3>
                 <div className="text-bengrey-300 pt-2">{this.props.title}</div>
                 <div className="text-center social-icons pt-3">
-                    <a href={this.props.twitter} target="_blank"><img className="m-auto" src="/images/twitter-icon.png" /></a>
-                    <a href={this.props.linkedin} target="_blank"><img className="m-auto" src="/images/linkedin-icon.png" /></a>
+                    { this.props.twitter && 
+                        <a href={this.props.twitter} target="_blank"><img className="m-auto" src="/images/twitter-icon.png" /></a>
+                    }
+                    { this.props.linkedin && 
+                        <a href={this.props.linkedin} target="_blank"><img className="m-auto" src="/images/linkedin-icon.png" /></a>
+                    }
                 </div>
             </div>
         )
