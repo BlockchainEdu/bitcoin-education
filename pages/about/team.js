@@ -100,40 +100,7 @@ export default function About() {
                     )} */}
                 </div>
             </section>
-            <section className="py-24">
-                <h2 className="font-black text-4xl md:text-5xl text-black text-center pb-8">
-                    BEN USA
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
-                    {TeamMembers.usa.map(usa =>
-                        <NationalTeamCard 
-                        image={usa.image}
-                        name={usa.name}
-                        title={usa.title}
-                        bio={usa.bio}
-                        globalClick = {globalClick}
-                        setGlobalClick = {setGlobalClick}
-                        />    
-                    )}
-                </div>
-            </section>
-            <section className="pt-10 py-24">
-                <h2 className="font-black text-4xl md:text-5xl text-black text-center pb-8">
-                    BEN Italy
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
-                    {TeamMembers.italy.map(italy =>
-                        <NationalTeamCard 
-                        image={italy.image}
-                        name={italy.name}
-                        title={italy.title}
-                        globalClick = {globalClick}
-                        setGlobalClick = {setGlobalClick}
-                        />    
-                    )}
-                </div>
-            </section>
-            <section className="pt-10 py-24">
+            <section className="py-24 -mb-14">
                 <h2 className="font-black text-4xl md:text-5xl text-black text-center pb-8">
                         Advisors
                 </h2>
