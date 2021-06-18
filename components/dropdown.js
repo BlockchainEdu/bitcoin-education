@@ -4,9 +4,13 @@ import { Fragment } from 'react'
 
 const solutions = [
   {
+    name: 'About',
+    href: '/about'
+  },
+  {
     name: 'The Team',
     href: '/about/team',
-  }
+  },
 ]
 
 export default function Dropdown() {
@@ -18,7 +22,7 @@ export default function Dropdown() {
             <Popover.Button
               className={`
                 ${open ? '' : ''}
-                font-mont text-black text-black hover:text-benorange-500 transition duration-500 px-3 rounded-md inline-flex items-center text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                menu-dropdown font-mont text-black text-black hover:text-benorange-500 transition duration-500 px-3 rounded-md inline-flex items-center text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
               <span>About</span>
 
@@ -30,16 +34,16 @@ export default function Dropdown() {
             </Popover.Button>
 
               <Popover.Panel className="absolute z-10 max-w-sm px-4 mt-3 sm:px-0 lg:max-w-3xl">
-                <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative grid gap-8 bg-white py-7 pl-0 px-14 lg:grid-cols-1">
+                <div className="overflow-hidden bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                  <div className="relative grid bg-white pl-0 lg:grid-cols-1 my-3 ">
                     {solutions.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
-                        className="flex items-center p-2 px-10 -m-3 hover:bg-black transition duration-150 ease-in-out rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                        className="flex items-center p-2 px-4 mx-10 hover:bg-benorange-300 transition duration-150 ease-in-out rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                       >
                         <div className="">
-                          <p className="font-proximabold font-bold text-lg text-black hover:text-benorange-500 hover:bg-black py-2 rounded-md inline-flex text-left text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                          <p className="font-proximabold font-bold text-xl text-black hover:text-benorange-500 hover:bg-opacity-20 py-2 rounded-md inline-flex text-left text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                             {item.name}
                           </p>
                         </div>

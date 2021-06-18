@@ -18,7 +18,7 @@ export default function Footer() {
                         The Blockchain Education Network (BEN)
                     </div>
                     <div className="text-center md:text-left max-w-lg pt-3 m-auto md:m-0">
-                        BEN is the largest and oldest netwrok of blockchain students, alumni, and professors across the world.
+                        BEN is the largest and oldest network of blockchain students, alumni, and professors across the world.
                     </div>
                 </div>
                 <div className="grid grid-cols-5 pt-10 md:pt-0 w-full md:w-2/6 gap-x-0 ml-3 md:ml-0">

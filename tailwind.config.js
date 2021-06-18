@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       colors: {
         benorange: {
+          '300': '#ffe9e1',
           '500': '#FF936B',
         },
         benblack: {
