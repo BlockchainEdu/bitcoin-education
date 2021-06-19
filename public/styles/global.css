@@ -9,6 +9,10 @@
   font-family: "Montser"
 }
 
+.join-footer-button {
+  padding: 1rem 5.5rem;
+}
+
 #about-page .menu-dropdown {
   color: #fff !important;
 }

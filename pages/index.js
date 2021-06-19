@@ -29,10 +29,10 @@ export default function Home() {
       <section id="what-is-ben" className="bg-benorange-500 py-20 px-7">
         <h2 className="font-black text-4xl md:text-5xl text-black text-center">
           What is BEN?
-      </h2>
+        </h2>
         <p className="text-black text-md what-is-ben text-center m-auto pt-10">
-          The Blockchain  Education Network (BEN)  is the largest and longest running network  of students, alumni, professors, teachers,  professionals, and community leaders  excited about blockchain across the world.  We are on a journey to spur blockchain  adoption by empowering our leaders to  bring blockchain to their companies and  communities.
-      </p>
+          The Blockchain Education Network (BEN)  is the largest and longest running network  of students, alumni, professors, teachers,  professionals, and community leaders  excited about blockchain across the world.  We are on a journey to spur blockchain  adoption by empowering our leaders to  bring blockchain to their companies and  communities.
+        </p>
       </section>
       <section className="max-w-7xl m-auto py-24 px-7">
         <h2 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
@@ -51,7 +51,7 @@ export default function Home() {
           </div>
           <div className="text-center m-auto lg:text-left lg:m-0">
             <img className="m-auto lg:m-0" src="/images/valuation.svg" />
-            <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">$2 billion</div>
+            <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">$11B</div>
             <div className="uppercase font-mont text-sm max w-60">Valuation of Companies Founded Through BEN</div>
           </div>
           <div className="text-center m-auto lg:text-left lg:m-0">
@@ -77,13 +77,13 @@ export default function Home() {
               <div>
                 <p className="font-mont text-center md:text-left mx-auto md:mx-0 text-xl md:text-2xl font-bold max-w-sm">
                   Over the next 10 years we plan to educate over 10M people in Blockchain Technology
-                 </p>
+                </p>
               </div>
             </div>
             <div className="m-auto flex content-center justify-center md:justify-start">
-            <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
-              Learn more
-            </button>
+              <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
+                Learn more
+              </button>
             </div>
           </div>
           <div>
@@ -101,29 +101,9 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-col md:flex-row max-w-7xl m-auto items-center justify-between pt-20">
-          <div className="w-full md:w-1/5 text-center md:text-left">
-            <div>
-              <img className="m-auto md:m-0" src="/images/clubs-icon.svg" />
-              <div className="font-mont text-xs uppercase pt-3">
-                Clubs
-            </div>
-            </div>
-            <div className="py-10">
-              <img className="m-auto md:m-0" src="/images/blockchain-center-icon.svg" />
-              <div className="font-mont text-xs uppercase pt-3">
-                Blockchain Center
-            </div>
-            </div>
-            <div>
-              <img className="m-auto md:m-0" src="/images/professors-icon.svg" />
-              <div className="font-mont text-xs uppercase pt-3">
-                Professors
-            </div>
-            </div>
-          </div>
-          <div className="w-full md:w-4/5 pt-20 md:pt-0">
-            <img className="m-auto" src="/images/static-map.svg" />
-          </div>
+            <iframe
+              src='https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&zoomwheel=false&access_token=pk.eyJ1IjoiYmxvY2tjaGFpbmVkdXUiLCJhIjoiY2txMzZsNTQxMHZyazMybzdiMm1rdGh0MSJ9.SY1tQfLQXc0ql3WhtdFLnA' width='100%' height='600px' title='Mapbox Styles embed'>
+            </iframe>
         </div>
       </section>
       <section className="flex flex-col md:flex-row max-w-7xl m-auto items-center justify-between py-24 px-7">
@@ -142,7 +122,7 @@ export default function Home() {
       <section className="max-w-7xl m-auto py-24 pt-10 md:pt-24 pb-24 md:pb-36 px-7">
         <h2 className="text-center md:text-left font-black text-4xl md:text-5xl text-black pb-10">
           Featured in
-          </h2>
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 pt-4 gap-y-14">
           <img className="m-auto" src="/images/distributed.png" />
           <img className="m-auto" src="/images/crypto-core.png" />

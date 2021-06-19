@@ -21,6 +21,7 @@ export default function HeaderWithLogo() {
                 <ul className="font-mont text-black w-1/3">
                     <li className="flex gap-x-14 justify-end">
                       <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://medium.com/blockchainedu">Blog </a>
+                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://portal.blockchainedu.org/sign_in"><b>Login</b></a>
                     </li>
                 </ul>
             </nav>

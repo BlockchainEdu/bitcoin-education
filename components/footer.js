@@ -3,12 +3,19 @@ import Subscribe from '../components/subscribe'
 export default function Footer() {
     return (
         <section>
-            <div className="max-w-7xl m-auto flex flex-col md:flex-row justify-between items-center pt-0 md:pt-24 py-24 pb-10 px-7">
-                <div className="text-center md:text-left font-mont text-black max-w-lg">
+            <div className="max-w-7xl m-auto flex flex-col lg:flex-row justify-between items-center pt-0 md:pt-24 py-24 pb-10 px-7">
+                <div className="text-center lg:text-left font-mont text-black max-w-lg pb-10 lg:pb-0">
                     Subscribe to the BEN newsletter to keep up to date with everything happening in the Blockchain and Education.
                 </div>
-                <div className="pt-10 md:pt-0">
-                    <Subscribe />
+                <div className="pt-5 md:pt-0 flex-col sm:flex-row flex space-y-6 sm:space-y-0 gap-x-10 items-center">
+                    <button className="join-footer-button bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl rounded-full">
+                        <a target="_blank" href="https://portal.blockchainedu.org/">
+                            Join
+                        </a>
+                    </button>
+                    <div>
+                        <Subscribe />
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col md:flex-row max-w-7xl m-auto border-t py-14 px-7">
