@@ -70,9 +70,6 @@ export default function About() {
                 </div>
             </div>
             <section className="py-24" style={{backgroundColor: "#f5f7f7"}}>
-                <h2 className="font-black text-4xl md:text-5xl text-black text-center pb-8">
-                    Global Team
-                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
                     
                     {teamMembers.length > 0 && teamMembers.map(global =>
@@ -84,6 +81,7 @@ export default function About() {
                             bio={JSON.parse(global.column_values[2].value)}
                             linkedin={JSON.parse(global.column_values[4].value)}
                             twitter={JSON.parse(global.column_values[5].value)}
+                            email={JSON.parse(global.column_values[6].value)}
                             globalClick = {globalClick}
                             setGlobalClick = {setGlobalClick}
                             />
