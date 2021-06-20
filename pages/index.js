@@ -1,7 +1,7 @@
 import DonateButton from "../components/donateButton";
 import Footer from "../components/footer";
 import Header from "../components/header";
-
+import Map from '../components/map'
 export default function Home() {
   return (
     <div>
@@ -101,9 +101,29 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-col md:flex-row max-w-7xl m-auto items-center justify-between pt-20">
-            <iframe
-              src='https://api.mapbox.com/styles/v1/mapbox/streets-v11.html?title=true&zoomwheel=false&access_token=pk.eyJ1IjoiYmxvY2tjaGFpbmVkdXUiLCJhIjoiY2txMzZsNTQxMHZyazMybzdiMm1rdGh0MSJ9.SY1tQfLQXc0ql3WhtdFLnA' width='100%' height='600px' title='Mapbox Styles embed'>
-            </iframe>
+          <div className="w-full md:w-1/5 text-center md:text-left">
+            <div>
+              <img className="m-auto md:m-0" src="/images/clubs-icon.svg" />
+              <div className="font-mont text-xs uppercase pt-3">
+                Clubs
+            </div>
+            </div>
+            <div className="py-10">
+              <img className="m-auto md:m-0" src="/images/blockchain-center-icon.svg" />
+              <div className="font-mont text-xs uppercase pt-3">
+                Blockchain Center
+            </div>
+            </div>
+            <div>
+              <img className="m-auto md:m-0" src="/images/professors-icon.svg" />
+              <div className="font-mont text-xs uppercase pt-3">
+                Professors
+            </div>
+            </div>
+          </div>
+          <div className="w-full md:w-4/5 pt-20 md:pt-0">
+            <img className="m-auto" src="/images/static-map.svg" />
+          </div>
         </div>
       </section>
       <section className="flex flex-col md:flex-row max-w-7xl m-auto items-center justify-between py-24 px-7">
