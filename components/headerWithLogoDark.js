@@ -18,7 +18,7 @@ export default function HeaderWithLogo() {
                 <div className="w-1/3"><a href="/"><img className="m-auto" src="/images/ben-logo-color.png"/></a></div>
                 <ul className="font-mont text-white w-1/3">
                     <li className="flex gap-x-14 justify-end items-center">
-                    <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://portal.blockchainedu.org/event">Events </a>
+                    <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://portal.blockchainedu.org/events">Events </a>
                       <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://medium.com/blockchainedu">Blog</a>
                       <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://portal.blockchainedu.org/sign_in"><b>Login</b></a>
                       <DonateButtonSmall />
