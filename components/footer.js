@@ -41,7 +41,7 @@ export default function Footer() {
                     <ul className="flex flex-col md:flex-row justify-between items-center text-white font-mont w-full md:w-2/6">
                         <a href="/"><li>Home</li></a>
                         <a href="/about"><li>About</li></a>
-                        <a target="_blank" href="https://medium.com/blockchainedu"><li>Blog</li></a>
+                        <a target="_blank" href="https://portal.blockchainedu.org/all-courses"><li>Learn</li></a>
                         <a target="_blank" href="https://portal.blockchainedu.org/sign_in"><li>Login</li></a>
                     </ul>
                     <div className="pt-10 md:pt-0 text-center md:text-left font-mont text-white">
