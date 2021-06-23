@@ -106,19 +106,19 @@ export default function Home() {
               <img className="m-auto md:m-0" src="/images/clubs-icon.svg" />
               <div className="font-mont text-xs uppercase pt-3">
                 Clubs
-            </div>
+              </div>
             </div>
             <div className="py-10">
               <img className="m-auto md:m-0" src="/images/blockchain-center-icon.svg" />
               <div className="font-mont text-xs uppercase pt-3">
                 Blockchain Center
-            </div>
+              </div>
             </div>
             <div>
               <img className="m-auto md:m-0" src="/images/professors-icon.svg" />
               <div className="font-mont text-xs uppercase pt-3">
                 Professors
-            </div>
+              </div>
             </div>
           </div>
           <div className="w-full md:w-4/5 pt-20 md:pt-0">
