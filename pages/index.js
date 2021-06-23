@@ -126,7 +126,7 @@ export default function Home() {
           </div>
         </div>
         <iframe
-          src='https://api.mapbox.com/styles/v1/blockchaineduu/ckq37eutm1cnh17r1576efu06.html?fresh=true&title=copy&access_token=pk.eyJ1IjoiYmxvY2tjaGFpbmVkdXUiLCJhIjoiY2txMzZsNTQxMHZyazMybzdiMm1rdGh0MSJ9.SY1tQfLQXc0ql3WhtdFLnA' width='100%' height='400px' title='Mapbox Styles embed'>
+          src='https://api.mapbox.com/styles/v1/blockchaineduu/ckq37eutm1cnh17r1576efu06.html?fresh=true&access_token=pk.eyJ1IjoiYmxvY2tjaGFpbmVkdXUiLCJhIjoiY2txMzZsNTQxMHZyazMybzdiMm1rdGh0MSJ9.SY1tQfLQXc0ql3WhtdFLnA' width='100%' height='400px' title='Mapbox Styles embed'>
         </iframe>
       </section>
       <section className="flex flex-col md:flex-row max-w-7xl m-auto items-center justify-between py-24 px-7">
