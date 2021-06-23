@@ -54,7 +54,7 @@ export default function MobileDropdown(props) {
                       <a href="/about">About</a>
                     </li>
                     <li>
-                      <a target="_blank" href="https://medium.com/blockchainedu">Blog</a>
+                      <a target="_blank" href="https://portal.blockchainedu.org/all-courses">Learn</a>
                     </li>
                     <li>
                     <li>
