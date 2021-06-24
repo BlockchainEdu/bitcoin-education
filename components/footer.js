@@ -33,7 +33,7 @@ export default function Footer() {
                     <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/Twitter.svg" /></a>
                     <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/Instagram.svg" /></a>
                     <a target="_blank" href="https://medium.com/blockchainedu"><img src="/images/medium.svg" /></a>
-                    <a target="_blank" href="https://blockchainedu.org/discord"><img src="/images/discord.svg" /></a>
+                    <a target="_blank" href="https://t.me/joinchat/SMwh8kKWR8mF2WkY"><img src="/images/telegram.svg" /></a>
                 </div>
             </div>
             <div className="bg-benblack-500 py-14 px-7">
