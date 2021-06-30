@@ -20,7 +20,7 @@ export default function Home() {
           <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter-light.svg" /></a>
           <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/instagram-light.svg" /></a>
           <a target="_blank" href="https://medium.com/blockchainedu"><img src="/images/medium-light.svg" /></a>
-          <a target="_blank" href="https://t.me/joinchat/SMwh8kKWR8mF2WkY"><img src="/images/telegram-light.svg" /></a>
+          <a target="_blank" href="https://t.me/blockchainedu"><img src="/images/telegram-light.svg" /></a>
         </div>
         <div className="mt-14 md:-mt-8">
           <a href="/#what-is-ben"><img className="m-auto" src="/images/scroll.svg" /></a>
