@@ -13,9 +13,22 @@
   max-width: 360px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 780px) {
   .what-is-learn-blurb {
     max-width: 100%;
+  }
+}
+
+.home-header {
+  background: url("/images/home-header-illustration.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+@media only screen and (max-width: 780px) {
+  .home-header {
+    background-position: left top;
   }
 }
 
