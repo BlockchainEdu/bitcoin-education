@@ -9,6 +9,10 @@
   font-family: "Montser"
 }
 
+.what-is-learn-blurb {
+  max-width: 360px;
+}
+
 .join-footer-button {
   padding: 1rem 3.3rem;
 }
