@@ -13,6 +13,12 @@
   max-width: 360px;
 }
 
+@media only screen and (max-width: 768px) {
+  .what-is-learn-blurb {
+    max-width: 100%;
+  }
+}
+
 .join-footer-button {
   padding: 1rem 3.3rem;
 }

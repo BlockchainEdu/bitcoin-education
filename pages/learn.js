@@ -7,7 +7,7 @@ export default function Learn() {
     return (
         <div id="learn-page">
             <HeaderWithLogoDark />
-            <section className="px-7">
+            <section className="px-7 pb-14 md:pb-0">
                 <div className="max-w-7xl m-auto pt-24">
                     <h1 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
                         What is BEN Learn?
@@ -45,7 +45,7 @@ export default function Learn() {
                     <button className="mt-5 border font-bold text-xl px-8 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Sign up to learn</button>
                 </div>
                 <div className="w-full md:w-3/5">
-                    <div className="pt-4 pb-12 md:p-0 flex justify-end">
+                    <div className="pt-4 pb-20 md:p-0 flex justify-end">
                         <Image
                             src="/images/learn-hero-illustration.png"
                             width="650"
@@ -56,9 +56,9 @@ export default function Learn() {
                 </div>
                 </div>
             </section>
-            <section className="max-w-7xl m-auto py-24 pb-14 px-7">
+            <section className="max-w-7xl m-auto pt-14 pb-4 md:py-24 pb-14 px-7">
                 <div className="flex flex-col md:flex-row justify-between md:space-x-20 items-center">
-                    <div className="w-full md:w-3/6">
+                    <div className="w-full md:w-3/6 pb-20 md:pb-0">
                         <img className="mx-auto md:mx-0" src="/images/learn-teachers-illustration.png" />
                     </div>
                     <div className="w-full md:w-3/6">
@@ -89,7 +89,7 @@ export default function Learn() {
                     </div>
                 </div>
             </section>
-            <section className="max-w-7xl m-auto py-24 pb-14 px-7">
+            <section className="max-w-7xl m-auto pt-0 md:py-24 pb-36 px-7">
                 <div className="flex flex-col-reverse md:flex-row justify-between">
                     <div className="w-full md:w-1/2">
                         <div className="font-mont text-center md:text-left text-xs uppercase pb-7">
@@ -98,10 +98,10 @@ export default function Learn() {
                         <h2 className="font-black text-center md:text-left text-4xl md:text-5xl text-black pb-8">
                             The 10:10 Plan
                         </h2>
-                        <div className="font-mont max-w-md">
+                        <div className="font-mont max-w-full md:max-w-md text-center md:text-left">
                             Largely with the help of the BEN Learn Platform, we intend to educate over 10 million people in the next 10 years. We believe in providing borderless access to Blockchain Education. Your support of the BEN Learn Platform can help us get closer to that goal!
                         </div>
-                        <div className="m-auto flex content-center justify-center md:justify-start pt-10">
+                        <div className="m-auto flex content-center items-center justify-center md:justify-start pt-10">
                             <div className="flex">
                                 <div className="-mr-4">
                                     <img src="/images/accounts-created-icon.svg" />
@@ -113,7 +113,7 @@ export default function Learn() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full md:w-1/2">
+                    <div className="w-full md:w-1/2 mt-14">
                         <img className="mx-auto md:mx-0" src="/images/10-10-plan.png" />
                     </div>
                 </div>
