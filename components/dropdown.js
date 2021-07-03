@@ -11,6 +11,18 @@ const solutions = [
     name: 'The Team',
     href: '/about/team',
   },
+  {
+    name: 'Alumni',
+    href: '/about/alumni'
+  },
+  {
+    name: 'Blockchain Centers',
+    href: '/about/blockchain-centers'
+  },
+  {
+    name: 'Professor',
+    href: '/about/professor'
+  }
 ]
 
 export default function Dropdown() {
