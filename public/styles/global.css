@@ -16,6 +16,13 @@
   max-width: 360px;
 }
 
+.get-involved-bg {
+  background: url("/images/get-involved-orange-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 @media only screen and (max-width: 780px) {
   .what-is-learn-blurb {
     max-width: 100%;

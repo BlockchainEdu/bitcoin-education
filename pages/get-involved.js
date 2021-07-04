@@ -33,10 +33,10 @@ export default function GetInvolved() {
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
-            <div className="pt-3 md:py-40 pb-20 px-7">
-                <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
-                    <div className="w-4/12">
-                        <div className="rounded-full bg-benorange-300 font-mont uppercase font-bold">
+            <div className="pt-3 md:py-24 pb-20 px-7">
+                <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">
+                    <div className="w-4/12" style={{ marginRight: "-3rem" }}>
+                        <div className="rounded-full text-xs text-center py-3 mb-10 bg-benorange-300 font-mont uppercase font-bold" style={{ backgroundColor: "#F1F1F1", width: "135px" }}>
                             Get involved
                         </div>
                         <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-md leading-snug">
@@ -49,10 +49,10 @@ export default function GetInvolved() {
                             Join us today
                         </button>
                     </div>
-                    <div className="w-4/12">
+                    <div className="w-4/12 -ml-20">
                         <img className="" width="550px" src="/images/get-involved-hero.png" />
                     </div>
-                    <div className="w-4/12 flex flex-col space-y-10 font-mont">
+                    <div className="pl-4 w-4/12 flex flex-col space-y-10 font-mont" style={{ marginRight: "1rem" }}>
                         {Questions.map((Questions) =>
                             <div>
                                 <div className="text-xs uppercase pb-4 text-center md:text-left text-black">
@@ -66,42 +66,29 @@ export default function GetInvolved() {
                     </div>
                 </div>
             </div>
-            <section className="max-w-7xl m-auto -mt-40 pb-20 md:pb-24">
-                <div className="px-7">
-                    <p className="text-black text-md pt-10 max-w-md pb-6">
-                        Depending on your preferred level of involvement, BEN partnership benefits include:
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-3 gap-x-10">
-                        <PartnerShipBenefits
-                            benefit="Participate in BEN talent survey and recruiting process"
-                        />
-                        <PartnerShipBenefits
-                            benefit="Sponsorship discounts & priority"
-                        />
-                        <PartnerShipBenefits
-                            benefit="Propose and contribute to projects"
-                        />
-                        <PartnerShipBenefits
-                            benefit="Talent pipeline from top global universities"
-                        />
-                        <PartnerShipBenefits
-                            benefit="Incorporate educational material in our university-accredited blockchain courses, events and meetups"
-                        />
-                        <PartnerShipBenefits
-                            benefit="Participate in BEN Research"
-                        />
-                        <PartnerShipBenefits
-                            benefit="Participate and suggest working groups"
-                            style="lg:-mt-5"
-                        />
-                        <PartnerShipBenefits
-                            benefit="Free or subsidized tickets to paid events"
-                            style="lg:-mt-0"
-                        />
-                        <PartnerShipBenefits
-                            benefit="Assist sourcing speakers and sponsors for events"
-                            style="lg:-mt-10"
-                        />
+            <section>
+                <div className="flex flex-col lg:flex-row max-w-7xl gap-x-20 m-auto justify-between items-center py-24 px-7 get-involved-bg">
+                    <div className="w-full lg:w-3/5"><img className="m-auto lg:m-0 pb-20 lg:pb-0" src="/images/are-you-a-student.png" /></div>
+                    <div className="w-full lg:w-2/5">
+                        <h2 className="font-black text-center lg:text-left m-auto lg:m-0 text-4xl md:text-5xl text-black pb-10 max-w-md md:max-w-xs leading-10">
+                            Are you a student?
+                        </h2>
+                        <p className="font-mont text-center lg:text-left m-auto lg:m-0 max-w-2xl text-bengrey-400 max-w-lg">
+                        Are you a University professor, faculty member or a High School teacher? From connecting to the largest running faculty network in the world, to publishing your academic research in our journal. Learn from other blockchain professors and get access to great resources to become a better teacher. <br /><br />Enable underrepresented students to have access to a formal blockchain education with your courses and content.
+                        </p>
+                        <button className="mt-10 border font-bold text-xl px-16 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Join Us</button>
+                    </div>
+                </div>
+                <div className="flex flex-col lg:flex-row max-w-7xl gap-x-20 m-auto justify-between items-center py-24 px-7">
+                    <div className="w-full lg:w-3/5"><img className="m-auto lg:m-0 pb-20 lg:pb-0" src="/images/are-you-a-student.png" /></div>
+                    <div className="w-full lg:w-2/5">
+                        <h2 className="font-black text-center lg:text-left m-auto lg:m-0 text-4xl md:text-5xl text-black pb-10 max-w-md md:max-w-xs leading-10">
+                            Are you a professor?
+                        </h2>
+                        <p className="font-mont text-center lg:text-left m-auto lg:m-0 max-w-2xl text-bengrey-400 max-w-lg">
+                        Are you a University professor, faculty member or a High School teacher? From connecting to the largest running faculty network in the world, to publishing your academic research in our journal. Learn from other blockchain professors and get access to great resources to become a better teacher. <br /><br />Enable underrepresented students to have access to a formal blockchain education with your courses and content.
+                        </p>
+                        <button className="mt-10 border font-bold text-xl px-16 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Join Us</button>
                     </div>
                 </div>
             </section>
