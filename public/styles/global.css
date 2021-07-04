@@ -18,9 +18,9 @@
 
 .get-involved-bg {
   background: url("/images/get-involved-orange-bg.svg");
-  background-size: cover;
+  background-size: auto;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center left;
 }
 
 @media only screen and (max-width: 780px) {
