@@ -4,47 +4,39 @@ import { Fragment } from 'react'
 
 const solutions = [
   {
-    name: 'About',
+    name: 'United States',
     href: '/about'
   },
   {
-    name: 'Clubs',
-    href: '/about/clubs'
-  },
-  {
-    name: 'The Team',
+    name: 'Canada',
     href: '/about/team',
   },
   {
-    name: 'Partners',
-    href: '/about/partners'
-  },
-  {
-    name: 'Alumni',
+    name: 'Mexico',
     href: '/about/alumni'
   },
   {
-    name: 'Blockchain Centers',
+    name: 'Italy',
     href: '/about/blockchain-centers'
   },
   {
-    name: 'Professor',
+    name: 'Ireland',
     href: '/about/professor'
   }
 ]
 
-export default function Dropdown() {
+export default function ClubsDropdown() {
   return (
-    <div className="">
+    <div className="m-auto flex justify-center lg:justify-start pt-14 lg:pt-0">
       <Popover className="">
         {({ open }) => (
           <>
             <Popover.Button
               className={`
                 ${open ? '' : ''}
-                menu-dropdown font-mont text-black text-black hover:text-benorange-500 transition duration-500 px-3 rounded-md inline-flex items-center text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
+                menu-dropdown font-mont shadow-button bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white px-10 rounded-full py-4 rounded-full inline-flex items-center text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
-              <span>About</span>
+              <span>Locations</span>
 
             <ChevronDownIcon
                   className={`${

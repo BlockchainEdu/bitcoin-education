@@ -72,7 +72,22 @@ export default function MobileDropdown(props) {
                                       <a href="/about">About</a>
                                     </li>
                                     <li>
+                                      <a href="/clubs">Clubs</a>
+                                    </li>
+                                    <li>
                                       <a href="/about/team">The Team</a>
+                                    </li>
+                                    <li>
+                                      <a href="/about/partners">Partners</a>
+                                    </li>
+                                    <li>
+                                      <a href="/about/alumni">Alumni</a>
+                                    </li>
+                                    <li>
+                                      <a href="/about/blockchain-centers">Blockchain Centers</a>
+                                    </li>
+                                    <li>
+                                      <a href="/about/professor">Professor</a>
                                     </li>
                                   </ul>
                                 </Disclosure.Panel>

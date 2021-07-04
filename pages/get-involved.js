@@ -1,73 +1,111 @@
-import Footer from '../../components/footer';
-import HeaderWithLogoDark from '../../components/headerWithLogoDark';
-import Header from '../../components/header'
+import Footer from '../components/footer';
+import HeaderWithLogoDark from '../components/headerWithLogoDark';
+import Header from '../components/header'
 import Image from 'next/image'
-import TestComponent from '../../components/testComponent';
-import PartnerShipBenefits from '../../components/partnershipBenefits';
-import PartnersSlider from '../../components/partnersSlider';
-import PartnersSliderAlt from '../../components/partnersSliderAlt'
-import Slider from "react-slick";
+import TestComponent from '../components/testComponent';
+import PartnerShipBenefits from '../components/partnershipBenefits';
+import PartnersSlider from '../components/partnersSlider';
+import PartnersSliderAlt from '../components/partnersSliderAlt'
 
 
-export default function Partners() {
+export default function GetInvolved() {
+
+    const Questions = [
+        {
+            name: "Are you a student?",
+            description: "Are you currently enrolled as an undergraduate, masters, PhD, or high school student with a .edu email?"
+        },
+        {
+            name: "Are you a professor?",
+            description: "Are you a University professor, faculty member or a High School teacher?"
+        },
+        {
+            name: "University clubs",
+            description: "We provide mentorship, support, and guidance for clubs all around the world. Join our network of the best and the brightest minds and universities in the blockchain space.",
+        },
+        {
+            name: "Alumni",
+            description: "We are looking for prestigious speakers for club events, teachers for BEN Learn, and mentors for our career center."
+        }
+    ]
+
+
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
             <div className="pt-3 md:py-40 pb-20 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
-                    <div className="w-full lg:w-8/12">
-                        <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">
-                            Proven commitment to global blockchain education
+                    <div className="w-4/12">
+                        <div className="rounded-full bg-benorange-300 font-mont uppercase font-bold">
+                            Get involved
+                        </div>
+                        <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-md leading-snug">
+                            What can we offer to you
                         </h1>
-                        <p className="text-black text-md pt-10 max-w-xl m-auto lg:m-0 text-center lg:text-left font-medium">
-                            BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
+                        <p className="text-black text-2xl pt-10 max-w-xs m-auto lg:m-0 text-center lg:text-left font-medium leading-normal">
+                            We offer a number of ways for you to get involved
                         </p>
+                        <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
+                            Join us today
+                        </button>
                     </div>
-                    <div className="w-full lg:w-6/12 m-auto pt-14 pb-24">
-                        <img className="m-auto" src="/images/partners-hero.png" />
+                    <div className="w-4/12">
+                        <img className="" width="550px" src="/images/get-involved-hero.png" />
+                    </div>
+                    <div className="w-4/12 flex flex-col space-y-10 font-mont">
+                        {Questions.map((Questions) =>
+                            <div>
+                                <div className="text-xs uppercase pb-4 text-center md:text-left text-black">
+                                    {Questions.name}
+                                </div>
+                                <div style={{ maxWidth: "263px", color: "#acacac" }} className="text-sm text-center md:text-left m-auto md:m-0">
+                                    {Questions.description}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
             <section className="max-w-7xl m-auto -mt-40 pb-20 md:pb-24">
                 <div className="px-7">
-                <p className="text-black text-md pt-10 max-w-md pb-6">
-                    Depending on your preferred level of involvement, BEN partnership benefits include:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-3 gap-x-10">
-                    <PartnerShipBenefits
-                        benefit="Participate in BEN talent survey and recruiting process"
-                    />
-                    <PartnerShipBenefits
-                        benefit="Sponsorship discounts & priority"
-                    />
-                    <PartnerShipBenefits
-                        benefit="Propose and contribute to projects"
-                    />
-                    <PartnerShipBenefits
-                        benefit="Talent pipeline from top global universities"
-                    />
-                    <PartnerShipBenefits
-                        benefit="Incorporate educational material in our university-accredited blockchain courses, events and meetups"
-                    />
-                    <PartnerShipBenefits
-                        benefit="Participate in BEN Research"
-                    />
-                    <PartnerShipBenefits
-                        benefit="Participate and suggest working groups"
-                        style="lg:-mt-5"
-                    />
-                    <PartnerShipBenefits
-                        benefit="Free or subsidized tickets to paid events"
-                        style="lg:-mt-0"
-                    />
-                    <PartnerShipBenefits
-                        benefit="Assist sourcing speakers and sponsors for events"
-                        style="lg:-mt-10"
-                    />
-                </div>
+                    <p className="text-black text-md pt-10 max-w-md pb-6">
+                        Depending on your preferred level of involvement, BEN partnership benefits include:
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-3 gap-x-10">
+                        <PartnerShipBenefits
+                            benefit="Participate in BEN talent survey and recruiting process"
+                        />
+                        <PartnerShipBenefits
+                            benefit="Sponsorship discounts & priority"
+                        />
+                        <PartnerShipBenefits
+                            benefit="Propose and contribute to projects"
+                        />
+                        <PartnerShipBenefits
+                            benefit="Talent pipeline from top global universities"
+                        />
+                        <PartnerShipBenefits
+                            benefit="Incorporate educational material in our university-accredited blockchain courses, events and meetups"
+                        />
+                        <PartnerShipBenefits
+                            benefit="Participate in BEN Research"
+                        />
+                        <PartnerShipBenefits
+                            benefit="Participate and suggest working groups"
+                            style="lg:-mt-5"
+                        />
+                        <PartnerShipBenefits
+                            benefit="Free or subsidized tickets to paid events"
+                            style="lg:-mt-0"
+                        />
+                        <PartnerShipBenefits
+                            benefit="Assist sourcing speakers and sponsors for events"
+                            style="lg:-mt-10"
+                        />
+                    </div>
                 </div>
             </section>
-            <div className="py-40 pt-20 pb-20 px-7" style={{backgroundColor:"#F5F7F7"}}> 
+            <div className="py-40 pt-20 pb-20 px-7" style={{ backgroundColor: "#F5F7F7" }}>
                 <div className="max-w-7xl m-auto flex flex-col md:flex-row">
                     <div className="w-full md:w-8/12 m-auto">
                         <img className="m-auto" src="/images/should-you-illustration.png" />
@@ -93,7 +131,7 @@ export default function Partners() {
             </div>
             <div className="py-20">
                 <h2 className="text-center font-mont text-4xl md:text-5xl font-black pb-24">Industry Partners</h2>
-            <PartnersSlider />
+                <PartnersSlider />
             </div>
             <section className="px-7">
                 <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto justify-between items-center py-10">
