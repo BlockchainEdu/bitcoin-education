@@ -16,16 +16,35 @@
   max-width: 360px;
 }
 
+.get-involved-split {
+  background: url("/images/get-involved-split-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 .get-involved-bg {
   background: url("/images/get-involved-orange-bg.svg");
-  background-size: auto;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center left;
+  background-position: center center;
 }
 
 @media only screen and (max-width: 780px) {
   .what-is-learn-blurb {
     max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .get-involved-bg {
+    background: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .get-involved-split {
+    background: none;
   }
 }
 

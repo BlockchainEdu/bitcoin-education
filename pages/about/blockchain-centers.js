@@ -19,33 +19,43 @@ export default function BlockchainCenters() {
                         <p className="text-black text-md pt-10 max-w-2xl m-auto lg:m-0 text-center lg:text-left font-medium">
                             Blockchain centers and labs of research and excellence have long pushed the edges of research in the blockchain space. Similar to faculty and the world of academia, research centers are an integral part of blockchain education and growth.                        </p>
                     </div>
-                    <div className="w-full lg:w-6/12 m-auto pt-14 pb-24">
-                        <img className="m-auto" src="/images/blockchain-lab-hero.png" />
+                    <div className="w-full lg:w-6/12 m-auto pt-14 pb-24 flex justify-center lg:justify-left">
+                        <Image 
+                            className="m-auto"
+                            src="/images/blockchain-lab-hero.png"
+                            width="548"
+                            height="552"
+                        />
                     </div>
                 </div>
             </div>
             <section className="max-w-7xl m-auto pt-10 pb-4 md:py-24 md:pt-10 pb-14 px-7">
-                <div className="flex flex-col-reverse md:flex-row justify-between md:space-x-20 items-center">
-                    <div className="w-full md:w-3/6 pb-10 pt-14 md:pt-0 md:pb-0">
-                        <img className="mx-auto md:mx-0" src="/images/blockchain-lab-engage-collaborate.png" />
+                <div className="flex flex-col-reverse lg:flex-row justify-between lg:space-x-20 items-center">
+                    <div className="w-full lg:w-3/6 pb-10 pt-0 md:pt-14 lg:pb-0 flex justify-center lg:justify-start">
+                        <Image 
+                            className=""
+                            src="/images/blockchain-lab-engage-collaborate.png"
+                            width="568"
+                            height="426"
+                        />
                     </div>
-                    <div className="w-full md:w-3/6">
-                        <div className="font-mont text-center md:text-left text-xs uppercase pb-7">
+                    <div className="w-full lg:w-3/6">
+                        <div className="font-mont text-center lg:text-left text-xs uppercase pb-7">
                             What does BEN offer Blockchain Centers & Labs?
                         </div>
-                        <h2 className="font-black text-center md:text-left text-4xl md:text-5xl text-black mb-10">
+                        <h2 className="font-black text-center lg:text-left text-4xl md:text-5xl text-black mb-10">
                             Engage and collaborate
                         </h2>
-                        <div className="flex items-center gap-x-0 md:gap-x-10">
-                            <div className="border-r-none md:border-r md:border-4 md:border-benorange-500 h-36">
+                        <div className="flex items-center gap-x-0 lg:gap-x-10">
+                            <div className="border-r-none lg:border-r lg:border-4 lg:border-benorange-500 h-36">
 
                             </div>
                             <div>
-                                <p className="font-mont text-center md:text-left mx-auto md:mx-0 text-xl md:text-2xl font-bold">
+                                <p className="font-mont text-center lg:text-left mx-auto md:mx-0 text-xl md:text-2xl font-bold">
                                 The Blockchain Education Network seeks to engage with these centers to collaborate on research efforts and participate in hosting events.                                </p>
                             </div>
                         </div>
-                        <div className="m-auto flex content-center justify-center md:justify-start">
+                        <div className="m-auto flex content-center justify-center lg:justify-start">
                             <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
                                 Join as a Blockchain Center/Lab
                             </button>
