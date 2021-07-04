@@ -12,7 +12,7 @@ export default function Partners() {
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
-            <div className="pt-12 lg:py-40 pb-20 px-7">
+            <div className="pt-12 pb-0 lg:py-40 lg:pb-20 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
                     <div className="w-full lg:w-8/12">
                         <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">
@@ -22,7 +22,7 @@ export default function Partners() {
                             BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
                         </p>
                     </div>
-                    <div className="w-full lg:w-6/12 m-auto pt-14 pb-24 flex justify-center lg:justify-start">
+                    <div className="w-full lg:w-6/12 m-auto pt-24 lg:pt-14 pb-14 lg:pb-24 flex justify-center lg:justify-start">
                         <Image
                             className="m-auto"
                             src="/images/partners-hero.png"
@@ -32,7 +32,7 @@ export default function Partners() {
                     </div>
                 </div>
             </div>
-            <section className="max-w-7xl m-auto -mt-40 pb-20 md:pb-24">
+            <section className="max-w-7xl m-auto mt-0 lg:-mt-40 pb-20 md:pb-24">
                 <div className="px-7">
                     <p className="text-center lg:text-left mx-auto lg:mx-0 text-black text-md pt-10 max-w-md pb-6">
                         Depending on your preferred level of involvement, BEN partnership benefits include:
