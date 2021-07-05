@@ -3,10 +3,62 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap');
 
 @font-face {
   font-family: "Montser"
+}
+
+.what-is-learn-blurb {
+  max-width: 360px;
+}
+
+.get-involved-split {
+  background: url("/images/get-involved-split-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.get-involved-bg {
+  background: url("/images/get-involved-orange-bg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@media only screen and (max-width: 780px) {
+  .what-is-learn-blurb {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .get-involved-bg {
+    background: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .get-involved-split {
+    background: none;
+  }
+}
+
+.home-header {
+  background: url("/images/home-header-illustration.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+@media only screen and (max-width: 780px) {
+  .home-header {
+    background:none;
+  }
 }
 
 .join-footer-button {

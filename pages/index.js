@@ -6,15 +6,20 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="pt-10 md:pt-40 px-7">
-        <img className="hidden md:block m-auto" src="/images/ben-logo.svg" />
-        <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-7xl m-auto pt-10 text-benblack-500 leading-snug">Providing borderless blockchain education</h1>
-        <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
-          <DonateButton />
+      <div className="pt-10 md:pt-40 mt-10 px-7 relative z-20">
+        <div className="-mt-10 max-w-7xl m-auto home-header pb-10">
+          <img className="hidden md:block m-auto" src="/images/ben-logo.svg" />
+          <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-xl md:max-w-3xl m-auto pt-10 text-benblack-500" style={{ lineHeight: "72px;" }}>Providing borderless blockchain education</h1>
+          <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
+            <DonateButton />
 
+          </div>
         </div>
       </div>
-      <div className="max-w-7xl m-auto py-24 pt-48 px-7">
+      <div className="flex justify-end max-w-7xl m-auto lg:-mt-24 relative z-0">
+        <img src="/images/home-header-illustration-small.jpg"/>
+      </div>
+      <div className="max-w-7xl m-auto py-24 pt-24 px-7">
         <div className="grid grid-cols-5 gap-x-3 max-w-xs mx-auto md:mx-0">
           <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook-light.svg" /></a>
           <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter-light.svg" /></a>
