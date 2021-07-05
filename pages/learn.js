@@ -7,7 +7,7 @@ export default function Learn() {
     return (
         <div id="learn-page">
             <HeaderWithLogoDark />
-            <section className="px-7 pb-14 md:pb-0">
+            <section className="px-7">
                 <div className="max-w-7xl m-auto pt-24">
                     <h1 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
                         What is BEN Learn?
@@ -27,33 +27,35 @@ export default function Learn() {
             </section>
             <section className="px-7">
                 <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto justify-between items-center py-10">
-                <div className="border w-full lg:w-2/5 text-center px-10 md:px-28 py-12">
-                    <div className="font-bold uppercase text-lg pb-7">
-                        What is there to learn
+                    <div className="border w-full lg:w-2/5 text-center px-10 md:px-28 py-12">
+                        <div className="font-bold uppercase text-lg pb-7">
+                            What is there to learn
+                        </div>
+                        <div className="font-black" style={{ fontSize: "24px" }}>
+                            Available courses
+                        </div>
+                        <div className="pt-5">
+                            <div className="pb-3">Blockchain Fundamentals</div>
+                            <div className="pb-3">DeFi Fundamentals</div>
+                            <div className="pb-3">Crypto Trading</div>
+                            <div className="pb-3">Solidity Development</div>
+                            <div className="pb-3">How to set up Metamask</div>
+                            <div className="pb-3">How to start a Blockchain club</div>
+                        </div>
+                        <a href="https://portal.blockchainedu.org/all-courses" target="_blank">
+                        <button className="mt-5 border font-bold text-xl px-8 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Sign up to learn</button>
+                        </a>
                     </div>
-                    <div className="font-black" style={{ fontSize: "24px" }}>
-                        Available courses
+                    <div className="w-full md:w-3/5">
+                        <div className="py-14 lg:p-0 flex justify-end">
+                            <Image
+                                src="/images/learn-hero-illustration.png"
+                                width="650"
+                                height="581"
+                                quality="100"
+                            />
+                        </div>
                     </div>
-                    <div className="pt-5">
-                        <div className="pb-3">Blockchain Fundamentals</div>
-                        <div className="pb-3">DeFi Fundamentals</div>
-                        <div className="pb-3">Crypto Trading</div>
-                        <div className="pb-3">Solidity Development</div>
-                        <div className="pb-3">How to set up Metamask</div>
-                        <div className="pb-3">How to start a Blockchain club</div>
-                    </div>
-                    <button className="mt-5 border font-bold text-xl px-8 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Sign up to learn</button>
-                </div>
-                <div className="w-full md:w-3/5">
-                    <div className="pt-4 pb-20 md:p-0 flex justify-end">
-                        <Image
-                            src="/images/learn-hero-illustration.png"
-                            width="650"
-                            height="581"
-                            quality="100"
-                        />
-                    </div>
-                </div>
                 </div>
             </section>
             <section className="max-w-7xl m-auto pt-14 pb-4 md:py-24 pb-14 px-7">
@@ -82,9 +84,11 @@ export default function Learn() {
                             </div>
                         </div>
                         <div className="m-auto flex content-center justify-center md:justify-start">
-                            <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
-                                Sign up as a Teacher
-                            </button>
+                            <a href="https://portal.blockchainedu.org/all-courses" target="_blank">
+                                <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
+                                    Sign up as a Teacher
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -114,7 +118,12 @@ export default function Learn() {
                         </div>
                     </div>
                     <div className="w-full md:w-1/2 mt-14">
-                        <img className="mx-auto md:mx-0" src="/images/10-10-plan.png" />
+                        <Image
+                            src="/images/10-10-plan.png"
+                            width="528"
+                            height="356"
+                            quality={100}
+                        />
                     </div>
                 </div>
             </section>

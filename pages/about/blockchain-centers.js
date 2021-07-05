@@ -13,7 +13,7 @@ export default function BlockchainCenters() {
             <div className="pt-14 lg:pt-10 md:pb-0 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">
                     <div className="w-full lg:w-8/12 -mt-0 lg:-mt-40">
-                        <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">
+                        <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-md mx-auto lg:mx-0 lg:max-w-5xl pt-10 leading-snug">
                             What is a Blockchain Center / Lab?
                         </h1>
                         <p className="text-black text-md pt-10 max-w-2xl m-auto lg:m-0 text-center lg:text-left font-medium">
@@ -29,7 +29,7 @@ export default function BlockchainCenters() {
                     </div>
                 </div>
             </div>
-            <section className="max-w-7xl m-auto pt-10 pb-4 md:py-24 md:pt-10 pb-14 px-7">
+            <section className="max-w-7xl m-auto pt-10 pb-4 lg:py-24 md:pt-10 px-7">
                 <div className="flex flex-col-reverse lg:flex-row justify-between lg:space-x-20 items-center">
                     <div className="w-full lg:w-3/6 pb-10 pt-0 md:pt-14 lg:pb-0 flex justify-center lg:justify-start">
                         <Image 
@@ -47,7 +47,7 @@ export default function BlockchainCenters() {
                             Engage and collaborate
                         </h2>
                         <div className="flex items-center gap-x-0 lg:gap-x-10">
-                            <div className="border-r-none lg:border-r lg:border-4 lg:border-benorange-500 h-36">
+                            <div className="border-r-none lg:border-r lg:border-4 lg:border-benorange-500 h-36 hidden lg:flex">
 
                             </div>
                             <div>

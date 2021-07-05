@@ -25,7 +25,7 @@ export default function Alumni() {
                             </button>
                         </div>
                     </div>
-                    <div className="w-full lg:w-6/12 m-auto pt-14 pb-24">
+                    <div className="w-full lg:w-6/12 m-auto pt-6 lg:pt-14 pb-24">
                         <img className="m-auto" src="/images/alumni-hero.png" />
                     </div>
                 </div>
