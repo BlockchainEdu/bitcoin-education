@@ -49,7 +49,7 @@ export default function Partners() {
     }
   }, []);
   return (
-    <div id="partners-page">
+    <div id="partners-page" className="overflow-hidden">
       <HeaderWithLogoDark />
       <div className="pt-12 pb-0 lg:py-40 lg:pb-20 px-7">
         <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
@@ -162,7 +162,7 @@ export default function Partners() {
           </div>
         </div>
       </div>
-      <div className="py-20 max-w-7xl m-auto">
+      <div className="py-20 m-auto">
         {categories.length > 0 && categories.map((category, index) => 
           <PartnersSlider title={category} key={index} data={partners.filter(item => item.category === category)}/>
         )}

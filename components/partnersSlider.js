@@ -4,8 +4,8 @@ import Slider from "react-slick";
 const PartnerSlider = ({data, title}) => {
   const settings = {
     infinite: true,
-    slidesToShow: 10,
-    slidesToScroll: 10,
+    slidesToShow: 5,
+    slidesToScroll: 4,
     autoplay: true,
     speed: 40000,
     autoplaySpeed: 0,
@@ -20,8 +20,8 @@ const PartnerSlider = ({data, title}) => {
       {data.length > 0 &&
         <Slider {...settings}>
           {data.map((item, index) => (
-            <div key={index} className="font-mont">
-              <img src={item.url}/>
+            <div key={index} className="font-mont pb-36">
+              <img className="m-auto" src={item.url}/>
               <p className="font-bold text-lg pt-10 text-center">{item.name}</p>
             </div>
           ))}   
