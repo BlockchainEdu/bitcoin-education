@@ -16,7 +16,7 @@ export default function HeaderWithLogo() {
                     <li className="flex gap-x-14">
                       <a className="hover:text-benorange-500 transition duration-500" href="/">Home </a>
                       <Dropdown />
-                      <a className="hover:text-benorange-500 transition duration-500" href="/">Programs </a>
+                      <a className="hover:text-benorange-500 transition duration-500" href="/programs">Programs </a>
                     </li>
                 </ul>
                 <ul className="font-mont text-black w-1/3">

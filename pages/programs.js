@@ -51,7 +51,7 @@ export default function Programs() {
                     </div>
                 </div>
             </section>
-            <section style={{backgroundColor:"#F5F7F7"}} className="py-24">
+            <section style={{backgroundColor:"#F5F7F7"}} className="py-24 mb-14 md:mb-0">
                 <div className="flex flex-col space-y-20 lg:space-y-0 lg:flex-row font-mont max-w-7xl m-auto justify-between">
                     <div className="">
                         <img className="m-auto" src="/images/faculty-network.svg"/>

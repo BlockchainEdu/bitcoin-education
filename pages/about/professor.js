@@ -41,7 +41,7 @@ export default function Professor() {
                                 height="555"
                             />
                         </div>
-                        <div className="w-full w-3/8">
+                        <div className="w-full lg:w-3/8">
                             <h1 className="text-center lg:text-left text-4xl md:text-6xl mx-auto lg:mx-0 font-black text-black max-w-xl pt-10 leading-snug">
                                 BEN Professor & faculty network
                             </h1>
