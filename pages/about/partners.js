@@ -1,11 +1,8 @@
 import Footer from '../../components/footer';
 import HeaderWithLogoDark from '../../components/headerWithLogoDark';
-import Header from '../../components/header'
 import Image from 'next/image'
-import TestComponent from '../../components/testComponent';
 import PartnerShipBenefits from '../../components/partnershipBenefits';
 import PartnersSlider from '../../components/partnersSlider';
-import PartnersSliderAlt from '../../components/partnersSliderAlt'
 
 
 export default function Partners() {
