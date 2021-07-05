@@ -1,46 +1,34 @@
-import React, { Component } from "react";
+import React, {useEffect} from "react";
 import Slider from "react-slick";
 
-export default class PartnerSlider extends Component {
-  render() {
-    const settings = {
-      infinite: true,
-      slidesToShow: 10,
-      slidesToScroll: 10,
-      autoplay: true,
-      speed: 40000,
-      autoplaySpeed: 0,
-      cssEase: "linear"
-    };
-    return (
-      <div>
+const PartnerSlider = ({data, title}) => {
+  const settings = {
+    infinite: true,
+    slidesToShow: 10,
+    slidesToScroll: 10,
+    autoplay: true,
+    speed: 40000,
+    autoplaySpeed: 0,
+    cssEase: "linear"
+  };
+
+  return (
+    <div className="mb-6">
+      <h2 className="text-center font-mont text-4xl md:text-5xl font-black pb-24">
+        {title} Partners
+      </h2>
+      {data.length > 0 &&
         <Slider {...settings}>
-          <div className="font-mont">
-            <img src="/images/muba.png"/>
-            <p className="font-bold text-lg pt-10">MIT Bitcoin Club</p>
-          </div>
-          <div className="font-mont">
-            <img src="/images/muba.png"/>
-            <p className="font-bold text-lg pt-10">MIT Bitcoin Club</p>
-          </div>
-          <div className="font-mont">
-            <img src="/images/muba.png"/>
-            <p className="font-bold text-lg pt-10">MIT Bitcoin Club</p>
-          </div>
-          <div className="font-mont">
-            <img src="/images/muba.png"/>
-            <p className="font-bold text-lg pt-10">MIT Bitcoin Club</p>
-          </div>
-          <div className="font-mont">
-            <img src="/images/muba.png"/>
-            <p className="font-bold text-lg pt-10">MIT Bitcoin Club</p>
-          </div>
-          <div className="font-mont">
-            <img src="/images/muba.png"/>
-            <p className="font-bold text-lg pt-10">MIT Bitcoin Club</p>
-          </div>
+          {data.map((item, index) => (
+            <div key={index} className="font-mont">
+              <img src={item.url}/>
+              <p className="font-bold text-lg pt-10 text-center">{item.name}</p>
+            </div>
+          ))}   
         </Slider>
-      </div>
-    );
-  }
+      }
+    </div>
+  );
 }
+
+export default PartnerSlider;
