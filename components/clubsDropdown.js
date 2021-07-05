@@ -1,37 +1,16 @@
-import { Popover, Transition } from '@headlessui/react'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid'
-import { Fragment } from 'react'
+import {useRef} from 'react'
+import { Popover } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/solid'
 
-const solutions = [
-  {
-    name: 'United States',
-    href: '/about'
-  },
-  {
-    name: 'Canada',
-    href: '/about/team',
-  },
-  {
-    name: 'Mexico',
-    href: '/about/alumni'
-  },
-  {
-    name: 'Italy',
-    href: '/about/blockchain-centers'
-  },
-  {
-    name: 'Ireland',
-    href: '/about/professor'
-  }
-]
-
-export default function ClubsDropdown() {
+export default function ClubsDropdown({locations, onSelected}) {
+  const buttonRef = useRef(null)
   return (
     <div className="m-auto flex justify-center lg:justify-start pt-14 lg:pt-0">
       <Popover className="">
         {({ open }) => (
           <>
             <Popover.Button
+              ref={buttonRef}
               className={`
                 ${open ? '' : ''}
                 menu-dropdown font-mont shadow-button bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white px-10 rounded-full py-4 rounded-full inline-flex items-center text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
@@ -48,18 +27,34 @@ export default function ClubsDropdown() {
               <Popover.Panel className="absolute z-50 max-w-sm px-4 mt-3 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid bg-white pl-0 lg:grid-cols-1 my-3 ">
-                    {solutions.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="flex items-center p-2 px-4 mx-10 hover:bg-benorange-300 transition duration-150 ease-in-out rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                    <div
+                      onClick={(e) => {
+                        onSelected('All');
+                        buttonRef.current.click();
+                      }}
+                      className="cursor-pointer flex items-center p-2 px-4 mx-10 hover:bg-benorange-300 transition duration-150 ease-in-out rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                    >
+                      <div className="">
+                        <p className="font-proximabold font-bold text-xl text-black hover:text-benorange-500 hover:bg-opacity-20 py-2 rounded-md inline-flex text-left text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                          All
+                        </p>
+                      </div>
+                    </div>
+                    {locations.map((item, index) => (
+                      <div
+                        onClick={(e) => {
+                          buttonRef.current.click();
+                          onSelected(item);
+                        }}
+                        key={index}
+                        className="cursor-pointer flex items-center p-2 px-4 mx-10 hover:bg-benorange-300 transition duration-150 ease-in-out rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                       >
                         <div className="">
                           <p className="font-proximabold font-bold text-xl text-black hover:text-benorange-500 hover:bg-opacity-20 py-2 rounded-md inline-flex text-left text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                            {item.name}
+                            {item}
                           </p>
                         </div>
-                      </a>
+                      </div>
                     ))}
                   </div>
                 </div>
