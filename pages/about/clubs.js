@@ -133,13 +133,13 @@ const Partners = () => {
           </div>
         </div>
       </section>
-      <section className="pt-20 pb-40">
+      <section className="py-20 pb-36 lg:pb-20">
         <div className="max-w-7xl m-auto px-7">
           <h2 className="font-black text-center text-4xl md:text-5xl text-black pb-8">
             Clubs
           </h2>
           <ClubsDropdown onSelected={onSelected} locations={locations}/>
-          <div className="pt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-14 space-y-3 gap-x-10">
+          <div className="pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-14 space-y-3 gap-x-10">
             {clubs.map(club => (
               <div className="font-mont m-auto">
                 <img src={club.url} />
