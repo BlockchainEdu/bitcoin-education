@@ -142,7 +142,7 @@ const Partners = () => {
           <div className="pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-14 space-y-3 gap-x-10">
             {clubs.map(club => (
               <div className="font-mont m-auto">
-                <img src={club.url} />
+                <img className="m-auto" src={club.url} style={{maxWidth:"200px"}}/>
                 <p className="font-bold text-lg pt-10 text-center">{club.name}</p>
               </div>
             ))}
