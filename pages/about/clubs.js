@@ -62,7 +62,7 @@ const Partners = () => {
           id: item.id,
           name: item.name,
           location: item.group.title,
-          url: item.assets[0].public_url
+          url: item.assets[0]?.public_url?item.assets[0]?.public_url : null
         }
       }) 
       setAllClubs(temp)
