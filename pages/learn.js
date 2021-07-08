@@ -42,7 +42,7 @@ export default function Learn() {
                             <div className="pb-3">How to set up Metamask</div>
                             <div className="pb-3">How to start a Blockchain club</div>
                         </div>
-                        <a href="https://portal.blockchainedu.org/all-courses" target="_blank">
+                        <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
                         <button className="mt-5 border font-bold text-xl px-8 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Sign up to learn</button>
                         </a>
                     </div>
@@ -84,7 +84,7 @@ export default function Learn() {
                             </div>
                         </div>
                         <div className="m-auto flex content-center justify-center md:justify-start">
-                            <a href="https://portal.blockchainedu.org/all-courses" target="_blank">
+                            <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
                                 <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
                                     Sign up as a Teacher
                                 </button>
