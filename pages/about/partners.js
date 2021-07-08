@@ -168,7 +168,9 @@ export default function Partners() {
           <PartnersSlider title={category} key={index} data={partners.filter(item => item.category === category)}/>
         )}
       </div>
+      <div className="-mt-40">
       <Footer />
+      </div>
     </div>
   );
 }
