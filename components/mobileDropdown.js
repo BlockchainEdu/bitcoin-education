@@ -51,7 +51,7 @@ export default function MobileDropdown(props) {
                 <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="space-y-4 font-mont text-chablack-300 hover:text-chablack-500">
                     <li>
-                      <a target="_blank" href="https://portal.blockchainedu.org/all-courses">Learn</a>
+                      <a target="_blank" href="https://learn.blockchainedu.org/all-courses">Learn</a>
                     </li>
                     <li>
                     <li>
@@ -98,10 +98,10 @@ export default function MobileDropdown(props) {
                     </li>
                     </li>
                     <li>
-                     <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://portal.blockchainedu.org/events">Events</a>
+                     <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events</a>
                     </li>
                     <li>
-                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://portal.blockchainedu.org/sign_in"><b>Login</b></a>
+                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/sign_in"><b>Login</b></a>
                     </li>
                   </ul>
                 </div>
