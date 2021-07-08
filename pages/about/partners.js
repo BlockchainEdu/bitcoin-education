@@ -33,6 +33,7 @@ export default function Partners() {
       }`,
     };
     let result = await TeamMemberService.getMembers(body);
+    console.log(result)
     if (result?.data?.data?.boards) {
       let categories_temp = []
       let temp = result.data.data.boards[0].items.map(item => {
@@ -41,7 +42,7 @@ export default function Partners() {
           id: item.id,
           name: item.name,
           category: item.group.title,
-          url: item.assets[0].public_url
+          url: item.assets[0]?.public_url?item.assets[0]?.public_url : null
         }
       })
       setPartners(temp)
