@@ -46,7 +46,9 @@ const PartnerSlider = ({data, title}) => {
         <Slider {...settings}>
           {data.map((item, index) => (
             <div key={index} className="font-mont pb-36">
+              <div className="flex items-center" style={{height:"130px"}}>
               <img className="m-auto" style={{maxWidth:"200px"}} src={item.url}/>
+              </div>
               <p className="font-bold text-lg pt-10 text-center">{item.name}</p>
             </div>
           ))}   
