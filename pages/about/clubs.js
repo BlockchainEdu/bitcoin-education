@@ -142,7 +142,9 @@ const Partners = () => {
           <div className="pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-14 space-y-3 gap-x-10">
             {clubs.map(club => (
               <div className="font-mont m-auto">
+                <div className="flex items-center" style={{height:"130px"}}>
                 <img className="m-auto" src={club.url} style={{maxWidth:"200px"}}/>
+                </div>
                 <p className="font-bold text-lg pt-10 text-center">{club.name}</p>
               </div>
             ))}
