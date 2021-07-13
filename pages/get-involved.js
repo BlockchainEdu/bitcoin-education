@@ -44,9 +44,11 @@ export default function GetInvolved() {
                         <p className="text-black text-lg md:text-2xl pt-10 max-w-xs m-auto lg:m-0 text-center lg:text-left font-medium leading-normal">
                             We offer a number of ways for you to get involved
                         </p>
+                        <a href="https://learn.blockchainedu.org/sign_up?from=https%3A%2F%2Flearn.blockchainedu.org%2F" target="_blank">
                         <button className="flex mx-auto lg:mx-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
                             Join us today
                         </button>
+                        </a>
                     </div>
                     <div className="py-20 lg:py-0">
                     <Image 
@@ -86,7 +88,9 @@ export default function GetInvolved() {
                         <p className="font-mont text-center lg:text-left m-auto lg:m-0 max-w-2xl text-bengrey-400 max-w-lg">
                             Are you a University professor, faculty member or a High School teacher? From connecting to the largest running faculty network in the world, to publishing your academic research in our journal. Learn from other blockchain professors and get access to great resources to become a better teacher. <br /><br />Enable underrepresented students to have access to a formal blockchain education with your courses and content.
                         </p>
+                        <a href="https://learn.blockchainedu.org/sign_up?from=https%3A%2F%2Flearn.blockchainedu.org%2F" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border font-bold text-xl px-16 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Join Us</button>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -107,7 +111,9 @@ export default function GetInvolved() {
                         <p className="font-mont text-center lg:text-left m-auto lg:m-0 max-w-2xl text-bengrey-400 max-w-lg">
                             Are you a University professor, faculty member or a High School teacher? From connecting to the largest running faculty network in the world, to publishing your academic research in our journal. Learn from other blockchain professors and get access to great resources to become a better teacher. <br /><br />Enable underrepresented students to have access to a formal blockchain education with your courses and content.
                         </p>
+                        <a href="https://learn.blockchainedu.org/sign_up?from=https%3A%2F%2Flearn.blockchainedu.org%2F" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border font-bold text-xl px-16 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Join Us</button>
+                        </a>
                     </div>
                 </div>
             </section>

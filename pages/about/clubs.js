@@ -98,9 +98,11 @@ const Partners = () => {
               job opportunities, and much much more.
             </p>
             <div className="m-auto flex content-center justify-center lg:justify-start">
+              <a href="https://learn.blockchainedu.org/segments" target="_blank">
               <button className="mb-20 lg:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-16 rounded-full py-4 mt-10">
                 Sign Up
               </button>
+              </a>
             </div>
           </div>
           <div className="w-full lg:w-10/12 m-auto">
