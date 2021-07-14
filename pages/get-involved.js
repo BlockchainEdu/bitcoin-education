@@ -130,7 +130,9 @@ export default function GetInvolved() {
                         <p className="font-mont text-center lg:text-left m-auto text-sm lg:m-0 text-black max-w-lg leading-normal" style={{maxWidth:"440px;"}}>
                             If you’ve already graduated from college but still want ways to help BEN, join us as an alumni! We are looking for prestigious speakers for club events, teachers for BEN Learn, and mentors for our career center. Get involved and become an advisor to help us grow to the next level. Support the next generation of B.E.N. students with a donation and see the impact you have on students. <br /><br />Connect with fellow alumni through our extended network online or join us as national and international events.
                         </p>
+                        <a href="https://learn.blockchainedu.org/feed" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border border-benblack-500 hover:border-bengrey-300 font-bold text-xl bg-benblack-500 px-16 rounded-full py-4 transition duration-500 hover:text-white text-white hover:bg-bengrey-300 shadow-button">Join Us</button>
+                        </a>
                     </div>
                 </div>
                 <div className="bg-bengrey-200 lg:bg-transparent py-24 lg:pt-0 w-full lg:w-1/2 flex justify-center lg:justify-end px-7">
@@ -144,7 +146,9 @@ export default function GetInvolved() {
                         <p className="font-mont text-center lg:text-left m-auto text-sm lg:m-0 text-bengrey-400 max-w-lg leading-normal" style={{maxWidth:"440px;"}}>
                             If you’ve already graduated from college but still want ways to help BEN, join us as an alumni! We are looking for prestigious speakers for club events, teachers for BEN Learn, and mentors for our career center. Get involved and become an advisor to help us grow to the next level. Support the next generation of B.E.N. students with a donation and see the impact you have on students. <br /><br />Connect with fellow alumni through our extended network online or join us as national and international events.
                         </p>
+                        <a href="https://learn.blockchainedu.org/feed" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border border-white hover:border-benorange-500 font-bold text-xl bg-white px-16 rounded-full py-4 transition duration-500 hover:text-white text-black hover:bg-benorange-500 shadow-button">Join Us</button>
+                        </a>
                     </div>
                 </div>
             </div>
