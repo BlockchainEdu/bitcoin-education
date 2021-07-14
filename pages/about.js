@@ -7,9 +7,9 @@ export default function About() {
         <div id="about-page">
             <HeaderWithLogo />
             <div className="about-header py-40 pb-20 px-7">
-                <div className="max-w-7xl m-auto flex flex-col md:flex-row items-center">
+                <div className="max-w-7xl m-auto flex flex-col md:flex-row">
                     <div className="w-full md:w-1/2">
-                        <h1 className="text-4xl md:text-6xl font-black text-white max-w-3xl pt-10 leading-snug">
+                        <h1 className="text-4xl md:text-6xl mt-14 md:mt-24 font-black text-white max-w-3xl pt-10 leading-snug">
                             The Blockchain Education Network (BEN)
                         </h1>
                         <p className="text-black text-md pt-10 max-w-xl">
@@ -17,7 +17,7 @@ export default function About() {
                         </p>
                     </div>
                     <div className="w-full md:w-1/2 m-auto">
-                        <img className="about-illustration ml--0 md:-ml-60" src="/images/about-header-illustration.png"/>
+                        <img className="mt-14" src="/images/about-header-illustration.png"/>
                     </div>
                 </div>
             </div>
