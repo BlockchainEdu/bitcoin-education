@@ -12,6 +12,15 @@
   font-family: "Montser"
 }
 
+#about-page .navdropdown {
+  color: #000;
+}
+
+#about-page .navdropdown:hover {
+  color: #FF936B;
+}
+
+
 .what-is-learn-blurb {
   max-width: 360px;
 }

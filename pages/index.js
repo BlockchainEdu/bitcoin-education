@@ -12,12 +12,16 @@ export default function Home() {
           <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-xl md:max-w-3xl m-auto pt-10 text-benblack-500" style={{ lineHeight: "72px;" }}>Providing borderless blockchain education</h1>
           <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
             <DonateButton />
-
+            <div>
+              <a href="/get-involved">
+                <button className="border font-bold text-xl px-10 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Get Involved</button>
+              </a>
+            </div>
           </div>
         </div>
       </div>
       <div className="flex justify-end max-w-7xl m-auto lg:-mt-24 relative z-0">
-        <img src="/images/home-header-illustration-small.jpg"/>
+        <img src="/images/home-header-illustration-small.jpg" />
       </div>
       <div className="max-w-7xl m-auto py-24 pt-24 px-7">
         <div className="grid grid-cols-5 gap-x-3 max-w-xs mx-auto md:mx-0">
