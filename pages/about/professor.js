@@ -57,7 +57,7 @@ export default function Professor() {
                     </div>
                 </div>
             </div>
-            <div className="py-14 px-7" style={{backgroundColor:"#F5F7F7"}}>
+            <div className="py-14 px-7 mb-20" style={{backgroundColor:"#F5F7F7"}}>
                 <div className="max-w-7xl m-auto">
                     <div className="flex items-center flex-col lg:flex-row md:space-x-20">
                         <div className="w-full w-3/8">

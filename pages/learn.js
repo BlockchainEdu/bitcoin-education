@@ -58,7 +58,7 @@ export default function Learn() {
                     </div>
                 </div>
             </section>
-            <section className="max-w-7xl m-auto pt-14 pb-4 md:py-24 pb-14 px-7">
+            <section className="max-w-7xl m-auto pt-14 pb-4 md:py-24 pb-0 px-7">
                 <div className="flex flex-col md:flex-row justify-between md:space-x-20 items-center">
                     <div className="w-full md:w-3/6 pb-20 md:pb-0">
                         <img className="mx-auto md:mx-0" src="/images/learn-teachers-illustration.png" />
@@ -93,7 +93,7 @@ export default function Learn() {
                     </div>
                 </div>
             </section>
-            <section className="max-w-7xl m-auto pt-0 md:py-24 pb-36 px-7">
+            <section className="max-w-7xl m-auto pt-0 md:py-24 pb-24 px-7">
                 <div className="flex flex-col-reverse md:flex-row justify-between">
                     <div className="w-full md:w-1/2">
                         <div className="font-mont text-center md:text-left text-xs uppercase pb-7">

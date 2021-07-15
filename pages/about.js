@@ -36,12 +36,12 @@ export default function About() {
                         </p>
                     </div>
                 </div>
-                <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto justify-between items-center pt-0 lg:pt-20 py-36 pb-10 px-7">
-                    <div className="w-3/5">
+                <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto justify-between items-center pt-0 lg:pt-20 py-36 pb-24 px-7">
+                    <div className="w-full lg:w-3/5">
                         <div className="font-mont text-center lg:text-left text-xs uppercase pb-7">
                             Our Work
                         </div>
-                        <h2 className="font-black text-4xl md:text-5xl text-center lg:text-left text-black pb-10 m-auto lg:m-0 max-w-xl md:max-w-4xl leading-snug">
+                        <h2 className="font-black text-4xl md:text-5xl text-center lg:text-left text-black pb-10 m-auto lg:m-0 md:max-w-4xl leading-snug">
                             Providing students with accessible, high quality blockchain education
                         </h2>
                         <p className="font-mont text-center lg:text-left m-auto lg:m-0 text-bengrey-400 max-w-lg">
