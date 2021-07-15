@@ -135,9 +135,9 @@ const Partners = () => {
           </div>
         </div>
       </section>
-      <section className="py-20 pb-36 lg:pb-20">
+      <section className="py-20 pt-10 lg:pt-20 pb-36 lg:pb-20">
         <div className="max-w-7xl m-auto px-7">
-          <h2 className="font-black text-center text-4xl md:text-5xl text-black pb-8">
+          <h2 className="font-black text-center text-4xl md:text-5xl text-black pb-0 lg:pb-8">
             Clubs
           </h2>
           <ClubsDropdown onSelected={onSelected} locations={locations}/>
