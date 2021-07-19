@@ -49,9 +49,11 @@ export default function Professor() {
                                 Establishing a network of professors and faculty members across the globe to work on different blockchain initiatives. <br /> <br />We are hosting roundtables, conducting research, facilitating corporate partnerships, and helping professors connect with each other.
                             </p>
                             <div className="m-auto flex content-center justify-center lg:justify-start">
+                                <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
                                 <button className="border font-bold text-xl px-12 rounded-full py-4 mt-10 transition duration-500 hover:border-benorange-500 hover:text-benorange-500 text-benblack-500">
                                     Learn More
                                 </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -68,9 +70,11 @@ export default function Professor() {
                                 We are finding the top blockchain researchers across the globe and publishing their research in the BEN Research Journal
                             </p>
                             <div className="m-auto flex content-center justify-center lg:justify-start">
+                                <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
                                 <button className="border font-bold text-xl px-16 rounded-full py-4 mt-10 transition duration-500 hover:border-benorange-500 hover:text-benorange-500 text-benblack-500">
                                     Join Us
                                 </button>
+                                </a>
                             </div>
                         </div>
                         <div className="flex justify-center lg:justify-start w-full lg:w-5/8 mx-auto pt-20 lg:pt-0 ">

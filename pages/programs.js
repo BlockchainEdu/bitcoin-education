@@ -18,9 +18,11 @@ export default function Programs() {
                             The BEN Intercollegiate Crypto Fund is an initiative that aims to offer our student-members the opportunity to showcase their fundamental & technical prowess without the need for them to put up the capital risk. On April 22nd, our Crypto Fund Analysts launched the BEN Moon Fund ($BENMO) via TokenSets  which exposes token holders to multiple industries seen within the DeFi economy.
                         </p>
                         <div className="flex justify-center lg:justify-start">
+                            <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
                             <button className="border font-bold text-xl px-12 rounded-full py-4 mt-10 transition duration-500 hover:border-benorange-500 hover:text-benorange-500 text-benblack-500">
                                 Learn More
                             </button>
+                            </a>
                         </div>
                     </div>
                     <div className="w-full lg:w-6/12 m-auto pt-14 pb-0 lg:pb-24">
@@ -44,9 +46,11 @@ export default function Programs() {
                             The BEN Meta-Delegates want to amplify the voice of our member chapters without the hassle of acquiring voting power to do so. Via BEN’s Meta-Delegate, our members actively participate in internal discussions on expired, as well as ongoing, governance proposals along with deliberations regarding protocol improvements. As of now, BEN has established meta-delegate committees for: Uniswap, Compound, and Decentraland.
                         </div>
                         <div className="m-auto flex content-center justify-center lg:justify-start">
+                            <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
                             <button className="border font-bold text-xl px-12 rounded-full py-4 mt-10 transition duration-500 hover:border-benorange-500 hover:text-benorange-500 text-benblack-500">
                                 Learn More
                             </button>
+                            </a>
                         </div>
                     </div>
                 </div>
