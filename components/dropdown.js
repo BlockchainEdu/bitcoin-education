@@ -8,6 +8,10 @@ const solutions = [
     href: '/about'
   },
   {
+    name: 'Learn',
+    href: '/https://portal.blockchainedu.org/all-courses'
+  },
+  {
     name: 'Clubs',
     href: '/about/clubs'
   },
