@@ -20,7 +20,7 @@ export default function HeaderWithLogo() {
                 <ul className="font-mont text-white w-1/3">
                     <li className="flex gap-x-14 justify-end items-center">
                       <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events </a>
-                      <a className="hover:text-benorange-500 transition duration-500" href="/learn">Learn </a>
+                      <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/all-courses">Learn </a>
                       <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/sign_in"><b>Login</b></a>
                       <DonateButtonSmall />
                     </li>
