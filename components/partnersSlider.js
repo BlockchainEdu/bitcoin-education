@@ -3,7 +3,7 @@ import Slider from "react-slick";
 
 const PartnerSlider = ({data, title}) => {
   const settings = {
-    infinite: true,
+    infinite: data.length > 4? true: false,
     slidesToShow: 5,
     slidesToScroll: 4,
     autoplay: true,
