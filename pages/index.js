@@ -62,7 +62,14 @@ export default function Home() {
           The Blockchain Education Network (BEN)  is the largest and longest running network  of students, alumni, professors, teachers,  professionals, and community leaders  excited about blockchain across the world.  We are on a journey to spur blockchain  adoption by empowering our leaders to  bring blockchain to their companies and  communities.
         </p>
       </section>
-      <section className="max-w-7xl m-auto py-24 px-7">
+      <section className="-mt-20 flex justify-end max-w-7xl m-auto">
+        <Image
+          src="/images/home-break-illustration.png"
+          width={269}
+          height={215}
+        />
+      </section>
+      <section className="max-w-7xl -mt-14 md:-mt-40 m-auto py-24 px-7">
         <h2 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
           Our impact
         </h2>
