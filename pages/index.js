@@ -2,13 +2,28 @@ import DonateButton from "../components/donateButton";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Map from '../components/map'
+import Image from 'next/image'
 export default function Home() {
   return (
     <div>
       <Header />
-      <div className="pt-10 md:pt-40 mt-10 px-7 relative z-20">
-        <div className="-mt-10 max-w-7xl m-auto home-header pb-10">
-          <img className="hidden md:block m-auto" src="/images/ben-logo.svg" />
+      <div className="pt-10 md:pt-40 mt-10 px-7 relative z-20 flex justify-between items-center m-auto" style={{maxWidth:"110rem"}}>
+      <div className="w-3/12 hidden lg:block">
+      <Image 
+        src="/images/home-illustration-left.png"
+        width={416}
+        height={500}
+      />
+      </div>
+      <div className="w-full lg:w-6/12 m-auto">
+          <div className="flex md:hidden justify-center">
+          <Image 
+            src="/images/home-illustration-right.png"
+            width={400}
+            height={410}
+          />
+          </div>
+          <img className="hidden md:block m-auto" src="/images/ben-home-logo.svg" />
           <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-xl md:max-w-3xl m-auto pt-10 text-benblack-500" style={{ lineHeight: "72px;" }}>Providing borderless blockchain education</h1>
           <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
             <DonateButton />
@@ -19,11 +34,15 @@ export default function Home() {
             </div>
           </div>
         </div>
+      <div className="w-3/12 hidden lg:block">
+      <Image 
+        src="/images/home-illustration-right.png"
+        width={487}
+        height={500}
+      />
       </div>
-      <div className="flex justify-end max-w-7xl m-auto lg:-mt-24 relative z-0">
-        <img src="/images/home-header-illustration-small.jpg" />
       </div>
-      <div className="max-w-7xl m-auto py-24 pt-24 px-7">
+      <div className="max-w-7xl m-auto py-24 pt-36 lg:pt-56 px-7">
         <div className="grid grid-cols-5 gap-x-3 max-w-xs mx-auto md:mx-0">
           <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook-light.svg" /></a>
           <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter-light.svg" /></a>
@@ -43,7 +62,14 @@ export default function Home() {
           The Blockchain Education Network (BEN)  is the largest and longest running network  of students, alumni, professors, teachers,  professionals, and community leaders  excited about blockchain across the world.  We are on a journey to spur blockchain  adoption by empowering our leaders to  bring blockchain to their companies and  communities.
         </p>
       </section>
-      <section className="max-w-7xl m-auto py-24 px-7">
+      <section className="-mt-20 flex justify-end max-w-7xl m-auto">
+        <Image
+          src="/images/home-break-illustration.png"
+          width={269}
+          height={215}
+        />
+      </section>
+      <section className="max-w-7xl -mt-14 md:-mt-40 m-auto py-24 px-7">
         <h2 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
           Our impact
         </h2>

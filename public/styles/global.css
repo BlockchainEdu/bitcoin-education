@@ -58,10 +58,10 @@
 }
 
 .home-header {
-  background: url("/images/home-header-illustration.jpg");
+  background: url("/images/home-header-dual-illustration.png");
   background-size: auto;
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: center center;
 }
 
 @media only screen and (max-width: 780px) {
