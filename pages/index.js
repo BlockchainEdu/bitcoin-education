@@ -1,8 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import DonateButton from "../components/donateButton";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Map from '../components/map'
 import Image from 'next/image'
+import FeatureSlider from '../components/featureSlider';
+
 export default function Home() {
   return (
     <div>
@@ -174,21 +177,7 @@ export default function Home() {
           <img className="pt-20 md:pt-0" src="/images/what-do-we-do.png" />
         </div>
       </section>
-      <section className="max-w-7xl m-auto py-24 pt-10 md:pt-24 pb-24 md:pb-36 px-7">
-        <h2 className="text-center md:text-left font-black text-4xl md:text-5xl text-black pb-10">
-          Featured in
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 pt-4 gap-y-14">
-          <img className="m-auto" src="/images/distributed.png" />
-          <img className="m-auto" src="/images/crypto-core.png" />
-          <img className="m-auto" src="/images/forbes.png" />
-          <img className="m-auto" src="/images/nasdaq.png" />
-          <img className="m-auto" src="/images/future-tech.png" />
-          <img className="m-auto" src="/images/bitcoin.png" />
-          <img className="m-auto" src="/images/hacked.png" />
-          <img className="m-auto" src="/images/bitcoin-magazine.png" />
-        </div>
-      </section>
+      <FeatureSlider />
       <Footer />
     </div>
   )
