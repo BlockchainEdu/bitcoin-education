@@ -9,7 +9,7 @@ const solutions = [
   },
   {
     name: 'Learn',
-    href: '/https://portal.blockchainedu.org/all-courses'
+    href: '/learn'
   },
   {
     name: 'Clubs',
