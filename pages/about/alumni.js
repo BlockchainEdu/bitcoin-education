@@ -20,7 +20,7 @@ export default function Alumni() {
                             Become part of (or re-join) the largest and longest running blockchain student network in the world to connect with your fellow alumni and share your experience! These could be alumni from 4 year universities or Alumni of University clubs that are a part of the BEN Network.
                         </p>
                         <div className="flex justify-center lg:justify-start">
-                            <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
+                            <a href="https://learn.blockchainedu.org/sign_up?space_id=5296356&from=https%3A%2F%2Flearn.blockchainedu.org%2Fgroups%2F5296356%2Fabout%3Fautojoin%3D1%26autojoin_space_id%3D5296356" target="_blank">
                             <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
                                 Join as an Alumni
                             </button>
