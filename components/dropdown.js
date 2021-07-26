@@ -16,7 +16,7 @@ const solutions = [
     href: '/about/clubs'
   },
   {
-    name: 'The Team',
+    name: 'Team',
     href: '/about/team',
   },
   {

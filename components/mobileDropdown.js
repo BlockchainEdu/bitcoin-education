@@ -78,7 +78,7 @@ export default function MobileDropdown(props) {
                                       <a href="/about/clubs">Clubs</a>
                                     </li>
                                     <li>
-                                      <a href="/about/team">The Team</a>
+                                      <a href="/about/team">Team</a>
                                     </li>
                                     <li>
                                       <a href="/about/partners">Partners</a>
