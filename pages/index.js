@@ -8,7 +8,7 @@ import FeatureSlider from '../components/featureSlider';
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-hidden">
       <Header />
       <div className="pt-10 md:pt-40 mt-10 px-7 relative z-20 flex justify-between items-center m-auto" style={{maxWidth:"110rem"}}>
       <div className="w-3/12 hidden lg:block">
