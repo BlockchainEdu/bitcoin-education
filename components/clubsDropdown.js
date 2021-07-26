@@ -1,9 +1,10 @@
-import {useRef} from 'react'
+import { useRef, useState } from 'react'
 import { Popover } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 
 export default function ClubsDropdown({locations, onSelected}) {
   const buttonRef = useRef(null)
+  const [showingText, setShowingText] = useState('Locations')
   return (
     <div className="m-auto flex justify-center lg:justify-start pt-14 lg:pt-0">
       <Popover className="">
@@ -15,7 +16,7 @@ export default function ClubsDropdown({locations, onSelected}) {
                 ${open ? '' : ''}
                 menu-dropdown font-mont shadow-button bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white px-10 rounded-full py-4 rounded-full inline-flex items-center text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
-              <span>Locations</span>
+              <span>{showingText}</span>
 
             <ChevronDownIcon
                   className={`${
@@ -31,6 +32,7 @@ export default function ClubsDropdown({locations, onSelected}) {
                       onClick={(e) => {
                         onSelected('All');
                         buttonRef.current.click();
+                        setShowingText('Locations')
                       }}
                       className="cursor-pointer flex items-center p-2 px-4 mx-10 hover:bg-benorange-300 transition duration-150 ease-in-out rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                     >
@@ -45,6 +47,7 @@ export default function ClubsDropdown({locations, onSelected}) {
                         onClick={(e) => {
                           buttonRef.current.click();
                           onSelected(item);
+                          setShowingText(item);
                         }}
                         key={index}
                         className="cursor-pointer flex items-center p-2 px-4 mx-10 hover:bg-benorange-300 transition duration-150 ease-in-out rounded-lg focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
