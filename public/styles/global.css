@@ -20,6 +20,20 @@
   color: #FF936B;
 }
 
+.monday-form {
+  max-width: 100%;
+  width: 900px;
+  height: 900px;
+  max-height: 100%;
+}
+
+.monday-form--contact {
+  max-width: 100%;
+  width: 900px;
+  height: 800px;
+  max-height: 100%;
+  border-radius: .75rem;
+}
 
 .what-is-learn-blurb {
   max-width: 360px;

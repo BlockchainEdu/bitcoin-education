@@ -10,21 +10,21 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <div className="pt-10 md:pt-40 mt-10 px-7 relative z-20 flex justify-between items-center m-auto" style={{maxWidth:"110rem"}}>
-      <div className="w-3/12 hidden lg:block">
-      <Image 
-        src="/images/home-illustration-left.png"
-        width={416}
-        height={500}
-      />
-      </div>
-      <div className="w-full lg:w-6/12 m-auto">
-          <div className="flex md:hidden justify-center">
-          <Image 
-            src="/images/home-illustration-right.png"
-            width={400}
-            height={410}
+      <div className="pt-10 md:pt-40 mt-10 px-7 relative z-20 flex justify-between items-center m-auto" style={{ maxWidth: "110rem" }}>
+        <div className="w-3/12 hidden lg:block">
+          <Image
+            src="/images/home-illustration-left.png"
+            width={416}
+            height={500}
           />
+        </div>
+        <div className="w-full lg:w-6/12 m-auto">
+          <div className="flex md:hidden justify-center">
+            <Image
+              src="/images/home-illustration-right.png"
+              width={400}
+              height={410}
+            />
           </div>
           <img className="hidden md:block m-auto" src="/images/ben-home-logo.svg" />
           <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-xl md:max-w-3xl m-auto pt-10 text-benblack-500" style={{ lineHeight: "72px;" }}>Providing borderless blockchain education</h1>
@@ -37,13 +37,13 @@ export default function Home() {
             </div>
           </div>
         </div>
-      <div className="w-3/12 hidden lg:block">
-      <Image 
-        src="/images/home-illustration-right.png"
-        width={487}
-        height={500}
-      />
-      </div>
+        <div className="w-3/12 hidden lg:block">
+          <Image
+            src="/images/home-illustration-right.png"
+            width={487}
+            height={500}
+          />
+        </div>
       </div>
       <div className="max-w-7xl m-auto py-24 pt-36 lg:pt-56 px-7">
         <div className="grid grid-cols-5 gap-x-3 max-w-xs mx-auto md:mx-0">
@@ -119,9 +119,11 @@ export default function Home() {
               </div>
             </div>
             <div className="m-auto flex content-center justify-center md:justify-start">
-              <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
-                Learn more
-              </button>
+              <a href="/about">
+                <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
+                  Learn more
+                </button>
+              </a>
             </div>
           </div>
           <div>

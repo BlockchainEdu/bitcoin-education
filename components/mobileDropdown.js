@@ -68,6 +68,9 @@ export default function MobileDropdown(props) {
                                 </Disclosure.Button>
                                 <Disclosure.Panel className="pl-3 pt-4 text-gray-500">
                                   <ul className="ml-3 space-y-4 text-black font-proximasemi text-md text-chablack-300 hover:text-chablack-500">
+                                  <li>
+                                      <a href="/contact">Contact</a>
+                                    </li>
                                     <li>
                                       <a href="/about">About</a>
                                     </li>

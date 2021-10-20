@@ -14,10 +14,18 @@ const FeatureSlider = () => {
     cssEase: "linear",
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1400,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
         },
       },
@@ -32,8 +40,8 @@ const FeatureSlider = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
     ],
@@ -83,10 +91,10 @@ const FeatureSlider = () => {
         <Slider {...settings}>
           {features.map((item, index) => (
             <div key={index} className="font-mont pb-36">
-              <div className="flex items-center" style={{ height: "130px" }}>
+              <div className="flex items-center">
                 <img
                   className="m-auto"
-                  style={{ maxWidth: "200px" }}
+                  style={{maxWidth:"300px"}}
                   src={item.url}
                 />
               </div>

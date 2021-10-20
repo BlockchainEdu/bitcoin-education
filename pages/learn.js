@@ -2,6 +2,8 @@ import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import Header from '../components/header'
 import Image from 'next/image'
+import FormPopup from '../components/formPopup';
+import Modal from '../components/donateButton';
 
 export default function Learn() {
     return (
@@ -43,7 +45,7 @@ export default function Learn() {
                             <div className="pb-3">How to start a Blockchain club</div>
                         </div>
                         <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
-                        <button className="mt-5 border font-bold text-xl px-8 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Sign up to learn</button>
+                            <button className="mt-5 border font-bold text-xl px-8 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Sign up to learn</button>
                         </a>
                     </div>
                     <div className="w-full md:w-3/5">
@@ -84,11 +86,10 @@ export default function Learn() {
                             </div>
                         </div>
                         <div className="m-auto flex content-center justify-center md:justify-start">
-                            <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
-                                <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
-                                    Sign up as a Teacher
-                                </button>
-                            </a>
+                            <FormPopup
+                                buttonStyle="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10"
+                                buttonText="Sign up as a Teacher"
+                            />
                         </div>
                     </div>
                 </div>
