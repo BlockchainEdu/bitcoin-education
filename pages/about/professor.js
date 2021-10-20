@@ -49,11 +49,6 @@ export default function Professor() {
                                 Establishing a network of professors and faculty members across the globe to work on different blockchain initiatives. <br /> <br />We are hosting roundtables, conducting research, facilitating corporate partnerships, and helping professors connect with each other.
                             </p>
                             <div className="m-auto flex content-center justify-center lg:justify-start">
-                                <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
-                                <button className="border font-bold text-xl px-12 rounded-full py-4 mt-10 transition duration-500 hover:border-benorange-500 hover:text-benorange-500 text-benblack-500">
-                                    Learn More
-                                </button>
-                                </a>
                             </div>
                         </div>
                     </div>
