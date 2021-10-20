@@ -1,7 +1,7 @@
-import Footer from '../../components/footer';
-import HeaderWithLogoDark from '../../components/headerWithLogoDark';
+import Footer from '../components/footer';
+import HeaderWithLogoDark from '../components/headerWithLogoDark';
 
-export default function Programs() {
+export default function Contact() {
     return (
         <div id="contact-page">
             <HeaderWithLogoDark />
