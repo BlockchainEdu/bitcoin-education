@@ -4,10 +4,6 @@ import { Fragment } from 'react'
 
 const solutions = [
   {
-    name: 'Contact',
-    href: '/contact'
-  },
-  {
     name: 'About',
     href: '/about'
   },
