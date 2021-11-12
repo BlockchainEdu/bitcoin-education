@@ -1,10 +1,13 @@
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
+import IndividualProgram from '../components/individualProgram';
+
 
 export default function Programs() {
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
+            <IndividualProgram />
             <div className="pt-20 lg:pt-24 md:pb-0 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">
                     <div className="w-full lg:w-6/12">
