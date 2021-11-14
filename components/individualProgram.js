@@ -63,7 +63,7 @@ export default function IndividualProgram() {
                 {global.name}
               </h1>
               <p className="text-black text-md pt-10 max-w-lg m-auto lg:m-0 text-center lg:text-left font-medium">
-                The BEN Intercollegiate Crypto Fund is an initiative that aims to offer our student-members the opportunity to showcase their fundamental & technical prowess without the need for them to put up the capital risk. On April 22nd, our Crypto Fund Analysts launched the BEN Moon Fund ($BENMO) via TokenSets  which exposes token holders to multiple industries seen within the DeFi economy.
+                {JSON.parse(global.column_values[1].value)}
               </p>
               <div className="flex justify-center lg:justify-start">
               </div>
