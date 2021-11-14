@@ -54,7 +54,7 @@ export default function IndividualProgram() {
     }}>
       {teamMembers.length > 0 && teamMembers.map(global => {
         return global.group.title == "Programs" &&
-          <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">
+          <div className="max-w-7xl m-auto justify-between flex flex-row-reverse">
             <div className="w-full lg:w-6/12">
               <div className="font-mont text-center lg:text-left text-xs uppercase">
                 {JSON.parse(global.column_values[0].value)}
