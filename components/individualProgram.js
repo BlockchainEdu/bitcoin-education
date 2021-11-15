@@ -10,8 +10,11 @@ export default function IndividualProgram() {
   const [teamMembers, setTeamMembers] = useState([]);
 
   const changeFlexProgram = () => {
-    return `max-w-7xl m-auto flex flex-col items-center ${teamMembers.index % 2 === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'}`
+    return `max-w-7xl m-auto flex flex-col items-center ${teamMembers.index % 2 ? 'lg:flex-row-reverse' : 'hidden'}`
 }
+
+  const changeFlexDirection = [`max-w-7xl m-auto flex flex-col items-center lg:flex-row`, `max-w-7xl m-auto flex flex-col items-center lg:flex-row-reverse`]
+  
 
   useEffect(async () => {
     // Get Members list
@@ -56,9 +59,9 @@ export default function IndividualProgram() {
         setGlobalClick(false);
       }
     }}>
-      {teamMembers.length > 0 && teamMembers.map(global => {
+      {teamMembers.length > 0 && teamMembers.map((global, index) => {
         return global.group.title == "Programs" &&
-          <div className={changeFlexProgram()}>
+          <div key={index} className={index % 2 ? changeFlexDirection[0] : changeFlexDirection[1]}>
             <div className="w-full lg:w-6/12">
               <div className="font-mont text-center lg:text-left text-xs uppercase">
                 {JSON.parse(global.column_values[0].value)}
