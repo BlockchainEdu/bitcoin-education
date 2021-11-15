@@ -13,7 +13,7 @@ export default function IndividualProgram() {
     return `max-w-7xl m-auto flex flex-col items-center ${teamMembers.index % 2 ? 'lg:flex-row-reverse' : 'hidden'}`
 }
 
-  const changeFlexDirection = [`max-w-7xl m-auto flex flex-col items-center lg:flex-row`, `max-w-7xl m-auto flex flex-col items-center lg:flex-row-reverse`]
+  const changeFlexDirection = [`max-w-7xl m-auto flex flex-col items-center lg:flex-row-reverse`, `max-w-7xl m-auto flex flex-col items-center lg:flex-row`]
   
 
   useEffect(async () => {
