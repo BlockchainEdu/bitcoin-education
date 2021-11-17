@@ -73,8 +73,11 @@ export default function IndividualProgram() {
                 <p className="text-black text-md pt-10 max-w-lg m-auto lg:m-0 text-center lg:text-left font-medium">
                   {JSON.parse(global.column_values[1].value)}
                 </p>
-                <div className="flex justify-center lg:justify-start">
-                </div>
+                <a target="_blank" href={JSON.parse(global.column_values[5].value)}>
+                  <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
+                    {JSON.parse(global.column_values[4].value)}
+                  </button>
+                </a>
               </div>
               <div className="w-full lg:w-6/12 m-auto pt-14 pb-0 lg:pb-24">
                 <img className="m-auto" src={global.assets.length > 0 ? global.assets[0]?.public_url : ""} />
