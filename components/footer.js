@@ -51,11 +51,11 @@ export default function Footer() {
                 </div>
             </div>
             <div className="bg-benblack-500 pb-14">
-                <div className="max-w-7xl m-auto flex justify-between text-white" style={{ fontSize: "12px" }}>
-                    <p>
+                <div className="flex-col lg:flex-row max-w-7xl m-auto flex justify-between text-white" style={{ fontSize: "12px" }}>
+                    <p className="mx-auto lg:mx-0 text-center lg:text-left">
                         625 Kenmoor Ave Suite 301-97251 Grand Rapids, MI 49546
                     </p>
-                    <p>
+                    <p className="mx-auto lg:mx-0 text-center lg:text-left pt-4 lg:pt-0">
                         Blockchain Education Network Inc is qualified charity with a US 501 (c)(3) public charity, EIN: 46-5280397
                     </p>
                 </div>
