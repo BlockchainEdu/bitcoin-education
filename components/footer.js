@@ -19,7 +19,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="flex flex-col md:flex-row max-w-7xl m-auto border-t py-14 px-7 gap-x-10">
-                <div className="w-full md:w-1/6"><img className="m-auto md:m-0" src="/images/ben-home-logo.svg"/></div>
+                <div className="w-full md:w-1/6"><img className="m-auto md:m-0" src="/images/ben-home-logo.svg" /></div>
                 <div className="w-full md:w-3/6">
                     <div className="text-center md:text-left pt-6 md:pt-0 font-mont font-bold">
                         The Blockchain Education Network (BEN)
@@ -36,7 +36,7 @@ export default function Footer() {
                     <a target="_blank" href="https://t.me/blockchainedu"><img src="/images/telegram.svg" /></a>
                 </div>
             </div>
-            <div className="bg-benblack-500 py-14 px-7">
+            <div className="bg-benblack-500 py-14 pb-10 px-7">
                 <div className="flex flex-col md:flex-row justify-between max-w-7xl m-auto">
                     <ul className="flex flex-col md:flex-row justify-between items-center text-white font-mont w-full md:w-2/6">
                         <a href="/"><li>Home</li></a>
@@ -46,8 +46,18 @@ export default function Footer() {
                         <a href="/contact"><li>Contact</li></a>
                     </ul>
                     <div className="pt-10 md:pt-0 text-center md:text-left font-mont text-white">
-                    © 2021 BEN All Rights Reserved
+                        © 2021 BEN All Rights Reserved
                     </div>
+                </div>
+            </div>
+            <div className="bg-benblack-500 pb-14">
+                <div className="max-w-7xl m-auto flex justify-between text-white" style={{ fontSize: "12px" }}>
+                    <p>
+                        625 Kenmoor Ave Suite 301-97251 Grand Rapids, MI 49546
+                    </p>
+                    <p>
+                        Blockchain Education Network Inc is qualified charity with a US 501 (c)(3) public charity, EIN: 46-5280397
+                    </p>
                 </div>
             </div>
         </section>
