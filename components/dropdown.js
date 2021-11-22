@@ -32,7 +32,7 @@ const solutions = [
     href: '/about/blockchain-centers'
   },
   {
-    name: 'Professor',
+    name: 'Professors',
     href: '/about/professor'
   }
 ]
