@@ -83,8 +83,8 @@ export default function IndividualProgram() {
                       {JSON.parse(global.column_values[3].value)}
                     </button>
                   </a>
-                  <a className="mx-auto lg:mx-0" target="_blank" href={JSON.parse(global.column_values[6].value)}>
-                    <button className="mb-20 md:mb-0 transition duration-500 text-benorange-500 font-bold text-xl px-12 rounded-full py-4 mt-10">
+                  <a className="border-b-10 mx-auto lg:mx-0" target="_blank" href={JSON.parse(global.column_values[6].value)}>
+                    <button className="underline mb-20 md:mb-0 transition duration-500 text-benorange-500 font-bold text-xl px-12 rounded-full py-4 mt-10" style={{textDecoration: "underline"}}>
                       {JSON.parse(global.column_values[5].value)}
                     </button>
                   </a>
