@@ -1,25 +1,13 @@
 import 'tailwindcss/tailwind.css'
 import '../public/styles/global.css'
-import Head from 'next/head'
+import TagManager from 'react-gtm-module';
+
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <div>
-      <Head>
-        dangerouslySetInnerHTML={{
-          __html: `
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-213540060-2"></script>
-          <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'UA-213540060-2');
-  `,
-        }}
-      </Head>
-      <Component {...pageProps} />
-    </div>
-  )
+  useEffect(() => {
+    TagManager.initialize({ gtmId: 'GTM-213540060-2' });
+  }, []);
+  return <Component {...pageProps} />
 }
 
 export default MyApp
