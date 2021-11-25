@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css'
+import { useEffect } from 'react';
 import '../public/styles/global.css'
 import TagManager from 'react-gtm-module';
 
