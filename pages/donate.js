@@ -1,4 +1,5 @@
 import CryptoDonateItem from '../components/cryptoDonateItem';
+import DonateOptions from '../components/donateOptions';
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import IndividualProgram from '../components/individualProgram';
@@ -78,8 +79,8 @@ export default function Donate() {
         <div id="partners-page">
             <HeaderWithLogoDark />
             <section className="bg-benorange-500">
-                <div className="max-w-7xl m-auto py-24">
-                    <div className="w-full lg:w-6/12">
+                <div className="flex max-w-7xl m-auto py-24">
+                    <div className="w-full lg:w-4/12">
                         <div className="font-mont text-center lg:text-left text-xs uppercase">
                             Donate Today
                         </div>
@@ -92,6 +93,9 @@ export default function Donate() {
                             Blockchain education around the world, and empower communities to use blockchain
                             technology to create wealth.
                         </p>
+                    </div>
+                    <div className="w-8/12">
+                        <DonateOptions />
                     </div>
                 </div>
             </section>
