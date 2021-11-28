@@ -43,9 +43,9 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <section className="max-w-7xl m-auto py-24">
-        <img className="m-auto" src="/images/ben-home-logo.svg" />
-        <div className="flex flex-col-reverse lg:flex-row mt-14">
+      <section className="max-w-7xl m-auto pt-0 lg:py-24">
+        <img className="m-auto hidden lg:flex" src="/images/ben-home-logo.svg" />
+        <div className="flex flex-col lg:flex-row mt-0 lg:mt-14">
           <div className="pt-20 lg:pt-0 w-full lg:w-4/12 mx-auto lg:mx-0">
             <div>
               <img className="m-auto" src="/images/ben-home-hero.png" />
@@ -64,7 +64,7 @@ export default function Home() {
               <img className="m-auto mt-5" src="/images/social-underline-orange.png" />
             </div>
           </div>
-          <div className="w-full lg:w-8/12 mx-auto lg:mx-0 ">
+          <div className="mt-14 lg:mt-0 w-full lg:w-8/12 mx-auto lg:mx-0 ">
             <DonateOptions />
           </div>
         </div>
