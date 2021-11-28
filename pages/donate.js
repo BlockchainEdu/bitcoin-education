@@ -182,7 +182,7 @@ export default function Donate() {
                         Frequently Asked Questions
                     </h3>
                     <div className="px-7 flex flex-col lg:flex-row justify-between">
-                        <div className="max-w-full lg:max-w-lg m-auto lg:mx-auto">
+                        <div className="max-w-full lg:max-w-lg m-auto lg:mx-0">
                             <h4 className="text-xl md:text-2xl font-bold font-mont text-center lg:text-left">
                                 Q: Are there any limitations on the deductions of donations on the individual tax returns?
                             </h4>
@@ -191,7 +191,7 @@ export default function Donate() {
                                 which you benefit. You can only deduct up to 30% of your Adjusted Gross Income on the tax return.
                             </p>
                         </div>
-                        <div className="pt-14 lg:pt-0 max-w-full lg:max-w-lg m-auto lg:mx-auto">
+                        <div className="pt-14 lg:pt-0 max-w-full lg:max-w-lg m-auto lg:mx-0">
                             <h4 className="text-xl md:text-2xl font-bold font-mont text-center lg:text-left">
                                 Q: Can a US corporation donate to 503(c)(3) and get a tax deduction?
                             </h4>
