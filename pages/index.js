@@ -69,7 +69,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <a href="#what-is"><img className="m-auto -mt-10 lg:-mt-32" src="/images/scroll.svg"/></a>
+      <a href="#what-is"><img className="hidden lg:flex m-auto -mt-10 lg:-mt-32" src="/images/scroll.svg"/></a>
       <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-32 px-7">
         <div id="what-is" className="flex justify-center space-x-2 items">
           <div>
