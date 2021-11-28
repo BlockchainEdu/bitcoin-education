@@ -12,6 +12,19 @@
   font-family: "Montser"
 }
 
+.what-is-section {
+background-image: url('/images/what-is-bg-icon.png');
+background-repeat: no-repeat;
+background-position: top right;
+
+}
+
+.impact-section {
+background-image: url('/images/impact-bg-icon.png');
+background-repeat: no-repeat;
+background-position: top right;
+}
+
 #about-page .navdropdown {
   color: #000;
 }

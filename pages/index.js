@@ -5,181 +5,183 @@ import Header from "../components/header";
 import Map from '../components/map'
 import Image from 'next/image'
 import FeatureSlider from '../components/featureSlider';
+import StandardButton from '../components/standardButton';
+import DonateOptions from '../components/donateOptions';
+
+const impactStats = [
+  {
+    image: "/images/ambassadors-icon-home.png",
+    number: "200+",
+    name: "Ambassadors",
+    imageStyling: "translate-y-10 transform",
+    nameStyling: ""
+  },
+  {
+    image: "/images/companies-icon-home.png",
+    number: "250+",
+    name: "Companies Founded",
+    imageStyling: "translate-y-10 transform",
+    nameStyling: ""
+  },
+  {
+    image: "/images/valuations-icon-home.png",
+    number: "100m",
+    name: "Valuation of companies founded through ben",
+    imageStyling: "translate-y-5 transform mx-auto lg:mx-0",
+    nameStyling: ""
+  },
+  {
+    image: "/images/jobs-icon-home.png",
+    number: "1500+",
+    name: "Jobs matched",
+    imageStyling: "translate-y-5 transform",
+    nameStyling: ""
+  },
+]
 
 export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <div className="pt-10 md:pt-40 mt-10 px-7 relative z-20 flex justify-between items-center m-auto" style={{ maxWidth: "110rem" }}>
-        <div className="w-3/12 hidden lg:block">
-          <Image
-            src="/images/home-illustration-left.png"
-            width={416}
-            height={500}
-          />
-        </div>
-        <div className="w-full lg:w-6/12 m-auto">
-          <div className="flex md:hidden justify-center">
-            <Image
-              src="/images/home-illustration-right.png"
-              width={400}
-              height={410}
-            />
-          </div>
-          <img className="hidden md:block m-auto" src="/images/ben-home-logo.svg" />
-          <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-xl md:max-w-3xl m-auto pt-10 text-benblack-500" style={{ lineHeight: "72px;" }}>Providing borderless blockchain education</h1>
-          <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
-            <DonateButton />
+      <section className="max-w-7xl m-auto py-24">
+        <img className="m-auto" src="/images/ben-home-logo.svg" />
+        <div className="flex flex-col-reverse lg:flex-row mt-14">
+          <div className="pt-20 lg:pt-0 w-full lg:w-4/12 mx-auto lg:mx-0">
             <div>
-              <a href="/get-involved">
-                <button className="border font-bold text-xl px-10 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Get Involved</button>
-              </a>
+              <img className="m-auto" src="/images/ben-home-hero.png" />
+              <StandardButton
+                text="Get Involved"
+                color="orange"
+                styling="px-10 m-auto flex mt-3 mb-8"
+              />
+              <div className="grid grid-cols-5 max-w-xs mx-auto px-5">
+                <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook-light.svg" /></a>
+                <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter-light.svg" /></a>
+                <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/instagram-light.svg" /></a>
+                <a target="_blank" href="https://medium.com/blockchainedu"><img src="/images/medium-light.svg" /></a>
+                <a target="_blank" href="https://t.me/blockchainedu"><img src="/images/telegram-light.svg" /></a>
+              </div>
+              <img className="m-auto mt-5" src="/images/social-underline-orange.png" />
             </div>
           </div>
+          <div className="w-full lg:w-8/12 mx-auto lg:mx-0 ">
+            <DonateOptions />
+          </div>
         </div>
-        <div className="w-3/12 hidden lg:block">
-          <Image
-            src="/images/home-illustration-right.png"
-            width={487}
-            height={500}
-          />
-        </div>
-      </div>
-      <div className="max-w-7xl m-auto py-24 pt-36 lg:pt-56 px-7">
-        <div className="grid grid-cols-5 gap-x-3 max-w-xs mx-auto md:mx-0">
-          <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook-light.svg" /></a>
-          <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter-light.svg" /></a>
-          <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/instagram-light.svg" /></a>
-          <a target="_blank" href="https://medium.com/blockchainedu"><img src="/images/medium-light.svg" /></a>
-          <a target="_blank" href="https://t.me/blockchainedu"><img src="/images/telegram-light.svg" /></a>
-        </div>
-        <div className="mt-14 md:-mt-8">
-          <a href="/#what-is-ben"><img className="m-auto" src="/images/scroll.svg" /></a>
-        </div>
-      </div>
-      <section id="what-is-ben" className="bg-benorange-500 py-20 px-7">
-        <h2 className="font-black text-4xl md:text-5xl text-black text-center">
-          What is BEN?
-        </h2>
-        <p className="text-black text-md what-is-ben text-center m-auto pt-10">
-          The Blockchain Education Network (BEN)  is the largest and longest running network  of students, alumni, professors, teachers,  professionals, and community leaders  excited about blockchain across the world.  We are on a journey to spur blockchain  adoption by empowering our leaders to  bring blockchain to their companies and  communities.
-        </p>
       </section>
-      <section className="-mt-20 flex justify-end max-w-7xl m-auto">
-        <Image
-          src="/images/home-break-illustration.png"
-          width={269}
-          height={215}
+      <a href="#what-is"><img className="m-auto -mt-10 lg:-mt-32" src="/images/scroll.svg"/></a>
+      <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-32 px-7">
+        <div id="what-is" className="flex justify-center space-x-2 items">
+          <div>
+            <h2 className="font-mont font-black text-4xl lg:text-5xl">
+              What is
+            </h2>
+            <img className="-ml-2 lg:-ml-4 -mt-2 lg:-mt-4 w-36 lg:w-full" src="/images/what-ben-underline-orange.png" />
+          </div>
+          <img className="-mt-4 lg:-mt-8 w-24 lg:w-auto" src="/images/what-ben-home.svg" />
+        </div>
+        <p className="text-black text-md max-w-4xl text-center m-auto pt-10">
+          The Blockchain Education Network (BEN) is the largest and longest running network
+          of students, alumni, professors, teachers, professionals, and community leaders
+          excited about blockchain across the world. We are mission to provide bordeless blockchain
+          education, and to spur blockchain adoption by empowering student leaders to  bring blockchain
+          to their companies and communities through local workshops and online courses.
+        </p>
+        <img className="rounded-md shadow-2xl m-auto my-10 mb-14" src="/images/home-programs-video.png" />
+        <StandardButton
+          text="Programs"
+          color="orange"
+          styling="px-16 flex m-auto"
         />
       </section>
-      <section className="max-w-7xl -mt-14 md:-mt-40 m-auto py-24 px-7">
-        <h2 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
-          Our impact
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 pt-20 gap-x-20 gap-y-20 lg:gap-y-0 max-w-7xl m-auto align-center">
-          <div className="text-center m-auto lg:text-left lg:m-0">
-            <img src="/images/ambassadors.svg" />
-            <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">200+</div>
-            <div className="uppercase font-mont text-sm">Ambassadors</div>
-          </div>
-          <div className="text-center m-auto lg:text-left lg:m-0">
-            <img src="/images/companies-founded.svg" />
-            <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">250</div>
-            <div className="uppercase font-mont text-sm">Companies Founded</div>
-          </div>
-          <div className="text-center m-auto lg:text-left lg:m-0">
-            <img className="m-auto lg:m-0" src="/images/valuation.svg" />
-            <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">$11B</div>
-            <div className="uppercase font-mont text-sm max w-60">Valuation of Companies Founded Through BEN</div>
-          </div>
-          <div className="text-center m-auto lg:text-left lg:m-0">
-            <img src="/images/jobs-matched.svg" />
-            <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3">1500+</div>
-            <div className="uppercase font-mont text-sm">Jobs Matches</div>
-          </div>
+      <section className="max-w-7xl -mt-10 lg:-mt-32 m-auto pt-56 lg:pt-48 impact-section px-7">
+        <div className="max-w-xs mx-auto lg:mx-0">
+          <h2 className="font-mont font-black text-center lg:text-left text-4xl lg:text-5xl pt-10 lg:pt-0">
+            Our Impact
+          </h2>
+          <img className="ml-auto h-3 mr-14 lg:h-auto lg:mr-5 lg:-mt-4" src="/images/impact-underline-orange.png" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-10 lg:gap-y-0 max-w-7xl m-auto align-center">
+          {impactStats.map((item) => (
+            <div className="text-center m-auto lg:text-left lg:m-0">
+              <img src={item.image} className={item.imageStyling} />
+              <div className={`font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3 ${item.nameStyling}`}>{item.number}</div>
+              <div className="uppercase font-mont text-xs tracking-widest">{item.name}</div>
+            </div>
+          ))}
         </div>
       </section>
-      <section className="max-w-7xl m-auto py-24 pb-14 px-7">
-        <div className="flex flex-col md:flex-row justify-between">
+      <section className="max-w-7xl m-auto pt-24 lg:pt-10 pb-10 lg:pb-4 flex flex-col lg:flex-row items-center">
+        <div className="w-full lg:w-1/2">
+          <div className="max-w-sm mx-auto lg:mx-0">
+            <h2 className="font-mont font-black text-center lg:text-left text-4xl lg:text-5xl">
+              What we do?
+            </h2>
+            <img className="ml-auto mr-20 h-4 lg:-mt-4 lg:mr-6" src="/images/we-do-underline-orange.png" />
+          </div>
+          <p className="text-black text-md pt-10 mb-14 lg:mb-0 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+            We serve our students by providing an abundance of resources.
+            With our global chapters we host events, educate, create a
+            community, build careers and mentor.
+          </p>
+        </div>
+        <img className="m-auto" src="/images/we-do-image-home.png" />
+      </section>
+      <section className="bg-benorange-500 py-14">
+        <div className="max-w-7xl m-auto">
+          <div className="flex flex-col lg:flex-row justify-center space-x-4">
+            <img className="-mt-8 mx-auto lg:mx-0 w-32 lg:w-auto mb-4 lg:mb-0" src="/images/ben-text-logo-black.svg" />
+            <div>
+              <h2 className="font-mont font-black text-3xl lg:text-5xl text-center lg:text-left">
+                Ambassadors
+              </h2>
+              <img className="-mt-2 h-6 lg:h-auto mx-auto lg:mx-0" src="/images/ambassadors-underline-orange.png" />
+            </div>
+          </div>
+          <p className="text-black font-bold text-md text-center m-auto pt-4 max-w-2xl">
+            BEN actively mentors and supports over 200+ blockchain clubs around the
+            world. We educate students about blockchain technology and inspire them to
+            ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
+          </p>
+        </div>
+      </section>
+      <section className="max-w-7xl m-auto py-24 pb-0 lg:pb-14 px-7">
+        <div className="flex flex-col lg:flex-row justify-between items-center">
           <div>
-            <div className="font-mont text-center md:text-left text-xs uppercase pb-7">
+            <div className="font-mont text-center lg:text-left text-xs uppercase pb-7">
               Our Vision
             </div>
-            <h2 className="font-black text-center md:text-left text-4xl md:text-5xl text-black pb-10">
-              The 10:10 Plan
-            </h2>
-            <div className="flex items-center gap-x-0 md:gap-x-10 justify-center">
-              <div className="border-r-none md:border-r md:border-4 md:border-benorange-500  h-24">
+            <div className="max-w-sm pb-4">
+              <h2 className="font-mont font-black text-5xl">
+                The 10:10 Plan
+              </h2>
+              <img className="ml-auto -mt-2 mr-6" src="/images/10-plan-underline-orange.png" />
+            </div>
+            <div className="flex items-center gap-x-0 lg:gap-x-10 justify-center">
+              <div className="border-r-none lg:border-r lg:border-4 lg:border-benorange-500  h-24">
 
               </div>
               <div>
-                <p className="font-mont text-center md:text-left mx-auto md:mx-0 text-xl md:text-2xl font-bold max-w-sm">
+                <p className="font-mont text-center lg:text-left mx-auto lg:mx-0 text-xl lg:text-2xl font-bold max-w-sm">
                   Over the next 10 years we plan to educate over 10M people in Blockchain Technology
                 </p>
               </div>
             </div>
-            <div className="m-auto flex content-center justify-center md:justify-start">
+            <div className="m-auto flex content-center justify-center lg:justify-start">
               <a href="/about">
-                <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
-                  Learn more
-                </button>
+                <StandardButton
+                  color="orange"
+                  text="Learn more"
+                  styling="px-12 mt-10"
+                />
               </a>
             </div>
           </div>
           <div>
-            <img className="mx-auto md:mx-0" src="/images/10-10-plan.png" />
+            <img className="mt-14 lg:mt-0 mx-auto md:mx-0" src="/images/10-plan-home.png" />
           </div>
         </div>
       </section>
-      <section className="py-24 bg-bengrey-500 px-7">
-        <div className="max-w-7xl m-auto">
-          <h2 className="text-center md:text-left font-black text-4xl md:text-5xl text-black pb-10">
-            BEN Ambassadors
-          </h2>
-          <p className="text-center md:text-left font-mont max-w-2xl text-bengrey-400">
-            BEN actively mentors and supports over 200+ blockchain clubs around the world. We educate students about blockchain technology and inspire them to ﬁnd their talent and own it!  Either as a disrupter, entrepreneur,  investor, and team member.
-          </p>
-        </div>
-        <div className="flex flex-col md:flex-row max-w-7xl m-auto items-center justify-between pt-20">
-          <div className="w-full md:w-1/5 text-center md:text-left">
-            <div>
-              <img className="m-auto md:m-0" src="/images/clubs-icon.svg" />
-              <div className="font-mont text-xs uppercase pt-3">
-                Clubs
-              </div>
-            </div>
-            <div className="py-10">
-              <img className="m-auto md:m-0" src="/images/blockchain-center-icon.svg" />
-              <div className="font-mont text-xs uppercase pt-3">
-                Blockchain Center
-              </div>
-            </div>
-            <div>
-              <img className="m-auto md:m-0" src="/images/professors-icon.svg" />
-              <div className="font-mont text-xs uppercase pt-3">
-                Professors
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-4/5 pt-20 md:pt-0">
-            <img className="m-auto" src="/images/static-map.svg" />
-          </div>
-        </div>
-      </section>
-      <section className="flex flex-col md:flex-row max-w-7xl m-auto items-center justify-between py-24 px-7">
-        <div className="text-center md:text-left">
-          <h2 className="font-black text-4xl md:text-5xl text-black pb-10">
-            What do we do?
-          </h2>
-          <p className="font-mont max-w-lg">
-            We serve our students by providing an abundance of resources. With our global chapters we host events, educate, create a community, build careers and mentor.
-          </p>
-        </div>
-        <div>
-          <img className="pt-20 md:pt-0" src="/images/what-do-we-do.png" />
-        </div>
-      </section>
-      <FeatureSlider />
       <Footer />
     </div>
   )

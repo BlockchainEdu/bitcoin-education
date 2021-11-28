@@ -6,7 +6,7 @@ import IndividualProgram from '../components/individualProgram';
 export default function DonateOptions() {
     return (
         <div>
-            <div className="bg-white rounded-md p-6 py-14 ml-auto max-w-xl">
+            <div className="bg-white rounded-3xl p-6 py-14 ml-auto max-w-xl shadow-2xl">
                 <div className="flex justify-between m-auto">
                     <div className="">
                         <div className="font-mont uppercase text-xs mb-3 tracking-widest">
