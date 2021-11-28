@@ -21,7 +21,7 @@ export default function CryptoDonateItem(props) {
                     >
                         <div className="relative w-auto my-6 mx-auto max-w-3xl">
                             {/*content*/}
-                            <div className="border-0 pb-10 p-3 rounded-2xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                            <div className="border-0 pb-14 pt-10 p-3 rounded-2xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 {/*header*/}
                                 <div className="flex items-start justify-between p-5 pt-0 rounded-t z-30">
                                     <button
@@ -29,30 +29,35 @@ export default function CryptoDonateItem(props) {
                                         onClick={() => setShowModal(false)}
                                     >
                                         <span className="bg-gray rounded-full h-3 w-3 text-black">
-                                            ×
+                                            <img src="/images/close-button.svg"/>
                                         </span>
                                     </button>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-6 pb-20 md:pb-0 flex gap-x-20 -mt-10 mb-8 items-center">
-                                    <img className="w-24" src={props.image} />
+                                <div className="relative px-6 gap-x-20 -mt-10 items-center">
+                                    <div className="flex items-center space-x-3 pb-3">
+                                        <img className="h-7" src={props.image} />
+                                        <img className="h-8" src="/images/color-logo-small.svg" />
+                                    </div>
                                     <div>
-                                        <p className="text-xl font-mont font-medium">Send your donation</p>
-                                        <p className="font-mont text-sm max-w-sm pt-4">To make a direct donation in {props.name} send {props.tickerName} to the address below.</p>
-
+                                        <p className="text-sm font-mont font-bold">Send your donation</p>
+                                        <p className="font-mont text-sm pt-2">To make a direct donation in {props.name} send {props.tickerName} to the address below.</p>
                                     </div>
 
                                 </div>
                                 <button
-                                    className="flex mx-10 justify-between rounded-lg p-3 border border-benorange-500 bg-gray-50 duration-300"
+                                    className="flex items-center mx-5 mt-3 mb-6 justify-between rounded-full p-3 px-6 bg-gray-100 duration-300"
                                     onClick={() => navigator.clipboard.writeText(`${props.address}`)}
-                                    style={{ maxWidth: "600px" }}
+                                    
                                 >
                                     <div className="flex justify-between">
                                         {props.address}
                                     </div>
-                                    <div>Copy</div>
+                                    <div className="font-mont text-sm uppercase text-benorange-500 font-medium">Copy</div>
                                 </button>
+                                <div className="font-mont text-xs text-center">
+                                    By donating, you agree to our <b>terms of service</b> and <b>privacy policy</b>
+                                </div>
                             </div>
                         </div>
                     </div>
