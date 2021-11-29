@@ -51,14 +51,14 @@ export default function DonateOptions() {
                     <div className="lg:hidden font-mont font-semibold text-benorange-500 text-sm text-center">
                         Give with Wire Transfer
                     </div>
-                <div className="mt-10 lg:mt-0 flex flex-col lg:flex-row justify-center m-auto text-center font-mont space-x-2 lg:space-x-8" style={{fontSize:"10px"}}>
-                    <div className="border- border-black mx-auto lg:mx-0 w-8/12 lg:w-5/12 ">
+                <div className="mt-10 lg:mt-0 flex flex-col lg:flex-row justify-center m-auto text-center font-mont space-x-0 lg:space-x-8" style={{fontSize:"10px"}}>
+                    <div className="border- border-black mx-auto lg:mx-0 w-8/12 lg:w-5/12">
                         Your <b>$1,000 monthly</b> donation can give 300 people clean water every year.
                     </div>
                     <div className="h-70 w-2/12 hidden lg:flex" style={{width:"1px", background:"#E3E6E6"}}>
 
                     </div>
-                    <div className="pt-4 lg:pt-0 mx-auto lg:mx-0 w-8/12 lg:w-5/12">
+                    <div className="pt-8 lg:pt-0 mx-auto w-8/12">
                         By donating, you agree to our terms of service and <b>privacy policy</b>
                     </div>
                 </div>
