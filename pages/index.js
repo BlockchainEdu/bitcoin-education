@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DonateButton from "../components/donateButton";
+import DonateButton from "../components/donateSliderButton";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Map from '../components/map'
@@ -27,7 +27,7 @@ export default function Home() {
             />
           </div>
           <img className="hidden md:block m-auto" src="/images/ben-home-logo.svg" />
-          <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-xl md:max-w-3xl m-auto pt-10 text-benblack-500" style={{ lineHeight: "72px;" }}>Providing borderless blockchain education</h1>
+          <h1 className="text-center pt-20 text-4xl md:text-6xl font-black max-w-xl md:max-w-3xl m-auto pt-10 text-benblack-500" style={{ lineHeight: "72px" }}>Providing borderless blockchain education</h1>
           <div className="flex flex-col sm:flex-row relative items-center justify-center space-y-14 sm:space-y-0 gap-x-4 mt-14">
             <DonateButton />
             <div>
