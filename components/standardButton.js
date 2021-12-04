@@ -5,8 +5,10 @@ export default function StandardButton(props) {
     }
 
     return (
-        <button className={`${buttonColor()} ${props.styling}`}>
-            {props.text}
-        </button>
+        <a href={props.link}>
+            <button className={`${buttonColor()} ${props.styling}`}>
+                {props.text}
+            </button>
+        </a>
     )
 }

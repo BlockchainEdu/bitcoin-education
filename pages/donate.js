@@ -3,6 +3,7 @@ import DonateOptions from '../components/donateOptions';
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import IndividualProgram from '../components/individualProgram';
+import PopupVideo from '../components/popupVideo';
 import StandardButton from '../components/standardButton';
 
 const cryptoInfo = [
@@ -128,6 +129,7 @@ export default function Donate() {
             </section>
             <div className="flex justify-center space-x-3 pb-8">
                 <StandardButton
+                    link="/contact"
                     color="orange"
                     text="Get a Tax Receipt"
                     styling="px-10"
@@ -220,9 +222,9 @@ export default function Donate() {
                 </div>
             </section>
             <section>
-                <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto items-center justify-between lg:mt-0 px-7">
+                <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto items-center justify-between py-24 px-7">
                     <div className="w-full lg:w-1/2">
-                        <div className="pt-10 lg:pt-0 font-mont text-center lg:text-left text-xs uppercase">
+                        <div className="font-mont text-center lg:text-left text-xs uppercase">
                             We are just getting started
                         </div>
                         <h1 className="text-4xl md:text-5xl text-center lg:text-left font-black text-black max-w-full lg:max-w-md pt-10 leading-snug">
@@ -236,8 +238,8 @@ export default function Donate() {
                             hackathons, startup competitions, and unique networking opportunities. Over the last 7 years we have  we are just getting started.
                         </p>
                     </div>
-                    <div className="w-full lg:w-6/12 m-auto pt-14 pb-0 lg:pb-24">
-                        <img className="rounded-md shadow-2xl m-auto my-10 mb-14" src="/images/home-programs-video.png" />
+                    <div className="w-full lg:w-6/12 m-auto pb-14 lg:pb-0 flex justify-center">
+                        <PopupVideo />
                     </div>
                 </div>
             </section>
