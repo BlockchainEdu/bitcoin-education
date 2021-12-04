@@ -19,6 +19,9 @@
 .bg-orange {
   background-color: var(--orange);
 }
+.bg-gray {
+  background-color: #F5F7F7;
+}
 .text-orange {
   color: var(--orange);
 }
