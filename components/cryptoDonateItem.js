@@ -29,30 +29,34 @@ export default function CryptoDonateItem(props) {
                                         onClick={() => setShowModal(false)}
                                     >
                                         <span className="bg-gray rounded-full h-3 w-3 text-black">
-                                            <img src="/images/close-button.svg"/>
+                                            <img src="/images/close-button.svg" />
                                         </span>
                                     </button>
                                 </div>
                                 {/*body*/}
-                                <div className="relative px-6 gap-x-20 -mt-10 items-center">
-                                    <div className="flex items-center space-x-3 pb-3">
-                                        <img className="h-7" src={props.image} />
-                                        <img className="h-8" src="/images/color-logo-small.svg" />
-                                    </div>
+                                <div className="flex items-center px-0 lg:px-7 -mt-10">
                                     <div>
-                                        <p className="text-sm font-mont font-bold">Send your donation</p>
-                                        <p className="font-mont text-sm pt-2">To make a direct donation in {props.name} send {props.tickerName} to the address below.</p>
+                                        <img className="w-32 hidden lg:flex" src="/images/test-address.png" />
                                     </div>
-
+                                    <div className="relative px-6 gap-x-20 items-center">
+                                        <div className="flex items-center space-x-3 pb-3">
+                                            <img className="h-7" src={props.image} />
+                                            <img className="h-8" src="/images/color-logo-small.svg" />
+                                        </div>
+                                        <div>
+                                            <p className="text-sm font-mont font-bold">Send your donation</p>
+                                            <p className="font-mont text-sm pt-2">To make a direct donation in {props.name} send {props.tickerName} to the address below.</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 <button
                                     className="flex items-center mx-5 mt-3 mb-6 justify-between rounded-full p-3 px-6 bg-gray-100 duration-300"
                                     onClick={() => navigator.clipboard.writeText(`${props.address}`)}
-                                    
+
                                 >
-                                    <div className="flex break-words justify-between">
+                                    <textarea className="h-6 bg-gray-100 justify-between w-full" style={{resize:"none"}}>
                                         {props.address}
-                                    </div>
+                                    </textarea>
                                     <div className="font-mont text-sm uppercase text-benorange-500 font-medium">Copy</div>
                                 </button>
                                 <div className="font-mont text-xs text-center">

@@ -108,7 +108,9 @@ export default function Donate() {
                         </p>
                     </div>
                     <div className="w-8/12">
+                        <div>
                         
+                        </div>
                     </div>
                 </div>
             </section>
