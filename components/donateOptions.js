@@ -59,7 +59,7 @@ export default function DonateOptions() {
 
                     </div>
                     <div className="pt-8 lg:pt-0 mx-auto w-8/12">
-                        By donating, you agree to our terms of service and <b>privacy policy</b>
+                        By donating, you agree to our <b>terms of service</b> and <b>privacy policy</b>
                     </div>
                 </div>
             </div>

@@ -50,7 +50,7 @@ export default function CryptoDonateItem(props) {
                                     onClick={() => navigator.clipboard.writeText(`${props.address}`)}
                                     
                                 >
-                                    <div className="flex justify-between">
+                                    <div className="flex break-words justify-between">
                                         {props.address}
                                     </div>
                                     <div className="font-mont text-sm uppercase text-benorange-500 font-medium">Copy</div>

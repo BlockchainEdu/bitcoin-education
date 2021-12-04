@@ -91,13 +91,13 @@ export default function Donate() {
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
-            <section className="bg-benorange-500 mt-8">
-                <div className="flex max-w-7xl m-auto py-24">
+            <section className="bg-benorange-500 mt-8 px-7">
+                <div className="flex flex-col lg:flex-row max-w-7xl m-auto py-24">
                     <div className="w-full lg:w-4/12">
                         <div className="font-mont text-center lg:text-left text-xs uppercase">
                             Donate Today
                         </div>
-                        <h1 className="text-4xl md:text-5xl text-center lg:text-left font-black text-black max-w-sm pt-10 leading-snug">
+                        <h1 className="text-4xl mx-auto lg:mx-0 md:text-5xl text-center lg:text-left font-black text-black max-w-sm pt-10 leading-snug">
                             Why you should donate
                         </h1>
                         <p className="text-black text-md pt-10 max-w-lg m-auto lg:m-0 text-center lg:text-left font-medium">
@@ -108,7 +108,7 @@ export default function Donate() {
                         </p>
                     </div>
                     <div className="w-8/12">
-                        <DonateOptions />
+                        
                     </div>
                 </div>
             </section>
