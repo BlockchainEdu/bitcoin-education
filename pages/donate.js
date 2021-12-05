@@ -136,6 +136,7 @@ export default function Donate() {
                     styling="px-10 flex mx-auto lg:mx-0"
                 />
                 <StandardButton
+                    link="/deductions"
                     text="Tax Deductions Explained"
                     styling="mt-6 lg:mt-0 px-6 flex mx-auto lg:mx-0"
                 />
@@ -171,7 +172,7 @@ export default function Donate() {
                             information on our guide here:
                         </ul>
                         <div className="mt-10 flex gap-x-10 flex-col lg:flex-row mx-auto">
-                            <a className="mx-auto lg:mx-0" target="_blank" href="">
+                            <a className="mx-auto lg:mx-0" href="/deductions">
                                 <StandardButton
                                     text="Tax Benefits"
                                     styling="px-10"
