@@ -4,10 +4,10 @@ import PopUpVideo from '../components/popupVideo';
 
 export default function Deductions() {
     return (
-        <div>
+        <div className="overflow-hidden">
             <HeaderWithLogoDark />
             <div className="bg-benorange-500 py-14 mt-8">
-                <h1 className="text-center text-5xl font-mont font-black mx-auto max-w-4xl">Donations to 501 (c)(3) nonprofits are tax deductible</h1>
+                <h1 className="text-center text-3xl md:text-5xl font-mont font-black mx-auto max-w-4xl">Donations to 501 (c)(3) nonprofits are tax deductible</h1>
             </div>
             <div className="flex justify-center py-24 px-7">
                 <PopUpVideo
@@ -16,14 +16,14 @@ export default function Deductions() {
             </div>
             <div className="flex flex-col lg:flex-row max-w-7xl mx-auto items-center justify-between">
                 <img src="/images/ben-deductible.png" />
-                <div className="font-mont text-md max-w-xl">
+                <div className="font-mont text-md max-w-xl text-center">
                     Donations to 501(c)(3) nonprofits are tax deductible. Under the IRS code section 170, <b>when you make a donation to
                         an organization that has been designated as a 501(c)(3) by the IRS</b>, you are eligible to receive a tax deduction on
                     your tax return. The deduction is reported under Itemized Deduction and will be claimed on the Schedule A.
                 </div>
             </div>
-            <div className="flex flex-col lg:flex-row max-w-7xl mx-auto items-center space-x-14 justify-between">
-                <div className="font-mont text-md max-w-2xl">
+            <div className="mt-14 lg:mt-0 flex flex-col-reverse lg:flex-row max-w-7xl mx-auto items-center space-x-14 justify-between px-7">
+                <div className="font-mont text-md max-w-2xl text-center lg:text-left mb-20 lg:mb-0">
                     <b>You can donate cash or noncash properties in order to claim a deduction.</b> Two common noncash properties are
                     <b> stocks</b> and <b>crypro currency.</b> When you donate a noncash property to the 501(c)(3) organization, the amount of
                     deductions you can claim on your tax return depends on if you have held the property for one year before you donate.
@@ -41,8 +41,10 @@ export default function Deductions() {
             </div>
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-7">
                 <div className="w-full lg:w-1/2">
-                    <div className="border-l-4 border-6 border-benorange-500 font-mont font-bold text-2xl pl-4 mb-7">Example 1</div>
-                    <p className="font-mont text-md mb-6">
+                    <div className="flex justify-center lg:justify-start">
+                        <div className="border-l-4 border-6 border-benorange-500 font-mont font-bold text-2xl pl-4 mb-7">Example 1</div>
+                    </div>
+                    <p className="font-mont text-md mb-6 text-center">
                         You purchased 200 shares of stock at $20,000 two years ago and you would like to donate these 200 shares.
                         On the date you make the donation, the shares are worth $24,000. In this case, you have held the stocks for
                         more than one year, so you can claim a full deduction of $24,000 on the Schedule A of your tax return.
@@ -96,7 +98,9 @@ export default function Deductions() {
                     <img className="m-auto" src="/images/ben-deductible.png" />
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <div className="border-l-4 border-6 border-benorange-500 font-mont font-bold text-2xl pl-4 mb-7">Example 2</div>
+                    <div className="flex justify-center lg:justify-start">
+                        <div className="border-l-4 border-6 border-benorange-500 font-mont font-bold text-2xl pl-4 mb-7">Example 2</div>
+                    </div>
                     <p className="font-mont text-md mb-6">
                         You purchased 200 shares of stock at $20,000 six months ago and you would like to donate these 200 shares.
                         On the date you make the donation, the shares are worth $24,000. In this case, you have held the stocks for less
@@ -142,7 +146,7 @@ export default function Deductions() {
                     </table>
                 </div>
             </div>
-            <div className="py-24">
+            <div className="py-24 px-7">
                 <img className="m-auto mb-5" src="/images/deductions-examples.png" />
                 <div className="font-mont font-bold text-2xl text-center max-w-2xl mx-auto">
                     Same rules apply to crypto currency.
@@ -155,7 +159,7 @@ export default function Deductions() {
             </div>
             <div className="space-y-14 max-w-7xl mx-auto px-7 pb-20">
                 <div className="flex">
-                    <div className="flex flex-col lg:flex-row justify-between items-center space-x-14">
+                    <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 lg:space-x-14">
                         <img className="mb-10 lg:mb-0" src="/images/deductions-1.svg" />
                         <p className="font-mont max-w-4xl text-center lg:text-left">
                             Verify that the organization you are donating to has been granted tax-exempt status by the IRS and is
