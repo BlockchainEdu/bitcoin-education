@@ -9,12 +9,7 @@ export default function Deductions() {
             <div className="bg-benorange-500 py-14 mt-8">
                 <h1 className="text-center text-3xl md:text-5xl font-mont font-black mx-auto max-w-4xl">Donations to 501 (c)(3) nonprofits are tax deductible</h1>
             </div>
-            <div className="flex justify-center py-24 px-7">
-                <PopUpVideo
-                    thumbnail="/images/home-programs-video.png"
-                />
-            </div>
-            <div className="flex flex-col lg:flex-row max-w-7xl mx-auto items-center justify-between">
+            <div className="pt-24 flex flex-col lg:flex-row max-w-7xl mx-auto items-center justify-between">
                 <img src="/images/ben-deductible.png" />
                 <div className="font-mont text-md max-w-xl text-center">
                     Donations to 501(c)(3) nonprofits are tax deductible. Under the IRS code section 170, <b>when you make a donation to
