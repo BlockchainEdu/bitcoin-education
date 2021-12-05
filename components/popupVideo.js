@@ -19,9 +19,9 @@ export default function PopUpVideo(props) {
                     >
                         <div className="relative w-auto my-6 mx-auto max-w-3xl" style={{width:"90%"}}>
                             {/*content*/}
-                            <div className="border-0 pb-14 pt-10 p-3 rounded-2xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                            <div className="border-0 pt-3 rounded-2xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                 {/*header*/}
-                                <div className="flex items-start justify-between p-5 pt-0 rounded-t z-30">
+                                <div className="flex items-start justify-between pb-2 pr-2 pt-0 rounded-t z-30">
                                     <button
                                         className="p-1 ml-auto bg-transparent border-0 hover:bg-bengray-300 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                                         onClick={() => setShowModal(false)}
@@ -32,7 +32,7 @@ export default function PopUpVideo(props) {
                                     </button>
                                 </div>
                                 {/*body*/}
-                                <iframe className="w-full h-60 md:h-96" src="https://player.vimeo.com/video/653049643?h=c1fa5c7bdf&autoplay=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                <iframe className="popup-video-frame rounded-b-xl" src="https://player.vimeo.com/video/653049643?h=c1fa5c7bdf&autoplay=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>

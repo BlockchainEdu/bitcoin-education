@@ -4,6 +4,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { Disclosure } from '@headlessui/react'
 import DonationButtonSmall from '../components/donateButtonSmall'
 import { ChevronRightIcon } from '@heroicons/react/solid'
+import StandardButton from './standardButton'
 
 
 const solutions = [
@@ -39,7 +40,7 @@ export default function MobileDropdown(props) {
       <Popover>
         {({ open }) => (
           <>
-            <Popover.Button className="block" style={{width: '24px'}}>
+            <Popover.Button className="block" style={{ width: '24px' }}>
               <FontAwesomeIcon
                 icon={faBars}
                 className={`${open ? '' : 'text-opacity-70'} mobile-dropdown text-xl text-orange-300 group-hover:text-opacity-80 transition ease-in-out duration-150`}
@@ -54,8 +55,8 @@ export default function MobileDropdown(props) {
                       <a target="_blank" href="https://learn.blockchainedu.org/all-courses">Learn</a>
                     </li>
                     <li>
-                    <li>
-                    <div className="bg-white rounded-2xl">
+                      <li>
+                        <div className="bg-white rounded-2xl">
                           <Disclosure>
                             {({ open }) => (
                               <>
@@ -98,13 +99,13 @@ export default function MobileDropdown(props) {
                             )}
                           </Disclosure>
                         </div>
-                    </li>
-                    </li>
-                    <li>
-                     <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="/programs">Programs</a>
+                      </li>
                     </li>
                     <li>
-                     <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events</a>
+                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="/programs">Programs</a>
+                    </li>
+                    <li>
+                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events</a>
                     </li>
                     <li>
                       <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/sign_in"><b>Login</b></a>
@@ -112,7 +113,12 @@ export default function MobileDropdown(props) {
                   </ul>
                 </div>
                 <div className="bg-white pb-7 text-center">
-                  <DonationButtonSmall />
+                  <StandardButton
+                    link="/donate"
+                    text="Donate"
+                    color="orange"
+                    styling="px-16 py-3"
+                  />
                 </div>
               </div>
             </Popover.Panel>
