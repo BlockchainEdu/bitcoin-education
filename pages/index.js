@@ -118,7 +118,7 @@ export default function Home() {
             community, build careers and mentor.
           </p>
         </div>
-        <img className="m-auto" src="/images/we-do-image-home.png" />
+        <img className="m-auto w-96" src="/images/what-we-do.gif" />
       </section>
       <section className="max-w-7xl m-auto py-24 px-7">
         <div className="flex flex-col lg:flex-row justify-between items-center">
