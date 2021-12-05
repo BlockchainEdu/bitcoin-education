@@ -153,6 +153,7 @@ export default function Home() {
             ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
           </p>
         </div>
+        <img className="m-auto mt-14" src="/images/ben-map.png"/>
       </section>
       <section className="max-w-7xl m-auto py-24 pb-0 lg:pb-14 px-7">
         <div className="flex flex-col lg:flex-row justify-between items-center">
