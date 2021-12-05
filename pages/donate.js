@@ -3,6 +3,7 @@ import DonateOptions from '../components/donateOptions';
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import IndividualProgram from '../components/individualProgram';
+import PopUpVideo from '../components/popupVideo';
 import PopupVideo from '../components/popupVideo';
 import StandardButton from '../components/standardButton';
 
@@ -110,7 +111,7 @@ export default function Donate() {
                     </div>
                     <div className="w-8/12">
                         <div>
-                        
+
                         </div>
                     </div>
                 </div>
@@ -239,7 +240,9 @@ export default function Donate() {
                         </p>
                     </div>
                     <div className="w-full lg:w-6/12 m-auto pb-14 lg:pb-0 flex justify-center">
-                        <PopupVideo />
+                        <PopUpVideo
+                            thumbnail="/images/home-programs-video.png"
+                        />
                     </div>
                 </div>
             </section>
