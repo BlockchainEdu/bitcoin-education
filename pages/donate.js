@@ -34,43 +34,43 @@ const cryptoInfo = [
     {
         name: "Tether",
         tickerName: "USDT",
-        address: "temp address",
+        address: "Coming Soon",
         image: "/images/tether-icon.svg"
     },
     {
         name: "Solana",
         tickerName: "SOL",
-        address: "temp address",
+        address: "Coming Soon",
         image: "/images/solana-icon.svg"
     },
     {
         name: "Filecoin",
         tickerName: "FIL",
-        address: "temp address",
+        address: "Coming Soon",
         image: "/images/filecoin-icon.svg"
     },
     {
         name: "IoTa",
         tickerName: "MIOTA",
-        address: "temp address",
+        address: "Coming Soon",
         image: "/images/iota-icon.svg"
     },
     {
         name: "Augur",
         tickerName: "REP",
-        address: "temp address",
+        address: "Coming Soon",
         image: "/images/augur-icon.svg"
     },
     {
         name: "Ontology",
         tickerName: "ONT",
-        address: "temp address",
+        address: "Coming Soon",
         image: "/images/ontology-icon.svg"
     },
     {
         name: "XRP",
         tickerName: "XRP",
-        address: "temp address",
+        address: "Coming Soon",
         image: "/images/xrp-icon.svg"
     },
     {
@@ -82,7 +82,7 @@ const cryptoInfo = [
     {
         name: "Shiba",
         tickerName: "SHIB",
-        address: "temp address",
+        address: "Coming Soon",
         image: "/images/shiba-icon.svg"
     },
 ]
@@ -127,16 +127,16 @@ export default function Donate() {
                     Please note that all donations made in crypto are nonrefundable.
                 </p>
             </section>
-            <div className="flex justify-center space-x-3 pb-8">
+            <div className="flex flex-col lg:flex-row justify-center space-x-3 pb-8">
                 <StandardButton
                     link="/contact"
                     color="orange"
                     text="Get a Tax Receipt"
-                    styling="px-10"
+                    styling="px-10 flex mx-auto lg:mx-0"
                 />
                 <StandardButton
                     text="Tax Deductions Explained"
-                    styling="px-6"
+                    styling="mt-6 lg:mt-0 px-6 flex mx-auto lg:mx-0"
                 />
             </div>
             <div className="px-7">

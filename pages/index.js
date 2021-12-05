@@ -7,6 +7,7 @@ import Image from 'next/image'
 import FeatureSlider from '../components/featureSlider';
 import StandardButton from '../components/standardButton';
 import DonateOptions from '../components/donateOptions';
+import PopUpVideo from '../components/popupVideo';
 
 const impactStats = [
   {
@@ -45,7 +46,7 @@ export default function Home() {
       <Header />
       <section className="max-w-7xl m-auto pt-0 lg:py-24">
         <img className="m-auto hidden lg:flex" src="/images/ben-home-logo.svg" />
-        <div className="flex flex-col lg:flex-row mt-0 lg:mt-14">
+        <div className="flex flex-col lg:flex-row mt-0 lg:mt-14 items-center">
           <div className="pt-20 lg:pt-0 w-full lg:w-4/12 mx-auto lg:mx-0">
             <div>
               <img className="m-auto" src="/images/ben-home-hero.png" />
@@ -64,12 +65,17 @@ export default function Home() {
               <img className="m-auto mt-5" src="/images/social-underline-orange.png" />
             </div>
           </div>
-          <div className="mt-14 lg:mt-0 w-full lg:w-8/12 mx-auto lg:mx-0 ">
-            <DonateOptions />
+          <div className="mt-14 lg:mt-0 w-full lg:w-8/12 mx-auto lg:mx-0">
+            <div className="rounded-md shadow-2xl max-w-xl flex flex-col justify-center py-14 m-auto">
+              <h1 className="font-mont font-bold text-2xl text-center mb-10 max-w-md mx-auto">Start Support Our Blockchain Initiatives</h1>
+              <div className="flex m-auto">
+                <DonateButton />
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <a href="#what-is"><img className="hidden lg:flex m-auto -mt-10 lg:-mt-32" src="/images/scroll.svg"/></a>
+      <a href="#what-is"><img className="hidden lg:flex m-auto -mt-10 lg:-mt-32" src="/images/scroll.svg" /></a>
       <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-32 px-7">
         <div id="what-is" className="flex justify-center space-x-2 items">
           <div>
@@ -87,8 +93,11 @@ export default function Home() {
           education, and to spur blockchain adoption by empowering student leaders to  bring blockchain
           to their companies and communities through local workshops and online courses.
         </p>
-        <img className="rounded-md shadow-2xl m-auto my-10 mb-14" src="/images/home-programs-video.png" />
+        <div className="m-auto my-10 mb-14 flex justify-center">
+          <PopUpVideo />
+        </div>
         <StandardButton
+          link="/programs"
           text="Programs"
           color="orange"
           styling="px-16 flex m-auto"
@@ -168,13 +177,12 @@ export default function Home() {
               </div>
             </div>
             <div className="m-auto flex content-center justify-center lg:justify-start">
-              <a href="/about">
-                <StandardButton
-                  color="orange"
-                  text="Learn more"
-                  styling="px-12 mt-10"
-                />
-              </a>
+              <StandardButton
+                link="/about"
+                color="orange"
+                text="Learn more"
+                styling="px-12 mt-10"
+              />
             </div>
           </div>
           <div>
