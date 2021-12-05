@@ -76,7 +76,9 @@ export default function Home() {
           to their companies and communities through local workshops and online courses.
         </p>
         <div className="m-auto my-10 mb-14 flex justify-center">
-          <PopUpVideo />
+          <PopUpVideo 
+            thumbnail="/images/video-home-placeholder.jpg"
+          />
         </div>
         <StandardButton
           link="/programs"
@@ -118,26 +120,7 @@ export default function Home() {
         </div>
         <img className="m-auto" src="/images/we-do-image-home.png" />
       </section>
-      <section className="bg-benorange-500 py-14">
-        <div className="max-w-7xl m-auto">
-          <div className="flex flex-col lg:flex-row justify-center space-x-4">
-            <img className="-mt-8 mx-auto lg:mx-0 w-32 lg:w-auto mb-4 lg:mb-0" src="/images/ben-text-logo-black.svg" />
-            <div>
-              <h2 className="font-mont font-black text-3xl lg:text-5xl text-center lg:text-left">
-                Ambassadors
-              </h2>
-              <img className="-mt-2 h-6 lg:h-auto mx-auto lg:mx-0" src="/images/ambassadors-underline-orange.png" />
-            </div>
-          </div>
-          <p className="text-black font-bold text-md text-center m-auto pt-4 max-w-2xl">
-            BEN actively mentors and supports over 200+ blockchain clubs around the
-            world. We educate students about blockchain technology and inspire them to
-            ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
-          </p>
-        </div>
-        <img className="m-auto mt-14" src="/images/ben-map.png" />
-      </section>
-      <section className="max-w-7xl m-auto py-24 pb-0 lg:pb-14 px-7">
+      <section className="max-w-7xl m-auto py-24 px-7">
         <div className="flex flex-col lg:flex-row justify-between items-center">
           <div>
             <div className="font-mont text-center lg:text-left text-xs uppercase pb-7">
@@ -172,6 +155,25 @@ export default function Home() {
             <img className="mt-14 lg:mt-0 mx-auto md:mx-0" src="/images/10-plan-home.png" />
           </div>
         </div>
+      </section>
+      <section className="bg-benorange-500 py-14 mb-14 lg:mb-0">
+        <div className="max-w-7xl m-auto">
+          <div className="flex flex-col lg:flex-row justify-center space-x-4">
+            <img className="-mt-8 mx-auto lg:mx-0 w-32 lg:w-auto mb-4 lg:mb-0" src="/images/ben-text-logo-black.svg" />
+            <div>
+              <h2 className="font-mont font-black text-3xl lg:text-5xl text-center lg:text-left">
+                Ambassadors
+              </h2>
+              <img className="-mt-2 h-6 lg:h-auto mx-auto lg:mx-0" src="/images/ambassadors-underline-orange.png" />
+            </div>
+          </div>
+          <p className="text-black font-bold text-md text-center m-auto pt-4 max-w-2xl px-7">
+            BEN actively mentors and supports over 200+ blockchain clubs around the
+            world. We educate students about blockchain technology and inspire them to
+            ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
+          </p>
+        </div>
+        <img className="m-auto mt-14" src="/images/ben-map.png" />
       </section>
       <Footer />
     </div>

@@ -10,7 +10,7 @@ export default function PopUpVideo(props) {
                 type="button"
                 onClick={() => setShowModal(true)}
             >
-                <img className="rounded-md shadow-2xl" src="/images/home-programs-video.png" />
+                <img className="rounded-md shadow-2xl" src={props.thumbnail} />
             </button>
             {showModal ? (
                 <>
