@@ -46,36 +46,18 @@ export default function Home() {
       <Header />
       <section className="max-w-7xl m-auto pt-0 lg:py-24">
         <img className="m-auto hidden lg:flex" src="/images/ben-home-logo.svg" />
-        <div className="flex flex-col lg:flex-row mt-0 lg:mt-14 items-center">
+        <div className="flex flex-col-reverse lg:flex-row mt-0 lg:mt-14 items-center mx-auto justify-center">
           <div className="pt-20 lg:pt-0 w-full lg:w-4/12 mx-auto lg:mx-0">
             <div>
               <img className="m-auto" src="/images/ben-home-hero.png" />
-              <StandardButton
-                text="Get Involved"
-                color="orange"
-                styling="px-10 m-auto flex mt-3 mb-8"
-              />
-              <div className="grid grid-cols-5 max-w-xs mx-auto px-5">
-                <a target="_blank" href="https://facebook.com/blockchainedu"><img src="/images/facebook-light.svg" /></a>
-                <a target="_blank" href="https://twitter.com/blockchainedu"><img src="/images/twitter-light.svg" /></a>
-                <a target="_blank" href="https://instagram.com/blockchainedu"><img src="/images/instagram-light.svg" /></a>
-                <a target="_blank" href="https://medium.com/blockchainedu"><img src="/images/medium-light.svg" /></a>
-                <a target="_blank" href="https://t.me/blockchainedu"><img src="/images/telegram-light.svg" /></a>
-              </div>
-              <img className="m-auto mt-5" src="/images/social-underline-orange.png" />
-            </div>
-          </div>
-          <div className="mt-14 lg:mt-0 w-full lg:w-8/12 mx-auto lg:mx-0">
-            <div className="rounded-md shadow-2xl max-w-xl flex flex-col justify-center py-14 m-auto">
-              <h1 className="font-mont font-bold text-2xl text-center mb-10 max-w-md mx-auto">Start Support Our Blockchain Initiatives</h1>
-              <div className="flex m-auto">
+              <div className="flex justify-center mt-5">
                 <DonateButton />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <a href="#what-is"><img className="hidden lg:flex m-auto -mt-10 lg:-mt-32" src="/images/scroll.svg" /></a>
+      <a href="#what-is"><img className="hidden lg:flex m-auto -mt-10 lg:-mt-14" src="/images/scroll.svg" /></a>
       <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-32 px-7">
         <div id="what-is" className="flex justify-center space-x-2 items">
           <div>
@@ -103,7 +85,7 @@ export default function Home() {
           styling="px-16 flex m-auto"
         />
       </section>
-      <section className="max-w-7xl -mt-10 lg:-mt-32 m-auto pt-56 lg:pt-48 impact-section px-7">
+      <section className="max-w-7xl mt-10 lg:-mt-32 m-auto pt-56 lg:pt-48 impact-section px-7">
         <div className="max-w-xs mx-auto lg:mx-0">
           <h2 className="font-mont font-black text-center lg:text-left text-4xl lg:text-5xl pt-10 lg:pt-0">
             Our Impact
@@ -153,7 +135,7 @@ export default function Home() {
             ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
           </p>
         </div>
-        <img className="m-auto mt-14" src="/images/ben-map.png"/>
+        <img className="m-auto mt-14" src="/images/ben-map.png" />
       </section>
       <section className="max-w-7xl m-auto py-24 pb-0 lg:pb-14 px-7">
         <div className="flex flex-col lg:flex-row justify-between items-center">
