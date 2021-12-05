@@ -12,6 +12,23 @@
   font-family: "Montser"
 }
 
+
+
+
+@media only screen and (min-width: 600px) {
+  .popup-video-frame {
+    min-height: 27rem;
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .popup-video-frame {
+    min-height: 45vw;
+    height: 100%;
+  }
+}
+
 .what-is-section {
 background-image: url('/images/what-is-bg-icon.png');
 background-repeat: no-repeat;
