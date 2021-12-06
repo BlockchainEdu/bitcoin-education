@@ -6,12 +6,6 @@ import { fetchPostJSON } from '../../utils/api-helpers';
 export default function StripeCCInfoModal(props) {
   const [loading, setLoading] = useState(false);
 
-  function donateNow() {
-    const amount = props.donationAmount.amount;
-    const frequency = props.donationAmount.frequency;
-    alert(`You have donated \$${amount} ${frequency}.`);
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
