@@ -73,8 +73,8 @@ export default function DonateModal(props) {
                     }}
                     id="gift-frequency"
                   >
-                    <div className={selectedFrequency === giftFrequency.monthly && "border rounded-full text-orange text-center"} onClick={() => setSelectedFrequency(giftFrequency.monthly)}>Monthly</div>
-                    <div className={selectedFrequency === giftFrequency.oneTime && "border rounded-full text-orange text-center"} onClick={() => setSelectedFrequency(giftFrequency.oneTime)}>One time</div>
+                    <div className={selectedFrequency === giftFrequency.monthly ? "border rounded-full text-orange text-center" : undefined } onClick={() => setSelectedFrequency(giftFrequency.monthly)}>Monthly</div>
+                    <div className={selectedFrequency === giftFrequency.oneTime ? "border rounded-full text-orange text-center" : undefined } onClick={() => setSelectedFrequency(giftFrequency.oneTime)}>One time</div>
                   </div>
                 </div>
                 <div>

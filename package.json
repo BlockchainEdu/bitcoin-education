@@ -8,30 +8,30 @@
     "start": "next start"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.14",
-    "@headlessui/react": "^1.2.0",
-    "@heroicons/react": "^1.0.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.2",
-    "axios": "^0.21.1",
-    "heroicons-react": "^1.4.0",
-    "mapbox-gl": "^2.3.0",
-    "next": "latest",
+    "axios": "^0.21.4",
+    "heroicons-react": "^1.4.1",
+    "mapbox-gl": "^2.6.1",
+    "next": "^12.0.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-gtm-module": "^2.0.11",
     "react-hero-icon": "0.0.7",
     "react-mailchimp-form": "^1.0.2",
-    "react-modal": "^3.14.2",
+    "react-modal": "^3.14.4",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
     "stripe": "^8.191.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.0.4",
-    "postcss": "^8.1.10",
-    "tailwindcss": "^2.1.1"
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
+    "tailwindcss": "^2.2.19"
   }
 }
