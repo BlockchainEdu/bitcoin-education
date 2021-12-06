@@ -19,6 +19,8 @@ export default function StripeCCInfoModal(props) {
       return
     }
 
+    console.log("ENV variable: " + process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+
     // Redirect to Checkout.
     const stripe = await getStripe()
     const { error } = await stripe.redirectToCheckout({
