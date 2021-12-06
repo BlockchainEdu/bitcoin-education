@@ -9,6 +9,8 @@ export default function StripeCCInfoModal(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
+
+    console.log("ENV variable: " + process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
     // Create a Checkout Session.
     const response = await fetchPostJSON('/api/checkout_sessions', {
       amount: props.donationAmount,
@@ -18,8 +20,6 @@ export default function StripeCCInfoModal(props) {
       console.error(response.message)
       return
     }
-
-    console.log("ENV variable: " + process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
     // Redirect to Checkout.
     const stripe = await getStripe()
