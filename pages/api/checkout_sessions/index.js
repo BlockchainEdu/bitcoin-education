@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next'
 import { formatAmountForStripe } from '../../../utils/stripe-helpers';
 import { giftFrequency } from "../../../components/modals/donateModal";
 

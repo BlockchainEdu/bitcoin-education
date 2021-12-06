@@ -1,4 +1,4 @@
-import { createRef, useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 
 import getStripe from '../../utils/get-stripe';
 import { fetchPostJSON } from '../../utils/api-helpers';
@@ -10,7 +10,6 @@ export default function StripeCCInfoModal(props) {
     e.preventDefault()
     setLoading(true)
 
-    console.log("ENV variable: " + process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
     // Create a Checkout Session.
     const response = await fetchPostJSON('/api/checkout_sessions', {
       amount: props.donationAmount,
