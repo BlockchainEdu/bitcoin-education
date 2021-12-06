@@ -6,6 +6,8 @@ import IndividualProgram from '../components/individualProgram';
 import PopUpVideo from '../components/popupVideo';
 import PopupVideo from '../components/popupVideo';
 import StandardButton from '../components/standardButton';
+import { TeamMemberService } from '../services';
+import React, { useState, useEffect } from 'react';
 
 const cryptoInfo = [
     {
@@ -90,6 +92,43 @@ const cryptoInfo = [
 
 
 export default function Donate() {
+
+    const [globalClick, setGlobalClick] = useState(false);
+    const [teamMembers, setTeamMembers] = useState([]);
+
+    useEffect(async () => {
+        // Get Members list
+        let body = {
+            query: `{
+                boards (ids: 1980354702) {
+                    items {
+                        group {
+                            id
+                            title
+                        }
+                        id
+                        name
+                        column_values {
+                            id
+                            title
+                            value
+                        }
+                        assets {
+                            public_url 
+                        }
+                    }
+                }
+            }`}
+        let result = await TeamMemberService.getMembers(body);
+        if (result?.data?.data?.boards) {
+            console.log(result.data.data.boards[0].items);
+            setTeamMembers(result.data.data.boards[0].items);
+        } else {
+            setTeamMembers([]);
+        }
+
+    }, [setTeamMembers]);
+
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
@@ -142,15 +181,21 @@ export default function Donate() {
                 />
             </div>
             <div className="px-7">
+
                 <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-y-2 m-auto justify-between p-6 py-7" style={{ border: "1px solid #E5E5E5", maxWidth: "880px" }}>
-                    {cryptoInfo.map((item) => (
-                        <CryptoDonateItem
-                            name={item.name}
-                            tickerName={item.tickerName}
-                            address={item.address}
-                            image={item.image}
-                        />
-                    ))}
+                    {teamMembers.length > 0 && teamMembers.map((global, index) => {
+                        return global.group.title == "Crypto" &&
+                            <div key={index}>
+                                <CryptoDonateItem
+                                    name={global.name}
+                                    tickerName={JSON.parse(global.column_values[0].value)}
+                                    address={JSON.parse(global.column_values[3].value)}
+                                    image={global.assets.length > 0 ? global.assets[0]?.public_url : ""}
+                                    qrCode={global.assets.length > 0 ? global.assets[1]?.public_url : ""}
+                                />
+                            </div>
+                    }
+                    )}
                 </div>
             </div>
             <section>

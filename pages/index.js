@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import DonateButton from "../components/donateButton";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import Map from '../components/map'
 import Image from 'next/image'
 import FeatureSlider from '../components/featureSlider';
 import StandardButton from '../components/standardButton';
