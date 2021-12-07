@@ -312,6 +312,10 @@ h1, h2 {
   margin: 0 1rem 3rem 0;
 }
 
+.donate-button-shadow {
+  box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.08);
+}
+
 .subscribe-form button {
   font-family: "Montserrat";
   font-weight: bold;

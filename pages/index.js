@@ -50,12 +50,8 @@ export default function Home() {
             <div>
               <img className="m-auto" src="/images/ben-home-hero.png" />
               <div className="flex justify-center mt-5">
-                <StandardButton 
-                  link="/donate"
-                  text="Donate"
-                  color="orange"
-                  styling="px-16"
-                />
+
+                <DonateButton />
               </div>
             </div>
           </div>
