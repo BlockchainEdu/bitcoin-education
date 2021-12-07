@@ -7,12 +7,13 @@ export const giftFrequency = {
 
 export default function DonateModal(props) {
   const [selectedFrequency, setSelectedFrequency] = useState(giftFrequency.monthly);
+  const [selectedAmount, setSelectedAmount] = useState(props.minDonationAmount);
+  const [numStudents, setNumStudents] = useState(1);
   const sliderRef = createRef();
   const sliderCoverRef = createRef();
   const sliderCoverLeftArrow = createRef();
   const sliderCoverAmountRef = createRef();
   const sliderCoverRightArrow = createRef();
-  let mouseDownTime = 0;
 
   function moveDonationSlider(event) {
     const xPosition = sliderRef.current.getBoundingClientRect().x;
@@ -20,6 +21,7 @@ export default function DonateModal(props) {
     const maxValue = sliderRef.current.max;
     const currValue = sliderRef.current.value;
     const currPercentage = 100 * currValue / (maxValue - minValue);
+    setSelectedAmount(currValue);
     sliderCoverRef.current.style.left = `${Math.max( currPercentage - 30, 0 )}%`;
     sliderCoverAmountRef.current.innerHTML = `\$${currValue}`;
     sliderCoverLeftArrow.current.style.color = "black";
@@ -30,17 +32,6 @@ export default function DonateModal(props) {
     if ( currValue === maxValue ) {
       sliderCoverRightArrow.current.style.color = "gray";
     }
-  }
-
-  function setMouseDownTime() {
-    mouseDownTime = Date.now();
-  }
-
-  function doSliderClickActions() {
-    const maxTimeForClick = 100;
-    const didClick = Date.now() - mouseDownTime < maxTimeForClick;
-    if ( !didClick ) { return; }
-    props.sliderClick();
   }
 
   function dontPropagateClick(event) {
@@ -78,19 +69,19 @@ export default function DonateModal(props) {
                   </div>
                 </div>
                 <div>
-                  <div className="uppercase mb-8">
-                    Select Amount
+                  <div className="uppercase mb-8 grid grid-cols-2">
+                    <div>Select Amount</div>
+                    <div className="hover:cursor-pointer text-orange text-right" onClick={() => props.otherClick()}>Other</div>
                   </div>
                   <div className="slidecontainer relative">
                     <div className="donation-slider-track relative z-0"></div>
                     <div className="donation-slider-cover absolute top-0 z-1" ref={sliderCoverRef}>
                       <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
-                      <span className="dollar-amount" ref={sliderCoverAmountRef}>$10</span>
+                      <span className="dollar-amount" ref={sliderCoverAmountRef}>${props.startingDonationAmount}</span>
                       <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
                     </div>
-                    <input type="range" min={props.minDonationAmount} max={props.maxDonationAmount}
+                    <input type="range" min={props.minDonationAmount} max={props.maxDonationAmount} step={props.step}
                            className="slider relative z-10" id="donation-slider" defaultValue={props.startingDonationAmount}
-                           onMouseDown={setMouseDownTime} onMouseUp={doSliderClickActions}
                            onChange={moveDonationSlider} ref={sliderRef} />
                   </div>
                 </div>
@@ -98,8 +89,8 @@ export default function DonateModal(props) {
               <div className="text-center mt-8">
                 <button
                   className="bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl px-16 rounded-full py-4"
-                  type="button"
-                  onClick={() => props.buttonClick(sliderRef.current.value, selectedFrequency)}
+                  type="button" disabled={props.loading}
+                  onClick={() => props.buttonClick({ amount: selectedAmount * 1.00, frequency: selectedFrequency })}
                 >
                   Donate Now
                 </button>
@@ -115,9 +106,17 @@ export default function DonateModal(props) {
                     Give with Crypto
                   </button>
                 </a>
+                <a className="text-center" target="_blank" href="#">
+                  <button className="text-orange">
+                    Give with Wire Transfer
+                  </button>
+                </a>
               </div>
             </div>
-            <p className="p-6">By donating, you agree to our <b>terms of service</b> and <b>privacy policy</b></p>
+            <div className="grid grid-cols-2">
+              <p className="p-6">Your <b>${selectedFrequency === giftFrequency.monthly ? selectedAmount + " monthly" : selectedAmount}</b> donation can educate { Math.floor(selectedAmount / 20) } students.</p>
+              <p className="p-6">By donating, you agree to our <b>terms of service</b> and <b>privacy policy.</b></p>
+            </div>
           </div>
         </div>
       </div>

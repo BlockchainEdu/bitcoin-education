@@ -1,4 +1,5 @@
-import { createRef, useCallback, useEffect, useState } from "react";
+import { createRef, useState } from "react";
+import { giftFrequency } from "./donateModal";
 
 export default function OtherModal(props) {
   const donationAmountRef = createRef();
@@ -35,13 +36,13 @@ export default function OtherModal(props) {
             {/*body*/}
             <div className="relative p-6 flex-auto">
               <div>
-                <input type="number" className="dollar-amount border border-gray bg-gray rounded-full py-2 pl-8 pr-4 w-full" step="0.01" onBlur={formatCurrency} ref={donationAmountRef} />
+                <input type="number" className="dollar-amount border border-gray bg-gray rounded-full py-2 pl-8 pr-4 w-full" step="0.01" placeholder="0.00" onBlur={formatCurrency} ref={donationAmountRef} required />
               </div>
               <div className="mt-8 text-center">
                 <button
                   className="bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl px-16 rounded-full py-4"
-                  type="button"
-                  onClick={() => props.buttonClick(donationAmountRef.current.value)}
+                  type="button" disabled={props.loading}
+                  onClick={() => props.buttonClick({ amount: donationAmountRef.current.value, frequency: giftFrequency.oneTime })}
                 >
                   Confirm Amount
                 </button>
