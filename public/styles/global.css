@@ -109,6 +109,49 @@
   position: relative;
 }
 
+.popup {
+  background: #00baff !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  cursor: pointer;
+}
+
+.marker {
+  background: #00baff !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  .popup-video-frame {
+    min-height: 27rem;
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .popup-video-frame {
+    min-height: 45vw;
+    height: 100%;
+  }
+}
+
+.what-is-section {
+background-image: url('/images/what-is-bg-icon.png');
+background-repeat: no-repeat;
+background-position: top right;
+
+}
+
+.impact-section {
+background-image: url('/images/impact-bg-icon.png');
+background-repeat: no-repeat;
+background-position: top right;
+}
+
 #about-page .navdropdown {
   color: #000;
 }
