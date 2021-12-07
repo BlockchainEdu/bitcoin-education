@@ -7,13 +7,19 @@ export const giftFrequency = {
 
 export default function DonateModal(props) {
   const [selectedFrequency, setSelectedFrequency] = useState(giftFrequency.monthly);
-  const [selectedAmount, setSelectedAmount] = useState(props.minDonationAmount);
+  const [selectedAmount, setSelectedAmount] = useState(props.startingDonationAmount);
   const [numStudents, setNumStudents] = useState(1);
   const sliderRef = createRef();
   const sliderCoverRef = createRef();
   const sliderCoverLeftArrow = createRef();
   const sliderCoverAmountRef = createRef();
   const sliderCoverRightArrow = createRef();
+
+  useEffect(() => {
+    const currPercentage =
+          Math.min( 100, 100 * selectedAmount / (props.maxDonationAmount - props.minDonationAmount) );
+    sliderCoverRef.current.style.left = `${Math.max( currPercentage - 30, 0 )}%`;
+  });
 
   function moveDonationSlider(event) {
     const xPosition = sliderRef.current.getBoundingClientRect().x;

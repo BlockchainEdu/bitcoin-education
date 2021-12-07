@@ -13,19 +13,25 @@ const modalTypes = {
 }
 
 export default function Modal() {
-  const [showModal, setShowModal] = useState(modalTypes.none);
-  const [donationAmount, setDonationAmount] = useState({ amount: 0.00, frequency: giftFrequency.oneTime });
-  const [loading, setLoading] = useState(false);
   const minDonationAmount = 50;
   const maxDonationAmount = 5000;
   const step = 50;
   const startingDonationAmount = 50;
+  const [showModal, setShowModal] = useState(modalTypes.none);
+  const [donationAmount, setDonationAmount] = useState({ amount: startingDonationAmount, frequency: giftFrequency.oneTime });
+  const [loading, setLoading] = useState(false);
 
   function openOtherModal() {
     setShowModal(modalTypes.other);
   }
   function closeModal() {
     setShowModal(modalTypes.none);
+  }
+  function openDonateModal(amount = false) {
+    if (amount !== false) {
+      setDonationAmount({ ...donationAmount, amount })
+    }
+    setShowModal(modalTypes.donate);
   }
   async function handleSubmit(amount) {
     setLoading(true);
@@ -66,11 +72,11 @@ export default function Modal() {
       </button>
       {showModal === modalTypes.donate && (
         <DonateModal minDonationAmount={minDonationAmount} maxDonationAmount={maxDonationAmount}
-                     startingDonationAmount={startingDonationAmount} step={step} otherClick={openOtherModal}
+                     startingDonationAmount={donationAmount.amount} step={step} otherClick={openOtherModal}
                      buttonClick={handleSubmit} closeModal={closeModal} loading={loading} />
       )}
       {showModal === modalTypes.other && (
-        <OtherModal buttonClick={handleSubmit} closeModal={closeModal} loading={loading} />
+        <OtherModal buttonClick={openDonateModal} closeModal={closeModal} loading={loading} />
       )}
     </>
   );

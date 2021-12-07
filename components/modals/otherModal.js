@@ -3,12 +3,14 @@ import { giftFrequency } from "./donateModal";
 
 export default function OtherModal(props) {
   const donationAmountRef = createRef();
+  const [donationAmount, setDonationAmount] = useState(props.donationAmount);
 
   function formatCurrency() {
     const value = donationAmountRef.current.value;
     const valueNumericOnly = value.replace(/[^0-9\.]+/g,'').split('.')[0] + '.00';
     if ( value === valueNumericOnly ) { return; }
     donationAmountRef.current.value = valueNumericOnly;
+    setDonationAmount(valueNumericOnly);
   }
 
   return (
@@ -42,7 +44,7 @@ export default function OtherModal(props) {
                 <button
                   className="bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl px-16 rounded-full py-4"
                   type="button" disabled={props.loading}
-                  onClick={() => props.buttonClick({ amount: donationAmountRef.current.value, frequency: giftFrequency.oneTime })}
+                  onClick={() => props.buttonClick( donationAmount )}
                 >
                   Confirm Amount
                 </button>
