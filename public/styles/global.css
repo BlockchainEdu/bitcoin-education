@@ -40,6 +40,7 @@
 }
 /* The slider itself */
 #donation-slider {
+  outline: none !important;
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   background: transparent;
@@ -85,11 +86,11 @@
 }
 
 #donation-slider:focus-visible {
-  outline: none;
+  outline: none !important;
 }
 
 #donation-slider::-webkit-slider-thumb:focus-visible {
-  outline: none;
+  outline: none !important;
 }
 
 #donation-slider::-webkit-slider-thumb {
@@ -100,10 +101,11 @@
   background: transparent;
   cursor: ew-resize; /* Cursor on hover */
   position: relative;
+  outline: none !important;
 }
 
 #donation-slider::-moz-slider-thumb:focus-visible {
-  outline: none;
+  outline: none !important;
 }
 
 #donation-slider::-moz-range-thumb {
@@ -113,6 +115,7 @@
   cursor: ew-resize; /* Cursor on hover */
   padding: 1.25rem 2.5rem;
   position: relative;
+  outline: none !important;
 }
 
 .popup {
