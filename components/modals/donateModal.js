@@ -42,15 +42,15 @@ export default function DonateModal(props) {
 
   return (
     <>
-      <div className="relative w-auto my-6 mx-auto max-w-3xl">
+      <div className="relative w-auto mx-auto max-w-2xl">
         {/*content*/}
-        <div className="border-0 donation-modal rounded-2xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <div className="border-0 donation-modal rounded-2xl shadow-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
           {/*body*/}
-          <div className="relative w-auto my-6">
+          <div className="relative w-auto">
             {/*content*/}
             <div className="border-0 donation-modal rounded-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
               {/*body*/}
-              <div className="relative p-10 flex-auto">
+              <div className="relative p-5 flex-auto">
                 <div className="hidden md:grid md:grid-cols-2 " id="gift-grid">
                   <div>
                     <div className="uppercase mb-8">

@@ -44,10 +44,22 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <section className="max-w-7xl m-auto pt-0 lg:py-24">
+      <section className="py-24">
+        <h1 className="font-mont font-black text-2xl text-center">
+        Help us educate 10 million people in 10 years about blockchain
+        </h1>
+        <p className="font-mont font-medium text-md text-center max-w-3xl mx-auto mt-10" style={{lineHeight: "26px"}}>
+          Join us in our mission to help bring blockchain education  to 10 million people by 2031.
+          Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over 
+          1.7 Billion Adults worldwide who don't have access to a bank account.
+        </p>
+        <p className="font-mont font-medium text-sm text-gray-400 text-center max-w-2xl mx-auto mb-10" style={{lineHeight: "26px"}}>
+          Help us to provide borderless blockchain education, empowering leaders to bring 
+          blockchain to their companies and communities.
+        </p>
         <Modal/>
       </section>
-      <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-32 px-7">
+      <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-14 px-7 -mt-4">
         <div id="what-is" className="flex justify-center space-x-2 items">
           <div>
             <h2 className="font-mont font-black text-4xl lg:text-5xl">
