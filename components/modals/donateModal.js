@@ -114,7 +114,7 @@ export default function DonateModal(props) {
                       Give with Crypto
                     </button>
                   </a>
-                  <a className="text-center" target="_blank" href="#">
+                  <a className="text-center" target="_blank" href="/images/ben-wire-details.pdf">
                     <button className="text-orange">
                       Give with Wire Transfer
                     </button>
