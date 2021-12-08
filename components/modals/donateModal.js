@@ -16,6 +16,7 @@ export default function DonateModal(props) {
   const sliderCoverRightArrow = createRef();
 
   useEffect(() => {
+    setSelectedAmount(props.startingDonationAmount);
     const currPercentage =
       Math.min(100, 100 * selectedAmount / (props.maxDonationAmount - props.minDonationAmount));
     sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
