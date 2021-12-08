@@ -112,7 +112,7 @@ export default function DonateModal(props) {
             </div>
             <div className="grid grid-cols-2">
               <p className="p-6">Your <b>${selectedFrequency === giftFrequency.monthly ? selectedAmount + " monthly" : selectedAmount}</b> donation can educate { Math.floor(selectedAmount / 50) } students.</p>
-              <p className="p-6">By donating, you agree to our <b>terms of service</b> and <b>privacy policy.</b></p>
+              <p className="p-6">By donating, you agree to our <b>terms of service</b> and <b>privacy policy. </b></p>
             </div>
           </div>
         </div>

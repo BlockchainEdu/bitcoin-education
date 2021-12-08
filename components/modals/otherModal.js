@@ -50,7 +50,7 @@ export default function OtherModal(props) {
                 </button>
               </div>
             </div>
-            <p className="p-6 pt-0 text-center">Upon hitting confirm, you will be redirected back.<br/>This does not complete your donation.</p>
+            <p className="p-6 pt-0 text-center">Upon hitting confirm, you will be redirected back.<br/>This does not complete your donation. </p>
           </div>
         </div>
       </div>
