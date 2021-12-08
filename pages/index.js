@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <section className="py-24">
+      <section className="py-24 px-4">
         <h1 className="font-mont font-black text-2xl text-center">
         Help us educate 10 million people in 10 years about blockchain
         </h1>
