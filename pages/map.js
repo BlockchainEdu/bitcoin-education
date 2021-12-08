@@ -1,8 +1,6 @@
-
 import { TeamMemberService } from '../services';
 import Footer from '../components/footer';
 import HeaderWithLogo from '../components/headerWithLogo';
-import InteractiveMap2 from '../components/interactiveMap';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 import dynamic from "next/dynamic";
@@ -46,7 +44,7 @@ export default function MapPage() {
         const fetchedLocations = result.data.data.boards[0].items.map(item => {
           return {
             id: item.id,
-            center: [parseFloat(item.column_values[1].value.replace("\"", "")), parseFloat(item.column_values[2].value.replace("\"", ""))],
+            center: [parseFloat(item.column_values[2].value.replace("\"", "")), parseFloat(item.column_values[1].value.replace("\"", ""))],
             place_name: item.column_values[0].value,
           };
         });

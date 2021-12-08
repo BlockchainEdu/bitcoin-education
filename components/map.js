@@ -6,9 +6,9 @@ export default function Map({ locations }) {
     width: "100%",
     height: "100%",
     // The latitude and longitude of the center of London
-    latitude: 51.5074,
-    longitude: -0.1278,
-    zoom: 10
+    latitude: 0,
+    longitude: 0,
+    zoom: 1
   });
 
   const [selectLocation, setSelectedLocation] = useState({});
