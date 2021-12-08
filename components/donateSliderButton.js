@@ -62,11 +62,9 @@ export default function Modal() {
 
   return (
     <>
-      {showModal === modalTypes.donate && (
-        <DonateModal minDonationAmount={minDonationAmount} maxDonationAmount={maxDonationAmount}
-                     startingDonationAmount={donationAmount.amount} step={step} otherClick={openOtherModal}
-                     buttonClick={handleSubmit} closeModal={closeModal} loading={loading} />
-      )}
+      <DonateModal minDonationAmount={minDonationAmount} maxDonationAmount={maxDonationAmount}
+                   startingDonationAmount={donationAmount.amount} step={step} otherClick={openOtherModal}
+                   buttonClick={handleSubmit} closeModal={closeModal} loading={loading} />
       {showModal === modalTypes.other && (
         <OtherModal buttonClick={openDonateModal} closeModal={closeModal} loading={loading} />
       )}
