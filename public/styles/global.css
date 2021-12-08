@@ -84,6 +84,14 @@
   opacity: 1; /* Fully shown on mouse-over */
 }
 
+#donation-slider:focus {
+  outline: none;
+}
+
+#donation-slider::-webkit-slider-thumb:focus {
+  outline: none;
+}
+
 #donation-slider::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
@@ -92,6 +100,10 @@
   background: transparent;
   cursor: ew-resize; /* Cursor on hover */
   position: relative;
+}
+
+#donation-slider::-moz-slider-thumb:focus {
+  outline: none;
 }
 
 #donation-slider::-moz-range-thumb {
