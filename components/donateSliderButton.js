@@ -28,7 +28,7 @@ export default function Modal() {
   }
   function openDonateModal(amount = false) {
     if (amount !== false) {
-      setDonationAmount({ ...donationAmount, amount })
+      setDonationAmount({ ...donationAmount, amount });
     }
     setShowModal(modalTypes.donate);
   }
