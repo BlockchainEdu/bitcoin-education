@@ -84,11 +84,11 @@
   opacity: 1; /* Fully shown on mouse-over */
 }
 
-#donation-slider:focus {
+#donation-slider:focus-visible {
   outline: none;
 }
 
-#donation-slider::-webkit-slider-thumb:focus {
+#donation-slider::-webkit-slider-thumb:focus-visible {
   outline: none;
 }
 
@@ -102,7 +102,7 @@
   position: relative;
 }
 
-#donation-slider::-moz-slider-thumb:focus {
+#donation-slider::-moz-slider-thumb:focus-visible {
   outline: none;
 }
 
