@@ -7,7 +7,7 @@ export const giftFrequency = {
 
 export default function DonateModal(props) {
   const [selectedFrequency, setSelectedFrequency] = useState(giftFrequency.monthly);
-  const [selectedAmount, setSelectedAmount] = useState(props.startingDonationAmount);
+  const [selectedAmount, setSelectedAmount] = useState(props.startingDonationAmount.amount);
   const [numStudents, setNumStudents] = useState(1);
   const sliderRef = createRef();
   const sliderCoverRef = createRef();
@@ -16,9 +16,8 @@ export default function DonateModal(props) {
   const sliderCoverRightArrow = createRef();
 
   useEffect(() => {
-    setSelectedAmount(props.startingDonationAmount);
     const currPercentage =
-      Math.min(100, 100 * selectedAmount / (props.maxDonationAmount - props.minDonationAmount));
+          Math.min(100, 100 * props.startingDonationAmount.amount / (props.maxDonationAmount - props.minDonationAmount));
     sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
   });
 
@@ -85,11 +84,11 @@ export default function DonateModal(props) {
                       <div className="donation-slider-track relative z-0"></div>
                       <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl" ref={sliderCoverRef}>
                         <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
-                        <span className="dollar-amount" ref={sliderCoverAmountRef}>${props.startingDonationAmount}</span>
+                        <span className="dollar-amount" ref={sliderCoverAmountRef}>${props.startingDonationAmount.amount}</span>
                         <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
                       </div>
                       <input type="range" min={props.minDonationAmount} max={props.maxDonationAmount} step={props.step}
-                        className="slider relative z-10" id="donation-slider" defaultValue={props.startingDonationAmount}
+                             className="slider relative z-10" id="donation-slider" defaultValue={props.startingDonationAmount.amount}
                         onChange={moveDonationSlider} ref={sliderRef} />
                     </div>
                   </div>
