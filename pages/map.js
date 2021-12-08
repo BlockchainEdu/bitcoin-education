@@ -1,6 +1,9 @@
+
+import { TeamMemberService } from '../services';
 import Footer from '../components/footer';
 import HeaderWithLogo from '../components/headerWithLogo';
-import InteractiveMap from '../components/interactiveMap';
+import InteractiveMap2 from '../components/interactiveMap';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 import dynamic from "next/dynamic";
 import styled from "styled-components";
@@ -11,12 +14,51 @@ const Map = dynamic(() => import("../components/map"), {
   ssr: false
 });
 
-const url = `https://api.mapbox.com/geocoding/v5/
-mapbox.places/greggs.json?access_token=${process.env.MAPBOX_KEY}
-&bbox=-0.227654%2C51.464102%2C0.060737%2C51.553421&limit=10`;
-
 export default function MapPage() {
   const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    const fetchLocations = async () => {
+      const body = {
+        query: `{
+            boards (ids: 1983862095) {
+                items {
+                    group {
+                        id
+                        title
+                    }
+                    id
+                    name
+                    column_values {
+                        id
+                        title
+                        value
+                    }
+                    assets {
+                        public_url
+                    }
+                }
+            }
+        }`
+      };
+      const result = await TeamMemberService.getMembers(body);
+      if (result?.data?.data?.boards) {
+        const fetchedLocations = result.data.data.boards[0].items.map(item => {
+          return {
+            id: item.id,
+            center: [parseFloat(item.column_values[1].value.replace("\"", "")), parseFloat(item.column_values[2].value.replace("\"", ""))],
+            place_name: item.column_values[0].value,
+          };
+        });
+        console.log(fetchedLocations);
+        setLocations(fetchedLocations);
+      } else {
+        setLocations([]);
+      }
+    };
+    fetchLocations();
+  }, []);
+
   return (
     <div id="map-page">
       <HeaderWithLogo />
@@ -28,19 +70,6 @@ export default function MapPage() {
       <Footer />
     </div>
   )
-
-  useEffect(() => {
-    const fetchLocations = async () => {
-      await fetch(url)
-        .then((response) => response.text())
-        .then((res) => JSON.parse(res))
-        .then((json) => {
-          setLocations(json.features);
-        })
-        .catch((err) => console.log({ err }));
-    };
-    fetchLocations();
-  }, []);
 }
 
 const Container = styled.div`

@@ -6,7 +6,7 @@ export default function HeaderWithLogo() {
     return (
         <section className="pt-3 md:pt-10 mx-7">
             <Head>
-                <link rel="shortcut icon" href="" />
+           <link rel="shortcut icon" href="" />
             </Head>
             <div className="block md:hidden">
              <MobileNav />   

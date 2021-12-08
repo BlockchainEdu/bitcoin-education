@@ -2,7 +2,7 @@ import { TeamMemberService } from '../services';
 
 import React, { useState, useEffect } from 'react';
 
-export default function InteractiveMap() {
+export default function InteractiveMap2() {
 
   const [globalClick, setGlobalClick] = useState(false);
   const [teamMembers, setTeamMembers] = useState([]);

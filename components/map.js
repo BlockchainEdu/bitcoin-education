@@ -16,7 +16,7 @@ export default function Map({ locations }) {
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/mapbox/streets-v11"
-      mapboxApiAccessToken={process.env.MAPBOX_KEY}
+      mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
