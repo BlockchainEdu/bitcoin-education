@@ -7,8 +7,8 @@ export default function OtherModal(props) {
 
   function formatCurrency() {
     const value = donationAmountRef.current.value;
-    const valueNumericOnly = value.replace(/[^0-9\.]+/g,'').split('.')[0] + '.00';
-    if ( value === valueNumericOnly ) { return; }
+    const valueNumericOnly = value.replace(/[^0-9\.]+/g, '').split('.')[0] + '.00';
+    if (value === valueNumericOnly) { return; }
     donationAmountRef.current.value = valueNumericOnly;
     setDonationAmount(valueNumericOnly);
   }
@@ -18,11 +18,11 @@ export default function OtherModal(props) {
       <div
         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none mx-3 md:mx-0"
       >
-        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+        <div className="relative w-auto my-6 mx-auto max-w-xl" style={{ width: "100%" }}>
           {/*content*/}
           <div className="border-0 donation-modal rounded-2xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
-            <div className="flex items-start justify-between p-5 rounded-t">
+            <div className="flex items-center justify-between p-5 rounded-t">
               <h3 className="text-3xl font-mont font-bold">
                 Other
               </h3>
@@ -31,7 +31,7 @@ export default function OtherModal(props) {
                 onClick={props.closeModal}
               >
                 <span className="bg-gray rounded-full h-3 w-3 text-black">
-                  ×
+                  <img src="/images/close-button.svg" />
                 </span>
               </button>
             </div>
@@ -42,15 +42,15 @@ export default function OtherModal(props) {
               </div>
               <div className="mt-8 text-center">
                 <button
-                  className="bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl px-16 rounded-full py-4"
+                  className="bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl px-8 rounded-full py-4"
                   type="button" disabled={props.loading}
-                  onClick={() => props.buttonClick( donationAmount )}
+                  onClick={() => props.buttonClick(donationAmount)}
                 >
                   Confirm Amount
                 </button>
               </div>
             </div>
-            <p className="p-6 pt-0 text-center">Upon hitting confirm, you will be redirected back.<br/>This does not complete your donation. </p>
+            <p className="p-6 pt-0 text-center font-mont text-xs" style={{color:"#333333", lineHeight:"20px"}}>Upon hitting confirm, you will be redirected back.<br />This does not complete your donation.</p>
           </div>
         </div>
       </div>
