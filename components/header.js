@@ -7,7 +7,7 @@ export default function HeaderWithLogo() {
     <section className="pt-3 md:pt-10 mx-7">
       <Head>
         <link rel="shortcut icon" href="" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
       </Head>
       <div className="block md:hidden">
         <MobileNav />
