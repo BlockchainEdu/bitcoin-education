@@ -4,6 +4,7 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import Image from 'next/image'
 import FeatureSlider from '../components/featureSlider';
+import Modal from '../components/donateSliderButton';
 import StandardButton from '../components/standardButton';
 import DonateOptions from '../components/donateOptions';
 import PopUpVideo from '../components/popupVideo';
@@ -44,22 +45,7 @@ export default function Home() {
     <div className="overflow-hidden">
       <Header />
       <section className="max-w-7xl m-auto pt-0 lg:py-24">
-        <img className="m-auto hidden lg:flex" src="/images/ben-home-logo.svg" />
-        <div className="flex flex-col-reverse lg:flex-row mt-0 lg:mt-14 items-center mx-auto justify-center">
-          <div className="pt-20 lg:pt-0 w-full lg:w-4/12 mx-auto lg:mx-0">
-            <div>
-              <img className="m-auto" src="/images/ben-home-hero.png" />
-              <div className="flex justify-center mt-5">
-                <StandardButton 
-                  link="/donate"
-                  text="Donate"
-                  color="orange"
-                  styling="px-16"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+        <Modal/>
       </section>
       <a href="#what-is"><img className="hidden lg:flex m-auto -mt-10 lg:-mt-14" src="/images/scroll.svg" /></a>
       <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-32 px-7">

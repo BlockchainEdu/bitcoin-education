@@ -40,18 +40,9 @@ export default function DonateModal(props) {
     }
   }
 
-  function dontPropagateClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
-
   return (
     <>
-      <div
-        className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none mx-3 md:mx-0"
-        onClick={props.closeModal}
-      >
-        <div className="relative w-auto my-6 mx-auto max-w-3xl" onClick={dontPropagateClick}>
+        <div className="relative w-auto my-6 mx-auto max-w-3xl">
           {/*content*/}
           <div className="border-0 donation-modal rounded-2xl shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*body*/}
@@ -120,13 +111,11 @@ export default function DonateModal(props) {
               </div>
             </div>
             <div className="grid grid-cols-2">
-              <p className="p-6">Your <b>${selectedFrequency === giftFrequency.monthly ? selectedAmount + " monthly" : selectedAmount}</b> donation can educate { Math.floor(selectedAmount / 20) } students.</p>
+              <p className="p-6">Your <b>${selectedFrequency === giftFrequency.monthly ? selectedAmount + " monthly" : selectedAmount}</b> donation can educate { Math.floor(selectedAmount / 50) } students.</p>
               <p className="p-6">By donating, you agree to our <b>terms of service</b> and <b>privacy policy.</b></p>
             </div>
           </div>
         </div>
-      </div>
-      <div className="button-overlay opacity-75 fixed inset-0 z-40 bg-black"></div>
     </>
   );
 }
