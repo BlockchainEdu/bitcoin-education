@@ -127,7 +127,7 @@ export default function DonateModal(props) {
               </div>
             </div>
             <div className="flex justify-center space-x-10 mt-3 mb-6">
-              <p className="w-5/12 font-mont text-xs text-center" style={{ maxWidth: "245px" }}>Your <b>${selectedFrequency === giftFrequency.monthly ? selectedAmount + " monthly" : selectedAmount}</b> donation can educate {Math.floor(selectedAmount / 20)} students.</p>
+              <p className="w-5/12 font-mont text-xs text-center" style={{ maxWidth: "245px" }}>Your <b>${selectedFrequency === giftFrequency.monthly ? selectedAmount + " monthly" : selectedAmount}</b> donation can educate {Math.floor(selectedAmount / 40)} students.</p>
               <div className="h-10 w-1 bg-gray-100"></div>
               <p className="w-5/12 font-mont text-xs text-center" style={{ maxWidth: "245px" }}>By donating, you agree to our <b>terms of service</b> and <b>privacy policy.</b></p>
             </div>
