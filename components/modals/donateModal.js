@@ -16,10 +16,12 @@ export default function DonateModal(props) {
   const sliderCoverRightArrow = createRef();
 
   useEffect(() => {
+    setSelectedAmount(props.startingDonationAmount.amount);
     const currPercentage =
           Math.min(100, 100 * props.startingDonationAmount.amount / (props.maxDonationAmount - props.minDonationAmount));
     sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
-  });
+    sliderCoverAmountRef.current.innerHTML = `\$${Math.floor(props.startingDonationAmount.amount)}`;
+  }, [props.startingDonationAmount]);
 
   function moveDonationSlider(event) {
     const xPosition = sliderRef.current.getBoundingClientRect().x;
@@ -50,7 +52,7 @@ export default function DonateModal(props) {
             {/*content*/}
             <div className="border-0 donation-modal rounded-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
               {/*body*/}
-              <div className="relative p-5 flex-auto">
+              <div className="relative p-2 md:p-5 flex-auto">
                 <div className="hidden md:grid md:grid-cols-2 " id="gift-grid">
                   <div>
                     <div className="uppercase mb-8">
@@ -71,7 +73,8 @@ export default function DonateModal(props) {
                     style={{
                       borderColor: "#CCC",
                       fontFamily: "sans-serif",
-                      width: 300
+                      maxWidth: "300px",
+                      width: "100%"
                     }}
                     id="gift-frequency"
                   >
@@ -84,11 +87,11 @@ export default function DonateModal(props) {
                       <div className="donation-slider-track relative z-0"></div>
                       <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl" ref={sliderCoverRef}>
                         <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
-                        <span className="dollar-amount" ref={sliderCoverAmountRef}>${props.startingDonationAmount.amount}</span>
+                        <span className="dollar-amount" ref={sliderCoverAmountRef}>${selectedAmount}</span>
                         <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
                       </div>
                       <input type="range" min={props.minDonationAmount} max={props.maxDonationAmount} step={props.step}
-                             className="slider relative z-10" id="donation-slider" defaultValue={props.startingDonationAmount.amount}
+                             className="slider relative z-10" id="donation-slider" defaultValue={selectedAmount}
                         onChange={moveDonationSlider} ref={sliderRef} />
                     </div>
                   </div>
@@ -114,7 +117,7 @@ export default function DonateModal(props) {
                       Give with Crypto
                     </button>
                   </a>
-                  <a className="text-center" target="_blank" href="#">
+                  <a className="text-center" target="_blank" href="/images/ben-wire-details.pdf">
                     <button className="text-orange">
                       Give with Wire Transfer
                     </button>
