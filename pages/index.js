@@ -62,10 +62,10 @@ export default function Home() {
         </p>
         <Modal />
       </section>
-      <section className="what-is-section pt-72 lg:pt-14 px-7 -mt-4">
-        <div className="max-w-7xl mx-auto">
+      <section className="what-is-section pt-14 lg:pt-14 px-7 -mt-4">
+        <div>
           <div id="what-is" className="flex justify-center space-x-2 items">
-            <div>
+            <div className="max-w-7xl">
               <h2 className="font-mont font-black text-4xl lg:text-5xl">
                 What is
               </h2>
