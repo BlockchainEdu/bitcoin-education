@@ -146,10 +146,16 @@
 }
 
 .what-is-section {
-background-image: url('/images/what-is-bg-icon.png');
+background-image: url('/images/ben-why-bg.svg');
 background-repeat: no-repeat;
-background-position: top right;
+background-size: 100%;
+background-position: top center;
+}
 
+@media only screen and (max-width: 780px) {
+  .what-is-section {
+    background-image: none !important;
+  }
 }
 
 .impact-section {
