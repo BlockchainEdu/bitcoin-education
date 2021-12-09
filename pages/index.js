@@ -44,10 +44,13 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <section className="py-24 px-4">
+      <section className="py-24 px-7">
         <h1 className="font-mont font-black text-2xl text-center">
           Help us educate 10 million people in 10 years about blockchain
         </h1>
+        <div className="mx-auto max-w-xl">
+          <img className="mx-auto md:mr-0 lg:ml-auto" src="/images/hero-headline-underline.png" />
+        </div>
         <p className="font-mont font-medium text-md text-center max-w-3xl mx-auto mt-10" style={{ lineHeight: "26px" }}>
           Join us in our mission to help bring blockchain education  to 10 million people by 2031.
           Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over
@@ -113,7 +116,7 @@ export default function Home() {
             <h2 className="font-mont font-black text-center lg:text-left text-4xl lg:text-5xl">
               What we do?
             </h2>
-            <img className="ml-auto mr-20 h-4 lg:-mt-4 lg:mr-6" src="/images/we-do-underline-orange.png" />
+            <img className="ml-auto mr-20 h-4 lg:h-auto lg:-mt-4 lg:mr-6" src="/images/we-do-underline-orange.png" />
           </div>
           <p className="text-black text-md pt-10 mb-14 lg:mb-0 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
             We serve our students by providing an abundance of resources.
