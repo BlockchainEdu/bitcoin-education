@@ -4,6 +4,7 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import Image from 'next/image'
 import FeatureSlider from '../components/featureSlider';
+import Modal from '../components/donateSliderButton';
 import StandardButton from '../components/standardButton';
 import DonateOptions from '../components/donateOptions';
 import PopUpVideo from '../components/popupVideo';
@@ -43,26 +44,22 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <section className="max-w-7xl m-auto pt-0 lg:py-24">
-        <img className="m-auto hidden lg:flex" src="/images/ben-home-logo.svg" />
-        <div className="flex flex-col-reverse lg:flex-row mt-0 lg:mt-14 items-center mx-auto justify-center">
-          <div className="pt-20 lg:pt-0 w-full lg:w-4/12 mx-auto lg:mx-0">
-            <div>
-              <img className="m-auto" src="/images/ben-home-hero.png" />
-              <div className="flex justify-center mt-5">
-                <StandardButton 
-                  link="/donate"
-                  text="Donate"
-                  color="orange"
-                  styling="px-16"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+      <section className="py-24 px-4">
+        <h1 className="font-mont font-black text-2xl text-center">
+        Help us educate 10 million people in 10 years about blockchain
+        </h1>
+        <p className="font-mont font-medium text-md text-center max-w-3xl mx-auto mt-10" style={{lineHeight: "26px"}}>
+          Join us in our mission to help bring blockchain education  to 10 million people by 2031.
+          Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over 
+          1.7 Billion Adults worldwide who don't have access to a bank account.
+        </p>
+        <p className="font-mont font-medium text-sm text-gray-400 text-center max-w-2xl mx-auto mb-10" style={{lineHeight: "26px"}}>
+          Help us to provide borderless blockchain education, empowering leaders to bring 
+          blockchain to their companies and communities.
+        </p>
+        <Modal/>
       </section>
-      <a href="#what-is"><img className="hidden lg:flex m-auto -mt-10 lg:-mt-14" src="/images/scroll.svg" /></a>
-      <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-32 px-7">
+      <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-14 px-7 -mt-4">
         <div id="what-is" className="flex justify-center space-x-2 items">
           <div>
             <h2 className="font-mont font-black text-4xl lg:text-5xl">

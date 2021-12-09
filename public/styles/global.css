@@ -6,12 +6,6 @@
 @import "~slick-carousel/slick/slick.css"; 
 @import "~slick-carousel/slick/slick-theme.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap');
-
-@font-face {
-  font-family: "Montser"
-}
-
 :root {
   --orange: #FF936B;
 }
@@ -46,6 +40,7 @@
 }
 /* The slider itself */
 #donation-slider {
+  outline: none !important;
   -webkit-appearance: none;  /* Override default CSS styles */
   appearance: none;
   background: transparent;
@@ -98,6 +93,8 @@
   background: transparent;
   cursor: ew-resize; /* Cursor on hover */
   position: relative;
+  border: 0 !important;
+  outline: none !important;
 }
 
 #donation-slider::-moz-range-thumb {
@@ -107,6 +104,8 @@
   cursor: ew-resize; /* Cursor on hover */
   padding: 1.25rem 2.5rem;
   position: relative;
+  border: 0 !important;
+  outline: none !important;
 }
 
 .popup {

@@ -7,7 +7,6 @@ import getStripe from '../utils/get-stripe';
 import { fetchPostJSON } from '../utils/api-helpers';
 
 const modalTypes = {
-  none: 'none',
   donate: 'donate',
   other: 'other',
 }
@@ -17,7 +16,7 @@ export default function Modal() {
   const maxDonationAmount = 5000;
   const step = 50;
   const startingDonationAmount = 50;
-  const [showModal, setShowModal] = useState(modalTypes.none);
+  const [showModal, setShowModal] = useState(modalTypes.donate);
   const [donationAmount, setDonationAmount] = useState({ amount: startingDonationAmount, frequency: giftFrequency.oneTime });
   const [loading, setLoading] = useState(false);
 
@@ -25,11 +24,11 @@ export default function Modal() {
     setShowModal(modalTypes.other);
   }
   function closeModal() {
-    setShowModal(modalTypes.none);
+    setShowModal(modalTypes.donate);
   }
   function openDonateModal(amount = false) {
     if (amount !== false) {
-      setDonationAmount({ ...donationAmount, amount })
+      setDonationAmount({ ...donationAmount, amount });
     }
     setShowModal(modalTypes.donate);
   }
@@ -63,18 +62,9 @@ export default function Modal() {
 
   return (
     <>
-      <button
-        className="bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl px-16 rounded-full py-4"
-        type="button"
-        onClick={() => setShowModal(modalTypes.donate)}
-      >
-        Donate
-      </button>
-      {showModal === modalTypes.donate && (
-        <DonateModal minDonationAmount={minDonationAmount} maxDonationAmount={maxDonationAmount}
-                     startingDonationAmount={donationAmount.amount} step={step} otherClick={openOtherModal}
-                     buttonClick={handleSubmit} closeModal={closeModal} loading={loading} />
-      )}
+      <DonateModal minDonationAmount={minDonationAmount} maxDonationAmount={maxDonationAmount}
+                   startingDonationAmount={donationAmount} step={step} otherClick={openOtherModal}
+                   buttonClick={handleSubmit} closeModal={closeModal} loading={loading} />
       {showModal === modalTypes.other && (
         <OtherModal buttonClick={openDonateModal} closeModal={closeModal} loading={loading} />
       )}

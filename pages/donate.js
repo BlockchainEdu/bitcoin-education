@@ -4,6 +4,7 @@ import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import IndividualProgram from '../components/individualProgram';
 import PopUpVideo from '../components/popupVideo';
+import Modal from '../components/donateSliderButton';
 import PopupVideo from '../components/popupVideo';
 import StandardButton from '../components/standardButton';
 import { TeamMemberService } from '../services';
@@ -148,9 +149,9 @@ export default function Donate() {
                             technology to create wealth.
                         </p>
                     </div>
-                    <div className="w-8/12">
-                        <div>
-
+                    <div className="w-full lg:w-8/12">
+                        <div className="mx-auto mt-10 lg:mt-0">
+                            <Modal />
                         </div>
                     </div>
                 </div>
