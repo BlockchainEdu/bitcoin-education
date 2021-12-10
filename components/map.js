@@ -1,10 +1,16 @@
 import { useState } from "react";
-import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
+
+const navigationControlStyle = {
+  top: 36,
+  right: 0,
+  padding: '10px',
+};
 
 export default function Map({ locations }) {
   const [viewport, setViewport] = useState({
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
     // The latitude and longitude of the center of London
     latitude: 0,
     longitude: 0,
@@ -20,6 +26,7 @@ export default function Map({ locations }) {
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
+      <NavigationControl style={navigationControlStyle} />
       {locations.map((location) => (
         <div key={location.id}>
           <Marker latitude={location.center[1]} longitude={location.center[0]}>
@@ -36,10 +43,13 @@ export default function Map({ locations }) {
           {selectLocation.id === location.id ? (
             <Popup
               onClose={() => setSelectedLocation({})}
+              closeButton={true}
               closeOnClick={true}
               latitude={location.center[1]}
               longitude={location.center[0]}
+              className="w-full h-full transform-none"
             >
+              <img src={location.image}/>
               {location.place_name}
             </Popup>
           ) : (

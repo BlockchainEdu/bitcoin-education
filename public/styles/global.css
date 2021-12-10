@@ -12,6 +12,21 @@
   font-family: "Montser"
 }
 
+.mapboxgl-popup {
+  width: 100%;
+  height: 100%;
+  transform: none !important;
+}
+.mapboxgl-popup .mapboxgl-popup-tip {
+  display: none;
+}
+.mapboxgl-popup .mapboxgl-popup-content {
+  width: 100%;
+  height: 100%;
+}
+.mapboxgl-popup-close-button {
+  font-size: 3rem;
+}
 .popup {
   background: #00baff !important;
   width: 50px !important;

@@ -46,6 +46,7 @@ export default function MapPage() {
             id: item.id,
             center: [parseFloat(item.column_values[2].value.replace("\"", "")), parseFloat(item.column_values[1].value.replace("\"", ""))],
             place_name: item.column_values[0].value,
+            image: JSON.parse(item.column_values[5].value).files[0].name,
           };
         });
         console.log(fetchedLocations);
@@ -71,6 +72,6 @@ export default function MapPage() {
 }
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 50vh;
 `;
