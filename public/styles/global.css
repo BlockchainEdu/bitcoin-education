@@ -12,10 +12,14 @@
   font-family: "Montser"
 }
 
+.mapboxgl-marker {
+  z-index: 1;
+}
 .mapboxgl-popup {
   width: 100%;
   height: 100%;
   transform: none !important;
+  z-index: 2;
 }
 .mapboxgl-popup .mapboxgl-popup-tip {
   display: none;

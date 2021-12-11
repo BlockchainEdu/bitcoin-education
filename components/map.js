@@ -46,7 +46,7 @@ export default function Map({ locations }) {
               </span>
             </a>
           </Marker>
-          {selectLocation.id === location.id ? (
+          {selectLocation.id === location.id && (
             <Popup
               onClose={() => setSelectedLocation({})}
               closeButton={true}
@@ -60,8 +60,6 @@ export default function Map({ locations }) {
               <h1 className="mapboxgl-marker-title text-2xl text-center">{location.place_name}</h1>
               <p className="mapboxgl-marker-story">{location.place_story}</p>
             </Popup>
-          ) : (
-            false
           )}
         </div>
       ))}
