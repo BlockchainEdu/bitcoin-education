@@ -14,14 +14,14 @@ export default function Map({ locations }) {
     // The latitude and longitude of the center of London
     latitude: 0,
     longitude: 0,
-    zoom: 1
+    zoom: 1,
   });
 
   const [selectLocation, setSelectedLocation] = useState({});
 
   return (
     <ReactMapGL
-      mapStyle="mapbox://styles/mapbox/streets-v11"
+      mapStyle="/mapboxstyle.json"
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
@@ -49,8 +49,9 @@ export default function Map({ locations }) {
               longitude={location.center[0]}
               className="w-full h-full transform-none"
             >
-              <img src={location.image}/>
-              {location.place_name}
+              <img className="mapgl-marker-image mx-auto" src={location.image}/>
+              <h1 className="mapgl-marker-title text-2xl text-center">{location.place_name}</h1>
+              <p className="mapgl-marker-story">{location.place_story}</p>
             </Popup>
           ) : (
             false

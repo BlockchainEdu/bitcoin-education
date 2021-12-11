@@ -47,6 +47,7 @@ export default function MapPage() {
             id: item.id,
             center: [parseFloat(item.column_values[2].value.replace("\"", "")), parseFloat(item.column_values[1].value.replace("\"", ""))],
             place_name: item.column_values[0].value,
+            place_story: JSON.parse(item.column_values[3].value).text,
             image: item.assets[0].public_url,
           };
         });
