@@ -42,11 +42,12 @@ export default function MapPage() {
       const result = await TeamMemberService.getMembers(body);
       if (result?.data?.data?.boards) {
         const fetchedLocations = result.data.data.boards[0].items.map(item => {
+          console.log(item);
           return {
             id: item.id,
             center: [parseFloat(item.column_values[2].value.replace("\"", "")), parseFloat(item.column_values[1].value.replace("\"", ""))],
             place_name: item.column_values[0].value,
-            image: JSON.parse(item.column_values[5].value).files[0].name,
+            image: item.assets[0].public_url,
           };
         });
         console.log(fetchedLocations);
