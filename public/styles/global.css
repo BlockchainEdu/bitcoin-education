@@ -27,6 +27,10 @@
 .mapboxgl-popup-close-button {
   font-size: 3rem;
 }
+.mapboxgl-marker-video iframe {
+  margin-left: auto;
+  margin-right: auto;
+}
 .popup {
   background: #00baff !important;
   width: 50px !important;

@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
 import { TeamMemberService } from '../services';
 import Footer from '../components/footer';
 import HeaderWithLogo from '../components/headerWithLogo';
 import 'mapbox-gl/dist/mapbox-gl.css';
-
 import dynamic from "next/dynamic";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { MediaType } from "../components/map";
 
 const Map = dynamic(() => import("../components/map"), {
   loading: () => "Loading...",
@@ -33,6 +33,7 @@ export default function MapPage() {
                         value
                     }
                     assets {
+                        file_extension
                         public_url
                     }
                 }
@@ -48,7 +49,9 @@ export default function MapPage() {
             center: [parseFloat(item.column_values[2].value.replace("\"", "")), parseFloat(item.column_values[1].value.replace("\"", ""))],
             place_name: item.column_values[0].value,
             place_story: JSON.parse(item.column_values[3].value).text,
+            media_type: MediaType.image,
             image: item.assets[0].public_url,
+            video: "655642994",
           };
         });
         console.log(fetchedLocations);

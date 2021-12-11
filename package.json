@@ -13,6 +13,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
+    "@u-wave/react-vimeo": "^0.9.5",
     "axios": "^0.21.1",
     "heroicons-react": "^1.4.0",
     "mapbox-gl": "^2.6.1",
