@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import Vimeo from '@u-wave/react-vimeo';
 
 export const MediaType = {
+  none: 'none',
   image: 'image',
   video: 'video',
 }

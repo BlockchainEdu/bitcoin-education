@@ -44,14 +44,18 @@ export default function MapPage() {
       if (result?.data?.data?.boards) {
         const fetchedLocations = result.data.data.boards[0].items.map(item => {
           console.log(item);
+          let extras = { media_type: MediaType.none }
+          if (item.assets.length > 0) {
+            extras = { media_type: MediaType.image, image: item.assets[0].public_url, };
+          } else if (item.column_values[5].value !== "") {
+            extras = { media_type : MediaType.video, video: item.column_values[5].value.replace(/"/g, "") };
+          }
           return {
+            ...extras,
             id: item.id,
             center: [parseFloat(item.column_values[2].value.replace("\"", "")), parseFloat(item.column_values[1].value.replace("\"", ""))],
             place_name: item.column_values[0].value,
             place_story: JSON.parse(item.column_values[3].value).text,
-            media_type: MediaType.image,
-            image: item.assets[0].public_url,
-            video: "655642994",
           };
         });
         console.log(fetchedLocations);
