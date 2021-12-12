@@ -54,7 +54,7 @@ export default function Map({ locations }) {
               closeOnClick={true}
               latitude={location.center[1]}
               longitude={location.center[0]}
-              className="w-full h-full transform-none"
+              className="flex max-w-7xl m-auto transform-none"
             >
               {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto" src={location.image}/>}
               {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
