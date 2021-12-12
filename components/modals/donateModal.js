@@ -85,7 +85,7 @@ export default function DonateModal(props) {
                     <div className="font-mont text-sm uppercase flex md:hidden justify-center mb-3 md:mb-0">Select Amount</div>
                     <div className="slidecontainer relative">
                       <div className="donation-slider-track relative z-0"></div>
-                      <div className="donation-slider-cover absolute top-0 z-1" ref={sliderCoverRef}>
+                      <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl" ref={sliderCoverRef}>
                         <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
                         <span className="dollar-amount" ref={sliderCoverAmountRef}>${selectedAmount}</span>
                         <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>

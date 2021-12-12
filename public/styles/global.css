@@ -41,24 +41,15 @@
 /* The slider itself */
 #donation-slider {
   outline: none !important;
-  -webkit-appearance: none;  /* Override default CSS styles */
-  appearance: none;
+  -webkit-appearance: none !important;  /* Override default CSS styles */
+  appearance: none !important;
   background: transparent;
   width: 100%; /* Full-width */
   height: 3px; /* Specified height */
-  outline: none; /* Remove outline */
   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
   transition: opacity .2s;
   position: relative;
-}
-
-#donation-slider:focus {
-  outline: none !important;
-}
-
-.donation-slider-cover:focus {
-  outline: none !important;
 }
 
 .donation-slider-cover {
@@ -78,6 +69,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   padding: 0.5rem 1rem;
+  -webkit-appearance:none !important;
 }
 
 .donation-slider-cover .left-arrow {
