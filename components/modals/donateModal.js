@@ -90,7 +90,7 @@ export default function DonateModal(props) {
                         <span className="dollar-amount" ref={sliderCoverAmountRef}>${selectedAmount}</span>
                         <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
                       </div>
-                      <input type="text" min={props.minDonationAmount} max={props.maxDonationAmount} step={props.step}
+                      <input type="range" min={props.minDonationAmount} max={props.maxDonationAmount} step={props.step}
                              className="slider relative z-10" id="donation-slider" defaultValue={selectedAmount}
                         onChange={moveDonationSlider} ref={sliderRef} />
                     </div>
