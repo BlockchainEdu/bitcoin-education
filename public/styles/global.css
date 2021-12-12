@@ -53,6 +53,14 @@
   position: relative;
 }
 
+#donation-slider:focus {
+  outline: none !important;
+}
+
+.donation-slider-cover:focus {
+  outline: none !important;
+}
+
 .donation-slider-cover {
   display: flex;
   align-items: center;
