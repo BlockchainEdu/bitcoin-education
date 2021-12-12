@@ -281,6 +281,19 @@ background-position: top right;
   backface-visibility: hidden;
 }
 
+.flip-card-back::-webkit-scrollbar {
+  width: 4px;
+}
+
+.flip-card-back::-webkit-scrollbar-track {
+  background: #E0E0E0;
+  border-radius: 10px !important;
+}
+
+.flip-card-back::-webkit-scrollbar-thumb {
+  background-color: #FF936B;
+}
+
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
   background-color: #bbb;
