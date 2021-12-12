@@ -82,5 +82,5 @@ export default function MapPage() {
 
 const Container = styled.div`
   width: 100%;
-  height: 50vh;
+  height: 60vh;
 `;

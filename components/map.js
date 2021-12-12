@@ -52,10 +52,10 @@ export default function Map({ locations }) {
               closeOnClick={true}
               latitude={location.center[1]}
               longitude={location.center[0]}
-              className="transform-none"
+              className="transform-none pin-popup shadow-2xl"
             >
               <div className="max-w-7xl mx-auto px-20">
-                {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto" src={location.image} />}
+                {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
                 {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
                 <h1 className="mapboxgl-marker-title text-2xl text-center">{location.place_name}</h1>
                 <p className="mapboxgl-marker-story">{location.place_story}</p>

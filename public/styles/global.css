@@ -35,6 +35,9 @@
   margin-left: auto;
   margin-right: auto;
 }
+.mapboxgl-marker-image {
+  max-width: 300px;
+}
 .popup {
   background: #00baff !important;
   width: 50px !important;
@@ -70,6 +73,15 @@ background-image: url('/images/what-is-bg-icon.png');
 background-repeat: no-repeat;
 background-position: top right;
 
+}
+
+.pin-popup {
+  max-width: 1000px !important;
+  justify-content: center !important;
+  transform: translateX(50%) !important;
+  display: flex !important;
+  align-self: center !important;
+  max-height: 50vh !important;
 }
 
 .impact-section {
