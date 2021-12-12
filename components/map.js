@@ -42,9 +42,7 @@ export default function Map({ locations }) {
                 setSelectedLocation(location);
               }}
             >
-              <span role="img" aria-label="push-pin">
-                📌
-              </span>
+              <img className="w-10 h-10 bg-benorange-500 p-4" role="img" src="/images/pin-indicator.svg"/>
             </a>
           </Marker>
           {selectLocation.id === location.id && (
@@ -56,7 +54,7 @@ export default function Map({ locations }) {
               longitude={location.center[0]}
               className="flex max-w-7xl m-auto transform-none"
             >
-              {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto" src={location.image}/>}
+              {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto" src={location.image} />}
               {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
               <h1 className="mapboxgl-marker-title text-2xl text-center">{location.place_name}</h1>
               <p className="mapboxgl-marker-story">{location.place_story}</p>
