@@ -42,7 +42,7 @@ export default function Map({ locations }) {
                 setSelectedLocation(location);
               }}
             >
-              <img className="w-10 h-10 bg-benorange-500 p-4" role="img" src="/images/pin-indicator.svg"/>
+              <img className="w-8 h-8 bg-benorange-500 p-2 rounded-full" role="img" src="/images/pin-indicator.svg" />
             </a>
           </Marker>
           {selectLocation.id === location.id && (
@@ -52,12 +52,14 @@ export default function Map({ locations }) {
               closeOnClick={true}
               latitude={location.center[1]}
               longitude={location.center[0]}
-              className="flex max-w-7xl m-auto transform-none"
+              className="transform-none"
             >
-              {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto" src={location.image} />}
-              {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
-              <h1 className="mapboxgl-marker-title text-2xl text-center">{location.place_name}</h1>
-              <p className="mapboxgl-marker-story">{location.place_story}</p>
+              <div className="max-w-7xl mx-auto px-20">
+                {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto" src={location.image} />}
+                {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
+                <h1 className="mapboxgl-marker-title text-2xl text-center">{location.place_name}</h1>
+                <p className="mapboxgl-marker-story">{location.place_story}</p>
+              </div>
             </Popup>
           )}
         </div>
