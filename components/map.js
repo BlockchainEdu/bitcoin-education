@@ -58,7 +58,9 @@ export default function Map({ locations }) {
                 {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
                 {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
                 <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>
-                <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-y-scroll">{location.place_story}</p>
+                <div className="h-40 overflow-hidden">
+                  <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden">{location.place_story}</p>
+                </div>
               </div>
             </Popup>
           )}
