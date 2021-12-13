@@ -1,6 +1,8 @@
 import { createRef, useEffect, useState } from "react";
+import ReactDOM from 'react-dom';
 
 export default function DonationSlider(props) {
+  const [isMovingSlider, setIsMovingSlider] = useState(false);
   const sliderRef = createRef();
   const sliderCoverRef = createRef();
   const sliderCoverLeftArrow = createRef();
@@ -8,21 +10,23 @@ export default function DonationSlider(props) {
   const sliderCoverRightArrow = createRef();
 
   useEffect(() => {
-    const currPercentage =
-          Math.min(100, 100 * props.currValue / (props.max - props.min));
-    sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
-    sliderCoverAmountRef.current.innerHTML = `\$${Math.floor(props.currValue)}`;
+    setSliderPosition(props.currValue, props.min, props.max);
+    window.addEventListener("mouseup", stopMovingSlider);
+    window.addEventListener("mousemove", moveDonationSlider);
+    return () => {
+      window.removeEventListener("mousemove", moveDonationSlider);
+      window.removeEventListener("mouseup", stopMovingSlider);
+    }
   }, [props.currValue]);
-
-  function moveDonationSlider(event) {
-    const xPosition = sliderRef.current.getBoundingClientRect().x;
-    const minValue = sliderRef.current.min;
-    const maxValue = sliderRef.current.max;
-    const currValue = sliderRef.current.value;
-    const currPercentage = 100 * currValue / (maxValue - minValue);
-    props.onChange(currValue);
+  function setSliderPosition(currValue, minValue, maxValue) {
+    currValue = Math.round(currValue / props.step) * props.step;
+    const currPercentage =
+          Math.min(100, 100 * (currValue - minValue) / (maxValue - minValue));
+    if (currPercentage <= 0) {
+      currValue = minValue;
+    }
     sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
-    sliderCoverAmountRef.current.innerHTML = `\$${currValue}`;
+    sliderCoverAmountRef.current.innerHTML = `\$${Math.floor(currValue)}`;
     sliderCoverLeftArrow.current.style.color = "black";
     sliderCoverRightArrow.current.style.color = "black";
     if (currValue === minValue) {
@@ -31,20 +35,41 @@ export default function DonationSlider(props) {
     if (currValue === maxValue) {
       sliderCoverRightArrow.current.style.color = "gray";
     }
+    props.onChange(currValue);
+  }
+
+  function moveDonationSlider(event) {
+    if (!isMovingSlider) {
+      return;
+    }
+    event.stopPropagation();
+    const xPosition = sliderRef.current.getBoundingClientRect().x;
+    const maxXPosition = sliderRef.current.getBoundingClientRect().right;
+    const width = sliderRef.current.getBoundingClientRect().width;
+    const minValue = props.min;
+    const maxValue = props.max;
+    const currMousePos = event.nativeEvent.pageX;
+    let currValue = (((Math.min(currMousePos, maxXPosition) - xPosition) / width) * (maxValue - minValue)) + minValue;
+    setSliderPosition(currValue, minValue, maxValue);
+  }
+
+  function startMovingSlider() {
+    setIsMovingSlider(true);
+  }
+
+  function stopMovingSlider() {
+    setIsMovingSlider(false);
   }
 
   return (
     <>
-                    <div className="slidecontainer relative">
+                    <div className="slidecontainer relative" ref={sliderRef} onMouseDown={startMovingSlider} onMouseMove={moveDonationSlider}>
                       <div className="donation-slider-track relative z-0"></div>
-                      <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl" ref={sliderCoverRef}>
+                      <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl select-none" ref={sliderCoverRef}>
                         <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
                         <span className="dollar-amount" ref={sliderCoverAmountRef}>${props.currValue}</span>
                         <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
                       </div>
-                      <input type="range" min={props.min} max={props.max} step={props.step}
-                             className="slider relative z-10" id="donation-slider" defaultValue={props.defaultValue}
-                        onChange={moveDonationSlider} ref={sliderRef} />
                     </div>
     </>
   );
