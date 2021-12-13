@@ -48,17 +48,17 @@ export default function Map({ locations }) {
           {selectLocation.id === location.id && (
             <Popup
               onClose={() => setSelectedLocation({})}
-              closeButton={true}
+              closeButton={false}
               closeOnClick={true}
               latitude={location.center[1]}
               longitude={location.center[0]}
-              className="transform-none pin-popup shadow-2xl"
+              className="transform-none pin-popup border-none shadow-2xl mt-10 rounded-md"
             >
-              <div className="max-w-7xl mx-auto px-20">
+              <div className="max-w-7xl mx-auto p-10">
                 {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
                 {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
-                <h1 className="mapboxgl-marker-title text-2xl text-center">{location.place_name}</h1>
-                <p className="mapboxgl-marker-story">{location.place_story}</p>
+                <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center">{location.place_name}</h1>
+                <p className="mapboxgl-marker-story text-sm mt-4 font-mont">{location.place_story}</p>
               </div>
             </Popup>
           )}
