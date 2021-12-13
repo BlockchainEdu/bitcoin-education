@@ -24,7 +24,7 @@ export default function Map({ locations }) {
     zoom: 1,
   });
 
-  const [selectLocation, setSelectedLocation] = useState({});
+  const [selectedLocation, setSelectedLocation] = useState({});
 
   return (
     <ReactMapGL
@@ -35,7 +35,7 @@ export default function Map({ locations }) {
     >
       <NavigationControl style={navigationControlStyle} />
       {locations.map((location) => (
-        <div key={location.id}>
+        <div key={location.id} className={'mapboxgl-marker-overlay ' + ( location === selectedLocation ? 'selected': '' )}>
           <Marker latitude={location.center[1]} longitude={location.center[0]}>
             <a
               onClick={() => {
@@ -45,16 +45,16 @@ export default function Map({ locations }) {
               <img className="w-8 h-8 bg-benorange-500 p-2 rounded-full" role="img" src="/images/pin-indicator.svg" />
             </a>
           </Marker>
-          {selectLocation.id === location.id && (
+          {selectedLocation.id === location.id && (
             <Popup
               onClose={() => setSelectedLocation({})}
               closeButton={false}
               closeOnClick={true}
               latitude={location.center[1]}
               longitude={location.center[0]}
-              className="transform-none pin-popup border-none shadow-2xl mt-10 rounded-md"
+              className="transform-none pin-popup border-none shadow-2xl rounded-md relative"
             >
-              <div className="max-w-7xl mx-auto p-4">
+              <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4">
                 {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
                 {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
                 <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>

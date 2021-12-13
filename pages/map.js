@@ -53,8 +53,8 @@ export default function MapPage() {
           return {
             ...extras,
             id: item.id,
-            center: [parseFloat(item.column_values[2].value.replace("\"", "")), parseFloat(item.column_values[1].value.replace("\"", ""))],
-            place_name: item.column_values[0].value,
+            center: [parseFloat(item.column_values[2].value.replace(/"/g, "")), parseFloat(item.column_values[1].value.replace(/"/g, ""))],
+            place_name: item.column_values[0].value.replace(/"/g, ""),
             place_story: JSON.parse(item.column_values[3].value).text,
           };
         });
