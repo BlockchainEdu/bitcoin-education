@@ -54,11 +54,11 @@ export default function Map({ locations }) {
               longitude={location.center[0]}
               className="transform-none pin-popup border-none shadow-2xl mt-10 rounded-md"
             >
-              <div className="max-w-7xl mx-auto p-10">
+              <div className="max-w-7xl mx-auto p-4">
                 {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
                 {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
-                <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center">{location.place_name}</h1>
-                <p className="mapboxgl-marker-story text-sm mt-4 font-mont">{location.place_story}</p>
+                <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>
+                <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-y-scroll">{location.place_story}</p>
               </div>
             </Popup>
           )}

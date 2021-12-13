@@ -37,8 +37,22 @@
   max-height: 250px !important;
 }
 .mapboxgl-marker-image {
-  max-width: 250px;
+  max-height: 250px;
+  width: auto !important;
 }
+
+@media only screen and (max-width: 980px) {
+  .mapboxgl-marker-video iframe {
+    max-height: 150px;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .mapboxgl-marker-image {
+    max-height: 150px;
+  }
+}
+
 .popup {
   background: #00baff !important;
   width: 50px !important;
@@ -84,6 +98,12 @@ background-position: top right;
   align-self: center !important;
   max-height: 50vh !important;
   border: none !important;
+}
+
+@media only screen and (max-width: 980px) {
+  .pin-popup {
+    transform: translateX(0) !important;
+  }
 }
 
 .impact-section {
