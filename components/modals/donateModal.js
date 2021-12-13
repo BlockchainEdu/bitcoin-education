@@ -1,4 +1,5 @@
-import { createRef, useCallback, useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
+import DonationSlider from "../donationSlider";
 
 export const giftFrequency = {
   monthly: 'monthly',
@@ -14,33 +15,6 @@ export default function DonateModal(props) {
   const sliderCoverLeftArrow = createRef();
   const sliderCoverAmountRef = createRef();
   const sliderCoverRightArrow = createRef();
-
-  useEffect(() => {
-    setSelectedAmount(props.startingDonationAmount.amount);
-    const currPercentage =
-          Math.min(100, 100 * props.startingDonationAmount.amount / (props.maxDonationAmount - props.minDonationAmount));
-    sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
-    sliderCoverAmountRef.current.innerHTML = `\$${Math.floor(props.startingDonationAmount.amount)}`;
-  }, [props.startingDonationAmount]);
-
-  function moveDonationSlider(event) {
-    const xPosition = sliderRef.current.getBoundingClientRect().x;
-    const minValue = sliderRef.current.min;
-    const maxValue = sliderRef.current.max;
-    const currValue = sliderRef.current.value;
-    const currPercentage = 100 * currValue / (maxValue - minValue);
-    setSelectedAmount(currValue);
-    sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
-    sliderCoverAmountRef.current.innerHTML = `\$${currValue}`;
-    sliderCoverLeftArrow.current.style.color = "black";
-    sliderCoverRightArrow.current.style.color = "black";
-    if (currValue === minValue) {
-      sliderCoverLeftArrow.current.style.color = "gray";
-    }
-    if (currValue === maxValue) {
-      sliderCoverRightArrow.current.style.color = "gray";
-    }
-  }
 
   return (
     <>
@@ -83,17 +57,8 @@ export default function DonateModal(props) {
                   </div>
                   <div className="w-full md:w-8/12 mt-8 md:mt-0">
                     <div className="font-mont text-sm uppercase flex md:hidden justify-center mb-3 md:mb-0">Select Amount</div>
-                    <div className="slidecontainer relative">
-                      <div className="donation-slider-track relative z-0"></div>
-                      <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl" ref={sliderCoverRef}>
-                        <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
-                        <span className="dollar-amount" ref={sliderCoverAmountRef}>${selectedAmount}</span>
-                        <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
-                      </div>
-                      <input type="range" min={props.minDonationAmount} max={props.maxDonationAmount} step={props.step}
-                             className="slider relative z-10" id="donation-slider" defaultValue={selectedAmount}
-                        onChange={moveDonationSlider} ref={sliderRef} />
-                    </div>
+                    <DonationSlider min={props.minDonationAmount} max={props.maxDonationAmount} step={props.step}
+                                    currValue={props.startingDonationAmount.amount} onChange={setSelectedAmount} />
                   </div>
                 </div>
                 <div className="hover:cursor-pointer text-orange underline flex md:hidden justify-center mt-10 md:mt-0" onClick={() => props.otherClick()}>Other</div>
