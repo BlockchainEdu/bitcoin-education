@@ -12,8 +12,12 @@ export default function DonationSlider(props) {
   useEffect(() => {
     setSliderPosition(props.currValue, props.min, props.max);
     window.addEventListener("mouseup", stopMovingSlider);
+    window.addEventListener("touchend", stopMovingSlider);
     window.addEventListener("mousemove", moveDonationSlider);
+    window.addEventListener("touchmove", moveDonationSlider);
     return () => {
+      window.removeEventListener("touchmove", moveDonationSlider);
+      window.removeEventListener("touchup", stopMovingSlider);
       window.removeEventListener("mousemove", moveDonationSlider);
       window.removeEventListener("mouseup", stopMovingSlider);
     }
@@ -42,28 +46,31 @@ export default function DonationSlider(props) {
     if (!isMovingSlider) {
       return;
     }
+    console.log(event);
     event.stopPropagation();
     const xPosition = sliderRef.current.getBoundingClientRect().x;
     const maxXPosition = sliderRef.current.getBoundingClientRect().right;
     const width = sliderRef.current.getBoundingClientRect().width;
     const minValue = props.min;
     const maxValue = props.max;
-    const currMousePos = event.nativeEvent.pageX;
+    const currMousePos = event.nativeEvent.pageX ? event.nativeEvent.pageX : event.nativeEvent.touches[0].pageX;
     let currValue = (((Math.min(currMousePos, maxXPosition) - xPosition) / width) * (maxValue - minValue)) + minValue;
     setSliderPosition(currValue, minValue, maxValue);
   }
 
   function startMovingSlider() {
+    console.log("Start");
     setIsMovingSlider(true);
   }
 
   function stopMovingSlider() {
+    console.log("Stop");
     setIsMovingSlider(false);
   }
 
   return (
     <>
-                    <div className="slidecontainer relative" ref={sliderRef} onMouseDown={startMovingSlider} onMouseMove={moveDonationSlider}>
+                    <div className="slidecontainer relative" ref={sliderRef} onMouseDown={startMovingSlider} onTouchStart={startMovingSlider} onMouseMove={moveDonationSlider} onTouchMove={moveDonationSlider}>
                       <div className="donation-slider-track relative z-0"></div>
                       <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl select-none" ref={sliderCoverRef}>
                         <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
