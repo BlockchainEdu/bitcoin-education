@@ -48,7 +48,7 @@ export default function Map({ locations }) {
           {selectedLocation.id === location.id && (
             <Popup
               onClose={() => setSelectedLocation({})}
-              closeButton={false}
+              closeButton={true}
               closeOnClick={true}
               latitude={location.center[1]}
               longitude={location.center[0]}

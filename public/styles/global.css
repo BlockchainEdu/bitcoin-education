@@ -41,7 +41,19 @@
   overflow-y: scroll;
 }
 .mapboxgl-popup-close-button {
-  font-size: 3rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50% !important;
+  background-color: #f5f7f7 !important;
+  right: 0.5rem !important;
+  top: 0.5rem !important;
+  font-size: 1.2rem;
+  font-family: Arial;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
 }
 .mapboxgl-marker-video iframe {
   margin-left: auto;
