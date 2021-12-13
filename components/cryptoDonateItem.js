@@ -34,9 +34,9 @@ export default function CryptoDonateItem(props) {
                                     </button>
                                 </div>
                                 {/*body*/}
-                                <div className="flex items-center px-0 lg:px-7 -mt-10">
+                                <div className="flex flex-col lg:flex-row items-center px-0 lg:px-7 -mt-10">
                                     <div>
-                                        <img className="w-32 hidden lg:flex" src={props.qrCode} />
+                                        <img className="w-32 flex justify-start" src={props.qrCode} />
                                     </div>
                                     <div className="relative px-6 gap-x-20 items-center">
                                         <div className="flex items-center space-x-3 pb-3">

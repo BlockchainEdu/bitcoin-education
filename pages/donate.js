@@ -4,6 +4,7 @@ import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import IndividualProgram from '../components/individualProgram';
 import PopUpVideo from '../components/popupVideo';
+import Modal from '../components/donateSliderButton';
 import PopupVideo from '../components/popupVideo';
 import StandardButton from '../components/standardButton';
 import { TeamMemberService } from '../services';
@@ -148,9 +149,9 @@ export default function Donate() {
                             technology to create wealth.
                         </p>
                     </div>
-                    <div className="w-8/12">
-                        <div>
-
+                    <div className="w-full lg:w-8/12">
+                        <div className="mx-auto mt-10 lg:mt-0">
+                            <Modal />
                         </div>
                     </div>
                 </div>
@@ -180,7 +181,7 @@ export default function Donate() {
                     styling="mt-6 lg:mt-0 px-6 flex mx-auto lg:mx-0"
                 />
             </div>
-            <div className="px-7">
+            <div id="crypto" className="px-7">
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-y-2 m-auto justify-between p-6 py-7" style={{ border: "1px solid #E5E5E5", maxWidth: "880px" }}>
                     {teamMembers.length > 0 && teamMembers.map((global, index) => {

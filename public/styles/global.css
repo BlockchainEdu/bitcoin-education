@@ -6,10 +6,106 @@
 @import "~slick-carousel/slick/slick.css"; 
 @import "~slick-carousel/slick/slick-theme.css";
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap');
+:root {
+  --orange: #FF936B;
+}
 
-@font-face {
-  font-family: "Montser"
+.bg-orange {
+  background-color: var(--orange);
+}
+.bg-gray {
+  background-color: #F5F7F7;
+}
+.text-orange {
+  color: var(--orange);
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+#gift-grid {
+  grid-gap: 2rem;
+}
+
+#gift-frequency div {
+  padding: .5rem;
+}
+
+.donation-slider-track {
+  background: #d3d3d3; /* Grey background */
+  width: 100%;
+  height: 3px;
+  top: 1.2rem;
+}
+/* The slider itself */
+#donation-slider {
+  outline: none !important;
+  -webkit-appearance: none !important;  /* Override default CSS styles */
+  appearance: none !important;
+  background: transparent;
+  width: 100%; /* Full-width */
+  height: 3px; /* Specified height */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  position: relative;
+}
+
+.donation-slider-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  background-color: white;
+  border: 1px solid ghostwhite;
+  border-radius: 9999px;
+  position: absolute;
+  top: 0;
+  min-width: 5rem;
+  text-align: center;
+  cursor: ew-resize;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  -webkit-appearance:none !important;
+}
+
+.donation-slider-cover .left-arrow {
+  color: gray;
+}
+
+.donation-slider-cover .right-arrow {
+  color: black;
+}
+
+/* Mouse-over effects */
+#donation-slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+#donation-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 5rem;
+  height: 2.5rem;
+  background: transparent;
+  cursor: ew-resize; /* Cursor on hover */
+  position: relative;
+  border: 0 !important;
+  outline: none !important;
+}
+
+#donation-slider::-moz-range-thumb {
+  width: 5rem;
+  height: 2.5rem;
+  background: transparent;
+  cursor: ew-resize; /* Cursor on hover */
+  padding: 1.25rem 2.5rem;
+  position: relative;
+  border: 0 !important;
+  outline: none !important;
 }
 
 .mapboxgl-marker-overlay.selected {
@@ -109,10 +205,16 @@
 }
 
 .what-is-section {
-  background-image: url('/images/what-is-bg-icon.png');
-  background-repeat: no-repeat;
-  background-position: top right;
+background-image: url('/images/ben-why-bg.svg');
+background-repeat: no-repeat;
+background-size: 100%;
+background-position: top center;
+}
 
+@media only screen and (max-width: 780px) {
+  .what-is-section {
+    background-image: none !important;
+  }
 }
 
 .pin-popup {
@@ -258,6 +360,19 @@
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+}
+
+.flip-card-back::-webkit-scrollbar {
+  width: 4px;
+}
+
+.flip-card-back::-webkit-scrollbar-track {
+  background: #E0E0E0;
+  border-radius: 10px !important;
+}
+
+.flip-card-back::-webkit-scrollbar-thumb {
+  background-color: #FF936B;
 }
 
 /* Style the front side (fallback if image is missing) */

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import DonateButton from "../components/donateButton";
+import DonateButton from "../components/donateSliderButton";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Image from 'next/image'
 import FeatureSlider from '../components/featureSlider';
+import Modal from '../components/donateSliderButton';
 import StandardButton from '../components/standardButton';
 import DonateOptions from '../components/donateOptions';
 import PopUpVideo from '../components/popupVideo';
@@ -43,53 +44,54 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
-      <section className="max-w-7xl m-auto pt-0 lg:py-24">
-        <img className="m-auto hidden lg:flex" src="/images/ben-home-logo.svg" />
-        <div className="flex flex-col-reverse lg:flex-row mt-0 lg:mt-14 items-center mx-auto justify-center">
-          <div className="pt-20 lg:pt-0 w-full lg:w-4/12 mx-auto lg:mx-0">
-            <div>
-              <img className="m-auto" src="/images/ben-home-hero.png" />
-              <div className="flex justify-center mt-5">
-                <StandardButton 
-                  link="/donate"
-                  text="Donate"
-                  color="orange"
-                  styling="px-16"
-                />
-              </div>
-            </div>
-          </div>
+      <section className="py-24 px-7">
+        <h1 className="font-mont font-black text-2xl text-center">
+          Help us educate 10 million people in 10 years about blockchain
+        </h1>
+        <div className="mx-auto max-w-xl">
+          <img className="mx-auto md:mr-0 lg:ml-auto" src="/images/hero-headline-underline.png" />
         </div>
-      </section>
-      <a href="#what-is"><img className="hidden lg:flex m-auto -mt-10 lg:-mt-14" src="/images/scroll.svg" /></a>
-      <section className="what-is-section max-w-7xl m-auto pt-72 lg:pt-32 px-7">
-        <div id="what-is" className="flex justify-center space-x-2 items">
-          <div>
-            <h2 className="font-mont font-black text-4xl lg:text-5xl">
-              What is
-            </h2>
-            <img className="-ml-2 lg:-ml-4 -mt-2 lg:-mt-4 w-36 lg:w-full" src="/images/what-ben-underline-orange.png" />
-          </div>
-          <img className="-mt-4 lg:-mt-8 w-24 lg:w-auto" src="/images/what-ben-home.svg" />
-        </div>
-        <p className="text-black text-md max-w-4xl text-center m-auto pt-10">
-          The Blockchain Education Network (BEN) is the largest and longest running network
-          of students, alumni, professors, teachers, professionals, and community leaders
-          excited about blockchain across the world. We are mission to provide bordeless blockchain
-          education, and to spur blockchain adoption by empowering student leaders to  bring blockchain
-          to their companies and communities through local workshops and online courses.
+        <p className="font-mont font-medium text-md text-center max-w-3xl mx-auto mt-10" style={{ lineHeight: "26px" }}>
+          Join us in our mission to help bring blockchain education  to 10 million people by 2031.
+          Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over
+          1.7 Billion Adults worldwide who don't have access to a bank account.
         </p>
-        <div className="m-auto my-10 mb-14 flex justify-center">
-          <PopUpVideo 
-            thumbnail="/images/video-home-placeholder.jpg"
+        <p className="font-mont font-medium text-sm text-gray-400 text-center max-w-2xl mx-auto mb-10" style={{ lineHeight: "26px" }}>
+          Help us to provide borderless blockchain education, empowering leaders to bring
+          blockchain to their companies and communities.
+        </p>
+        <Modal />
+      </section>
+      <section className="what-is-section pt-14 lg:pt-14 px-7 -mt-4">
+        <div>
+          <div id="what-is" className="flex justify-center space-x-2 items">
+            <div className="max-w-7xl">
+              <h2 className="font-mont font-black text-4xl lg:text-5xl">
+                What is
+              </h2>
+              <img className="-ml-2 lg:-ml-4 -mt-2 lg:-mt-4 w-36 lg:w-full" src="/images/what-ben-underline-orange.png" />
+            </div>
+            <img className="-mt-4 lg:-mt-8 w-24 lg:w-auto" src="/images/what-ben-home.svg" />
+          </div>
+          <p className="text-black text-md max-w-4xl text-center m-auto pt-10">
+            The Blockchain Education Network (BEN) is the largest and longest running network
+            of students, alumni, professors, teachers, professionals, and community leaders
+            excited about blockchain across the world. We are mission to provide bordeless blockchain
+            education, and to spur blockchain adoption by empowering student leaders to  bring blockchain
+            to their companies and communities through local workshops and online courses.
+          </p>
+          <div className="m-auto my-10 mb-14 flex justify-center">
+            <PopUpVideo
+              thumbnail="/images/video-home-placeholder.jpg"
+            />
+          </div>
+          <StandardButton
+            link="/programs"
+            text="Programs"
+            color="orange"
+            styling="px-16 flex m-auto"
           />
         </div>
-        <StandardButton
-          link="/programs"
-          text="Programs"
-          color="orange"
-          styling="px-16 flex m-auto"
-        />
       </section>
       <section className="max-w-7xl mt-10 lg:-mt-32 m-auto pt-56 lg:pt-48 impact-section px-7">
         <div className="max-w-xs mx-auto lg:mx-0">
@@ -114,7 +116,7 @@ export default function Home() {
             <h2 className="font-mont font-black text-center lg:text-left text-4xl lg:text-5xl">
               What we do?
             </h2>
-            <img className="ml-auto mr-20 h-4 lg:-mt-4 lg:mr-6" src="/images/we-do-underline-orange.png" />
+            <img className="ml-auto mr-20 h-4 lg:h-auto lg:-mt-4 lg:mr-6" src="/images/we-do-underline-orange.png" />
           </div>
           <p className="text-black text-md pt-10 mb-14 lg:mb-0 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
             We serve our students by providing an abundance of resources.
