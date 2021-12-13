@@ -15,6 +15,7 @@
     "@heroicons/react": "^1.0.5",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.2",
+    "@u-wave/react-vimeo": "^0.9.5",
     "axios": "^0.21.4",
     "heroicons-react": "^1.4.1",
     "mapbox-gl": "^2.6.1",
@@ -31,8 +32,8 @@
     "react-modal-video": "^1.2.8",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.3.3",
-    "stripe": "^8.191.0"
+    "stripe": "^8.191.0",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
