@@ -77,7 +77,7 @@ export default function DonateModal(props) {
                       Give with PayPal
                     </button>
                   </a>
-                  <a className="text-center" target="_blank" href="https://commerce.coinbase.com/checkout/041362e5-b215-4484-82d9-fb27e513563a">
+                  <a className="text-center" target="_blank" href="/donate#crypto">
                     <button className="text-orange">
                       Give with Crypto
                     </button>
