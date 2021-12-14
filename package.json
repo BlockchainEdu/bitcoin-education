@@ -14,7 +14,8 @@
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
     "@stripe/react-stripe-js": "^1.6.0",
-    "@stripe/stripe-js": "^1.22.0",
+    "@stripe/stripe-js": "^1.21.2",
+    "@u-wave/react-vimeo": "^0.9.5",
     "axios": "^0.21.4",
     "heroicons-react": "^1.4.1",
     "mapbox-gl": "^2.6.1",
@@ -24,14 +25,15 @@
     "react-gtm-module": "^2.0.11",
     "react-hero-icon": "0.0.7",
     "react-mailchimp-form": "^1.0.2",
-    "react-map-gl": "^6.1.17",
+    "react-map-gl": "^6.1.18",
     "react-map-gl-geocoder": "^2.2.0",
     "react-mapbox-gl-geocoder": "^1.1.0",
     "react-modal": "^3.14.2",
     "react-modal-video": "^1.2.8",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
-    "stripe": "^8.191.0"
+    "stripe": "^8.191.0",
+    "styled-components": "^5.3.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
