@@ -47,7 +47,7 @@ export default function MapPage() {
           let extras = { media_type: MediaType.none }
           if (item.assets.length > 0) {
             extras = { media_type: MediaType.image, image: item.assets[0].public_url, };
-          } else if (item.column_values[5].value !== "") {
+          } else if (item.column_values[5].value && item.column_values[5].value !== "") {
             extras = { media_type : MediaType.video, video: item.column_values[5].value.replace(/"/g, "") };
           }
           return {
@@ -55,7 +55,7 @@ export default function MapPage() {
             id: item.id,
             center: [parseFloat(item.column_values[2].value.replace(/"/g, "")), parseFloat(item.column_values[1].value.replace(/"/g, ""))],
             place_name: item.column_values[0].value.replace(/"/g, ""),
-            place_story: JSON.parse(item.column_values[3].value).text,
+            place_story: JSON.parse(item.column_values[3].value || `{"text": ""}`).text,
           };
         });
         console.log(fetchedLocations);
