@@ -1,13 +1,25 @@
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import { getProjectsFromMonday } from '../../services';
 
-const Project = ({ project }) => {
-  const router = useRouter()
+const Project = () => {
+  const router = useRouter();
+  const { slug } = router.query;
+  const [ project, setProject ] = useState({slug});
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const fetchedProjects = await getProjectsFromMonday();
+      const project = fetchedProjects.find(elem => elem.place_name === slug);
+      setProject(project);
+    };
+    fetchProjects();
+  }, []);
+
   if (!router.isFallback && !project?.slug) {
     return <ErrorPage statusCode={404} />
   }
-  console.log(project);
   return (
     <>
       <h1>Project Page: {project.place_name}</h1>
@@ -16,25 +28,3 @@ const Project = ({ project }) => {
 }
 
 export default Project
-
-export async function getStaticProps({ params }) {
-  const projects = await getProjectsFromMonday();
-  const project = projects.find(elem => encodeURIComponent(elem.place_name) === params.slug);
-
-  return { props: { project } }
-}
-
-export async function getStaticPaths() {
-  const projects = await getProjectsFromMonday();
-
-  return {
-    paths: projects.map((project) => {
-      return {
-        params: {
-          slug: project.slug,
-        },
-      }
-    }),
-    fallback: false,
-  }
-}
