@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import Vimeo from '@u-wave/react-vimeo';
 
@@ -55,12 +56,16 @@ export default function Map({ locations }) {
               className="transform-none pin-popup border-none shadow-2xl rounded-md relative"
             >
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4">
-                {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
-                {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
-                <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>
-                <div className="h-40 overflow-hidden">
-                  <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden">{location.place_story}</p>
-                </div>
+                <Link href={`/projects/${location.slug}`}>
+                  <a>
+                    {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
+                    {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
+                    <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>
+                    <div className="h-40 overflow-hidden">
+                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden">{location.place_story}</p>
+                    </div>
+                  </a>
+                </Link>
               </div>
             </Popup>
           )}
