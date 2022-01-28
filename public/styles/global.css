@@ -32,6 +32,10 @@
   padding: .5rem;
 }
 
+#student-story .mapboxgl-marker-image {
+  max-height: none !important;
+}
+
 .donation-slider-track {
   background: #d3d3d3; /* Grey background */
   width: 100%;
