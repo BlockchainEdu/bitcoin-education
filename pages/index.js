@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import DonateButton from "../components/donateSliderButton";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Image from 'next/image'
