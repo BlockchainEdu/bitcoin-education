@@ -88,9 +88,6 @@ export default function MobileDropdown(props) {
                                       <a href="/about/alumni">Alumni</a>
                                     </li>
                                     <li>
-                                      <a href="/about/blockchain-centers">Blockchain Centers</a>
-                                    </li>
-                                    <li>
                                       <a href="/about/professor">Professors</a>
                                     </li>
                                   </ul>
