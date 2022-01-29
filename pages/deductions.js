@@ -1,11 +1,15 @@
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import PopUpVideo from '../components/popupVideo';
+import Head from "next/head"
 
 export default function Deductions() {
     return (
         <div className="overflow-hidden">
             <HeaderWithLogoDark />
+            <Head>
+                <title>Deductions | Blockchain Education Network</title>
+            </Head>
             <div className="bg-benorange-500 py-14 mt-8">
                 <h1 className="text-center text-3xl md:text-5xl font-mont font-black mx-auto max-w-4xl">Donations to 501 (c)(3) nonprofits are tax deductible</h1>
             </div>

@@ -4,7 +4,7 @@ import Header from '../../components/header'
 import NationalTeamCard from '../../components/nationalTeamCard'
 import TeamMembers from '../../content/team'
 import { TeamMemberService } from '../../services';
-
+import Head from "next/head"
 
 import React, { useState, useEffect } from 'react';
 
@@ -57,6 +57,9 @@ export default function About() {
             }
         }}>
             <HeaderWithLogoDark />
+            <Head>
+                <title>Team | Blockchain Education Network</title>
+            </Head>
             <div className="pt-10 pb-14 md:py-14 px-7">
                 <div className="max-w-7xl m-auto">
                     <div className="flex items-center flex-col md:flex-row md:space-x-10">
@@ -69,7 +72,7 @@ export default function About() {
                             </p>
                         </div>
                         <div className="w-full md:w-2/5 mx-auto">
-                            <img className="" src="/images/team-illustration.jpg"/>
+                            <img className="" src="/images/team-illustration.jpg" />
                         </div>
                     </div>
                 </div>

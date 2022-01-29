@@ -5,11 +5,15 @@ import Image from 'next/image'
 import TestComponent from '../../components/testComponent';
 import PartnerShipBenefits from '../../components/partnershipBenefits';
 import PartnersSlider from '../../components/partnersSlider';
+import Head from "next/head"
 
 export default function Alumni() {
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
+            <Head>
+                <title>Alumni | Blockchain Education Network</title>
+            </Head>
             <div className="pt-14 lg:pt-10 md:pb-0 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">
                     <div className="w-full lg:w-6/12 mt-0 lg:-mt-20">

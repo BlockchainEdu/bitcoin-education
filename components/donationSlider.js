@@ -25,7 +25,7 @@ export default function DonationSlider(props) {
   function setSliderPosition(currValue, minValue, maxValue) {
     currValue = Math.round(currValue / props.step) * props.step;
     const currPercentage =
-          Math.min(100, 100 * (currValue - minValue) / (maxValue - minValue));
+      Math.min(100, 100 * (currValue - minValue) / (maxValue - minValue));
     if (currPercentage <= 0) {
       currValue = minValue;
     }
@@ -70,14 +70,14 @@ export default function DonationSlider(props) {
 
   return (
     <>
-                    <div className="slidecontainer relative" ref={sliderRef} onMouseDown={startMovingSlider} onTouchStart={startMovingSlider} onMouseMove={moveDonationSlider} onTouchMove={moveDonationSlider}>
-                      <div className="donation-slider-track relative z-0"></div>
-                      <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl select-none" ref={sliderCoverRef}>
-                        <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
-                        <span className="dollar-amount" ref={sliderCoverAmountRef}>${props.currValue}</span>
-                        <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
-                      </div>
-                    </div>
+      <div className="slidecontainer relative" ref={sliderRef} onMouseDown={startMovingSlider} onTouchStart={startMovingSlider} onMouseMove={moveDonationSlider} onTouchMove={moveDonationSlider}>
+        <div className="donation-slider-track relative z-0"></div>
+        <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl select-none" ref={sliderCoverRef}>
+          <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
+          <span className="dollar-amount" ref={sliderCoverAmountRef}>${props.currValue}</span>
+          <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
+        </div>
+      </div>
     </>
   );
 }

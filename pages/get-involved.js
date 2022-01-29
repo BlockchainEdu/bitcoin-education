@@ -6,6 +6,7 @@ import TestComponent from '../components/testComponent';
 import PartnerShipBenefits from '../components/partnershipBenefits';
 import PartnersSlider from '../components/partnersSlider';
 import PartnersSliderAlt from '../components/partnersSliderAlt'
+import Head from "next/head"
 
 export default function GetInvolved() {
 
@@ -32,6 +33,9 @@ export default function GetInvolved() {
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
+            <Head>
+                <title>Get Involved | Blockchain Education Network</title>
+            </Head>
             <div className="pt-20 md:py-24 pb-20 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">
                     <div className="" style={{ marginRight: "-3rem" }}>

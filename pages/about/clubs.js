@@ -3,6 +3,7 @@ import Footer from "../../components/footer";
 import HeaderWithLogoDark from "../../components/headerWithLogoDark";
 import ClubsDropdown from "../../components/clubsDropdown";
 import { TeamMemberService } from '../../services';
+import Head from "next/head"
 
 const Partners = () => {
   const [allClubs, setAllClubs] = useState([])
@@ -54,7 +55,7 @@ const Partners = () => {
     };
     let result = await TeamMemberService.getMembers(body);
     console.log(result);
-    if(result?.data?.data?.boards){
+    if (result?.data?.data?.boards) {
       let temp_locations = []
       let temp = result.data.data.boards[0].items.map(item => {
         !temp_locations.includes(item.group.title) && temp_locations.push(item.group.title)
@@ -62,9 +63,9 @@ const Partners = () => {
           id: item.id,
           name: item.name,
           location: item.group.title,
-          url: item.assets[0]?.public_url?item.assets[0]?.public_url : null
+          url: item.assets[0]?.public_url ? item.assets[0]?.public_url : null
         }
-      }) 
+      })
       setAllClubs(temp)
       setClubs(temp);
       setLocations(temp_locations);
@@ -73,7 +74,7 @@ const Partners = () => {
 
   const onSelected = (param) => {
     let temp = allClubs;
-    if(param !== 'All') 
+    if (param !== 'All')
       temp = allClubs.filter(item => item.location === param)
     setClubs(temp)
   }
@@ -81,6 +82,9 @@ const Partners = () => {
   return (
     <div id="partners-page">
       <HeaderWithLogoDark />
+      <Head>
+        <title>Clubs | Blockchain Education Network</title>
+      </Head>
       <div className="pt-12 lg:pt-40 pb-0 px-7">
         <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
           <div className="w-full ">
@@ -99,9 +103,9 @@ const Partners = () => {
             </p>
             <div className="m-auto flex content-center justify-center lg:justify-start">
               <a href="https://learn.blockchainedu.org/segments" target="_blank">
-              <button className="mb-20 lg:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-16 rounded-full py-4 mt-10">
-                Sign Up
-              </button>
+                <button className="mb-20 lg:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-16 rounded-full py-4 mt-10">
+                  Sign Up
+                </button>
               </a>
             </div>
           </div>
@@ -140,12 +144,12 @@ const Partners = () => {
           <h2 className="font-black text-center text-4xl md:text-5xl text-black pb-0 lg:pb-8">
             Clubs
           </h2>
-          <ClubsDropdown onSelected={onSelected} locations={locations}/>
+          <ClubsDropdown onSelected={onSelected} locations={locations} />
           <div className="pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-14 space-y-3 gap-x-10">
             {clubs.map(club => (
               <div className="font-mont m-auto">
-                <div className="flex items-center" style={{height:"130px"}}>
-                <img className="m-auto" src={club.url} style={{maxWidth:"200px"}}/>
+                <div className="flex items-center" style={{ height: "130px" }}>
+                  <img className="m-auto" src={club.url} style={{ maxWidth: "200px" }} />
                 </div>
                 <p className="font-bold text-lg pt-10 text-center">{club.name}</p>
               </div>

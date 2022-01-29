@@ -9,6 +9,7 @@ import PopupVideo from '../components/popupVideo';
 import StandardButton from '../components/standardButton';
 import { TeamMemberService } from '../services';
 import React, { useState, useEffect } from 'react';
+import Head from "next/head"
 
 const cryptoInfo = [
     {
@@ -133,6 +134,9 @@ export default function Donate() {
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
+            <Head>
+                <title>Donate | Blockchain Education Network</title>
+            </Head>
             <section className="bg-benorange-500 mt-8 px-7">
                 <div className="flex flex-col lg:flex-row max-w-7xl m-auto py-24">
                     <div className="w-full lg:w-4/12">

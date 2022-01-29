@@ -28,10 +28,6 @@ const solutions = [
     href: '/about/alumni'
   },
   {
-    name: 'Blockchain Centers',
-    href: '/about/blockchain-centers'
-  },
-  {
     name: 'Professors',
     href: '/about/professor'
   }

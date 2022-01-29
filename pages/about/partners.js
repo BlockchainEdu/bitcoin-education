@@ -5,6 +5,7 @@ import Image from "next/image";
 import PartnerShipBenefits from "../../components/partnershipBenefits";
 import PartnersSlider from "../../components/partnersSlider";
 import { TeamMemberService } from "../../services";
+import Head from "next/head"
 
 export default function Partners() {
   const [partners, setPartners] = useState([]);
@@ -41,7 +42,7 @@ export default function Partners() {
           id: item.id,
           name: item.name,
           category: item.group.title,
-          url: item.assets[0]?.public_url?item.assets[0]?.public_url : null
+          url: item.assets[0]?.public_url ? item.assets[0]?.public_url : null
         }
       })
       setPartners(temp)
@@ -51,6 +52,9 @@ export default function Partners() {
   return (
     <div id="partners-page" className="overflow-hidden">
       <HeaderWithLogoDark />
+      <Head>
+        <title>Partners | Blockchain Education Network</title>
+      </Head>
       <div className="pt-12 pb-0 lg:py-40 lg:pb-20 px-7">
         <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
           <div className="w-full lg:w-8/12">
@@ -163,12 +167,12 @@ export default function Partners() {
         </div>
       </div>
       <div className="py-20 m-auto">
-        {categories.length > 0 && categories.map((category, index) => 
-          <PartnersSlider title={category} key={index} data={partners.filter(item => item.category === category)}/>
+        {categories.length > 0 && categories.map((category, index) =>
+          <PartnersSlider title={category} key={index} data={partners.filter(item => item.category === category)} />
         )}
       </div>
       <div className="-mt-40 md:-mt-60">
-      <Footer />
+        <Footer />
       </div>
     </div>
   );

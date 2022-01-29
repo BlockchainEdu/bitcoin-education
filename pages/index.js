@@ -8,6 +8,7 @@ import Modal from '../components/donateSliderButton';
 import StandardButton from '../components/standardButton';
 import DonateOptions from '../components/donateOptions';
 import PopUpVideo from '../components/popupVideo';
+import Head from "next/head"
 
 const impactStats = [
   {
@@ -44,6 +45,9 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       <Header />
+      <Head>
+        <title>Home | Blockchain Education Network</title>
+      </Head>
       <section className="py-24 px-7">
         <h1 className="font-mont font-black text-2xl text-center">
           Help us educate 10 million people in 10 years about blockchain
