@@ -5,11 +5,15 @@ import Image from 'next/image'
 import TestComponent from '../../components/testComponent';
 import PartnerShipBenefits from '../../components/partnershipBenefits';
 import PartnersSlider from '../../components/partnersSlider';
+import Head from "next/head"
 
 export default function Professor() {
     return (
         <div id="partners-page">
             <HeaderWithLogoDark />
+            <Head>
+                <title>Professor | Blockchain Education Network</title>
+            </Head>
             <div className="pt-10 pb-14 md:py-14 px-7">
                 <div className="max-w-7xl m-auto">
                     <div className="flex items-center flex-col lg:flex-row lg:space-x-10">

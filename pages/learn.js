@@ -4,11 +4,15 @@ import Header from '../components/header'
 import Image from 'next/image'
 import FormPopup from '../components/formPopup';
 import Modal from '../components/donateButton';
+import Head from "next/head"
 
 export default function Learn() {
     return (
         <div id="learn-page">
             <HeaderWithLogoDark />
+            <Head>
+                <title>Learn | Blockchain Education Network</title>
+            </Head>
             <section className="px-7">
                 <div className="max-w-7xl m-auto pt-24">
                     <h1 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">

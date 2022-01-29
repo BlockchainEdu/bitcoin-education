@@ -1,11 +1,15 @@
 import Footer from '../components/footer';
 import HeaderWithLogo from '../components/headerWithLogo';
 import Header from '../components/header'
+import Head from "next/head"
 
 export default function About() {
     return (
         <div id="about-page">
             <HeaderWithLogo />
+            <Head>
+                <title>About | Blockchain Education Network</title>
+            </Head>
             <div className="about-header py-40 pb-20 px-7">
                 <div className="max-w-7xl m-auto flex flex-col md:flex-row">
                     <div className="w-full md:w-1/2">
@@ -17,7 +21,7 @@ export default function About() {
                         </p>
                     </div>
                     <div className="w-full md:w-1/2 m-auto">
-                        <img className="mt-14" src="/images/about-header-illustration.png"/>
+                        <img className="mt-14" src="/images/about-header-illustration.png" />
                     </div>
                 </div>
             </div>
