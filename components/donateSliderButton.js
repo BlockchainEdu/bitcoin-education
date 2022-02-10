@@ -12,10 +12,10 @@ const modalTypes = {
 }
 
 export default function Modal() {
-  const minDonationAmount = 50;
-  const maxDonationAmount = 5000;
-  const step = 50;
-  const startingDonationAmount = 50;
+  const minDonationAmount = 12;
+  const maxDonationAmount = 480;
+  const step = 12;
+  const startingDonationAmount = 12;
   const [showModal, setShowModal] = useState(modalTypes.donate);
   const [donationAmount, setDonationAmount] = useState({ amount: startingDonationAmount, frequency: giftFrequency.oneTime });
   const [loading, setLoading] = useState(false);
