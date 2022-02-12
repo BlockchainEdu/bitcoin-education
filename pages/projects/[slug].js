@@ -37,7 +37,7 @@ const Project = () => {
             {project.media_type === MediaType.image && <img className="mapboxgl-marker-image w-full" src={project.image} />}
             {project.media_type === MediaType.video && <Vimeo video={project.video} className="mapboxgl-marker-video" autoplay />}
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
-            <p className="text-black text-md pr-10 pb-14">{project.place_story}</p>
+            <p className="text-black text-md pr-10 pb-14" dangerouslySetInnerHTML={{ __html: project.place_story }}></p>
           </div>
           <div className="w-full lg:w-4/12 bg-benorange-500 flex items-center justify-center py-36 lg:py-0 mt-14 lg:mt-0">
             <StandardButton
