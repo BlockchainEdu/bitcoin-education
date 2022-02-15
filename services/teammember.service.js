@@ -30,16 +30,17 @@ export const getProjectsFromMonday = async function() {
         }`
   };
   const result = sessionStorage.getItem("storedBoard") ? JSON.parse(sessionStorage.getItem("storedBoard")) : await TeamMemberService.getMembers(body);
-  let projects = [];
+  let projects = []
   if (result?.data?.data?.boards) {
-    sessionStorage.setItem("storedBoard", JSON.stringify(result));
+    sessionStorage.setItem("storedBoard", JSON.stringify(result))
     projects = result.data.data.boards[0].items.map(item => {
       let extras = { media_type: MediaType.none }
+      const video = item.column_values[5].value || ""
+      const galleryVideoAsset = {file_extension: '.mp4', public_url: video.replace(/"/g, "")}
       if (item.assets.length > 0) {
-        const video = item.column_values[5].value || "";
-        extras = { media_type: MediaType.image, image: item.assets[0].public_url, gallery: item.assets.concat([{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]) };
+        extras = { media_type: MediaType.image, image: item.assets[0].public_url, gallery: item.assets.concat([galleryVideoAsset]) };
       } else if (item.column_values[5].value && item.column_values[5].value !== "") {
-        extras = { media_type : MediaType.video, video: item.column_values[5].value.replace(/"/g, "") };
+        extras = { media_type : MediaType.video, video: item.column_values[5].value.replace(/"/g, ""), gallery: [galleryVideoAsset] };
       }
       return {
         ...extras,
