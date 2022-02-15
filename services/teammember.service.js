@@ -29,10 +29,9 @@ export const getProjectsFromMonday = async function() {
             }
         }`
   };
-  const result = sessionStorage.getItem("storedBoard") ? JSON.parse(sessionStorage.getItem("storedBoard")) : await TeamMemberService.getMembers(body);
+  const result = await TeamMemberService.getMembers(body)
   let projects = []
   if (result?.data?.data?.boards) {
-    sessionStorage.setItem("storedBoard", JSON.stringify(result))
     projects = result.data.data.boards[0].items.map(item => {
       let extras = { media_type: MediaType.none }
       const video = item.column_values[5].value || ""

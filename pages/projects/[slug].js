@@ -15,22 +15,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-const Project = () => {
+const Project = ({project}) => {
   const router = useRouter();
-  const { slug } = router.query;
-  const [project, setProject] = useState({ slug });
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const fetchedProjects = await getProjectsFromMonday();
-      const project = fetchedProjects.find(elem => elem.place_name === slug);
-      console.log({project});
-      setProject(project);
-    };
-    fetchProjects();
-  }, []);
-
-  if (!router.isFallback && !project?.slug) {
+  if (!router.isFallback && !project) {
     return <ErrorPage statusCode={404} />
   }
   return (
@@ -73,3 +60,27 @@ const Project = () => {
 }
 
 export default Project
+
+export async function getStaticProps({ params }) {
+  const fetchedProjects = await getProjectsFromMonday() || [];
+  const project = fetchedProjects.find(elem => elem.place_name === params.slug);
+  if (project) {
+    return { props: { project } };
+  }
+}
+
+export async function getStaticPaths() {
+  const fetchedProjects = await getProjectsFromMonday() || [];
+  const projectSlugs = fetchedProjects.map((project) => project.place_name || '')
+
+  return {
+    paths: projectSlugs.map((slug) => {
+      return {
+        params: {
+          slug,
+        },
+      }
+    }),
+    fallback: false,
+  }
+}
