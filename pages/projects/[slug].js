@@ -17,7 +17,7 @@ import 'swiper/css/scrollbar';
 
 const Project = ({slug}) => {
   const router = useRouter()
-  const [project, setProject] = useState()
+  const [project, setProject] = useState({place_name: "", place_story: "", gallery: []})
   useEffect(async () => {
     const fetchedProjects = await getProjectsFromMonday() || []
     console.log(fetchedProjects)
@@ -66,7 +66,7 @@ export default Project
 
 export async function getStaticProps({ params }) {
   const slug = params.slug
-  return { slug };
+  return { props: { slug } };
 }
 
 export async function getStaticPaths() {
