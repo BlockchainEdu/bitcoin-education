@@ -6,6 +6,13 @@ import { MediaType } from '../../components/map';
 import Footer from '../../components/footer';
 import Header from "../../components/header";
 import StandardButton from '../../components/standardButton';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 const Project = () => {
   const router = useRouter();
@@ -16,7 +23,6 @@ const Project = () => {
     const fetchProjects = async () => {
       const fetchedProjects = await getProjectsFromMonday();
       const project = fetchedProjects.find(elem => elem.place_name === slug);
-      console.log(project);
       setProject(project);
     };
     fetchProjects();
@@ -34,6 +40,11 @@ const Project = () => {
         </div>
         <div className="pb-24 max-w-7xl mx-auto space-x-10 flex flex-col lg:flex-row w-11/12">
           <div className="w-full lg:w-8/12">
+            <Swiper>
+              {project.gallery.map(item => (
+                <SwiperSlide>{item.public_url}</SwiperSlide>
+              ))}
+            </Swiper>
             {project.media_type === MediaType.image && <img className="mapboxgl-marker-image w-full" src={project.image} />}
             {project.media_type === MediaType.video && <Vimeo video={project.video} className="mapboxgl-marker-video" autoplay />}
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>

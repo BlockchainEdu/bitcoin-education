@@ -16,15 +16,9 @@ export const getProjectsFromMonday = async function() {
     query: `{
             boards (ids: 1983862095) {
                 items {
-                    group {
-                        id
-                        title
-                    }
                     id
                     name
                     column_values {
-                        id
-                        title
                         value
                     }
                     assets {
@@ -35,13 +29,15 @@ export const getProjectsFromMonday = async function() {
             }
         }`
   };
-  const result = await TeamMemberService.getMembers(body);
+  const result = sessionStorage.getItem("storedBoard") ? JSON.parse(sessionStorage.getItem("storedBoard")) : await TeamMemberService.getMembers(body);
   let projects = [];
   if (result?.data?.data?.boards) {
+    sessionStorage.setItem("storedBoard", JSON.stringify(result));
     projects = result.data.data.boards[0].items.map(item => {
       let extras = { media_type: MediaType.none }
       if (item.assets.length > 0) {
-        extras = { media_type: MediaType.image, image: item.assets[0].public_url, };
+        const video = item.column_values[5].value || "";
+        extras = { media_type: MediaType.image, image: item.assets[0].public_url, gallery: item.assets.concat([{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]) };
       } else if (item.column_values[5].value && item.column_values[5].value !== "") {
         extras = { media_type : MediaType.video, video: item.column_values[5].value.replace(/"/g, "") };
       }
