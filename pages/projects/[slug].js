@@ -15,11 +15,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-const Project = ({project}) => {
-  const router = useRouter();
-  if (!router.isFallback && !project) {
-    return <ErrorPage statusCode={404} />
-  }
+const Project = ({slug}) => {
+  const router = useRouter()
+  const [project, setProject] = useState()
+  useEffect(async () => {
+    const fetchedProjects = await getProjectsFromMonday() || []
+    console.log(fetchedProjects)
+    return setProject(fetchedProjects.find(elem => { elem.slug === slug }))
+  }, [])
   return (
     <>
       <div id="student-story">
@@ -62,16 +65,13 @@ const Project = ({project}) => {
 export default Project
 
 export async function getStaticProps({ params }) {
-  const fetchedProjects = await getProjectsFromMonday() || [];
-  const project = fetchedProjects.find(elem => elem.place_name === params.slug);
-  if (project) {
-    return { props: { project } };
-  }
+  const slug = params.slug
+  return { slug };
 }
 
 export async function getStaticPaths() {
-  const fetchedProjects = await getProjectsFromMonday() || [];
-  const projectSlugs = fetchedProjects.map((project) => project.place_name || '')
+  const fetchedProjects = await getProjectsFromMonday() || []
+  const projectSlugs = fetchedProjects.map((project) => project.slug || '')
 
   return {
     paths: projectSlugs.map((slug) => {

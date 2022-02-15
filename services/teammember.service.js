@@ -1,14 +1,22 @@
-import HttpClient from "./httpClient";
-import { MediaType } from "../components/map";
+import HttpClient from "./httpClient"
+import { MediaType } from "../components/map"
 
 export const TeamMemberService = (function() {
-    const getMembers = async (body) => {
-        return await HttpClient.post('/', body)
+  var members
+  const getMembers = async (body) => {
+    if (members) {
+      return members
     }
+    return await HttpClient.post('/', body)
+  }
+  const setMembers = (result) => {
+    members = result
+  }
 
-    return {
-        getMembers,
-    };
+  return {
+    getMembers,
+    setMembers,
+  };
 })();
 
 export const getProjectsFromMonday = async function() {
@@ -32,6 +40,7 @@ export const getProjectsFromMonday = async function() {
   const result = await TeamMemberService.getMembers(body)
   let projects = []
   if (result?.data?.data?.boards) {
+    TeamMemberService.setMembers(result)
     projects = result.data.data.boards[0].items.map(item => {
       let extras = { media_type: MediaType.none }
       const video = item.column_values[5].value || ""
