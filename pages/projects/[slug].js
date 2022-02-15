@@ -8,6 +8,7 @@ import Header from "../../components/header";
 import StandardButton from '../../components/standardButton';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Vimeo from '@u-wave/react-vimeo';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
