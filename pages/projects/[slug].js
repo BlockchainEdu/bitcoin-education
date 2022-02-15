@@ -43,7 +43,14 @@ const Project = () => {
           <div className="w-full lg:w-8/12">
             <Swiper>
               {project.gallery?.map(item => (
-                <SwiperSlide>{item.public_url}</SwiperSlide>
+                <SwiperSlide>
+                  {item.file_extension === '.mp4' &&
+                   <Vimeo video={item.public_url} className="mapboxgl-marker-video" autoplay />
+                  }
+                  {item.file_extension !== '.mp4' &&
+                   <img className="mapboxgl-marker-image w-full" src={item.public_url} />
+                  }
+                </SwiperSlide>
               ))}
             </Swiper>
             {project.media_type === MediaType.image && <img className="mapboxgl-marker-image w-full" src={project.image} />}
