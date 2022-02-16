@@ -165,13 +165,14 @@
   width: auto !important;
 }
 
+.swiper-slide-vimeo iframe {
+  height: inherit;
+}
+
 @media only screen and (max-width: 980px) {
   .mapboxgl-marker-video iframe {
     max-height: 150px;
   }
-}
-
-@media only screen and (max-width: 980px) {
   .mapboxgl-marker-image {
     max-height: 150px;
   }

@@ -1,7 +1,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Vimeo from '@u-wave/react-vimeo';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 export const MediaType = {
   none: 'none',
@@ -56,10 +62,20 @@ export default function Map({ locations }) {
               className="transform-none pin-popup border-none shadow-2xl rounded-md relative"
             >
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4">
+                <Swiper>
+                  {location.gallery?.map(item => (
+                    <SwiperSlide>
+                      {item.file_extension === '.mp4' && item.public_url != '' &&
+                      <Vimeo video={item.public_url} className="" autoplay />
+                      }
+                      {item.file_extension !== '.mp4' && item.public_url != '' &&
+                      <img className="" src={item.public_url} />
+                      }
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
                 <Link href={`/projects/${location.id}`}>
                   <a>
-                    {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
-                    {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
                     <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>
                     <div className="h-40 overflow-hidden">
                       <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden" dangerouslySetInnerHTML={{ __html: location.place_story }}></p>
