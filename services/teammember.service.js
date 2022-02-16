@@ -35,7 +35,7 @@ export const getProjectsFromMonday = async function() {
     projects = result.data.data.boards[0].items.map(item => {
       let extras = { media_type: MediaType.none }
       const video = item.column_values[5].value || ""
-      const galleryVideoAssets = [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
+      const galleryVideoAssets = video === "" ? [] : [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
       if (item.assets.length > 0) {
         extras = { media_type: MediaType.image, image: item.assets[0].public_url, gallery: galleryVideoAssets.concat(item.assets) };
       } else if (item.column_values[5].value && item.column_values[5].value !== "") {
@@ -76,7 +76,7 @@ export const getProjectFromMonday = async function(id) {
     const selectedItem = result.data.data.boards[0].items[0]
     let extras = { media_type: MediaType.none }
     const video = selectedItem.column_values[5].value || ""
-    const galleryVideoAssets = [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
+    const galleryVideoAssets = video === "" ? [] : [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
     if (selectedItem.assets.length > 0) {
       extras = { media_type: MediaType.image, image: selectedItem.assets[0].public_url, gallery: galleryVideoAssets.concat(selectedItem.assets) };
     } else if (selectedItem.column_values[5].value && selectedItem.column_values[5].value !== "") {

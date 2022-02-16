@@ -25,9 +25,14 @@ const Project = ({project}) => {
         </div>
         <div className="pb-24 max-w-7xl mx-auto space-x-10 flex flex-col lg:flex-row w-11/12">
           <div className="w-full lg:w-8/12">
-            <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]}>
+            <Swiper
+              modules={[Navigation, Pagination, Scrollbar, A11y]}
+              navigation
+              pagination={{ clickable: true }}
+              scrollbar={{ draggable: true }}
+            >
               {project.gallery?.map(item => (
-                <SwiperSlide>
+                <SwiperSlide className="w-4/5 pb-16">
                   {item.file_extension === '.mp4' && item.public_url != '' &&
                    <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
                   }
