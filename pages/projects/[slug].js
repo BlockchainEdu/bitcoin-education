@@ -6,25 +6,23 @@ import { MediaType } from '../../components/map';
 import Footer from '../../components/footer';
 import Header from "../../components/header";
 import StandardButton from '../../components/standardButton';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import Vimeo from '@u-wave/react-vimeo';
 
-const Project = () => {
-  const router = useRouter();
-  const { slug } = router.query;
-  const [project, setProject] = useState({ slug });
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const fetchedProjects = await getProjectsFromMonday();
-      const project = fetchedProjects.find(elem => elem.place_name === slug);
-      console.log(project);
-      setProject(project);
-    };
-    fetchProjects();
-  }, []);
-
-  if (!router.isFallback && !project?.slug) {
-    return <ErrorPage statusCode={404} />
-  }
+const Project = ({slug}) => {
+  const router = useRouter()
+  const [project, setProject] = useState({place_name: "", place_story: "", gallery: []})
+  useEffect(async () => {
+    const fetchedProjects = await getProjectsFromMonday() || []
+    console.log(fetchedProjects)
+    return setProject(fetchedProjects.find(elem => { elem.slug === slug }))
+  }, [])
   return (
     <>
       <div id="student-story">
@@ -34,10 +32,20 @@ const Project = () => {
         </div>
         <div className="pb-24 max-w-7xl mx-auto space-x-10 flex flex-col lg:flex-row w-11/12">
           <div className="w-full lg:w-8/12">
-            {project.media_type === MediaType.image && <img className="mapboxgl-marker-image w-full" src={project.image} />}
-            {project.media_type === MediaType.video && <Vimeo video={project.video} className="mapboxgl-marker-video" autoplay />}
+            <Swiper>
+              {project.gallery?.map(item => (
+                <SwiperSlide>
+                  {item.file_extension === '.mp4' &&
+                   <Vimeo video={item.public_url} className="mapboxgl-marker-video" autoplay />
+                  }
+                  {item.file_extension !== '.mp4' &&
+                   <img className="mapboxgl-marker-image w-full" src={item.public_url} />
+                  }
+                </SwiperSlide>
+              ))}
+            </Swiper>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
-            <p className="text-black text-md pr-10 pb-14">{project.place_story}</p>
+            <p className="text-black text-md pr-10 pb-14" dangerouslySetInnerHTML={{ __html: project.place_story }}></p>
           </div>
           <div className="w-full lg:w-4/12 bg-benorange-500 flex items-center justify-center py-36 lg:py-0 mt-14 lg:mt-0">
             <StandardButton
@@ -55,3 +63,24 @@ const Project = () => {
 }
 
 export default Project
+
+export async function getStaticProps({ params }) {
+  const slug = params.slug
+  return { props: { slug } };
+}
+
+export async function getStaticPaths() {
+  const fetchedProjects = await getProjectsFromMonday() || []
+  const projectSlugs = fetchedProjects.map((project) => project.slug || '')
+
+  return {
+    paths: projectSlugs.map((slug) => {
+      return {
+        params: {
+          slug,
+        },
+      }
+    }),
+    fallback: false,
+  }
+}

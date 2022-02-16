@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { getProjectsFromMonday } from '../services';
 import Footer from '../components/footer';
 import HeaderWithLogo from '../components/headerWithLogo';
@@ -12,17 +11,7 @@ const Map = dynamic(() => import("../components/map"), {
   ssr: false
 });
 
-export default function MapPage() {
-  const [locations, setLocations] = useState([]);
-
-  useEffect(() => {
-    const fetchLocations = async () => {
-      const fetchedLocations = await getProjectsFromMonday();
-      setLocations(fetchedLocations);
-    };
-    fetchLocations();
-  }, []);
-
+export default function MapPage({locations}) {
   return (
     <div id="map-page">
       <HeaderWithLogo />
@@ -40,3 +29,8 @@ const Container = styled.div`
   width: 100%;
   height: 60vh;
 `;
+
+export async function getStaticProps({ params }) {
+  const fetchedProjects = await getProjectsFromMonday() || [];
+  return { props: { locations: fetchedProjects } };
+}
