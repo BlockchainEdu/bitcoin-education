@@ -58,34 +58,7 @@ export default function Professor() {
                     </div>
                 </div>
             </div>
-            <div className="py-14 px-7 mb-20" style={{backgroundColor:"#F5F7F7"}}>
-                <div className="max-w-7xl m-auto">
-                    <div className="flex items-center flex-col lg:flex-row md:space-x-20">
-                        <div className="w-full w-3/8">
-                            <h1 className="text-center lg:text-left text-4xl mx-auto lg:m-0 md:text-6xl font-black text-black max-w-xl pt-10 leading-snug">
-                                BEN International Academic Research Journal
-                            </h1>
-                            <p className="text-center lg:text-left mx-auto lg:mx-0 text-black text-md pt-10 max-w-sm">
-                                We are finding the top blockchain researchers across the globe and publishing their research in the BEN Research Journal
-                            </p>
-                            <div className="m-auto flex content-center justify-center lg:justify-start">
-                                <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
-                                <button className="border font-bold text-xl px-16 rounded-full py-4 mt-10 transition duration-500 hover:border-benorange-500 hover:text-benorange-500 text-benblack-500">
-                                    Join Us
-                                </button>
-                                </a>
-                            </div>
-                        </div>
-                        <div className="flex justify-center lg:justify-start w-full lg:w-5/8 mx-auto pt-20 lg:pt-0 ">
-                            <Image 
-                                src="/images/academic-research-journal.png"
-                                width="600"
-                                height="590"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <Footer />
         </div>
     )
