@@ -23,7 +23,7 @@ const Project = ({project}) => {
         <div className="pt-40 max-w-7xl mx-auto">
           <h1 className="font-mont text-black font-black text-2xl lg:text-3xl py-4">{project.place_name}</h1>
         </div>
-        <div className="pb-24 max-w-7xl mx-auto space-x-10 flex flex-col lg:flex-row w-11/12">
+        <div className="pb-24 max-w-7xl mx-auto space-x-10 flex flex-col lg:flex-row w-11/12 overflow-hidden">
           <div className="w-full lg:w-8/12">
             <Swiper
               modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -37,13 +37,15 @@ const Project = ({project}) => {
                    <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
                   }
                   {item.file_extension !== '.mp4' && item.public_url != '' &&
-                   <img className="h-[30vh] mx-auto" src={item.public_url} />
+                   <div className="h-[30vh] mx-auto">
+                     <img className="absolute top-1/2 translate-y-[-50%]" src={item.public_url} />
+                   </div>
                   }
                 </SwiperSlide>
               ))}
             </Swiper>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
-            <p className="text-black text-md pr-10 pb-14" dangerouslySetInnerHTML={{ __html: project.place_story }}></p>
+            <p className="text-black text-md lg:pr-10 lg:pb-14" dangerouslySetInnerHTML={{ __html: project.place_story }}></p>
           </div>
           <div className="w-full lg:w-4/12 bg-benorange-500 flex items-center justify-center py-36 lg:py-0 mt-14 lg:mt-0">
             <StandardButton

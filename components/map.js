@@ -75,7 +75,9 @@ export default function Map({ locations }) {
                       <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
                       }
                       {item.file_extension !== '.mp4' && item.public_url != '' &&
-                      <img className="h-[30vh] mx-auto" src={item.public_url} />
+                      <div className="h-[30vh] mx-auto">
+                        <img className="absolute top-1/2 translate-y-[-50%]" src={item.public_url} />
+                      </div>
                       }
                     </SwiperSlide>
                   ))}
