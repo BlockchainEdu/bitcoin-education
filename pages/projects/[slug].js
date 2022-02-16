@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import { getProjectsFromMonday } from '../../services';
+import { getProjectsFromMonday, getProjectFromMonday } from '../../services';
 import { MediaType } from '../../components/map';
 import Footer from '../../components/footer';
 import Header from "../../components/header";
@@ -15,14 +14,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-const Project = ({slug}) => {
+const Project = ({project}) => {
   const router = useRouter()
-  const [project, setProject] = useState({place_name: "", place_story: "", gallery: []})
-  useEffect(async () => {
-    const fetchedProjects = await getProjectsFromMonday() || []
-    console.log(fetchedProjects)
-    return setProject(fetchedProjects.find(elem => { elem.slug === slug }))
-  }, [])
   return (
     <>
       <div id="student-story">
@@ -65,13 +58,14 @@ const Project = ({slug}) => {
 export default Project
 
 export async function getStaticProps({ params }) {
-  const slug = params.slug
-  return { props: { slug } };
+  const id = params.slug
+  const project = await getProjectFromMonday(id) || {}
+  return { props: { project } }
 }
 
 export async function getStaticPaths() {
   const fetchedProjects = await getProjectsFromMonday() || []
-  const projectSlugs = fetchedProjects.map((project) => project.slug || '')
+  const projectSlugs = fetchedProjects.map((project) => project.id || '')
 
   return {
     paths: projectSlugs.map((slug) => {

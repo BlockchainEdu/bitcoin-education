@@ -56,7 +56,7 @@ export default function Map({ locations }) {
               className="transform-none pin-popup border-none shadow-2xl rounded-md relative"
             >
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4">
-                <Link href={`/projects/${location.slug}`}>
+                <Link href={`/projects/${location.id}`}>
                   <a>
                     {location.media_type === MediaType.image && <img className="mapboxgl-marker-image mx-auto w-full" src={location.image} />}
                     {location.media_type === MediaType.video && <Vimeo video={location.video} className="mapboxgl-marker-video" autoplay />}
