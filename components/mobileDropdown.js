@@ -105,7 +105,7 @@ export default function MobileDropdown(props) {
                       <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events</a>
                     </li>
                     <li>
-                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/sign_in"><b>Login</b></a>
+                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="/contact"><b>Contact</b></a>
                     </li>
                   </ul>
                 </div>
