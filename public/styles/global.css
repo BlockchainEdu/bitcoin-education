@@ -466,22 +466,17 @@ h1, h2 {
 }
 
 .lightbox-modal {
-  display: none;
   position: fixed;
   z-index: 1;
   padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
   background-color: black;
 }
 
 /* Modal Content */
 .lightbox-modal .modal-content {
   position: relative;
-  background-color: #fefefe;
   margin: auto;
   padding: 0;
   width: 90%;
@@ -502,20 +497,11 @@ h1, h2 {
 .lightbox-modal .close:focus {
   color: #999;
   text-decoration: none;
-  cursor: pointer;
-}
-
-/* Hide the slides by default */
-.lightbox-modal .mySlides {
-  display: none;
 }
 
 /* Next & previous buttons */
 .lightbox-modal .prev,
 .lightbox-modal .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
   width: auto;
   padding: 16px;
   margin-top: -50px;
@@ -549,12 +535,9 @@ h1, h2 {
   top: 0;
 }
 
-/* Caption text */
-.lightbox-modal .caption-container {
-  text-align: center;
-  background-color: black;
-  padding: 2px 16px;
-  color: white;
+.lightbox-modal .lightbox-slide-vimeo iframe {
+  width: 100%;
+  height: 100%;
 }
 
 .lightbox-modal img.demo {

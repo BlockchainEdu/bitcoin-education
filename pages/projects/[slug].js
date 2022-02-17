@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import { getProjectsFromMonday, getProjectFromMonday } from '../../services';
@@ -17,6 +18,8 @@ import 'swiper/css/zoom';
 
 const Project = ({project}) => {
   const router = useRouter()
+  const [currSlideIdx, setCurrSlideIdx] = useState(0)
+  const [isShowingZoomModal, setShowingZoomModal] = useState(false)
   return (
     <>
       <div id="student-story">
@@ -31,6 +34,8 @@ const Project = ({project}) => {
               navigation
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
+              onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
+              onClick={() => setShowingZoomModal(true)}
             >
               {project.gallery?.map(item => (
                 <SwiperSlide className="w-4/5 pb-16">
@@ -39,7 +44,7 @@ const Project = ({project}) => {
                   }
                   {item.file_extension !== '.mp4' && item.public_url != '' &&
                    <div className="h-[30vh] mx-auto">
-                     <img className="absolute top-1/2 translate-y-[-50%]" src={item.public_url} />
+                     <img className="absolute top-1/2 translate-y-[-50%]" src={item.public_url}/>
                    </div>
                   }
                 </SwiperSlide>
@@ -59,26 +64,29 @@ const Project = ({project}) => {
         </div>
         <Footer />
       </div>
-    <div id="zoomModal" class="lightbox-modal">
-      <span class="close cursor" onclick="closeModal()">&times;</span>
-      <div class="modal-content">
-      <div class="mySlides">
-        {project.gallery?.map((item, idx) => (
-          <>
-          <div class="numbertext">{idx + 1} / 4</div>
-          {item.file_extension === '.mp4' && item.public_url != '' &&
-            <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
-          }
-          {item.file_extension !== '.mp4' && item.public_url != '' &&
-            <img src={item.public_url} style={{width: "100%"}} />
-          }
-          </>
-        ))}
+      <div id="zoomModal" className="lightbox-modal w-full h-full max-h-[100vh] overflow-hidden" style={{display: isShowingZoomModal ? "block" : "none"}}>
+        <span className="close cursor-pointer" onClick={() => setShowingZoomModal(false)}>&times;</span>
+        <div className="modal-content h-full bg-transparent flex items-center justify-center">
+            {project.gallery?.map((item, idx) => (
+              <>
+                {item.file_extension === '.mp4' && item.public_url != '' &&
+                  <div className="my-slides w-full h-full" style={{display: currSlideIdx === idx ? "block": "none"}}>
+                    <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
+                    <Vimeo video={item.public_url} className="w-full h-full lightbox-slide-vimeo" />
+                  </div>
+                }
+                {item.file_extension !== '.mp4' && item.public_url != '' &&
+                  <div className="my-slides w-full" style={{display: currSlideIdx === idx ? "block": "none"}}>
+                    <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
+                    <img src={item.public_url} className="w-full max-h-[100%]" />
+                  </div>
+                }
+              </>
+            ))}
+          <a className="prev cursor-pointer absolute top-1/2 left-0" onClick={() => setCurrSlideIdx(currSlideIdx-1)}>&#10094;</a>
+          <a className="next cursor-pointer absolute top-1/2 right-0" onClick={() => setCurrSlideIdx(currSlideIdx+1)}>&#10095;</a>
+        </div>
       </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
-    </div>
     </>
   )
 }
