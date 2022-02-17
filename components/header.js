@@ -27,7 +27,7 @@ export default function HeaderWithLogo() {
           <li className="flex gap-x-14 justify-end items-center">
             <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events </a>
             <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/all-courses">Learn </a>
-            <a className="hover:text-benorange-500 transition duration-500 font-bold" target="_blank" href="/contact">Contact </a>
+            <a className="hover:text-benorange-500 transition duration-500 font-bold" href="/contact">Contact </a>
             <a href="/donate">
               <button className="text-md px-8 rounded-full py-2 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
                 Donate
