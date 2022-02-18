@@ -37,8 +37,9 @@ export const getProjectsFromMonday = async function() {
       const video = item.column_values[5].value || ""
       const galleryVideoAssets = video === "" ? [] : [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
       if (item.assets.length > 0) {
-        extras = { media_type: MediaType.image, image: item.assets[0].public_url, gallery: galleryVideoAssets.concat(item.assets) };
-      } else if (item.column_values[5].value && item.column_values[5].value !== "") {
+        const thisMediaType = galleryVideoAssets.length > 0 ? MediaType.video : MediaType.image;
+        extras = { media_type: thisMediaType, image: item.assets[0].public_url, gallery: galleryVideoAssets.concat(item.assets) };
+      } else if (galleryVideoAssets.length > 0) {
         extras = { media_type : MediaType.video, video: item.column_values[5].value.replace(/"/g, ""), gallery: galleryVideoAssets };
       }
       return {

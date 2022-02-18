@@ -8,6 +8,8 @@
 
 :root {
   --orange: #FF936B;
+  --swiper-navigation-color: #FF936B;
+  --swiper-theme-color: #FF936B;
 }
 
 .bg-orange {
@@ -128,6 +130,13 @@
   left: unset !important;
   transform: none !important;
   z-index: 2;
+}
+.mapboxgl-popup.video {
+  max-width: 80rem !important;
+  max-height: unset !important;
+}
+.mapboxgl-popup .swiper-slide-vimeo > div {
+  width: 100%;
 }
 .mapboxgl-popup .mapboxgl-popup-tip {
   display: none;
