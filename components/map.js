@@ -31,7 +31,6 @@ export default function Map({ locations }) {
     longitude: 0,
     zoom: 1,
   });
-
   const [selectedLocation, setSelectedLocation] = useState({});
 
   return (
@@ -70,7 +69,7 @@ export default function Map({ locations }) {
                   scrollbar={{ draggable: true }}
                 >
                   {location.gallery?.map(item => (
-                    <SwiperSlide className="w-4/5 pb-16">
+                    <SwiperSlide className="pb-16">
                       {item.file_extension === '.mp4' && item.public_url != '' &&
                       <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" responsive={true} />
                       }
