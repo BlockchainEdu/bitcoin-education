@@ -65,7 +65,7 @@ const Project = ({project}) => {
         <Footer />
       </div>
       <div id="zoomModal" className="lightbox-modal w-full h-full max-h-[100vh] overflow-hidden" style={{display: isShowingZoomModal ? "block" : "none"}}>
-        <span className="close cursor-pointer" onClick={() => setShowingZoomModal(false)}>&times;</span>
+        <span className="close cursor-pointer text-orange" onClick={() => setShowingZoomModal(false)}>&times;</span>
         <div className="modal-content h-full bg-transparent flex items-center justify-center">
             {project.gallery?.map((item, idx) => (
               <>
@@ -83,8 +83,8 @@ const Project = ({project}) => {
                 }
               </>
             ))}
-          <a className="prev cursor-pointer absolute top-1/2 left-0" onClick={() => setCurrSlideIdx(currSlideIdx-1)}>&#10094;</a>
-          <a className="next cursor-pointer absolute top-1/2 right-0" onClick={() => setCurrSlideIdx(currSlideIdx+1)}>&#10095;</a>
+          <a className="prev cursor-pointer absolute top-1/2 left-0 text-orange" onClick={() => currSlideIdx > 0 && setCurrSlideIdx(currSlideIdx-1)}>&#10094;</a>
+          <a className="next cursor-pointer absolute top-1/2 right-0 text-orange" onClick={() => currSlideIdx < project.gallery.length - 1 && setCurrSlideIdx(currSlideIdx+1)}>&#10095;</a>
         </div>
       </div>
     </>
