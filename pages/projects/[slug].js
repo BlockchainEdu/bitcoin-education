@@ -111,7 +111,6 @@ export async function getStaticPaths() {
         params: {
           slug,
         },
-        revalidate: 600
       }
     }),
     fallback: false,
