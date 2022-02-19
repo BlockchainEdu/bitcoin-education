@@ -96,7 +96,9 @@ export default Project
 export async function getStaticProps({ params }) {
   const id = params.slug
   const project = await getProjectFromMonday(id) || {}
-  return { props: { project } }
+  return { props: { project },
+           revalidate: 60
+         }
 }
 
 export async function getStaticPaths() {
@@ -109,6 +111,7 @@ export async function getStaticPaths() {
         params: {
           slug,
         },
+        revalidate: 600
       }
     }),
     fallback: false,

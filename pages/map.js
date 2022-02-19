@@ -32,5 +32,5 @@ const Container = styled.div`
 
 export async function getStaticProps({ params }) {
   const fetchedProjects = await getProjectsFromMonday() || [];
-  return { props: { locations: fetchedProjects } };
+  return { props: { locations: fetchedProjects }, revalidate: 60 };
 }
