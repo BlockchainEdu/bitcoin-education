@@ -59,7 +59,7 @@ export default function Map({ locations }) {
               closeOnClick={true}
               latitude={location.center[1]}
               longitude={location.center[0]}
-              className={`transform-none pin-popup border-none shadow-2xl rounded-md relative w-full h-full ${location.media_type}`}
+              className={`transform-none pin-popup border-none shadow-2xl rounded-md relative w-full h-full`}
             >
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4 w-[inherit] h-[inherit]">
                 <Swiper
@@ -71,7 +71,7 @@ export default function Map({ locations }) {
                   {location.gallery?.map(item => (
                     <SwiperSlide className="pb-16">
                       {item.file_extension === '.mp4' && item.public_url != '' &&
-                      <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" responsive={true} />
+                      <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" />
                       }
                       {item.file_extension !== '.mp4' && item.public_url != '' &&
                       <div className="h-[30vh] mx-auto text-center">
