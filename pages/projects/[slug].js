@@ -53,12 +53,12 @@ const Project = ({project}) => {
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
             <p className="text-black text-md lg:pr-10 lg:pb-14" dangerouslySetInnerHTML={{ __html: project.place_story }}></p>
           </div>
-          <div className="w-full lg:w-4/12 bg-benorange-500 flex items-center justify-center py-36 lg:py-0 mt-14 lg:mt-0">
+          <div className="bg-white w-full lg:w-4/12 lg:bg-benorange-500 flex items-center justify-center py-36 lg:py-0 mt-14 lg:mt-0">
             <StandardButton
               link="/map"
               text="More Students"
               color=""
-              styling="px-16 flex m-auto bg-white hover:bg-benorange-500"
+              styling="px-16 flex m-auto bg-benorange-500 lg:bg-white hover:bg-benorange-500"
             />
           </div>
         </div>
