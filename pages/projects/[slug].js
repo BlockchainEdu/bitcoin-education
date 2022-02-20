@@ -58,13 +58,13 @@ const Project = ({ project }) => {
               link="/map"
               text="More Students"
               color=""
-              styling="px-16 flex m-auto bg-white hover:bg-benorange-500"
+              styling="hidden px-16 lg:flex m-auto bg-white hover:bg-benorange-500"
             />
             <StandardButton
               link="/map"
               text="More Students"
               color="orange"
-              styling="px-16 flex m-auto"
+              styling="flex lg:hidden px-16 flex m-auto"
             />
           </div>
         </div>
