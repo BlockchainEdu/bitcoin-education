@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import { getProjectsFromMonday } from '../../services';
+import { getProjectsFromMonday, getProjectFromMonday } from '../../services';
 import { MediaType } from '../../components/map';
 import Footer from '../../components/footer';
 import Header from "../../components/header";
@@ -14,15 +14,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'swiper/css/zoom';
 
-const Project = ({slug}) => {
+const Project = ({project}) => {
   const router = useRouter()
-  const [project, setProject] = useState({place_name: "", place_story: "", gallery: []})
-  useEffect(async () => {
-    const fetchedProjects = await getProjectsFromMonday() || []
-    console.log(fetchedProjects)
-    return setProject(fetchedProjects.find(elem => { elem.slug === slug }))
-  }, [])
+  const [currSlideIdx, setCurrSlideIdx] = useState(0)
+  const [isShowingZoomModal, setShowingZoomModal] = useState(false)
   return (
     <>
       <div id="student-story">
@@ -30,22 +27,31 @@ const Project = ({slug}) => {
         <div className="pt-40 max-w-7xl mx-auto">
           <h1 className="font-mont text-black font-black text-2xl lg:text-3xl py-4">{project.place_name}</h1>
         </div>
-        <div className="pb-24 max-w-7xl mx-auto space-x-10 flex flex-col lg:flex-row w-11/12">
+        <div className="pb-24 max-w-7xl mx-auto space-x-10 flex flex-col lg:flex-row w-11/12 overflow-hidden">
           <div className="w-full lg:w-8/12">
-            <Swiper>
+            <Swiper
+              modules={[Navigation, Pagination, Scrollbar, A11y]}
+              navigation
+              pagination={{ clickable: true }}
+              scrollbar={{ draggable: true }}
+              onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
+              onClick={() => setShowingZoomModal(true)}
+            >
               {project.gallery?.map(item => (
-                <SwiperSlide>
-                  {item.file_extension === '.mp4' &&
-                   <Vimeo video={item.public_url} className="mapboxgl-marker-video" autoplay />
+                <SwiperSlide className="w-4/5 pb-16">
+                  {item.file_extension === '.mp4' && item.public_url != '' &&
+                   <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
                   }
-                  {item.file_extension !== '.mp4' &&
-                   <img className="mapboxgl-marker-image w-full" src={item.public_url} />
+                  {item.file_extension !== '.mp4' && item.public_url != '' &&
+                   <div className="h-[30vh] mx-auto">
+                     <img className="absolute top-1/2 translate-y-[-50%]" src={item.public_url}/>
+                   </div>
                   }
                 </SwiperSlide>
               ))}
             </Swiper>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
-            <p className="text-black text-md pr-10 pb-14" dangerouslySetInnerHTML={{ __html: project.place_story }}></p>
+            <p className="text-black text-md lg:pr-10 lg:pb-14" dangerouslySetInnerHTML={{ __html: project.place_story }}></p>
           </div>
           <div className="w-full lg:w-4/12 bg-benorange-500 flex items-center justify-center py-36 lg:py-0 mt-14 lg:mt-0">
             <StandardButton
@@ -58,6 +64,29 @@ const Project = ({slug}) => {
         </div>
         <Footer />
       </div>
+      <div id="zoomModal" className="lightbox-modal w-full h-full max-h-[100vh] overflow-hidden" style={{display: isShowingZoomModal ? "block" : "none"}}>
+        <span className="close cursor-pointer text-orange" onClick={() => setShowingZoomModal(false)}>&times;</span>
+        <div className="modal-content h-full bg-transparent flex items-center justify-center">
+            {project.gallery?.map((item, idx) => (
+              <>
+                {item.file_extension === '.mp4' && item.public_url != '' &&
+                  <div className="my-slides w-full h-full" style={{display: currSlideIdx === idx ? "block": "none"}}>
+                    <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
+                    <Vimeo video={item.public_url} className="w-full h-full lightbox-slide-vimeo" />
+                  </div>
+                }
+                {item.file_extension !== '.mp4' && item.public_url != '' &&
+                  <div className="my-slides w-full" style={{display: currSlideIdx === idx ? "block": "none"}}>
+                    <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
+                    <img src={item.public_url} className="w-full max-h-[100%]" />
+                  </div>
+                }
+              </>
+            ))}
+          <a className="prev cursor-pointer absolute top-1/2 left-0 text-orange" onClick={() => currSlideIdx > 0 && setCurrSlideIdx(currSlideIdx-1)}>&#10094;</a>
+          <a className="next cursor-pointer absolute top-1/2 right-0 text-orange" onClick={() => currSlideIdx < project.gallery.length - 1 && setCurrSlideIdx(currSlideIdx+1)}>&#10095;</a>
+        </div>
+      </div>
     </>
   )
 }
@@ -65,13 +94,16 @@ const Project = ({slug}) => {
 export default Project
 
 export async function getStaticProps({ params }) {
-  const slug = params.slug
-  return { props: { slug } };
+  const id = params.slug
+  const project = await getProjectFromMonday(id) || {}
+  return { props: { project },
+           revalidate: 60
+         }
 }
 
 export async function getStaticPaths() {
   const fetchedProjects = await getProjectsFromMonday() || []
-  const projectSlugs = fetchedProjects.map((project) => project.slug || '')
+  const projectSlugs = fetchedProjects.map((project) => project.id || '')
 
   return {
     paths: projectSlugs.map((slug) => {
