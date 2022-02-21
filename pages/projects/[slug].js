@@ -9,6 +9,7 @@ import StandardButton from '../../components/standardButton';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Vimeo from '@u-wave/react-vimeo';
+import ReactMarkdown from 'react-markdown'
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -51,7 +52,7 @@ const Project = ({project}) => {
               ))}
             </Swiper>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
-            <p className="text-black text-md lg:pr-10 lg:pb-14" dangerouslySetInnerHTML={{ __html: project.place_story }}></p>
+            <p className="text-black text-md lg:pr-10 lg:pb-14"><ReactMarkdown children={project.place_story} /></p>
           </div>
           <div className="w-full lg:w-4/12 bg-benorange-500 flex items-center justify-center py-36 lg:py-0 mt-14 lg:mt-0">
             <StandardButton

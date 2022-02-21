@@ -4,6 +4,7 @@ import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Vimeo from '@u-wave/react-vimeo';
+import ReactMarkdown from 'react-markdown'
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -85,7 +86,7 @@ export default function Map({ locations }) {
                   <a>
                     <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>
                     <div className="h-40 overflow-hidden">
-                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden" dangerouslySetInnerHTML={{ __html: location.place_story }}></p>
+                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden"><ReactMarkdown children={project.place_story} /></p>
                     </div>
                   </a>
                 </Link>
