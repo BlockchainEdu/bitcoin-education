@@ -584,3 +584,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.contact-page {
+  background-color: rgb(247, 247, 247) !important;
+}

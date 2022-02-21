@@ -42,7 +42,6 @@ export default function Footer() {
                         <a href="/"><li>Home</li></a>
                         <a href="/about"><li>About</li></a>
                         <a target="_blank" href="https://learn.blockchainedu.org/all-courses"><li>Learn</li></a>
-                        <a target="_blank" href="https://learn.blockchainedu.org/sign_in"><li>Login</li></a>
                         <a href="/contact"><li>Contact</li></a>
                     </ul>
                     <div className="pt-10 md:pt-0 text-center md:text-left font-mont text-white">

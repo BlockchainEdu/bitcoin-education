@@ -44,7 +44,7 @@ export default function Map({ locations }) {
     >
       <NavigationControl style={navigationControlStyle} />
       {locations.map((location) => (
-        <div key={location.id} className={'mapboxgl-marker-overlay ' + ( location === selectedLocation ? 'selected': '' )}>
+        <div key={location.id} className={'mapboxgl-marker-overlay ' + (location === selectedLocation ? 'selected' : '')}>
           <Marker latitude={location.center[1]} longitude={location.center[0]}>
             <a
               onClick={() => {
@@ -65,6 +65,9 @@ export default function Map({ locations }) {
               className={`transform-none pin-popup border-none shadow-2xl rounded-md relative w-full h-full`}
             >
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4 w-[inherit] h-[inherit]">
+                <Link href={`/projects/${location.id}`}>
+                  <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mb-4">{location.place_name}</h1>
+                </Link>
                 <Swiper
                   modules={[Navigation, Pagination, Scrollbar, A11y]}
                   navigation
@@ -78,16 +81,15 @@ export default function Map({ locations }) {
                       <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" />
                       }
                       {item.file_extension !== '.mp4' && item.public_url != '' &&
-                      <div className="h-[30vh] mx-auto text-center">
-                        <img className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]" src={item.public_url} />
-                      </div>
+                        <div className="h-[30vh] mx-auto text-center">
+                          <img className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]" src={item.public_url} />
+                        </div>
                       }
                     </SwiperSlide>
                   ))}
                 </Swiper>
                 <Link href={`/projects/${location.id}`}>
                   <a>
-                    <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>
                     <div className="h-40 overflow-hidden">
                       <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden"><ReactMarkdown children={location.place_story} /></p>
                     </div>
