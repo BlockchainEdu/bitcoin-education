@@ -62,8 +62,9 @@ export default function Map({ locations }) {
               className={`transform-none pin-popup border-none shadow-2xl rounded-md relative w-full h-full`}
             >
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4 w-[inherit] h-[inherit]">
-                <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mb-4">{location.place_name}</h1>
-
+                <Link href={`/projects/${location.id}`}>
+                  <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mb-4">{location.place_name}</h1>
+                </Link>
                 <Swiper
                   modules={[Navigation, Pagination, Scrollbar, A11y]}
                   navigation
