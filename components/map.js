@@ -4,6 +4,7 @@ import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Vimeo from '@u-wave/react-vimeo';
+import ReactMarkdown from 'react-markdown'
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -31,7 +32,8 @@ export default function Map({ locations }) {
     longitude: 0,
     zoom: 1,
   });
-  const [selectedLocation, setSelectedLocation] = useState({});
+  const [currSlideIdx, setCurrSlideIdx] = useState(0)
+  const [selectedLocation, setSelectedLocation] = useState({})
 
   return (
     <ReactMapGL
@@ -46,7 +48,8 @@ export default function Map({ locations }) {
           <Marker latitude={location.center[1]} longitude={location.center[0]}>
             <a
               onClick={() => {
-                setSelectedLocation(location);
+                setCurrSlideIdx(0)
+                setSelectedLocation(location)
               }}
             >
               <img className="w-8 h-8 bg-benorange-500 p-2 rounded-full" role="img" src="/images/pin-indicator.svg" />
@@ -70,11 +73,12 @@ export default function Map({ locations }) {
                   navigation
                   pagination={{ clickable: true }}
                   scrollbar={{ draggable: true }}
+                  onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
                 >
-                  {location.gallery?.map(item => (
+                  {location.gallery?.map((item, idx) => (
                     <SwiperSlide className="pb-16">
-                      {item.file_extension === '.mp4' && item.public_url != '' &&
-                        <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" />
+                      {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
+                      <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" />
                       }
                       {item.file_extension !== '.mp4' && item.public_url != '' &&
                         <div className="h-[30vh] mx-auto text-center">
@@ -87,7 +91,7 @@ export default function Map({ locations }) {
                 <Link href={`/projects/${location.id}`}>
                   <a>
                     <div className="h-40 overflow-hidden">
-                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden" dangerouslySetInnerHTML={{ __html: location.place_story }}></p>
+                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden"><ReactMarkdown children={location.place_story} /></p>
                     </div>
                   </a>
                 </Link>
