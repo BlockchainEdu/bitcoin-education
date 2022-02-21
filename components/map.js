@@ -32,7 +32,8 @@ export default function Map({ locations }) {
     longitude: 0,
     zoom: 1,
   });
-  const [selectedLocation, setSelectedLocation] = useState({});
+  const [currSlideIdx, setCurrSlideIdx] = useState(0)
+  const [selectedLocation, setSelectedLocation] = useState({})
 
   return (
     <ReactMapGL
@@ -47,7 +48,8 @@ export default function Map({ locations }) {
           <Marker latitude={location.center[1]} longitude={location.center[0]}>
             <a
               onClick={() => {
-                setSelectedLocation(location);
+                setCurrSlideIdx(0)
+                setSelectedLocation(location)
               }}
             >
               <img className="w-8 h-8 bg-benorange-500 p-2 rounded-full" role="img" src="/images/pin-indicator.svg" />
@@ -68,10 +70,11 @@ export default function Map({ locations }) {
                   navigation
                   pagination={{ clickable: true }}
                   scrollbar={{ draggable: true }}
+                  onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
                 >
-                  {location.gallery?.map(item => (
+                  {location.gallery?.map((item, idx) => (
                     <SwiperSlide className="pb-16">
-                      {item.file_extension === '.mp4' && item.public_url != '' &&
+                      {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
                       <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" />
                       }
                       {item.file_extension !== '.mp4' && item.public_url != '' &&

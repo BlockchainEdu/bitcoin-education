@@ -38,9 +38,9 @@ const Project = ({project}) => {
               onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
               onClick={() => setShowingZoomModal(true)}
             >
-              {project.gallery?.map(item => (
+              {project.gallery?.map((item, idx) => (
                 <SwiperSlide className="w-4/5 pb-16">
-                  {item.file_extension === '.mp4' && item.public_url != '' &&
+                  {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
                    <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
                   }
                   {item.file_extension !== '.mp4' && item.public_url != '' &&
