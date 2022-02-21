@@ -86,7 +86,7 @@ export default function Map({ locations }) {
                   <a>
                     <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mt-4">{location.place_name}</h1>
                     <div className="h-40 overflow-hidden">
-                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden"><ReactMarkdown children={project.place_story} /></p>
+                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden"><ReactMarkdown children={location.place_story} /></p>
                     </div>
                   </a>
                 </Link>
