@@ -24,7 +24,7 @@ const Project = ({ project }) => {
     <>
       <div id="student-story">
         <Header />
-        <div className="w-11/12 pt-6 lg:pt-40 max-w-7xl mx-auto">
+        <div className="w-11/12 pt-3 lg:pt-40 max-w-7xl mx-auto">
           <h1 className="font-mont text-black font-black text-2xl lg:text-3xl py-4">{project.place_name}</h1>
         </div>
         <div className="pb-24 max-w-7xl mx-auto space-x-0 lg:space-x-10 flex flex-col lg:flex-row w-11/12 overflow-hidden">
