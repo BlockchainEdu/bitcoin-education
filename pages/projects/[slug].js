@@ -56,13 +56,13 @@ const Project = ({ project }) => {
           <div className="bg-white w-full lg:w-4/12 lg:bg-benorange-500 flex items-center justify-center py-14 lg:py-36 lg:py-0 mt-14 lg:mt-0">
             <StandardButton
               link="/map"
-              text="More Students"
+              text="More Student Stories"
               color=""
               styling="hidden px-16 lg:flex m-auto bg-white hover:bg-benorange-500"
             />
             <StandardButton
               link="/map"
-              text="More Students"
+              text="More Student Stories"
               color="orange"
               styling="flex lg:hidden px-16 flex m-auto"
             />
