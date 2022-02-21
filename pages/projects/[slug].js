@@ -70,7 +70,7 @@ const Project = ({project}) => {
         <div className="modal-content h-full bg-transparent flex items-center justify-center">
             {project.gallery?.map((item, idx) => (
               <>
-                {item.file_extension === '.mp4' && item.public_url != '' &&
+                {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
                   <div className="my-slides w-full h-full" style={{display: currSlideIdx === idx ? "block": "none"}}>
                     <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
                     <Vimeo video={item.public_url} className="w-full h-full lightbox-slide-vimeo" />
