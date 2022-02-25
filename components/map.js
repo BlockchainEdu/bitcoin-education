@@ -23,6 +23,8 @@ const navigationControlStyle = {
 };
 
 export default function Map({ locations }) {
+  const isLatitude = num => isFinite(num) && Math.abs(num) <= 90;
+  const isLongitude = num => isFinite(num) && Math.abs(num) <= 180;
   const [viewport, setViewport] = useState({
     width: '100%',
     height: '100%',
@@ -41,7 +43,7 @@ export default function Map({ locations }) {
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
       <NavigationControl style={navigationControlStyle} />
-      {locations.map((location) => (
+      {locations.map((location) => isLatitude(location.center[1]) && isLongitude(location.center[0]) && (
         <div key={location.id} className={'mapboxgl-marker-overlay ' + (location === selectedLocation ? 'selected' : '')}>
           <Marker latitude={location.center[1]} longitude={location.center[0]}>
             <a
