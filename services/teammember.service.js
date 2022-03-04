@@ -35,19 +35,26 @@ export const getProjectsFromMonday = async function() {
     projects = result.data.data.boards[0].items.map(item => {
       let extras = { media_type: MediaType.none }
       const video = item.column_values[5].value || ""
-      const galleryVideoAssets = video === "" ? [] : [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
+      const images = item.column_values[6].value || ""
+      const latitude = item.column_values[1].value || ""
+      const longitude = item.column_values[2].value || ""
+      const placeName = item.column_values[0].value || ""
+      const placeStory = item.column_values[3].value || `{"text": ""}`
+      let galleryVideoAssets = video === null ? [] : [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
+      galleryVideoAssets = galleryVideoAssets.concat(images.replace(/"/g, "").split(' ').map(public_url => { return {file_extension: '.jpg', public_url } }))
+      console.log({galleryVideoAssets})
       if (item.assets.length > 0) {
         const thisMediaType = galleryVideoAssets.length > 0 ? MediaType.video : MediaType.image;
         extras = { media_type: thisMediaType, image: item.assets[0].public_url, gallery: galleryVideoAssets.concat(item.assets) };
       } else if (galleryVideoAssets.length > 0) {
-        extras = { media_type : MediaType.video, video: item.column_values[5].value.replace(/"/g, ""), gallery: galleryVideoAssets };
+        extras = { media_type : MediaType.video, video: video.replace(/"/g, ""), gallery: galleryVideoAssets };
       }
       return {
         ...extras,
         id: item.id,
-        center: [parseFloat(item.column_values[2].value.replace(/"/g, "")), parseFloat(item.column_values[1].value.replace(/"/g, ""))],
-        place_name: item.column_values[0].value.replace(/"/g, ""),
-        place_story: JSON.parse(item.column_values[3].value || `{"text": ""}`).text,
+        center: [parseFloat(longitude.replace(/"/g, "")), parseFloat(latitude.replace(/"/g, ""))],
+        place_name: placeName.replace(/"/g, ""),
+        place_story: JSON.parse(placeStory).text,
       };
     });
   }
@@ -77,18 +84,25 @@ export const getProjectFromMonday = async function(id) {
     const selectedItem = result.data.data.boards[0].items[0]
     let extras = { media_type: MediaType.none }
     const video = selectedItem.column_values[5].value || ""
-    const galleryVideoAssets = video === "" ? [] : [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
+    const images = selectedItem.column_values[6].value || ""
+    const latitude = selectedItem.column_values[1].value || ""
+    const longitude = selectedItem.column_values[2].value || ""
+    const placeName = selectedItem.column_values[0].value || ""
+    const placeStory = selectedItem.column_values[3].value || `{"text": ""}`
+    let galleryVideoAssets = video === "" ? [] : [{file_extension: '.mp4', public_url: video.replace(/"/g, "")}]
+    galleryVideoAssets = galleryVideoAssets.concat(images.replace(/"/g, "").split(' ').map(public_url => { return {file_extension: '.jpg', public_url } }))
+    console.log({galleryVideoAssets})
     if (selectedItem.assets.length > 0) {
       extras = { media_type: MediaType.image, image: selectedItem.assets[0].public_url, gallery: galleryVideoAssets.concat(selectedItem.assets) };
-    } else if (selectedItem.column_values[5].value && selectedItem.column_values[5].value !== "") {
-      extras = { media_type : MediaType.video, video: selectedItem.column_values[5].value.replace(/"/g, ""), gallery: galleryVideoAssets };
+    } else if (galleryVideoAssets.length > 0) {
+      extras = { media_type : MediaType.video, video: video.replace(/"/g, ""), gallery: galleryVideoAssets };
     }
     return {
       ...extras,
       id: selectedItem.id,
-      center: [parseFloat(selectedItem.column_values[2].value.replace(/"/g, "")), parseFloat(selectedItem.column_values[1].value.replace(/"/g, ""))],
-      place_name: selectedItem.column_values[0].value.replace(/"/g, ""),
-      place_story: JSON.parse(selectedItem.column_values[3].value || `{"text": ""}`).text,
+      center: [parseFloat(longitude.replace(/"/g, "")), parseFloat(latitude.replace(/"/g, ""))],
+      place_name: placeName.replace(/"/g, ""),
+      place_story: JSON.parse(placeStory).text,
     };
   }
 };
