@@ -59,7 +59,7 @@ const Project = ({ project }) => {
               link="/map"
               text="More Student Stories"
               color="orange"
-              styling="px-16 flex m-auto"
+              styling="px-10 flex m-auto"
             />
           </div>
         </div>
