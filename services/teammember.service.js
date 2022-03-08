@@ -103,6 +103,7 @@ export const getProjectFromMonday = async function(id) {
       center: [parseFloat(longitude), parseFloat(latitude)],
       place_name: placeName,
       place_story: JSON.parse(placeStory).text,
+      testimonial_url: testimonialUrl,
     };
   }
 };
