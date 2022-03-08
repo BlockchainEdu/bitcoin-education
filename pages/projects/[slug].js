@@ -53,6 +53,14 @@ const Project = ({ project }) => {
             </Swiper>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
             <p className="text-black text-md lg:pr-10 lg:pb-14"><ReactMarkdown children={project.place_story} /></p>
+            {project.testimonial_url !== "" &&
+             <StandardButton
+               link={project.testimonial_url}
+               text="Student Testimonial"
+               color="orange"
+               styling="px-10 flex m-auto"
+             />
+            }
           </div>
           <div className="w-full lg:w-4/12 flex items-center justify-center py-14 lg:py-36 lg:py-0 mt-14 lg:mt-0">
             <StandardButton
