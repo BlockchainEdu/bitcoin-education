@@ -6,6 +6,10 @@ import dynamic from "next/dynamic";
 import styled from "styled-components";
 import { MediaType } from "../components/map";
 
+const mapStyle = {
+  minHeight: 588
+};
+
 const Map = dynamic(() => import("../components/map"), {
   loading: () => "Loading...",
   ssr: false
@@ -15,9 +19,9 @@ export default function MapPage({locations}) {
   return (
     <div id="map-page">
       <HeaderWithLogo />
-      <section>
+      <section style={mapStyle}>
         <Container>
-          <Map locations={locations} />
+          <Map locations={locations} style={mapStyle} />
         </Container>
       </section>
       <Footer />

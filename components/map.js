@@ -17,17 +17,13 @@ export const MediaType = {
   video: 'video',
 };
 
-const mapStyle = {
-  minHeight: 588
-};
-
 const navigationControlStyle = {
   top: 36,
   right: 0,
   padding: '10px',
 };
 
-export default function Map({ locations }) {
+export default function Map({ locations, style }) {
   const isLatitude = num => isFinite(num) && Math.abs(num) <= 90;
   const isLongitude = num => isFinite(num) && Math.abs(num) <= 180;
   const [viewport, setViewport] = useState({
@@ -47,7 +43,7 @@ export default function Map({ locations }) {
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
-      style={mapStyle}
+      style={style}
     >
       <NavigationControl style={navigationControlStyle} />
       {locations.map((location) => isLatitude(location.center[1]) && isLongitude(location.center[0]) && (
