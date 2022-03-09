@@ -15,7 +15,11 @@ export const MediaType = {
   none: 'none',
   image: 'image',
   video: 'video',
-}
+};
+
+const mapStyle = {
+  minHeight: 588
+};
 
 const navigationControlStyle = {
   top: 36,
@@ -34,8 +38,8 @@ export default function Map({ locations }) {
     longitude: 0,
     zoom: 1,
   });
-  const [currSlideIdx, setCurrSlideIdx] = useState(0)
-  const [selectedLocation, setSelectedLocation] = useState({})
+  const [currSlideIdx, setCurrSlideIdx] = useState(0);
+  const [selectedLocation, setSelectedLocation] = useState({});
 
   return (
     <ReactMapGL
@@ -43,6 +47,7 @@ export default function Map({ locations }) {
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
+      style={mapStyle}
     >
       <NavigationControl style={navigationControlStyle} />
       {locations.map((location) => isLatitude(location.center[1]) && isLongitude(location.center[0]) && (
