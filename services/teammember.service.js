@@ -40,7 +40,7 @@ export const getProjectsFromMonday = async function() {
       const longitude       = (item.column_values[2].value || "").replace(/"/g, "")
       const placeName       = (item.column_values[0].value || "").replace(/"/g, "")
       const placeStory      = item.column_values[3].value || `{"text": ""}`
-      let galleryVideoAssets = video === null ? [] : [{file_extension: '.mp4', public_url: video}]
+      let galleryVideoAssets = video ? [{file_extension: '.mp4', public_url: video}] : []
       galleryVideoAssets = galleryVideoAssets.concat(images.split(' ').map(public_url => { return {file_extension: '.jpg', public_url } }))
       if (item.assets.length > 0) {
         const thisMediaType = galleryVideoAssets.length > 0 ? MediaType.video : MediaType.image;
@@ -89,8 +89,7 @@ export const getProjectFromMonday = async function(id) {
     const placeName       = (selectedItem.column_values[0].value || "").replace(/"/g, "")
     const placeStory      = selectedItem.column_values[3].value || `{"text": ""}`
     const testimonialUrl  = (selectedItem.column_values[7].value || "").replace(/"/g, "")
-    console.log({testimonialUrl})
-    let galleryVideoAssets = video === "" ? [] : [{file_extension: '.mp4', public_url: video}]
+    let galleryVideoAssets = video ? [{file_extension: '.mp4', public_url: video}] : []
     galleryVideoAssets = galleryVideoAssets.concat(images.split(' ').map(public_url => { return {file_extension: '.jpg', public_url } }))
     if (selectedItem.assets.length > 0) {
       extras = { media_type: MediaType.image, image: selectedItem.assets[0].public_url, gallery: galleryVideoAssets.concat(selectedItem.assets) };
