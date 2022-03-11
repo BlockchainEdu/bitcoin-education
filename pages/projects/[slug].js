@@ -114,10 +114,13 @@ export default Project
 
 export async function getStaticProps({ params }) {
   const id = params.slug
-  const project = await getProjectFromMonday(id) || {}
+  let project = {}
+  while ( project === {} ) {
+    project = await getProjectFromMonday(id) || {}
+  }
   return {
     props: { project },
-    revalidate: 60
+    revalidate: 3600
   }
 }
 

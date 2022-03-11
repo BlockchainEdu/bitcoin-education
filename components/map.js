@@ -25,8 +25,8 @@ const navigationControlStyle = {
 };
 
 export default function Map({ locations, style }) {
-  const isLatitude = num => isFinite(num) && Math.abs(num) <= 90;
-  const isLongitude = num => isFinite(num) && Math.abs(num) <= 180;
+  const isLatitude = num => num && isFinite(num) && Math.abs(num) <= 90;
+  const isLongitude = num => num && isFinite(num) && Math.abs(num) <= 180;
   const [viewport, setViewport] = useState({
     width: '100%',
     height: '100%',
@@ -69,24 +69,24 @@ export default function Map({ locations, style }) {
               longitude={location.center[0]}
               className={`transform-none pin-popup border-none shadow-2xl rounded-md relative w-full h-full`}
             >
-              <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4 w-[inherit] h-[inherit]">
+              <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4 w-[inherit] h-[inherit] grid">
                 <Link href={`/projects/${location.id}`}>
                   <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center mb-4">{location.place_name}</h1>
                 </Link>
                 <Swiper
-                  modules={[Navigation, Pagination, Scrollbar, A11y]}
+                  modules={[Navigation, Pagination, A11y]}
                   navigation
                   pagination={{ clickable: true }}
-                  scrollbar={{ draggable: true }}
                   onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
+                  className="w-full"
                 >
                   {location.gallery?.map((item, idx) => (
                     <SwiperSlide className="pb-16">
                       {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
-                        <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" />
+                        <Vimeo video={item.public_url} className="relative top-[-.75rem] flex justify-center items-center swiper-slide-vimeo" />
                       }
                       {item.file_extension !== '.mp4' && item.public_url != '' &&
-                        <div className="h-[25vh] mx-auto text-center">
+                        <div className="mx-auto text-center">
                           <img className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]" style={{maxWidth:"500px"}} src={item.public_url} />
                         </div>
                       }
@@ -95,7 +95,7 @@ export default function Map({ locations, style }) {
                 </Swiper>
                 <Link href={`/projects/${location.id}`}>
                   <a>
-                    <div className="h-40 overflow-hidden">
+                    <div className="overflow-hidden">
                       <div className="mx-auto flex justify-center mt-6">
                         <button className="text-md px-8 rounded-full py-2 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
                           Read Student Story
