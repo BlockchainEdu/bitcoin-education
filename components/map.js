@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Vimeo from '@u-wave/react-vimeo';
 import ReactMarkdown from 'react-markdown'
@@ -9,7 +9,6 @@ import ReactMarkdown from 'react-markdown'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
 import StandardButton from "./standardButton";
 
 export const MediaType = {
@@ -78,7 +77,7 @@ export default function Map({ locations, style }) {
                   navigation
                   pagination={{ clickable: true }}
                   onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
-                  className="w-full"
+                  className={location.gallery && location.gallery[currSlideIdx]?.file_extension === '.mp4' && "video-slide w-full" || "w-full"}
                 >
                   {location.gallery?.map((item, idx) => (
                     <SwiperSlide className="pb-16 overflow-hidden">
@@ -87,7 +86,7 @@ export default function Map({ locations, style }) {
                       }
                       {item.file_extension !== '.mp4' && item.public_url != '' &&
                         <div className="mx-auto text-center">
-                          <img className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]" style={{maxWidth:"500px"}} src={item.public_url} />
+                          <img className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] grow-1" src={item.public_url} />
                         </div>
                       }
                     </SwiperSlide>

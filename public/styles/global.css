@@ -168,7 +168,11 @@
   justify-content: center;
   z-index: 10;
 }
+.swiper.video-slide .swiper-pagination {
+  display: none;
+}
 .swiper-slide-vimeo iframe {
+  flex-grow: 1;
   min-height: 400px;
   height: 30vh;
   margin-bottom: -5.25rem;
