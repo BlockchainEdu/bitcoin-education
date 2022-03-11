@@ -70,7 +70,7 @@ export default function Map({ locations, style }) {
             >
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4 w-[inherit] h-[inherit] grid">
                 <Link href={`/projects/${location.id}`}>
-                  <div className="mx-auto flex justify-center mb-4">
+                  <div className="mx-auto">
                     <button className="text-md px-8 rounded-full py-2 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
                     {location.place_name}
                     </button>
