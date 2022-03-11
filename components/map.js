@@ -10,6 +10,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import StandardButton from "./standardButton";
 
 export const MediaType = {
   none: 'none',
@@ -81,11 +82,11 @@ export default function Map({ locations, style }) {
                   {location.gallery?.map((item, idx) => (
                     <SwiperSlide className="pb-16">
                       {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
-                      <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" />
+                        <Vimeo video={item.public_url} className="flex justify-center items-center swiper-slide-vimeo" />
                       }
                       {item.file_extension !== '.mp4' && item.public_url != '' &&
-                        <div className="h-[30vh] mx-auto text-center">
-                          <img className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]" src={item.public_url} />
+                        <div className="h-[25vh] mx-auto text-center">
+                          <img className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%]" style={{maxWidth:"500px"}} src={item.public_url} />
                         </div>
                       }
                     </SwiperSlide>
@@ -94,7 +95,12 @@ export default function Map({ locations, style }) {
                 <Link href={`/projects/${location.id}`}>
                   <a>
                     <div className="h-40 overflow-hidden">
-                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden"><ReactMarkdown children={location.place_story} /></p>
+                      <div className="mx-auto flex justify-center mt-6">
+                        <button className="text-md px-8 rounded-full py-2 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
+                          Read Student Story
+                        </button>
+                      </div>
+                      {/* <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden"><ReactMarkdown children={location.place_story} /></p> */}
                     </div>
                   </a>
                 </Link>
