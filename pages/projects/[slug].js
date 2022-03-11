@@ -122,7 +122,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const fetchedProjects = await getProjectsFromMonday() || []
+  let fetchedProjects = []
+  while ( fetchedProjects.length === 0 ) {
+    fetchedProjects = await getProjectsFromMonday() || []
+  }
   const projectSlugs = fetchedProjects.map((project) => project.id || '')
 
   return {

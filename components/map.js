@@ -37,6 +37,7 @@ export default function Map({ locations, style }) {
   });
   const [currSlideIdx, setCurrSlideIdx] = useState(0);
   const [selectedLocation, setSelectedLocation] = useState({});
+  console.log({locations});
 
   return (
     <ReactMapGL

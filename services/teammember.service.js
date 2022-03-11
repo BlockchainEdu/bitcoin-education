@@ -8,8 +8,8 @@ export const TeamMemberService = (function() {
 
   return {
     getMembers,
-  };
-})();
+  }
+})()
 
 export const getProjectsFromMonday = async function() {
   const body = {
@@ -28,7 +28,7 @@ export const getProjectsFromMonday = async function() {
                 }
             }
         }`
-  };
+  }
   const result = await TeamMemberService.getMembers(body)
   let projects = []
   if (result?.data?.data?.boards) {
@@ -43,10 +43,10 @@ export const getProjectsFromMonday = async function() {
       let galleryVideoAssets = video ? [{file_extension: '.mp4', public_url: video}] : []
       galleryVideoAssets = galleryVideoAssets.concat(images.split(' ').map(public_url => { return {file_extension: '.jpg', public_url } }))
       if (item.assets.length > 0) {
-        const thisMediaType = galleryVideoAssets.length > 0 ? MediaType.video : MediaType.image;
-        extras = { media_type: thisMediaType, image: item.assets[0].public_url, gallery: galleryVideoAssets.concat(item.assets) };
+        const thisMediaType = galleryVideoAssets.length > 0 ? MediaType.video : MediaType.image
+        extras = { media_type: thisMediaType, image: item.assets[0].public_url, gallery: galleryVideoAssets.concat(item.assets) }
       } else if (galleryVideoAssets.length > 0) {
-        extras = { media_type : MediaType.video, video: video, gallery: galleryVideoAssets };
+        extras = { media_type : MediaType.video, video: video, gallery: galleryVideoAssets }
       }
       return {
         ...extras,
@@ -54,11 +54,11 @@ export const getProjectsFromMonday = async function() {
         center: [parseFloat(longitude), parseFloat(latitude)],
         place_name: placeName,
         place_story: JSON.parse(placeStory).text,
-      };
-    });
+      }
+    })
   }
-  return projects;
-};
+  return projects
+}
 
 export const getProjectFromMonday = async function(id) {
   const body = {
@@ -77,7 +77,7 @@ export const getProjectFromMonday = async function(id) {
                 }
             }
         }`
-  };
+  }
   const result = await TeamMemberService.getMembers(body)
   if (result?.data?.data?.boards) {
     const selectedItem = result.data.data.boards[0].items[0]
@@ -92,9 +92,9 @@ export const getProjectFromMonday = async function(id) {
     let galleryVideoAssets = video ? [{file_extension: '.mp4', public_url: video}] : []
     galleryVideoAssets = galleryVideoAssets.concat(images.split(' ').map(public_url => { return {file_extension: '.jpg', public_url } }))
     if (selectedItem.assets.length > 0) {
-      extras = { media_type: MediaType.image, image: selectedItem.assets[0].public_url, gallery: galleryVideoAssets.concat(selectedItem.assets) };
+      extras = { media_type: MediaType.image, image: selectedItem.assets[0].public_url, gallery: galleryVideoAssets.concat(selectedItem.assets) }
     } else if (galleryVideoAssets.length > 0) {
-      extras = { media_type : MediaType.video, video: video, gallery: galleryVideoAssets };
+      extras = { media_type : MediaType.video, video: video, gallery: galleryVideoAssets }
     }
     return {
       ...extras,
@@ -103,6 +103,6 @@ export const getProjectFromMonday = async function(id) {
       place_name: placeName,
       place_story: JSON.parse(placeStory).text,
       testimonial_url: testimonialUrl,
-    };
+    }
   }
-};
+}
