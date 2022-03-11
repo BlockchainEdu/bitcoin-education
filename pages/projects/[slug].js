@@ -21,6 +21,11 @@ const Project = ({ project }) => {
   const router = useRouter()
   const [currSlideIdx, setCurrSlideIdx] = useState(0)
   const [isShowingZoomModal, setShowingZoomModal] = useState(false)
+  if ( Object.keys(project).length === 0 ) {
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
+  }
   return (
     <>
       <div id="student-story">
@@ -114,13 +119,10 @@ export default Project
 
 export async function getStaticProps({ params }) {
   const id = params.slug
-  let project = {}
-  while ( project === {} ) {
-    project = await getProjectFromMonday(id) || {}
-  }
+  const project = await getProjectFromMonday(id) || {}
   return {
     props: { project },
-    revalidate: 3600
+    revalidate: Object.keys(project).length ? 3600 : 1
   }
 }
 
