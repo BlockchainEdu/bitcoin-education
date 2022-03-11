@@ -81,7 +81,7 @@ export default function Map({ locations, style }) {
                   className="w-full"
                 >
                   {location.gallery?.map((item, idx) => (
-                    <SwiperSlide className="pb-16">
+                    <SwiperSlide className="pb-16 overflow-hidden">
                       {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
                         <Vimeo video={item.public_url} className="relative top-[-.75rem] flex justify-center items-center swiper-slide-vimeo" />
                       }
