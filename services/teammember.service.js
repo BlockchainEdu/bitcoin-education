@@ -60,6 +60,28 @@ export const getProjectsFromMonday = async function() {
   return projects
 }
 
+export const getProjectIdsFromMonday = async function() {
+  const body = {
+    query: `{
+            boards (ids: 1983862095) {
+                items {
+                    id
+                }
+            }
+        }`
+  }
+  const result = await TeamMemberService.getMembers(body)
+  let projects = []
+  if (result?.data?.data?.boards) {
+    projects = result.data.data.boards[0].items.map(item => {
+      return {
+        id: item.id,
+      }
+    })
+  }
+  return projects
+}
+
 export const getProjectFromMonday = async function(id) {
   const body = {
     query: `{
