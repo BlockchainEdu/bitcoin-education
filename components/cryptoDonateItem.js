@@ -1,5 +1,7 @@
 import React from "react";
 import Mailchimp from 'react-mailchimp-form'
+import CryptoItemModal from "./modals/cryptoItemModal";
+
 
 export default function CryptoDonateItem(props) {
     const [showModal, setShowModal] = React.useState(false);
@@ -54,10 +56,11 @@ export default function CryptoDonateItem(props) {
                                     onClick={() => navigator.clipboard.writeText(`${props.address}`)}
 
                                 >
-                                    <textarea className="h-6 bg-gray-100 justify-between w-full" style={{resize:"none"}}>
+                                    <textarea disabled className="h-6 bg-gray-100 justify-between w-full" style={{ resize: "none" }}>
                                         {props.address}
                                     </textarea>
-                                    <div className="font-mont text-sm uppercase text-benorange-500 font-medium">Copy</div>
+                                    <CryptoItemModal />
+
                                 </button>
                                 <div className="font-mont text-xs text-center">
                                     By donating, you agree to our <b>terms of service</b> and <b>privacy policy</b>
