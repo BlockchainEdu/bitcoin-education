@@ -34,8 +34,8 @@ export const getProjectsFromMonday = async function() {
   if (result?.data?.data?.boards) {
     projects = result.data.data.boards[0].items.map(item => {
       let extras = { media_type: MediaType.none }
-      const video           = (item.column_values[5].value || "").replace(/"/g, "")
-      const images          = (item.column_values[6].value || "").replace(/"/g, "")
+      const video           = (item.column_values[4].value || "").replace(/"/g, "")
+      const images          = (item.column_values[5].value || "").replace(/"/g, "")
       const latitude        = (item.column_values[1].value || "").replace(/"/g, "")
       const longitude       = (item.column_values[2].value || "").replace(/"/g, "")
       const placeName       = (item.column_values[0].value || "").replace(/"/g, "")
@@ -82,13 +82,13 @@ export const getProjectFromMonday = async function(id) {
   if (result?.data?.data?.boards) {
     const selectedItem = result.data.data.boards[0].items[0]
     let extras = { media_type: MediaType.none }
-    const video           = (selectedItem.column_values[5].value || "").replace(/"/g, "")
-    const images          = (selectedItem.column_values[6].value || "").replace(/"/g, "")
+    const video           = (selectedItem.column_values[4].value || "").replace(/"/g, "")
+    const images          = (selectedItem.column_values[5].value || "").replace(/"/g, "")
     const latitude        = (selectedItem.column_values[1].value || "").replace(/"/g, "")
     const longitude       = (selectedItem.column_values[2].value || "").replace(/"/g, "")
     const placeName       = (selectedItem.column_values[0].value || "").replace(/"/g, "")
     const placeStory      = selectedItem.column_values[3].value || `{"text": ""}`
-    const testimonialUrl  = (selectedItem.column_values[7].value || "").replace(/"/g, "")
+    const testimonialUrl  = (selectedItem.column_values[6].value || "").replace(/"/g, "")
     let galleryVideoAssets = video ? [{file_extension: '.mp4', public_url: video}] : []
     galleryVideoAssets = galleryVideoAssets.concat(images.split(' ').map(public_url => { return {file_extension: '.jpg', public_url } }))
     if (selectedItem.assets.length > 0) {
