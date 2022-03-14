@@ -153,6 +153,9 @@
   overflow-y: hidden;
   border-radius: 0.375rem;
 }
+.mapboxgl-popup .mapboxgl-popup-content .grid {
+  grid-template-rows: 1fr 9fr;
+}
 .mapboxgl-popup-close-button {
   width: 36px;
   height: 36px;
