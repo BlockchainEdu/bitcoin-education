@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import { getProjectsFromMonday, getProjectFromMonday } from '../../services';
+import { getProjectIdsFromMonday, getProjectFromMonday } from '../../services';
 import { MediaType } from '../../components/map';
 import Footer from '../../components/footer';
 import Header from "../../components/header";
@@ -138,7 +138,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   let fetchedProjects = []
   while ( fetchedProjects.length === 0 ) {
-    fetchedProjects = await getProjectsFromMonday() || []
+    fetchedProjects = await getProjectIdsFromMonday() || []
   }
   const projectSlugs = fetchedProjects.map((project) => project.id || '')
 
