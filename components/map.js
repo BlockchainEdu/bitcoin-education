@@ -3,6 +3,7 @@ import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import { Navigation, Pagination, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import YouTube from 'react-youtube';
 import Vimeo from '@u-wave/react-vimeo';
 import ReactMarkdown from 'react-markdown'
 
@@ -93,7 +94,7 @@ export default function Map({ locations, style }) {
                   {location.gallery?.map((item, idx) => (
                     <SwiperSlide className="pb-16 overflow-hidden">
                       {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
-                       <h1>YouTube Video: {item.public_url}</h1>
+                       <YouTube videoId={item.public_url.split("/").pop()}></YouTube>
                       }
                       {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
                         <Vimeo video={item.public_url} className="relative top-[-.75rem] flex justify-center items-center swiper-slide-vimeo" />

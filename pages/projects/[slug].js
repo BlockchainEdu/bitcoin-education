@@ -8,6 +8,7 @@ import Header from "../../components/header";
 import StandardButton from '../../components/standardButton';
 import { Navigation, Pagination, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import YouTube from 'react-youtube';
 import Vimeo from '@u-wave/react-vimeo';
 import ReactMarkdown from 'react-markdown'
 
@@ -45,7 +46,7 @@ const Project = ({ project }) => {
               {project.gallery?.map((item, idx) => (
                 <SwiperSlide className="w-4/5 pb-24">
                   {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
-                   <h1>Youtube Video: {item.public_url}</h1>
+                   <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}}></YouTube>
                   }
                   {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
                     <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
@@ -98,7 +99,7 @@ const Project = ({ project }) => {
               {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
                 <div className="my-slides w-full h-full" style={{ display: currSlideIdx === idx ? "block" : "none" }}>
                   <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
-                  <h1>Youtube Video: {item.public_url}</h1>
+                  <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}}></YouTube>
                 </div>
               }
               {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
