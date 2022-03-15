@@ -44,10 +44,13 @@ const Project = ({ project }) => {
             >
               {project.gallery?.map((item, idx) => (
                 <SwiperSlide className="w-4/5 pb-24">
-                  {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
+                  {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
+                   <h1>Youtube Video: {item.public_url}</h1>
+                  }
+                  {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
                     <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
                   }
-                  {item.file_extension !== '.mp4' && item.public_url != '' &&
+                  {item.file_extension === '.jpg' && item.public_url != '' &&
                     <div className="h-[30vh] mx-auto">
                       <img className="absolute top-1/2 translate-y-[-50%] grow-1" src={item.public_url} />
                     </div>
@@ -92,13 +95,19 @@ const Project = ({ project }) => {
         <div className="modal-content h-full bg-transparent flex items-center justify-center">
           {project.gallery?.map((item, idx) => (
             <>
-              {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
+              {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
+                <div className="my-slides w-full h-full" style={{ display: currSlideIdx === idx ? "block" : "none" }}>
+                  <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
+                  <h1>Youtube Video: {item.public_url}</h1>
+                </div>
+              }
+              {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
                 <div className="my-slides w-full h-full" style={{ display: currSlideIdx === idx ? "block" : "none" }}>
                   <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
                   <Vimeo video={item.public_url} className="w-full h-full lightbox-slide-vimeo" />
                 </div>
               }
-              {item.file_extension !== '.mp4' && item.public_url != '' &&
+              {item.file_extension === '.jpg' && item.public_url != '' &&
                 <div className="my-slides w-full" style={{ display: currSlideIdx === idx ? "block" : "none" }}>
                   <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
                   <img src={item.public_url} className="w-full max-h-[100%]" />
@@ -121,7 +130,7 @@ export async function getStaticProps({ params }) {
   const project = await getProjectFromMonday(id) || {}
   return {
     props: { project },
-    revalidate: Object.keys(project).length ? 3600 : 1
+    revalidate: Object.keys(project).length ? 60 : 1 //3600 : 1
   }
 }
 
