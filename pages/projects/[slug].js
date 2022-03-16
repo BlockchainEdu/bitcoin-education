@@ -35,18 +35,20 @@ const Project = ({ project }) => {
         </div>
         <div className="pb-24 max-w-7xl mx-auto space-x-0 lg:space-x-10 flex flex-col lg:flex-row w-11/12 overflow-hidden">
           <div className="w-full max-w-3xl mx-auto">
+            { !isShowingZoomModal &&
             <Swiper
               modules={[Navigation, Pagination, A11y]}
               navigation
               pagination={{ clickable: true }}
               onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
               onClick={() => setShowingZoomModal(true)}
+              onInit={swiper => swiper.slideTo(currSlideIdx)}
               className={project.gallery && project.gallery[currSlideIdx]?.file_extension === '.mp4' && "video-slide"}
             >
               {project.gallery?.map((item, idx) => (
                 <SwiperSlide className="w-4/5 pb-24">
                   {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
-                   <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}}></YouTube>
+                   <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}} containerClassName="h-[30vh] flex justify-center items-center swiper-slide-vimeo" />
                   }
                   {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
                     <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
@@ -58,7 +60,7 @@ const Project = ({ project }) => {
                   }
                 </SwiperSlide>
               ))}
-            </Swiper>
+            </Swiper> }
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
             <p className="text-black text-md lg:pr-10 lg:pb-14"><ReactMarkdown children={project.place_story} /></p>
             <div>
@@ -91,7 +93,8 @@ const Project = ({ project }) => {
         </div>
         <Footer />
       </div>
-      <div id="zoomModal" className="lightbox-modal w-full h-full max-h-[100vh] overflow-hidden" style={{ display: isShowingZoomModal ? "block" : "none" }}>
+      { isShowingZoomModal &&
+      <div id="zoomModal" className="lightbox-modal w-full h-full max-h-[100vh] overflow-hidden">
         <span className="close cursor-pointer text-orange" onClick={() => setShowingZoomModal(false)}>&times;</span>
         <div className="modal-content h-full bg-transparent flex items-center justify-center">
           {project.gallery?.map((item, idx) => (
@@ -99,7 +102,7 @@ const Project = ({ project }) => {
               {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
                 <div className="my-slides w-full h-full" style={{ display: currSlideIdx === idx ? "block" : "none" }}>
                   <div className="numbertext text-2xl">{idx + 1} / {project.gallery.length}</div>
-                  <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}}></YouTube>
+                  <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}} containerClassName="w-full h-full lightbox-slide-vimeo" />
                 </div>
               }
               {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
@@ -119,7 +122,7 @@ const Project = ({ project }) => {
           <a className="prev cursor-pointer absolute top-1/2 left-0 text-orange" onClick={() => currSlideIdx > 0 && setCurrSlideIdx(currSlideIdx - 1)}>&#10094;</a>
           <a className="next cursor-pointer absolute top-1/2 right-0 text-orange" onClick={() => currSlideIdx < project.gallery.length - 1 && setCurrSlideIdx(currSlideIdx + 1)}>&#10095;</a>
         </div>
-      </div>
+      </div> }
     </>
   )
 }

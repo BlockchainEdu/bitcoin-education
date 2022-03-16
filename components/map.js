@@ -94,7 +94,7 @@ export default function Map({ locations, style }) {
                   {location.gallery?.map((item, idx) => (
                     <SwiperSlide className="pb-16 overflow-hidden">
                       {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
-                       <YouTube videoId={item.public_url.split("/").pop()}></YouTube>
+                       <YouTube videoId={item.public_url.split("/").pop()} containerClassName="relative top-[-.75rem] flex justify-center items-center swiper-slide-vimeo" />
                       }
                       {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
                         <Vimeo video={item.public_url} className="relative top-[-.75rem] flex justify-center items-center swiper-slide-vimeo" />
