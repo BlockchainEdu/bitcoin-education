@@ -15,6 +15,7 @@
     "@heroicons/react": "^1.0.5",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.2",
+    "@tailwindcss/line-clamp": "^0.3.1",
     "@u-wave/react-vimeo": "^0.9.5",
     "axios": "^0.21.4",
     "heroicons-react": "^1.4.1",

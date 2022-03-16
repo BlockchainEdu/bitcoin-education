@@ -116,7 +116,6 @@ export const getProjectFromMonday = async function(id) {
     let galleryAssets = videos.map(public_url => { return { file_extension: public_url.includes('youtu') ? 'youtube' : 'vimeo', public_url } })
     galleryAssets = galleryAssets.concat(images.map(public_url => { return { file_extension: '.jpg', public_url } }))
     galleryAssets = galleryAssets.filter(asset => asset.public_url !== "")
-    console.log({podcastUrl})
     if (selectedItem.assets.length > 0) {
       const thisMediaType = galleryAssets.length > 0 ? MediaType.video : MediaType.image
       extras = { media_type: thisMediaType, image: selectedItem.assets[0].public_url, gallery: galleryAssets.concat(selectedItem.assets) }
