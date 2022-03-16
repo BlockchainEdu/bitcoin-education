@@ -111,7 +111,7 @@ export default function Map({ locations, style }) {
                   <a>
                     <div className="overflow-hidden">
                       <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden line-clamp-2"><ReactMarkdown children={location.place_story} /></p>
-                      <span className="block bold underline text-center">Read full story here</span>
+                      <span className="block font-black underline text-center">Read full story here</span>
                     </div>
                   </a>
                 </Link>
