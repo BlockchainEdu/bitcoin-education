@@ -3,6 +3,7 @@ import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import { Navigation, Pagination, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import YouTube from 'react-youtube';
 import Vimeo from '@u-wave/react-vimeo';
 import ReactMarkdown from 'react-markdown'
 
@@ -70,7 +71,7 @@ export default function Map({ locations, style }) {
             >
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4 w-[inherit] h-[inherit] grid">
                 <Link href={`/projects/${location.id}`}>
-                  <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center underline decoration-benorange-500">{location.place_name}</h1>
+                  <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center underline decoration-benorange-500 cursor-pointer">{location.place_name}</h1>
 
                   {/* <div className="mx-auto">
                     <StandardButton
@@ -88,14 +89,17 @@ export default function Map({ locations, style }) {
                   navigation
                   pagination={{ clickable: true }}
                   onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
-                  className={location.gallery && location.gallery[currSlideIdx]?.file_extension === '.mp4' && "video-slide w-full" || "w-full"}
+                  className={location.gallery && location.gallery[currSlideIdx]?.file_extension !== '.jpg' && "video-slide w-full" || "w-full"}
                 >
                   {location.gallery?.map((item, idx) => (
                     <SwiperSlide className="pb-16 overflow-hidden">
-                      {item.file_extension === '.mp4' && item.public_url != '' && idx === currSlideIdx &&
+                      {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
+                       <YouTube videoId={item.public_url.split("/").pop()} containerClassName="relative top-[-.75rem] flex justify-center items-center swiper-slide-vimeo" />
+                      }
+                      {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
                         <Vimeo video={item.public_url} className="relative top-[-.75rem] flex justify-center items-center swiper-slide-vimeo" />
                       }
-                      {item.file_extension !== '.mp4' && item.public_url != '' &&
+                      {item.file_extension === '.jpg' && item.public_url != '' &&
                         <div className="mx-auto text-center">
                           <img className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] grow-1" src={item.public_url} />
                         </div>
@@ -103,14 +107,14 @@ export default function Map({ locations, style }) {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-                {/* <Link href={`/projects/${location.id}`}>
+                <Link href={`/projects/${location.id}`}>
                   <a>
                     <div className="overflow-hidden">
-
-                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden"><ReactMarkdown children={location.place_story} /></p>
+                      <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden line-clamp-2"><ReactMarkdown children={location.place_story} /></p>
+                      <span className="block bold underline text-center">Read full story here</span>
                     </div>
                   </a>
-                </Link> */}
+                </Link>
               </div>
             </Popup>
           )}
