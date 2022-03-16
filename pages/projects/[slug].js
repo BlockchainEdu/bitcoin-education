@@ -79,6 +79,14 @@ const Project = ({ project }) => {
                     styling="px-10 flex m-auto"
                   />
                 }
+                {project.podcast_url !== "" &&
+                  <StandardButton
+                    link={project.podcast_url}
+                    text="Podcast"
+                    color="orange"
+                    styling="px-10 flex m-auto"
+                  />
+                }
               </div>
             </div>
           </div>

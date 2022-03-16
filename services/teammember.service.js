@@ -112,9 +112,11 @@ export const getProjectFromMonday = async function(id) {
     const placeName       = (selectedItem.column_values[0].value || "").replace(/"/g, "")
     const placeStory      = JSON.parse(selectedItem.column_values[3].value || `{"text": ""}`).text || ""
     const testimonialUrl  = (selectedItem.column_values[6].value || "").replace(/"/g, "")
+    const podcastUrl      = (selectedItem.column_values[7].value || "").replace(/"/g, "")
     let galleryAssets = videos.map(public_url => { return { file_extension: public_url.includes('youtu') ? 'youtube' : 'vimeo', public_url } })
     galleryAssets = galleryAssets.concat(images.map(public_url => { return { file_extension: '.jpg', public_url } }))
     galleryAssets = galleryAssets.filter(asset => asset.public_url !== "")
+    console.log({podcastUrl})
     if (selectedItem.assets.length > 0) {
       const thisMediaType = galleryAssets.length > 0 ? MediaType.video : MediaType.image
       extras = { media_type: thisMediaType, image: selectedItem.assets[0].public_url, gallery: galleryAssets.concat(selectedItem.assets) }
@@ -128,6 +130,7 @@ export const getProjectFromMonday = async function(id) {
       place_name: placeName,
       place_story: placeStory,
       testimonial_url: testimonialUrl,
+      podcast_url: podcastUrl,
     }
   }
 }
