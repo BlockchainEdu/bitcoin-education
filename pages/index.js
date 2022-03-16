@@ -129,43 +129,7 @@ export default function Home() {
         </div>
         <img className="m-auto w-96" src="/images/what-we-do.gif" />
       </section>
-      <section className="max-w-7xl m-auto py-24 px-7">
-        <div className="flex flex-col lg:flex-row justify-between items-center">
-          <div>
-            <div className="font-mont text-center lg:text-left text-xs uppercase pb-7">
-              Our Vision
-            </div>
-            <div className="max-w-sm pb-4">
-              <h2 className="font-mont font-black text-5xl">
-                The 10:10 Plan
-              </h2>
-              <img className="ml-auto -mt-2 mr-6" src="/images/10-plan-underline-orange.png" />
-            </div>
-            <div className="flex items-center gap-x-0 lg:gap-x-10 justify-center">
-              <div className="border-r-none lg:border-r lg:border-4 lg:border-benorange-500  h-24">
-
-              </div>
-              <div>
-                <p className="font-mont text-center lg:text-left mx-auto lg:mx-0 text-xl lg:text-2xl font-bold max-w-sm">
-                  Over the next 10 years we plan to educate over 10M people in Blockchain Technology
-                </p>
-              </div>
-            </div>
-            <div className="m-auto flex content-center justify-center lg:justify-start">
-              <StandardButton
-                link="/about"
-                color="orange"
-                text="Learn more"
-                styling="px-12 mt-10"
-              />
-            </div>
-          </div>
-          <div>
-            <img className="mt-14 lg:mt-0 mx-auto md:mx-0" src="/images/10-plan-home.png" />
-          </div>
-        </div>
-      </section>
-      <section className="bg-benorange-500 py-14 mb-14 lg:mb-0">
+      <section className="bg-benorange-500 mt-24 py-14 mb-14 lg:mb-0">
         <div className="max-w-7xl m-auto">
           <div className="flex flex-col lg:flex-row justify-center space-x-4">
             <img className="-mt-8 mx-auto lg:mx-0 w-32 lg:w-auto mb-4 lg:mb-0" src="/images/ben-text-logo-black.svg" />

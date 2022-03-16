@@ -20,13 +20,13 @@ export default function Learn() {
                     </h1>
                     <div className="flex flex-col md:flex-row pt-14 space-y-10 md:space-y-0 gap-x-0 md:gap-x-14 font-mont text-center md:text-left">
                         <div className="what-is-learn-blurb mx-auto">
-                            Are you new to Blockchain? Trading Cryptocurrency? Developing Solidity? Looking for a deep dive on DeFi? We have the platform for everyone and anyone trying to learn more about a topic in the Blockchain industry.
+                            Are you new to Blockchain? Trading Cryptocurrency? Looking for a deep dive on DeFi? We have the platform for everyone and anyone trying to learn more about a topic in the Blockchain industry.
                         </div>
                         <div className="what-is-learn-blurb mx-auto">
                             Created by knowledgeable Blockchain professors, experienced Blockchain professionals, and some of the best educators in the space, you can trust our content is top notch.
                         </div>
                         <div className="what-is-learn-blurb mx-auto">
-                            You can earn Blockchain-based certificates (also works for LinkedIn), get rewarded with Cryptocurrencies for learning, or even get a job in the space with companies hiring our graduates.
+                            You can even get a job in the space with companies hiring our graduates.
                         </div>
                     </div>
                 </div>
@@ -42,9 +42,9 @@ export default function Learn() {
                         </div>
                         <div className="pt-5">
                             <div className="pb-3">Blockchain Fundamentals</div>
+                            <div className="pb-3">Virtual Lands course</div>
                             <div className="pb-3">DeFi Fundamentals</div>
                             <div className="pb-3">Crypto Trading</div>
-                            <div className="pb-3">Solidity Development</div>
                             <div className="pb-3">How to set up Metamask</div>
                             <div className="pb-3">How to start a Blockchain club</div>
                         </div>
