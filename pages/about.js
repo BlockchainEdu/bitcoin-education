@@ -18,7 +18,11 @@ export default function About() {
                             The Blockchain Education Network (BEN)
                         </h1>
                         <p className="text-black text-md pt-10 max-w-xl">
-                            The Blockchain Education Network (BEN) is a 501(c)(3) non-porfit charitable organization.
+                            The Blockchain Education Network (BEN) is a 501(c)(3) non-porfit charitable organization.<br/><br/>
+                            We exist to provide borderless education in blockchain technology, making it accessible to anyone 
+                            and everyone while building a global transparent community.<br/><br/>
+                            BEN educates students about blockchain technology and inspires them to find their talent and 
+                            own it! Either as a disrupter, entrepreneur, investor, and team member."
                         </p>
                     </div>
                     <div className="w-full md:w-1/2 m-auto">

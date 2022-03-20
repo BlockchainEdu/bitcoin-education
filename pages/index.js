@@ -122,9 +122,9 @@ export default function Home() {
             <img className="ml-auto mr-20 h-4 lg:h-auto lg:-mt-4 lg:mr-6" src="/images/we-do-underline-orange.png" />
           </div>
           <p className="text-black text-md pt-10 mb-14 lg:mb-0 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-            We serve our students by providing an abundance of resources.
-            With our global chapters we host events, educate, create a
-            community, build careers and mentor.
+            We serve our students by providing an abundance of resources through BEN Learn's portal with courses
+            such as Crypto Taxes, Virtual Land, DeFi and many more. We empower students to host workshops at
+            their Universities, build their network while cultivating communities & creating career opportunities
           </p>
         </div>
         <img className="m-auto w-96" src="/images/what-we-do.gif" />

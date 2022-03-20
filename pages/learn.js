@@ -5,6 +5,7 @@ import Image from 'next/image'
 import FormPopup from '../components/formPopup';
 import Modal from '../components/donateButton';
 import Head from "next/head"
+import StandardButton from '../components/standardButton';
 
 export default function Learn() {
     return (
@@ -49,7 +50,11 @@ export default function Learn() {
                             <div className="pb-3">How to start a Blockchain club</div>
                         </div>
                         <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
-                            <button className="mt-5 border font-bold text-xl px-8 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Sign up to learn</button>
+                            <StandardButton
+                                styling="px-8 mt-5"
+                                color="orange"
+                                text="Sign up to learn"
+                            />
                         </a>
                     </div>
                     <div className="w-full md:w-3/5">
@@ -90,9 +95,11 @@ export default function Learn() {
                             </div>
                         </div>
                         <div className="m-auto flex content-center justify-center md:justify-start">
-                            <FormPopup
-                                buttonStyle="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10"
-                                buttonText="Sign up as a Teacher"
+                            <StandardButton
+                                link="https://webforms.pipedrive.com/f/6UURQKVAXIrvlnr2T6iyOX75xqbyYdLp6iHKmGYWedgMyJ25vpNmlZn3V8s8LEi9hx"
+                                color="orange"
+                                text="Sign up as a Teacher"
+                                styling="px-10 flex mx-auto lg:mx-0 mt-10"
                             />
                         </div>
                     </div>
