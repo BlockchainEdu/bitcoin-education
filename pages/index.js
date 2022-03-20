@@ -48,20 +48,19 @@ export default function Home() {
         <title>Home | Blockchain Education Network</title>
       </Head>
       <section className="py-24 px-7">
-        <h1 className="font-mont font-black text-2xl text-center">
-          Help us educate 10 million people in 10 years about blockchain
+        <h1 className="font-mont font-black text-2xl text-center max-w-4xl mx-auto">
+          Our mission is to provide borderless blockchain education for students to generate wealth & financial freedom.
         </h1>
         <div className="mx-auto max-w-xl">
-          <img className="mx-auto md:mr-0 lg:ml-auto" src="/images/hero-headline-underline.png" />
+          <img className="mx-auto lg:ml-auto" src="/images/hero-headline-underline.png" />
         </div>
         <p className="font-mont font-medium text-md text-center max-w-3xl mx-auto mt-10" style={{ lineHeight: "26px" }}>
-          Join us in our mission to help bring blockchain education  to 10 million people by 2031.
           Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over
           1.7 Billion Adults worldwide who don't have access to a bank account.
         </p>
-        <p className="font-mont font-medium text-sm text-gray-400 text-center max-w-2xl mx-auto mb-10" style={{ lineHeight: "26px" }}>
-          Help us to provide borderless blockchain education, empowering leaders to bring
-          blockchain to their companies and communities.
+        <p className="font-mont font-semibold text-sm text-gray-400 text-center max-w-3xl mx-auto mb-10 mt-6" style={{ lineHeight: "26px" }}>
+          Our vision is that anyone, regardless of where they are in the world, will be able to use Blockchain
+          as a vehicle to create wealth for themselves and their communities. Donate now and <a className='text-benorange-500 underline' target="_blank" href="https://learn.blockchainedu.org/">start learning!</a>
         </p>
         <Modal />
       </section>
