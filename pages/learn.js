@@ -98,7 +98,7 @@ export default function Learn() {
                     </div>
                 </div>
             </section>
-            <section className="max-w-7xl m-auto pt-0 md:py-24 pb-24 px-7">
+            {/* <section className="max-w-7xl m-auto pt-0 md:py-24 pb-24 px-7">
                 <div className="flex flex-col-reverse md:flex-row justify-between">
                     <div className="w-full md:w-1/2">
                         <div className="font-mont text-center md:text-left text-xs uppercase pb-7">
@@ -131,7 +131,7 @@ export default function Learn() {
                         />
                     </div>
                 </div>
-            </section>
+            </section> */}
             <Footer />
         </div>
     )
