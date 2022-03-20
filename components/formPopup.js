@@ -35,7 +35,8 @@ export default function FormPopup(props) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                <iframe className="monday-form" src="https://forms.monday.com/forms/embed/190fe5ce23ac7b55f074d8f673570ea2?r=use1"></iframe>
+                  <div class="pipedriveWebForms mx-auto justify-center w-full" style={{width:"300px", height:"300px"}} data-pd-webforms="https://webforms.pipedrive.com/f/6UURQKVAXIrvlnr2T6iyOX75xqbyYdLp6iHKmGYWedgMyJ25vpNmlZn3V8s8LEi9hx"><script src="https://webforms.pipedrive.com/f/loader"></script></div>
+                  {/* <iframe className="monday-form" src="https://forms.monday.com/forms/embed/190fe5ce23ac7b55f074d8f673570ea2?r=use1"></iframe> */}
                 </div>
               </div>
             </div>

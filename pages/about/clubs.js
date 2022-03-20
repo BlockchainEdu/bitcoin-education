@@ -20,11 +20,6 @@ const Partners = () => {
         "Access to our database of speakers, alumni, and educational content",
     },
     {
-      name: "travel",
-      description:
-        "Flights and Airbnbs for members to go to Blockchain conferences",
-    },
-    {
       name: "experience",
       description: "Job opportunities from top Crypto and Blockchain startups",
     },
@@ -95,14 +90,12 @@ const Partners = () => {
               className="text-black text-md pt-10 max-w-2xl m-auto lg:m-0 text-center lg:text-left font-medium"
               style={{ maxWidth: "610px" }}
             >
-              Become part of the largest network of University blockchain clubs
-              in the world. Get mentorship from other clubs and leaders in the
-              space to grow and scale your club membership base. Get access to
-              our massive database of world class speakers, educational content,
-              job opportunities, and much much more.
+              Become part of the largest network of University blockchain clubs in the world.
+              Get access to our course material, massive database of world class speakers, educational
+              content, job opportunities, and much much more.
             </p>
             <div className="m-auto flex content-center justify-center lg:justify-start">
-              <a href="https://learn.blockchainedu.org/segments" target="_blank">
+              <a href="https://webforms.pipedrive.com/f/cty2ouVm4UfoxxhUCtjqlo7SY384tc5gAox7IRPHtQk0jzIAb8SP97zrnvsHOmJEhZ" target="_blank">
                 <button className="mb-20 lg:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-16 rounded-full py-4 mt-10">
                   Sign Up
                 </button>
@@ -119,7 +112,7 @@ const Partners = () => {
           <h2 className="text-black text-3xl md:text-4xl text-center lg:text-left m-auto lg:m-0 font-bold max-w-md pb-20">
             What BEN offers clubs
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-14 lg:gap-y-0 gap-x-14 font-mont">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-14 lg:gap-y-0 gap-x-14 font-mont">
             {Benefits.map((Benefits, index) => (
               <div key={index}>
                 <div
@@ -129,7 +122,7 @@ const Partners = () => {
                   {Benefits.name}
                 </div>
                 <div
-                  style={{ maxWidth: "262px" }}
+                  style={{ maxWidth: "320px" }}
                   className="text-center lg:text-left m-auto lg:m-0"
                 >
                   {Benefits.description}
