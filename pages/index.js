@@ -8,6 +8,11 @@ import StandardButton from '../components/standardButton';
 import DonateOptions from '../components/donateOptions';
 import PopUpVideo from '../components/popupVideo';
 import Head from "next/head"
+import { getProjectsFromMonday } from '../services'
+import 'mapbox-gl/dist/mapbox-gl.css'
+import dynamic from "next/dynamic"
+import styled from "styled-components"
+import { MediaType } from "../components/map"
 
 const impactStats = [
   {
@@ -40,7 +45,17 @@ const impactStats = [
   },
 ]
 
-export default function Home() {
+const Map = dynamic(() => import("../components/map"), {
+  loading: () => "Loading...",
+  ssr: false
+})
+
+export default function Home({ locations }) {
+  if ( locations.length === 0 ) {
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
+  }
   return (
     <div className="overflow-hidden">
       <Header />
@@ -144,10 +159,26 @@ export default function Home() {
             world. We educate students about blockchain technology and inspire them to
             ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
           </p>
+        <Container>
+          <Map locations={locations} />
+        </Container>
         </div>
-        <img className="m-auto mt-14" src="/images/ben-map.png" />
       </section>
       <Footer />
     </div>
   )
+}
+
+const Container = styled.div`
+  width: 100%;
+  height: 60vh;
+  minHeight: 588px;
+`
+
+export async function getStaticProps({ params }) {
+  let fetchedProjects = []
+  while ( fetchedProjects.length === 0 ) {
+    fetchedProjects = await getProjectsFromMonday() || []
+  }
+  return { props: { locations: fetchedProjects }, revalidate: fetchedProjects.length ? 60 : 1 } // 3600 : 1 }
 }
