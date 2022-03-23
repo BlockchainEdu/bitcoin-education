@@ -144,7 +144,7 @@ export default function Home({ locations }) {
         <img className="m-auto w-96" src="/images/what-we-do.gif" />
       </section>
       <section className="bg-benorange-500 mt-24 py-14 mb-14 lg:mb-0">
-        <div className="max-w-7xl m-auto">
+        <div className="m-auto">
           <div className="flex flex-col lg:flex-row justify-center space-x-4">
             <img className="-mt-8 mx-auto lg:mx-0 w-32 lg:w-auto mb-4 lg:mb-0" src="/images/ben-text-logo-black.svg" />
             <div>
@@ -159,7 +159,7 @@ export default function Home({ locations }) {
             world. We educate students about blockchain technology and inspire them to
             ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
           </p>
-        <Container>
+        <Container className="mt-6">
           <Map locations={locations} />
         </Container>
         </div>
