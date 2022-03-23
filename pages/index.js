@@ -180,5 +180,5 @@ export async function getStaticProps({ params }) {
   while ( fetchedProjects.length === 0 ) {
     fetchedProjects = await getProjectsFromMonday() || []
   }
-  return { props: { locations: fetchedProjects }, revalidate: fetchedProjects.length ? 60 : 1 } // 3600 : 1 }
+  return { props: { locations: fetchedProjects }, revalidate: fetchedProjects.length ? 3600 : 1 }
 }
