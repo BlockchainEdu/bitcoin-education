@@ -143,7 +143,7 @@ export default function Home({ locations }) {
         </div>
         <img className="m-auto w-96" src="/images/what-we-do.gif" />
       </section>
-      <section className="bg-benorange-500 mt-24 py-14 mb-14 lg:mb-0">
+      <section className="mt-24 py-14 pb-0 lg:mb-0">
         <div className="m-auto">
           <div className="flex flex-col lg:flex-row justify-center space-x-4">
             <img className="-mt-8 mx-auto lg:mx-0 w-32 lg:w-auto mb-4 lg:mb-0" src="/images/ben-text-logo-black.svg" />
@@ -151,7 +151,7 @@ export default function Home({ locations }) {
               <h2 className="font-mont font-black text-3xl lg:text-5xl text-center lg:text-left">
                 Ambassadors
               </h2>
-              <img className="-mt-2 h-6 lg:h-auto mx-auto lg:mx-0" src="/images/ambassadors-underline-orange.png" />
+              <img className="-mt-2 h-6 lg:h-auto mx-auto lg:ml-10" src="/images/hero-headline-underline.png" />
             </div>
           </div>
           <p className="text-black font-bold text-md text-center m-auto pt-4 max-w-2xl px-7">
@@ -159,6 +159,10 @@ export default function Home({ locations }) {
             world. We educate students about blockchain technology and inspire them to
             ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
           </p>
+        </div>
+      </section>
+      <section id="home-map" className="mt-10 py-14 mb-14 lg:mb-0">
+        <div className="m-auto">
         <Container className="mt-6">
           <Map locations={locations} />
         </Container>
