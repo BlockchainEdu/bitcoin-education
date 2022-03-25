@@ -66,7 +66,7 @@ const Project = ({ project }) => {
             <div>
               <div className="w-full gap-y-7 flex-wrap flex flex-col lg:flex-row items-center justify-center py-14 lg:space-y-0 lg:py-0 mt-14 lg:mt-0 space-x-0 lg:space-x-7">
                 <StandardButton
-                  link="/map"
+                  link="/#home-map"
                   text="More Student Stories"
                   color="orange"
                   styling="px-10 flex m-auto"
