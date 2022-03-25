@@ -142,7 +142,7 @@ export async function getStaticProps({ params }) {
   const project = await getProjectFromMonday(id) || {}
   return {
     props: { project },
-    revalidate: Object.keys(project).length ? 60 : 1 //3600 : 1
+    revalidate: Object.keys(project).length ? 3600 : 1
   }
 }
 
