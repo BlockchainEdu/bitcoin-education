@@ -5,7 +5,7 @@ const MobileNav = () => {
         <nav>
             <div className="max-w-7xl md:px-0 bg-white flex m-auto justify-between items-center py-7">
                 <div className="">
-                    <a href="/"><img className="w-48" src="/images/color-logo-small.svg" /></a>
+                    <a href="/"><img className="w-36" src="/images/ben-established-logo.svg" /></a>
                 </div>
                 <div className="">
                     <MobileDropdown />

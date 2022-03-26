@@ -95,7 +95,7 @@ const Partners = () => {
               content, job opportunities, and much much more.
             </p>
             <div className="m-auto flex content-center justify-center lg:justify-start">
-              <a href="https://webforms.pipedrive.com/f/cty2ouVm4UfoxxhUCtjqlo7SY384tc5gAox7IRPHtQk0jzIAb8SP97zrnvsHOmJEhZ" target="_blank">
+              <a href="https://forms.monday.com/forms/b8703f487abcb4b9ec27787457e9f760?r=use1" target="_blank">
                 <button className="mb-20 lg:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-16 rounded-full py-4 mt-10">
                   Sign Up
                 </button>
