@@ -161,7 +161,7 @@ export default function Home({ locations }) {
           </p>
         </div>
       </section>
-      <section id="home-map" className="mt-10 py-14 mb-14 lg:mb-0">
+      <section id="home-map" className="pt-7 py-14 mb-14 lg:mb-0">
         <div className="m-auto">
         <Container className="mt-6">
           <Map locations={locations} />
