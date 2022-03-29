@@ -10,6 +10,7 @@ import StandardButton from '../components/standardButton';
 import { TeamMemberService } from '../services';
 import React, { useState, useEffect } from 'react';
 import Head from "next/head"
+import Script from "next/script"
 
 const cryptoInfo = [
     {
@@ -185,9 +186,27 @@ export default function Donate() {
                     styling="mt-6 lg:mt-0 px-6 flex mx-auto lg:mx-0"
                 />
             </div>
-            <div id="crypto" className="px-7">
+            <div id="crypto" className="px-7 py-20 pb-7">
+                <Script
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                        !function(t,e,i,n,o,c,d,s){t.tgbWidgetOptions = { id: o, domain: n }, (d = e.createElement(i)).src = [n, "widget/script.js"].join(""), d.async = 1, (s = e.getElementById(c)).parentNode.insertBefore(d, s)}(window,document,"script","https://tgbwidget.com/","1189132154","tgb-widget-script");
+  `,
+                    }}
+                />
+                <div className="flex flex-col lg:flex-row justify-between mx-auto max-w-7xl items-center">
+                    <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
+                        <PopUpVideo
+                            thumbnail="/images/video-home-placeholder.jpg"
+                        />
+                    </div>
+                    <div className="w-full lg:w-1/2 mx-auto flex justify-center" style={{maxWidth:"550px"}}>
+                        <script className="justify-center mx-auto" id="tgb-widget-script">  </script>
+                    </div>
+                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-y-2 m-auto justify-between p-6 py-7" style={{ border: "1px solid #E5E5E5", maxWidth: "880px" }}>
+                {/* <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-y-2 m-auto justify-between p-6 py-7" style={{ border: "1px solid #E5E5E5", maxWidth: "880px" }}>
                     {teamMembers.length > 0 && teamMembers.map((global, index) => {
                         return global.group.title == "Crypto" &&
                             <div key={index}>
@@ -201,7 +220,7 @@ export default function Donate() {
                             </div>
                     }
                     )}
-                </div>
+                </div> */}
             </div>
             <section>
                 <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto items-center justify-between mb-14 lg:mb-0 mt-20 lg:mt-0">
