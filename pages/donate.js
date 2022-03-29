@@ -167,7 +167,7 @@ export default function Donate() {
                 </h2>
                 <p className="text-black text-md pt-10 m-auto lg:m-0 text-center font-medium">
                     When you donate crypto directly to BEN, we immediately convert your coins into fiat.<br />
-                    Your gift will fund blockchain education through workshop around the world.
+                    Your gift will fund blockchain education through workshops around the world.
                 </p>
                 <p className="text-black text-xs pt-4 m-auto lg:m-0 text-center font-medium">
                     Please note that all donations made in crypto are nonrefundable.
