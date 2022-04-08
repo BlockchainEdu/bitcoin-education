@@ -11,6 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import StandardButton from "./standardButton";
+import clampViewportToBound from "../utils/map-helpers.js";
 
 export const MediaType = {
   none: 'none',
@@ -27,24 +28,30 @@ const navigationControlStyle = {
 export default function Map({ locations, style }) {
   const isLatitude = num => num && isFinite(num) && Math.abs(num) <= 90;
   const isLongitude = num => num && isFinite(num) && Math.abs(num) <= 180;
+  const mapConstraints = {
+    minZoom: 2,
+    maxZoom: 5,
+  }
   const [viewport, setViewport] = useState({
     width: '100%',
     height: '100%',
-    // The latitude and longitude of the center of London
-    latitude: 0,
-    longitude: 0,
-    zoom: 1,
+    latitude: 38.5,
+    longitude: -99,
+    zoom: 3,
+    ...mapConstraints,
   });
   const [currSlideIdx, setCurrSlideIdx] = useState(0);
   const [selectedLocation, setSelectedLocation] = useState({});
-  console.log({ locations });
 
   return (
     <ReactMapGL
       mapStyle="/mapboxstyle.json"
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
       {...viewport}
-      onViewportChange={(nextViewport) => setViewport(nextViewport)}
+      onViewportChange={(nextViewport) => setViewport({
+        ...nextViewport,
+        ...mapConstraints,
+      })}
       style={style}
     >
       <NavigationControl style={navigationControlStyle} />
