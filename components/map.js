@@ -37,7 +37,7 @@ export default function Map({ locations, style }) {
   }
   const [viewport, setViewport] = useState({
     width: '100%',
-    height: '100%',
+    height: '588px',
     ...mapConstraints,
     ...sharedState,
   });
