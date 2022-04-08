@@ -12,6 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import StandardButton from "./standardButton";
 import clampViewportToBound from "../utils/map-helpers.js";
+import { useAppContext } from '../context/state';
 
 export const MediaType = {
   none: 'none',
@@ -28,6 +29,8 @@ const navigationControlStyle = {
 export default function Map({ locations, style }) {
   const isLatitude = num => num && isFinite(num) && Math.abs(num) <= 90;
   const isLongitude = num => num && isFinite(num) && Math.abs(num) <= 180;
+  const { sharedState, setSharedState } = useAppContext();
+  console.log({sharedState});
   const mapConstraints = {
     minZoom: 2,
     maxZoom: 5,
@@ -35,10 +38,8 @@ export default function Map({ locations, style }) {
   const [viewport, setViewport] = useState({
     width: '100%',
     height: '100%',
-    latitude: 38.5,
-    longitude: -99,
-    zoom: 3,
     ...mapConstraints,
+    ...sharedState,
   });
   const [currSlideIdx, setCurrSlideIdx] = useState(0);
   const [selectedLocation, setSelectedLocation] = useState({});
@@ -48,10 +49,18 @@ export default function Map({ locations, style }) {
       mapStyle="/mapboxstyle.json"
       mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
       {...viewport}
-      onViewportChange={(nextViewport) => setViewport({
-        ...nextViewport,
-        ...mapConstraints,
-      })}
+      onViewportChange={(nextViewport) => {
+        setViewport({
+          ...nextViewport,
+          ...mapConstraints,
+        });
+        setSharedState({
+          latitude: nextViewport.latitude,
+          longitude: nextViewport.longitude,
+          zoom: nextViewport.zoom,
+        });
+        console.log({sharedState});
+      }}
       style={style}
     >
       <NavigationControl style={navigationControlStyle} />
@@ -79,17 +88,6 @@ export default function Map({ locations, style }) {
               <div className="absolute lg:relative top-0 max-w-7xl mx-auto p-4 w-[inherit] h-[inherit] grid">
                 <Link href={`/projects/${location.id}`}>
                   <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center underline decoration-benorange-500 cursor-pointer">{location.place_name}</h1>
-
-                  {/* <div className="mx-auto">
-                    <StandardButton
-                      link="/contact"
-                      color="orange"
-                      text={location.place_name}
-                      styling="px-10 flex mx-auto lg:mx-0"
-                    /> */}
-                    {/* <button className="text-md px-8 rounded-full py-2 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
-                      {location.place_name}
-                    </button> */}
                 </Link>
                 <Swiper
                   modules={[Navigation, Pagination, A11y]}

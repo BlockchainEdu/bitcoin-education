@@ -243,6 +243,7 @@ export default function Donate() {
                         <div className="mt-10 flex gap-x-10 flex-col lg:flex-row mx-auto">
                             <a className="mx-auto lg:mx-0" href="/deductions">
                                 <StandardButton
+                                    link=""
                                     text="Tax Benefits"
                                     styling="px-10"
                                 />

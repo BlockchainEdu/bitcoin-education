@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import ErrorPage from 'next/error';
 import { getProjectIdsFromMonday, getProjectFromMonday } from '../../services';
 import { MediaType } from '../../components/map';
@@ -61,12 +62,11 @@ const Project = ({ project }) => {
                 </SwiperSlide>
               ))}
             </Swiper> }
-            <StandardButton
-              link="/#home-map"
-              text="Back"
-              color="orange"
-              styling="px-10 flex"
-            />
+            <Link href="/#home-map" passHref={true} shallow={true}>
+                <button className={`text-xl rounded-full py-4 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white px-10 flex`}>
+                    Back
+                </button>
+            </Link>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
             <p className="text-black text-md lg:pr-10 lg:pb-14"><ReactMarkdown children={project.place_story} /></p>
             <div>
