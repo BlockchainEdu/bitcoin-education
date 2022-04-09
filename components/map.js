@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import ReactMapGL, { Marker, Popup, NavigationControl } from "react-map-gl";
 import { Navigation, Pagination, A11y } from 'swiper';
@@ -37,12 +37,15 @@ export default function Map({ locations, style }) {
   }
   const [viewport, setViewport] = useState({
     width: '100%',
-    height: '588px',
+    height: '624px',
     ...mapConstraints,
     ...sharedState,
   });
   const [currSlideIdx, setCurrSlideIdx] = useState(0);
   const [selectedLocation, setSelectedLocation] = useState({});
+  useEffect(() => {
+    setTimeout(() => window.scrollTo({ top: sharedState.scrollY }), 300);
+  }, []);
 
   return (
     <ReactMapGL
@@ -53,13 +56,13 @@ export default function Map({ locations, style }) {
         setViewport({
           ...nextViewport,
           ...mapConstraints,
-        });
+        })
         setSharedState({
           latitude: nextViewport.latitude,
           longitude: nextViewport.longitude,
           zoom: nextViewport.zoom,
-        });
-        console.log({sharedState});
+          scrollY: window.scrollY,
+        })
       }}
       style={style}
     >
@@ -71,6 +74,10 @@ export default function Map({ locations, style }) {
               onClick={() => {
                 setCurrSlideIdx(0)
                 setSelectedLocation(location)
+                setSharedState({
+                  ...sharedState,
+                  scrollY: window.scrollY,
+                })
               }}
             >
               <img className="w-8 h-8 bg-benorange-500 p-2 rounded-full" role="img" src="/images/pin-indicator.svg" />

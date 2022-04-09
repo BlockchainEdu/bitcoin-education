@@ -7,6 +7,7 @@ export function AppWrapper({ children }) {
     latitude: 38.5,
     longitude: -99,
     zoom: 3,
+    scrollY: 0,
   });
 
   return (

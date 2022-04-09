@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ErrorPage from 'next/error';
 import { getProjectIdsFromMonday, getProjectFromMonday } from '../../services';
@@ -19,7 +18,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/zoom';
 
 const Project = ({ project }) => {
-  const router = useRouter()
   const [currSlideIdx, setCurrSlideIdx] = useState(0)
   const [isShowingZoomModal, setShowingZoomModal] = useState(false)
   if ( Object.keys(project).length === 0 ) {
@@ -62,7 +60,7 @@ const Project = ({ project }) => {
                 </SwiperSlide>
               ))}
             </Swiper> }
-            <Link href="/#home-map" passHref={true} shallow={true}>
+            <Link href="/" passHref={false} shallow={true}>
                 <button className={`text-xl rounded-full py-4 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white px-10 flex`}>
                     Back
                 </button>
