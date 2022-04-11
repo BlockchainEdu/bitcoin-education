@@ -120,7 +120,7 @@ export default function Map({ locations, style }) {
                   ))}
                 </Swiper>
                 <Link href={`/projects/${location.id}`}>
-                  <a>
+                  <a className="flex flex-col justify-end">
                     <div className="overflow-hidden">
                       <p className="mapboxgl-marker-story text-sm mt-4 font-mont overflow-hidden line-clamp-2"><ReactMarkdown children={location.place_story} /></p>
                       <span className="block font-black underline text-center">Read full story here</span>

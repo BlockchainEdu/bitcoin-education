@@ -61,9 +61,9 @@ const Project = ({ project }) => {
               ))}
             </Swiper> }
             <Link href="/" passHref={false} shallow={true}>
-                <button className={`text-xl rounded-full py-4 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white px-10 flex`}>
-                    Back
-                </button>
+              <div className="block font-black underline text-center mt-5">
+                Back
+              </div>
             </Link>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
             <p className="text-black text-md lg:pr-10 lg:pb-14"><ReactMarkdown children={project.place_story} /></p>
