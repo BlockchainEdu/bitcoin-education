@@ -61,7 +61,7 @@ const Project = ({ project }) => {
               ))}
             </Swiper> }
             <Link href="/" passHref={false} shallow={true}>
-              <div className="block font-black underline text-center mt-5 cursor-pointer">
+              <div className="block md:hidden font-black underline text-center pt-4 mt-6 cursor-pointer">
                 Back
               </div>
             </Link>
