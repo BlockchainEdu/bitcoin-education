@@ -30,7 +30,6 @@ export default function Map({ locations, style }) {
   const isLatitude = num => num && isFinite(num) && Math.abs(num) <= 90;
   const isLongitude = num => num && isFinite(num) && Math.abs(num) <= 180;
   const { sharedState, setSharedState } = useAppContext();
-  console.log({sharedState});
   const mapConstraints = {
     minZoom: 2,
     maxZoom: 5,
