@@ -4,8 +4,8 @@ const AppContext = createContext();
 
 export function AppWrapper({ children }) {
   const [ sharedState, setSharedState ] = useState({
-    latitude: 38.5,
-    longitude: -99,
+    latitude: 30.576450,
+    longitude: -10.642023,
     zoom: 3,
     scrollY: 0,
   });
