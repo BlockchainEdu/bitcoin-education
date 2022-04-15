@@ -6,7 +6,7 @@ export function AppWrapper({ children }) {
   const [ sharedState, setSharedState ] = useState({
     latitude: 25.933347,
     longitude: -9.586631,
-    zoom: 0,
+    zoom: 10,
     scrollY: 0,
   });
 
