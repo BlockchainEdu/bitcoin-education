@@ -32,7 +32,7 @@ export default function Map({ locations, style }) {
   const { sharedState, setSharedState } = useAppContext();
   const mapConstraints = {
     minZoom: 2,
-    maxZoom: 5,
+    maxZoom: 6,
   }
   const [viewport, setViewport] = useState({
     width: '100%',
