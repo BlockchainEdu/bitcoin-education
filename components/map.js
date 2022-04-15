@@ -31,7 +31,7 @@ export default function Map({ locations, style }) {
   const isLongitude = num => num && isFinite(num) && Math.abs(num) <= 180;
   const { sharedState, setSharedState } = useAppContext();
   const mapConstraints = {
-    minZoom: 5,
+    minZoom: 2,
     maxZoom: 5,
   }
   const [viewport, setViewport] = useState({
