@@ -11,7 +11,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import StandardButton from "./standardButton";
-import clampViewportToBound from "../utils/map-helpers.js";
 import { useAppContext } from '../context/state';
 
 export const MediaType = {
@@ -35,8 +34,6 @@ export default function Map({ locations, style }) {
     maxZoom: 7,
   }
   const [viewport, setViewport] = useState({
-    width: '100%',
-    height: '724px',
     ...mapConstraints,
     ...sharedState,
   });
@@ -57,6 +54,7 @@ export default function Map({ locations, style }) {
           ...mapConstraints,
         })
         setSharedState({
+          ...sharedState,
           latitude: nextViewport.latitude,
           longitude: nextViewport.longitude,
           zoom: nextViewport.zoom,

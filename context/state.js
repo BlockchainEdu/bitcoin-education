@@ -8,6 +8,8 @@ export function AppWrapper({ children }) {
     longitude: -9.586631,
     zoom: 1.5,
     scrollY: 0,
+    width: '100%',
+    height: '724px',
   });
 
   return (
