@@ -95,13 +95,14 @@ export default function Map({ locations, style }) {
                 </Link>
                 <Swiper
                   modules={[Navigation, Pagination, A11y]}
+                  slidesPerView={1}
                   navigation
                   pagination={{ clickable: true }}
                   onSlideChange={swiper => setCurrSlideIdx(swiper.activeIndex)}
                   className={location.gallery && location.gallery[currSlideIdx]?.file_extension !== '.jpg' && "video-slide w-full" || "w-full"}
                 >
                   {location.gallery?.map((item, idx) => (
-                    <SwiperSlide className="pb-16 overflow-hidden">
+                    <SwiperSlide className="pb-16 overflow-hidden" style="max-width: calc(100vw - 20px);">
                       {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
                        <YouTube videoId={item.public_url.split("/").pop()} containerClassName="relative top-[-.75rem] flex justify-center items-center swiper-slide-vimeo" />
                       }
