@@ -27,10 +27,6 @@
   z-index: 1;
 }
 
-.aspect-photo {
-  aspect-ratio: 2;
-}
-
 #gift-grid {
   grid-gap: 2rem;
 }

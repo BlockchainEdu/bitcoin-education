@@ -28,10 +28,14 @@ module.exports = {
       }
     }
   },
+  corePlugins: {
+    aspectRatio: false,
+  },
   variants: {
     extend: {},
   },
   plugins: [
+    require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/line-clamp'),
   ],
 }
