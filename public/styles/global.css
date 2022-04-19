@@ -138,6 +138,7 @@
 }
 .mapboxgl-popup .swiper-slide {
   min-height: 317px;
+  max-width: calc(100vw - 20px);
 }
 .mapboxgl-popup .swiper-slide-vimeo > div {
   width: 100%;
