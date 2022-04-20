@@ -165,7 +165,8 @@
 .mapboxgl-popup .mapboxgl-popup-tip {
   display: none;
 }
-.mapboxgl-popup .mapboxgl-popup-content {
+.
+mapboxgl-popup .mapboxgl-popup-content {
   width: 100%;
   height: 100%;
   max-width: 100vw;
@@ -469,6 +470,12 @@ h1, h2 {
   padding: 0 5px;
 }
 
+@media only screen and (max-width: 480px) {
+  .donation-slider-cover {
+    transform: translateX(-3vw);
+  }
+}
+
 @media only screen and (max-width: 560px) {
   .flip-card:hover .flip-card-inner {
     transform: rotateY(0deg);
@@ -599,6 +606,10 @@ h1, h2 {
 
 .donation-modal {
   padding: 1rem !important;
+}
+
+.dollar-amount {
+  min-width: 3rem;
 }
 
 .what-is-ben {

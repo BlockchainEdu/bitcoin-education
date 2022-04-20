@@ -46,7 +46,6 @@ export default function DonationSlider(props) {
     if (!isMovingSlider) {
       return;
     }
-    console.log(event);
     event.stopPropagation();
     const xPosition = sliderRef.current.getBoundingClientRect().x;
     const maxXPosition = sliderRef.current.getBoundingClientRect().right;
