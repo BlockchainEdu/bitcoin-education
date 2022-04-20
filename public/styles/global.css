@@ -125,7 +125,7 @@
   max-width: 100vw;
 }
 .map-container {
-  height: 100%;
+  height: 100% !important;
   max-height: 90vh;
 }
 .map-container > div {
