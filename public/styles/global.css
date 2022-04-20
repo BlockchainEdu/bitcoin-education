@@ -472,7 +472,7 @@ h1, h2 {
 
 @media only screen and (max-width: 480px) {
   .donation-slider-cover {
-    transform: translateX(-3vw);
+    transform: translateX(-4vw);
   }
 }
 
