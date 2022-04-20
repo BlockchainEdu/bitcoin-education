@@ -89,7 +89,7 @@ export default function Map({ locations, style }) {
               longitude={location.center[0]}
               className={`transform-none pin-popup border-none shadow-2xl rounded-md relative w-full h-full`}
             >
-              <div className="absolute lg:relative top-0 max-w-7xl mx-auto w-[inherit] h-[inherit] grid">
+              <div className="top-0 max-w-7xl mx-auto w-[inherit] h-[inherit] grid">
                 <Link href={`/projects/${location.id}`}>
                   <h1 className="mapboxgl-marker-title text-2xl font-mont font-bold text-center underline decoration-benorange-500 cursor-pointer">{location.place_name}</h1>
                 </Link>

@@ -158,7 +158,6 @@
 }
 .mapboxgl-popup .swiper-slide {
   min-height: 317px;
-  max-width: calc(100vw - 20px);
 }
 .mapboxgl-popup .swiper-slide-vimeo > div {
   width: 100%;
@@ -175,6 +174,7 @@
   align-items: center;
   overflow-y: hidden;
   border-radius: 0.375rem;
+  padding: 26px 26px 31px 26px;
 }
 .mapboxgl-popup-close-button {
   width: 36px;
@@ -491,9 +491,19 @@ h1, h2 {
 }
 
 @media only screen and (max-height: 400px) {
+  #home-map {
+    max-height: 90vh;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 1.75rem;
+    margin-bottom: 0;
+  }
   .mapboxgl-popup {
     position: absolute !important;
     top: 1rem !important;
+  }
+  .mapboxgl-popup-content {
+    max-height: calc(90vh - 2rem) !important;
   }
 }
 
