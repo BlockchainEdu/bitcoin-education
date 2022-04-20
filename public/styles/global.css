@@ -114,6 +114,11 @@
   outline: none !important;
 }
 
+.map-container > div {
+  min-width: 100vw;
+  max-width: 100vw;
+  max-height: 90vh;
+}
 .mapboxgl-marker-overlay.selected {
   display: flex;
   align-items: center;
@@ -149,6 +154,8 @@
 .mapboxgl-popup .mapboxgl-popup-content {
   width: 100%;
   height: 100%;
+  max-width: 100vw;
+  max-height: 80vh;
   display: flex;
   align-items: center;
   overflow-y: hidden;
@@ -465,6 +472,13 @@ h1, h2 {
 @media only screen and (max-width: 1050px) {
   .about-header {
     margin-top: -12rem;
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  .mapboxgl-popup {
+    position: absolute !important;
+    top: 1rem !important;
   }
 }
 
