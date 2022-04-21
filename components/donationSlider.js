@@ -25,6 +25,8 @@ export default function DonationSlider(props) {
   function setSliderPosition(currValue, minValue, maxValue, validateValue = false) {
     if (validateValue) {
       currValue = Math.round(currValue / props.step) * props.step;
+    } else {
+      currValue = Math.floor(currValue);
     }
     const currPercentage =
           Math.min(100, 100 * (currValue - minValue) / (maxValue - minValue));
