@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Image from 'next/image'
@@ -13,6 +13,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import dynamic from "next/dynamic"
 import styled from "styled-components"
 import { MediaType } from "../components/map"
+import { useAppContext } from '../context/state';
 
 const impactStats = [
   {
@@ -51,6 +52,7 @@ const Map = dynamic(() => import("../components/map"), {
 })
 
 export default function Home({ locations }) {
+  const { sharedState, setSharedState } = useAppContext();
   if ( locations.length === 0 ) {
     setTimeout(() => {
       window.location.reload()
@@ -161,9 +163,9 @@ export default function Home({ locations }) {
           </p>
         </div>
       </section>
-      <section id="home-map" className="pt-7 py-14 mb-14 lg:mb-0">
+      <section id="home-map" className="pt-7 py-14 mb-14 lg:mb-0" style={{ width: sharedState.width, height: sharedState.height }}>
         <div className="m-auto">
-        <Container className="mt-6">
+        <Container className="map-container mt-6">
           <Map locations={locations} />
         </Container>
         </div>

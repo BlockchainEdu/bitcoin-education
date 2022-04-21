@@ -22,10 +22,14 @@ export default function DonationSlider(props) {
       window.removeEventListener("mouseup", stopMovingSlider);
     }
   }, [props.currValue]);
-  function setSliderPosition(currValue, minValue, maxValue) {
-    currValue = Math.round(currValue / props.step) * props.step;
+  function setSliderPosition(currValue, minValue, maxValue, validateValue = false) {
+    if (validateValue) {
+      currValue = Math.round(currValue / props.step) * props.step;
+    } else {
+      currValue = Math.floor(currValue);
+    }
     const currPercentage =
-      Math.min(100, 100 * (currValue - minValue) / (maxValue - minValue));
+          Math.min(100, 100 * (currValue - minValue) / (maxValue - minValue));
     if (currPercentage <= 0) {
       currValue = minValue;
     }
@@ -36,7 +40,7 @@ export default function DonationSlider(props) {
     if (currValue === minValue) {
       sliderCoverLeftArrow.current.style.color = "gray";
     }
-    if (currValue === maxValue) {
+    if (currValue >= maxValue) {
       sliderCoverRightArrow.current.style.color = "gray";
     }
     props.onChange(currValue);
@@ -46,7 +50,6 @@ export default function DonationSlider(props) {
     if (!isMovingSlider) {
       return;
     }
-    console.log(event);
     event.stopPropagation();
     const xPosition = sliderRef.current.getBoundingClientRect().x;
     const maxXPosition = sliderRef.current.getBoundingClientRect().right;
@@ -59,12 +62,10 @@ export default function DonationSlider(props) {
   }
 
   function startMovingSlider() {
-    console.log("Start");
     setIsMovingSlider(true);
   }
 
   function stopMovingSlider() {
-    console.log("Stop");
     setIsMovingSlider(false);
   }
 

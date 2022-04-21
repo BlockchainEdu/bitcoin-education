@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import ErrorPage from 'next/error';
 import { getProjectIdsFromMonday, getProjectFromMonday } from '../../services';
 import { MediaType } from '../../components/map';
@@ -18,7 +18,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/zoom';
 
 const Project = ({ project }) => {
-  const router = useRouter()
   const [currSlideIdx, setCurrSlideIdx] = useState(0)
   const [isShowingZoomModal, setShowingZoomModal] = useState(false)
   if ( Object.keys(project).length === 0 ) {
@@ -48,29 +47,33 @@ const Project = ({ project }) => {
               {project.gallery?.map((item, idx) => (
                 <SwiperSlide className="w-4/5 pb-24">
                   {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
-                   <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}} containerClassName="h-[30vh] flex justify-center items-center swiper-slide-vimeo" />
+                   <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}} containerClassName="aspect-w-4 aspect-h-3 flex justify-center items-center swiper-slide-vimeo" />
                   }
                   {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
-                    <Vimeo video={item.public_url} className="h-[30vh] flex justify-center items-center swiper-slide-vimeo" autoplay />
+                    <Vimeo video={item.public_url} className="aspect-w-4 aspect-h-3 flex justify-center items-center swiper-slide-vimeo" autoplay />
                   }
-                  {item.file_extension === '.jpg' && item.public_url != '' &&
-                    <div className="h-[30vh] mx-auto">
+                  {item.file_extension === '.jpg' && item.public_url != '' && idx === currSlideIdx &&
+                    <div className="aspect-w-4 aspect-h-3 mx-auto">
                       <img className="absolute top-1/2 translate-y-[-50%] grow-1" src={item.public_url} />
                     </div>
                   }
                 </SwiperSlide>
               ))}
             </Swiper> }
+            <Link href="/" passHref={false} shallow={true}>
+              <div className="block md:hidden font-black underline text-center pt-4 mt-6 cursor-pointer">
+                Back
+              </div>
+            </Link>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
             <p className="text-black text-md lg:pr-10 lg:pb-14"><ReactMarkdown children={project.place_story} /></p>
             <div>
               <div className="w-full gap-y-7 flex-wrap flex flex-col lg:flex-row items-center justify-center py-14 lg:space-y-0 lg:py-0 mt-14 lg:mt-0 space-x-0 lg:space-x-7">
-                <StandardButton
-                  link="/#home-map"
-                  text="More Student Stories"
-                  color="orange"
-                  styling="px-10 flex m-auto"
-                />
+                <Link href="/" passHref={false} shallow={true}>
+                  <div className="text-xl rounded-full py-4 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white px-10 flex m-auto cursor-pointer">
+                    More Student Stories
+                  </div>
+                </Link>
                 {project.testimonial_url !== "" &&
                   <StandardButton
                     link={project.testimonial_url}
@@ -90,14 +93,6 @@ const Project = ({ project }) => {
               </div>
             </div>
           </div>
-          {/* <div className="w-full lg:w-4/12 flex items-center justify-center py-14 lg:py-36 lg:py-0 mt-14 lg:mt-0">
-            <StandardButton
-              link="/map"
-              text="More Student Stories"
-              color="orange"
-              styling="px-10 flex m-auto"
-            />
-          </div> */}
         </div>
         <Footer />
       </div>
