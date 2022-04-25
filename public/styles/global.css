@@ -256,8 +256,7 @@ background-position: top center;
 
 .pin-popup {
   max-width: 800px !important;
-  max-height: 50vh !important;
-  min-height: 550px;
+  height: 550px;
   border: none !important;
 }
 
