@@ -201,6 +201,11 @@ mapboxgl-popup .mapboxgl-popup-content {
   height: 30vh;
   margin-bottom: -5.25rem;
 }
+#student-story .swiper-slide-vimeo iframe {
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 .mapboxgl-marker-image {
   max-height: 30vh;
   width: auto !important;
