@@ -166,7 +166,7 @@ export default function Home({ locations }) {
       <section id="home-map" className="pt-7 py-14 mb-14 lg:mb-0" style={{ width: sharedState.width, height: sharedState.height }}>
         <div className="m-auto">
         <Container className="map-container mt-6">
-          <Map locations={locations} />
+          <Map locations={locations} style={{ minHeight: '600px' }} />
         </Container>
         </div>
       </section>
