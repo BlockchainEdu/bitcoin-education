@@ -47,15 +47,15 @@ const Project = ({ project }) => {
               {project.gallery?.map((item, idx) => (
                 <SwiperSlide className="w-4/5 pb-24">
                   {item.file_extension === 'youtube' && item.public_url != '' && idx === currSlideIdx &&
-                   <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}} containerClassName="aspect-w-4 aspect-h-3 flex justify-center items-center swiper-slide-vimeo" />
+                   <YouTube videoId={item.public_url.split("/").pop()} opts={{playerVars: { autoplay: 1 }}} containerClassName="aspect-w-3 aspect-h-2 flex justify-center items-center swiper-slide-vimeo" />
                   }
                   {item.file_extension === 'vimeo' && item.public_url != '' && idx === currSlideIdx &&
-                    <Vimeo video={item.public_url} className="aspect-w-4 aspect-h-3 flex justify-center items-center swiper-slide-vimeo" autoplay />
+                   <Vimeo video={item.public_url} className="aspect-w-3 aspect-h-2 flex justify-center items-center swiper-slide-vimeo" autoplay />
                   }
                   {item.file_extension === '.jpg' && item.public_url != '' && idx === currSlideIdx &&
-                    <div className="aspect-w-4 aspect-h-3 mx-auto">
-                      <img className="absolute top-1/2 translate-y-[-50%] grow-1" src={item.public_url} />
-                    </div>
+                   <div className="aspect-w-3 aspect-h-2 mx-auto overflow-hidden">
+                     <img className="absolute top-1/2 translate-y-[-50%] h-auto grow-1" src={item.public_url} />
+                   </div>
                   }
                 </SwiperSlide>
               ))}

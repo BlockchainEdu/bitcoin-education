@@ -22,6 +22,9 @@
 .text-orange {
   color: var(--orange);
 }
+.grow {
+  flex-grow: 1;
+}
 
 .z-1 {
   z-index: 1;
@@ -152,6 +155,14 @@
   transform: none !important;
   z-index: 2;
 }
+.mapboxgl-popup-content {
+  display: flex;
+  flex-grow: 1;
+  padding: 20px 20px 30px !important;
+}
+.mapboxgl-popup-content h1 {
+  margin-bottom: 1rem;
+}
 .mapboxgl-popup.video {
   max-width: 80rem !important;
   max-height: unset !important;
@@ -200,6 +211,11 @@ mapboxgl-popup .mapboxgl-popup-content {
   min-height: 400px;
   height: 30vh;
   margin-bottom: -5.25rem;
+}
+#student-story .swiper-slide-vimeo iframe {
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 .mapboxgl-marker-image {
   max-height: 30vh;
@@ -251,8 +267,7 @@ background-position: top center;
 
 .pin-popup {
   max-width: 800px !important;
-  max-height: 50vh !important;
-  min-height: 550px;
+  height: 550px;
   border: none !important;
 }
 
