@@ -64,6 +64,14 @@ export default function Home({ locations }) {
       <Head>
         <title>Home | Blockchain Education Network</title>
       </Head>
+      <section className="mt-7">
+        <Image
+          width="1920"
+          height="378"
+          layout="responsive"
+          src="/images/banner-bitcoins.jpg"
+        />
+      </section>
       <section className="py-24 px-7">
         <h1 className="font-mont font-black text-2xl text-center max-w-4xl mx-auto">
           Our mission is to provide borderless blockchain education for students to generate wealth & financial freedom.
