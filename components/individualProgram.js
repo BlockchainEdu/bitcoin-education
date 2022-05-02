@@ -21,28 +21,23 @@ export default function IndividualProgram() {
     let body = {
       query: `{
             boards (ids: 1897479716) {
-                items {
+                items (limit: 100) {
                     group {
-                        id
                         title
                     }
-                    id
-                    name
                     column_values {
-                        id
-                        title
                         value
                     }
                     assets {
-                        public_url 
+                       public_url
                     }
                 }
             }
         }`}
     let result = await TeamMemberService.getMembers(body);
     if (result?.data?.data?.boards) {
-      console.log(result.data.data.boards[0].items);
-      setTeamMembers(result.data.data.boards[0].items);
+      let items = result.data.data.boards[0].items;
+      setTeamMembers(items);
     } else {
       setTeamMembers([]);
     }
