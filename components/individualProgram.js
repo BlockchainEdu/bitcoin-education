@@ -37,6 +37,7 @@ export default function IndividualProgram() {
     let result = await TeamMemberService.getMembers(body);
     if (result?.data?.data?.boards) {
       let items = result.data.data.boards[0].items;
+      console.log(items);
       setTeamMembers(items);
     } else {
       setTeamMembers([]);
