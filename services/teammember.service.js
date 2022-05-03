@@ -21,10 +21,6 @@ export const getProjectsFromMonday = async function() {
                     column_values {
                         value
                     }
-                    assets {
-                        file_extension
-                        public_url
-                    }
                 }
             }
         }`
@@ -43,7 +39,7 @@ export const getProjectsFromMonday = async function() {
       let galleryAssets = videos.map(public_url => { return { file_extension: public_url.includes('youtu') ? 'youtube' : 'vimeo', public_url } })
       galleryAssets = galleryAssets.concat(images.map(public_url => { return { file_extension: '.jpg', public_url } }))
       galleryAssets = galleryAssets.filter(asset => asset.public_url !== "")
-      if (item.assets.length > 0) {
+      if (item.assets && item.assets.length > 0) {
         const thisMediaType = galleryAssets.length > 0 ? MediaType.video : MediaType.image
         extras = { media_type: thisMediaType, image: item.assets[0].public_url, gallery: galleryAssets.concat(item.assets) }
       } else if (galleryAssets.length > 0) {
@@ -88,14 +84,8 @@ export const getProjectFromMonday = async function(id) {
     query: `{
             boards (ids: 1983862095) {
                 items (ids: [${id}]) {
-                    id
-                    name
                     column_values {
                         value
-                    }
-                    assets {
-                        file_extension
-                        public_url
                     }
                 }
             }
@@ -116,7 +106,7 @@ export const getProjectFromMonday = async function(id) {
     let galleryAssets = videos.map(public_url => { return { file_extension: public_url.includes('youtu') ? 'youtube' : 'vimeo', public_url } })
     galleryAssets = galleryAssets.concat(images.map(public_url => { return { file_extension: '.jpg', public_url } }))
     galleryAssets = galleryAssets.filter(asset => asset.public_url !== "")
-    if (selectedItem.assets.length > 0) {
+    if ( selectedItem.assets && selectedItem.assets.length > 0) {
       const thisMediaType = galleryAssets.length > 0 ? MediaType.video : MediaType.image
       extras = { media_type: thisMediaType, image: selectedItem.assets[0].public_url, gallery: galleryAssets.concat(selectedItem.assets) }
     } else if (galleryAssets.length > 0) {
@@ -124,7 +114,7 @@ export const getProjectFromMonday = async function(id) {
     }
     return {
       ...extras,
-      id: selectedItem.id,
+      id: id,
       center: [parseFloat(longitude), parseFloat(latitude)],
       place_name: placeName,
       place_story: placeStory,
