@@ -25,6 +25,7 @@ export default function IndividualProgram() {
                     group {
                         title
                     }
+                    name
                     column_values {
                         value
                     }
