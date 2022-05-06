@@ -96,7 +96,7 @@ export default function Learn() {
                         </div>
                         <div className="m-auto flex content-center justify-center md:justify-start">
                             <StandardButton
-                                link="https://webforms.pipedrive.com/f/6UURQKVAXIrvlnr2T6iyOX75xqbyYdLp6iHKmGYWedgMyJ25vpNmlZn3V8s8LEi9hx"
+                                link="https://forms.monday.com/forms/02ce7c2a2ae0643fb4b7223aad523258?r=use1"
                                 color="orange"
                                 text="Sign up as a Teacher"
                                 styling="px-10 flex mx-auto lg:mx-0 mt-10"
