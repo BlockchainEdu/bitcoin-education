@@ -21,7 +21,7 @@ export default function HeaderWithLogo() {
           </li>
         </ul>
         <div className="w-2/12">
-          <a href=""><img className="w-40 mx-auto" src="/images/ben-established-logo.svg" /></a>
+          <a href=""><img className="w-24 mx-auto" src="/images/ben-vertical.png" /></a>
         </div>
         <ul className="font-mont text-black w-5/12">
           <li className="flex gap-x-14 justify-end items-center">

@@ -43,7 +43,7 @@ export default function CryptoDonateItem(props) {
                                     <div className="relative px-6 gap-x-20 items-center">
                                         <div className="flex items-center space-x-3 pb-3">
                                             <img className="h-7" src={props.image} />
-                                            <img className="h-8" src="/images/ben-established-logo.svg" />
+                                            <img className="h-8" src="/images/ben-vertical.svg" />
                                         </div>
                                         <div>
                                             <p className="text-sm font-mont font-bold">Send your donation</p>
