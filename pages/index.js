@@ -53,18 +53,19 @@ const Map = dynamic(() => import("../components/map"), {
 
 export default function Home({ locations }) {
   const { sharedState, setSharedState } = useAppContext();
-  if ( locations.length === 0 ) {
+  if (locations.length === 0) {
     setTimeout(() => {
       window.location.reload()
     }, 1000)
   }
   return (
-    <div className="overflow-hidden">
+    <div id="home" className="overflow-hidden">
       <Header />
       <Head>
         <title>Home | Blockchain Education Network</title>
       </Head>
-      <section className="py-24 px-7">
+      <section className="pt-10 lg:py-24 px-7">
+        <img className="w-20 mx-auto mb-10 lg:hidden" src="/images/ben-vertical.svg" />
         <h1 className="font-mont font-black text-2xl text-center max-w-4xl mx-auto">
           Our mission is to provide borderless blockchain education for students to generate wealth & financial freedom.
         </h1>
@@ -165,9 +166,9 @@ export default function Home({ locations }) {
       </section>
       <section id="home-map" className="pt-7 py-14 mb-14 lg:mb-0" style={{ width: sharedState.width, height: sharedState.height }}>
         <div className="m-auto">
-        <Container className="map-container mt-6">
-          <Map locations={locations} style={{ minHeight: '600px' }} />
-        </Container>
+          <Container className="map-container mt-6">
+            <Map locations={locations} style={{ minHeight: '600px' }} />
+          </Container>
         </div>
       </section>
       <Footer />
@@ -183,7 +184,7 @@ const Container = styled.div`
 
 export async function getStaticProps({ params }) {
   let fetchedProjects = []
-  while ( fetchedProjects.length === 0 ) {
+  while (fetchedProjects.length === 0) {
     fetchedProjects = await getProjectsFromMonday() || []
   }
   return { props: { locations: fetchedProjects }, revalidate: fetchedProjects.length ? 3600 : 1 }
