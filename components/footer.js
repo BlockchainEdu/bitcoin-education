@@ -18,8 +18,8 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col md:flex-row max-w-7xl m-auto border-t py-14 px-7 gap-x-10">
-                <div className="w-full md:w-1/6"><img className="m-auto md:m-0" src="/images/ben-vertical.svg" /></div>
+            <div className="flex flex-col md:flex-row max-w-7xl m-auto border-t py-14 px-7 gap-x-3">
+                <div className="w-full md:w-1/6"><img className="m-auto md:m-0 w-24" src="/images/ben-vertical.svg" /></div>
                 <div className="w-full md:w-3/6">
                     <div className="text-center md:text-left pt-6 md:pt-0 font-mont font-bold">
                         The Blockchain Education Network (BEN)
