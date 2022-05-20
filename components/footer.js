@@ -45,7 +45,7 @@ export default function Footer() {
                         <a href="/contact"><li>Contact</li></a>
                     </ul>
                     <div className="pt-10 md:pt-0 text-center md:text-left font-mont text-white">
-                        © 2021 BEN All Rights Reserved
+                        © 2022 BEN All Rights Reserved
                     </div>
                 </div>
             </div>
