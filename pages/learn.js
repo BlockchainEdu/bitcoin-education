@@ -42,12 +42,16 @@ export default function Learn() {
                             Available courses
                         </div>
                         <div className="pt-5">
+                            <div className="pb-3">Bitcoin & Basics</div>
+                            <div className="pb-3">Ethereum & Smart Contracts Basics</div>
+                            <div className="pb-3">TokenSets Basics</div>
+                            <div className="pb-3">Crypto Investing & Marketing Basics</div>
+                            <div className="pb-3">Crypto taxes understanding</div>
+                            <div className="pb-3">Intro to NFTs</div>
+                            <div className="pb-3">Music NFTs</div>
                             <div className="pb-3">Blockchain Fundamentals</div>
-                            <div className="pb-3">Virtual Lands course</div>
-                            <div className="pb-3">DeFi Fundamentals</div>
-                            <div className="pb-3">Crypto Trading</div>
-                            <div className="pb-3">How to set up Metamask</div>
-                            <div className="pb-3">How to start a Blockchain club</div>
+                            <div className="pb-3">Blockchain Development</div>
+                            <div className="pb-3">CELO L-EARN</div>
                         </div>
                         <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
                             <StandardButton
