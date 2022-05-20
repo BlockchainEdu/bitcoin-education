@@ -61,9 +61,6 @@ export default function IndividualProgram() {
           return global.group.title == "Programs" &&
             <div key={index} className={index % 2 ? changeFlexDirection[0] : changeFlexDirection[1]}>
               <div className="w-full lg:w-6/12">
-                <div className="font-mont text-center lg:text-left text-xs uppercase">
-                  {JSON.parse(global.column_values[0].value)}
-                </div>
                 <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">
                   {global.name}
                 </h1>
