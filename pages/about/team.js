@@ -60,7 +60,7 @@ export default function About() {
             <Head>
                 <title>Team | Blockchain Education Network</title>
             </Head>
-            <div className="pt-10 pb-14 md:py-14 px-7">
+            <div className="pt-0 pb-14 md:py-14 px-7">
                 <div className="max-w-7xl m-auto">
                     <div className="flex items-center flex-col md:flex-row md:space-x-10">
                         <div className="w-full md:w-3/5">

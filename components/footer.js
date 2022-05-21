@@ -9,7 +9,7 @@ export default function Footer() {
                 </div>
                 <div className="pt-5 md:pt-0 flex-col sm:flex-row flex space-y-6 sm:space-y-0 gap-x-10 items-center">
                     <button className="join-footer-button bg-benorange-500 hover:bg-bengrey-300 transition duration-500 shadow-button text-white font-bold text-xl rounded-full">
-                        <a target="_blank" href="https://learn.blockchainedu.org/">
+                        <a target="_blank" href="https://learn.blockchainedu.org/sign_up">
                             Get Involved
                         </a>
                     </button>
@@ -41,7 +41,7 @@ export default function Footer() {
                     <ul className="flex flex-col md:flex-row justify-between items-center text-white font-mont w-full md:w-2/6">
                         <a href="/"><li>Home</li></a>
                         <a href="/about"><li>About</li></a>
-                        <a target="_blank" href="https://learn.blockchainedu.org/all-courses"><li>Learn</li></a>
+                        <a target="_blank" href="https://learn.blockchainedu.org/sign_up"><li>Learn</li></a>
                         <a href="/contact"><li>Contact</li></a>
                     </ul>
                     <div className="pt-10 md:pt-0 text-center md:text-left font-mont text-white">

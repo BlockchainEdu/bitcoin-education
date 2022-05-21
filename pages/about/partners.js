@@ -55,7 +55,7 @@ export default function Partners() {
       <Head>
         <title>Partners | Blockchain Education Network</title>
       </Head>
-      <div className="pt-12 pb-0 lg:py-40 lg:pb-20 px-7">
+      <div className="pt-0 pb-0 lg:py-40 lg:pb-20 px-7">
         <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
           <div className="w-full lg:w-8/12">
             <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">

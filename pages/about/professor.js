@@ -14,7 +14,7 @@ export default function Professor() {
             <Head>
                 <title>Professor | Blockchain Education Network</title>
             </Head>
-            <div className="pt-10 pb-14 md:py-14 px-7">
+            <div className="pt-0 pb-14 md:py-14 px-7">
                 <div className="max-w-7xl m-auto">
                     <div className="flex items-center flex-col lg:flex-row lg:space-x-10">
                         <div className="w-full lg:w-3/8">

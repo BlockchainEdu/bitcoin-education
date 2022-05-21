@@ -80,7 +80,7 @@ const Partners = () => {
       <Head>
         <title>Clubs | Blockchain Education Network</title>
       </Head>
-      <div className="pt-12 lg:pt-40 pb-0 px-7">
+      <div className="pt-0 lg:pt-40 pb-0 px-7">
         <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
           <div className="w-full ">
             <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">

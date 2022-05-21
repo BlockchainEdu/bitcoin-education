@@ -15,7 +15,7 @@ export default function Learn() {
                 <title>Learn | Blockchain Education Network</title>
             </Head>
             <section className="px-7">
-                <div className="max-w-7xl m-auto pt-24">
+                <div className="pt-10 max-w-7xl m-auto lg:pt-24">
                     <h1 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
                         What is BEN Learn?
                     </h1>
@@ -53,7 +53,7 @@ export default function Learn() {
                             <div className="pb-3">Blockchain Development</div>
                             <div className="pb-3">CELO L-EARN</div>
                         </div>
-                        <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
+                        <a href="https://learn.blockchainedu.org/sign_up" target="_blank">
                             <StandardButton
                                 styling="px-8 mt-5"
                                 color="orange"

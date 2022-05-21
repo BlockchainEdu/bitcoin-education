@@ -11,7 +11,7 @@ export default function About() {
             <Head>
                 <title>About | Blockchain Education Network</title>
             </Head>
-            <div className="about-header py-40 pb-20 px-7">
+            <div className="about-header pt-48 lg:py-40 pb-20 px-7">
                 <div className="max-w-7xl m-auto flex flex-col md:flex-row">
                     <div className="w-full md:w-1/2">
                         <h1 className="text-4xl md:text-6xl mt-14 md:mt-24 font-black text-white max-w-3xl pt-10 leading-snug">

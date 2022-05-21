@@ -78,7 +78,7 @@ export default function Home({ locations }) {
         </p>
         <p className="font-mont font-semibold text-sm text-gray-400 text-center max-w-3xl mx-auto mb-10 mt-6" style={{ lineHeight: "26px" }}>
           Our vision is that anyone, regardless of where they are in the world, will be able to use Blockchain
-          as a vehicle to create wealth for themselves and their communities. Donate now and <a className='text-benorange-500 underline' target="_blank" href="https://learn.blockchainedu.org/">start learning!</a>
+          as a vehicle to create wealth for themselves and their communities. Donate now and <a className='text-benorange-500 underline' target="_blank" href="https://learn.blockchainedu.org/sign_up">start learning!</a>
         </p>
         <Modal />
       </section>
