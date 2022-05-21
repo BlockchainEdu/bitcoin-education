@@ -52,7 +52,7 @@ export default function MobileDropdown(props) {
                 <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="space-y-4 font-mont text-chablack-300 hover:text-chablack-500">
                     <li>
-                      <a target="_blank" href="https://learn.blockchainedu.org/all-courses">Learn</a>
+                      <a target="_blank" href="https://learn.blockchainedu.org/sign_up">Learn</a>
                     </li>
                     <li>
                       <li>
