@@ -30,6 +30,7 @@ export default function HeaderWithLogo() {
                     </li>
                 </ul>
             </nav>
+            <img className="w-24 mx-auto lg:hidden" src="/images/ben-vertical.svg" />
         </section>
     )
 }

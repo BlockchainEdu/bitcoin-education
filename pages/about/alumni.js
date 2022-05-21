@@ -14,7 +14,7 @@ export default function Alumni() {
             <Head>
                 <title>Alumni | Blockchain Education Network</title>
             </Head>
-            <div className="pt-14 lg:pt-10 md:pb-0 px-7">
+            <div className="pt-0 lg:pt-10 md:pb-0 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">
                     <div className="w-full lg:w-6/12 mt-0 lg:-mt-20">
                         <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">

@@ -15,7 +15,7 @@ export default function Learn() {
                 <title>Learn | Blockchain Education Network</title>
             </Head>
             <section className="px-7">
-                <div className="max-w-7xl m-auto pt-24">
+                <div className="pt-10 max-w-7xl m-auto lg:pt-24">
                     <h1 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
                         What is BEN Learn?
                     </h1>
