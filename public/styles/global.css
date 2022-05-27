@@ -21,7 +21,7 @@
 
 .header.scrolled {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  padding-bottom: 1rem;
+  padding-bottom: 2.5rem;
 }
 
 .header.scrolled.white-header {
@@ -32,13 +32,16 @@
   background-color: #FF5E36;
 }
 
-@media (max-width: 640px) {
-  .header.scrolled.white-header {
+@media (max-width: 1023px) {
+  .header {
+    right: 0;
+  }
+  .header.scrolled.white-header, .header.scrolled.orange-header {
     box-shadow: unset;
     padding-bottom: unset;
     background-color:unset;
   }
-  .header.scrolled.white-header > div > nav > div {
+  .header.scrolled > div > nav > div {
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   }
   .header.orange-header > div > nav > div {
@@ -546,7 +549,6 @@ h2 {
 
 .about-header {
   background: linear-gradient(181.36deg, #FF5E36 1.16%, #FFA381 98.86%);
-  margin-top: -8rem;
 }
 
 .social-icons {
@@ -577,12 +579,6 @@ h2 {
 @media only screen and (max-width: 800px) {
   .subscribe-form input {
     margin: 0 0 2rem 0;
-  }
-}
-
-@media only screen and (max-width: 1050px) {
-  .about-header {
-    margin-top: -15rem;
   }
 }
 

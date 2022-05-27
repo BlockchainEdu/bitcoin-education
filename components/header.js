@@ -14,7 +14,7 @@ export default function HeaderWithLogo() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   return (
-    <section className={`pt-3 md:pt-10 px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" }`}>
+    <section className={`pt-3 md:pt-10 px-7 fixed lg:sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" }`}>
       <Head>
         <link rel="shortcut icon" href="" />
       </Head>

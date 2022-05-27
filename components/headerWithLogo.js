@@ -13,7 +13,7 @@ export default function HeaderWithLogo() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
     return (
-        <section className={`pt-10 px-7 sticky top-0 z-10 orange-header header ${ offset > 0 ? "scrolled" : "" }`}>
+        <section className={`pt-3 md:py-10 px-7 fixed w-full top-0 z-10 orange-header header ${ offset > 0 ? "scrolled" : "" }`}>
           <div className="block lg:hidden">
             <MobileNavWithLogo />
           </div>
@@ -39,7 +39,6 @@ export default function HeaderWithLogo() {
               </li>
             </ul>
           </nav>
-          <img className="w-24 mx-auto lg:hidden" src="/images/ben-vertical-alt.svg" />
         </section>
     )
 }
