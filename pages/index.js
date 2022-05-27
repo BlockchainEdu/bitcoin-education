@@ -59,7 +59,7 @@ export default function Home({ locations }) {
     }, 1000)
   }
   return (
-    <div id="home" className="overflow-hidden">
+    <div id="home">
       <Header />
       <Head>
         <title>Home | Blockchain Education Network</title>

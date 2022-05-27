@@ -1,11 +1,20 @@
+import { useEffect, useState } from 'react';
 import MobileNav from "./mobileNav";
 import Head from 'next/head';
 import Dropdown from "./dropdown";
 import StandardButton from "./standardButton";
 
 export default function HeaderWithLogo() {
+  const [ offset, setOffset ] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    // clean up code
+    window.removeEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   return (
-    <section className="pt-3 md:pt-10 mx-7">
+    <section className={`pt-3 md:pt-10 px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" }`}>
       <Head>
         <link rel="shortcut icon" href="" />
       </Head>

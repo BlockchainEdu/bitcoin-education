@@ -19,6 +19,36 @@
   }
 }
 
+.header.scrolled {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  padding-bottom: 1rem;
+}
+
+.header.scrolled.white-header {
+  background-color: white;
+}
+
+.header.scrolled.orange-header {
+  background-color: #FF5E36;
+}
+
+@media (max-width: 640px) {
+  .header.scrolled.white-header {
+    box-shadow: unset;
+    padding-bottom: unset;
+    background-color:unset;
+  }
+  .header.scrolled.white-header > div > nav > div {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+  .header.orange-header > div > nav > div {
+    background-color: transparent;
+  }
+  .header.scrolled.orange-header > div > nav > div {
+    background-color: #FF5E36;
+  }
+}
+
 .bg-orange {
   background-color: var(--orange);
 }
