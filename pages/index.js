@@ -32,7 +32,7 @@ const impactStats = [
   },
   {
     image: "/images/valuations-icon-home.png",
-    number: "100m",
+    number: "3B",
     name: "Valuation of companies founded through ben",
     imageStyling: "translate-y-5 transform mx-auto lg:mx-0",
     nameStyling: ""
