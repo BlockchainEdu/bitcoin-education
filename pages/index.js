@@ -65,7 +65,6 @@ export default function Home({ locations }) {
         <title>Home | Blockchain Education Network</title>
       </Head>
       <section className="pt-10 lg:py-24 px-7">
-        <img className="w-24 mx-auto mb-10 lg:hidden" src="/images/ben-vertical.svg" />
         <h1 className="font-mont font-black text-2xl text-center max-w-4xl mx-auto">
           Our mission is to provide borderless blockchain education for students to generate wealth & financial freedom.
         </h1>

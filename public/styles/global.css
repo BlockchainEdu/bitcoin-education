@@ -13,12 +13,6 @@
   --swiper-theme-color: #FF936B;
 }
 
-@media only screen and (max-width: 1024px) {
-  #home .mobile-logo {
-    display: none;
-  }
-}
-
 .header.scrolled {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   padding-bottom: 2.5rem;
@@ -28,28 +22,19 @@
   background-color: white;
 }
 
-.header.scrolled.orange-header {
+.header.orange-header {
   background-color: #FF5E36;
 }
 
-@media (max-width: 1023px) {
-  .header {
-    right: 0;
-  }
-  .header.scrolled.white-header, .header.scrolled.orange-header {
-    box-shadow: unset;
-    padding-bottom: unset;
-    background-color:unset;
-  }
-  .header.scrolled > div > nav > div {
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  }
-  .header.orange-header > div > nav > div {
-    background-color: transparent;
-  }
-  .header.scrolled.orange-header > div > nav > div {
-    background-color: #FF5E36;
-  }
+.header.scrolled li > a:not([href="/donate"]), .header.scrolled li > div {
+  visibility: hidden;
+}
+
+.header.scrolled nav {
+  display: flex;
+}
+.header.scrolled .mobile-nav {
+  display: none;
 }
 
 .bg-orange {

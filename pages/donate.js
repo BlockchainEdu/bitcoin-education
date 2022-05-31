@@ -139,7 +139,6 @@ export default function Donate() {
                 <title>Donate | Blockchain Education Network</title>
             </Head>
             <section className="bg-benorange-500 pt-10 lg:py-24 px-7">
-              <img className="w-24 mx-auto mb-10 lg:hidden" src="/images/ben-vertical-alt.svg" />
                 <div className="flex flex-col lg:flex-row max-w-7xl m-auto py-0 lg:py-24">
                     <div className="w-full lg:w-4/12">
                         <div className="font-mont text-center lg:text-left text-xs uppercase">

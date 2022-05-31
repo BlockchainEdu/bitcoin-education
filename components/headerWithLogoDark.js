@@ -13,11 +13,11 @@ export default function HeaderWithLogo() {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
     return (
-        <section className={`pt-3 md:py-10 px-7 fixed lg:sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" }`}>
-          <div className="block lg:hidden">
+        <section className={`py-10 px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" }`}>
+          <div className="block lg:hidden mobile-nav">
             <MobileNav />
           </div>
-          <nav className="hidden lg:flex max-w-7xl m-auto justify-between items-center">
+          <nav className="hidden lg:flex max-w-7xl m-auto justify-between items-center relative">
             <ul className="font-mont text-black transition duration-500 w-1/3">
               <li className="flex gap-x-14">
                 <a className="hover:text-benorange-500 transition duration-500" href="/">Home</a>
@@ -25,7 +25,7 @@ export default function HeaderWithLogo() {
                 <a className="hover:text-benorange-500 transition duration-500" href="/programs">Programs</a>
               </li>
             </ul>
-            <div className="w-1/3"><a href="/"><img className="m-auto w-20" src="/images/ben-vertical.svg" /></a></div>
+            <div className="w-2/12 lg:w-1/3 absolute lg:relative top-[-1.25rem] lg:top-0 left-0"><a href="/"><img className="m-auto w-20" src="/images/ben-vertical.svg" /></a></div>
             <ul className="font-mont text-white w-1/3">
               <li className="flex gap-x-14 justify-end items-center">
                 <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events </a>

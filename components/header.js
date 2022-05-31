@@ -14,14 +14,14 @@ export default function HeaderWithLogo() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   return (
-    <section className={`pt-3 md:pt-10 px-7 fixed lg:sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" }`}>
+    <section className={`pt-10 px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" }`}>
       <Head>
         <link rel="shortcut icon" href="" />
       </Head>
-      <div className="block lg:hidden">
+      <div className="block lg:hidden mobile-nav">
         <MobileNav />
       </div>
-      <nav className="hidden lg:flex max-w-7xl m-auto justify-center items-center">
+      <nav className="hidden lg:flex max-w-7xl m-auto justify-between items-center relative">
         <ul className="font-mont text-black transition duration-500 w-5/12">
           <li className="flex gap-x-14">
             <a className="hover:text-benorange-500 transition duration-500" href="/">Home </a>
@@ -29,7 +29,7 @@ export default function HeaderWithLogo() {
             <a className="hover:text-benorange-500 transition duration-500" href="/programs">Programs </a>
           </li>
         </ul>
-        <div className="w-2/12">
+        <div className="w-2/12 absolute lg:relative top-[-1.25rem] lg:top-0 left-0">
           <a href=""><img className="w-24 mx-auto" src="/images/ben-vertical.svg" /></a>
         </div>
         <ul className="font-mont text-black w-5/12">
