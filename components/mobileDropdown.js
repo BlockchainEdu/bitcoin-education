@@ -111,8 +111,8 @@ export default function MobileDropdown(props) {
                 </div>
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
-                    link="/donate"
-                    text="Donate"
+                    link="https://learn.blockchainedu.org/sign_in"
+                    text="Sign Up"
                     color="orange"
                     styling="px-16 py-3"
                   />
