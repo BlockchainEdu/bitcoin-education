@@ -13,9 +13,36 @@
   --swiper-theme-color: #FF936B;
 }
 
-@media only screen and (max-width: 1024px) {
-  #home .mobile-logo {
-    display: none;
+.header.scrolled {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  padding-bottom: 2.5rem;
+}
+
+.header.scrolled.white-header {
+  background-color: white;
+}
+
+.header.orange-header, .header.scrolled.orange-header {
+  background-color: #FF5E36;
+}
+
+.header.scrolled li > a:not([href="/donate"]), .header.scrolled li > div {
+  visibility: hidden;
+}
+
+.header.scrolled nav {
+  display: flex;
+}
+
+@media (max-width: 1023px) {
+  .header li > a:not([href="/donate"]), .header li > div {
+    visibility: hidden;
+  }
+  .header #headlessui-popover-panel-2 li > a:not([href="/donate"]), .header #headlessui-popover-panel-2 li > div {
+    visibility: visible;
+  }
+  .header.orange-header #headlessui-popover-panel-2 li a, .header.orange-header #headlessui-popover-panel-2 li button {
+    color: black;
   }
 }
 
@@ -516,7 +543,6 @@ h2 {
 
 .about-header {
   background: linear-gradient(181.36deg, #FF5E36 1.16%, #FFA381 98.86%);
-  margin-top: -8rem;
 }
 
 .social-icons {
@@ -547,12 +573,6 @@ h2 {
 @media only screen and (max-width: 800px) {
   .subscribe-form input {
     margin: 0 0 2rem 0;
-  }
-}
-
-@media only screen and (max-width: 1050px) {
-  .about-header {
-    margin-top: -15rem;
   }
 }
 
