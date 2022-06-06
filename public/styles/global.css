@@ -26,10 +26,6 @@
   background-color: #FF5E36;
 }
 
-.header.scrolled li > a:not([href="/donate"]), .header.scrolled li > div {
-  visibility: hidden;
-}
-
 .header.scrolled nav {
   display: flex;
 }
