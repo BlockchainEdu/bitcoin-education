@@ -30,7 +30,8 @@ export default function HeaderWithLogo({className="", children}) {
             <a className="hover:text-benorange-500 transition duration-500" href="/programs">Programs </a>
           </li>
         </ul>
-        <div className="w-2/12 lg:w-1/3 absolute lg:relative top-[-.5rem] lg:top-0 left-0"> <a href="/"><img className="w-24 mx-auto" src={logoSrc} /></a> </div>
+        <div className="w-2/12 lg:w-1/3 absolute lg:relative top-[-.5rem] lg:top-0 left-0 hidden lg:block"> <a href="/"><img className="w-24 mx-auto" src={logoSrc} /></a> </div>
+        <div className="absolute left-0 block lg:hidden"> <a href="/"><img className="w-24 mx-auto" src="/images/ben-vertical-mobile.svg" /></a> </div>
         <ul className={`font-mont text-black w-5/12 ${className}`}>
           <li className="flex gap-x-14 justify-end items-center">
             <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events </a>
