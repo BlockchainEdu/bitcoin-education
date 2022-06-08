@@ -37,7 +37,7 @@ export default function HeaderWithLogo({className="", children}) {
             <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/sign_up">Learn </a>
             <a className="hover:text-benorange-500 transition duration-500 font-bold" href="/contact">Contact </a>
             <a href="/donate">
-              <button className="text-md px-8 rounded-full py-2 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
+              <button className="mt-1 text-md px-8 rounded-full py-1 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
                 Donate 
               </button>
             </a>

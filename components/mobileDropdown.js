@@ -110,12 +110,9 @@ export default function MobileDropdown(props) {
                   </ul>
                 </div>
                 <div className="bg-white pb-7 text-center">
-                  <StandardButton
-                    link="https://learn.blockchainedu.org/sign_in"
-                    text="Sign In"
-                    color="orange"
-                    styling="px-16 py-3"
-                  />
+                  <button className="text-md px-8 rounded-full py-1 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
+                    Sign In
+                  </button>
                 </div>
               </div>
             </Popover.Panel>
