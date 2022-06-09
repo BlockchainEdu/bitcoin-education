@@ -31,10 +31,10 @@
 }
 
 @media (max-width: 1023px) {
-  .header li > a:not([href="/donate"]), .header li > div {
+  .header li > a:not(#always-visible-menu-button), .header li > div {
     visibility: hidden;
   }
-  .header #headlessui-popover-panel-2 li > a:not([href="/donate"]), .header #headlessui-popover-panel-2 li > div {
+  .header #headlessui-popover-panel-2 li > a, .header #headlessui-popover-panel-2 li > div {
     visibility: visible;
   }
   .header.orange-header #headlessui-popover-panel-2 li a, .header.orange-header #headlessui-popover-panel-2 li button {
