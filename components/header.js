@@ -34,7 +34,7 @@ export default function HeaderWithLogo({className="", children}) {
         <ul className={`font-mont text-black w-5/12 ${className}`}>
           <li className="flex gap-x-14 justify-end items-center">
             <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events </a>
-            <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/sign_up">Learn </a>
+            <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="/donate">Donate </a>
             <a className="hover:text-benorange-500 transition duration-500 font-bold" href="/contact">Contact </a>
             <a id="always-visible-menu-button" target="_blank" href="https://learn.blockchainedu.org/sign_up">
               <button className="text-md px-8 rounded-full py-2 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
