@@ -144,7 +144,7 @@ export default function Donate() {
                         <div className="font-mont text-center lg:text-left text-xs uppercase">
                             Donate Today
                         </div>
-                        <h1 className="text-4xl mx-auto lg:mx-0 md:text-5xl text-center lg:text-left font-black text-black max-w-sm pt-10 leading-snug">
+                        <h1 className="text-4xl mx-auto lg:mx-0 md:text-5xl text-center lg:text-left font-black text-white max-w-sm pt-10 leading-snug">
                             Why you should donate
                         </h1>
                         <p className="text-black text-md pt-10 max-w-lg m-auto lg:m-0 text-center lg:text-left font-medium">
