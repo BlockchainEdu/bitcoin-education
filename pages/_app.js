@@ -13,6 +13,14 @@ function MyApp({ Component, pageProps }) {
       setApp(true);
     }
   }, []);
+
+  const clickReadIt = () => {
+    window.localStorage.setItem("subscribed", "true");
+    window.setTimeout(() => {
+      setApp(false);
+    }, 500);
+    return true;
+  };
   return (
     <AppWrapper>
       <div>
@@ -28,8 +36,17 @@ function MyApp({ Component, pageProps }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+
             gtag('config', 'UA-213540060-2', {
-              page_path: window.location.pathname,
+              page_path: window.location.pathname + window.location.search,
+              campaign:{
+                'id': 'weekly.123',
+                'source': 'Weekly BEN NEWSLETTER',
+                'medium': 'cpc',
+                'name': 'Weekly BEN NEWSLETTER',
+                'content': 'Weekly BEN NEWSLETTER'
+              }
+              
             });
           `,
             }}
@@ -48,7 +65,20 @@ function MyApp({ Component, pageProps }) {
               id="revue-form"
               name="revue-form"
               target="_blank"
+              className="subscribe-form"
+              onSubmit={clickReadIt}
             >
+              <h3>BEN</h3>
+              <p className="description">
+                The Blockchain Education Network (BEN), a public charity
+                established in 2014, is the largest and longest-running
+                community of disrupters, entrepreneurs, investors, and students.
+                We offer unbiased courses, reports, coding classes, and much
+                more in Web 3.0 to thousands of students worldwide! With
+                hundreds of educational resources available, we are here to
+                inspire you to find your talent in Web 3.0 and own it! Start a
+                new career and create wealth & financial freedom!
+              </p>
               <div class="revue-form-group">
                 <label for="member_email">Email address</label>
                 <input
@@ -57,6 +87,7 @@ function MyApp({ Component, pageProps }) {
                   type="email"
                   name="member[email]"
                   id="member_email"
+                  required
                 />
               </div>
               <div class="revue-form-group">
@@ -103,6 +134,9 @@ function MyApp({ Component, pageProps }) {
                 .
               </div>
             </form>
+            <div className="read-it-first" onClick={clickReadIt}>
+              Let me Read it First
+            </div>
           </div>
         ) : (
           <Component {...pageProps} />

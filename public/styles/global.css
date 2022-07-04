@@ -238,7 +238,7 @@
   display: none;
 }
 
-. mapboxgl-popup .mapboxgl-popup-content {
+.mapboxgl-popup .mapboxgl-popup-content {
   width: 100%;
   height: 100%;
   max-width: 100vw;
@@ -729,5 +729,47 @@ a {
 }
 
 #revue-embed {
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#revue-embed .subscribe-form {
   background-color: rgb(247, 247, 247);
+  padding: 40px 20px;
+  border-radius: 30px;
+}
+
+#revue-embed label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+#revue-embed input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+#revue-embed .description {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+
+#revue-embed h3 {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#revue-embed .read-it-first {
+  font-size: 15px;
+  display: flex;
+  margin: auto;
+  margin-top: 30px;
+  cursor: pointer;
+  margin-bottom: 0px;
 }
