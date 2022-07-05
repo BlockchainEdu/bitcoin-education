@@ -729,7 +729,7 @@ a {
 }
 
 #revue-embed {
-  max-width: 500px;
+  max-width: 700px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -739,7 +739,7 @@ a {
 
 #revue-embed .subscribe-form {
   background-color: rgb(247, 247, 247);
-  padding: 40px 20px;
+  padding: 20px 20px;
   border-radius: 30px;
 }
 
@@ -760,7 +760,7 @@ a {
 }
 
 #revue-embed h3 {
-  font-size: 25px;
+  font-size: 35px;
   font-weight: bold;
   text-align: center;
 }
@@ -772,4 +772,34 @@ a {
   margin-top: 30px;
   cursor: pointer;
   margin-bottom: 0px;
+}
+
+#revue-embed img {
+  width: 200px;
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.revue-form-actions {
+  display: flex;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.revue-form-actions input {
+  margin-bottom: 0px !important;
+  width: auto;
+  flex: 1;
+}
+
+.revue-form-actions .donate {
+  flex: 1;
+  text-align: center;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.revue-form-footer {
+  text-align: center;
 }
