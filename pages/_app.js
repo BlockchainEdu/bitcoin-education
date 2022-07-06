@@ -68,24 +68,20 @@ function MyApp({ Component, pageProps }) {
               className="subscribe-form"
               onSubmit={clickReadIt}
             >
-              <h3>BEN</h3>
-              <img src="/images/ben-logo.png" />
+              <img src="/images/ben-vertical.svg" />
               <p className="description">
                 The Blockchain Education Network (BEN), a public charity
                 established in 2014, is the largest and longest-running
                 community of disrupters, entrepreneurs, investors, and students.{" "}
-                <br />
-                <br />
+                <br /> <br />
                 We offer unbiased courses, reports, coding classes, and much
-                more in Web 3.0! <br /> <br />
+                more in Web 3.0! <br />
+                <br />
                 Start a new career and create wealth & financial freedom! <br />
                 <br />
                 Donate now, and together we can educate more students to become
                 engineers, traders, innovators, entrepreneurs, and leaders of
                 tomorrow in the crypto industry.
-                <br />
-                <br />
-                -Access Website-
               </p>
               <div class="revue-form-group">
                 <label for="member_email">Email address</label>
@@ -99,24 +95,13 @@ function MyApp({ Component, pageProps }) {
                 />
               </div>
               <div class="revue-form-group">
-                <label for="member_first_name">First name</label>
+                <label for="member_first_name">Name</label>
                 <input
                   class="revue-form-field"
-                  placeholder="First name... (Optional)"
+                  placeholder="Name"
                   type="text"
                   name="member[first_name]"
                   id="member_first_name"
-                  required
-                />
-              </div>
-              <div class="revue-form-group">
-                <label for="member_last_name">Last name</label>
-                <input
-                  class="revue-form-field"
-                  placeholder="Last name... (Optional)"
-                  type="text"
-                  name="member[last_name]"
-                  id="member_last_name"
                   required
                 />
               </div>
@@ -135,20 +120,9 @@ function MyApp({ Component, pageProps }) {
                   Donate
                 </a>
               </div>
-              <div class="revue-form-footer">
-                By subscribing, you agree with Revue’s{" "}
-                <a target="_blank" href="https://www.getrevue.co/terms">
-                  Terms of Service
-                </a>{" "}
-                and{" "}
-                <a target="_blank" href="https://www.getrevue.co/privacy">
-                  Privacy Policy
-                </a>
-                .
-              </div>
             </form>
             <div className="read-it-first" onClick={clickReadIt}>
-              Let me Read it First
+              Access Website
             </div>
           </div>
         ) : (

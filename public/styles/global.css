@@ -745,7 +745,7 @@ a {
 
 #revue-embed label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 #revue-embed input {
@@ -755,7 +755,8 @@ a {
 
 #revue-embed .description {
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
+  margin: auto;
   margin-bottom: 30px;
 }
 
@@ -775,7 +776,7 @@ a {
 }
 
 #revue-embed img {
-  width: 200px;
+  width: 100px;
   margin: auto;
   margin-top: 15px;
   margin-bottom: 30px;
