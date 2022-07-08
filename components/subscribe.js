@@ -42,6 +42,12 @@ export default function Subscribe() {
                           type: "email",
                           required: true,
                         },
+                        {
+                          name: "FNAME",
+                          placeholder: "Name",
+                          type: "text",
+                          required: true,
+                        },
                       ]}
                       messages={{
                         sending: "Sending...",
