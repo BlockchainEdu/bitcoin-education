@@ -11,7 +11,7 @@ class NationalTeamCard extends React.Component {
         }
     }
 
-    onClickFilp = () => {
+    onClickFlip = () => {
         this.props.setGlobalClick(true);
         this.setState({ toggle: !this.state.toggle })
     }
@@ -21,12 +21,12 @@ class NationalTeamCard extends React.Component {
             <div className="text-center m-auto">
                 <div>
                     <div className={"flip-card " + (this.state.toggle && this.props.globalClick ? "hover" : "")}>
-                        <div className="flip-card-inner" onClick={() => this.onClickFilp()} >
-                            <div className="flip-card-front" filp-card-container="true" style={{backgroundImage: `url(${this.props.image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
+                        <div className="flip-card-inner" onClick={() => this.onClickFlip()} >
+                            <div className="flip-card-front" flip-card-container="true" style={{backgroundImage: `url(${this.props.image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
                             </div>
                             <div className="flip-card-back text-black font-mont p-5 text-sm text-left overflow-y-scroll">
-                                {/* <div filp-card-container="true">Ashton Barger is a Past President of the Miami University Blockchain Club and a 2020 Graduate of Miami University of Ohio. He currently works full time as an Account Manager for Zebu Digital, a Crypto and Blockchain Marketing Agency. He has been volunteering as the President of BEN USA since January of 2021 and is loving the progress the team has made since joining BEN. In his free time he enjoys hiking, skiing,</div> */}
-                                <div filp-card-container="true">{this.props.bio}</div>
+                                {/* <div flip-card-container="true">Ashton Barger is a Past President of the Miami University Blockchain Club and a 2020 Graduate of Miami University of Ohio. He currently works full time as an Account Manager for Zebu Digital, a Crypto and Blockchain Marketing Agency. He has been volunteering as the President of BEN USA since January of 2021 and is loving the progress the team has made since joining BEN. In his free time he enjoys hiking, skiing,</div> */}
+                                <div flip-card-container="true">{this.props.bio}</div>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@ class NationalTeamCard extends React.Component {
                     {this.props.linkedin &&
                         <a href={this.props.linkedin} target="_blank"><img className="m-auto" src="/images/linkedin-icon.png" /></a>
                     }
-                    {this.props.linkedin &&
+                    {this.props.email &&
                         <a href={this.props.email} target="_blank"><img className="m-auto" src="/images/mail-icon.png" /></a>
                     }
                 </div>
