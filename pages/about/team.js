@@ -8,47 +8,35 @@ import Head from "next/head"
 
 import React, { useState, useEffect } from 'react';
 
+class TeamMember {
+    constructor(image, name, title, bio, linkedin, twitter, email="") {
+        this.image = image;
+        this.name = name;
+        this.title = title;
+        this.bio = bio;
+        this.linkedin = linkedin === "" ? undefined : linkedin;
+        this.twitter = twitter === "" ? undefined : twitter;
+        this.email = email === "" ? undefined : `mailto:${email}`;
+    }
+}
+const teamMembers = {
+    "BEN Team": [
+        new TeamMember("http://www.dumpaday.com/wp-content/uploads/2019/12/pictures-10-2.jpg", "BEN Team 1", "BEN Team 1 Title", "Some bio text here", "", "https://www.twitter.com", "someemail@email.com"),
+        new TeamMember("", "BEN Team 2", "BEN Team 2 Title", "", "https://www.linkedin.com", "", "someemail2@email.com"),
+    ],
+    "Advisors": [
+        new TeamMember("http://www.dumpaday.com/wp-content/uploads/2019/12/pictures-10-2.jpg", "Advisors 1", "Advisors 1 Title", "Some bio text goes here.", "", ""),
+        new TeamMember("", "Advisors 2", "Advisors 2 Title", "", "https://www.linkedin.com", "https://www.twitter.com"),
+    ],
+};
+
 export default function About() {
 
     const [globalClick, setGlobalClick] = useState(false);
-    const [teamMembers, setTeamMembers] = useState([]);
-
-    useEffect(async () => {
-        // Get Members list
-        let body = {
-            query: `{
-            boards (ids: 1383021348) {
-                items {
-                    group {
-                        id
-                        title
-                    }
-                    id
-                    name
-                    column_values {
-                        id
-                        title
-                        value
-                    }
-                    assets {
-                        public_url 
-                    }
-                }
-            }
-        }`}
-        let result = await TeamMemberService.getMembers(body);
-        if (result?.data?.data?.boards) {
-            console.log(result.data.data.boards[0].items);
-            setTeamMembers(result.data.data.boards[0].items);
-        } else {
-            setTeamMembers([]);
-        }
-
-    }, [setTeamMembers]);
 
     return (
         <div id="team-page" onClick={(e) => {
-            if (e.target.getAttribute('filp-card-container') == "true") {
+            if (e.target.getAttribute('flip-card-container') == "true") {
                 //find object   
                 setGlobalClick(true);
             } else {
@@ -80,30 +68,19 @@ export default function About() {
             <section className="py-24" style={{ backgroundColor: "#f5f7f7" }}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
 
-                    {teamMembers.length > 0 && teamMembers.map(global => {
-                        return global.group.title == 'BEN Team' &&
+                    {teamMembers["BEN Team"].length > 0 && teamMembers["BEN Team"].map(member =>
                             <NationalTeamCard
-                                image={global.assets.length > 0 ? global.assets[0]?.public_url : ""}
-                                name={global.name}
-                                title={JSON.parse(global.column_values[1].value)}
-                                bio={JSON.parse(global.column_values[2].value)}
-                                linkedin={JSON.parse(global.column_values[4].value)}
-                                twitter={JSON.parse(global.column_values[5].value)}
-                                email={JSON.parse(global.column_values[6].value)}
-                                globalClick={globalClick}
-                                setGlobalClick={setGlobalClick}
+                              image={member.image}
+                              name={member.name}
+                              title={member.title}
+                              bio={member.bio}
+                              linkedin={member.linkedin}
+                              twitter={member.twitter}
+                              email={member.email}
+                              globalClick={globalClick}
+                              setGlobalClick={setGlobalClick}
                             />
-                    }
                     )}
-                    {/* {TeamMembers.global.map(global =>
-                        <NationalTeamCard 
-                        image={global.image}
-                        name={global.name}
-                        title={global.title}
-                        globalClick = {globalClick}
-                        setGlobalClick = {setGlobalClick}
-                        />
-                    )} */}
                 </div>
             </section>
             <section className="py-24 -mb-14">
@@ -111,29 +88,19 @@ export default function About() {
                     Advisors
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
-                    {teamMembers.length > 0 && teamMembers.map(global => {
-                        return global.group.title == "Advisors" &&
+                    {teamMembers["Advisors"].length > 0 && teamMembers["Advisors"].map(member =>
                             <NationalTeamCard
-                                image={global.assets.length > 0 ? global.assets[0]?.public_url : ""}
-                                name={global.name}
-                                title={JSON.parse(global.column_values[1].value)}
-                                bio={JSON.parse(global.column_values[2].value)}
-                                linkedin={JSON.parse(global.column_values[4].value)}
-                                twitter={JSON.parse(global.column_values[5].value)}
-                                globalClick={globalClick}
-                                setGlobalClick={setGlobalClick}
+                              image={member.image}
+                              name={member.name}
+                              title={member.title}
+                              bio={member.bio}
+                              linkedin={member.linkedin}
+                              twitter={member.twitter}
+                              email={member.email}
+                              globalClick={globalClick}
+                              setGlobalClick={setGlobalClick}
                             />
-                    }
                     )}
-                    {/* {TeamMembers.advisors.map(advisors =>
-                        <NationalTeamCard 
-                        image={advisors.image}
-                        name={advisors.name}
-                        title={advisors.title}
-                        globalClick = {globalClick}
-                        setGlobalClick = {setGlobalClick}
-                        />    
-                    )} */}
                 </div>
             </section>
             <Footer />

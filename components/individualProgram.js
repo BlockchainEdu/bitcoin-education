@@ -48,7 +48,7 @@ export default function IndividualProgram() {
 
   return (
     <div id="team-page" onClick={(e) => {
-      if (e.target.getAttribute('filp-card-container') == "true") {
+      if (e.target.getAttribute('flip-card-container') == "true") {
         //find object   
         setGlobalClick(true);
       } else {
