@@ -8,7 +8,7 @@ import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   const [app, setApp] = useState(false);
   useEffect(() => {
-    TagManager.initialize({ gtmId: "GTM-213540060-2" });
+    TagManager.initialize({ gtmId: "GTM-213540060-3" });
     if (!window.localStorage.getItem("subscribed")) {
       setApp(true);
     }
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=UA-213540060-2`}
+            src={`https://www.googletagmanager.com/gtag/js?id=UA-213540060-3`}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'UA-213540060-2', {
+            gtag('config', 'UA-213540060-3', {
               page_path: window.location.pathname + window.location.search,
               campaign:{
                 'id': 'weekly.123',
