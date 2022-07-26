@@ -41,10 +41,10 @@ function MyApp({ Component, pageProps }) {
               page_path: window.location.pathname + window.location.search,
               campaign:{
                 'id': 'weekly.123',
-                'source': 'Weekly BEN NEWSLETTER',
+                'source': 'BEN NEWSLETTER',
                 'medium': 'cpc',
-                'name': 'Weekly BEN NEWSLETTER',
-                'content': 'Weekly BEN NEWSLETTER'
+                'name': 'BEN NEWSLETTER',
+                'content': 'BEN NEWSLETTER'
               }
               
             });
