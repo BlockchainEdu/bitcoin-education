@@ -33,7 +33,9 @@ export default function DonationSlider(props) {
     if (currPercentage <= 0) {
       currValue = minValue;
     }
-    sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
+    const numPixels = currPercentage / 100 * (sliderRef.current.getBoundingClientRect().width - (sliderCoverRef.current.getBoundingClientRect().width * 3 / 4));
+    sliderCoverRef.current.style.left = `${Math.max(numPixels, 0)}px`;
+    console.log(sliderCoverRef.current.style.left);
     sliderCoverAmountRef.current.innerHTML = `\$${Math.floor(currValue)}`;
     props.onChange(currValue);
   }
