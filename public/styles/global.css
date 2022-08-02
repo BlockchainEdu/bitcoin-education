@@ -13,6 +13,10 @@
   --swiper-theme-color: #FF936B;
 }
 
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
 .header.scrolled {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   padding-bottom: 2.5rem;
@@ -74,6 +78,10 @@
   max-height: none !important;
 }
 
+.donation-slider-container {
+  min-height: 50px;
+}
+
 .donation-slider-track {
   background: #d3d3d3;
   /* Grey background */
@@ -106,7 +114,6 @@
   align-items: center;
   justify-content: center;
   color: var(--orange);
-  background-color: white;
   border: 1px solid ghostwhite;
   border-radius: 9999px;
   position: absolute;
@@ -118,14 +125,6 @@
   font-size: 1rem;
   padding: 0.5rem 1rem;
   -webkit-appearance: none !important;
-}
-
-.donation-slider-cover .left-arrow {
-  color: gray;
-}
-
-.donation-slider-cover .right-arrow {
-  color: black;
 }
 
 /* Mouse-over effects */

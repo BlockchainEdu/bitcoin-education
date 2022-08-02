@@ -13,14 +13,16 @@ module.exports = {
           '500': '#333333'
         },
         bengrey: {
-          '200': '#E1E1E1',
+          '100': '#E1E1E1',
+          '200': '#e5e5e5',
           '300': '#9FA9B9',
           '400': '#626363',
-          '500': '#e5e5e5'
+          '500': '#333333',
         }
       },
       fontFamily: {
         'mont' : ['Montserrat'],
+        'inter' : ['Inter'],
       },
       boxShadow: {
         button: '0px 10px 24px rgba(0, 0, 0, 0.08)',
