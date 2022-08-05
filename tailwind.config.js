@@ -6,23 +6,28 @@ module.exports = {
     extend: {
       colors: {
         benorange: {
-          '300': '#ffe9e1',
-          '500': '#FF936B',
+          '300': '#FFF3EC',
+          '500': '#FF872A',
         },
         benblack: {
-          '500': '#333333'
+          '500': '#202127'
         },
         bengrey: {
           '100': '#E1E1E1',
           '200': '#e5e5e5',
           '300': '#9FA9B9',
           '400': '#626363',
-          '500': '#333333',
+          '500': '#5C606B',
         }
+      },
+      fontSize: {
+        '5xl': '2.7rem',
+        '6xl': '3.3rem'
       },
       fontFamily: {
         'mont' : ['Montserrat'],
         'inter' : ['Inter'],
+        'average' : ['Average']
       },
       boxShadow: {
         button: '0px 10px 24px rgba(0, 0, 0, 0.08)',
