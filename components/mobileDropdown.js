@@ -35,6 +35,7 @@ const solutions = [
 ]
 
 export default function MobileDropdown(props) {
+  console.log({props});
   return (
     <div className="w-full max-w-sm px-4 top-16">
       <Popover>
@@ -47,74 +48,47 @@ export default function MobileDropdown(props) {
                 aria-hidden="true"
               />
             </Popover.Button>
-            <Popover.Panel className="absolute z-40 w-screen md:max-w-none pt-14 px-4 right-0 sm:px-0 lg:max-w-3xl">
-              <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+            <Popover.Panel className="absolute z-40 top-0 right-0 bg-white md:max-w-none lg:max-w-3xl w-min whitespace-nowrap">
+              <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-4 h-screen">
+                <div className="text-right">
+                  <Popover.Button>
+                    <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </Popover.Button>
+                </div>
                 <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="space-y-4 font-mont text-chablack-300 hover:text-chablack-500">
                     <li>
-                      <a target="_blank" href="/donate">Donate</a>
+                      <a href="/">Home</a>
                     </li>
                     <li>
-                      <li>
-                        <div className="bg-white rounded-2xl">
-                          <Disclosure>
-                            {({ open }) => (
-                              <>
-                                <Disclosure.Button className="flex items-center font-mont text-chablack-300 hover:text-chablack-500 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                                  <span>About</span>
-                                  <ChevronRightIcon
-                                    className={`${open ? 'transform rotate-90' : ''
-                                      } w-5 h-5 text-chagreen-300 ml-3`}
-                                  />
-                                </Disclosure.Button>
-                                <Disclosure.Panel className="pl-3 pt-4 text-gray-500">
-                                  <ul className="ml-3 space-y-4 text-black font-proximasemi text-md text-chablack-300 hover:text-chablack-500">
-                                    <li>
-                                      <a href="/about">About</a>
-                                    </li>
-                                    <li>
-                                      <a href="/learn">Learn</a>
-                                    </li>
-                                    <li>
-                                      <a href="/about/clubs">Clubs</a>
-                                    </li>
-                                    <li>
-                                      <a href="/about/team">Team</a>
-                                    </li>
-                                    <li>
-                                      <a href="/about/partners">Partners</a>
-                                    </li>
-                                    <li>
-                                      <a href="/about/alumni">Alumni</a>
-                                    </li>
-                                    <li>
-                                      <a href="/about/professor">Professors</a>
-                                    </li>
-                                  </ul>
-                                </Disclosure.Panel>
-                              </>
-                            )}
-                          </Disclosure>
-                        </div>
-                      </li>
+                      <a href="/learn">Learn Web3 Programs</a>
                     </li>
                     <li>
-                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="/programs">Programs</a>
+                      <a href="#">Frequently Asked Questions</a>
                     </li>
                     <li>
-                      <a className="hover:text-benorange-500 text-black transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events</a>
+                      <a target="_blank" href="https://learn.blockchainedu.org/events">Events</a>
                     </li>
                     <li>
-                      <a className="hover:text-benorange-500 text-black transition duration-500" href="/contact"><b>Contact</b></a>
+                      <a href="/contact">Contact</a>
                     </li>
                   </ul>
                 </div>
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
                     link="https://learn.blockchainedu.org/sign_in"
-                    text="Sign In"
+                    text="Our Learning Platform"
                     color="orange"
-                    styling="px-16 py-3"
+                    styling="text-center py-3 rounded-lg w-full px-8"
+                  />
+                </div>
+                <div className="bg-white pb-7 text-center">
+                  <StandardButton
+                    link="/donate"
+                    text="Donate"
+                    styling="text-center py-3 rounded-lg border-black w-full"
                   />
                 </div>
               </div>
