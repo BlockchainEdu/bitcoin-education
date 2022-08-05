@@ -66,17 +66,21 @@ export default function Home({ locations }) {
             </Head>
             <section className="pt-10 lg:py-24 lg:pb-0 px-7">
                 <div className="text-benorange-500 text-md font-inter font-semibold text-center">Blockchain Education Network</div>
-                <h1 className="font-average text-5xl text-center max-w-4xl mx-auto">
+                <h1 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mt-4">
                     We provide engaging blockchain education that is free from project bias at all levels.
                 </h1>
-                <div className="flex justify-center space-x-4 my-10">
-                    <StandardButton
-                        text="Donate"
-                    />
-                    <StandardButton
-                        color="orange"
-                        text="View Our Learning Platform"
-                    />
+                <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10">
+                    <div className="mx-auto lg:mx-0">
+                        <StandardButton
+                            text="Donate"
+                        />
+                    </div>
+                    <div className="mx-auto lg:mx-0">
+                        <StandardButton
+                            color="orange"
+                            text="View Our Learning Platform"
+                        />
+                    </div>
                 </div>
                 <p className="text-bengrey-500 text-sm text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
                     Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over 1.7 Billion Adults
@@ -93,7 +97,7 @@ export default function Home({ locations }) {
                 </div>
             </section>
             <section className="bg-benorange-300 pt-14">
-                <h2 className="font-average text-5xl text-center max-w-4xl mx-auto mb-4">
+                <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
                     Blockchain Education Network’s Impact
                 </h2>
                 <p className="text-benblack-500 text-sm text-center mx-auto leading-6 pb-14" style={{ maxWidth: "610px" }}>
@@ -101,8 +105,8 @@ export default function Home({ locations }) {
                     vehicle to create wealth for themselves and their communities. Donate now and start learning!
                 </p>
                 <div className="border-t">
-                    <div className="mx-auto flex" style={{ maxWidth: "1000px" }}>
-                        <div className="text-center w-1/3 border-l py-14 px-10">
+                    <div className="mx-auto flex flex-col lg:flex-row" style={{ maxWidth: "1000px" }}>
+                        <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l py-14 px-10">
                             <Image
                                 width="100px"
                                 height="100px"
@@ -119,7 +123,7 @@ export default function Home({ locations }) {
                                 Lorem ipsum dolor sit amet, consecteg elit, sed do eiusmod tempor.
                             </div>
                         </div>
-                        <div className="text-center w-1/3 border-l border-r py-14 px-10">
+                        <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l lg:border-r py-14 px-10">
                             <Image
                                 width="100px"
                                 height="100px"
@@ -136,7 +140,7 @@ export default function Home({ locations }) {
                                 the space, such as Augur, Iota, Coinbase, Kraken, GDA Capital, and many others...
                             </div>
                         </div>
-                        <div className="text-center w-1/3 border-r py-14 px-10">
+                        <div className="text-center w-full lg:w-1/3 lg:border-r py-14 px-10">
                             <Image
                                 width="100px"
                                 height="100px"
@@ -155,10 +159,10 @@ export default function Home({ locations }) {
                     </div>
                 </div>
             </section>
-            <section className="py-14" style={{background: "#fafbfc" }}>
-                <div class="max-w-7xl m-auto pt-24 lg:pt-10 pb-10 lg:pb-4 flex flex-col lg:flex-row items-center" style={{ maxWidth: "1000px"}}>
-                    <div className="w-full lg:w-1/2">
-                        <h2 className="font-average text-5xl text-left max-w-4xl mx-auto mb-4">
+            <section className="py-14" style={{ background: "#fafbfc" }}>
+                <div class="max-w-7xl m-auto flex flex-col lg:flex-row items-center" style={{ maxWidth: "1000px" }}>
+                    <div className="w-full lg:w-1/2 pb-14 lg:pb-0">
+                        <h2 className="font-average text-4xl lg:text-5xl text-left max-w-4xl mx-auto mb-4">
                             Learn efficiently with a solid web3 foundation
                         </h2>
                         <p className="text-benblack-500 text-sm text-left leading-6 mb-6" style={{ maxWidth: "610px" }}>
@@ -183,7 +187,7 @@ export default function Home({ locations }) {
                 </div>
             </section>
             <section className="py-14 pb-24 border-b">
-                <h2 className="font-average text-5xl text-center max-w-4xl mx-auto">
+                <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto">
                     Join BEN Learn
                 </h2>
                 <div className="text-bengrey-500 text-lg text-center leading-6 my-6 mx-auto" style={{ maxWidth: "610px" }}>
@@ -191,14 +195,18 @@ export default function Home({ locations }) {
                     <div className="py-1">Are you looking to connect with other students, traders, and entrepreneurs in the space? We offer unique group chats to connect, share ideas, and even trading tips.</div><br />
                     <div>Blockchain Basics. Trading Cryptocurrency. Music NFTs, Metaverse. All Crypto. All in one Interface, etc.</div>
                 </div>
-                <div className="flex justify-center space-x-4 my-10">
-                    <StandardButton
-                        text="Join free as a student"
-                    />
-                    <StandardButton
-                        color="orange"
-                        text="Sign up to start learn"
-                    />
+                <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10">
+                    <div className="mx-auto lg:mx-0">
+                        <StandardButton
+                            text="Join free as a student"
+                        />
+                    </div>
+                    <div className="mx-auto lg:mx-0">
+                        <StandardButton
+                            color="orange"
+                            text="Sign up to start learn"
+                        />
+                    </div>
                 </div>
             </section>
             <section>
@@ -210,7 +218,7 @@ export default function Home({ locations }) {
                         quality={100}
                     />
                 </div>
-                <div className="grid grid-cols-3 gap-y-10 font-semibold mx-auto" style={{ maxWidth: "1000px" }}>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 font-semibold mx-auto" style={{ maxWidth: "1000px" }}>
                     <div class="flex items-center space-x-3">
                         <div>
                             <Image
@@ -285,102 +293,194 @@ export default function Home({ locations }) {
                     </div>
                 </div>
             </section>
-            <p className="font-mont font-medium text-md text-center max-w-3xl mx-auto mt-10" style={{ lineHeight: "26px" }}>
-                Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over
-                1.7 Billion Adults worldwide who don't have access to a bank account.
-            </p>
-            <p className="font-mont font-semibold text-sm text-gray-400 text-center max-w-3xl mx-auto mb-10 mt-6" style={{ lineHeight: "26px" }}>
-                Our vision is that anyone, regardless of where they are in the world, will be able to use Blockchain
-                as a vehicle to create wealth for themselves and their communities. Donate now and <a className='text-benorange-500 underline' target="_blank" href="https://learn.blockchainedu.org/sign_up">start learning!</a>
-            </p>
-            <Modal />
-            <section className="what-is-section pt-14 lg:pt-14 px-7 -mt-4">
-                <div>
-                    <div id="what-is" className="flex justify-center space-x-2 items">
-                        <div className="max-w-7xl">
-                            <h2 className="font-mont font-black text-4xl lg:text-5xl">
-                                What is
-                            </h2>
-                            <img className="-ml-2 lg:-ml-4 -mt-2 lg:-mt-4 w-36 lg:w-full" src="/images/what-ben-underline-orange.png" />
-                        </div>
-                        <img className="-mt-4 lg:-mt-8 w-24 lg:w-auto" src="/images/what-ben-home.svg" />
-                    </div>
-                    <p className="text-black text-md max-w-4xl text-center m-auto pt-10">
-                        The Blockchain Education Network (BEN) is the largest and longest running network
-                        of students, alumni, professors, teachers, professionals, and community leaders
-                        excited about blockchain across the world. We are mission to provide bordeless blockchain
-                        education, and to spur blockchain adoption by empowering student leaders to  bring blockchain
-                        to their companies and communities through local workshops and online courses.
-                    </p>
-                    <div className="m-auto my-10 mb-14 flex justify-center">
-                        <PopUpVideo
-                            thumbnail="/images/video-home-placeholder.jpg"
-                        />
-                    </div>
-                    <StandardButton
-                        link="/programs"
-                        text="Programs"
-                        color="orange"
-                        styling="px-16 flex m-auto"
+            <section className="py-14 pb-24 border-b">
+                <div className="flex mx-auto justify-center">
+                    <Image
+                        width="382px"
+                        height="392px"
+                        src="/images/donate-home.jpg"
                     />
                 </div>
+                <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto" style={{ maxWidth: "700px" }}>
+                    Turn your fiat or crypto into education for the next generation.
+                </h2>
+                <div className="text-bengrey-500 text-lg text-center leading-6 my-6 mx-auto" style={{ maxWidth: "610px" }}>
+                    Our vision is that anyone, regardless of where they are in the world, will be able to use Blockchain as a vehicle to
+                    create wealth for themselves and their communities. Donate now and start learning!
+                </div>
+                <Modal />
             </section>
-            <section className="max-w-7xl mt-10 lg:-mt-32 m-auto pt-56 lg:pt-48 impact-section px-7">
-                <div className="max-w-xs mx-auto lg:mx-0">
-                    <h2 className="font-mont font-black text-center lg:text-left text-4xl lg:text-5xl pt-10 lg:pt-0">
-                        Our Impact
+            <section className="py-14 pb-24 border-b">
+                <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto" style={{ maxWidth: "800px" }}>
+                    By donating you are supporting blockchain education all around the world.
+                </h2>
+                <div className="text-bengrey-500 text-lg text-center leading-6 my-6 mx-auto" style={{ maxWidth: "610px" }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostroris nisi ut aliquip ex ea commodo consequat.
+                </div>
+                <div id="home-map" className="pt-7 py-14 mb-14 lg:mb-0" style={{ width: sharedState.width, height: sharedState.height }}>
+                    <div className="m-auto">
+                        <Container className="map-container mt-6">
+                            <Map locations={locations} style={{ minHeight: '600px' }} />
+                        </Container>
+                    </div>
+                </div>
+            </section>
+            <section className="py-14 pb-24 border-b mx-auto" style={{ background: "#FAFBFC" }}>
+                <div className="mx-auto" style={{ maxWidth: "1000px", background: "#FAFBFC" }}>
+                    <h2 className="font-average text-4xl lg:text-5xl text-left max-w-4xl">
+                        Frequently Asked Questions
                     </h2>
-                    <img className="ml-auto h-3 mr-14 lg:h-auto lg:mr-5 lg:-mt-4" src="/images/impact-underline-orange.png" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-10 lg:gap-y-0 max-w-7xl m-auto align-center">
-                    {impactStats.map((item) => (
-                        <div className="text-center m-auto lg:text-left lg:m-0">
-                            <img src={item.image} className={item.imageStyling} />
-                            <div className={`font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3 ${item.nameStyling}`}>{item.number}</div>
-                            <div className="uppercase font-mont text-xs tracking-widest">{item.name}</div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-            <section className="max-w-7xl m-auto pt-24 lg:pt-10 pb-10 lg:pb-4 flex flex-col lg:flex-row items-center">
-                <div className="w-full lg:w-1/2">
-                    <div className="max-w-sm mx-auto lg:mx-0">
-                        <h2 className="font-mont font-black text-center lg:text-left text-4xl lg:text-5xl">
-                            What we do?
-                        </h2>
-                        <img className="ml-auto mr-20 h-4 lg:h-auto lg:-mt-4 lg:mr-6" src="/images/we-do-underline-orange.png" />
+                    <div className="text-bengrey-500 text-lg text-left leading-6 my-6" style={{ maxWidth: "610px" }}>
+                        The Blockchain Education Network offers a large variety of educational content and event-based opportunities. Our community is
+                        at the heart of what we do and we are commited to helping new learners figure out how to get the most out of BEN.
                     </div>
-                    <p className="text-black text-md pt-10 mb-14 lg:mb-0 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-                        We serve our students by providing an abundance of resources through BEN Learn's portal with courses
-                        such as Crypto Taxes, Virtual Land, DeFi and many more. We empower students to host workshops at
-                        their Universities, build their network while cultivating communities & creating career opportunities
-                    </p>
-                </div>
-                <img className="m-auto w-96" src="/images/what-we-do.gif" />
-            </section>
-            <section className="mt-24 py-14 pb-0 lg:mb-0">
-                <div className="m-auto">
-                    <div className="flex flex-col lg:flex-row justify-center space-x-4">
-                        <img className="-mt-8 mx-auto lg:mx-0 w-32 lg:w-auto mb-4 lg:mb-0" src="/images/ben-text-logo-black.svg" />
-                        <div>
-                            <h2 className="font-mont font-black text-3xl lg:text-5xl text-center lg:text-left">
-                                Ambassadors
-                            </h2>
-                            <img className="-mt-2 h-6 lg:h-auto mx-auto lg:ml-10" src="/images/hero-headline-underline.png" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+                        <div className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/ben-learn.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                Ben Learn
+                            </div>
+                            <div class="text-sm font-inter">
+                                Are you new to Blockchain? Trading Cryptocurrency? Looking for a deep dive on DeFi? Become a member today and start learning!
+                            </div>
+                        </div>
+                        <div className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/university-club.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                University Club
+                            </div>
+                            <div class="text-sm font-inter">
+                                Become part of the largest network of University blockchain clubs in the world.
+                            </div>
+                        </div>
+                        <div className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/ben-financials.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                Ben Financials
+                            </div>
+                            <div class="text-sm font-inter">
+                                Check out or latest financial reports and donate to support more Web 3.0 education
+                            </div>
+                        </div>
+                        <div className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/ben-alumni.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                Ben Alumni
+                            </div>
+                            <div class="text-sm font-inter">
+                                Become part of (or re-join) the largest and longest running blockchain student network in the world to connect with your fellow alumni and share your experience!
+                            </div>
+                        </div>
+                        <div className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/blockchain-partners.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                Blockchain Partners
+                            </div>
+                            <div class="text-sm font-inter">
+                                BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
+                            </div>
+                        </div>
+                        <div className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/about-us.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                About Us
+                            </div>
+                            <div class="text-sm font-inter">
+                                The Blockchain Education Network (BEN) is a 501(c)(3) non-porfit charitable organization founded in 2014.
+                            </div>
                         </div>
                     </div>
-                    <p className="text-black font-bold text-md text-center m-auto pt-4 max-w-2xl px-7">
-                        BEN actively mentors and supports over 200+ blockchain clubs around the
-                        world. We educate students about blockchain technology and inspire them to
-                        ﬁnd their talent and own it!  Either as a disrupter, entrepreneur, investor, and team member.
-                    </p>
-                </div>
-            </section>
-            <section id="home-map" className="pt-7 py-14 mb-14 lg:mb-0" style={{ width: sharedState.width, height: sharedState.height }}>
-                <div className="m-auto">
-                    <Container className="map-container mt-6">
-                        <Map locations={locations} style={{ minHeight: '600px' }} />
-                    </Container>
                 </div>
             </section>
             <Footer />
