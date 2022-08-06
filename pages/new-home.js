@@ -303,7 +303,7 @@ export default function Home({ locations }) {
                         </div>
                     </div>
                 </div>
-                <div className="w-11/12 mx-auto font-inter mt-20">
+                <div className="w-11/12 mx-auto font-inter mt-20 mx-auto" style={{maxWidth:"1000px"}}>
                     <div className="text-center font-semibold text-lg mb-10">Presenting some of our most popular courses:</div>
                     <div className="flex flex-col justify-between lg:flex-row">
                         <div className="text-lg w-full lg:w-1/2">
@@ -373,9 +373,8 @@ export default function Home({ locations }) {
                     <Modal />
                 </div>
             </section>
-            <section className="py-14 pb-24 border-b">
-                <div className="w-11/12 mx-auto">
-
+            <section className="py-14">
+                <div className="mx-auto">
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto" style={{ maxWidth: "800px" }}>
                         By donating you are supporting blockchain education all around the world.
                     </h2>
