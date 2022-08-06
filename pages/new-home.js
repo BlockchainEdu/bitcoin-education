@@ -373,7 +373,7 @@ export default function Home({ locations }) {
                     <Modal />
                 </div>
             </section>
-            <section className="py-14">
+            <section className="pt-14">
                 <div className="mx-auto">
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto" style={{ maxWidth: "800px" }}>
                         By donating you are supporting blockchain education all around the world.
@@ -382,7 +382,7 @@ export default function Home({ locations }) {
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         Ut enim ad minim veniam, quis nostroris nisi ut aliquip ex ea commodo consequat.
                     </div>
-                    <div id="home-map" className="pt-7 py-14 mb-14 lg:mb-0" style={{ width: sharedState.width, height: sharedState.height }}>
+                    <div id="home-map" className="pt-14" style={{ width: sharedState.width, height: sharedState.height }}>
                         <div className="m-auto">
                             <Container className="map-container mt-6">
                                 <Map locations={locations} style={{ minHeight: '600px' }} />
