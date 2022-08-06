@@ -67,9 +67,9 @@ export default function DonationSlider(props) {
     <>
       <div className="slidecontainer relative" ref={sliderRef} onMouseDown={startMovingSlider} onTouchStart={startMovingSlider} onMouseMove={moveDonationSlider} onTouchMove={moveDonationSlider}>
         <div className="relative z-0 donation-slider-track"></div>
-        <div className="absolute top-0 z-1 shadow-3xl select-none bg-bengrey-500 donation-slider-cover" ref={sliderCoverRef}>
+        <div className="absolute top-0 z-1 shadow-3xl select-none bg-benblack-500 donation-slider-cover" ref={sliderCoverRef}>
           <span className="mr-3 font-inter font-light text-bengrey-300 left-arrow" ref={sliderCoverLeftArrow}>|||</span>
-          <span className="font-inter text-lg text-white underline dollar-amount" ref={sliderCoverAmountRef}>${props.currValue}</span>
+          <span className="font-inter text-lg text-white underline dollar-amount" ref={sliderCoverAmountRef}>$ {props.currValue}</span>
           <span className="ml-3 font-inter font-light text-bengrey-300 right-arrow" ref={sliderCoverRightArrow}>|||</span>
         </div>
       </div>
