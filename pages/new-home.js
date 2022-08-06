@@ -391,7 +391,7 @@ export default function Home({ locations }) {
                     </div>
                 </div>
             </section>
-            <section className="py-14 pb-24 mx-auto" style={{ background: "#FAFBFC" }}>
+            <section className="py-24 pb-24 mx-auto" style={{ background: "#FAFBFC" }}>
                 <div className="mx-auto w-11/12" style={{ maxWidth: "1000px", background: "#FAFBFC" }}>
                     <h2 className="font-average text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">
                         Frequently Asked Questions
