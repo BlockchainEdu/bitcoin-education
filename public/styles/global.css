@@ -34,6 +34,14 @@
   display: flex;
 }
 
+.header.scrolled .hidden-on-scroll {
+  display: none;
+}
+
+.header.scrolled .display-on-scroll {
+  display: block;
+}
+
 @media (max-width: 1023px) {
   .header li > a:not(#always-visible-menu-button), .header li > div {
     visibility: hidden;

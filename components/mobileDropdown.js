@@ -49,7 +49,7 @@ export default function MobileDropdown(props) {
               />
             </Popover.Button>
             <Popover.Panel className="absolute z-40 top-0 right-0 bg-white md:max-w-none lg:max-w-3xl w-min whitespace-nowrap">
-              <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-4 h-screen">
+              <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-4 h-screen flex flex-col">
                 <div className="text-right">
                   <Popover.Button>
                     <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -57,21 +57,21 @@ export default function MobileDropdown(props) {
                     </svg>
                   </Popover.Button>
                 </div>
-                <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
-                  <ul className="space-y-4 font-mont text-chablack-300 hover:text-chablack-500">
-                    <li>
+                <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2 grow">
+                  <ul className="font-mont text-chablack-300 font-semibold">
+                    <li className="my-8">
                       <a href="/">Home</a>
                     </li>
-                    <li>
+                    <li className="my-8">
                       <a href="/learn">Learn Web3 Programs</a>
                     </li>
-                    <li>
+                    <li className="my-8">
                       <a href="#">Frequently Asked Questions</a>
                     </li>
-                    <li>
+                    <li className="my-8">
                       <a target="_blank" href="https://learn.blockchainedu.org/events">Events</a>
                     </li>
-                    <li>
+                    <li className="my-8">
                       <a href="/contact">Contact</a>
                     </li>
                   </ul>

@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import MobileNav from "./mobileNav"
 import Head from 'next/head'
 import Dropdown from "./dropdown"
+import StandardButton from './standardButton'
 
 export default function HeaderWithLogo({className="", children}) {
   const [ offset, setOffset ] = useState(0)
-  const logoSrc = children ? `/images/ben-vertical-alt.svg` : `/images/ben-vertical.svg`
+  const logoSrc = `/images/ben-logo-color-no-slogan.svg`
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset)
     // clean up code
@@ -22,24 +23,31 @@ export default function HeaderWithLogo({className="", children}) {
         { children }
         { !children && <MobileNav /> }
       </div>
-      <nav className="flex max-w-7xl m-auto justify-between items-center relative">
-        <ul className={`font-mont text-black transition duration-500 w-5/12 ${className}`}>
-          <li className="flex gap-x-14">
-            <a className="hover:text-benorange-500 transition duration-500" href="/">Home </a>
-            <Dropdown />
-            <a className="hover:text-benorange-500 transition duration-500" href="/programs">Programs </a>
-          </li>
-        </ul>
-        <div className="w-2/12 lg:w-1/3 absolute lg:relative top-[-.5rem] lg:top-0 left-0"> <a href="/"><img className="w-24 mx-auto" src={logoSrc} /></a> </div>
-        <ul className={`font-mont text-black w-5/12 ${className}`}>
+      <nav className="flex max-w-7xl m-auto justify-between items-start lg:items-center relative">
+        <div className="w-2/12 lg:w-1/3 left-0"> <a href="/"><img className="w-24 mx-auto max-w-none" src={logoSrc} /></a> </div>
+        <ul className={`font-mont text-black w-10/12 ${className}`}>
           <li className="flex gap-x-14 justify-end items-center">
-            <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="https://learn.blockchainedu.org/events">Events </a>
-            <a className="hover:text-benorange-500 transition duration-500" target="_blank" href="/donate">Donate </a>
-            <a className="hover:text-benorange-500 transition duration-500 font-bold" href="/contact">Contact </a>
-            <a id="always-visible-menu-button" target="_blank" href="https://learn.blockchainedu.org/sign_up">
-              <button className="text-md px-8 rounded-full py-2 font-bold transition duration-500 shadow-button bg-benorange-500 hover:bg-bengrey-300 text-white">
-                Learn
-              </button>
+            <a className="font-semibold" href="/learn">Learn Web3 Programs</a>
+            <a className="font-semibold" href="#">FAQ</a>
+            <a className="font-semibold" target="_blank" href="https://learn.blockchainedu.org/events">Events </a>
+            <a className="font-semibold" href="/contact">Contact </a>
+            { offset > 100 && <>
+                <StandardButton
+                  link="/donate"
+                  text="Donate"
+                  styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
+                />
+                <StandardButton
+                  link="https://learn.blockchainedu.org/sign_up"
+                  text="Sign Up"
+                  color="orange"
+                  styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
+                />
+              </>
+            }
+            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="/donate">Donate </a>
+            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://learn.blockchainedu.org/sign_up">
+              Sign Up
             </a>
           </li>
         </ul>
