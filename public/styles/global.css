@@ -87,7 +87,7 @@
 }
 
 .donation-slider-container {
-  min-height: 50px;
+  min-height: 80px;
 }
 
 .donation-slider-track {
@@ -523,25 +523,26 @@ h2 {
 
 .subscribe-form input {
   border: 1px solid #CCCCCC;
-  border-radius: 100px;
-  padding: .75rem;
+  width: 65%;
+  border-radius: .5rem;
+  padding: .85rem;
   margin: 0 1rem 3rem 0;
 }
 
 .subscribe-form button {
-  font-family: "Montserrat";
-  font-weight: bold;
-  font-size: 18px;
-  background-color: #FF936B;
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #FF872A;
   color: #fff;
-  padding: .75rem 2rem;
-  border-radius: 100px;
+  padding: 1rem 2rem;
+  border-radius: .5rem;
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08);
   transition-duration: 500ms;
 }
 
 .subscribe-form button:hover {
-  background-color: #9FA9B9;
+  background-color: #333333;
 }
 
 .about-header {
