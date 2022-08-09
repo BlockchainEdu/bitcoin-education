@@ -29,6 +29,7 @@
   background: white;
   width: 50vw;
   height: 50vh;
+  min-width: 300px;
   position: relative;
 }
 .overlay-popup-close {
