@@ -120,8 +120,8 @@ export default function Home({ locations }) {
           <img className="ml-auto h-3 mr-14 lg:h-auto lg:mr-5 lg:-mt-4" src="/images/impact-underline-orange.png" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-20 gap-y-10 lg:gap-y-0 max-w-7xl m-auto align-center">
-          {impactStats.map((item) => (
-            <div className="text-center m-auto lg:text-left lg:m-0">
+          {impactStats.map((item, idx) => (
+            <div key={idx} className="text-center m-auto lg:text-left lg:m-0">
               <img src={item.image} className={item.imageStyling} />
               <div className={`font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3 ${item.nameStyling}`}>{item.number}</div>
               <div className="uppercase font-mont text-xs tracking-widest">{item.name}</div>

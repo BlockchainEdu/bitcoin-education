@@ -35,7 +35,6 @@ const solutions = [
 ]
 
 export default function MobileDropdown(props) {
-  console.log({props});
   return (
     <div className="w-full max-w-sm px-4 top-16">
       <Popover>
