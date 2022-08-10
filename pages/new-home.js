@@ -70,7 +70,6 @@ export default function Home({ locations }) {
                 <title>Home | Blockchain Education Network</title>
             </Head>
             <section className="pt-10 lg:py-24 lg:pb-0 px-7">
-                <Popup/>
                 <div className="w-11/12 mx-auto">
                     <div className="text-benorange-500 text-md font-inter font-semibold text-center">Blockchain Education Network</div>
                     <h1 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mt-4">
