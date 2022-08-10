@@ -41,7 +41,7 @@ export default function Popup() {
                   </form>
                 </div>
               </div>
-              <div className="w-full lg:w-1/2 text-sm font-inter" style={{ backgroundImage: "url(/images/popup-image.jpg)" }}>
+              <div className="w-full lg:w-1/2 text-sm font-inter" style={{ backgroundImage: "url(/images/popup-image.jpg)", backgroundRepeat: "no-repeat", backgroundPosition: "center"}}>
 
               </div>
             </div>
