@@ -9,6 +9,9 @@ export default function Popup() {
     {display &&
       <div className="overlay-popup-container" onClick={closePopup}>
         <div className="overlay-popup" onClick={(e) => e.stopPropagation()}>
+          <div className="flex justify-end">
+            <div className="overlay-popup-close w-6 mb-3" onClick={closePopup}><img src="/images/popup-close.svg" /></div>
+          </div>
           <div className="p-10" style={{ background: "#F6F6F6" }}>
             <div className="flex flex-col lg:flex-row bg-white gap-x-20 px-6 lg:px-0">
               <div className="w-full lg:w-1/2 py-14 pl-0 lg:pl-14">
@@ -43,7 +46,6 @@ export default function Popup() {
               </div>
             </div>
           </div>
-          <div className="overlay-popup-close w-6" onClick={closePopup}><img src="/images/popup-close.svg" /></div>
         </div>
       </div>
     }

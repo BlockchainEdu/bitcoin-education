@@ -26,19 +26,12 @@
   align-items: center;
 }
 .overlay-popup {
-  background: white;
   max-width: 1000px;
   min-width: 300px;
+  width: 90%;
   position: relative;
 }
-.overlay-popup-close {
-  position: absolute;
-  top: -2rem;
-  right: -2rem;
-  font-size: 1.8em;
-  font-family: 'Montserrat';
-  cursor: pointer;
-}
+
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
