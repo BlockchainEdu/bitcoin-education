@@ -8,7 +8,7 @@ export default function Popup() {
   }
   return <>
     {display &&
-      <div className="overlay-popup-container" onClick={closePopup}>
+      <div id="popup" className="overlay-popup-container" onClick={closePopup}>
         <div className="overlay-popup" onClick={(e) => e.stopPropagation()}>
           <div className="flex justify-end">
             <div className="overlay-popup-close w-6 mb-3" onClick={closePopup}><img src="/images/popup-close.svg" /></div>
@@ -19,7 +19,7 @@ export default function Popup() {
                 <div className="text-3xl font-average" style={{ maxWidth: "400px" }}>
                   We offer unbiased courses, reports, coding classes, and much more in Web3!
                 </div>
-                <div className="text-sm font-inter mt-6">
+                <div className="text-sm font-inter my-6">
                   Join now, and together we can educate more students to become engineers, traders, innovators, entrepreneurs, and leaders of tomorrow in the crypto industry.
                 </div>
                 <div>
@@ -27,11 +27,24 @@ export default function Popup() {
                     action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
                     fields={[
                       {
+                        name: 'FNAME',
+                        placeholder: 'First Name',
+                        type: 'text',
+                        required: true
+                      },
+                      {
+                        name: 'LNAME',
+                        placeholder: 'Last Name',
+                        type: 'text',
+                        required: true
+                      },
+                      {
                         name: 'EMAIL',
                         placeholder: 'Email',
                         type: 'email',
                         required: true
-                      }
+                      },
+
                     ]}
                     messages={
                       {
@@ -43,9 +56,10 @@ export default function Popup() {
                         button: "Subscribe"
                       }
                     }
-                    className="subscribe-form text-center flex items-start w-full"
+                    className="subscribe-form text-center flex items-start w-full flex-col"
                   />
                 </div>
+
                 {/* <div id="revue-embed">
                   <form action="https://www.getrevue.co/profile/blockchainedu/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank">
 

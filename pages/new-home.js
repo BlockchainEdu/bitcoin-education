@@ -557,6 +557,7 @@ export default function Home({ locations }) {
                     />
                 </div>
             </section> */}
+            <Popup />
             <section className="py-14 mx-auto" style={{ background: "#1E3745" }}>
                 <div class="flex flex-col lg:flex-row items-center justify-between w-11/12 mx-auto" style={{ maxWidth: "1000px" }}>
                     <div>

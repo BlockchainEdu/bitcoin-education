@@ -542,7 +542,7 @@ h2 {
 
 .subscribe-form input {
   border: 1px solid #CCCCCC;
-  width: 65%;
+  width: 100%;
   border-radius: .5rem;
   padding: .85rem;
   margin: 0 1rem 3rem 0;
@@ -554,6 +554,27 @@ h2 {
   font-size: 16px;
   background-color: #FF872A;
   color: #fff;
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08);
+  transition-duration: 500ms;
+}
+
+#popup .subscribe-form input {
+  border: 1px solid #CCCCCC;
+  width: 100%;
+  border-radius: .5rem;
+  padding: .85rem;
+  margin: 0 1rem 1.5rem 0;
+}
+
+#popup .subscribe-form button {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #FF872A;
+  color: #fff;
+  width: 100%;
   padding: 1rem 2rem;
   border-radius: .5rem;
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.08);
