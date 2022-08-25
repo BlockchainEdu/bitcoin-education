@@ -39,29 +39,29 @@ export default function Footer() {
               </div>
             </div>
             <div className="w-full lg:w-1/2">
-              <div className="mt-10 lg:mt-0 space-y-10 md:space-y-0 flex flex-col sm:flex-row justify-start lg:justify-between  md:space-x-20 font-inter" style={{ color: "#CFD2DC" }}>
+              <div className="mt-10 lg:mt-0 space-y-10 md:space-y-0 flex flex-col sm:flex-row justify-start  md:space-x-20 font-inter" style={{ color: "#CFD2DC" }}>
                 <div>
                   <ul className="space-y-3">
                     <li className="uppercase font-bold text-xs">Product</li>
-                    <li className="text-sm">Donate</li>
-                    <li className="text-sm">Start Learning</li>
-                    <li className="text-sm">Programs</li>
+                    <li className="text-sm"><a href="/donate">Donate</a></li>
+                    <li className="text-sm"><a href="https://learn.blockchainedu.org/">Start Learning</a></li>
+                    {/* <li className="text-sm">Programs</li>
                     <li className="text-sm">For Professors</li>
                     <li className="text-sm">For Projects</li>
-                    <li className="text-sm">For Clubs</li>
+                    <li className="text-sm">For Clubs</li> */}
                   </ul>
                 </div>
                 <div>
                   <ul className="space-y-3">
                     <li className="uppercase font-bold text-xs">Company</li>
-                    <li className="text-sm">About Us</li>
-                    <li className="text-sm">Twitter</li>
-                    <li className="text-sm">Medium</li>
-                    <li className="text-sm">Facebook</li>
-                    <li className="text-sm">Instagram</li>
+                    <li className="text-sm"><a href="/about">About Us</a></li>
+                    <li className="text-sm"><a href="https://twitter.com/blockchainedu">Twitter</a></li>
+                    <li className="text-sm"><a href="https://medium.com/blockchainedu">Medium</a></li>
+                    <li className="text-sm"><a href="https://facebook.com/blockchainedu">Facebook</a></li>
+                    <li className="text-sm"><a href="https://instagram.com/blockchainedu">Instagram</a></li>
                   </ul>
                 </div>
-                <div>
+                {/* <div>
                   <ul className="space-y-3">
                     <li className="uppercase font-bold text-xs">Resources</li>
                     <li className="text-sm">FAQ</li>
@@ -70,9 +70,9 @@ export default function Footer() {
                     <li className="text-sm">Terms</li>
                     <li className="text-sm">Privacy</li>
                   </ul>
-                </div>
+                </div> */}
               </div>
-              <div className="mt-10 flex flex-row gap-x-8">
+              {/* <div className="mt-10 flex flex-row gap-x-8">
                 <Image
                   width="135px"
                   height="40px"
@@ -83,7 +83,7 @@ export default function Footer() {
                   height="40px"
                   src="/images/app-store.svg"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="border-t border-bengrey-500 pt-6">

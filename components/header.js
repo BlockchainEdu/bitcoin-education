@@ -27,9 +27,7 @@ export default function HeaderWithLogo({className="", children}) {
         <div className="w-2/12 lg:w-1/3 left-0"> <a href="/"><img className="w-24 mx-auto max-w-none" src={logoSrc} /></a> </div>
         <ul className={`font-mont text-black w-10/12 ${className}`}>
           <li className="flex gap-x-14 justify-end items-center">
-            <a className="font-semibold" href="/learn">Learn Web3 Programs</a>
-            <a className="font-semibold" href="#">FAQ</a>
-            <a className="font-semibold" target="_blank" href="https://learn.blockchainedu.org/events">Events </a>
+            <a className="font-semibold" href="/learn">Learn</a>
             <a className="font-semibold" href="/contact">Contact </a>
             { offset > 100 && <>
                 <StandardButton
@@ -38,7 +36,7 @@ export default function HeaderWithLogo({className="", children}) {
                   styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
                 />
                 <StandardButton
-                  link="https://learn.blockchainedu.org/sign_up"
+                  link="https://learn.blockchainedu.org"
                   text="Sign Up"
                   color="orange"
                   styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
@@ -46,7 +44,7 @@ export default function HeaderWithLogo({className="", children}) {
               </>
             }
             <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="/donate">Donate </a>
-            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://learn.blockchainedu.org/sign_up">
+            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://learn.blockchainedu.org">
               Sign Up
             </a>
           </li>

@@ -62,13 +62,7 @@ export default function MobileDropdown(props) {
                       <a href="/">Home</a>
                     </li>
                     <li className="my-8">
-                      <a href="/learn">Learn Web3 Programs</a>
-                    </li>
-                    <li className="my-8">
-                      <a href="#">Frequently Asked Questions</a>
-                    </li>
-                    <li className="my-8">
-                      <a target="_blank" href="https://learn.blockchainedu.org/events">Events</a>
+                      <a href="/learn">Learn</a>
                     </li>
                     <li className="my-8">
                       <a href="/contact">Contact</a>
@@ -77,8 +71,8 @@ export default function MobileDropdown(props) {
                 </div>
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
-                    link="https://learn.blockchainedu.org/sign_in"
-                    text="Our Learning Platform"
+                    link="https://learn.blockchainedu.org/"
+                    text="Sign Up"
                     color="orange"
                     styling="text-center py-3 rounded-lg w-full px-8"
                   />
