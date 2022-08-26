@@ -139,7 +139,7 @@ export default function GetInvolved() {
                         </a>
                     </div>
                 </div>
-                <div className="bg-bengrey-200 lg:bg-transparent py-24 lg:pt-0 w-full lg:w-1/2 flex justify-center lg:justify-end px-7">
+                <div className="bg-bengrey-100 lg:bg-transparent py-24 lg:pt-0 w-full lg:w-1/2 flex justify-center lg:justify-end px-7">
                     <div>
                         <div className="font-mont text-center lg:text-left text-xs uppercase pb-7">
                             Choose Now

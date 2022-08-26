@@ -33,16 +33,10 @@ export default function DonationSlider(props) {
     if (currPercentage <= 0) {
       currValue = minValue;
     }
-    sliderCoverRef.current.style.left = `${Math.max(currPercentage - 30, 0)}%`;
+    const numPixels = currPercentage / 100 * (sliderRef.current.getBoundingClientRect().width - (sliderCoverRef.current.getBoundingClientRect().width * 3 / 4));
+    sliderCoverRef.current.style.left = `${Math.max(numPixels, 0)}px`;
+    console.log(sliderCoverRef.current.style.left);
     sliderCoverAmountRef.current.innerHTML = `\$${Math.floor(currValue)}`;
-    sliderCoverLeftArrow.current.style.color = "black";
-    sliderCoverRightArrow.current.style.color = "black";
-    if (currValue === minValue) {
-      sliderCoverLeftArrow.current.style.color = "gray";
-    }
-    if (currValue >= maxValue) {
-      sliderCoverRightArrow.current.style.color = "gray";
-    }
     props.onChange(currValue);
   }
 
@@ -72,11 +66,11 @@ export default function DonationSlider(props) {
   return (
     <>
       <div className="slidecontainer relative" ref={sliderRef} onMouseDown={startMovingSlider} onTouchStart={startMovingSlider} onMouseMove={moveDonationSlider} onTouchMove={moveDonationSlider}>
-        <div className="donation-slider-track relative z-0"></div>
-        <div className="donation-slider-cover absolute top-0 z-1 shadow-3xl select-none" ref={sliderCoverRef}>
-          <span className="left-arrow mr-3" ref={sliderCoverLeftArrow}>&lt;</span>
-          <span className="dollar-amount" ref={sliderCoverAmountRef}>${props.currValue}</span>
-          <span className="right-arrow ml-3" ref={sliderCoverRightArrow}>&gt;</span>
+        <div className="relative z-0 donation-slider-track"></div>
+        <div className="absolute top-0 z-1 shadow-3xl select-none bg-benblack-500 donation-slider-cover" ref={sliderCoverRef}>
+          <span className="mr-3 font-inter font-light text-bengrey-300 left-arrow" ref={sliderCoverLeftArrow}>|||</span>
+          <span className="font-inter text-lg text-white underline dollar-amount" ref={sliderCoverAmountRef}>$ {props.currValue}</span>
+          <span className="ml-3 font-inter font-light text-bengrey-300 right-arrow" ref={sliderCoverRightArrow}>|||</span>
         </div>
       </div>
     </>

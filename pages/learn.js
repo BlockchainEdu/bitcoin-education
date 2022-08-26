@@ -53,7 +53,7 @@ export default function Learn() {
                             <div className="pb-3">Blockchain Development</div>
                             <div className="pb-3">CELO L-EARN</div>
                         </div>
-                        <a href="https://learn.blockchainedu.org/sign_up" target="_blank">
+                        <a href="https://learn.blockchainedu.org" target="_blank">
                             <StandardButton
                                 styling="px-8 mt-5"
                                 color="orange"
