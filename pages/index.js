@@ -182,6 +182,43 @@ export default function Home({ locations }) {
                     />
                 </div>
             </section>
+            <section className="py-14 mx-auto" style={{ background: "#1E3745" }}>
+                <div class="flex flex-col lg:flex-row items-center justify-between w-11/12 mx-auto" style={{ maxWidth: "1000px" }}>
+                    <div>
+                        <h2 className="font-average text-white text-4xl lg:text-5xl text-left max-w-4xl mb-6">
+                            Join our newsletter
+                        </h2>
+                        <Mailchimp
+                            action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
+                            fields={[
+                                {
+                                    name: 'EMAIL',
+                                    placeholder: 'Email',
+                                    type: 'email',
+                                    required: true
+                                }
+                            ]}
+                            messages={
+                                {
+                                    sending: "Sending...",
+                                    success: "Thank you for subscribing!",
+                                    error: "An unexpected internal error has occurred.",
+                                    empty: "You must write an e-mail.",
+                                    duplicate: "Too many subscribe attempts for this email address",
+                                    button: "Subscribe"
+                                }
+                            }
+                            className="subscribe-form text-center flex items-start w-full"
+                        />
+                    </div>
+                    <Image
+                        width="450px"
+                        height="423px"
+                        src="/images/newsletter-home.jpg"
+                        quality={100}
+                    />
+                </div>
+            </section>
             <section className="py-14 pb-24 border-b">
                 <div className="w-11/12 mx-auto">
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto">
@@ -557,43 +594,6 @@ export default function Home({ locations }) {
                     />
                 </div>
             </section> */}
-            <section className="py-14 mx-auto" style={{ background: "#1E3745" }}>
-                <div class="flex flex-col lg:flex-row items-center justify-between w-11/12 mx-auto" style={{ maxWidth: "1000px" }}>
-                    <div>
-                        <h2 className="font-average text-white text-4xl lg:text-5xl text-left max-w-4xl mb-6">
-                            Join our newsletter
-                        </h2>
-                        <Mailchimp
-                            action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
-                            fields={[
-                                {
-                                    name: 'EMAIL',
-                                    placeholder: 'Email',
-                                    type: 'email',
-                                    required: true
-                                }
-                            ]}
-                            messages={
-                                {
-                                    sending: "Sending...",
-                                    success: "Thank you for subscribing!",
-                                    error: "An unexpected internal error has occurred.",
-                                    empty: "You must write an e-mail.",
-                                    duplicate: "Too many subscribe attempts for this email address",
-                                    button: "Subscribe"
-                                }
-                            }
-                            className="subscribe-form text-center flex items-start w-full"
-                        />
-                    </div>
-                    <Image
-                        width="450px"
-                        height="423px"
-                        src="/images/newsletter-home.jpg"
-                        quality={100}
-                    />
-                </div>
-            </section>
             <Footer />
         </div>
     )
