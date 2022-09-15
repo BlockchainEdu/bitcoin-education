@@ -339,12 +339,23 @@ export default function Home({ locations }) {
                     </div> */}
                     <div className="flex flex-col justify-between lg:flex-row">
                         <div className="text-lg w-full lg:w-1/2">
-                           Intro to The Metaverse
+                            Solidity Fundamentals
                         </div>
                         <div className="w-full lg:w-1/2">
                             <ul className="list-disc ml-4 mb-6" style={{ color: "#41434A" }}>
-                                <li>Take a deep dive into understanding how the Metaverse works! Learn how to trade, sell, collect, buy, and create unique NFTs.  </li>
-                                <li>Includes a specialization in virtual reality and virtual land Mortgages; join now and start your journey to a new future in the Metaverse!</li>
+                                <li>A hands-on course for mastering fundamental concepts of the Solidity programming language.</li>
+                                <li>Learn the basics, as well as how to build smart contracts and dApps from scratch.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="flex flex-col justify-between lg:flex-row">
+                        <div className="text-lg w-full lg:w-1/2">
+                           Intro to the Metaverse
+                        </div>
+                        <div className="w-full lg:w-1/2">
+                            <ul className="list-disc ml-4 mb-6" style={{ color: "#41434A" }}>
+                                <li>Take a deep dive into understanding how the Metaverse works! Learn how to trade, sell, collect, buy, and create unique NFTs.</li>
+                                <li>Includes a specialization in virtual reality and virtual land; join now and start your journey to a new future in the Metaverse!</li>
                             </ul>
                         </div>
                     </div>
@@ -359,7 +370,7 @@ export default function Home({ locations }) {
                             </ul>
                         </div>
                     </div> */}
-                    <div className="flex flex-col justify-between lg:flex-row">
+                    {/* <div className="flex flex-col justify-between lg:flex-row">
                         <div className="text-lg w-full lg:w-1/2">
                             Celo DeFi
                         </div>
@@ -369,7 +380,7 @@ export default function Home({ locations }) {
                                 <li>In this course series, you will learn how Celo works, and how to use this unique technology that aims to break down barriers by bringing the powerful benefits of DeFi to the users of the 6 billion smartphones.</li>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
             <section className="py-14 pb-24 border-b" style={{ background: "#FAFBFC" }}>
