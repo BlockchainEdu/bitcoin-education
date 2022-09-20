@@ -418,7 +418,7 @@ export default function Home({ locations }) {
                     </div>
                 </div>
             </section>
-            {/* <section className="py-24 pb-24 mx-auto" style={{ background: "#FAFBFC" }}>
+            <section className="py-24 pb-24 mx-auto" style={{ background: "#FAFBFC" }}>
                 <div className="mx-auto w-11/12" style={{ maxWidth: "1000px", background: "#FAFBFC" }}>
                     <h2 className="font-average text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">
                         Frequently Asked Questions
@@ -428,7 +428,7 @@ export default function Home({ locations }) {
                         at the heart of what we do and we are commited to helping new learners figure out how to get the most out of BEN.
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-                        <div className="border p-8 rounded-lg bg-white">
+                        <a target="_blank" href="https://learn.blockchainedu.org/" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -451,8 +451,8 @@ export default function Home({ locations }) {
                             <div class="text-sm font-inter">
                                 Are you new to Blockchain? Trading Cryptocurrency? Looking for a deep dive on DeFi? Become a member today and start learning!
                             </div>
-                        </div>
-                        <div className="border p-8 rounded-lg bg-white">
+                        </a>
+                        <a target="_blank" href="https://discord.com/invite/blockchainedu" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -475,8 +475,8 @@ export default function Home({ locations }) {
                             <div class="text-sm font-inter">
                                 Become part of the largest network of University blockchain clubs in the world.
                             </div>
-                        </div>
-                        <div className="border p-8 rounded-lg bg-white">
+                        </a>
+                        <a target="_blank" href="https://docs.google.com/presentation/d/1stVgjgui--ok7uG8t6QFvpGkv9rk2NuCRXIHctkbGN0/edit?usp=sharing" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -499,8 +499,8 @@ export default function Home({ locations }) {
                             <div class="text-sm font-inter">
                                 Check out or latest financial reports and donate to support more Web 3.0 education
                             </div>
-                        </div>
-                        <div className="border p-8 rounded-lg bg-white">
+                        </a>
+                        {/* <a target="_blank" href="" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -523,8 +523,8 @@ export default function Home({ locations }) {
                             <div class="text-sm font-inter">
                                 Become part of (or re-join) the largest and longest running blockchain student network in the world to connect with your fellow alumni and share your experience!
                             </div>
-                        </div>
-                        <div className="border p-8 rounded-lg bg-white">
+                        </a> */}
+                        {/* <a target="_blank" href="" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -547,8 +547,8 @@ export default function Home({ locations }) {
                             <div class="text-sm font-inter">
                                 BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
                             </div>
-                        </div>
-                        <div className="border p-8 rounded-lg bg-white">
+                        </a> */}
+                        <a target="_blank" href="/about" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -571,10 +571,10 @@ export default function Home({ locations }) {
                             <div class="text-sm font-inter">
                                 The Blockchain Education Network (BEN) is a 501(c)(3) non-porfit charitable organization founded in 2014.
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
-                <div className="flex flex-col lg:flex-row justify-between pt-16 mx-auto items-center lg:items-end w-11/12" style={{ maxWidth: "1000px" }}>
+                {/* <div className="flex flex-col lg:flex-row justify-between pt-16 mx-auto items-center lg:items-end w-11/12" style={{ maxWidth: "1000px" }}>
                     <div className="ml-0 w-full rounded-2xl p-2" style={{ maxWidth: "600px" }}>
                         <FAQItem
                             question="How many courses are included in BEN Learn?"
@@ -603,8 +603,8 @@ export default function Home({ locations }) {
                         src="/images/faq-home-image.jpg"
                         quality={100}
                     />
-                </div>
-            </section> */}
+                </div> */}
+            </section>
             <Footer />
         </div>
     )
