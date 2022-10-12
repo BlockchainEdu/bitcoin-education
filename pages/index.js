@@ -19,6 +19,7 @@ import { ChevronUpIcon } from '@heroicons/react/solid'
 import FAQItem from '../components/faqItem';
 import Mailchimp from 'react-mailchimp-form'
 import Popup from '../components/popup';
+import Script from 'next/script';
 
 const impactStats = [
     {
@@ -67,6 +68,8 @@ export default function Home({ locations }) {
         <div id="home">
             <Header />
             <Head>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7187550270272911"
+ crossorigin="anonymous"></script>
                 <title>Home | Blockchain Education Network</title>
             </Head>
             <section className="pt-10 lg:py-24 lg:pb-0 px-7">
