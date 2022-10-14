@@ -29,6 +29,7 @@ export default function HeaderWithLogo({className="", children}) {
           <li className="flex gap-x-14 justify-end items-center">
             <a className="font-semibold" href="/learn">Learn</a>
             <a className="font-semibold" href="/contact">Contact </a>
+            <a className="font-semibold" href="/about/team">Team </a>
             { offset > 100 && <>
                 <StandardButton
                   link="/donate"
