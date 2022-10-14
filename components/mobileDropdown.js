@@ -67,6 +67,9 @@ export default function MobileDropdown(props) {
                     <li className="my-8">
                       <a href="/contact">Contact</a>
                     </li>
+                    <li className="my-8">
+                      <a href="/about/team">Team</a>
+                    </li>
                   </ul>
                 </div>
                 <div className="bg-white pb-7 text-center">
