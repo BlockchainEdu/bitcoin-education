@@ -27,7 +27,7 @@ export default function Partners() {
                     value
                 }
                 assets {
-                    public_url 
+                    public_url
                 }
             }
           }
