@@ -83,6 +83,16 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
+            <div>
+            <a href="https://www.giveback.social/" target="_blank">
+              <Image width="125px" height="125px" src="/images/giveback-badge-certified.png" />
+                <div
+                  className="font-inter mt-10 text-sm"
+                  style={{ color: "#CFD2DC" }}
+                >
+              </div>
+            </a>
+            </div>
             {/* <div>
                   <ul className="space-y-3">
                     <li className="uppercase font-bold text-xs">Resources</li>
