@@ -294,18 +294,6 @@ export default function Home({ locations }) {
                             <Image
                                 width="50px"
                                 height="50px"
-                                src="/images/learn-stable-2.svg"
-                            />
-                        </div>
-                        <div className="font-inter text-xl">
-                            Learn about Stablecoins
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div>
-                            <Image
-                                width="50px"
-                                height="50px"
                                 src="/images/learn-solidity.svg"
                             />
                         </div>
