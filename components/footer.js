@@ -39,13 +39,11 @@ export default function Footer() {
             </div>
             <div className="mb-6">
             <a target="_blank" href="https://drive.google.com/file/d/1DeVoRAEAOzxJQ1jSlykklOakaLs8o_fb/view?usp=sharing" className="text-white underline">
-              Blockchain Education Network Inc is qualified charity with a US
-              501 (c)(3) public charity, EIN: 46-5280397
+              Blockchain Education Network is qualified non-profit with designation as a 501 (c)(3) public charity, EIN: 46-5280397
             </a>
             </div>
             <a target="_blank" href="https://drive.google.com/file/d/1FmpY4Lmy5kX1U26q2b13NtQBf4mni5Es/view" className="text-white underline">
-            Blockchain Education Network, Inc. <br/>
-The Organization is a qualified Puerto Rico 1101.01(a)(2)(A)(iv) public charity ,as an Educational Organization.
+            Blockchain Education Network is a qualified Puerto Rico 1101.01(a)(2)(A)(iv) public charity, as an Educational Organization.
             </a>
           </div>
         </div>
