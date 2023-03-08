@@ -37,17 +37,17 @@ export default function HeaderWithLogo({className="", children}) {
                   styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
                 />
                 <StandardButton
-                  link="https://learn.blockchainedu.org"
+                  link="https://learn.blockchainedu.org/membership-account/membership-checkout/?level=3"
                   target="_blank"
-                  text="Sign Up"
+                  text="Become a Member"
                   color="orange"
                   styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
                 />
               </>
             }
             <a className="px-4 font-semibold underline hidden-on-scroll" href="/donate">Donate </a>
-            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://learn.blockchainedu.org">
-              Sign Up
+            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://learn.blockchainedu.org/membership-account/membership-checkout/?level=3">
+              Become a Member
             </a>
           </li>
         </ul>

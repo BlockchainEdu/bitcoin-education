@@ -76,24 +76,49 @@ export default function Home({ locations }) {
                 <div className="w-11/12 mx-auto">
                     <div className="text-benorange-500 text-md font-inter font-semibold text-center">Blockchain Education Network</div>
                     <h1 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mt-4">
-                        We provide engaging blockchain education for audiences at all levels.
+                        Join thousands who are changing their lives using Web3.
                     </h1>
                     <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10">
-                        <div className="mx-auto lg:mx-0">
+                        {/*<div className="mx-auto lg:mx-0">
                             <StandardButton
                                 link="/donate"
                                 text="Donate"
                             />
-                        </div>
-                        <div className="mx-auto lg:mx-0">
+                        </div>*/}
+                        {/*}<div className="mx-auto lg:mx-0">
                             <StandardButton
                                 link="https://learn.blockchainedu.org/"
                                 color="orange"
-                                text="View Our Learning Platform"
+                                text="Sign Up"
+                            />
+                        </div>*/}
+                        <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
+                            <Mailchimp
+                                action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
+                                fields={[
+                                    {
+                                        name: 'EMAIL',
+                                        placeholder: 'Email',
+                                        type: 'email',
+                                        required: true
+                                    }
+                                ]}
+                                messages={
+                                    {
+                                        sending: "Sending...",
+                                        success: "Thanks for subscribing! Please check your email to confirm.",
+                                        error: "An unexpected internal error has occurred.",
+                                        empty: "Please put your email address.",
+                                        duplicate: "Too many subscribe attempts for this email address",
+                                        button: "Sign Up"
+                                    }
+                                }
+                                className="subscribe-form text-center flex items-start w-full"
                             />
                         </div>
                     </div>
                     <p className="text-bengrey-500 text-sm text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
+                        Read stories. Learn skills. Start companies.<br/>
                         Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over 1.7 billion adults
                         worldwide who don't have access to a bank account. We have built a community learning model that educates and
                         creates financial independence.
@@ -112,11 +137,10 @@ export default function Home({ locations }) {
                 <div className="w-11/12 mx-auto">
 
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
-                        Blockchain Education Network’s Impact
+                        Our Impact
                     </h2>
                     <p className="text-benblack-500 text-sm text-center mx-auto leading-6 pb-14" style={{ maxWidth: "610px" }}>
-                        Our vision is that anyone, regardless of where they are in the world, will be able to use blockchain as a
-                        vehicle to create wealth for themselves and their communities. Join now and start learning!
+                        We believe that anyone, regardless of where they are in the world, can use blockchain as a vehicle to create wealth for themselves and their communities. Join now and start learning!
                     </p>
                     <div className="border-t">
                         <div className="mx-auto flex flex-col lg:flex-row" style={{ maxWidth: "1000px" }}>

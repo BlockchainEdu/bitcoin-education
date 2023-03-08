@@ -771,3 +771,17 @@ a {
 .contact-page {
   background-color: rgb(247, 247, 247) !important;
 }
+
+/* Erick Custom */
+.subscribe-form input {
+    border: 2px solid #000;
+}
+
+.subscribe-form button {
+    white-space: nowrap;
+    margin: 0px 0px 0px 10px;
+}
+
+.subscribe-form input {
+    margin: 0;
+}
