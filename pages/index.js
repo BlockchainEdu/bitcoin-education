@@ -18,6 +18,7 @@ import { Disclosure } from '@headlessui/react'
 import { ChevronUpIcon } from '@heroicons/react/solid'
 import FAQItem from '../components/faqItem';
 import Mailchimp from 'react-mailchimp-form'
+import MailchimpWithRedirect from "../components/mailchimpWithRedirect";
 import Popup from '../components/popup';
 import Script from 'next/script';
 
@@ -59,11 +60,19 @@ const Map = dynamic(() => import("../components/map"), {
 
 export default function Home({ locations }) {
     const { sharedState, setSharedState } = useAppContext();
+
+    //For Mailchimp
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        console.log("Form submitted");
+    };
+
     if (locations.length === 0) {
         setTimeout(() => {
             window.location.reload()
         }, 1000)
     }
+
     return (
         <div id="home">
             <Header />
@@ -93,7 +102,7 @@ export default function Home({ locations }) {
                             />
                         </div>*/}
                         <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
-                            <Mailchimp
+                            <MailchimpWithRedirect
                                 action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
                                 fields={[
                                     {
@@ -114,6 +123,8 @@ export default function Home({ locations }) {
                                     }
                                 }
                                 className="subscribe-form text-center flex items-start w-full"
+                                redirectUrl="https://learn.blockchainedu.org"
+                                handleSubmit={handleSubmit}
                             />
                         </div>
                     </div>

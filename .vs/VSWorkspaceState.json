@@ -1,8 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\components"
+    "\\bitcoin-education",
+    "\\components",
+    "\\content",
+    "\\context",
+    "\\pages",
+    "\\public",
+    "\\public\\styles"
   ],
-  "SelectedNode": "\\README.md",
+  "SelectedNode": "\\pages\\index.js",
   "PreviewInSolutionExplorer": false
 }
