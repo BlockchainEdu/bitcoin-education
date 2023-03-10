@@ -96,7 +96,7 @@ export default function Home({ locations }) {
                             />
                         </div>*/}
                         <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
-                            <MailchimpWithRedirect
+                            <Mailchimp
                                 action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
                                 fields={[
                                     {
