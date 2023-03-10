@@ -61,12 +61,6 @@ const Map = dynamic(() => import("../components/map"), {
 export default function Home({ locations }) {
     const { sharedState, setSharedState } = useAppContext();
 
-    //For Mailchimp
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
-        console.log("Form submitted");
-    };
-
     if (locations.length === 0) {
         setTimeout(() => {
             window.location.reload()
@@ -123,8 +117,6 @@ export default function Home({ locations }) {
                                     }
                                 }
                                 className="subscribe-form text-center flex items-start w-full"
-                                redirectUrl="https://learn.blockchainedu.org"
-                                handleSubmit={handleSubmit}
                             />
                         </div>
                     </div>
