@@ -93,7 +93,6 @@ const cryptoInfo = [
     },
 ]
 
-
 export default function Donate() {
 
     const [globalClick, setGlobalClick] = useState(false);

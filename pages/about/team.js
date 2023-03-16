@@ -19,6 +19,7 @@ class TeamMember {
         this.email = email === "" ? undefined : `mailto:${email}`;
     }
 }
+
 const teamMembers = {
     "BEN Team": [
         new TeamMember("/images/team/erick.jpeg", "Erick Pinos", "President", "Erick Pinos is the President of the Blockchain Education Network (BEN). Erick is also the Americas Ecosystem Lead at Ontology Network, a public blockchain project focused on decentralized identity and data. Erick has a BS in Management from the Massachusetts Institute of Technology (MIT), where he was the President of the MIT Bitcoin Club, as well as a researcher at the MIT Digital Currency Initiative.", "https://www.linkedin.com/in/erickpinos/", "https://twitter.com/erickpinos", "erick@blockchainedu.org"),
