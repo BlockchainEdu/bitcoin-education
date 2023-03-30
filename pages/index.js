@@ -110,15 +110,15 @@ export default function Home({ locations }) {
                         <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
                             <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%", color: "white", fontWeight: "bold"}}></iframe>
                         </div>
-                        {/*
+{/*
                             <div className="mx-auto lg:mx-0">
                                 <StandardButton
                                     link="/donate"
                                     text="Donate"
                                 />
                             </div>
-                        */}
-                        {/*}
+*/}
+{/*}
                             <div className="mx-auto lg:mx-0">
                                 <StandardButton
                                     link="https://learn.blockchainedu.org/"
@@ -126,8 +126,8 @@ export default function Home({ locations }) {
                                     text="Sign Up"
                                 />
                             </div>
-                         */}
-                     {/*
+*/}
+{/*
                         <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
                             <Mailchimp
                                 action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
@@ -152,7 +152,7 @@ export default function Home({ locations }) {
                                 className="subscribe-form text-center flex items-start w-full"
                             />
                         </div>
-                     */}
+*/}
                     </div>
                     <div className="mx-auto flex justify-center">
                         <Image
