@@ -24,6 +24,7 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 
 ### Push to Vercel
 
-## 2023 nates
-
-Use yarn dev
+## 2023 Notes
+To run on localhost:
+- yarn install
+- yarn dev

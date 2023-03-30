@@ -95,32 +95,17 @@ export default function Home({ locations }) {
  crossorigin="anonymous"></script>
                 <title>Home | Blockchain Education Network</title>
             </Head>
-{/*}
-            <section className="py-24" style={{ backgroundColor: "#f5f7f7" }}>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
-
-                    {scholars.length > 0 && scholars.map(member =>
-                            <NationalTeamCard
-                              image={member.image}
-                              name={member.name}
-                              title={member.title}
-                              bio={member.bio}
-                              linkedin={member.linkedin}
-                              twitter={member.twitter}
-                              email={member.email}
-                              globalClick={globalClick}
-                              setGlobalClick={setGlobalClick}
-                            />
-                    )}
-                </div>
-            </section>*/}
 
             <section className="pt-10 lg:py-24 lg:pb-0 px-7">
                 <div className="w-11/12 mx-auto">
                     <div className="text-benorange-500 text-md font-inter font-semibold text-center">Blockchain Education Network</div>
                     <h1 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mt-4">
-                        Join thousands who are changing their lives using Web3.
+                        Learn to earn.
                     </h1>
+                    <div className="text-bengrey-500 text-lg text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
+                        Join 7,000+ subscribers to learn every week how you can earn more in crypto.
+                    </div>
+
                     <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10">
                         {/*<div className="mx-auto lg:mx-0">
                             <StandardButton
@@ -160,11 +145,6 @@ export default function Home({ locations }) {
                             />
                         </div>
                     </div>
-                    <p className="text-bengrey-500 text-sm text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-                        Over 3.5 billion adults lack an understanding of basic financial concepts, followed by over 1.7 billion adults
-                        worldwide who don't have access to a bank account. We have built a community learning model that educates and
-                        creates financial independence.
-                    </p>
                     <div className="mx-auto flex justify-center">
                         <Image
                             width="1000px"
@@ -229,6 +209,32 @@ export default function Home({ locations }) {
                     </div>
                 </div>
             </section>
+{/*
+            <section className="py-14" style={{ backgroundColor: "#f5f7f7" }}>
+                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
+                        Meet Our Scholars
+                    </h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
+
+                    {scholars.length > 0 && scholars.map(member =>
+                            <NationalTeamCard
+                              image={member.image}
+                              name={member.name}
+                              title={member.title}
+                              bio={member.bio}
+                              linkedin={member.linkedin}
+                              twitter={member.twitter}
+                              email={member.email}
+                              globalClick={globalClick}
+                              setGlobalClick={setGlobalClick}
+                            />
+                    )}
+                </div>
+            </section>
+*/}
+
+{/*
             <section className="py-14" style={{ background: "#fafbfc" }}>
                 <div class="w-11/12 max-w-7xl m-auto flex flex-col lg:flex-row items-center" style={{ maxWidth: "1000px" }}>
                     <div className="w-full lg:w-1/2 pb-14 lg:pb-0">
@@ -251,6 +257,9 @@ export default function Home({ locations }) {
                     />
                 </div>
             </section>
+*/}
+{/*
+
             <section className="py-14 mx-auto" style={{ background: "#1E3745" }}>
                 <div class="flex flex-col lg:flex-row items-center justify-between w-11/12 mx-auto" style={{ maxWidth: "1000px" }}>
                     <div>
@@ -288,6 +297,8 @@ export default function Home({ locations }) {
                     />
                 </div>
             </section>
+*/}
+{/*
             <section className="py-14 pb-24 border-b">
                 <div className="w-11/12 mx-auto">
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto">
@@ -309,6 +320,8 @@ export default function Home({ locations }) {
                     </div>
                 </div>
             </section>
+*/}
+{/*
             <section className="w-11/12 mx-auto border-b pb-14">
                 <div className="-mt-20 mx-auto justify-center flex">
                     <Image
@@ -382,6 +395,7 @@ export default function Home({ locations }) {
                 </div>
                 <div className="w-11/12 mx-auto font-inter mt-20 mx-auto" style={{ maxWidth: "1000px" }}>
                     <div className="text-center font-semibold text-lg mb-10">Presenting some of our most popular courses:</div>
+*/}
                     {/* <div className="flex flex-col justify-between lg:flex-row">
                         <div className="text-lg w-full lg:w-1/2">
                             Bitcoin & Ethereum Basics
@@ -394,6 +408,7 @@ export default function Home({ locations }) {
                             </ul>
                         </div>
                     </div> */}
+{/*
                     <div className="flex flex-col justify-between lg:flex-row">
                         <div className="text-lg w-full lg:w-1/2">
                             Solidity Fundamentals
@@ -416,6 +431,7 @@ export default function Home({ locations }) {
                             </ul>
                         </div>
                     </div>
+*/}
                     {/* <div className="flex flex-col justify-between lg:flex-row">
                         <div className="text-lg w-full lg:w-1/2">
                             Programming in Solidity
@@ -438,8 +454,11 @@ export default function Home({ locations }) {
                             </ul>
                         </div>
                     </div> */}
+{/*
                 </div>
             </section>
+*/}
+{/*
             <section className="py-14 pb-24 border-b" style={{ background: "#FAFBFC" }}>
                 <div className="w-11/12 mx-auto">
 
@@ -475,6 +494,7 @@ export default function Home({ locations }) {
                     </div>
                 </div>
             </section>
+*/}
             <section className="py-24 pb-24 mx-auto" style={{ background: "#FAFBFC" }}>
                 <div className="mx-auto w-11/12" style={{ maxWidth: "1000px", background: "#FAFBFC" }}>
                     <h2 className="font-average text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">
@@ -509,7 +529,7 @@ export default function Home({ locations }) {
                                 Are you new to Blockchain? Trading Cryptocurrency? Looking for a deep dive on DeFi? Become a member today and start learning!
                             </div>
                         </a>
-                        <a target="_blank" href="https://discord.com/invite/blockchainedu" className="border p-8 rounded-lg bg-white">
+                        <a target="_blank" href="https://learn.blockchainedu.org" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -527,10 +547,10 @@ export default function Home({ locations }) {
                                 </div>
                             </div>
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                University Club
+                                University Students
                             </div>
                             <div class="text-sm font-inter">
-                                Become part of the largest network of University blockchain clubs in the world.
+                                Sign up and get access to opportunities, free flights and scholarships to blockchain conferennces.
                             </div>
                         </a>
                         <a target="_blank" href="https://docs.google.com/presentation/d/1stVgjgui--ok7uG8t6QFvpGkv9rk2NuCRXIHctkbGN0/edit?usp=sharing" className="border p-8 rounded-lg bg-white">
@@ -626,7 +646,7 @@ export default function Home({ locations }) {
                                 About Us
                             </div>
                             <div class="text-sm font-inter">
-                                The Blockchain Education Network (BEN) is a 501(c)(3) non-porfit charitable organization founded in 2014.
+                                The Blockchain Education Network (BEN) is a 501(c)(3) non-profit organization founded in 2014.
                             </div>
                         </a>
                     </div>
