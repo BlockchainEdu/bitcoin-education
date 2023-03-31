@@ -108,7 +108,7 @@ export default function Home({ locations }) {
 
                     <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10">
                         <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
-                            <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%", color: "white", fontWeight: "bold"}}></iframe>
+                            <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%"}}></iframe>
                         </div>
 {/*
                             <div className="mx-auto lg:mx-0">

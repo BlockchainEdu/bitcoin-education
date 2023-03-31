@@ -32,6 +32,10 @@
   position: relative;
 }
 
+.overlay-popup-close:hover {
+  cursor: pointer;
+}
+
 .aspect-square {
   aspect-ratio: 1 / 1;
 }

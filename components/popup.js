@@ -23,8 +23,8 @@ export default function Popup() {
                   Join 7,000+ subscribers to learn every week how you can earn more in crypto.
                 </div>
                 <div>
-                    <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
-                        <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%", color: "white", fontWeight: "bold"}}></iframe>
+                    <div className="mx-auto lg:mx-0">
+                        <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%"}}></iframe>
                      </div>
 
 {/*
@@ -66,7 +66,7 @@ export default function Popup() {
 */}
                 </div>
               </div>
-              <div className="w-full lg:w-1/2 text-sm font-inter" style={{ backgroundImage: "url(/images/popup-image.jpg)", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}>
+              <div className="w-full lg:w-1/2 text-sm font-inter" style={{ backgroundImage: "url(/images/popup-image-2.jpg)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "80%"}}>
               </div>
             </div>
           </div>

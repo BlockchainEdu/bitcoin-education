@@ -4,7 +4,7 @@ import Popup from "./popup";
 import Image from "next/image";
 
 export default function Footer() {
-  const popupDelayInSeconds = 180;
+  const popupDelayInSeconds = 10;
   const [showPopup, setShowPopup] = useState(false);
   setTimeout(() => {
     if (window.sessionStorage.getItem("hasShownPopup")) {
