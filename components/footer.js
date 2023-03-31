@@ -38,12 +38,12 @@ export default function Footer() {
               301-97251 Grand Rapids, MI 49546
             </div>
             <div className="mb-6">
-            <a target="_blank" href="https://drive.google.com/file/d/1DeVoRAEAOzxJQ1jSlykklOakaLs8o_fb/view?usp=sharing" className="text-white underline">
-              Blockchain Education Network is qualified non-profit with designation as a 501 (c)(3) public charity, EIN: 46-5280397
-            </a>
+              <a target="_blank" href="https://drive.google.com/file/d/1DeVoRAEAOzxJQ1jSlykklOakaLs8o_fb/view?usp=sharing" className="text-white underline">
+                Blockchain Education Network is qualified non-profit with designation as a 501 (c)(3) public charity, EIN: 46-5280397
+              </a>
             </div>
             <a target="_blank" href="https://drive.google.com/file/d/1FmpY4Lmy5kX1U26q2b13NtQBf4mni5Es/view" className="text-white underline">
-            Blockchain Education Network is a qualified Puerto Rico 1101.01(a)(2)(A)(iv) public charity, as an Educational Organization.
+              Blockchain Education Network is a qualified Puerto Rico 1101.01(a)(2)(A)(iv) public charity, as an Educational Organization.
             </a>
           </div>
         </div>
@@ -87,16 +87,6 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div>
-            <a href="https://www.giveback.social/" target="_blank">
-              <Image width="125px" height="125px" src="/images/giveback-badge-certified.png" />
-                <div
-                  className="font-inter mt-10 text-sm"
-                  style={{ color: "#CFD2DC" }}
-                >
-              </div>
-            </a>
-            </div>
             {/* <div>
                   <ul className="space-y-3">
                     <li className="uppercase font-bold text-xs">Resources</li>
@@ -107,18 +97,6 @@ export default function Footer() {
                     <li className="text-sm">Privacy</li>
                   </ul>
                 </div> */}
-          </div>
-          <div className="mt-10 flex flex-row gap-x-8">
-            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.blockchainedu.app">
-              <Image
-                width="135px"
-                height="40px"
-                src="/images/google-play.svg"
-              />
-            </a>
-            <a target="_blank" href="https://apps.apple.com/app/ben-learn/id1636671166">
-              <Image width="120px" height="40px" src="/images/app-store.svg" />
-            </a>
           </div>
         </div>
       </div>
