@@ -103,7 +103,7 @@ export default function Home({ locations }) {
                         Learn to earn!
                     </h1>
                     <div className="text-bengrey-500 text-lg text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-                        Join 7,000+ subscribers to learn every week how you can earn more in crypto.
+                        Join 7,000+ subscribers to learn every week on how you can earn more in crypto.
                     </div>
 
                     <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10">

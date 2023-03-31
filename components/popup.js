@@ -20,7 +20,7 @@ export default function Popup() {
                   Learn to earn!
                 </div>
                 <div className="text-sm font-inter my-6">
-                  Join 7,000+ subscribers to learn every week how you can earn more in crypto.
+                  Join 7,000+ subscribers to learn every week on how you can earn more in crypto.
                 </div>
                 <div>
                     <div className="mx-auto lg:mx-0">
