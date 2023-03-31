@@ -100,7 +100,7 @@ export default function Home({ locations }) {
                 <div className="w-11/12 mx-auto">
                     <div className="text-benorange-500 text-md font-inter font-semibold text-center">Blockchain Education Network</div>
                     <h1 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mt-4">
-                        Learn to earn.
+                        Learn to earn!
                     </h1>
                     <div className="text-bengrey-500 text-lg text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
                         Join 7,000+ subscribers to learn every week how you can earn more in crypto.
