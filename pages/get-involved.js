@@ -48,7 +48,7 @@ export default function GetInvolved() {
                         <p className="text-black text-lg md:text-2xl pt-10 max-w-xs m-auto lg:m-0 text-center lg:text-left font-medium leading-normal">
                             We offer a number of ways for you to get involved
                         </p>
-                        <a href="https://learn.blockchainedu.org/sign_up?from=https%3A%2F%2Flearn.blockchainedu.org%2F" target="_blank">
+                        <a href="https://blockchainedu.beehiiv.com/" target="_blank">
                         <button className="flex mx-auto lg:mx-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
                             Join us today
                         </button>
@@ -92,7 +92,7 @@ export default function GetInvolved() {
                         <p className="font-mont text-center lg:text-left m-auto lg:m-0 max-w-2xl text-bengrey-400 max-w-lg">
                             Are you a University professor, faculty member or a High School teacher? From connecting to the largest running faculty network in the world, to publishing your academic research in our journal. Learn from other blockchain professors and get access to great resources to become a better teacher. <br /><br />Enable underrepresented students to have access to a formal blockchain education with your courses and content.
                         </p>
-                        <a href="https://learn.blockchainedu.org/sign_up?from=https%3A%2F%2Flearn.blockchainedu.org%2F" target="_blank">
+                        <a href="https://blockchainedu.beehiiv.com/" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border font-bold text-xl px-16 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Join Us</button>
                         </a>
                     </div>
@@ -115,7 +115,7 @@ export default function GetInvolved() {
                         <p className="font-mont text-center lg:text-left m-auto lg:m-0 max-w-2xl text-bengrey-400 max-w-lg">
                             Are you a University professor, faculty member or a High School teacher? From connecting to the largest running faculty network in the world, to publishing your academic research in our journal. Learn from other blockchain professors and get access to great resources to become a better teacher. <br /><br />Enable underrepresented students to have access to a formal blockchain education with your courses and content.
                         </p>
-                        <a href="https://learn.blockchainedu.org/sign_up?from=https%3A%2F%2Flearn.blockchainedu.org%2F" target="_blank">
+                        <a href="https://blockchainedu.beehiiv.com/" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border font-bold text-xl px-16 rounded-full py-4 transition duration-500 hover:text-white text-benblack-500 hover:bg-bengrey-300">Join Us</button>
                         </a>
                     </div>
@@ -134,7 +134,7 @@ export default function GetInvolved() {
                         <p className="font-mont text-center lg:text-left m-auto text-sm lg:m-0 text-black max-w-lg leading-normal" style={{maxWidth:"440px;"}}>
                             If you’ve already graduated from college but still want ways to help BEN, join us as an alumni! We are looking for prestigious speakers for club events, teachers for BEN Learn, and mentors for our career center. Get involved and become an advisor to help us grow to the next level. Support the next generation of B.E.N. students with a donation and see the impact you have on students. <br /><br />Connect with fellow alumni through our extended network online or join us as national and international events.
                         </p>
-                        <a href="https://learn.blockchainedu.org/feed" target="_blank">
+                        <a href="https://blockchainedu.beehiiv.com/" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border border-benblack-500 hover:border-bengrey-300 font-bold text-xl bg-benblack-500 px-16 rounded-full py-4 transition duration-500 hover:text-white text-white hover:bg-bengrey-300 shadow-button">Join Us</button>
                         </a>
                     </div>
@@ -150,7 +150,7 @@ export default function GetInvolved() {
                         <p className="font-mont text-center lg:text-left m-auto text-sm lg:m-0 text-bengrey-400 max-w-lg leading-normal" style={{maxWidth:"440px;"}}>
                             If you’ve already graduated from college but still want ways to help BEN, join us as an alumni! We are looking for prestigious speakers for club events, teachers for BEN Learn, and mentors for our career center. Get involved and become an advisor to help us grow to the next level. Support the next generation of B.E.N. students with a donation and see the impact you have on students. <br /><br />Connect with fellow alumni through our extended network online or join us as national and international events.
                         </p>
-                        <a href="https://learn.blockchainedu.org/feed" target="_blank">
+                        <a href="https://blockchainedu.beehiiv.com/" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border border-white hover:border-benorange-500 font-bold text-xl bg-white px-16 rounded-full py-4 transition duration-500 hover:text-white text-black hover:bg-benorange-500 shadow-button">Join Us</button>
                         </a>
                     </div>

@@ -37,7 +37,7 @@ export default function HeaderWithLogo({className="", children}) {
                   styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
                 />
                 <StandardButton
-                  link="https://learn.blockchainedu.org/"
+                  link="https://blockchainedu.beehiiv.com/"
                   target="_blank"
                   text="Start Learning"
                   color="orange"
@@ -46,7 +46,7 @@ export default function HeaderWithLogo({className="", children}) {
               </>
             }
             <a className="px-4 font-semibold underline hidden-on-scroll" href="/donate">Donate </a>
-            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://learn.blockchainedu.org/">
+            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://blockchainedu.beehiiv.com/">
               Start Learning
             </a>
           </li>

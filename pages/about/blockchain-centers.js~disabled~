@@ -56,7 +56,7 @@ export default function BlockchainCenters() {
                             </div>
                         </div>
                         <div className="m-auto flex content-center justify-center lg:justify-start">
-                            <a href="https://learn.blockchainedu.org/all-courses" target="_blank">
+                            <a href="https://blockchainedu.beehiiv.com/" target="_blank">
                             <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
                                 Join as a Blockchain Center/Lab
                             </button>
