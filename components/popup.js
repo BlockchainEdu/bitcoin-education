@@ -24,6 +24,7 @@ export default function Popup() {
                 </div>
                 <div>
                     <div className="mx-auto lg:mx-0">
+                        <script type="text/javascript" async src="https://embeds.beehiiv.com/attribution.js"></script>
                         <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%"}}></iframe>
                      </div>
 
