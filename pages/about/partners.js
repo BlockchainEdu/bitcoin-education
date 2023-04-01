@@ -85,24 +85,10 @@ export default function Partners() {
             benefits include:
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-3 gap-x-10">
-            <PartnerShipBenefits benefit="Participate in BEN talent survey and recruiting process" />
             <PartnerShipBenefits benefit="Sponsorship discounts & priority" />
-            <PartnerShipBenefits benefit="Propose and contribute to projects" />
             <PartnerShipBenefits benefit="Talent pipeline from top global universities" />
-            <PartnerShipBenefits benefit="Incorporate educational material in our university-accredited blockchain courses, events and meetups" />
-            <PartnerShipBenefits benefit="Participate in BEN Research" />
-            <PartnerShipBenefits
-              benefit="Participate and suggest working groups"
-              style="lg:-mt-5"
-            />
-            <PartnerShipBenefits
-              benefit="Free or subsidized tickets to paid events"
-              style="lg:-mt-0"
-            />
-            <PartnerShipBenefits
-              benefit="Assist sourcing speakers and sponsors for events"
-              style="lg:-mt-10"
-            />
+            <PartnerShipBenefits benefit="Incorporate educational material in our lessons" />
+            <PartnerShipBenefits benefit="Free or subsidized tickets to paid events" />
           </div>
         </div>
       </section>

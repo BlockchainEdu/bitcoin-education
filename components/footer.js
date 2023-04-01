@@ -59,7 +59,7 @@ export default function Footer() {
                   <a href="/donate">Donate</a>
                 </li>
                 <li className="text-sm">
-                  <a href="https://learn.blockchainedu.org/">Start Learning</a>
+                  <a href="https://blockchainedu.beehiiv.com/">Subscribe</a>
                 </li>
                 {/* <li className="text-sm">Programs</li>
                     <li className="text-sm">For Professors</li>

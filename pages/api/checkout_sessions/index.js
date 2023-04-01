@@ -6,7 +6,7 @@ import Stripe from 'stripe';
 const currency = 'usd';
 
 function getExtraParams(origin, amount) {
-  const success_url = `${origin}/thank-you?session_id={CHECKOUT_SESSION_ID}`;
+  const success_url = `${origin}/thank-you-donor?session_id={CHECKOUT_SESSION_ID}`;
   const cancel_url = `${origin}/`;
   if (amount.frequency === giftFrequency.monthly) {
     return {
