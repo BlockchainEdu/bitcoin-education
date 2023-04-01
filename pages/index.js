@@ -93,6 +93,7 @@ export default function Home({ locations }) {
             <Head>
                 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7187550270272911"
                     crossorigin="anonymous"></script>
+                <script type="text/javascript" async src="https://embeds.beehiiv.com/attribution.js"></script>
                 <title>Home | Blockchain Education Network</title>
             </Head>
 
