@@ -1,14 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\bitcoin-education",
     "\\components",
-    "\\content",
-    "\\context",
+    "\\components\\modals",
+    "\\consts",
     "\\pages",
+    "\\pages\\api",
+    "\\pages\\api\\checkout_sessions",
+    "\\pages\\projects",
     "\\public",
     "\\public\\styles"
   ],
-  "SelectedNode": "\\components\\header.js",
+  "SelectedNode": "\\pages\\about\\partners.js",
   "PreviewInSolutionExplorer": false
 }

@@ -22,7 +22,7 @@ export default function ThankYou() {
                 <li className="mb-3"><strong>Make sure you've got our email in your inbox.</strong> If you <strong>can't see</strong> it, check your <strong>spam folder</strong> and make sure to add us to <strong>your 'not spam' section.</strong></li>
               </ol>
           </div>
-          <div className="mb-6">This takes less than 4mins to read! How awesome is that? 😎</div>
+          <div className="mb-6">This takes less than 4 mins to read! How awesome is that? 😎</div>
           <div className="mb-6">🧙‍♂️We've put together all our crypto knowledge for over 9 years into this newsletter to figure out when the bulls are coming and to find new trends. You gotta be in the know! 🦄</div>
           <div className="mb-6">⭐ And guess what? We've potentially found some of the sickest projects in crypto 📈 ! </div>
           <div className="mb-6">Keep your eyes peeled 👀, don't wanna miss out on this!</div>
