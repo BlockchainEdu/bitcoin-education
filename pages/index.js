@@ -22,7 +22,7 @@ import MailchimpWithRedirect from "../components/mailchimpWithRedirect";
 import Popup from '../components/popup';
 import Script from 'next/script';
 import NationalTeamCard from '../components/nationalTeamCard'
-import Scholars from '../content/scholars';
+import Stories from '../content/stories';
 
 const impactStats = [
     {
@@ -205,15 +205,10 @@ export default function Home({ locations }) {
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className="py-14" style={{ backgroundColor: "#f5f7f7" }}>
-                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
-                        Meet Our Scholars
-                    </h2>
-
+{/*
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
 
-                    {Scholars.length > 0 && Scholars.map(member =>
+                    {Stories.length > 0 && Stories.map(member =>
                             <NationalTeamCard
                               image={member.image}
                               name={member.name}
@@ -227,6 +222,8 @@ export default function Home({ locations }) {
                             />
                     )}
                 </div>
+*/}
+
             </section>
 
             {/*
