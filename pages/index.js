@@ -21,7 +21,7 @@ import Mailchimp from 'react-mailchimp-form'
 import MailchimpWithRedirect from "../components/mailchimpWithRedirect";
 import Popup from '../components/popup';
 import Script from 'next/script';
-import NationalTeamCard from '../components/nationalTeamCard'
+import StoryCard from '../components/storyCard'
 import Stories from '../content/stories';
 
 const impactStats = [
@@ -114,7 +114,7 @@ export default function Home({ locations }) {
                                 />
                             </div>
 */}
-                        {/*
+{/*
                         <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
                             <Mailchimp
                                 action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
@@ -205,24 +205,21 @@ export default function Home({ locations }) {
                         </div>
                     </div>
                 </div>
-{/*
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl m-auto gap-y-14">
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 max-w-6xl m-auto gap-y-10 sm:gap-y-4">
 
                     {Stories.length > 0 && Stories.map(member =>
-                            <NationalTeamCard
+                            <StoryCard
                               image={member.image}
                               name={member.name}
                               title={member.title}
                               bio={member.bio}
-                              linkedin={member.linkedin}
-                              twitter={member.twitter}
-                              email={member.email}
                               globalClick={globalClick}
                               setGlobalClick={setGlobalClick}
                             />
                     )}
                 </div>
-*/}
+
 
             </section>
 

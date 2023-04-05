@@ -798,3 +798,12 @@ li {
   list-style-type: disc;
   margin-left: 1.5em;
 }
+
+.story .flip-card {
+  background-color: transparent;
+  width: 200px;
+  height: 240px;
+  margin: 0 auto;
+  perspective: 1000px;
+  /* Remove this if you don't want the 3D effect */
+}
