@@ -90,7 +90,7 @@ export default function Home({ locations }) {
                         Learn to earn!
                     </h1>
                     <div className="text-bengrey-500 text-lg text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-                        Join 7,000+ subscribers to learn every week on how you can earn more in crypto.
+                        Join our community of 7,000+ subscribers for the latest news, rewards, discounts, free flights, co-founder networking, and top crypto analyses.
                     </div>
 
                     <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10 m-auto" style={{ "max-width": "800px" }}>
