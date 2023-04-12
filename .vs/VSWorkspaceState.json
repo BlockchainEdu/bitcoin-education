@@ -4,6 +4,7 @@
     "\\components",
     "\\components\\modals",
     "\\consts",
+    "\\content",
     "\\pages",
     "\\pages\\api",
     "\\pages\\api\\checkout_sessions",
@@ -11,6 +12,6 @@
     "\\public",
     "\\public\\styles"
   ],
-  "SelectedNode": "\\pages\\about\\partners.js",
+  "SelectedNode": "\\components\\popup.js",
   "PreviewInSolutionExplorer": false
 }
