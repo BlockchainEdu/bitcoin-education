@@ -141,6 +141,19 @@ export default function Home({ locations }) {
                         </div>
 */}
                     </div>
+
+                    <div className="mx-auto flex justify-center pb-12">
+                        <a href="https://beats.blockchainedu.org">
+                            <Image
+                                width="640px"
+                                height="474px"
+                                src="/images/home-image.png"
+                                quality={100}
+                            />
+                        </a>
+                    </div>
+
+{/*
                     <div className="mx-auto flex justify-center">
                         <Image
                             width="1000px"
@@ -149,6 +162,7 @@ export default function Home({ locations }) {
                             quality={100}
                         />
                     </div>
+*/}
                 </div>
             </section >
             <section className="bg-benorange-300 pt-14">
