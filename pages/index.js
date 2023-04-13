@@ -23,7 +23,7 @@ import Popup from '../components/popup';
 import Script from 'next/script';
 import StoryCard from '../components/storyCard'
 import Stories from '../content/stories';
-import BlogGrid from '../components/BlogGrid';
+import BlogGrid from '../components/blogGrid';
 
 const impactStats = [
     {
