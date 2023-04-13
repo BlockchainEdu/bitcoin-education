@@ -30,29 +30,28 @@ function BlogGrid() {
 
   return (
     <div className="grid-container blog-grid">
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl m-auto gap-y-10 sm:gap-y-4">
-      {posts.map((post) => (
-        <div key={post.link} className="grid-item">
-        <a href={post.link}>
-        <div className="text-center m-auto">
-            <div>
-              <div className="flip-card">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front" style={{backgroundImage: `url(${post.enclosure.url || ''})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
-                  </div>
-                  <div className="flip-card-back text-black font-mont p-5 text-sm text-left overflow-y-scroll">
-                    <div>{post.contentSnippet}</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl m-auto gap-y-10 sm:gap-y-4">
+            {posts.map((post) => (
+                <div key={post.link} className="grid-item">
+                    <div className="text-center m-auto">
+                        <div>
+                            <div className="flip-card">
+                                <div className="flip-card-inner">
+                                    <div className="flip-card-front" style={{backgroundImage: `url(${post.enclosure.url || ''})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></div>
+                                    <div className="flip-card-back text-black font-mont p-5 text-sm text-left overflow-y-scroll">
+                                    <div>{post.contentSnippet}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href={post.link}>
+                        <h3 className="font-mont font-bold text-xl text-black pt-5">{post.title}</h3>
+                        <div className="text-bengrey-300 pt-2"><small>{new Date(post.pubDate).toDateString()}</small></div>
+                    </a>
                   </div>
                 </div>
-              </div>
-            </div>
-            <h3 className="font-mont font-bold text-xl text-black pt-5">{post.title}</h3>
-            <div className="text-bengrey-300 pt-2"><small>{new Date(post.pubDate).toDateString()}</small></div>
-            </div>
-          </a>
+            ))}
         </div>
-      ))}
-    </div>
     </div>
   );
 }

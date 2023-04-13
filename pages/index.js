@@ -144,14 +144,12 @@ export default function Home({ locations }) {
                     </div>
 
                     <div className="mx-auto flex justify-center pb-12">
-                        <a href="https://beats.blockchainedu.org">
-                            <Image
-                                width="640px"
-                                height="474px"
-                                src="/images/home-image.png"
-                                quality={100}
-                            />
-                        </a>
+                        <Image
+                            width="640px"
+                            height="474px"
+                            src="/images/home-image.png"
+                            quality={100}
+                        />
                     </div>
 
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
