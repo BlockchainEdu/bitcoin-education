@@ -56,7 +56,7 @@ export default function MobileDropdown(props) {
                     </svg>
                   </Popover.Button>
                 </div>
-                <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2 grow">
+                <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2 grow">
                   <ul className="font-mont text-chablack-300 font-semibold">
                     <li className="my-8">
                       <a href="/">Home</a>

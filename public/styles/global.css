@@ -820,3 +820,9 @@ a {
     margin: 0 auto;
     perspective: 1000px;
 }
+
+@media (max-width: 1023px) {
+    .header .mobile-menu li > a:not(#always-visible-menu-button), .header li > div {
+        visibility: visible;
+    }
+}
