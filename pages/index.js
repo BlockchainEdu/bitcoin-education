@@ -508,7 +508,7 @@ export default function Home({ locations }) {
                         at the heart of what we do and we are commited to helping new learners figure out how to get the most out of BEN.
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-                        <a target="_blank" href="https://blockchainedu.beehiiv.com/" className="border p-8 rounded-lg bg-white">
+                        <a target="_blank" href="https://beats.blockchainedu.org/" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -532,7 +532,7 @@ export default function Home({ locations }) {
                                 Are you new to Blockchain? Trading Cryptocurrency? Looking for a deep dive on DeFi? Subscribe now and start learning!
                             </div>
                         </a>
-                        <a target="_blank" href="https://blockchainedu.beehiiv.com/" className="border p-8 rounded-lg bg-white">
+                        <a target="_blank" href="https://beats.blockchainedu.org/" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image

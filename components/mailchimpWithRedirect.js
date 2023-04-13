@@ -30,7 +30,7 @@ class MailchimpWithRedirect extends React.Component {
       } else {
         this.setState({ status: 'success' });
         // Redirect to URL after successful submission
-        window.location.href = "https://blockchainedu.beehiiv.com/";
+        window.location.href = "https://www.blockchainedu.org/";
       };
     });
   }
