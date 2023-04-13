@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function ThankYou() {
   return (
-    <div className="overflow-hidden thank-you-page">
+    <div className="overflow-hidden">
       <Header />
       <Head>
         <title>Thank You | Blockchain Education Network</title>
@@ -17,7 +17,7 @@ export default function ThankYou() {
           <h2 className="mb-6 text-center text-xl lg:text-2xl">Welcome to BEN Beats!</h2>
           <div className="mb-6">Hey, BENsters! Excited to hit the road with ya!</div>
           <div className="mb-6">To-Do List:</div>
-          <div className="mb-6">
+          <div className="mb-6 show-bullets">
               <ol>
                 <li className="mb-3"><strong>Don't forget to shoot us an "OK" in response to our welcome email.</strong> That way, you won't miss a beat with our weekly newsletters!</li>
                 <li className="mb-3"><strong>Make sure you've got our email in your inbox.</strong> If you <strong>can't see</strong> it, check your <strong>spam folder</strong> and make sure to add us to <strong>your 'not spam' section.</strong></li>
