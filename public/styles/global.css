@@ -42,7 +42,8 @@
 
 .header.scrolled {
   box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  padding-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 }
 
 .header.scrolled.white-header {
@@ -74,6 +75,10 @@
   }
   .header.orange-header #headlessui-popover-panel-2 li a, .header.orange-header #headlessui-popover-panel-2 li button {
     color: black;
+  }
+  .header.scrolled {
+    padding-bottom: 0.5rem;
+    padding-top: 1.5rem;
   }
 }
 
