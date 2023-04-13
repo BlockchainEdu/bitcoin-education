@@ -23,6 +23,7 @@ import Popup from '../components/popup';
 import Script from 'next/script';
 import StoryCard from '../components/storyCard'
 import Stories from '../content/stories';
+import BlogGrid from '../components/BlogGrid';
 
 const impactStats = [
     {
@@ -153,6 +154,13 @@ export default function Home({ locations }) {
                         </a>
                     </div>
 
+                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
+                        Recent Posts
+                    </h2>
+
+                    <div className="mx-auto flex justify-center pb-12">
+                    <BlogGrid />
+                    </div>
 
 {/*
                     <div className="mx-auto flex justify-center">

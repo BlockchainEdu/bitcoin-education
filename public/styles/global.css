@@ -812,3 +812,11 @@ a {
   perspective: 1000px;
   /* Remove this if you don't want the 3D effect */
 }
+
+.blog-grid .flip-card {
+    background-color: transparent;
+    width: 263px;
+    height: 160px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
