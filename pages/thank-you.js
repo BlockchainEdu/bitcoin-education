@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 export default function ThankYou() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden thank-you-page">
       <Header />
       <Head>
         <title>Thank You | Blockchain Education Network</title>
