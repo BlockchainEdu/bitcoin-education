@@ -14,7 +14,7 @@ function BlogGrid() {
         const sortedPosts = Array.isArray(feed) && feed.length > 0
           ? feed
               .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
-              .slice(0, 3) // display only the 3 most recent posts
+              .slice(0, 4) // display only the 3 most recent posts
           : [];
         setPosts(sortedPosts);
       } catch (error) {

@@ -174,12 +174,13 @@ export default function Home({ locations }) {
                 <div className="w-11/12 mx-auto">
 
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
-                        Our Impact
+                        Our Reach
                     </h2>
+{/*
                     <p className="text-benblack-500 text-sm text-center mx-auto leading-6 " style={{ maxWidth: "610px" }}>
                         We believe that anyone, regardless of where they are in the world, can use blockchain as a vehicle to create wealth for themselves and their communities.
                     </p>
-                    <p className="text-benblack-500 text-sm text-center mx-auto leading-6 pb-14" style={{ maxWidth: "610px" }}>Subscribe now and start learning!</p>
+ */}
                     <div className="border-t">
                         <div className="mx-auto flex flex-col lg:flex-row" style={{ maxWidth: "1000px" }}>
                             <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l py-14 px-10">
