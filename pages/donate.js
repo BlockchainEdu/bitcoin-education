@@ -1,3 +1,7 @@
+import React, { useState, useEffect } from 'react';
+import Head from "next/head";
+import Script from "next/script";
+import Image from 'next/image';
 import CryptoDonateItem from '../components/cryptoDonateItem';
 import DonateOptions from '../components/donateOptions';
 import Footer from '../components/footer';
@@ -8,9 +12,8 @@ import Modal from '../components/donateSliderButton';
 import PopupVideo from '../components/popupVideo';
 import StandardButton from '../components/standardButton';
 import { TeamMemberService } from '../services';
-import React, { useState, useEffect } from 'react';
-import Head from "next/head"
-import Script from "next/script"
+import StoryCard from '../components/storyCard';
+import Stories from '../content/stories';
 
 const cryptoInfo = [
     {
@@ -221,6 +224,78 @@ export default function Donate() {
                     )}
                 </div> */}
             </div>
+            <section className="bg-benorange-300 pt-14">
+                <div className="w-11/12 mx-auto">
+
+                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
+                        Our Impact
+                    </h2>
+                    <p className="text-benblack-500 text-sm text-center mx-auto leading-6 " style={{ maxWidth: "610px" }}>
+                        We believe that anyone, regardless of where they are in the world, can use blockchain as a vehicle to create wealth for themselves and their communities.
+                    </p>
+                    <p className="text-benblack-500 text-sm text-center mx-auto leading-6 pb-14" style={{ maxWidth: "610px" }}>Subscribe now and start learning!</p>
+                    <div className="border-t">
+                        <div className="mx-auto flex flex-col lg:flex-row" style={{ maxWidth: "1000px" }}>
+                            <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l py-14 px-10">
+                                <Image
+                                    width="100px"
+                                    height="100px"
+                                    src="/images/ambassadors-home.svg"
+                                />
+                                <div className="font-average text-6xl">
+                                    6,000+
+                                </div>
+                                <div className="font-inter font-semibold text-xl">
+                                    Students
+                                </div>
+                            </div>
+                            <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l lg:border-r py-14 px-10">
+                                <Image
+                                    width="100px"
+                                    height="100px"
+                                    src="/images/companies-home.svg"
+                                />
+                                <div className="font-average text-6xl">
+                                    25+
+                                </div>
+                                <div className="font-inter font-semibold text-xl">
+                                    Companies Founded
+                                </div>
+                            </div>
+                            <div className="text-center w-full lg:w-1/3 lg:border-r py-14 px-10">
+                                <Image
+                                    width="100px"
+                                    height="100px"
+                                    src="/images/jobs-home.svg"
+                                />
+                                <div className="font-average text-6xl">
+                                    200+
+                                </div>
+                                <div className="font-inter font-semibold text-xl">
+                                    Universities
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 max-w-6xl m-auto gap-y-10 sm:gap-y-4">
+
+                    {Stories.length > 0 && Stories.map(member =>
+                            <StoryCard
+                              image={member.image}
+                              name={member.name}
+                              title={member.title}
+                              bio={member.bio}
+                              globalClick={globalClick}
+                              setGlobalClick={setGlobalClick}
+                            />
+                    )}
+                </div>
+
+
+            </section>
+
             <section>
                 <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto items-center justify-between mb-14 lg:mb-0 mt-20 lg:mt-0">
                     <div className="w-full lg:w-6/12 m-auto pt-14 pb-0 lg:pb-24">
@@ -291,6 +366,84 @@ export default function Donate() {
                         </p>
                     </div>
                 </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+
+                        <a target="_blank" href="https://docs.google.com/presentation/d/1stVgjgui--ok7uG8t6QFvpGkv9rk2NuCRXIHctkbGN0/edit?usp=sharing" className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/ben-financials.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                Ben Financials
+                            </div>
+                            <div class="text-sm font-inter">
+                                Check out or latest financial reports and donate to support more Web 3.0 education
+                            </div>
+                        </a>
+
+                        <a target="_blank" href="https://drive.google.com/file/d/1DeVoRAEAOzxJQ1jSlykklOakaLs8o_fb/view?usp=sharing" className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/about-us.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                501c3 Status
+                            </div>
+                            <div class="text-sm font-inter">
+                Blockchain Education Network is qualified non-profit with designation as a 501 (c)(3) public charity, EIN: 46-5280397
+                            </div>
+                        </a>
+
+                        <a target="_blank" href="https://drive.google.com/file/d/1FmpY4Lmy5kX1U26q2b13NtQBf4mni5Es/view" className="border p-8 rounded-lg bg-white">
+                            <div className="flex justify-between">
+                                <div>
+                                    <Image
+                                        width="65px"
+                                        height="65px"
+                                        src="/images/blockchain-partners.svg"
+                                    />
+                                </div>
+                                <div>
+                                    <Image
+                                        width="24px"
+                                        height="24px"
+                                        src="/images/home-arrow.svg"
+                                    />
+                                </div>
+                            </div>
+                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+                                1101 Status
+                            </div>
+                            <div class="text-sm font-inter">
+              Blockchain Education Network is a qualified Puerto Rico 1101.01(a)(2)(A)(iv) public charity, as an Educational Organization.
+                            </div>
+                        </a>
+
+                        </div>
             </section>
             <section>
                 <div className="flex flex-col-reverse lg:flex-row max-w-7xl m-auto items-center justify-between py-24 px-7">

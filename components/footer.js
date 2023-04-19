@@ -37,6 +37,7 @@ export default function Footer() {
               625 Kenmoor Ave Suite <br />
               301-97251 Grand Rapids, MI 49546
             </div>
+{/*
             <div className="mb-6">
               <a target="_blank" href="https://drive.google.com/file/d/1DeVoRAEAOzxJQ1jSlykklOakaLs8o_fb/view?usp=sharing" className="text-white underline">
                 Blockchain Education Network is qualified non-profit with designation as a 501 (c)(3) public charity, EIN: 46-5280397
@@ -45,6 +46,8 @@ export default function Footer() {
             <a target="_blank" href="https://drive.google.com/file/d/1FmpY4Lmy5kX1U26q2b13NtQBf4mni5Es/view" className="text-white underline">
               Blockchain Education Network is a qualified Puerto Rico 1101.01(a)(2)(A)(iv) public charity, as an Educational Organization.
             </a>
+          */}
+
           </div>
         </div>
         <div className="w-full lg:w-1/2">
@@ -55,9 +58,11 @@ export default function Footer() {
             <div>
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Product</li>
+{/*}
                 <li className="text-sm">
                   <a href="/donate">Donate</a>
                 </li>
+*/}
                 <li className="text-sm">
                   <a href="https://beats.blockchainedu.org/">Subscribe</a>
                 </li>

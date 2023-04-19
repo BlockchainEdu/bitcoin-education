@@ -33,7 +33,7 @@ export default function HeaderWithLogo({className="", children}) {
             { offset > 100 && <>
                 <StandardButton
                   link="/donate"
-                  text="Donate"
+                  text="Scholarships"
                   styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
                 />
                 <StandardButton
@@ -45,7 +45,7 @@ export default function HeaderWithLogo({className="", children}) {
                 />
               </>
             }
-            <a className="px-4 font-semibold underline hidden-on-scroll" href="/donate">Donate </a>
+            <a className="px-4 font-semibold underline hidden-on-scroll" href="/donate">Scholarships </a>
             <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://beats.blockchainedu.org/">
               Subscribe
             </a>

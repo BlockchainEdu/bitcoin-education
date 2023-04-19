@@ -83,7 +83,7 @@ export default function MobileDropdown(props) {
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
                     link="/donate"
-                    text="Donate"
+                    text="Scholarships"
                     styling="text-center py-3 rounded-lg border-black w-full"
                   />
                 </div>

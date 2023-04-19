@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
 import Footer from "../components/footer";
 import Header from "../components/header";
-import Image from 'next/image'
+import Image from 'next/image';
+import Head from "next/head";
+import dynamic from "next/dynamic";
+import Script from 'next/script';
+import { getProjectsFromMonday } from '../services';
+import 'mapbox-gl/dist/mapbox-gl.css';
+import styled from "styled-components";
+import Mailchimp from 'react-mailchimp-form';
+import { useAppContext } from '../context/state';
+import { Disclosure } from '@headlessui/react'
+import { ChevronUpIcon } from '@heroicons/react/solid'
 import FeatureSlider from '../components/featureSlider';
 import Modal from '../components/donateSliderButton';
 import StandardButton from '../components/standardButton';
 import DonateOptions from '../components/donateOptions';
 import PopUpVideo from '../components/popupVideo';
-import Head from "next/head"
-import { getProjectsFromMonday } from '../services'
-import 'mapbox-gl/dist/mapbox-gl.css'
-import dynamic from "next/dynamic"
-import styled from "styled-components"
 import { MediaType } from "../components/map"
-import { useAppContext } from '../context/state';
-import { Disclosure } from '@headlessui/react'
-import { ChevronUpIcon } from '@heroicons/react/solid'
 import FAQItem from '../components/faqItem';
-import Mailchimp from 'react-mailchimp-form'
 import MailchimpWithRedirect from "../components/mailchimpWithRedirect";
 import Popup from '../components/popup';
-import Script from 'next/script';
-import StoryCard from '../components/storyCard'
-import Stories from '../content/stories';
 import BlogGrid from '../components/blogGrid';
 
 const impactStats = [
@@ -191,10 +189,10 @@ export default function Home({ locations }) {
                                     src="/images/ambassadors-home.svg"
                                 />
                                 <div className="font-average text-6xl">
-                                    6,000+
+                                    50k+
                                 </div>
                                 <div className="font-inter font-semibold text-xl">
-                                    Students
+                                    Audience Reach
                                 </div>
                             </div>
                             <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l lg:border-r py-14 px-10">
@@ -204,10 +202,10 @@ export default function Home({ locations }) {
                                     src="/images/companies-home.svg"
                                 />
                                 <div className="font-average text-6xl">
-                                    25+
+                                    4k+
                                 </div>
                                 <div className="font-inter font-semibold text-xl">
-                                    Companies Founded
+                                    Student Reach
                                 </div>
                             </div>
                             <div className="text-center w-full lg:w-1/3 lg:border-r py-14 px-10">
@@ -217,30 +215,15 @@ export default function Home({ locations }) {
                                     src="/images/jobs-home.svg"
                                 />
                                 <div className="font-average text-6xl">
-                                    200+
+                                    316+
                                 </div>
                                 <div className="font-inter font-semibold text-xl">
-                                    Universities
+                                    University Reach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 max-w-6xl m-auto gap-y-10 sm:gap-y-4">
-
-                    {Stories.length > 0 && Stories.map(member =>
-                            <StoryCard
-                              image={member.image}
-                              name={member.name}
-                              title={member.title}
-                              bio={member.bio}
-                              globalClick={globalClick}
-                              setGlobalClick={setGlobalClick}
-                            />
-                    )}
-                </div>
-
 
             </section>
 
@@ -269,7 +252,6 @@ export default function Home({ locations }) {
             </section>
 */}
             {/*
-
             <section className="py-14 mx-auto" style={{ background: "#1E3745" }}>
                 <div class="flex flex-col lg:flex-row items-center justify-between w-11/12 mx-auto" style={{ maxWidth: "1000px" }}>
                     <div>
@@ -471,7 +453,6 @@ export default function Home({ locations }) {
             {/*
             <section className="py-14 pb-24 border-b" style={{ background: "#FAFBFC" }}>
                 <div className="w-11/12 mx-auto">
-
                     <div className="flex mx-auto justify-center">
                         <Image
                             width="382px"
@@ -511,8 +492,8 @@ export default function Home({ locations }) {
                         Frequently Asked Questions
                     </h2>
                     <div className="text-bengrey-500 text-lg text-left leading-6 my-6" style={{ maxWidth: "610px" }}>
-                        The Blockchain Education Network offers a large variety of educational content and event-based opportunities. Our community is
-                        at the heart of what we do and we are commited to helping new learners figure out how to get the most out of BEN.
+                        The Blockchain Education Network offers a constant inflow of crypto news, events, free lights, educational content and opportunities. Our community is
+                        at the heart of what we do and we are commited to helping everyone figure out how to get the most out of the crypto space.
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
                         <a target="_blank" href="https://beats.blockchainedu.org/" className="border p-8 rounded-lg bg-white">
@@ -533,7 +514,7 @@ export default function Home({ locations }) {
                                 </div>
                             </div>
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                Ben Newsletter
+                                BEN Beats
                             </div>
                             <div class="text-sm font-inter">
                                 Are you new to Blockchain? Trading Cryptocurrency? Looking for a deep dive on DeFi? Subscribe now and start learning!
@@ -563,6 +544,7 @@ export default function Home({ locations }) {
                                 Sign up and get access to opportunities, free flights and scholarships to blockchain conferennces.
                             </div>
                         </a>
+{/*
                         <a target="_blank" href="https://docs.google.com/presentation/d/1stVgjgui--ok7uG8t6QFvpGkv9rk2NuCRXIHctkbGN0/edit?usp=sharing" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
@@ -587,6 +569,7 @@ export default function Home({ locations }) {
                                 Check out or latest financial reports and donate to support more Web 3.0 education
                             </div>
                         </a>
+*/}
                         {/* <a target="_blank" href="" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
@@ -656,7 +639,7 @@ export default function Home({ locations }) {
                                 About Us
                             </div>
                             <div class="text-sm font-inter">
-                                The Blockchain Education Network (BEN) is a 501(c)(3) non-profit organization founded in 2014.
+                                The Blockchain Education Network (BEN) is a global organization founded in 2014.
                             </div>
                         </a>
                     </div>

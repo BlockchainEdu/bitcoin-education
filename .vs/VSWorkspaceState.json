@@ -2,16 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\components",
-    "\\components\\modals",
-    "\\consts",
-    "\\content",
     "\\pages",
+    "\\pages\\about",
     "\\pages\\api",
     "\\pages\\api\\checkout_sessions",
     "\\pages\\projects",
-    "\\public",
-    "\\public\\styles"
+    "\\public\\styles",
+    "\\with-tailwindcss-app\\pages",
+    "\\with-tailwindcss-app\\pages\\api",
+    "\\with-tailwindcss-app\\public"
   ],
-  "SelectedNode": "\\components\\popup.js",
+  "SelectedNode": "\\pages\\about\\partners.js",
   "PreviewInSolutionExplorer": false
 }

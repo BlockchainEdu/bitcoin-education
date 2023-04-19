@@ -59,19 +59,26 @@ export default function Partners() {
         <div className="max-w-7xl m-auto flex flex-col lg:flex-row">
           <div className="w-full lg:w-8/12">
             <h1 className="text-4xl md:text-6xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">
-              Proven commitment to global blockchain education
+              A decade of reach in the blockchain space
             </h1>
             <p className="text-black text-md pt-10 max-w-xl m-auto lg:m-0 text-center lg:text-left font-medium">
-              BEN partners with committed protocols, startups, corporations and
-              associations that have proven commitment to accelerating the
+              BEN partners with protocols, startups, corporations and
+              associations that aim to accelerate the
               adoption of blockchain technology and are actively seeking to
-              further educate the next generation of blockchain leaders.
+              further tap into the next generation of blockchain leaders.
             </p>
+            <div className="flex justify-center mt-6">
+              <a href="https://forms.monday.com/forms/634c2ad31def66ef21a96c4ce082a86a" target="_blank" rel="noopener noreferrer">
+                <button className="bg-black text-white font-bold py-2 px-4 rounded text-center">
+                  Reach out now
+                </button>
+              </a>
+            </div>
           </div>
           <div className="w-full lg:w-6/12 m-auto pt-24 lg:pt-14 pb-14 lg:pb-24 flex justify-center lg:justify-start">
             <Image
               className="m-auto"
-              src="/images/partners-hero.png"
+              src="/images/ben-beats-square.png"
               width="548"
               height="552"
             />
@@ -87,8 +94,8 @@ export default function Partners() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-y-3 gap-x-10">
             <PartnerShipBenefits benefit="Sponsorship discounts & priority" />
             <PartnerShipBenefits benefit="Talent pipeline from top global universities" />
-            <PartnerShipBenefits benefit="Incorporate educational material in our lessons" />
-            <PartnerShipBenefits benefit="Free or subsidized tickets to paid events" />
+            <PartnerShipBenefits benefit="Creation of educational lessons and videos" />
+            <PartnerShipBenefits benefit="Promotion to our community of 40k+" />
           </div>
         </div>
       </section>
@@ -118,9 +125,9 @@ export default function Partners() {
                 />
               </div>
               <p className="w-4/5" style={{ maxWidth: "360px" }}>
-                <b>Community Partners:</b> Non-profit organizations and
-                associations interested in sharing educational content to their
-                community.
+                <b>Industry Partners:</b> Organizations and
+                associations interested in raising awareness for their
+                brands.
               </p>
             </div>
             <div className="flex justify-center lg:justify-left font-mont py-10 lg:py-5">
@@ -132,8 +139,8 @@ export default function Partners() {
                 />
               </div>
               <p className="w-4/5" style={{ maxWidth: "360px" }}>
-                <b>Content Partners:</b> Any entity interested in contributing
-                to the educational content for online and accredited courses.
+                <b>Education/Research Partners:</b> Any entity interested in 
+                commissioning educational content or research.
               </p>
             </div>
             <div className="flex justify-center lg:justify-left font-mont">
@@ -145,18 +152,28 @@ export default function Partners() {
                 />
               </div>
               <p className="w-4/5" style={{ maxWidth: "360px" }}>
-                <b>Event Partners:</b> Any entity interested in co-hosting one
-                or many events with students, clubs, and organizations.
+                <b>Event Partners:</b> Any entity interested in promoting one
+                or many events with our audience.
               </p>
             </div>
           </div>
         </div>
+            <div className="flex justify-center mt-6">
+              <a href="https://forms.monday.com/forms/634c2ad31def66ef21a96c4ce082a86a" target="_blank" rel="noopener noreferrer">
+                <button className="bg-black text-white font-bold py-2 px-4 rounded text-center">
+                  Reach out now
+                </button>
+              </a>
+            </div>
+
       </div>
       <div className="py-20 m-auto">
         {categories.length > 0 && categories.map((category, index) =>
           <PartnersSlider title={category} key={index} data={partners.filter(item => item.category === category)} />
         )}
+
       </div>
+
       <div className="-mt-40 md:-mt-60">
         <Footer />
       </div>
