@@ -145,7 +145,7 @@ export default function Home({ locations }) {
                         <Image
                             width="640px"
                             height="474px"
-                            src="/images/home-image.png"
+                            src="/images/home-image-2.png"
                             quality={100}
                         />
                     </div>

@@ -6,12 +6,8 @@
     "\\pages\\about",
     "\\pages\\api",
     "\\pages\\api\\checkout_sessions",
-    "\\pages\\projects",
-    "\\public\\styles",
-    "\\with-tailwindcss-app\\pages",
-    "\\with-tailwindcss-app\\pages\\api",
-    "\\with-tailwindcss-app\\public"
+    "\\pages\\projects"
   ],
-  "SelectedNode": "\\pages\\about\\partners.js",
+  "SelectedNode": "\\components\\blogGrid.js",
   "PreviewInSolutionExplorer": false
 }
