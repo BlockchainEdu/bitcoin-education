@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import Mailchimp from 'react-mailchimp-form'
 
 export default function Popup() {
@@ -20,7 +20,7 @@ export default function Popup() {
                   Learn to earn!
                 </div>
                 <div className="text-sm font-inter my-6">
-                  Join 7,000+ subscribers to learn every week on how you can earn more in crypto.
+                  Join our community of 50k+ for crypto market news, promo codes, and your free 24-page "Ultimate Guide to the Wild World of Crypto" by signing up below 👇
                 </div>
                 <div>
                     <div className="mx-auto lg:mx-0">
