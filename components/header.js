@@ -15,7 +15,7 @@ export default function HeaderWithLogo({className="", children}) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   return (
-    <section className={`py-10 px-7 sticky top-0 z-10 white-header header ${ offset > 100 ? "scrolled" : "" } ${className}`}>
+    <section className={`py-10 px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" } ${className}`}>
       <Head>
         <link rel="shortcut icon" href="" />
       </Head>
@@ -30,7 +30,7 @@ export default function HeaderWithLogo({className="", children}) {
             <a className="font-semibold" href="/contact">Contact</a>
             <a className="font-semibold" href="/about/partners">Partners </a>
             <a className="font-semibold" href="/about/team">Team </a>
-            { offset > 100 && <>
+            { offset > 0 && <>
                 <StandardButton
                   link="/donate"
                   text="Scholarships"

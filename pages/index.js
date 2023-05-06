@@ -82,9 +82,17 @@ export default function Home({ locations }) {
                 <title>Home | Blockchain Education Network</title>
             </Head>
 
-            <section className="pt-10 lg:py-24 lg:pb-0 px-7">
+            <div className="text-white px-6 py-4 flex justify-center items-center" style={{ background: "orange" }}>
+  <a href="https://bit.ly/ben-bitcoin2023" target="_blank"><div className="text-white text-lg font-bold text-center hover:text-black" style={{ transition: "color 0.2s" }}>Students! Apply for Free Bitcoin 2023 Tickets (May 18 - 24)🚀</div></a>
+</div>
+
+
+            <section className="pt-10 lg:py-4 lg:pb-0 px-7">
                 <div className="w-11/12 mx-auto">
+
+                {/*
                     <div className="text-benorange-500 text-md font-inter font-semibold text-center">Blockchain Education Network</div>
+*/}
                     <h1 className="font-average text-6xl lg:text-7xl text-center max-w-4xl mx-auto mt-4">
                         Learn to earn!
                     </h1>
