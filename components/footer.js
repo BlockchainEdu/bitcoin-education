@@ -57,15 +57,9 @@ export default function Footer() {
           >
             <div>
               <ul className="space-y-3">
-                <li className="uppercase font-bold text-xs">Product</li>
-{/*}
-                <li className="text-sm">
-                  <a href="/donate">Donate</a>
-                </li>
-*/}
-                <li className="text-sm">
-                  <a href="https://beats.blockchainedu.org/">Subscribe</a>
-                </li>
+                <li className="uppercase font-bold text-xs">Initiatives</li>
+                <li className="text-sm"><a href="https://beats.blockchainedu.org/">Subscribe</a></li>
+                <li className="text-sm"><a href="/donate">Scholarships</a></li>
                 {/* <li className="text-sm">Programs</li>
                     <li className="text-sm">For Professors</li>
                     <li className="text-sm">For Projects</li>

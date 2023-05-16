@@ -82,22 +82,23 @@ export default function Home({ locations }) {
                 <title>Home | Blockchain Education Network</title>
             </Head>
 
+            {/*
             <div className="text-white px-6 py-4 flex justify-center items-center" style={{ background: "orange" }}>
-  <a href="https://bit.ly/ben-bitcoin2023" target="_blank"><div className="text-white text-lg font-bold text-center hover:text-black" style={{ transition: "color 0.2s" }}>Students! Apply for Free Bitcoin 2023 Tickets (May 18 - 24)🚀</div></a>
-</div>
-
+              <a href="https://bit.ly/ben-bitcoin2023" target="_blank"><div className="text-white text-lg font-bold text-center hover:text-black" style={{ transition: "color 0.2s" }}>Students! Apply for Free Bitcoin 2023 Tickets (May 18 - 24)🚀</div></a>
+            </div>
+            */}
 
             <section className="pt-10 lg:py-4 lg:pb-0 px-7">
                 <div className="w-11/12 mx-auto">
 
-                {/*
+                    {/*
                     <div className="text-benorange-500 text-md font-inter font-semibold text-center">Blockchain Education Network</div>
-*/}
+                    */}
                     <h1 className="font-average text-6xl lg:text-7xl text-center max-w-4xl mx-auto mt-4">
-                        Learn to earn!
+                        Crypto news, events, jobs, and tools!
                     </h1>
                     <div className="text-bengrey-500 text-lg text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-                        Join our community of 50k+ for crypto market news, promo codes, and your free 24-page "Ultimate Guide to the Wild World of Crypto" by signing up below 👇
+                        Join our community of 50k+ Cryptonians by signing up below 👇
                     </div>
 
                     <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10 m-auto" style={{ "max-width": "800px" }}>
