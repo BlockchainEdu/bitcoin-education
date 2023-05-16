@@ -89,76 +89,37 @@ export default function Home({ locations }) {
             */}
 
             <section className="pt-10 lg:py-4 lg:pb-0 px-7">
-                <div className="w-11/12 mx-auto">
+                <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
 
-                    {/*
-                    <div className="text-benorange-500 text-md font-inter font-semibold text-center">Blockchain Education Network</div>
-                    */}
-                    <h1 className="font-average text-6xl lg:text-7xl text-center max-w-4xl mx-auto mt-4">
-                        Crypto news, events, jobs, and tools!
-                    </h1>
-                    <div className="text-bengrey-500 text-lg text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-                        Join our community of 50k+ Cryptonians by signing up below 👇
-                    </div>
-
-                    <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10 m-auto" style={{ "max-width": "800px" }}>
-                        <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
-                            <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+                    <div className="col-span-2">
+                        <h1 className="font-average text-6xl lg:text-7xl text-center max-w-4xl mx-auto mt-4">
+                            Crypto news, events, jobs, and tools!
+                        </h1>
+                        <div className="text-bengrey-500 text-lg text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
+                            Join our community of 50k+ Cryptonians by signing up below 👇
                         </div>
-                        {/*
-                            <div className="mx-auto lg:mx-0">
-                                <StandardButton
-                                    link="/donate"
-                                    text="Donate"
-                                />
+                        <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10 m-auto" style={{ "max-width": "800px" }}>
+                            <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
+                                <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
                             </div>
-*/}
-                        {/*}
-                            <div className="mx-auto lg:mx-0">
-                                <StandardButton
-                                    link="https://learn.blockchainedu.org/"
-                                    color="orange"
-                                    text="Sign Up"
-                                />
-                            </div>
-*/}
-{/*
-                        <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">
-                            <Mailchimp
-                                action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
-                                fields={[
-                                    {
-                                        name: 'EMAIL',
-                                        placeholder: 'Email',
-                                        type: 'email',
-                                        required: true
-                                    }
-                                ]}
-                                messages={
-                                    {
-                                        sending: "Sending...",
-                                        success: "Thanks for subscribing! Please check your email to confirm.",
-                                        error: "An unexpected internal error has occurred.",
-                                        empty: "Please put your email address.",
-                                        duplicate: "Too many subscribe attempts for this email address",
-                                        button: "Sign Up"
-                                    }
-                                }
-                                className="subscribe-form text-center flex items-start w-full"
-                            />
                         </div>
-*/}
                     </div>
-
-                    <div className="mx-auto flex justify-center pb-12">
+                
+                    <div className="flex justify-center items-center col-span-1 pb-12">
                         <Image
-                            width="640px"
-                            height="474px"
-                            src="/images/home-image-2.png"
+                            width={320}
+                            height={274}
+                            layout="intrinsic"
+                            objectFit="contain"
+                            src="/images/popup.png"
                             quality={100}
                         />
                     </div>
 
+                </div>
+            </section>
+
+            <section>
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
                         Recent Posts
                     </h2>
@@ -166,19 +127,7 @@ export default function Home({ locations }) {
                     <div className="mx-auto flex justify-center pb-12">
                     <BlogGrid />
                     </div>
-
-{/*
-                    <div className="mx-auto flex justify-center">
-                        <Image
-                            width="1000px"
-                            height="370px"
-                            src="/images/home-hero.jpg"
-                            quality={100}
-                        />
-                    </div>
-*/}
-                </div>
-            </section >
+            </section>
             <section className="bg-benorange-300 pt-14">
                 <div className="w-11/12 mx-auto">
 
