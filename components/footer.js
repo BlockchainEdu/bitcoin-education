@@ -12,7 +12,7 @@ export default function Footer() {
     }
     window.sessionStorage.setItem("hasShownPopup", true);
     setShowPopup(true);
-  }, popupDelayInSeconds * 1000);
+  }, popupDelayInSeconds * 2000);
   return (
     <section className="pt-20 pb-4" style={{ background: "#191C1F" }}>
       {showPopup && <Popup></Popup>}
