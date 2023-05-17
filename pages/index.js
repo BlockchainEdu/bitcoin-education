@@ -88,14 +88,14 @@ export default function Home({ locations }) {
             </div>
             */}
 
-            <section className="pt-10 lg:py-4 lg:pb-0 px-7">
+            <section className="pt-10 lg:py-10 lg:pb-0 px-7">
                 <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
 
                     <div className="col-span-2">
                         <h1 className="font-average text-6xl lg:text-7xl text-center max-w-4xl mx-auto mt-4">
                             Crypto news, events, jobs, and tools!
                         </h1>
-                        <div className="text-bengrey-500 text-lg text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
+                        <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
                             Join our community of 50k+ Cryptonians by signing up below 👇
                         </div>
                         <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10 m-auto" style={{ "max-width": "800px" }}>
@@ -119,7 +119,7 @@ export default function Home({ locations }) {
                 </div>
             </section>
 
-            <section>
+            <section className="pt-20">
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
                         Recent Posts
                     </h2>
