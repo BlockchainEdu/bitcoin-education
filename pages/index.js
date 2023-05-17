@@ -89,7 +89,7 @@ export default function Home({ locations }) {
             */}
 
             <section className="pt-10 lg:py-10 lg:pb-0 px-7">
-                <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4"  style={{ maxWidth: "1000px" }}>
 
                     <div className="col-span-2">
                         <h1 className="font-average text-6xl lg:text-7xl text-center max-w-4xl mx-auto mt-4">
@@ -115,7 +115,6 @@ export default function Home({ locations }) {
                             quality={100}
                         />
                     </div>
-
                 </div>
             </section>
 
