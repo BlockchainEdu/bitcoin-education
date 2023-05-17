@@ -92,7 +92,7 @@ export default function Home({ locations }) {
                 <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4"  style={{ maxWidth: "1000px" }}>
 
                     <div className="col-span-2">
-                        <h1 className="font-average text-6xl lg:text-7xl text-center max-w-4xl mx-auto mt-4">
+                        <h1 className="font-average text-6xl xl:text-7xl text-center max-w-4xl mx-auto mt-4">
                             Crypto news, events, jobs, and tools!
                         </h1>
                         <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>

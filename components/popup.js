@@ -17,7 +17,10 @@ export default function Popup() {
             <div className="flex flex-col lg:flex-row bg-white gap-x-20 px-6 lg:px-0">
               <div className="w-full lg:w-1/2 py-14 pl-0 lg:pl-14">
                 <div className="text-3xl font-average" style={{ maxWidth: "400px" }}>
-                  
+                    Crypto news, events, jobs, and tools!
+                </div>
+                <div className="text-lg font-inter my-6">
+                  Join our community of 50k+ and get a free market report by signing up below 👇
                 </div>
                 <div className="text-sm font-inter my-6">
                   Join our community of 50k+ for crypto market news, promo codes, and your free 24-page "Ultimate Guide to the Wild World of Crypto" by signing up below 👇

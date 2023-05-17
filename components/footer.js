@@ -4,7 +4,7 @@ import Popup from "./popup";
 import Image from "next/image";
 
 export default function Footer() {
-  const popupDelayInSeconds = 10;
+  const popupDelayInSeconds = 15;
   const [showPopup, setShowPopup] = useState(false);
   setTimeout(() => {
     if (window.sessionStorage.getItem("hasShownPopup")) {
@@ -12,7 +12,7 @@ export default function Footer() {
     }
     window.sessionStorage.setItem("hasShownPopup", true);
     setShowPopup(true);
-  }, popupDelayInSeconds * 2000);
+  }, popupDelayInSeconds * 1000);
   return (
     <section className="pt-20 pb-4" style={{ background: "#191C1F" }}>
       {showPopup && <Popup></Popup>}
@@ -76,7 +76,10 @@ export default function Footer() {
                   <a href="/about">About Us</a>
                 </li>
                 <li className="text-sm">
-                  <a href="https://twitter.com/blockchainedu">Twitter</a>
+                  <a href="/contact">Contact</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://twitter.com/BlockchainEdu">Twitter</a>
                 </li>
                 <li className="text-sm">
                   <a href="https://medium.com/blockchainedu">Medium</a>
