@@ -4,14 +4,14 @@ import { AppWrapper } from '../context/state'; // import based on where you put 
 import '../public/styles/global.css'
 import TagManager from 'react-gtm-module';
 import Head from 'next/head';
-
+git
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     TagManager.initialize({ gtmId: 'GTM-213540060-2' });
   }, []);
 
   const pageTitle = 'Blockchain Education Network';
-  const pageDescription = 'Join 50k+ Cryptonians for crypto news, events, jobs, and tools in just 2 min a day!';
+  const pageDescription = 'Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!';
   const ogImageUrl = '/images/ben-beats-thumbnail.png' ;
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
