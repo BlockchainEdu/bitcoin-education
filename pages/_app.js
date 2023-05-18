@@ -14,6 +14,8 @@ function MyApp({ Component, pageProps }) {
   const pageDescription = 'Join 50k+ Cryptonians for crypto news, events, jobs, and tools in just 2 min a day!';
   const ogImageUrl = '/images/thumbnail-cover.png' ;
 
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
 return (
     <AppWrapper>
       <div>
@@ -46,7 +48,7 @@ return (
           <meta property="og:image" content={ogImageUrl} />
           <meta property="og:image:width" content="960" />
           <meta property="og:image:height" content="540" />
-          <meta property="og:url" content={window.location.href} />
+          <meta property="og:url" content={currentUrl} />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={pageTitle} />
