@@ -21,10 +21,12 @@ export default function HeaderWithLogo({className="", children}) {
       <Head>
         <link rel="shortcut icon" href="" />
       </Head>
+
       <div className="flex lg:hidden mobile-nav float-right h-[40px] items-center">
         { children }
         { !children && <MobileNav /> }
       </div>
+
       <nav className="flex max-w-7xl m-auto justify-between items-start lg:items-center relative">
         <div className="w-2/12 lg:w-1/3 left-0"> <a href="/"><img className="w-24 mx-auto max-w-none" src={logoSrc} /></a> </div>
         <ul className={`font-mont text-black w-10/12 ${className}`}>
@@ -45,7 +47,7 @@ export default function HeaderWithLogo({className="", children}) {
                 <StandardButton
                   link="https://beats.blockchainedu.org/"
                   target="_blank"
-                  text="Subscribe"
+                  text="Get Started"
                   color="orange"
                   styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
                 />

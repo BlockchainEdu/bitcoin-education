@@ -96,7 +96,7 @@ export default function Home({ locations }) {
                             Crypto news, events, jobs, and tools!
                         </h1>
                         <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-                            Join our community of 50k+ Cryptonians by signing up below 👇
+                            Join our community of 50k+ by signing up below 👇
                         </div>
                         <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10 m-auto" style={{ "max-width": "800px" }}>
                             <div className="mx-auto lg:mx-0 md:w-full lg:w-1/2">

@@ -36,7 +36,18 @@ const solutions = [
 
 export default function MobileDropdown(props) {
   return (
-    <div className="w-full max-w-sm px-4 top-16">
+    <div className="w-full max-w-sm px-4 top-16 hidden display-on-scroll">
+
+        <div className="bg-white text-center">
+            <StandardButton
+                link="https://beats.blockchainedu.org/"
+                text="Get Started"
+                color="orange"
+                styling="text-center py-3 rounded-lg w-full px-8"
+            />
+        </div>
+
+{/*
       <Popover>
         {({ open }) => (
           <>
@@ -92,6 +103,7 @@ export default function MobileDropdown(props) {
           </>
         )}
       </Popover>
+*/}
     </div>
   )
 }
