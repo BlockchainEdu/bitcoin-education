@@ -9,7 +9,12 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     TagManager.initialize({ gtmId: 'GTM-213540060-2' });
   }, []);
-  return (
+
+  const pageTitle = 'Blockchain Education Network';
+  const pageDescription = 'Join 50k+ Cryptonians for crypto news, events, jobs, and tools in just 2 min a day!';
+  const ogImageUrl = '/images/thumbnail-cover.png' ;
+
+return (
     <AppWrapper>
       <div>
         <Head>
@@ -34,6 +39,20 @@ function MyApp({ Component, pageProps }) {
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></link>
           <link href="https://fonts.googleapis.com/css2?family=Average&display=swap" rel="stylesheet" />
+
+          {/* Social Media Thumbnails */}
+          <meta property="og:title" content={pageTitle} />
+          <meta property="og:description" content={pageDescription} />
+          <meta property="og:image" content={ogImageUrl} />
+          <meta property="og:image:width" content="960" />
+          <meta property="og:image:height" content="540" />
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:type" content="website" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={pageTitle} />
+          <meta name="twitter:description" content={pageDescription} />
+          <meta name="twitter:image" content={ogImageUrl} />
+
         </Head>
         <Component {...pageProps} />
       </div>
