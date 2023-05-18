@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
 
   const pageTitle = 'Blockchain Education Network';
   const pageDescription = 'Join 50k+ Cryptonians for crypto news, events, jobs, and tools in just 2 min a day!';
-  const ogImageUrl = '/images/thumbnail-cover.png' ;
+  const ogImageUrl = '/images/ben-beats-thumbnail.png' ;
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
