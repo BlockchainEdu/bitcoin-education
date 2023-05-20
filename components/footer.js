@@ -73,7 +73,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Company</li>
                 <li className="text-sm">
-                  <a href="/about">About Us</a>
+                  <a href="/about/team">About Us</a>
                 </li>
                 <li className="text-sm">
                   <a href="/contact">Contact</a>
