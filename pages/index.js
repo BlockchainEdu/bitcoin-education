@@ -93,7 +93,7 @@ export default function Home({ locations }) {
 
                     <div className="col-span-1 lg:pt-20 lg:order-last">
                         <h1 className="font-average text-6xl xl:text-6xl text-center max-w-4xl mx-auto mt-4">
-                            Crypto news, events, jobs, and tools!
+                            Crypto news, in your pocket!
                         </h1>
                         <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
                             Join our community of 50k+ by signing up below 👇
