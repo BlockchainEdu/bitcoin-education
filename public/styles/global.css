@@ -826,3 +826,7 @@ a {
         visibility: visible;
     }
 }
+
+.border-orange-700 {
+    border-color: #FF5E36;
+}
