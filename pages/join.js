@@ -1,12 +1,11 @@
 import Footer from '../components/footer';
-import HeaderWithLogoDark from '../components/headerWithLogoDark';
+import Header from '../components/header';
 import Head from "next/head"
 import PricingModule from '../components/pricingModule';
 
 export default function Contact() {
     return (
         <div id="join-page">
-            <HeaderWithLogoDark />
             <Head>
                 <title>Join | Blockchain Education Network</title>
             </Head>

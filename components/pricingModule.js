@@ -11,14 +11,14 @@ export default function PopupMOdule() {
     <div className="col-span-1 flex justify-center">
       <div className=" w-11/12 lg:w-1/2 flex flex-col p-4 rounded-lg border border-gray-300 p-8 shadow-lg">
         <div className="flex justify-center">
-            <div className="flex w-full max-w-xs space-x-1 bg-gray-300 rounded-xl p-1 items-stretch mb-4 justify-center">
+            <div className="flex w-full max-w-sm space-x-1 bg-gray-300 rounded-xl p-1 items-stretch mb-4 justify-center">
               <button
                 className={`px-4 py-2 rounded-md w-full ${
                   activeTab === "annual" ? "bg-white text-black" : "bg-gray-300 text-black"
                 }`}
                 onClick={() => handleTabClick("annual")}
               >
-                Annual (15% off!)
+                Annual (20% off!)
               </button>
               <button
                 className={`px-4 py-2 rounded-md w-full ${
@@ -34,12 +34,12 @@ export default function PopupMOdule() {
           {activeTab === "annual" && (
               <div>
                 <div className="text-center">  
-                  <span className="text-8xl font-bold mb-8">$17</span><span> / mo</span>
-                  <div>$210 billed today</div>
+                    <div className="mb-1"><span className="text-8xl font-bold">$16</span><span> / mo</span></div>
+                    <div><i>$192 billed annually</i></div>
                 </div>
-        <div className="flex justify-center mt-4">
-          <a href="#" className="px-4 py-2 bg-benorange-500  text-white rounded-md">
-            Get Access
+        <div className="flex justify-center mt-4 mb-4">
+          <a href="https://learn.blockchainedu.org/membership-account/membership-checkout/?level=4" className="px-4 py-2 bg-benorange-500  text-white rounded-md">
+            Get A 7 Day Free Trial!
           </a>
         </div>
                 <ul className="space-y-2">
@@ -61,12 +61,12 @@ export default function PopupMOdule() {
           {activeTab === "monthly" && (
             <div>
                 <div className="text-center">  
-                  <span className="text-8xl font-bold mb-8">$20</span><span> / mo</span>
-                  <div>billed monhtly</div>
+                    <div className="mb-1"><span className="text-8xl font-bold">$20</span><span> / mo</span></div>
+                  <div><i>$20 billed monthly</i></div>
                 </div>
-        <div className="flex justify-center mt-4">
-          <a href="#" className="px-4 py-2 bg-benorange-500 text-white rounded-md">
-            Get Access
+        <div className="flex justify-center mt-4 mb-4">
+          <a href="https://learn.blockchainedu.org/membership-account/membership-checkout/?level=3" className="px-4 py-2 bg-benorange-500 text-white rounded-md">
+            Get A 7 Day Free Trial!
           </a>
         </div>
                 <ul className="space-y-2">
