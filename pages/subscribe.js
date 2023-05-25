@@ -47,7 +47,7 @@ export default function Subscribe() {
               height={620}
               layout="intrinsic"
               objectFit="contain"
-              src="/images/homepage-thumbnail-2.png"
+              src="/images/homepage-thumbnail-3.png"
               quality={100}
             />
           </div> 

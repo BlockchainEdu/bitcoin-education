@@ -14,18 +14,16 @@ export default function Contact() {
                 <div className="container mx-auto px-4">
 
                     <div className="max-w-3xl mx-auto text-center">
-                    <img src="/images/ben_hat_white.png" alt="Image" className="mx-auto mb-4 w-28" />
-
-
+                        <img src="/images/ben_hat_white.png" alt="Image" className="mx-auto mb-4 w-28" />
                         <h1 className="text-4xl font-bold mb-6">Join BEN Learn</h1>
                         <p className="text-lg mb-8">Get exclusive insights, analysis, and tips delivered to your inbox every week.</p>
-<a href="#pricingmodule" className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg uppercase tracking-wide hover:bg-gray-500" onClick={(e) => {
-  e.preventDefault();
-  const section = document.getElementById("pricingmodule");
-  const offsetTop = section.offsetTop;
-  window.scrollTo({ top: offsetTop, behavior: "smooth" });
-}}>Join Now</a>
-                        </div>
+                        <a href="#pricingmodule" className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg uppercase tracking-wide hover:bg-gray-500" onClick={(e) => {
+                            e.preventDefault();
+                            const section = document.getElementById("pricingmodule");
+                            const offsetTop = section.offsetTop - 50;
+                            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+                          }}>Join Now</a>
+                    </div>
                 </div>
             </section>
              <section id="benefits" className="py-16">
@@ -56,14 +54,16 @@ export default function Contact() {
                     <h2 className="text-3xl font-bold mb-8 text-center">Member Only Discord</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="bg-white rounded-lg shadow p-6">
-                            <h3 className="text-xl font-bold mb-4">Online Discussions</h3>
-                            <p>Get answeres to your burning market questions.</p>
-                            <h3 className="text-xl font-bold mb-4">Event & Promo Codes</h3>
-                            <p>Get promo codes, and meet up with like-minded individuals.</p>
+                            <h3 className="text-xl font-bold mb-4">Online/Offline Community</h3>
+                            <p>Join online discussions and get answers to your burning market questions.</p>
+                            <p>- Get event promo codes, and meet up with like-minded individuals.</p>
                         </div>
                         <div className="bg-white rounded-lg shadow p-6">
-                            <h3 className="text-xl font-bold mb-4">Job Matching and Intros</h3>
-                            <p>Share job listings and get warm intros to in-demand positions.</p>
+                            <h3 className="text-xl font-bold mb-4">Job Matching and Investments</h3>
+                            <ul>
+                            <p>-Share job listings and get warm intros to in-demand positions.</p>
+                            <p>-If you're working on a startup, meet co-founders and investors.'</p>
+                            </ul>
                         </div>
                     <img src="/images/join-gif.avif" alt="Image" className="mx-auto mb-4" />
                     </div>
