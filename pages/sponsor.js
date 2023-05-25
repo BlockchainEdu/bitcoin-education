@@ -62,8 +62,9 @@ export default function Sponsor() {
              <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-8">
                 <div className="bg-white rounded-lg shadow p-6">
                             <h3 className="text-xl font-bold mb-4 text-center">Main Ad</h3>
-                    <p>Placement near the top of the email. 400 characters. 1 spot available per issue. $500 per spot</p>
-                    <p><b>Bundle</b>: Get a 15% discount for purchasing 4 spots.</p>
+                    <div className="mb-1">Placement near the top of the email. 400 characters. 1 spot available per issue. $500 per spot</div>
+                    <div className="mb-1">Included a dedicated social media post across Twitter, Instagram, Facebook, LinkedIn, TikTok, and YouTube</div>
+                    <div><b>Bundle</b>: Get a 15% discount for purchasing 4 spots.</div>
                     <div className="flex justify-center mt-4 mb-4">
                       <a href="https://calendly.com/blockchainedu/main/" className="px-4 py-2 bg-benorange-500 text-white rounded-md">
                         Book Main Ad

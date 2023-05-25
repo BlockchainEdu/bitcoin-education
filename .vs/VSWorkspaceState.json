@@ -2,11 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\components",
+    "\\consts",
+    "\\content",
+    "\\context",
     "\\pages",
     "\\pages\\about",
-    "\\pages\\api",
-    "\\pages\\api\\checkout_sessions",
-    "\\pages\\projects"
+    "\\public",
+    "\\public\\styles",
+    "\\services"
   ],
+  "SelectedNode": "\\pages\\sponsor.js",
   "PreviewInSolutionExplorer": false
 }
