@@ -578,7 +578,7 @@ export default function Home({ locations }) {
                                 BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
                             </div>
                         </a> */}
-                        <a href="/about/team" className="border p-8 rounded-lg bg-white">
+                        <a href="/sponsor" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -596,10 +596,10 @@ export default function Home({ locations }) {
                                 </div>
                             </div>
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                Meet Our Team
+                                Advertise With Us
                             </div>
                             <div class="text-sm font-inter">
-                                The Blockchain Education Network (BEN) is a global organization founded in 2014.
+                                Be heard in front of 55k+ crypto builders, traders, and founders worldwide!
                             </div>
                         </a>
                     </div>
