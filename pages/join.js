@@ -6,6 +6,7 @@ import PricingModule from '../components/pricingModule';
 export default function Contact() {
     return (
         <div id="join-page">
+            <Header />
             <Head>
                 <title>Join | Blockchain Education Network</title>
             </Head>

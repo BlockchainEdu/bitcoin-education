@@ -128,6 +128,7 @@ export default function Home({ locations }) {
                     <BlogGrid />
                     </div>
             </section>
+
             <section className="bg-benorange-300 pt-14">
                 <div className="w-11/12 mx-auto">
 
@@ -451,7 +452,7 @@ export default function Home({ locations }) {
                         Frequently Asked Questions
                     </h2>
                     <div className="text-bengrey-500 text-lg text-left leading-6 my-6" style={{ maxWidth: "610px" }}>
-                        The Blockchain Education Network offers a constant inflow of crypto news, events, free lights, educational content and opportunities. Our community is
+                        The Blockchain Education Network offers a constant inflow of crypto news, events, free flights, educational content and opportunities. Our community is
                         at the heart of what we do and we are commited to helping everyone figure out how to get the most out of the crypto space.
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
@@ -473,13 +474,13 @@ export default function Home({ locations }) {
                                 </div>
                             </div>
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                BEN Beats
+                                Newsletter
                             </div>
                             <div class="text-sm font-inter">
                                 Are you new to Blockchain? Trading Cryptocurrency? Looking for a deep dive on DeFi? Subscribe now and start learning!
                             </div>
                         </a>
-                        <a target="_blank" href="https://beats.blockchainedu.org/" className="border p-8 rounded-lg bg-white">
+                        <a href="/subscribe" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -497,7 +498,7 @@ export default function Home({ locations }) {
                                 </div>
                             </div>
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                University Students
+                                Opportunities
                             </div>
                             <div class="text-sm font-inter">
                                 Sign up and get access to opportunities, free flights and scholarships to blockchain conferennces.
@@ -577,7 +578,7 @@ export default function Home({ locations }) {
                                 BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
                             </div>
                         </a> */}
-                        <a target="_blank" href="/about" className="border p-8 rounded-lg bg-white">
+                        <a href="/about/team" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -595,7 +596,7 @@ export default function Home({ locations }) {
                                 </div>
                             </div>
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                About Us
+                                Meet Our Team
                             </div>
                             <div class="text-sm font-inter">
                                 The Blockchain Education Network (BEN) is a global organization founded in 2014.

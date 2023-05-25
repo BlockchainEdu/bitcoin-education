@@ -7,6 +7,7 @@ import Image from 'next/image'
 export default function Subscribe() {
   return (
     <div className="overflow-hidden">
+      <Header />
       <Head>
         <title>Subscribe | Blockchain Education Network</title>
       </Head>
@@ -17,6 +18,7 @@ export default function Subscribe() {
 
           <div className="col-span-1 pt-0 px-1">
             <div className="pt-0 pb-20 px-5">
+            {/*
             <a href="/">
               <Image
                 width={158}
@@ -27,6 +29,7 @@ export default function Subscribe() {
                 quality={100}
               />
               </a>
+            */}
             </div>
             <h1 className="font-average text-6xl xl:text-6xl text-center max-w-4xl mx-auto mt-4 mx-1">
               Crypto news, events, jobs, and tools!
@@ -42,14 +45,16 @@ export default function Subscribe() {
           </div>
 
           <div className="col-span-1">
-            <Image
-              width={595}
-              height={620}
-              layout="intrinsic"
-              objectFit="contain"
-              src="/images/homepage-thumbnail-3.png"
-              quality={100}
-            />
+            <a href="https://beats.blockchainedu.org">
+                <Image
+                  width={595}
+                  height={620}
+                  layout="intrinsic"
+                  objectFit="contain"
+                  src="/images/homepage-thumbnail-3.png"
+                  quality={100}
+                />
+            </a>
           </div> 
         </div>
 

@@ -30,8 +30,7 @@ export default function Footer() {
               Blockchain Education Network EST. 2014
             </div>
             <div className="mb-6">
-              BEN is the largest and oldest network of blockchain students,
-              alumni, and professors across the world.
+              BEN is a global education company providing crypto lessons, news, events, and job opportunities around the world.
             </div>
             <div className="mb-6">
               625 Kenmoor Ave Suite <br />
@@ -78,30 +77,18 @@ export default function Footer() {
                 <li className="text-sm">
                   <a href="/contact">Contact</a>
                 </li>
-                <li className="text-sm">
-                  <a href="https://twitter.com/BlockchainEdu">Twitter</a>
-                </li>
-                <li className="text-sm">
-                  <a href="https://medium.com/blockchainedu">Medium</a>
-                </li>
-                <li className="text-sm">
-                  <a href="https://facebook.com/blockchainedu">Facebook</a>
-                </li>
-                <li className="text-sm">
-                  <a href="https://instagram.com/blockchainedu">Instagram</a>
-                </li>
               </ul>
             </div>
-            {/* <div>
+            <div>
                   <ul className="space-y-3">
-                    <li className="uppercase font-bold text-xs">Resources</li>
-                    <li className="text-sm">FAQ</li>
-                    <li className="text-sm">Testimonials</li>
-                    <li className="text-sm">Support</li>
-                    <li className="text-sm">Terms</li>
-                    <li className="text-sm">Privacy</li>
+                    <li className="uppercase font-bold text-xs">Socials</li>
+                    <li className="text-sm"><a href="https://twitter.com/blockchainedu">Twitter</a></li>
+                    <li className="text-sm"><a href="https://facebook.com/blockchainedu">Facebook</a></li>
+                    <li className="text-sm"><a href="https://instagram.com/blockchainedu">Instagram</a></li>
+                    <li className="text-sm"><a href="https://linkedin.com/in/blockchainedu">LinkedIn</a></li>
+                    <li className="text-sm"><a href="https://tiktok.com/@blockchainedu.org">TikTok</a></li>
                   </ul>
-                </div> */}
+                </div>
           </div>
         </div>
       </div>
