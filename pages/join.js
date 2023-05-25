@@ -11,7 +11,7 @@ export default function Contact() {
                 <title>Join | Blockchain Education Network</title>
             </Head>
 
-            <section className="py-20 bg-black text-white">
+            <section className="py-20 bg-black text-white mt-5">
                 <div className="container mx-auto px-4">
 
                     <div className="max-w-3xl mx-auto text-center">
