@@ -143,43 +143,55 @@ export default function Home({ locations }) {
                     <div className="border-t">
                         <div className="mx-auto flex flex-col lg:flex-row" style={{ maxWidth: "1000px" }}>
                             <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l py-14 px-10">
+                                <a href="/sponsor">
                                 <Image
                                     width="100px"
                                     height="100px"
                                     src="/images/ambassadors-home.svg"
                                 />
+                                </a>
+                                <a href="/sponsor">
                                 <div className="font-average text-6xl">
                                     50k+
                                 </div>
                                 <div className="font-inter font-semibold text-xl">
                                     Audience Reach
                                 </div>
+                                </a>
                             </div>
                             <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l lg:border-r py-14 px-10">
+                                <a href="/sponsor">
                                 <Image
                                     width="100px"
                                     height="100px"
                                     src="/images/companies-home.svg"
                                 />
+                                </a>
+                               <a href="/sponsor">
                                 <div className="font-average text-6xl">
                                     4k+
                                 </div>
                                 <div className="font-inter font-semibold text-xl">
                                     Student Reach
                                 </div>
+                                </a>
                             </div>
                             <div className="text-center w-full lg:w-1/3 lg:border-r py-14 px-10">
+                            <a href="/sponsor">
                                 <Image
                                     width="100px"
                                     height="100px"
                                     src="/images/jobs-home.svg"
                                 />
+                            </a>
+                            <a href="/sponsor">
                                 <div className="font-average text-6xl">
                                     316+
                                 </div>
                                 <div className="font-inter font-semibold text-xl">
                                     University Reach
                                 </div>
+</a>
                             </div>
                         </div>
                     </div>
