@@ -5,6 +5,8 @@ import '../public/styles/global.css'
 import TagManager from 'react-gtm-module';
 import Head from 'next/head';
 
+import '../utils/utm-tracking.js';
+
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     TagManager.initialize({ gtmId: 'GTM-213540060-2' });

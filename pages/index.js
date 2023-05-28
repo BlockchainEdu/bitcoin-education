@@ -71,6 +71,28 @@ export default function Home({ locations }) {
         }, 1000)
     }
 
+if (typeof window !== 'undefined') {
+  // Get the UTM parameters from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Extract the UTM parameter values
+  const utmSource = urlParams.get('utm_source');
+  const utmMedium = urlParams.get('utm_medium');
+  const utmCampaign = urlParams.get('utm_campaign');
+
+  // Store the UTM parameters in session storage if values are not null
+  if (utmSource !== null && utmSource !== "null") {
+    sessionStorage.setItem('utm_source', utmSource);
+  }
+  if (utmMedium !== null && utmMedium !== "null") {
+    sessionStorage.setItem('utm_medium', utmMedium);
+  }
+  if (utmCampaign !== null && utmCampaign !== "null") {
+    sessionStorage.setItem('utm_campaign', utmCampaign);
+  }
+}
+
+
     return (
 
         <div id="home">
