@@ -21,7 +21,7 @@ export default function Contact() {
                         <a href="#pricingmodule" className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg uppercase tracking-wide hover:bg-gray-500" onClick={(e) => {
                             e.preventDefault();
                             const section = document.getElementById("pricingmodule");
-                            const offsetTop = section.offsetTop - 50;
+                            const offsetTop = section.offsetTop - 120;
                             window.scrollTo({ top: offsetTop, behavior: "smooth" });
                           }}>Join Now</a>
                     </div>
@@ -31,7 +31,14 @@ export default function Contact() {
                 <div className="container mx-auto px-4">
 
                     <h2 className="text-3xl font-bold mb-8 text-center">Weekly Market Reports</h2>
-                    <img src="/images/join-desenho4_copy.avif" alt="Image" className="mx-auto mb-4" />
+<a href="#pricingmodule"  onClick={(e) => {
+                            e.preventDefault();
+                            const section = document.getElementById("pricingmodule");
+                            const offsetTop = section.offsetTop - 120;
+                            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+                          }}>
+                        <img src="/images/join-desenho4_copy.avif" alt="Image" className="mx-auto mb-4" />
+                    </a>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div className="bg-white rounded-lg shadow p-6">
                             <h3 className="text-xl font-bold mb-4">Exclusive Insights</h3>
@@ -66,7 +73,14 @@ export default function Contact() {
                             <p>-If you're working on a startup, meet co-founders and investors.'</p>
                             </ul>
                         </div>
+<a href="#pricingmodule"  onClick={(e) => {
+                            e.preventDefault();
+                            const section = document.getElementById("pricingmodule");
+                            const offsetTop = section.offsetTop - 120;
+                            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+                          }}>
                     <img src="/images/join-gif.avif" alt="Image" className="mx-auto mb-4" />
+                    </a>
                     </div>
                 </div>
             </section>
@@ -77,21 +91,28 @@ export default function Contact() {
                     <h2 className="text-3xl font-bold mb-8 text-center">Blockchain Courses</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                         <div className="bg-white rounded-lg shadow p-6">
+<a href="#pricingmodule"  onClick={(e) => {
+                            e.preventDefault();
+                            const section = document.getElementById("pricingmodule");
+                            const offsetTop = section.offsetTop - 120;
+                            window.scrollTo({ top: offsetTop, behavior: "smooth" });
+                          }}>
                     <img src="/images/join-gif1.avif" alt="Image" className="mx-auto mb-4" />
+                    </a>
                         </div>
                         <div className="bg-white rounded-lg shadow p-6">
                             <h3 className="text-xl font-bold mb-4">On-demand video coursess</h3>
                         <ul>
-                        <li>- Bitcoin & Basics</li>
-<li>- Blockchain Development</li>
-<li>- Blockchain Fundamentals</li>
-<li>- Buying Land in the Metaverse</li>
-<li>- Crypto Investing & Marketing Basics</li>
-<li>- DeFi Basics</li>
-<li>- Ethereum & Smart Contracts Basics</li>
-<li>- Intro to The Sandbox</li>
-</ul>
-</div>
+                            <li>- Bitcoin & Basics</li>
+                            <li>- Blockchain Development</li>
+                            <li>- Blockchain Fundamentals</li>
+                            <li>- Buying Land in the Metaverse</li>
+                            <li>- Crypto Investing & Marketing Basics</li>
+                            <li>- DeFi Basics</li>
+                            <li>- Ethereum & Smart Contracts Basics</li>
+                            <li>- Intro to The Sandbox</li>
+                        </ul>
+                        </div>
                     </div>
                 </div>
             </section>
