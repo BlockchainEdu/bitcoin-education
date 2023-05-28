@@ -6,13 +6,24 @@ import Image from "next/image";
 export default function Footer() {
   const popupDelayInSeconds = 15;
   const [showPopup, setShowPopup] = useState(false);
-  setTimeout(() => {
-    if (window.sessionStorage.getItem("hasShownPopup")) {
-      return;
+
+  useEffect(() => {
+    let timeoutId;
+
+    if (typeof window !== "undefined" && !window.sessionStorage.getItem("hasShownPopup")) {
+      timeoutId = setTimeout(() => {
+        window.sessionStorage.setItem("hasShownPopup", true);
+        setShowPopup(true);
+      }, popupDelayInSeconds * 1000);
     }
-    window.sessionStorage.setItem("hasShownPopup", true);
-    setShowPopup(true);
-  }, popupDelayInSeconds * 1000);
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, []);
+
   return (
     <section className="pt-20 pb-4" style={{ background: "#191C1F" }}>
       {showPopup && <Popup></Popup>}
