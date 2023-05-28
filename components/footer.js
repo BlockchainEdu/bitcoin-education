@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Subscribe from "./subscribe";
 import Popup from "./popup";
 import Image from "next/image";
