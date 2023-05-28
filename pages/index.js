@@ -72,22 +72,25 @@ export default function Home({ locations }) {
     }
 
 if (typeof window !== 'undefined') {
-  // Get the UTM parameters from the URL
+  // Check if the UTM parameters are present in the URL
   const urlParams = new URLSearchParams(window.location.search);
-
-  // Extract the UTM parameter values
   const utmSource = urlParams.get('utm_source');
   const utmMedium = urlParams.get('utm_medium');
   const utmCampaign = urlParams.get('utm_campaign');
 
-  // Store the UTM parameters in session storage if values are not null
-  if (utmSource !== null && utmSource !== "null") {
+  // Retrieve the stored UTM parameters from session storage
+  const storedUtmSource = sessionStorage.getItem('utm_source');
+  const storedUtmMedium = sessionStorage.getItem('utm_medium');
+  const storedUtmCampaign = sessionStorage.getItem('utm_campaign');
+
+  // Check if the UTM parameters are present in the URL and not already stored
+  if (utmSource && !storedUtmSource) {
     sessionStorage.setItem('utm_source', utmSource);
   }
-  if (utmMedium !== null && utmMedium !== "null") {
+  if (utmMedium && !storedUtmMedium) {
     sessionStorage.setItem('utm_medium', utmMedium);
   }
-  if (utmCampaign !== null && utmCampaign !== "null") {
+  if (utmCampaign && !storedUtmCampaign) {
     sessionStorage.setItem('utm_campaign', utmCampaign);
   }
 }

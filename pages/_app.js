@@ -4,8 +4,7 @@ import { AppWrapper } from '../context/state'; // import based on where you put 
 import '../public/styles/global.css'
 import TagManager from 'react-gtm-module';
 import Head from 'next/head';
-
-import '../utils/utm-tracking.js';
+import '../utils/utm-tracking.js'
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
