@@ -23,6 +23,14 @@ function appendUtmParameters() {
       }
 
       link.setAttribute('href', updatedHref.toString());
+
+      // Check if the link is leaving the website
+      if (!link.href.startsWith(window.location.origin)) {
+        updatedHref.searchParams.set('utm_source', 'blockchainedu.org');
+        updatedHref.searchParams.delete('utm_medium');
+        updatedHref.searchParams.delete('utm_campaign');
+        link.setAttribute('href', updatedHref.toString());
+      }
     });
 
     // Similarly, update form actions if necessary
@@ -42,6 +50,14 @@ function appendUtmParameters() {
       }
 
       form.setAttribute('action', updatedAction.toString());
+
+      // Check if the form action is leaving the website
+      if (!updatedAction.href.startsWith(window.location.origin)) {
+        updatedAction.searchParams.set('utm_source', 'blockchainedu.org');
+        updatedAction.searchParams.delete('utm_medium');
+        updatedAction.searchParams.delete('utm_campaign');
+        form.setAttribute('action', updatedAction.toString());
+      }
     });
   }
 }
