@@ -1,15 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\components",
-    "\\consts",
-    "\\content",
-    "\\context",
-    "\\pages",
-    "\\pages\\about",
-    "\\public",
-    "\\public\\styles",
-    "\\services"
+    "\\services",
+    "\\utils"
   ],
   "PreviewInSolutionExplorer": false
 }

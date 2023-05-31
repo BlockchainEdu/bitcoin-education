@@ -84,9 +84,9 @@ return (
           <meta property="og:url" content={currentUrl} />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content={pageTitle} />
-          <meta name="twitter:description" content={pageDescription} />
-          <meta name="twitter:image" content={ogImageUrl} />
+          <meta name="twitter:title" content="Blockchain Education Network" />
+          <meta name="twitter:description" content="Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!" />
+          <meta name="twitter:image" content="https://www.blockchainedu.org/images/ben-beats-thumbnail.png" />
 
         </Head>
         <Component {...pageProps} />
