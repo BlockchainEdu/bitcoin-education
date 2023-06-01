@@ -37,18 +37,16 @@ function BlogGrid() {
                                 <div>
                                     <a href={post.link}>
                                         <div className="flip-card">
-                                            <div className="flip-card-inner">
                                                 <div className="flip-card-front" style={{backgroundImage: `url(${post.enclosure.url || ''})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}></div>
                                                 <div className="flip-card-back text-black font-mont p-5 text-sm text-left overflow-y-scroll">
                                                     <div>{post.contentSnippet}</div>
                                                 </div>
-                                            </div>
                                         </div>
                                         </a>
 
                                 </div>
                                     <a href={post.link}>
-                                <h3 className="font-mont font-bold text-xl text-black pt-5">{post.title}</h3>
+                                <h3 className="font-mont font-bold text-xl text-black pt-5 text-center">{post.title}</h3>
                                 <div className="text-bengrey-300 pt-2"><small>{new Date(post.pubDate).toDateString()}</small></div>
                                 </a>
                             </div>
