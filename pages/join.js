@@ -3,7 +3,7 @@ import Header from '../components/header';
 import Head from "next/head";
 import PricingModule from '../components/pricingModule';
 
-export default function Contact() {
+export default function Join() {
   return (
     <div id="join-page">
       <Header />
@@ -199,6 +199,7 @@ export default function Contact() {
       </div>
     </section>
 
+{/*
   <section id="video-testimonials" className="py-4">
     <div className="container mx-auto px-4 lg:w-1/2 mb-4">
       <img src="/images/frase6_copy.avif" />
@@ -226,7 +227,7 @@ export default function Contact() {
       </div>
     </div>
 </section>
-
+*/}
     <section id="start-a-new" className="py-0">
       <div className="container mx-auto px-4 lg:w-1/2 mb-4">
         <div className="text-4xl font-bold">Start a <span className="text-orange">new career</span> and create <span className="text-orange">wealth</span> & <span className="text-orange">financial freedom!</span></div>
