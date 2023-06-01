@@ -5,7 +5,7 @@ import { Disclosure } from '@headlessui/react'
 import DonationButtonSmall from '../components/donateButtonSmall'
 import { ChevronRightIcon } from '@heroicons/react/solid'
 import StandardButton from './standardButton'
-
+import { useRouter } from 'next/router';
 
 const solutions = [
   {
@@ -35,16 +35,23 @@ const solutions = [
 ]
 
 export default function MobileDropdown(props) {
+  const router = useRouter();
+
+  const hideButtonOnPage = ['/join'];
+  const shouldHideButton = hideButtonOnPage.includes(router.pathname);
+
   return (
     <div className="w-full max-w-sm px-4 top-16 hidden display-on-scroll">
 
         <div className="bg-white text-center">
+          {!shouldHideButton && (
             <StandardButton
                 link="/subscribe"
                 text="Get Started"
                 color="orange"
                 styling="text-center py-3 rounded-lg w-full px-8"
             />
+         )}
         </div>
 
 {/*

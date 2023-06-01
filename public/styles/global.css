@@ -834,3 +834,13 @@ a {
 .bg-benblack {
     background-color: #333333;
 }
+
+.orange-bullets li::before {
+  content: "";
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #FF9369;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
