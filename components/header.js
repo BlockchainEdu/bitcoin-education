@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import MobileNav from "./mobileNav";
 import Head from 'next/head';
 import Dropdown from "./dropdown";
@@ -7,14 +8,17 @@ import StandardButton from './standardButton';
 export default function HeaderWithLogo({className="", children}) {
   const [ offset, setOffset ] = useState(0);
   const logoSrc = `/images/ben-logo-color-no-slogan.svg`;
+  const router = useRouter();
 
   useEffect(() => {
     const onScroll = () => setOffset(window.pageYOffset);
-    // clean up code
     window.removeEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  const hideButtonOnPage = ['/join'];
+  const shouldHideButton = hideButtonOnPage.includes(router.pathname);
 
   return (
     <section className={`pt-10 px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" } ${className}`}>
@@ -36,7 +40,8 @@ export default function HeaderWithLogo({className="", children}) {
             <a className="font-semibold" href="/about/partners">Partners </a>
             <a className="font-semibold" href="/about/team">Team </a>
             */}
-            { offset > 0 && <>
+            { offset > 0 && !shouldHideButton && (
+              <>
                 {/*
                 <StandardButton
                   link="/donate"
@@ -51,7 +56,7 @@ export default function HeaderWithLogo({className="", children}) {
                   styling="text-center py-3 rounded-lg w-full px-8"
                 />
               </>
-            }
+            )}
             {/*
             <a className="px-4 font-semibold underline hidden-on-scroll" href="/donate">
                 Scholarships
@@ -60,12 +65,14 @@ export default function HeaderWithLogo({className="", children}) {
                 Subscribe
             </a>
             */}
-            <StandardButton
-              link="/subscribe"
-              text="Get Started"
-              color="orange"
-              styling="hidden-on-scroll text-center py-3 rounded-lg w-full px-8"
-            />
+            { !shouldHideButton && (
+              <StandardButton
+                link="/subscribe"
+                text="Get Started"
+                color="orange"
+                styling="hidden-on-scroll text-center py-3 rounded-lg w-full px-8"
+              />
+            )}
           </li>
         </ul>
       </nav>

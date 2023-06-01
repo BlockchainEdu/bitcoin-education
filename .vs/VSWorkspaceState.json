@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\components",
+    "\\pages",
     "\\services",
     "\\utils"
   ],
+  "SelectedNode": "\\pages\\sponsor.js",
   "PreviewInSolutionExplorer": false
 }
