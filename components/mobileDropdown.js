@@ -43,6 +43,7 @@ export default function MobileDropdown(props) {
   return (
     <div className="w-full max-w-sm px-4 top-16 hidden display-on-scroll">
 
+    {/*
         <div className="bg-white text-center">
           {!shouldHideButton && (
             <StandardButton
@@ -53,8 +54,8 @@ export default function MobileDropdown(props) {
             />
          )}
         </div>
+    */}
 
-{/*
       <Popover>
         {({ open }) => (
           <>
@@ -74,6 +75,7 @@ export default function MobileDropdown(props) {
                     </svg>
                   </Popover.Button>
                 </div>
+                {/*
                 <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2 grow">
                   <ul className="font-mont text-chablack-300 font-semibold">
                     <li className="my-8">
@@ -90,14 +92,16 @@ export default function MobileDropdown(props) {
                     </li>
                   </ul>
                 </div>
+                */}
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
-                    link="https://beats.blockchainedu.org/"
-                    text="Sign Up"
+                    link="/subscribe"
+                    text="Get Started"
                     color="orange"
                     styling="text-center py-3 rounded-lg w-full px-8"
                   />
                 </div>
+                {/*
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
                     link="/donate"
@@ -105,12 +109,12 @@ export default function MobileDropdown(props) {
                     styling="text-center py-3 rounded-lg border-black w-full"
                   />
                 </div>
+                */}
               </div>
             </Popover.Panel>
           </>
         )}
       </Popover>
-*/}
     </div>
   )
 }
