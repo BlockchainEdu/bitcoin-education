@@ -96,53 +96,126 @@ if (typeof window !== 'undefined') {
 }
 
 
-    return (
+  return (
 
-        <div id="home">
-            <Header />
-            <Head>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7187550270272911"
-                    crossOrigin="anonymous"></script>
-                <script type="text/javascript" async src="https://embeds.beehiiv.com/attribution.js"></script>
-                <title>Home | Blockchain Education Network</title>
-            </Head>
+    <div id="home">
 
-            {/*
-            <div className="text-white px-6 py-4 flex justify-center items-center" style={{ background: "orange" }}>
-              <a href="https://bit.ly/ben-bitcoin2023" target="_blank"><div className="text-white text-lg font-bold text-center hover:text-black" style={{ transition: "color 0.2s" }}>Students! Apply for Free Bitcoin 2023 Tickets (May 18 - 24)🚀</div></a>
+      <Header />
+
+      <Head>
+        <script async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7187550270272911"
+          crossOrigin="anonymous">
+        </script>
+        <script type="text/javascript" async 
+          src="https://embeds.beehiiv.com/attribution.js">
+        </script>
+        <title>Home | Blockchain Education Network</title>
+      </Head>
+
+      {/*
+      <div className="text-white px-6 py-4 flex justify-center items-center" style={{ background: "orange" }}>
+        <a href="https://bit.ly/ben-bitcoin2023" target="_blank"><div className="text-white text-lg font-bold text-center hover:text-black" style={{ transition: "color 0.2s" }}>Students! Apply for Free Bitcoin 2023 Tickets (May 18 - 24)🚀</div></a>
+      </div>
+      */}
+
+      <section className="pt-10 lg:py-0 lg:pb-0 px-7">
+        <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4"  style={{ maxWidth: "1000px"}}>
+
+          <div className="col-span-1 lg:pt-20 lg:order-last">
+
+            <h1 className="font-average text-6xl xl:text-6xl text-center max-w-4xl mx-auto mt-4 mb-2">
+              Learn <span className="font-bold">crypto</span>, fast!
+            </h1>
+
+            <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
+              Get the top crypto news, events, jobs, and tools in 4 minutes a week 👇
             </div>
-            */}
 
-            <section className="pt-10 lg:py-0 lg:pb-0 px-7">
-                <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4"  style={{ maxWidth: "1000px"}}>
+            <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
+              <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
+                <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+              </div>
+            </div>
 
-                    <div className="col-span-1 lg:pt-20 lg:order-last">
-                        <h1 className="font-average text-6xl xl:text-6xl text-center max-w-4xl mx-auto mt-4">
-                            Learn <span className="font-bold">crypto</span>, fast!
-                        </h1>
-                        <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-                            Join 50k+ and get the top crypto news, events, jobs, and tools in 4 minutes a week 👇
-                        </div>
-                        <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10 m-auto" style={{ "max-width": "800px" }}>
-                            <div className="mx-auto lg:mx-0 md:w-full lg:w-5/6">
-                                <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="flex justify-center items-center col-span-1 pb-12">
-                        <Image
-                            width={743}
-                            height={775}
-                            layout="intrinsic"
-                            objectFit="contain"
-                            src="/images/homepage-thumbnail-3.png"
-                            quality={100}
-                        />
-                    </div>
-                
+            <div className="col-span-2 mt-12 text-center">
+              <div className="flex justify-center">
+                <div className="w-full grid grid-cols-8 gap-9 relative" style={{ margin: "-10px", width: "calc(20px * 8 + 4px * 7)" }}>
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2">
+                    <img
+                      src="/images/stories/priya-ganguly.jpeg"
+                      alt="User Image 1"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-1">
+                    <img
+                      src="/images/stories/valkyrie-holmes.jpg"
+                      alt="User Image 2"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-2">
+                    <img
+                      src="/images/stories/sohail-mohammed.jpg"
+                      alt="User Image 2"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-3">
+                    <img
+                      src="/images/stories/sarah-roff.jpeg"
+                      alt="User Image 3"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-4">
+                    <img
+                      src="/images/stories/anthony-ung.jpeg"
+                      alt="User Image 4"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-5">
+                    <img
+                      src="/images/stories/roberto-martinez.jpeg"
+                      alt="User Image 5"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-6">
+                    <img
+                      src="/images/stories/amrita-bhasin.jpeg"
+                      alt="User Image 6"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2 -z-7">
+                    <img
+                      src="/images/stories//drew-cousin.jpeg"
+                      alt="User Image 6"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-            </section>
+              </div>
+              <p className="mt-2 ml-8 text-bengrey-500 text-center text-md">Join thousands of readers!</p>
+            </div>
+          </div>
+
+          <div className="flex justify-center items-center col-span-1 pb-12">
+            <Image
+              width={743}
+              height={775}
+              layout="intrinsic"
+              objectFit="contain"
+              src="/images/homepage-thumbnail-3.png"
+              quality={100}
+            />
+          </div>
+                
+        </div>
+      </section>
 
             <section className="pt-0">
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">

@@ -844,3 +844,8 @@ a {
   border-radius: 50%;
   margin-right: 0.5rem;
 }
+
+.border-benorange {
+  --tw-border-opacity: 1;
+  border-color: #ff872a;
+}
