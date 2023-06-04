@@ -26,9 +26,9 @@
   align-items: center;
 }
 .overlay-popup {
-  max-width: 1000px;
+  max-width: 770px;
   min-width: 300px;
-  width: 90%;
+  width: 100%;
   position: relative;
 }
 

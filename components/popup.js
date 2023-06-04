@@ -1,5 +1,4 @@
 ﻿import { useState } from 'react';
-import Mailchimp from 'react-mailchimp-form';
 import { useRouter } from 'next/router';
 
 export default function Popup() {
@@ -20,29 +19,31 @@ export default function Popup() {
     <>
       {display && (
         <div id="popup" className="overlay-popup-container" onClick={closePopup}>
-          <div className="overlay-popup" onClick={(e) => e.stopPropagation()}>
+          <div className="overlay-popup mx-6" onClick={(e) => e.stopPropagation()}>
+
             <div className="flex justify-end">
               <div className="overlay-popup-close w-6 mb-3" onClick={closePopup}><img src="/images/popup-close.svg" /></div>
             </div>
-           <div className="p-10" style={{ background: "#F6F6F6" }}>
-              <div className="flex flex-col lg:flex-row bg-white gap-x-20 px-6 lg:px-0">
-                <div className="w-full lg:w-1/2 py-14 pl-0 lg:pl-14">
-                  <div className="text-3xl font-average" style={{ maxWidth: "400px" }}>
-                      Hours of research, condensed into minutes
-                  </div>
-                  <div className="text-sm font-inter my-6">
-                    Get a free "Guide to the Wild World of Crypto" when you sign up now 👇
-                  </div>
-                  <div>
-                      <div className="mx-auto lg:mx-0">
-                          <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%"}}></iframe>
-                       </div>
-                  </div>
+
+            <div className="flex flex-col lg:flex-row bg-white gap-x-20 px-6 lg:px-0">
+              <div className="w-full lg:w-1/2 py-10 pl-0 lg:ml-14">
+                <div className="text-lg text-center mb-4">
+                  Get your FREE
                 </div>
-                <div className="w-full lg:w-1/2 text-sm font-inter" style={{ backgroundImage: "url(/images/popup.png)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "80%"}}>
+                <div className="text-3xl text-center font-bold">
+                  Ultimate Guide to the Wild World of Crypto
+                </div>
+                <div className="text-lg text-center my-4">
+                  Learn why crypto crashed in 2022 and how to prepare for 2024 👇
+                </div>
+                <div className="flex justify-center">
+                  <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%"}}></iframe>
                 </div>
               </div>
+              <div className="w-full lg:h-auto lg:w-1/3" style={{ backgroundImage: "url(/images/your-guide-to-the-wild-world-of-crypto-3.jpg)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover"}}>
+              </div>
             </div>
+
           </div>
         </div>
       )}
