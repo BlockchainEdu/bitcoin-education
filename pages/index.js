@@ -588,10 +588,10 @@ if (typeof window !== 'undefined') {
                                 Newsletter
                             </div>
                             <div class="text-sm font-inter">
-                                Are you new to Blockchain? Trading Cryptocurrency? Looking for a deep dive on DeFi? Subscribe now and start learning!
+                                Sign up and and get access to crypto news, opportunities, free flights and scholarships to blockchain conferennces.
                             </div>
                         </a>
-                        <a href="/subscribe" className="border p-8 rounded-lg bg-white">
+                        <a target="_blank" href="https://learn.blockchainedu.org" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -609,10 +609,10 @@ if (typeof window !== 'undefined') {
                                 </div>
                             </div>
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                Opportunities
+                                COMMUNITY
                             </div>
                             <div class="text-sm font-inter">
-                                Sign up and get access to opportunities, free flights and scholarships to blockchain conferennces.
+                                Are you new to blockchain? Trading cryptocurrency? Looking for a deep dive on DeFi? Join now and start learning!
                             </div>
                         </a>
 {/*
