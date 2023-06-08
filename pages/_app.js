@@ -1,12 +1,15 @@
 import 'tailwindcss/tailwind.css'
 import { useEffect } from 'react';
-import { AppWrapper } from '../context/state'; // import based on where you put it
+import { AppWrapper } from '../context/state';
 import '../public/styles/global.css'
 import TagManager from 'react-gtm-module';
 import Head from 'next/head';
-import '../utils/utm-tracking.js'
+import '../utils/utm-tracking.js';
+import { useRouter } from 'next/router';
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
   useEffect(() => {
     TagManager.initialize({ gtmId: 'GTM-213540060-2' });
   }, []);
@@ -17,63 +20,74 @@ function MyApp({ Component, pageProps }) {
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
-return (
+  useEffect(() => {
+    if (router.pathname === '/join') {
+      window.location.href = 'https://learn.blockchainedu.org';
+    }
+
+    if (router.pathname === '/learn') {
+      window.location.href = 'https://learn.blockchainedu.org';
+    }
+
+  }, [router.pathname]);
+
+  return (
     <AppWrapper>
-        <div>
-            <Head>
+      <div>
+        <Head>
 
-                {/* Global Site Tag (gtag.js) - Google Analytics */}
-                <script
-                    async
-                    src={`https://www.googletagmanager.com/gtag/js?id=UA-213540060-2`}
-                />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-                        gtag('config', 'UA-213540060-2', {
-                        page_path: window.location.pathname,
-                        });
-                        `,
-                    }}
-                />
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=UA-213540060-2`}
+          />
+        
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-213540060-2', {
+                page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
 
-                {/* Facebook Pixel Code */}
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        !function(f,b,e,v,n,t,s){
-                            if(f.fbq)return;
-                            n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                            if(!f._fbq)f._fbq=n;
-                            n.push=n;
-                            n.loaded=!0;
-                            n.version='2.0';
-                            n.queue=[];
-                            t=b.createElement(e);
-                            t.async=!0;
-                            t.src=v;
-                            s=b.getElementsByTagName(e)[0];
-                            s.parentNode.insertBefore(t,s)
-                          }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-                          fbq('init', '647331727208880');
-                          fbq('track', 'PageView');
-                          `,
-                    }}
-                />
-                <noscript>
-                      <img height="1" width="1" src="https://www.facebook.com/tr?id=647331727208880&ev=PageView&noscript=1"/>
-                </noscript>
+          {/* Facebook Pixel Code */}
+          <script
+            dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s){
+              if(f.fbq)return;
+              n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;
+              n.push=n;
+              n.loaded=!0;
+              n.version='2.0';
+              n.queue=[];
+              t=b.createElement(e);
+              t.async=!0;
+              t.src=v;
+              s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)
+              }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '647331727208880');
+              fbq('track', 'PageView');
+              `,
+            }}
+          />
+          <noscript>
+            <img height="1" width="1" src="https://www.facebook.com/tr?id=647331727208880&ev=PageView&noscript=1"/>
+          </noscript>
 
-                {/* CrazyEgg Analytics */}
-                <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0118/3905.js" async="async"></script>
-
-          <link rel="shortcut icon" href="" />
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></link>
-          <link href="https://fonts.googleapis.com/css2?family=Average&display=swap" rel="stylesheet" />
+          {/* CrazyEgg Analytics */}
+          <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0118/3905.js" async="async"></script>
+            <link rel="shortcut icon" href="" />
+            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></link>
+            <link href="https://fonts.googleapis.com/css2?family=Average&display=swap" rel="stylesheet" />
 
           {/* Social Media Thumbnails */}
           <meta property="og:title" content={pageTitle} />
@@ -92,7 +106,24 @@ return (
         <Component {...pageProps} />
       </div>
     </AppWrapper>
-  )
+  );
+}
+
+export async function getServerSideProps({ req }) {
+  const { url } = req;
+
+  if (url === '/join') {
+    return {
+      redirect: {
+        destination: 'https://learn.blockchainedu.org',
+        permanent: true,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }
 
 export default MyApp

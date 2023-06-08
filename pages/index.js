@@ -201,6 +201,7 @@ if (typeof window !== 'undefined') {
               </div>
               <p className="mt-2 ml-8 text-bengrey-500 text-center text-md">Join thousands of readers!</p>
             </div>
+
           </div>
 
           <div className="flex justify-center items-center col-span-1 pb-12">

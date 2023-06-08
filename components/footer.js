@@ -70,6 +70,7 @@ export default function Footer() {
                 <li className="uppercase font-bold text-xs">Initiatives</li>
                 <li className="text-sm"><a href="https://beats.blockchainedu.org/">Subscribe</a></li>
                 <li className="text-sm"><a href="/donate">Scholarships</a></li>
+                <li className="text-sm"><a href="/join">Join Now</a></li>
                 {/* <li className="text-sm">Programs</li>
                     <li className="text-sm">For Professors</li>
                     <li className="text-sm">For Projects</li>

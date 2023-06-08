@@ -41,7 +41,7 @@ export default function MobileDropdown(props) {
   const shouldHideButton = hideButtonOnPage.includes(router.pathname);
 
   return (
-    <div className="w-full max-w-sm px-4 top-16 hidden display-on-scroll">
+    <div className="w-full max-w-sm px-4 top-16 display-on-scroll">
 
     {/*
         <div className="bg-white text-center">
@@ -95,8 +95,8 @@ export default function MobileDropdown(props) {
                 */}
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
-                    link="/subscribe"
-                    text="Get Started"
+                    link="https://learn.blockchainedu.org"
+                    text="Join the Community"
                     color="orange"
                     styling="text-center py-3 rounded-lg w-full px-8"
                   />

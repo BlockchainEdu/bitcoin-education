@@ -50,8 +50,8 @@ export default function HeaderWithLogo({className="", children}) {
                 />
                 */}
                 <StandardButton
-                  link="/subscribe"
-                  text="Get Started"
+                  link="https://learn.blockchainedu.org/"
+                  text="Join the Community"
                   color="orange"
                   styling="text-center py-3 rounded-lg w-full px-8"
                 />
@@ -67,8 +67,8 @@ export default function HeaderWithLogo({className="", children}) {
             */}
             { !shouldHideButton && (
               <StandardButton
-                link="/subscribe"
-                text="Get Started"
+                link="https://learn.blockchainedu.org"
+                text="Join the Community"
                 color="orange"
                 styling="hidden-on-scroll text-center py-3 rounded-lg w-full px-8"
               />
