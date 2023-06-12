@@ -122,14 +122,14 @@ if (typeof window !== 'undefined') {
       <section className="pt-10 lg:py-0 lg:pb-0 px-7">
         <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4"  style={{ maxWidth: "1000px"}}>
 
-          <div className="col-span-1 lg:pt-20 lg:order-last">
+          <div className="col-span-1 lg:pt-10 lg:order-last">
 
-            <h1 className="font-average text-6xl xl:text-6xl text-center max-w-4xl mx-auto mt-4 mb-2">
-              Crypto news, events, jobs, and tools!
+            <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
+              Crypto News, Events, Jobs, and Tools!<span className="font-bold"></span>
             </h1>
 
             <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-              Hours of research, condensed into just 4 minutes each week 👇
+              Get the latest crypto opportunities and resources delivered to your inbox once a week 👇
             </div>
 
             <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
@@ -199,7 +199,7 @@ if (typeof window !== 'undefined') {
                   </div>
                 </div>
               </div>
-              <p className="mt-2 ml-8 text-bengrey-500 text-center text-md">Join thousands of readers!</p>
+              <p className="mt-3 ml-20 text-bengrey-500 text-center text-md">Join thousands of subscribers!</p>
             </div>
 
           </div>
