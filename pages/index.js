@@ -125,11 +125,11 @@ if (typeof window !== 'undefined') {
           <div className="col-span-1 lg:pt-20 lg:order-last">
 
             <h1 className="font-average text-6xl xl:text-6xl text-center max-w-4xl mx-auto mt-4 mb-2">
-              Learn <span className="font-bold">crypto</span>, fast!
+              Crypto news, events, jobs, and tools!
             </h1>
 
             <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-              Get the top crypto news, events, jobs, and tools in 4 minutes a week 👇
+              Hours of research, condensed into just 4 minutes each week 👇
             </div>
 
             <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
