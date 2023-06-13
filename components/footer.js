@@ -89,6 +89,9 @@ export default function Footer() {
                 <li className="text-sm">
                   <a href="/contact">Contact</a>
                 </li>
+                <li className="text-sm">
+                  <a href="/sponsor">Advertise With Us</a>
+                </li>
               </ul>
             </div>
             <div>
