@@ -218,7 +218,7 @@ if (typeof window !== 'undefined') {
         </div>
       </section>
 
-      <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: '120% auto', backgroundPosition: 'center' }}>
+      <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <div className="rounded-full overflow-hidden mx-auto w-28 h-28 mb-6">
