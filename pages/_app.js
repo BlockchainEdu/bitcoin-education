@@ -16,20 +16,26 @@ function MyApp({ Component, pageProps }) {
 
   const pageTitle = 'Blockchain Education Network';
   const pageDescription = 'Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!';
-  const ogImageUrl = '/images/ben-beats-thumbnail.png?4362984378' ;
+  const ogImageUrl = '/images/light-2-logo.jpg' ;
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
   useEffect(() => {
+
+    // Redirect specific paths
     if (router.pathname === '/join') {
       window.location.href = 'https://learn.blockchainedu.org';
     }
-
+  
     if (router.pathname === '/learn') {
       window.location.href = 'https://learn.blockchainedu.org';
     }
 
-  }, [router.pathname]);
+    // Redirect unused paths to the homepage
+    if (router.asPath !== '/' && !router.isFallback) {
+      window.location.href = '/';
+    }
+  }, [router.pathname, router.asPath, router.isFallback]);
 
   return (
     <AppWrapper>
