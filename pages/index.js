@@ -239,21 +239,23 @@ if (typeof window !== 'undefined') {
         <div className="container mx-auto px-4 lg:w-7/12">
           <div className="text-2xl text-center">Network | <span className="text-orange">Learn</span> | Build | <span className="text-orange">HODL</span> | Succeed</div>
           <div className="text-4xl text-center font-bold my-8">What do I get as a BEN Community Member?</div>
-          <div className="text-2xl my-4 font-bold text-center">Networking</div>
-          <div>✅ Access to a global community of blockchain enthusiasts</div>
-          <div>✅ Online discussions about AI, NFTs, trading, top coins, and more...</div>
-          <div>✅ Opportunities to share your project</div>
-          <div>✅ Get feedback, mentorship, investors, and co-founders</div>
-          <div className="text-2xl my-4 font-bold text-center">Resources</div>
-          <div>✅ Courses, course certificates, guides, videos, tools, and resources</div>
-          <div>✅ Airdrop alerts and job listings</div>
-          <div>✅ Live AMAs with industry experts</div>
-          <div>✅ Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more</div>
-          <div>✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
-          <div className="text-2xl my-4 font-bold text-center">Market Analysis</div>
-          <div>✅ Exclusive insights from industry experts</div>
-          <div>✅ Deep dive analayses on specific projects</div>
-          <div>✅ In-depth reports on the latest trends and tokens</div>
+          <div className="px-4">
+            <div className="text-2xl my-4 font-bold text-center">Networking</div>
+            <div>✅ Access to a global community of blockchain enthusiasts</div>
+            <div>✅ Online discussions about AI, NFTs, trading, top coins, and more...</div>
+            <div>✅ Opportunities to share your project</div>
+            <div>✅ Get feedback, mentorship, investors, and co-founders</div>
+            <div className="text-2xl my-4 font-bold text-center">Resources</div>
+            <div>✅ Courses, course certificates, guides, videos, tools, and resources</div>
+            <div>✅ Airdrop alerts and job listings</div>
+            <div>✅ Live AMAs with industry experts</div>
+            <div>✅ Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more</div>
+            <div>✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
+            <div className="text-2xl my-4 font-bold text-center">Market Analysis</div>
+            <div>✅ Exclusive insights from industry experts</div>
+            <div>✅ Deep dive analayses on specific projects</div>
+            <div>✅ In-depth reports on the latest trends and tokens</div>
+          </div>
           <div className="text-center my-4">
             <StandardButton
               link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
