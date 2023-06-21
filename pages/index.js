@@ -218,27 +218,68 @@ if (typeof window !== 'undefined') {
         </div>
       </section>
 
-            <section className="pt-0">
-                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
-                        Recent Posts
-                    </h2>
+      <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: '120% auto', backgroundPosition: 'center' }}>
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="rounded-full overflow-hidden mx-auto w-28 h-28 mb-6">
+              <img src="/images/ben-logo-white-border.jpg" alt="Image" className="mx-auto w-full h-full" />
+            </div>
+            <h1 className="text-4xl font-bold mb-14 text-white shadow-lg">Join a community of thousands learning about blockchain!</h1>
+            <StandardButton
+              link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
+              text="Join Now"
+              color="orange"
+              styling="text-center py-3 rounded-lg text-black"
+            />
+          </div> 
+        </div>
+      </section>
 
-                    <div className="mx-auto flex justify-center pb-12">
-                    <BlogGrid />
-                    </div>
-            </section>
+      <section id="benefits" className="py-16">
+        <div className="container mx-auto px-4 lg:w-7/12">
+          <div className="text-2xl text-center">Network | <span className="text-orange">Learn</span> | Build | <span className="text-orange">HODL</span> | Succeed</div>
+          <div className="text-4xl text-center font-bold my-8">What do I get as a BEN Community Member?</div>
+          <div className="text-2xl my-4 font-bold text-center">Networking</div>
+          <div>✅ Access to a global community of blockchain enthusiasts</div>
+          <div>✅ Online discussions about AI, NFTs, trading, top coins, and more...</div>
+          <div>✅ Opportunities to share your project</div>
+          <div>✅ Get feedback, mentorship, investors, and co-founders</div>
+          <div className="text-2xl my-4 font-bold text-center">Resources</div>
+          <div>✅ Airdrop alerts</div>
+          <div>✅ Live AMAs with industry experts</div>
+          <div>✅ Job listings</div>
+          <div>✅ Educational guides, videos, tools, resources, and courses</div>
+          <div>✅ Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more</div>
+          <div>✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
+          <div className="text-2xl my-4 font-bold text-center">Market Analysis</div>
+          <div>✅ Exclusive insights from industry experts</div>
+          <div>✅ Deep dive analayses on specific projects</div>
+          <div>✅ In-depth reports on the latest trends and tokens</div>
+          <div className="text-center my-4">
+            <StandardButton
+              link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
+              text="Join Now"
+              color="orange"
+              styling="text-center py-3 rounded-lg text-black"
+            />
+          </div>
+        </div>
+      </section>
 
+{/*
             <section className="bg-benorange-300 pt-14">
                 <div className="w-11/12 mx-auto">
 
                     <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
                         Our Reach
                     </h2>
+*/}
 {/*
                     <p className="text-benblack-500 text-sm text-center mx-auto leading-6 " style={{ maxWidth: "610px" }}>
                         We believe that anyone, regardless of where they are in the world, can use blockchain as a vehicle to create wealth for themselves and their communities.
                     </p>
  */}
+ {/*
                     <div className="border-t">
                         <div className="mx-auto flex flex-col lg:flex-row" style={{ maxWidth: "1000px" }}>
                             <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l py-14 px-10">
@@ -297,7 +338,7 @@ if (typeof window !== 'undefined') {
                 </div>
 
             </section>
-
+*/}
             {/*
             <section className="py-14" style={{ background: "#fafbfc" }}>
                 <div class="w-11/12 max-w-7xl m-auto flex flex-col lg:flex-row items-center" style={{ maxWidth: "1000px" }}>
@@ -557,16 +598,16 @@ if (typeof window !== 'undefined') {
                 </div>
             </section>
 */}
-            <section className="py-24 pb-24 mx-auto" style={{ background: "#FAFBFC" }}>
-                <div className="mx-auto w-11/12" style={{ maxWidth: "1000px", background: "#FAFBFC" }}>
-                    <h2 className="font-average text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">
+            <section className="bg-benorange-300 py-24 pb-24 mx-auto">
+                <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
+                    <h2 className="text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">
                         Frequently Asked Questions
                     </h2>
-                    <div className="text-bengrey-500 text-lg text-left leading-6 my-6" style={{ maxWidth: "610px" }}>
+                    <div className="text-lg text-left leading-6 my-6" style={{ maxWidth: "610px" }}>
                         The Blockchain Education Network offers a constant inflow of crypto news, events, free flights, educational content and opportunities. Our community is
                         at the heart of what we do and we are commited to helping everyone figure out how to get the most out of the crypto space.
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
                         <a target="_blank" href="https://beats.blockchainedu.org/" className="border p-8 rounded-lg bg-white">
                             <div className="flex justify-between">
                                 <div>
@@ -746,6 +787,17 @@ if (typeof window !== 'undefined') {
                     />
                 </div> */}
             </section>
+
+{/*
+      <section className="pt-0">
+        <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
+          Recent Posts
+        </h2>
+        <div className="mx-auto flex justify-center pb-12">
+          <BlogGrid />
+        </div>
+      </section>
+*/}
             <Footer />
         </div >
     )
