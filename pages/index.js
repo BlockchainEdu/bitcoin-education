@@ -245,10 +245,9 @@ if (typeof window !== 'undefined') {
           <div>✅ Opportunities to share your project</div>
           <div>✅ Get feedback, mentorship, investors, and co-founders</div>
           <div className="text-2xl my-4 font-bold text-center">Resources</div>
-          <div>✅ Airdrop alerts</div>
+          <div>✅ Courses, course certificates, guides, videos, tools, and resources</div>
+          <div>✅ Airdrop alerts and job listings</div>
           <div>✅ Live AMAs with industry experts</div>
-          <div>✅ Job listings</div>
-          <div>✅ Educational guides, videos, tools, resources, and courses</div>
           <div>✅ Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more</div>
           <div>✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
           <div className="text-2xl my-4 font-bold text-center">Market Analysis</div>
