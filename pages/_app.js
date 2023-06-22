@@ -125,6 +125,7 @@ export async function getServerSideProps({ req }) {
         permanent: true,
       },
     };
+  }
 
   if (url === '/playbook') {
     return {
