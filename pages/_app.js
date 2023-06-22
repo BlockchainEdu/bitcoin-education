@@ -31,10 +31,10 @@ function MyApp({ Component, pageProps }) {
       window.location.href = 'https://learn.blockchainedu.org';
     }
 
-    // Redirect unused paths to the homepage
-    if (router.asPath !== '/' && !router.isFallback) {
-      window.location.href = '/';
+    if (router.pathname === '/playbook') {
+      window.location.href = 'https://blockchainedu.org';
     }
+
   }, [router.pathname, router.asPath, router.isFallback]);
 
   return (
@@ -122,6 +122,14 @@ export async function getServerSideProps({ req }) {
     return {
       redirect: {
         destination: 'https://learn.blockchainedu.org',
+        permanent: true,
+      },
+    };
+
+  if (url === '/playbook') {
+    return {
+      redirect: {
+        destination: 'https://blockchainedu.org',
         permanent: true,
       },
     };
