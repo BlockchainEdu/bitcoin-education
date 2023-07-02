@@ -108,7 +108,26 @@ function MyApp({ Component, pageProps }) {
           <meta name="twitter:description" content="Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!" />
           <meta name="twitter:image" content="https://www.blockchainedu.org/images/ben-beats-thumbnail.png" />
 
+          {/* Google tag (gtag.js) */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10891944787"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-10891944787');
+          </script>
+
+          {/* Event snippet for Website sale conversion page */}
+          <script>
+            gtag('event', 'conversion', {
+                'send_to': 'AW-10891944787/jfVWCKCx_rUYENPG18ko',
+                'transaction_id': ''
+            });
+          </script>
+
         </Head>
+
         <Component {...pageProps} />
       </div>
     </AppWrapper>
