@@ -62,8 +62,21 @@ const Map = dynamic(() => import("../components/map"), {
 export default function Home({ locations }) {
 
     const { sharedState, setSharedState } = useAppContext();
-
     const [globalClick, setGlobalClick] = useState(false);
+
+    // Define the gtag_report_conversion function
+    const gtag_report_conversion = (url) => {
+      var callback = function () {
+        if (typeof(url) !== 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11202135402/VQLfCM_u8LUYEOqKzN0p',
+        'event_callback': callback
+      });
+      return false;
+    };
 
     if (locations.length === 0) {
         setTimeout(() => {
@@ -103,13 +116,36 @@ if (typeof window !== 'undefined') {
       <Header />
 
       <Head>
+
         <script async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7187550270272911"
           crossOrigin="anonymous">
         </script>
+
         <script type="text/javascript" async 
           src="https://embeds.beehiiv.com/attribution.js">
         </script>
+
+        {/* Event snippet for Begin checkout conversion page
+            In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-11202135402/VQLfCM_u8LUYEOqKzN0p',
+                  'event_callback': callback
+              });
+              return false;
+            }
+          `,
+        }}>
+        </script>
+
         <title>Home | Blockchain Education Network</title>
       </Head>
 
@@ -230,6 +266,7 @@ if (typeof window !== 'undefined') {
               text="Join Now"
               color="orange"
               styling="text-center py-3 rounded-lg text-black"
+              onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
             />
           </div> 
         </div>
@@ -262,343 +299,13 @@ if (typeof window !== 'undefined') {
               text="Join Now"
               color="orange"
               styling="text-center py-3 rounded-lg text-black"
+              onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
             />
           </div>
         </div>
       </section>
 
-{/*
-            <section className="bg-benorange-300 pt-14">
-                <div className="w-11/12 mx-auto">
 
-                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
-                        Our Reach
-                    </h2>
-*/}
-{/*
-                    <p className="text-benblack-500 text-sm text-center mx-auto leading-6 " style={{ maxWidth: "610px" }}>
-                        We believe that anyone, regardless of where they are in the world, can use blockchain as a vehicle to create wealth for themselves and their communities.
-                    </p>
- */}
- {/*
-                    <div className="border-t">
-                        <div className="mx-auto flex flex-col lg:flex-row" style={{ maxWidth: "1000px" }}>
-                            <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l py-14 px-10">
-                                <a href="/sponsor">
-                                <Image
-                                    width="100px"
-                                    height="100px"
-                                    src="/images/ambassadors-home.svg"
-                                />
-                                </a>
-                                <a href="/sponsor">
-                                <div className="font-average text-6xl">
-                                    50k+
-                                </div>
-                                <div className="font-inter font-semibold text-xl">
-                                    Audience Reach
-                                </div>
-                                </a>
-                            </div>
-                            <div className="text-center w-full lg:w-1/3 border-b lg:border-b-0 lg:border-l lg:border-r py-14 px-10">
-                                <a href="/sponsor">
-                                <Image
-                                    width="100px"
-                                    height="100px"
-                                    src="/images/companies-home.svg"
-                                />
-                                </a>
-                               <a href="/sponsor">
-                                <div className="font-average text-6xl">
-                                    4k+
-                                </div>
-                                <div className="font-inter font-semibold text-xl">
-                                    Student Reach
-                                </div>
-                                </a>
-                            </div>
-                            <div className="text-center w-full lg:w-1/3 lg:border-r py-14 px-10">
-                            <a href="/sponsor">
-                                <Image
-                                    width="100px"
-                                    height="100px"
-                                    src="/images/jobs-home.svg"
-                                />
-                            </a>
-                            <a href="/sponsor">
-                                <div className="font-average text-6xl">
-                                    316+
-                                </div>
-                                <div className="font-inter font-semibold text-xl">
-                                    University Reach
-                                </div>
-</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-*/}
-            {/*
-            <section className="py-14" style={{ background: "#fafbfc" }}>
-                <div class="w-11/12 max-w-7xl m-auto flex flex-col lg:flex-row items-center" style={{ maxWidth: "1000px" }}>
-                    <div className="w-full lg:w-1/2 pb-14 lg:pb-0">
-                        <h2 className="font-average text-4xl lg:text-5xl text-left max-w-4xl mx-auto mb-4">
-                            Learn efficiently with a solid Web3 foundation
-                        </h2>
-                        <p className="text-benblack-500 text-sm text-left leading-6 mb-6" style={{ maxWidth: "610px" }}>
-                            We serve our students by providing an abundance of resources through BEN Learn's portal with courses such as Crypto Taxes, Intro to Virtual Land,
-                            DeFi and many more. We empower students to host workshops at their universities, and build their network while cultivating communities
-                            and creating career opportunities.
-                        </p>
-                        <StandardButton
-                            link="https://learn.blockchainedu.org/"
-                            color="orange"
-                            text="Start Learning"
-                        />
-                    </div>
-                    <PopUpVideo
-                        thumbnail="/images/web3-video.png"
-                    />
-                </div>
-            </section>
-*/}
-            {/*
-            <section className="py-14 mx-auto" style={{ background: "#1E3745" }}>
-                <div class="flex flex-col lg:flex-row items-center justify-between w-11/12 mx-auto" style={{ maxWidth: "1000px" }}>
-                    <div>
-                        <h2 className="font-average text-white text-4xl lg:text-5xl text-left max-w-4xl mb-6">
-                            Join our newsletter
-                        </h2>
-                        <Mailchimp
-                            action='https://blockchainedu.us4.list-manage.com/subscribe/post?u=8f05e1771877392fa3d41df41&amp;id=a53b080887'
-                            fields={[
-                                {
-                                    name: 'EMAIL',
-                                    placeholder: 'Email',
-                                    type: 'email',
-                                    required: true
-                                }
-                            ]}
-                            messages={
-                                {
-                                    sending: "Sending...",
-                                    success: "Thanks for subscribing! Please check your email to confirm.",
-                                    error: "An unexpected internal error has occurred.",
-                                    empty: "You must write an e-mail.",
-                                    duplicate: "Too many subscribe attempts for this email address",
-                                    button: "Subscribe"
-                                }
-                            }
-                            className="subscribe-form text-center flex items-start w-full"
-                        />
-                    </div>
-                    <Image
-                        width="450px"
-                        height="423px"
-                        src="/images/newsletter-home.jpg"
-                        quality={100}
-                    />
-                </div>
-            </section>
-*/}
-            {/*
-            <section className="py-14 pb-24 border-b">
-                <div className="w-11/12 mx-auto">
-                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto">
-                        Join BEN Learn
-                    </h2>
-                    <div className="text-bengrey-500 text-lg text-center leading-6 my-6 mx-auto" style={{ maxWidth: "610px" }}>
-                        <div>BEN Learn is an online educational portal with video lessons and tutorials, and other resources to learn more.</div><br />
-                        <div className="py-1">Are you looking to connect with other students, traders, and entrepreneurs in the space? We offer unique group chats to connect, share ideas, and even trading tips.</div><br />
-                        <div>Blockchain Basics. Trading Cryptocurrency. Music NFTs, Metaverse. All Crypto. All in one interface.</div>
-                    </div>
-                    <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 my-10">
-                        <div className="mx-auto lg:mx-0">
-                            <StandardButton
-                                link="https://learn.blockchainedu.org/"
-                                color="orange"
-                                text="Sign up to start learning"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
-*/}
-            {/*
-            <section className="w-11/12 mx-auto border-b pb-14">
-                <div className="-mt-20 mx-auto justify-center flex">
-                    <Image
-                        width="1000px"
-                        height="630px"
-                        src="/images/join-home.png"
-                        quality={100}
-                    />
-                </div>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-10 font-semibold mx-auto" style={{ maxWidth: "1000px" }}>
-                    <div class="flex items-center space-x-3">
-                        <div>
-                            <Image
-                                width="50px"
-                                height="50px"
-                                src="/images/learn-bitcoin.svg"
-                            />
-                        </div>
-                        <div className="font-inter text-xl">
-                            Learn about Bitcoin
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div>
-                            <Image
-                                width="50px"
-                                height="50px"
-                                src="/images/learn-ethereum.svg"
-                            />
-                        </div>
-                        <div className="font-inter text-xl">
-                            Learn about Ethereum
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div>
-                            <Image
-                                width="50px"
-                                height="50px"
-                                src="/images/learn-stable.svg"
-                            />
-                        </div>
-                        <div className="font-inter text-xl">
-                            Learn about Stablecoins
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div>
-                            <Image
-                                width="50px"
-                                height="50px"
-                                src="/images/learn-solidity.svg"
-                            />
-                        </div>
-                        <div className="font-inter text-xl">
-                            Programming in Solidity
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <div>
-                            <Image
-                                width="50px"
-                                height="50px"
-                                src="/images/learn-metaverse.svg"
-                            />
-                        </div>
-                        <div className="font-inter text-xl">
-                            The Metaverse
-                        </div>
-                    </div>
-                </div>
-                <div className="w-11/12 mx-auto font-inter mt-20 mx-auto" style={{ maxWidth: "1000px" }}>
-                    <div className="text-center font-semibold text-lg mb-10">Presenting some of our most popular courses:</div>
-*/}
-            {/* <div className="flex flex-col justify-between lg:flex-row">
-                        <div className="text-lg w-full lg:w-1/2">
-                            Bitcoin & Ethereum Basics
-                        </div>
-                        <div className="w-full lg:w-1/2">
-                            <ul className="list-disc ml-4 mb-6" style={{ color: "#41434A" }}>
-                                <li>Supports over 200+ blockchain clubs around the world</li>
-                                <li>Educate students about blockchain technology</li>
-                                <li>Foster disruption, investment, and entrepreneurship</li>
-                            </ul>
-                        </div>
-                    </div> */}
-            {/*
-                    <div className="flex flex-col justify-between lg:flex-row">
-                        <div className="text-lg w-full lg:w-1/2">
-                            Solidity Fundamentals
-                        </div>
-                        <div className="w-full lg:w-1/2">
-                            <ul className="list-disc ml-4 mb-6" style={{ color: "#41434A" }}>
-                                <li>A hands-on course for mastering fundamental concepts of the Solidity programming language.</li>
-                                <li>Learn the basics, as well as how to build smart contracts and dApps from scratch.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="flex flex-col justify-between lg:flex-row">
-                        <div className="text-lg w-full lg:w-1/2">
-                           Intro to the Metaverse
-                        </div>
-                        <div className="w-full lg:w-1/2">
-                            <ul className="list-disc ml-4 mb-6" style={{ color: "#41434A" }}>
-                                <li>Take a deep dive into understanding how the Metaverse works! Learn how to trade, sell, collect, buy, and create unique NFTs.</li>
-                                <li>Includes a specialization in virtual reality and virtual land; join now and start your journey to a new future in the Metaverse!</li>
-                            </ul>
-                        </div>
-                    </div>
-*/}
-            {/* <div className="flex flex-col justify-between lg:flex-row">
-                        <div className="text-lg w-full lg:w-1/2">
-                            Programming in Solidity
-                        </div>
-                        <div className="w-full lg:w-1/2">
-                            <ul className="list-disc ml-4 mb-6" style={{ color: "#41434A" }}>
-                                <li>Learn about the curly-bracket language designed to target the Ethereum Virtual Machine (EVM). It is influenced by C++, Python and JavaScript.</li>
-                                <li>Our lesson also covers the context of object oriented languages.</li>
-                            </ul>
-                        </div>
-                    </div> */}
-            {/* <div className="flex flex-col justify-between lg:flex-row">
-                        <div className="text-lg w-full lg:w-1/2">
-                            Celo DeFi
-                        </div>
-                        <div className="w-full lg:w-1/2">
-                            <ul className="list-disc ml-4 mb-6" style={{ color: "#41434A" }}>
-                                <li>Learn how to use Celo to transform your financial future, from the basics to advanced. </li>
-                                <li>In this course series, you will learn how Celo works, and how to use this unique technology that aims to break down barriers by bringing the powerful benefits of DeFi to the users of the 6 billion smartphones.</li>
-                            </ul>
-                        </div>
-                    </div> */}
-            {/*
-                </div>
-            </section>
-*/}
-            {/*
-            <section className="py-14 pb-24 border-b" style={{ background: "#FAFBFC" }}>
-                <div className="w-11/12 mx-auto">
-                    <div className="flex mx-auto justify-center">
-                        <Image
-                            width="382px"
-                            height="392px"
-                            src="/images/donate-home.jpg"
-                            quality={100}
-                        />
-                    </div>
-                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto" style={{ maxWidth: "700px" }}>
-                        Turn your fiat or crypto into education for the next generation.
-                    </h2>
-                    <div className="text-bengrey-500 text-lg text-center leading-6 my-6 mx-auto" style={{ maxWidth: "610px" }}>
-                        Our vision is that anyone, regardless of where they are in the world, will be able to use blockchain as a vehicle to
-                        create wealth for themselves and their communities. Donate now and start learning!
-                    </div>
-                    <Modal />
-                </div>
-            </section>
-            <section className="pt-14">
-                <div className="mx-auto">
-                    <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto" style={{ maxWidth: "800px" }}>
-                        By donating you are supporting blockchain education all around the world.
-                    </h2>
-                    <div id="home-map" className="pt-14" style={{ width: sharedState.width, height: sharedState.height }}>
-                        <div className="m-auto">
-                            <Container className="map-container mt-6">
-                                <Map locations={locations} style={{ minHeight: '600px' }} />
-                            </Container>
-                        </div>
-                    </div>
-                </div>
-            </section>
-*/}
             <section className="bg-benorange-300 py-24 pb-24 mx-auto">
                 <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
                     <h2 className="text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">
