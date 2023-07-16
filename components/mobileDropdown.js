@@ -98,6 +98,7 @@ export default function MobileDropdown(props) {
                     link="https://learn.blockchainedu.org"
                     text="Join the Community"
                     color="orange"
+                    target="blank"
                     styling="text-center py-3 rounded-lg w-full px-8"
                   />
                 </div>

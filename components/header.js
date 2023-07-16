@@ -52,6 +52,7 @@ export default function HeaderWithLogo({className="", children}) {
                 <StandardButton
                   link="https://learn.blockchainedu.org/"
                   text="Join the Community"
+                  target="blank"
                   color="orange"
                   styling="text-center py-3 rounded-lg w-full px-8"
                 />
