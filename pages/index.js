@@ -155,7 +155,7 @@ if (typeof window !== 'undefined') {
       </div>
       */}
 
-      <section className="pt-10 lg:py-0 lg:pb-0 px-7">
+      <section className="container pt-10 lg:py-0 lg:pb-0 px-7">
         <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4"  style={{ maxWidth: "1000px"}}>
 
           <div className="col-span-1 lg:pt-10 lg:order-last">
@@ -254,44 +254,30 @@ if (typeof window !== 'undefined') {
         </div>
       </section>
 
-      <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      
+      <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/background/background-twitter-.jpeg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center',  height: '70vh'}}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="rounded-full overflow-hidden mx-auto w-28 h-28 mb-6">
-              <img src="/images/ben-logo-white-border.jpg" alt="Image" className="mx-auto w-full h-full" />
-            </div>
-            <h1 className="text-4xl font-bold mb-14 text-white shadow-lg">Join a community of thousands learning about blockchain!</h1>
-{/*            <StandardButton
-              link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
-              text="Join Now"
-              color="orange"
-              target="blank"
-              styling="text-center py-3 rounded-lg text-black"
-              onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
-            /> */}
           </div> 
+
         </div>
       </section>
 
       <section id="benefits" className="py-16">
-        <div className="container mx-auto px-4 lg:w-7/12">
-          <a href="https://learn.blockchainedu.org/sign_up?plan_id=486348" target="_blank"><div className="text-2xl text-center">Network | <span className="text-orange">Learn</span> | Build | <span className="text-orange">HODL</span> | Succeed</div></a>
-          <div className="text-4xl text-center font-bold my-8">What do I get as a BEN Community Member?</div>
+        <div className="container mx-auto px-4 lg:w-7/12 font-inter">
+          <div className="font-average text-center text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">What do I get by signing up?</div>
           <div className="px-4">
-            <div className="text-2xl my-4 font-bold text-center">Networking</div>
-            <div className="text-lg">✅ Access to a global community of blockchain enthusiasts</div>
-            <div className="text-lg">✅ Online discussions about AI, NFTs, trading, top coins, and more...</div>
-            <div className="text-lg">✅ Opportunities to share your project</div>
-            <div className="text-lg">✅ Get feedback, mentorship, investors, and co-founders</div>
+            <div className="text-2xl my-4 font-bold text-center">Education</div>
+            <div className="text-lg">✅ Complex crypto topics, broken down in plain English</div>
+            <div className="text-lg">✅ Lessons & videos on Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more</div>
             <div className="text-2xl my-4 font-bold text-center">Resources</div>
-            <div className="text-lg">✅ Courses, course certificates, guides, videos, tools, and resources</div>
-            <div className="text-lg">✅ Airdrop alerts and job listings</div>
-            <div className="text-lg">✅ Live AMAs with industry experts</div>
-            <div className="text-lg">✅ Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more</div>
+            <div className="text-lg">✅ An events calendar of upcoming crypto events around the world</div>
+            <div className="text-lg">✅ New crypto job listings paying anywhere from $50k to $150k</div>
             <div className="text-lg">✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
+            <div className="text-lg">✅ Useful tools and newsletters to boost your crypto education</div>
             <div className="text-2xl my-4 font-bold text-center">Market Analysis</div>
-            <div className="text-lg">✅ Exclusive insights from industry experts</div>
-            <div className="text-lg">✅ Deep dive analayses on specific projects</div>
+            <div className="text-lg">✅ Insights from industry experts</div>
+            <div className="text-lg">✅ Deep dives on specific projects</div>
             <div className="text-lg">✅ In-depth reports on the latest trends and tokens</div>
           </div>
           <div className="text-center my-4">
@@ -311,14 +297,14 @@ if (typeof window !== 'undefined') {
             <section className="bg-benorange-300 py-24 pb-24 mx-auto">
                 <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
                     <h2 className="text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">
-                        Frequently Asked Questions
+                        Trusted by 5,000+ weekly readers
                     </h2>
                     <div className="text-lg text-left leading-6 my-6" style={{ maxWidth: "610px" }}>
-                        The Blockchain Education Network offers a constant inflow of crypto news, events, free flights, educational content and opportunities. Our community is
-                        at the heart of what we do and we are commited to helping everyone figure out how to get the most out of the crypto space.
+                        The Blockchain Education Network offers a constant inflow of crypto news, events, free flights, educational content and opportunities.
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
                         <a target="_blank" href="https://beats.blockchainedu.org/" className="border p-8 rounded-lg bg-white">
+{/*
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -338,11 +324,13 @@ if (typeof window !== 'undefined') {
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
                                 Newsletter
                             </div>
-                            <div class="text-sm font-inter">
-                                Sign up and and get access to crypto news, opportunities, free flights and scholarships to blockchain conferennces.
+*/}
+                            <div class="text-md font-inter">
+                                <em>"Nice, informative and straight to the point! I appreciate the bite sized articles and the wording of the article."</em>
                             </div>
                         </a>
-                        <a target="_blank" href="https://learn.blockchainedu.org" className="border p-8 rounded-lg bg-white">
+                        <a target="_blank" href="https://beats.blockchainedu.org" className="border p-8 rounded-lg bg-white">
+{/*
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -362,12 +350,15 @@ if (typeof window !== 'undefined') {
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
                                 COMMUNITY
                             </div>
-                            <div class="text-sm font-inter">
-                                Are you new to blockchain? Trading cryptocurrency? Looking for a deep dive on DeFi? Join now and start learning!
+*/}
+                            <div class="text-md font-inter">
+                                <em>"The first paragraph made me smile and I enjoy how it's written like the author is explaining the context like he or she is speaking to me in person."</em>
                             </div>
                         </a>
-{/*
+                        {/*
                         <a target="_blank" href="https://docs.google.com/presentation/d/1stVgjgui--ok7uG8t6QFvpGkv9rk2NuCRXIHctkbGN0/edit?usp=sharing" className="border p-8 rounded-lg bg-white">
+*/}
+{/*
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -387,6 +378,8 @@ if (typeof window !== 'undefined') {
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
                                 Ben Financials
                             </div>
+*/}
+{/*
                             <div class="text-sm font-inter">
                                 Check out or latest financial reports and donate to support more Web 3.0 education
                             </div>
@@ -440,7 +433,8 @@ if (typeof window !== 'undefined') {
                                 BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
                             </div>
                         </a> */}
-                        <a href="/sponsor" className="border p-8 rounded-lg bg-white">
+                        <a href="https://beats.blockchainedu.org" className="border p-8 rounded-lg bg-white">
+{/*
                             <div className="flex justify-between">
                                 <div>
                                     <Image
@@ -460,8 +454,9 @@ if (typeof window !== 'undefined') {
                             <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
                                 Advertise With Us
                             </div>
-                            <div class="text-sm font-inter">
-                                Be heard in front of 55k+ crypto builders, traders, and founders worldwide!
+*/}
+                            <div class="text-md font-inter">
+                                <em>"I read a lot of crypto news articles that have no personality and tone. This crypto news and education platform speaks to me like I am a human. I like that!"</em>
                             </div>
                         </a>
                     </div>
@@ -507,14 +502,45 @@ if (typeof window !== 'undefined') {
           <BlogGrid />
         </div>
       </section>
-*/}
+      */}
+
+{/*
+
+      <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="rounded-full overflow-hidden mx-auto w-28 h-28 mb-6">
+              <img src="/images/ben-logo-white-border.jpg" alt="Image" className="mx-auto w-full h-full" />
+            </div>
+            <h1 className="text-4xl font-bold mb-14 text-white shadow-lg">Ready?</h1>
+{/*            <StandardButton
+              link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
+              text="Join Now"
+              color="orange"
+              target="blank"
+              styling="text-center py-3 rounded-lg text-black"
+              onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
+            /> */}
+{/*      <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
+            <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
+              <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+            </div>
+  </div>
+          </div> 
+
+        </div>
+      </section>
+
+      */}
+
+
 
 <section className="bg-benorange-300 mx-auto">
 
   <div className="container mx-auto px-4">
     <div className="max-w-3xl mx-auto text-center">
       <h1 className="text-4xl font-bold mb-2 text-black">Ready?</h1>
-      <p className="text-xl mb-14 text-black">Sign up now and join thousands learning about crypto!</p>
+      <p className="text-xl mb-14 text-black">If you change your mind, you can unsubscribe at anytime!</p>
       <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
         <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
           <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
@@ -523,7 +549,6 @@ if (typeof window !== 'undefined') {
     </div>
   </div>
 </section>
-
             <Footer />
         </div >
     )
