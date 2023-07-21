@@ -261,14 +261,14 @@ if (typeof window !== 'undefined') {
               <img src="/images/ben-logo-white-border.jpg" alt="Image" className="mx-auto w-full h-full" />
             </div>
             <h1 className="text-4xl font-bold mb-14 text-white shadow-lg">Join a community of thousands learning about blockchain!</h1>
-            <StandardButton
+{/*            <StandardButton
               link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
               text="Join Now"
               color="orange"
               target="blank"
               styling="text-center py-3 rounded-lg text-black"
               onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
-            />
+            /> */}
           </div> 
         </div>
       </section>
@@ -295,14 +295,14 @@ if (typeof window !== 'undefined') {
             <div className="text-lg">✅ In-depth reports on the latest trends and tokens</div>
           </div>
           <div className="text-center my-4">
-            <StandardButton
+{/*            <StandardButton
               link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
               text="Join Now"
               color="orange"
               target="blank"
               styling="text-center py-3 rounded-lg text-black"
               onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
-            />
+            /> */}
           </div>
         </div>
       </section>

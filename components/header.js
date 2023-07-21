@@ -26,10 +26,12 @@ export default function HeaderWithLogo({className="", children}) {
         <link rel="shortcut icon" href="" />
       </Head>
 
+      {/*
       <div className="flex lg:hidden mobile-nav float-right h-[40px] items-center">
         { children }
         { !children && <MobileNav /> }
       </div>
+      */}
 
       <nav className="flex max-w-7xl m-auto justify-between items-start lg:items-center relative">
         <div className="w-2/12 lg:w-1/3 left-0"> <a href="/"><img className="w-24 mx-auto max-w-none" src={logoSrc} /></a> </div>
@@ -49,6 +51,7 @@ export default function HeaderWithLogo({className="", children}) {
                   styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
                 />
                 */}
+{/*
                 <StandardButton
                   link="https://learn.blockchainedu.org/"
                   text="Join the Community"
@@ -56,7 +59,7 @@ export default function HeaderWithLogo({className="", children}) {
                   color="orange"
                   styling="text-center py-3 rounded-lg w-full px-8"
                 />
-              </>
+*/}              </>
             )}
             {/*
             <a className="px-4 font-semibold underline hidden-on-scroll" href="/donate">
@@ -65,7 +68,7 @@ export default function HeaderWithLogo({className="", children}) {
             <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://beats.blockchainedu.org/">
                 Subscribe
             </a>
-            */}
+            */} {/*
             { !shouldHideButton && (
               <StandardButton
                 link="https://learn.blockchainedu.org"
@@ -73,7 +76,7 @@ export default function HeaderWithLogo({className="", children}) {
                 color="orange"
                 styling="hidden-on-scroll text-center py-3 rounded-lg w-full px-8"
               />
-            )}
+            )} */}
           </li>
         </ul>
       </nav>

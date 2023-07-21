@@ -93,7 +93,7 @@ export default function MobileDropdown(props) {
                   </ul>
                 </div>
                 */}
-                <div className="bg-white pb-7 text-center">
+{/*                <div className="bg-white pb-7 text-center">
                   <StandardButton
                     link="https://learn.blockchainedu.org"
                     text="Join the Community"
@@ -102,7 +102,7 @@ export default function MobileDropdown(props) {
                     styling="text-center py-3 rounded-lg w-full px-8"
                   />
                 </div>
-                {/*
+ */}               {/*
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
                     link="/donate"
