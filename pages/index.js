@@ -1,4 +1,4 @@
-﻿﻿import React, { useState } from 'react';
+﻿﻿import React, { useEffect, useState } from 'react';
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Image from 'next/image';
@@ -59,6 +59,7 @@ const Map = dynamic(() => import("../components/map"), {
     ssr: false
 })
 
+
 export default function Home({ locations }) {
 
     const { sharedState, setSharedState } = useAppContext();
@@ -107,7 +108,28 @@ if (typeof window !== 'undefined') {
     sessionStorage.setItem('utm_campaign', utmCampaign);
   }
 }
+// Add the following useEffect hook at the bottom of the component
+useEffect(() => {
+  console.log("useEffect executed!");
+  // Get the query parameter "scroll" from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const scrollParam = urlParams.get('scroll');
 
+  // If "scroll" is present and is equal to "ready", scroll to the "Ready?" section with an offset
+  if (scrollParam === 'ready') {
+    scrollToSection("ready", -500); // Adjust the offset value as needed
+  }
+}, []);
+
+
+// Scroll to section function with an offset
+const scrollToSection = (sectionId, offset = -200) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    const topPos = section.getBoundingClientRect().top;
+    window.scrollBy({ top: topPos + offset, behavior: 'smooth' });
+  }
+};
 
   return (
 
@@ -251,55 +273,81 @@ if (typeof window !== 'undefined') {
       </section>
 
       
-      <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/background/background-twitter-.jpeg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center',  height: '70vh'}}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-          </div> 
+<section className="py-20 bg-black text-white mt-5" style={{ backgroundImage: 'url("/images/background/background-twitter.jpeg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', height: '70vh' }}>
+  <div className="container mx-auto px-4">
+    <div className="max-w-3xl mx-auto text-center">
+      {/* Your content goes here */}
+    </div>
+  </div>
+</section>
 
+<section id="benefits" className="py-16">
+  <div className=" mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
+
+    <h2 className="mx-auto text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
+      What do I get by signing up?
+    </h2>
+
+    <div className="grid grid-cols-1 gap-6 mt-10 lg:grid-cols-2">
+      {/* Card 1: Education */}
+      <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="text-2xl font-bold mb-4 text-center">Education</div>
+          <div className="text-lg">✅ Complex crypto topics, broken down in plain English</div>
+          <div className="text-lg">✅ Lessons & videos on Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more</div>
         </div>
-      </section>
+      </div>
 
-      <section id="benefits" className="py-16">
-        <div className="container mx-auto px-4 lg:w-7/12 font-inter">
-          <div className="font-average text-center text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">What do I get by signing up?</div>
-          <div className="px-4">
-            <div className="text-2xl my-4 font-bold text-center">Education</div>
-            <div className="text-lg">✅ Complex crypto topics, broken down in plain English</div>
-            <div className="text-lg">✅ Lessons & videos on Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more</div>
-            <div className="text-2xl my-4 font-bold text-center">Resources</div>
-            <div className="text-lg">✅ An events calendar of upcoming crypto events around the world</div>
-            <div className="text-lg">✅ New crypto job listings paying anywhere from $50k to $150k</div>
-            <div className="text-lg">✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
-            <div className="text-lg">✅ Useful tools and newsletters to boost your crypto education</div>
-            <div className="text-2xl my-4 font-bold text-center">Market Analysis</div>
-            <div className="text-lg">✅ Insights from industry experts</div>
-            <div className="text-lg">✅ Deep dives on specific projects</div>
-            <div className="text-lg">✅ In-depth reports on the latest trends and tokens</div>
-          </div>
-          <div className="text-center my-4">
-{/*            <StandardButton
-              link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
-              text="Join Now"
-              color="orange"
-              target="blank"
-              styling="text-center py-3 rounded-lg text-black"
-              onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
-            /> */}
-          </div>
+      {/* Card 2: Resources */}
+      <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="text-2xl font-bold mb-4 text-center">Resources</div>
+          <div className="text-lg">✅ Useful tools and newsletters to boost your crypto education</div>
+          <div className="text-lg">✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
         </div>
-      </section>
+      </div>
+
+      {/* Card 3: Market Analysis */}
+      <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="text-2xl font-bold mb-4 text-center">Market Analysis</div>
+          <div className="text-lg">✅ Insights from industry experts</div>
+          <div className="text-lg">✅ Deep dives on specific projects</div>
+          <div className="text-lg">✅ In-depth reports on the latest trends and tokens</div>
+        </div>
+      </div>
+
+      {/* Placeholder Card 4: Events/Jobs */}
+      <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+        <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="text-2xl font-bold mb-4 text-center">Events/Jobs</div>
+          <div className="text-lg">✅ An events calendar of upcoming crypto events around the world</div>
+          <div className="text-lg">✅ New crypto job listings paying anywhere from $50k to $150k</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div className="text-center my-4">
+      {/* Your StandardButton or any other content goes here */}
+    </div>
+  </div>
+</section>
 
 
-            <section className="bg-benorange-300 py-24 pb-24 mx-auto">
-                <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
-                    <h2 className="text-benblack-500 text-4xl lg:text-5xl text-left max-w-4xl">
-                        Trusted by 5,000+ weekly readers
-                    </h2>
-                    <div className="text-lg text-left leading-6 my-6" style={{ maxWidth: "610px" }}>
-                        The Blockchain Education Network offers a constant inflow of crypto news, events, free flights, educational content and opportunities.
-                    </div>
+<section className="bg-benorange-300 py-24 pb-24 mx-auto">
+  <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
+
+  <h2 className="mx-auto text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
+    Trusted by 5,000+ weekly readers
+  </h2>
+   
+  <div className="mx-auto text-lg text-center leading-6 my-6" style={{ maxWidth: "610px" }}>
+    The Blockchain Education Network offers a constant inflow of crypto news, events, free flights, educational content and opportunities.
+  </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
-                        <a target="_blank" href="https://beats.blockchainedu.org/" className="border p-8 rounded-lg bg-white">
+      <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+                        <div className="border p-8 rounded-lg bg-white">
 {/*
                             <div className="flex justify-between">
                                 <div>
@@ -324,8 +372,12 @@ if (typeof window !== 'undefined') {
                             <div class="text-md font-inter">
                                 <em>"Nice, informative and straight to the point! I appreciate the bite sized articles and the wording of the article."</em>
                             </div>
-                        </a>
-                        <a target="_blank" href="https://beats.blockchainedu.org" className="border p-8 rounded-lg bg-white">
+                        </div>
+                        </div>
+
+                         <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+
+                        <div className="border p-8 rounded-lg bg-white">
 {/*
                             <div className="flex justify-between">
                                 <div>
@@ -350,7 +402,8 @@ if (typeof window !== 'undefined') {
                             <div class="text-md font-inter">
                                 <em>"The first paragraph made me smile and I enjoy how it's written like the author is explaining the context like he or she is speaking to me in person."</em>
                             </div>
-                        </a>
+                        </div>
+                        </div>
                         {/*
                         <a target="_blank" href="https://docs.google.com/presentation/d/1stVgjgui--ok7uG8t6QFvpGkv9rk2NuCRXIHctkbGN0/edit?usp=sharing" className="border p-8 rounded-lg bg-white">
 */}
@@ -429,7 +482,8 @@ if (typeof window !== 'undefined') {
                                 BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
                             </div>
                         </a> */}
-                        <a href="https://beats.blockchainedu.org" className="border p-8 rounded-lg bg-white">
+      <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+                        <div className="border p-8 rounded-lg bg-white">
 {/*
                             <div className="flex justify-between">
                                 <div>
@@ -454,7 +508,8 @@ if (typeof window !== 'undefined') {
                             <div class="text-md font-inter">
                                 <em>"I read a lot of crypto news articles that have no personality and tone. This crypto news and education platform speaks to me like I am a human. I like that!"</em>
                             </div>
-                        </a>
+                        </div>
+                        </div>
                     </div>
                 </div>
                 {/* <div className="flex flex-col lg:flex-row justify-between pt-16 mx-auto items-center lg:items-end w-11/12" style={{ maxWidth: "1000px" }}>
@@ -531,7 +586,7 @@ if (typeof window !== 'undefined') {
 
 
 
-<section className="bg-benorange-300 mx-auto">
+<section id="ready" className="bg-benorange-300 mx-auto">
 
   <div className="container mx-auto px-4">
     <div className="max-w-3xl mx-auto text-center">

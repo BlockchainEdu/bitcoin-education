@@ -21,7 +21,7 @@ export default function HeaderWithLogo({className="", children}) {
   const shouldHideButton = hideButtonOnPage.includes(router.pathname);
 
   return (
-    <section className={`pt-10 px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" } ${className}`}>
+    <section className={`pt-10 bg-white px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" } ${className}`}>
       <Head>
         <link rel="shortcut icon" href="" />
       </Head>
