@@ -347,7 +347,7 @@ const scrollToSection = (sectionId, offset = -200) => {
   </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
       <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-                        <div className="border p-8 rounded-lg bg-white">
+                        <div className="border p-4 rounded-lg bg-white">
 {/*
                             <div className="flex justify-between">
                                 <div>
@@ -369,15 +369,26 @@ const scrollToSection = (sectionId, offset = -200) => {
                                 Newsletter
                             </div>
 */}
-                            <div class="text-md font-inter">
-                                <em>"Nice, informative and straight to the point! I appreciate the bite sized articles and the wording of the article."</em>
+<div class="text-md font-inter">
+<div className="flex items-center mb-2">
+  <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
+    <img
+      src="/images/stories//sonny-monroe.jpg"
+      alt="User Image 6"
+      className="rounded-full w-full h-full object-cover"
+    />
+  </div>
+  <div className="ml-2" style={{fontWeight:'600'}}>Sonny Monroe</div>
+</div>
+
+<em>"BEN is like a swiss army knife with crypto news, education, meetups, and even some tools."</em>
                             </div>
                         </div>
                         </div>
 
                          <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
 
-                        <div className="border p-8 rounded-lg bg-white">
+                        <div className="border p-4 rounded-lg bg-white">
 {/*
                             <div className="flex justify-between">
                                 <div>
@@ -399,9 +410,23 @@ const scrollToSection = (sectionId, offset = -200) => {
                                 COMMUNITY
                             </div>
 */}
-                            <div class="text-md font-inter">
-                                <em>"The first paragraph made me smile and I enjoy how it's written like the author is explaining the context like he or she is speaking to me in person."</em>
-                            </div>
+
+<div class="text-md font-inter">
+<div className="flex items-center mb-2">
+  <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
+    <img
+      src="/images/stories/sarah-roff.jpeg"
+      alt="User Image 6"
+      className="rounded-full w-full h-full object-cover"
+    />
+   </div>
+   <div className="ml-2" style={{fontWeight:'600'}}>Sarah Roff</div>
+</div>
+  <em>"BEN gives the best blockchain education so that we can become the next generation of innovators!"</em>
+
+
+</div>
+
                         </div>
                         </div>
                         {/*
@@ -483,7 +508,7 @@ const scrollToSection = (sectionId, offset = -200) => {
                             </div>
                         </a> */}
       <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-                        <div className="border p-8 rounded-lg bg-white">
+                        <div className="border p-4 rounded-lg bg-white">
 {/*
                             <div className="flex justify-between">
                                 <div>
@@ -505,9 +530,22 @@ const scrollToSection = (sectionId, offset = -200) => {
                                 Advertise With Us
                             </div>
 */}
-                            <div class="text-md font-inter">
-                                <em>"I read a lot of crypto news articles that have no personality and tone. This crypto news and education platform speaks to me like I am a human. I like that!"</em>
-                            </div>
+<div class="text-md font-inter">
+<div className="flex items-center mb-2">
+  <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
+    <img
+      src="/images/stories/dr-marko-suvajdzic-square.jpg"
+      alt="User Image 6"
+      className="rounded-full w-full h-full object-cover"
+    />
+  </div>
+  <div className="ml-2" style={{fontWeight:'600'}}>Dr. Marko Suvajdzic</div>
+</div>
+  <em>"In my work to promote blockchain technology, BEN has been an invaluable resource."</em>
+
+
+
+</div>
                         </div>
                         </div>
                     </div>
