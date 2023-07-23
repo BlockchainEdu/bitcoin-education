@@ -42,6 +42,7 @@
     "swiper": "^8.0.5"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^13.4.12",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.4",
     "tailwindcss": "^2.2.19"

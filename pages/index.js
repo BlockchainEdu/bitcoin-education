@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿﻿import React, { useState } from 'react';
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Image from 'next/image';
@@ -122,10 +122,6 @@ if (typeof window !== 'undefined') {
           crossOrigin="anonymous">
         </script>
 
-        <script type="text/javascript" async 
-          src="https://embeds.beehiiv.com/attribution.js">
-        </script>
-
         {/* Event snippet for Begin checkout conversion page
             In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. */}
         <script dangerouslySetInnerHTML={{
@@ -170,7 +166,7 @@ if (typeof window !== 'undefined') {
 
             <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
               <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
-                <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+                <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=top" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
               </div>
             </div>
 
@@ -543,13 +539,14 @@ if (typeof window !== 'undefined') {
       <p className="text-xl mb-14 text-black">If you change your mind, you can unsubscribe at anytime!</p>
       <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
         <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
-          <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+          <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=bottom" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
         </div>
       </div>
     </div>
   </div>
 </section>
-            <Footer />
+
+<Footer />
         </div >
     )
 }

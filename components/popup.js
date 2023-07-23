@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿﻿import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Popup() {
@@ -37,7 +37,7 @@ export default function Popup() {
                   Learn why crypto crashed in 2022 and how to prepare for 2024 👇
                 </div>
                 <div className="flex justify-center">
-                  <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%"}}></iframe>
+                  <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=popup" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%"}}></iframe>
                 </div>
               </div>
               <div className="w-full lg:h-auto lg:w-1/3" style={{ backgroundImage: "url(/images/your-guide-to-the-wild-world-of-crypto-3.jpg)", backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover"}}>
