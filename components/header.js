@@ -5,8 +5,8 @@ import Head from 'next/head';
 import Dropdown from "./dropdown";
 import StandardButton from './standardButton';
 
-export default function HeaderWithLogo({className="", children}) {
-  const [ offset, setOffset ] = useState(0);
+export default function HeaderWithLogo({ className = "", children }) {
+  const [offset, setOffset] = useState(0);
   const logoSrc = `/images/ben-logo-color-no-slogan.svg`;
   const router = useRouter();
 
@@ -21,14 +21,14 @@ export default function HeaderWithLogo({className="", children}) {
   const shouldHideButton = hideButtonOnPage.includes(router.pathname);
 
   return (
-    <section className={`pt-10 bg-white px-7 sticky top-0 z-10 white-header header ${ offset > 0 ? "scrolled" : "" } ${className}`}>
+    <section className={`pt-10 bg-white px-7 sticky top-0 z-10 white-header header ${offset > 0 ? "scrolled" : ""} ${className}`}>
       <Head>
         <link rel="shortcut icon" href="" />
       </Head>
 
       <div className="flex lg:hidden mobile-nav float-right h-[40px] items-center">
-        { children }
-        { !children && <MobileNav /> }
+        {children}
+        {!children && <MobileNav />}
       </div>
 
       <nav className="flex max-w-7xl m-auto justify-between items-start lg:items-center relative">
@@ -40,7 +40,7 @@ export default function HeaderWithLogo({className="", children}) {
             <a className="font-semibold" href="/about/partners">Partners </a>
             <a className="font-semibold" href="/about/team">Team </a>
             */}
-            { offset > 0 && !shouldHideButton && (
+            {offset > 0 && !shouldHideButton && (
               <>
                 {/*
                 <StandardButton
@@ -51,8 +51,8 @@ export default function HeaderWithLogo({className="", children}) {
                 */}
 
                 <StandardButton
-                  link="https://learn.blockchainedu.org/"
-                  text="Join the Community"
+                  link="https://buy.stripe.com/8wM9DF00Kbi259K289"
+                  text="Join Now"
                   target="blank"
                   color="orange"
                   styling="text-center py-3 rounded-lg w-full px-8"
@@ -66,11 +66,11 @@ export default function HeaderWithLogo({className="", children}) {
             <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://beats.blockchainedu.org/">
                 Subscribe
             </a>
-            */} 
-            { !shouldHideButton && (
+            */}
+            {!shouldHideButton && (
               <StandardButton
-                link="https://learn.blockchainedu.org"
-                text="Join the Community"
+                link="https://buy.stripe.com/8wM9DF00Kbi259K289"
+                text="Join Now"
                 color="orange"
                 styling="hidden-on-scroll text-center py-3 rounded-lg w-full px-8"
               />

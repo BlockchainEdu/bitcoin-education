@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 
-const PartnerSlider = ({data, title}) => {
+const PartnerSlider = ({ data, title }) => {
   const settings = {
-    infinite: data.length > 4? true: false,
+    infinite: data.length > 4 ? true : false,
     slidesToShow: 5,
     slidesToScroll: 4,
     autoplay: true,
@@ -39,19 +39,19 @@ const PartnerSlider = ({data, title}) => {
 
   return (
     <div className="mb-6">
-      <h2 className="text-center font-mont text-4xl md:text-5xl font-black pb-24">
+      <h2 className="text-center font-mont text-4xl md:text-5xl font-white pb-24">
         {title} Partners
       </h2>
       {data.length > 0 &&
         <Slider {...settings}>
           {data.map((item, index) => (
-            <div key={index} className="font-mont pb-36">
-              <div className="flex items-center" style={{height:"130px"}}>
-              <img className="m-auto" style={{maxWidth:"200px"}} src={item.url}/>
+            <div key={index} className="font-mont">
+              <div className="flex items-center" style={{ height: "130px" }}>
+                <img className="m-auto" style={{ maxWidth: "200px" }} src={item.url} />
               </div>
               <p className="font-bold text-lg pt-10 text-center">{item.name}</p>
             </div>
-          ))}   
+          ))}
         </Slider>
       }
     </div>
