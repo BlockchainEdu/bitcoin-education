@@ -334,7 +334,7 @@ export default function Home({ locations }) {
             {/* Card 1: Education */}
             <div onClick={() => scrollToSection("ready")} className="cursor-pointer mt-5">
               <div className=" text-black rounded-lg shadow-lg p-6" style={{ backgroundColor: "#F7F7F7" }}>
-                <div className="text-2xl font-bold mb-4 text-center">Membership</div>
+                <div className="text-2xl font-bold mb-4 text-center"></div>
                 <div className="text-2xl mb-2">✅ Free tickets to crypto conferences</div>
                 <div className="text-2xl mb-2">✅ Acess and auto sign up to side events at conferences.</div>
                 <div className="text-2xl mb-2">✅ Acess to group chat with other members</div>
@@ -482,7 +482,7 @@ export default function Home({ locations }) {
                   <div className="flex items-center mb-2">
                     <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
                       <img
-                        src="/images/joeykrug.jpg"
+                        src="images/Sarahroff.png"
                         alt="User Image 6"
                         className="rounded-full w-full h-full object-cover"
                       />
