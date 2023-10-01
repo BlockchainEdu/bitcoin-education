@@ -51,7 +51,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                 */}
 
                 <StandardButton
-                  link="https://buy.stripe.com/8wM9DF00Kbi259K289"
+                  link="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq"
                   text="Join Now"
                   target="blank"
                   color="orange"
