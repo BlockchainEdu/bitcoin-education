@@ -361,7 +361,7 @@ export default function Home({ locations }) {
 
                 <div className="flex justify-center items-center mt-5">
                   <StandardButton
-                    link="https://buy.stripe.com/8wM9DF00Kbi259K289"
+                    link="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq"
                     text="Join Now"
                     color="orange"
                     target="blank"
