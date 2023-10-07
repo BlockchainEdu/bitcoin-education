@@ -69,7 +69,7 @@ export default function HeaderWithLogo({ className = "", children }) {
             */}
             {!shouldHideButton && (
               <StandardButton
-                link="https://buy.stripe.com/8wM9DF00Kbi259K289"
+                link="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq"
                 text="Join Now"
                 color="orange"
                 styling="hidden-on-scroll text-center py-3 rounded-lg w-full px-8"
