@@ -33,45 +33,45 @@ export default function Sponsor() {
           <p>
             <div style={{ textAlign: 'center', marginBottom: '20px' }}>
               <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}>
-                What's Included in my membership? 🚀
+                🔑 What's Included in my membership?
 
 
               </strong>
               <strong style={{ fontSize: '24px', display: 'block', marginBottom: '36px', marginTop: '80px', textAlign: 'center' }}>
-                Access to Conferences
+                📅  Access to Conferences
               </strong>
               <p style={{ lineHeight: '1.5', textAlign: 'center', marginBottom: '10px' }}>
-                <strong><a href="https://ethglobal.co/" style={{ color: 'black', textDecoration: 'none' }}>ETHGlobal</a></strong><br />
+                <strong><a href="https://ethglobal.co/" style={{ color: 'black', textDecoration: 'none' }}>✅ ETHGlobal</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Connecting Ethereum enthusiasts worldwide.</span><br /><br />
 
-                <strong><a href="https://ethglobal.com/pragma" style={{ color: 'black', textDecoration: 'none' }}>Pragma</a></strong><br />
+                <strong><a href="https://ethglobal.com/pragma" style={{ color: 'black', textDecoration: 'none' }}>✅ Pragma</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Exploring the future of blockchain technology.</span><br /><br />
 
-                <strong><a href="https://mainnet.events/" style={{ color: 'black', textDecoration: 'none' }}>Messari Mainnet</a></strong><br />
+                <strong><a href="https://mainnet.events/" style={{ color: 'black', textDecoration: 'none' }}>✅ Messari Mainnet</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Unveiling insights and innovations in the crypto world.</span><br /><br />
 
-                <strong><a href="https://www.bitcoin2024.com/" style={{ color: 'black', textDecoration: 'none' }}>Bitcoin 2024</a></strong><br />
+                <strong><a href="https://www.bitcoin2024.com/" style={{ color: 'black', textDecoration: 'none' }}>✅ Bitcoin 2024</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Shaping the future of Bitcoin and cryptocurrency.</span><br /><br />
 
-                <strong><a href="https://www.ethmiami.com/" style={{ color: 'black', textDecoration: 'none' }}>ETH Miami</a></strong><br />
+                <strong><a href="https://www.ethmiami.com/" style={{ color: 'black', textDecoration: 'none' }}>✅ ETH Miami</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Celebrating Ethereum's impact on the tech world.</span><br /><br />
 
-                <strong><a href="https://2022.tabconf.com/" style={{ color: 'black', textDecoration: 'none' }}>The Atlanta Bitcoin Conference</a></strong><br />
+                <strong><a href="https://2022.tabconf.com/" style={{ color: 'black', textDecoration: 'none' }}>✅ The Atlanta Bitcoin Conference</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Exploring Bitcoin's potential and applications.</span><br /><br />
 
-                <strong><a href="https://solana.com/breakpoint" style={{ color: 'black', textDecoration: 'none' }}>Solana Breakpoint</a></strong><br />
+                <strong><a href="https://solana.com/breakpoint" style={{ color: 'black', textDecoration: 'none' }}>✅ Solana Breakpoint</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Discovering Solana's breakthroughs in blockchain.</span><br /><br />
 
-                <strong><a href="https://www.parisblockchainweek.com/" style={{ color: 'black', textDecoration: 'none' }}>Paris Blockchain Week</a></strong><br />
+                <strong><a href="https://www.parisblockchainweek.com/" style={{ color: 'black', textDecoration: 'none' }}>✅ Paris Blockchain Week</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Showcasing the Parisian blockchain ecosystem.</span><br /><br />
 
-                <strong><a href="https://cosmoverse.org/" style={{ color: 'black', textDecoration: 'none' }}>Cosmosverse 2023</a></strong><br />
+                <strong><a href="https://cosmoverse.org/" style={{ color: 'black', textDecoration: 'none' }}>✅ Cosmosverse 2023</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>Exploring the cosmos of decentralized networks.</span><br /><br />
 
-                <strong><a href="https://websummit.com/" style={{ color: 'black', textDecoration: 'none' }}>WebSummit</a></strong><br />
+                <strong><a href="https://websummit.com/" style={{ color: 'black', textDecoration: 'none' }}>✅ WebSummit</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>The global technology conference of the year.</span><br /><br />
 
-                <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px' }}>
+                <div style={{ textAlign: 'center', marginTop: '80px', marginBottom: '80px' }}>
 
                   <a href="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-benorange-500 hover:bg-benblack-500 text-white hidden-on-scroll text-center py-3 rounded-lg">Join Now</a>
 
@@ -91,7 +91,7 @@ export default function Sponsor() {
 
 
             <div style={{ marginBottom: '32px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-              <strong style={{ fontSize: '24px', display: 'block', marginTop: '26', marginBottom: '26px', textAlign: 'center' }}>Networking</strong>
+              <strong style={{ fontSize: '24px', display: 'block', marginTop: '26', marginBottom: '26px', textAlign: 'center' }}>🤝 Networking</strong>
               <p style={{ fontSize: '18px', lineHeight: '1.5', textAlign: 'left' }}>
                 ✅ Access to a global community of blockchain enthusiasts<br />
                 ✅ Online discussions about AI, NFTs, trading, top coins, and more...<br />
@@ -101,7 +101,7 @@ export default function Sponsor() {
             </div>
 
             <div style={{ marginBottom: '32px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}>Resources</strong>
+              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}> 📚 Resources</strong>
               <p style={{ fontSize: '18px', lineHeight: '1.5', textAlign: 'left' }}>
                 ✅ Courses, course certificates, guides, videos, tools and resources<br />
                 ✅ Airdrop alerts and job listings<br />
@@ -114,14 +114,14 @@ export default function Sponsor() {
             <div style={{ fontSize: '18px', marginBottom: '32px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}
               div>
 
-              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}>Market Analysis</strong>
+              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}> 📈 Market Analysis</strong>
               <p style={{ lineHeight: '1.5', textAlign: 'left' }}>
                 ✅ Exclusive insights from industry experts<br />
                 ✅ Deep dive analysis on specific projects<br />
                 ✅ In-depth reports on the latest trends and tokens<br />
               </p>
               <h2 style={{ marginTop: '40px', marginBottom: '30px', fontSize: '24px', textAlign: 'center', fontWeight: 'bold' }}>
-                Your Network is Your Net Worth
+                💼 Your Network is Your Net Worth
               </h2>
               <iframe
                 width="560"
@@ -156,7 +156,7 @@ export default function Sponsor() {
 
 
 
-              <strong style={{ fontSize: '24px', display: 'block', marginTop: '30px', marginBottom: '19px', textAlign: 'center' }}>What our members say?</strong>
+              <strong style={{ fontSize: '24px', display: 'block', marginTop: '30px', marginBottom: '19px', textAlign: 'center' }}> 🗣️ What our members say?</strong>
 
 
 
@@ -308,7 +308,7 @@ export default function Sponsor() {
                 </p>
 
                 <h3 style={{ marginTop: '20px', marginBottom: '20px', fontSize: '20px', textAlign: 'center', color: 'black', fontWeight: 'bold' }}>
-                  Projects Our Alumni Has Founded
+                  🌱 Projects Our Alumni Has Founded
                 </h3>
 
 
