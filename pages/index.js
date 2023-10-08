@@ -332,12 +332,17 @@ export default function Home({ locations }) {
 
           <div className="flex justify-center items-center">
             {/* Card 1: Education */}
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer mt-5">
+            <div onClick={() => <a href="https://www.blockchainedu.org/joinnow?utm_source=blockchainedu.org">
+              <div>
+                {/* Your content here */}
+              </div>
+            </a>
+            } className="cursor-pointer mt-5">
               <div className=" text-black rounded-lg shadow-lg p-6" style={{ backgroundColor: "#F7F7F7" }}>
                 <div className="text-2xl font-bold mb-4 text-center"></div>
 
 
-                <div className="text-2xl mb-2">✅ Free tickets to conferences
+                <div className="text-2xl mb-2">🎟️ Free tickets to conferences
                   <strong>
                     <p className='text-base'>ETHGlobal - Pragma - Messari Mainnet - Bitcoin 2024 - ETH Miami - The Atlanta Bitcoin Conference - Solana Breakpoint - Paris Blockchain Week - Cosmosverse 2023</p>
                   </strong>
@@ -346,16 +351,16 @@ export default function Home({ locations }) {
 
 
 
-                <div className="text-2xl mb-2">✅ Acess to networking chat for opportunities.</div>
-                <div className="text-2xl mb-2">✅ Acess to unique dealflow from pre-seed.</div>
-                <div className="text-2xl mb-2">✅ Annual networking members meetup</div>
-                <div className="text-2xl mb-2">✅ Collaborative opportunities with industry leaders</div>
-                <div className="text-2xl mb-2">✅ Pitch your project to investors</div>
-                <div className="text-2xl mb-2">✅ Connect with sucessfull industry leaders</div>
+                <div className="text-2xl mb-2"> 💬 Acess to networking chat for opportunities.</div>
+                <div className="text-2xl mb-2"> 🚀 Acess to unique dealflow from pre-seed.</div>
+                <div className="text-2xl mb-2">  🤝 Annual networking members meetup</div>
+                <div className="text-2xl mb-2">🌟 Collaborative opportunities with industry leaders</div>
+                <div className="text-2xl mb-2">🎤 Pitch your project to investors</div>
+                <div className="text-2xl mb-2">👥 Connect with sucessfull industry leaders</div>
                 <div className="text-2xl mb-2">✅ Support network for founders</div>
-                <div className="text-2xl mb-2">✅ Acess to a decade old alumni network</div>
-                <div className="text-2xl mb-2">✅ Job Refferals</div>
-                <div className="text-2xl mb-2">✅ Tax deductible membership</div>
+                <div className="text-2xl mb-2"> 🌐 Acess to a decade old alumni network</div>
+                <div className="text-2xl mb-2">💼 Job Refferals</div>
+                <div className="text-2xl mb-2">💰 Tax deductible membership</div>
 
 
 
@@ -365,7 +370,7 @@ export default function Home({ locations }) {
                     text="Join Now"
                     color="orange"
                     target="blank"
-                    styling="text-center py-3 rounded-lg text-white"
+                    styling="text-center py-3 rounded-lg text-white text size 10"
                   />
                 </div>
               </div>
