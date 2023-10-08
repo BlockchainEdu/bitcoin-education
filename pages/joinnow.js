@@ -12,6 +12,8 @@ export default function Sponsor() {
         <title>Join Us | Blockchain Education Network</title>
       </Head>
 
+
+
       <div style={{ maxWidth: '800px', margin: '100px auto 0 auto', textAlign: 'center' }}>
         <div style={{ textAlign: 'center' }}>
           <h1 className="text-2xl md:text-4xl font-bold mb-8">
@@ -32,6 +34,8 @@ export default function Sponsor() {
             <div style={{ textAlign: 'center', marginBottom: '20px' }}>
               <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}>
                 What's Included in my membership? 🚀
+
+
               </strong>
               <strong style={{ fontSize: '24px', display: 'block', marginBottom: '36px', marginTop: '80px', textAlign: 'center' }}>
                 Access to Conferences
@@ -66,6 +70,14 @@ export default function Sponsor() {
 
                 <strong><a href="https://websummit.com/" style={{ color: 'black', textDecoration: 'none' }}>WebSummit</a></strong><br />
                 <span style={{ marginBottom: '10px' }}>The global technology conference of the year.</span><br /><br />
+
+                <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '40px' }}>
+
+                  <a href="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-benorange-500 hover:bg-benblack-500 text-white hidden-on-scroll text-center py-3 rounded-lg">Join Now</a>
+
+
+                </div>
+
               </p>
 
 
