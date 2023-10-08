@@ -13,9 +13,12 @@ export default function Sponsor() {
       </Head>
 
       <div style={{ maxWidth: '800px', margin: '100px auto 0 auto', textAlign: 'center' }}>
-        <h1 className="text-4xl font-bold mb-8">
-          Network | <span style={{ color: 'orange' }}>Learn</span> | Build | <span style={{ color: 'orange' }}>HODL</span> | Succeed
-        </h1>
+        <div style={{ textAlign: 'center' }}>
+          <h1 className="text-2xl md:text-4xl font-bold mb-8">
+            Network | <span style={{ color: 'orange' }}>Learn</span> | Build |{' '}
+            <span style={{ color: 'orange' }}>HODL</span> | Succeed
+          </h1>
+        </div>
         <img src="images/BEN Network sales.avif" alt="Description of Image" style={{ maxWidth: '100%', height: 'auto' }} />
       </div>
 
@@ -28,19 +31,44 @@ export default function Sponsor() {
           <p>
             <div style={{ textAlign: 'center', marginBottom: '20px' }}>
               <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}>
-                What's Included in my membership? 🚀 </strong>
-              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '36px', marginTop: '80px', textAlign: 'center' }}>Access to Conferences</strong>
+                What's Included in my membership? 🚀
+              </strong>
+              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '36px', marginTop: '80px', textAlign: 'center' }}>
+                Access to Conferences
+              </strong>
               <p style={{ lineHeight: '1.5', textAlign: 'center', marginBottom: '10px' }}>
                 <strong><a href="https://ethglobal.co/" style={{ color: 'black', textDecoration: 'none' }}>ETHGlobal</a></strong><br />
-                <strong><a href="https://www.withpragma.com/" style={{ color: 'black', textDecoration: 'none' }}>Pragma</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Connecting Ethereum enthusiasts worldwide.</span><br /><br />
+
+                <strong><a href="https://ethglobal.com/pragma" style={{ color: 'black', textDecoration: 'none' }}>Pragma</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Exploring the future of blockchain technology.</span><br /><br />
+
                 <strong><a href="https://mainnet.events/" style={{ color: 'black', textDecoration: 'none' }}>Messari Mainnet</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Unveiling insights and innovations in the crypto world.</span><br /><br />
+
                 <strong><a href="https://www.bitcoin2024.com/" style={{ color: 'black', textDecoration: 'none' }}>Bitcoin 2024</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Shaping the future of Bitcoin and cryptocurrency.</span><br /><br />
+
                 <strong><a href="https://www.ethmiami.com/" style={{ color: 'black', textDecoration: 'none' }}>ETH Miami</a></strong><br />
-                <strong><a href="https://atlantabitcoinconference.com/" style={{ color: 'black', textDecoration: 'none' }}>The Atlanta Bitcoin Conference</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Celebrating Ethereum's impact on the tech world.</span><br /><br />
+
+                <strong><a href="https://2022.tabconf.com/" style={{ color: 'black', textDecoration: 'none' }}>The Atlanta Bitcoin Conference</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Exploring Bitcoin's potential and applications.</span><br /><br />
+
                 <strong><a href="https://solana.com/breakpoint" style={{ color: 'black', textDecoration: 'none' }}>Solana Breakpoint</a></strong><br />
-                <strong><a href="https://pbwsummit.com/" style={{ color: 'black', textDecoration: 'none' }}>Paris Blockchain Week</a></strong><br />
-                <strong><a href="https://cosmosverse.io/" style={{ color: 'black', textDecoration: 'none' }}>Cosmosverse 2023</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Discovering Solana's breakthroughs in blockchain.</span><br /><br />
+
+                <strong><a href="https://www.parisblockchainweek.com/" style={{ color: 'black', textDecoration: 'none' }}>Paris Blockchain Week</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Showcasing the Parisian blockchain ecosystem.</span><br /><br />
+
+                <strong><a href="https://cosmoverse.org/" style={{ color: 'black', textDecoration: 'none' }}>Cosmosverse 2023</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>Exploring the cosmos of decentralized networks.</span><br /><br />
+
+                <strong><a href="https://websummit.com/" style={{ color: 'black', textDecoration: 'none' }}>WebSummit</a></strong><br />
+                <span style={{ marginBottom: '10px' }}>The global technology conference of the year.</span><br /><br />
               </p>
+
+
             </div>
 
 
@@ -272,29 +300,95 @@ export default function Sponsor() {
                 </h3>
 
 
-                <p style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  <strong>Optimism</strong> is an Ethereum-based decentralized infrastructure platform allowing for instant transactions and scalable smart contracts.
-                </p>
+                <div
 
-                <p style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  <strong>Injective Protocol (INJ)</strong> is a decentralized exchange (DEX) protocol offering features like cross-chain margin trading, derivatives, Forex (FX), synthetics, and futures trading.
-                </p>
+                  style={{ maxWidth: '600px', margin: '0 auto' }}>
+                  <p style={{ marginBottom: '20px', fontSize: '18px' }}>
+                    <strong>
+                      <a
+                        href="https://www.optimism.io/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'none', textDecoration: 'underline' }}
+                      >
+                        Optimism
+                      </a>
+                    </strong> is an Ethereum-based decentralized infrastructure platform
+                    allowing for instant transactions and scalable smart contracts.
+                  </p>
 
-                <p style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  <strong>Bolt</strong> develops a checkout experience platform assisting retailers in converting and retaining more shoppers.
-                </p>
+                  <p style={{ marginBottom: '20px', fontSize: '18px' }}>
+                    <strong>
+                      <a
+                        href="https://www.injectiveprotocol.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'none', textDecoration: 'underline' }}
+                      >
+                        Injective Protocol (INJ)
+                      </a>
+                    </strong> is a decentralized exchange (DEX) protocol offering features
+                    like cross-chain margin trading, derivatives, Forex (FX), synthetics, and
+                    futures trading.
+                  </p>
 
-                <p style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  <strong>Roll</strong> is a social token infrastructure for the creator economy, enabling users to earn, redeem, send, and trade social tokens across the internet.
-                </p>
+                  <p style={{ marginBottom: '20px', fontSize: '18px' }}>
+                    <strong>
+                      <a
+                        href="https://bolt.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'none', textDecoration: 'underline' }}
+                      >
+                        Bolt
+                      </a>
+                    </strong> develops a checkout experience platform assisting retailers in
+                    converting and retaining more shoppers.
+                  </p>
 
-                <p style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  <strong>IOTA</strong> is a unique distributed ledger, using Tangle instead of blockchain, where nodes confirm transactions.
-                </p>
+                  <p style={{ marginBottom: '20px', fontSize: '18px' }}>
+                    <strong>
+                      <a
+                        href="https://www.tryroll.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'none', textDecoration: 'underline' }}
+                      >
+                        Roll
+                      </a>
+                    </strong> is a social token infrastructure for the creator economy,
+                    enabling users to earn, redeem, send, and trade social tokens across the
+                    internet.
+                  </p>
 
-                <p style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  <strong>Augur</strong> is a decentralized prediction market on the Ethereum blockchain, enabling users to stake digital assets on real-world event outcomes.
-                </p>
+                  <p style={{ marginBottom: '20px', fontSize: '18px' }}>
+                    <strong>
+                      <a
+                        href="https://www.iota.org/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'none', textDecoration: 'underline' }}
+                      >
+                        IOTA
+                      </a>
+                    </strong> is a unique distributed ledger, using Tangle instead of
+                    blockchain, where nodes confirm transactions.
+                  </p>
+
+                  <p style={{ marginBottom: '20px', fontSize: '18px' }}>
+                    <strong>
+                      <a
+                        href="https://www.augur.net/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: 'none', textDecoration: 'underline' }}
+                      >
+                        Augur
+                      </a>
+                    </strong> is a decentralized prediction market on the Ethereum blockchain,
+                    enabling users to stake digital assets on real-world event outcomes.
+                  </p>
+                </div>
 
 
 
