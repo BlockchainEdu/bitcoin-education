@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
 
   const pageTitle = 'Blockchain Education Network';
   const pageDescription = 'Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!';
-  const ogImageUrl = '/images/light-2-logo.jpg' ;
+  const ogImageUrl = '/images/light-2-logo.jpg';
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
     if (router.pathname === '/join') {
       window.location.href = 'https://learn.blockchainedu.org';
     }
-  
+
     if (router.pathname === '/learn') {
       window.location.href = 'https://learn.blockchainedu.org';
     }
@@ -41,13 +41,60 @@ function MyApp({ Component, pageProps }) {
     <AppWrapper>
       <div>
         <Head>
+          {/*crazy egg*/}
+          <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0120/4754.js" async="async"></script>
+
+          {/* Intercom script */}
+          <script>
+            {`
+              window.intercomSettings = {
+                app_id: 'bf65zudc',
+                // Add any additional Intercom settings here
+              };
+            `}
+          </script>
+          <script>
+            {`
+              (function () {
+                var w = window;
+                var ic = w.Intercom;
+                if (typeof ic === 'function') {
+                  ic('reattach_activator');
+                  ic('update', window.intercomSettings);
+                } else {
+                  var d = document;
+                  var i = function () {
+                    i.c(arguments);
+                  };
+                  i.q = [];
+                  i.c = function (args) {
+                    i.q.push(args);
+                  };
+                  w.Intercom = i;
+                  var l = function () {
+                    var s = d.createElement('script');
+                    s.type = 'text/javascript';
+                    s.async = true;
+                    s.src = 'https://widget.intercom.io/widget/bf65zudc';
+                    var x = d.getElementsByTagName('script')[0];
+                    x.parentNode.insertBefore(s, x);
+                  };
+                  if (window.attachEvent) {
+                    window.attachEvent('onload', l);
+                  } else {
+                    window.addEventListener('load', l, false);
+                  }
+                }
+              })();
+            `}
+          </script>
 
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=UA-213540060-2`}
           />
-        
+
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -76,12 +123,12 @@ function MyApp({ Component, pageProps }) {
                 gtag('config', 'G-CY9B33JJWC');
                `,
             }}
-           />
+          />
 
           {/* Facebook Pixel Code */}
           <script
             dangerouslySetInnerHTML={{
-            __html: `
+              __html: `
               !function(f,b,e,v,n,t,s){
               if(f.fbq)return;
               n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -102,15 +149,15 @@ function MyApp({ Component, pageProps }) {
             }}
           />
           <noscript>
-            <img height="1" width="1" src="https://www.facebook.com/tr?id=647331727208880&ev=PageView&noscript=1"/>
+            <img height="1" width="1" src="https://www.facebook.com/tr?id=647331727208880&ev=PageView&noscript=1" />
           </noscript>
 
           {/* CrazyEgg Analytics */}
           <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0118/3905.js" async="async"></script>
-            <link rel="shortcut icon" href="" />
-            <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></link>
-            <link href="https://fonts.googleapis.com/css2?family=Average&display=swap" rel="stylesheet" />
+          <link rel="shortcut icon" href="" />
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></link>
+          <link href="https://fonts.googleapis.com/css2?family=Average&display=swap" rel="stylesheet" />
 
           {/* Social Media Thumbnails */}
           <meta property="og:title" content={pageTitle} />

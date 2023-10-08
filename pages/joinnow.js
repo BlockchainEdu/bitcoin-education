@@ -26,10 +26,32 @@ export default function Sponsor() {
 
 
           <p>
+            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}>
+                What's Included in my membership? 🚀 </strong>
+              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '36px', marginTop: '80px', textAlign: 'center' }}>Access to Conferences</strong>
+              <p style={{ lineHeight: '1.5', textAlign: 'center', marginBottom: '10px' }}>
+                <strong><a href="https://ethglobal.co/" style={{ color: 'black', textDecoration: 'none' }}>ETHGlobal</a></strong><br />
+                <strong><a href="https://www.withpragma.com/" style={{ color: 'black', textDecoration: 'none' }}>Pragma</a></strong><br />
+                <strong><a href="https://mainnet.events/" style={{ color: 'black', textDecoration: 'none' }}>Messari Mainnet</a></strong><br />
+                <strong><a href="https://www.bitcoin2024.com/" style={{ color: 'black', textDecoration: 'none' }}>Bitcoin 2024</a></strong><br />
+                <strong><a href="https://www.ethmiami.com/" style={{ color: 'black', textDecoration: 'none' }}>ETH Miami</a></strong><br />
+                <strong><a href="https://atlantabitcoinconference.com/" style={{ color: 'black', textDecoration: 'none' }}>The Atlanta Bitcoin Conference</a></strong><br />
+                <strong><a href="https://solana.com/breakpoint" style={{ color: 'black', textDecoration: 'none' }}>Solana Breakpoint</a></strong><br />
+                <strong><a href="https://pbwsummit.com/" style={{ color: 'black', textDecoration: 'none' }}>Paris Blockchain Week</a></strong><br />
+                <strong><a href="https://cosmosverse.io/" style={{ color: 'black', textDecoration: 'none' }}>Cosmosverse 2023</a></strong><br />
+              </p>
+            </div>
+
+
+
+
+
+
 
 
             <div style={{ marginBottom: '32px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-              <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}>Networking</strong>
+              <strong style={{ fontSize: '24px', display: 'block', marginTop: '26', marginBottom: '26px', textAlign: 'center' }}>Networking</strong>
               <p style={{ fontSize: '18px', lineHeight: '1.5', textAlign: 'left' }}>
                 ✅ Access to a global community of blockchain enthusiasts<br />
                 ✅ Online discussions about AI, NFTs, trading, top coins, and more...<br />
@@ -64,12 +86,16 @@ export default function Sponsor() {
               <iframe
                 width="560"
                 height="315"
-                src=" https://youtube.com/embed/5V9Jb6SXDEc?si=ynE5NPy95q8zOQ8a"
+                src="https://www.youtube.com/embed/5V9Jb6SXDEc?autoplay=1&mute=0"
                 style={{ border: 'none' }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                title="YouTube Video">
-              </iframe>
+                title="YouTube Video"
+              ></iframe>
+
+
+
+
 
               <p style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto', marginTop: 30 }}>
                 <strong>Attending conferences is a game-changer.</strong> Aspiring entrepreneurs and investors gain invaluable insights.
@@ -97,7 +123,7 @@ export default function Sponsor() {
               <iframe
                 width="560"
                 height="315"
-                src="https://youtube.com/embed/6hfJ2fRQTYc"
+                src="https://youtube.com/embed/6hfJ2fRQTYc?autoplay=1&mute=0"
                 style={{ border: 'none' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -134,7 +160,7 @@ export default function Sponsor() {
               <iframe
                 width="560"
                 height="315"
-                src="https://youtube.com/embed/4jTahwUdupE"
+                src="https://youtube.com/embed/4jTahwUdupE?autoplay=1&mute=0"
                 style={{ border: 'none' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -160,7 +186,7 @@ export default function Sponsor() {
               <iframe
                 width="560"
                 height="315"
-                src="https://youtube.com/embed/dvBxuupurK0"
+                src="https://youtube.com/embed/dvBxuupurK0?autoplay=1&mute=0"
                 style={{ border: 'none' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -185,7 +211,7 @@ export default function Sponsor() {
                 <iframe
                   width="560"
                   height="315"
-                  src="https://youtube.com/embed/L1-yHKLctzM"
+                  src="https://youtube.com/embed/L1-yHKLctzM?mute=0"
                   style={{ border: 'none' }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -211,7 +237,7 @@ export default function Sponsor() {
                 <iframe
                   width="560"
                   height="315"
-                  src="  https://youtube.com/embed/Q4SeEx_Hqkc"
+                  src="  https://youtube.com/embed/Q4SeEx_Hqkc?mute=0"
                   style={{ border: 'none' }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -271,29 +297,32 @@ export default function Sponsor() {
                 </p>
 
 
-                <p style={{ marginTop: '40px', marginBottom: '20px', fontSize: '20px', textAlign: 'center', fontWeight: 'bold' }}>
-                  Ready to join the network?
-                </p>
+
 
 
 
 
 
                 <p style={{ marginTop: '40px', marginBottom: '20px', fontSize: '20px', textAlign: 'center', fontWeight: 'bold' }}>
-                  Are you ready to be part of the next big wave in innovation?
+                  Don't miss your chance to be part of an exclusive network driving the next big wave in innovation
                 </p>
 
-                <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '40px' }}>
-                  <a href="/join" style={{ background: 'orange', color: 'white', padding: '15px 30px', borderRadius: '5px', fontSize: '18px', textDecoration: 'none', fontWeight: 'bold' }}>
-                    Join Now
-                  </a>
+
+                <div style={{ textAlign: 'center', marginTop: '80px', marginBottom: '80px' }}>
+
+                  <a href="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-benorange-500 hover:bg-benblack-500 text-white hidden-on-scroll text-center py-3 rounded-lg">Join Now</a>
+
+
                 </div>
+
 
 
 
                 <img src="/images/featuredin.png" alt="Description of Image" style={{ maxWidth: '100%', height: 'auto', display: 'block', margin: '16px auto' }} />
 
               </p>
+
+
             </div>
 
 
@@ -309,6 +338,7 @@ export default function Sponsor() {
       </section >
 
       <Footer />
+
     </div >
   )
 }
