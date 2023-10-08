@@ -342,10 +342,12 @@ export default function Home({ locations }) {
                 <div className="text-2xl font-bold mb-4 text-center"></div>
 
 
-                <div className="text-2xl mb-2">🎟️ Free tickets to conferences
+                <div className="text-2xl mb-2">🎟️ Free tickets to crypto conferences
+                  {/*
                   <strong>
                     <p className='text-base'>ETHGlobal - Pragma - Messari Mainnet - Bitcoin 2024 - ETH Miami - The Atlanta Bitcoin Conference - Solana Breakpoint - Paris Blockchain Week - Cosmosverse 2023</p>
                   </strong>
+                  */}
                 </div>
 
 
