@@ -94,7 +94,7 @@ export default function Sponsor() {
               <strong style={{ fontSize: '24px', display: 'block', marginTop: '26', marginBottom: '26px', textAlign: 'center' }}>🤝 Networking</strong>
               <p style={{ fontSize: '18px', lineHeight: '1.5', textAlign: 'left' }}>
                 ✅ Access to a global community of blockchain enthusiasts<br />
-                ✅ Online discussions about AI, NFTs, trading, top coins, and more...<br />
+                ✅ Online discussions about AI, NFTs, day trading, and more...<br />
                 ✅ Opportunities to share your project<br />
                 ✅ Get feedback, mentorship, investors, and co-founders<br />
               </p>
@@ -103,11 +103,8 @@ export default function Sponsor() {
             <div style={{ marginBottom: '32px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
               <strong style={{ fontSize: '24px', display: 'block', marginBottom: '16px', textAlign: 'center' }}> 📚 Resources</strong>
               <p style={{ fontSize: '18px', lineHeight: '1.5', textAlign: 'left' }}>
-                ✅ Courses, course certificates, guides, videos, tools and resources<br />
+                ✅ Guides,and resources<br />
                 ✅ Airdrop alerts and job listings<br />
-                ✅ Live AMAs with industry experts<br />
-                ✅ Bitcoin & basics, crypto taxes, investing, NFTs, DeFi, and more<br />
-                ✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver<br />
               </p>
             </div>
 
@@ -118,7 +115,7 @@ export default function Sponsor() {
               <p style={{ lineHeight: '1.5', textAlign: 'left' }}>
                 ✅ Exclusive insights from industry experts<br />
                 ✅ Deep dive analysis on specific projects<br />
-                ✅ In-depth reports on the latest trends and tokens<br />
+                <br />
               </p>
               <h2 style={{ marginTop: '40px', marginBottom: '30px', fontSize: '24px', textAlign: 'center', fontWeight: 'bold' }}>
                 💼 Your Network is Your Net Worth
