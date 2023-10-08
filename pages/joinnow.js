@@ -87,7 +87,7 @@ export default function Sponsor() {
                 width="560"
                 height="315"
                 src="https://www.youtube.com/embed/5V9Jb6SXDEc?autoplay=1&mute=0"
-                style={{ border: 'none' }}
+                style={{ border: 'none', width: '100%', maxWidth: '100%' }}
                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="YouTube Video"
@@ -124,7 +124,7 @@ export default function Sponsor() {
                 width="560"
                 height="315"
                 src="https://youtube.com/embed/6hfJ2fRQTYc?autoplay=1&mute=0"
-                style={{ border: 'none' }}
+                style={{ border: 'none', width: '100%', maxWidth: '100%' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="YouTube Video">
@@ -161,7 +161,7 @@ export default function Sponsor() {
                 width="560"
                 height="315"
                 src="https://youtube.com/embed/4jTahwUdupE?autoplay=1&mute=0"
-                style={{ border: 'none' }}
+                style={{ border: 'none', width: '100%', maxWidth: '100%' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="YouTube Video">
@@ -187,7 +187,7 @@ export default function Sponsor() {
                 width="560"
                 height="315"
                 src="https://youtube.com/embed/dvBxuupurK0?autoplay=1&mute=0"
-                style={{ border: 'none' }}
+                style={{ border: 'none', width: '100%', maxWidth: '100%' }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="YouTube Video">
@@ -212,7 +212,7 @@ export default function Sponsor() {
                   width="560"
                   height="315"
                   src="https://youtube.com/embed/L1-yHKLctzM?mute=0"
-                  style={{ border: 'none' }}
+                  style={{ border: 'none', width: '100%', maxWidth: '100%' }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title="YouTube Video">
@@ -238,7 +238,7 @@ export default function Sponsor() {
                   width="560"
                   height="315"
                   src="  https://youtube.com/embed/Q4SeEx_Hqkc?mute=0"
-                  style={{ border: 'none' }}
+                  style={{ border: 'none', width: '100%', maxWidth: '100%' }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title="YouTube Video">
