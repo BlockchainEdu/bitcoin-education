@@ -43,7 +43,7 @@ export default function MobileDropdown(props) {
   return (
     <div className="w-full max-w-sm px-4 top-16 display-on-scroll">
 
-    {/*
+      {/*
         <div className="bg-white text-center">
           {!shouldHideButton && (
             <StandardButton
@@ -95,8 +95,8 @@ export default function MobileDropdown(props) {
                 */}
                 <div className="bg-white pb-7 text-center">
                   <StandardButton
-                    link="https://learn.blockchainedu.org"
-                    text="Join the Community"
+                    link="https://www.blockchainedu.org/joinnow"
+                    text="Join Now"
                     color="orange"
                     target="blank"
                     styling="text-center py-3 rounded-lg w-full px-8"
