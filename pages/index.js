@@ -353,23 +353,31 @@ export default function Home({ locations }) {
 
 
 
-                <div className="text-2xl mb-2"> 💬 Acess to networking chat for opportunities.</div>
-                <div className="text-2xl mb-2"> 🚀 Acess to unique dealflow from pre-seed.</div>
-                <div className="text-2xl mb-2">  🤝 Annual networking members meetup</div>
-                <div className="text-2xl mb-2">🌟 Collaborative opportunities with industry leaders</div>
-                <div className="text-2xl mb-2">🎤 Pitch your project to investors</div>
-                <div className="text-2xl mb-2">👥 Connect with sucessfull industry leaders</div>
-                <div className="text-2xl mb-2">✅ Support network for founders</div>
-                <div className="text-2xl mb-2"> 🌐 Acess to a decade old alumni network</div>
-                <div className="text-2xl mb-2">💼 Job Refferals</div>
-                <div className="text-2xl mb-2">💰 Tax deductible membership</div>
+                <div className="text-2xl mb-2"> 💬 Vibrant networking community for growth.</div>
+                <div className="text-2xl mb-2"> 🚀 Tailored mentorship for success.</div>
+                <div className="text-2xl mb-2"> 🤝 Enriching annual member meetups.</div>
+                <div className="text-2xl mb-2">🌟 Collaborative project opportunities.</div>
+                <div className="text-2xl mb-2">🎤 Pitch to eager investors.</div>
+                <div className="text-2xl mb-2">👥 Connect with like-minded innovators.</div>
+                <div className="text-2xl mb-2">✅ Supportive network with seasoned mentorship.</div>
+                <div className="text-2xl mb-2"> 🌐 Decade-rich alumni network.</div>
+                <div className="text-2xl mb-2">💸 Funding opportunities for growth.</div>
+                <div className="text-2xl mb-2">🛠 Access to essential tools, resources.</div>
+                <div className="text-2xl mb-2">📈 Tailored growth strategies.</div>
+                <div className="text-2xl mb-2">🔐 Unlock the crypto realm with industry experts.</div>
+
+
+
+
+
+
 
 
 
                 <div className="flex justify-center items-center mt-5">
                   <StandardButton
-                    link="https://www.blockchainedu.org/joinnow"
-                    text="Join Now"
+                    link="https://www.blockchainedu.org/apply"
+                    text="Apply Now"
                     color="orange"
                     target="blank"
                     styling="text-center py-3 rounded-lg text-white text size 10"

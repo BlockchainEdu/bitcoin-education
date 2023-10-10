@@ -73,7 +73,7 @@ export default function Sponsor() {
 
                 <div style={{ textAlign: 'center', marginTop: '80px', marginBottom: '80px' }}>
 
-                  <a href="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-benorange-500 hover:bg-benblack-500 text-white hidden-on-scroll text-center py-3 rounded-lg">Join Now</a>
+                  <a href="https://form.jotform.com/232825336471053" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-benorange-500 hover:bg-benblack-500 text-white hidden-on-scroll text-center py-3 rounded-lg">Apply Now</a>
 
 
                 </div>
@@ -413,7 +413,7 @@ export default function Sponsor() {
 
                 <div style={{ textAlign: 'center', marginTop: '80px', marginBottom: '80px' }}>
 
-                  <a href="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-benorange-500 hover:bg-benblack-500 text-white hidden-on-scroll text-center py-3 rounded-lg">Join Now</a>
+                  <a href="https://form.jotform.com/232825336471053" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-benorange-500 hover:bg-benblack-500 text-white hidden-on-scroll text-center py-3 rounded-lg">Apply Now</a>
 
 
                 </div>

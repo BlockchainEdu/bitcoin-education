@@ -51,8 +51,8 @@ export default function HeaderWithLogo({ className = "", children }) {
                 */}
 
                 <StandardButton
-                  link="https://www.blockchainedu.org/joinnow"
-                  text="Join Now"
+                  link="https://www.blockchainedu.org/apply"
+                  text="Apply Now"
                   target="blank"
                   color="orange"
                   styling="text-center py-3 rounded-lg w-full px-8"
@@ -69,8 +69,8 @@ export default function HeaderWithLogo({ className = "", children }) {
             */}
             {!shouldHideButton && (
               <StandardButton
-                link="https://buy.stripe.com/9AQbLNdRA5XIgSs6oq"
-                text="Join Now"
+                link="https://www.blockchainedu.org/apply"
+                text="Apply Now"
                 color="orange"
                 styling="hidden-on-scroll text-center py-3 rounded-lg w-full px-8"
               />
