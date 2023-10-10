@@ -155,6 +155,35 @@ export default function Sponsor() {
 
               <strong style={{ fontSize: '24px', display: 'block', marginTop: '30px', marginBottom: '19px', textAlign: 'center' }}> 🗣️ What our members say?</strong>
 
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/tbchiByUSm0?autoplay=1&mute=0"
+                style={{ border: 'none', width: '100%', maxWidth: '100%' }}
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="YouTube Video"
+              ></iframe>
+
+              <div style={{ marginTop: '40px', marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+                <strong>Ramiro</strong>, a visionary from Argentina, was introduced to the transformative power of Bitcoin during a time of economic uncertainty in his homeland.
+              </div>
+
+              <div style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+                Driven by a passion for change and a belief in the potential of decentralized technologies, he ventured into the world of cryptocurrency, seeking innovative solutions to traditional financial challenges.
+              </div>
+
+              <div style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+                It was during this exploration that he encountered the <strong>Blockchain Education Network (BEN)</strong>. This association with BEN became a turning point in his journey. Through BEN, Ramiro was exposed to a global community of blockchain enthusiasts, educators, and innovators.
+              </div>
+
+              <div style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+                The network and resources provided by BEN empowered him, broadening his horizons and offering opportunities to collaborate on groundbreaking projects.
+              </div>
+
+              <div style={{ marginBottom: '20px', fontSize: '18px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
+                Today, Ramiro attributes a significant part of his success in the crypto realm to the foundation and connections he built through BEN.
+              </div>
 
 
               <iframe
@@ -309,6 +338,11 @@ export default function Sponsor() {
                 </h3>
 
 
+                <h3 style={{ marginTop: '20px', marginBottom: '20px', fontSize: '20px', textAlign: 'center', color: 'black', fontWeight: 'bold' }}>
+                  🌱 Projects Our Alumni Has Founded
+                </h3>
+
+
                 <div
 
                   style={{ maxWidth: '600px', margin: '0 auto' }}>
@@ -323,7 +357,7 @@ export default function Sponsor() {
                         Optimism
                       </a>
                     </strong> is an Ethereum-based decentralized infrastructure platform
-                    allowing for instant transactions and scalable smart contracts.
+                    allowing for instant transactions and scalable smart contracts. (Market Cap: ~1.1Bil)
                   </p>
 
                   <p style={{ marginBottom: '20px', fontSize: '18px' }}>
@@ -338,7 +372,7 @@ export default function Sponsor() {
                       </a>
                     </strong> is a decentralized exchange (DEX) protocol offering features
                     like cross-chain margin trading, derivatives, Forex (FX), synthetics, and
-                    futures trading.
+                    futures trading. (Market Cap: ~650Mil)
                   </p>
 
                   <p style={{ marginBottom: '20px', fontSize: '18px' }}>
@@ -352,7 +386,7 @@ export default function Sponsor() {
                         Bolt
                       </a>
                     </strong> develops a checkout experience platform assisting retailers in
-                    converting and retaining more shoppers.
+                    converting and retaining more shoppers. Bolt raised $355 million at an $11 billion valuation from investors including BlackRock.
                   </p>
 
                   <p style={{ marginBottom: '20px', fontSize: '18px' }}>
@@ -381,7 +415,7 @@ export default function Sponsor() {
                         IOTA
                       </a>
                     </strong> is a unique distributed ledger, using Tangle instead of
-                    blockchain, where nodes confirm transactions.
+                    blockchain, where nodes confirm transactions. (Market Cap: ~3B)
                   </p>
 
                   <p style={{ marginBottom: '20px', fontSize: '18px' }}>
@@ -395,9 +429,13 @@ export default function Sponsor() {
                         Augur
                       </a>
                     </strong> is a decentralized prediction market on the Ethereum blockchain,
-                    enabling users to stake digital assets on real-world event outcomes.
+                    enabling users to stake digital assets on real-world event outcomes. (Market Cap: ~472Mil)
                   </p>
                 </div>
+
+
+
+
 
 
 
@@ -411,7 +449,7 @@ export default function Sponsor() {
                 </p>
 
 
-                <div style={{ textAlign: 'center', marginTop: '80px', marginBottom: '80px' }}>
+                <div style={{ textAlign: 'center', marginTop: '80px', marginBottom: '100px' }}>
 
                   <a href="https://form.jotform.com/232825336471053" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-benorange-500 hover:bg-benblack-500 text-white hidden-on-scroll text-center py-3 rounded-lg">Apply Now</a>
 
@@ -419,14 +457,28 @@ export default function Sponsor() {
                 </div>
 
 
+                <p class="font-inter text-center text-lg mb-4">
+                  Interested in investing with us?
+                </p>
 
 
-                <img src="/images/featuredin.png" alt="Description of Image" style={{ maxWidth: '100%', height: 'auto', display: 'block', margin: '16px auto' }} />
+                <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '100px' }}>
+                  <a href="https://angellist.com/i/uwiDb-u" class="rounded-lg py-4 px-6 font-semibold font-inter transition duration-500 bg-black hover:bg-black hover:text-white text-white text-center py-3 rounded-lg">
+                    Invest Now
+                  </a>
+                </div>
+
+
+
+
+                <img src="/images/featuredin.png" alt="Description of Image" style={{ maxWidth: '100%', height: 'auto', display: 'block', margin: '86px auto' }} />
 
               </p>
 
 
             </div>
+
+
 
 
 
