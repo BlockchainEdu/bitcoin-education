@@ -338,9 +338,7 @@ export default function Sponsor() {
                 </h3>
 
 
-                <h3 style={{ marginTop: '20px', marginBottom: '20px', fontSize: '20px', textAlign: 'center', color: 'black', fontWeight: 'bold' }}>
-                  🌱 Projects Our Alumni Has Founded
-                </h3>
+
 
 
                 <div
@@ -357,7 +355,8 @@ export default function Sponsor() {
                         Optimism
                       </a>
                     </strong> is an Ethereum-based decentralized infrastructure platform
-                    allowing for instant transactions and scalable smart contracts. (Market Cap: ~1.1Bil)
+                    allowing for instant transactions and scalable smart contracts.
+                    (Market Cap: ~1.1Bil)
                   </p>
 
                   <p style={{ marginBottom: '20px', fontSize: '18px' }}>
