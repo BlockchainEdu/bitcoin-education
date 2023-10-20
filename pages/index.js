@@ -222,8 +222,8 @@ export default function Home({ locations }) {
           <div className="col-span-1 lg:pt-10 lg:order-last">
 
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
-              Your Gateway to Crypto conferences
-              <span style={{ fontSize: '35px' }}> ✈️ </span>
+              Build Your Web 3.0 Idea💡
+              <span style={{ fontSize: '31px' }}>  </span>
 
 
               <span className="font-bold"></span>
@@ -231,7 +231,7 @@ export default function Home({ locations }) {
             </h1>
 
             <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-              Get the latest crypto conference news and event tickets delivered to your inbox.👇
+              Founder news, fundraising opportunities, and free conference tickets — Straight to Your Inbox! 👇
             </div>
 
             <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
@@ -435,11 +435,11 @@ export default function Home({ locations }) {
         <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
 
           <h2 className="mx-auto text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
-            Trusted by 5,000+ weekly readers
+            Trusted by 8,000+ weekly readers
           </h2>
 
           <div className="mx-auto text-lg text-center leading-6 my-6" style={{ maxWidth: "610px" }}>
-            The Blockchain Education Network offers a constant inflow of crypto news, events, free flights, educational content and opportunities.
+            The Blockchain Education Network delivers founder news, fundraising opportunities, free conference tickets, and insightful educational content.
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
             <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
