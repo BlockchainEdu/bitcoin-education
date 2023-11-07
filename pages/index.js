@@ -316,10 +316,7 @@ export default function Home({ locations }) {
 
       <section className=" bg-white mt-10">
         <div className=" m-auto">
-          {categories.length > 0 && categories.map((category, index) =>
-            <PartnersSlider title={category} key={index} data={partners.filter(item => item.category === category)} />
-          )}
-
+          <PartnersSlider title="Event Partners" data={partners.filter(item => item.category === "Event Partners")} />
         </div>
       </section>
 
@@ -432,6 +429,13 @@ export default function Home({ locations }) {
           </div>
         </div>
       </section >
+
+
+      <section className=" bg-white mt-10">
+        <div className=" m-auto">
+          <PartnersSlider title="Notable Alumni" data={partners.filter(item => item.category === "Alumni")} />
+        </div>
+      </section>
 
 
       <section className="bg-benorange-300 py-24 pb-24 mx-auto">
