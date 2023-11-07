@@ -1,9 +1,10 @@
-import Footer from '../../components/footer';
-import HeaderWithLogoDark from '../../components/headerWithLogoDark';
+import Footer from '../../components/footer'
+import HeaderWithLogoDark from '../../components/headerWithLogoDark'
 import Header from '../../components/header'
 import NationalTeamCard from '../../components/nationalTeamCard'
+import AlumniCard from '../../components/alumniCard'
 import TeamMembers from '../../content/team'
-import { TeamMemberService } from '../../services';
+import { TeamMemberService } from '../../services'
 import Head from "next/head"
 
 import React, { useState, useEffect } from 'react';
@@ -33,6 +34,24 @@ const teamMembers = {
     
     "Advisors": [
     ],
+
+    "Alumni": [
+        new TeamMember("/images/people/michael-gord.jpeg", "Michael Gord", "Founder, GDA Capital"),
+        new TeamMember("/images/people/ryan-breslow.jpeg", "Ryan Breslow", "Founder, Bolt"),
+        new TeamMember("/images/people/jing-wang.jpeg", "Jinglan Wang", "Co-founder, Optimism"),
+        new TeamMember("/images/people/joey-krug.jpeg", "Joey Krug", "Partner, Founders Fund"),
+        new TeamMember("/images/people/bradley-miles.jpeg", "Bradley Miles", "Co-founder, Roll"),
+        new TeamMember("/images/people/eric-chen.jpeg", "Eric Chen", "Founder, Injective"),
+        new TeamMember("/images/people/dean-masley.jpeg", "Dean Masley", "Founder, NestEgg"),
+        new TeamMember("/images/people/ashton-barger.jpeg", "Ashton Barger", "President, Zebu Live"),
+        new TeamMember("/images/people/alec-shaw.jpeg", "Alec Shaw", "CEO, Tenderize.me"),
+        new TeamMember("/images/people/jeremy-guzman.jpeg", "Jeremy Guzman", "Founder, Mass Adoption"),
+        new TeamMember("/images/people/kate-stapleton.jpeg", "Kate Stapleton", "Community Lead, Axelar"),
+        new TeamMember("/images/people/bennett-thompson.jpeg", "Bennett Thompson", "Founder, Blockbeam"),
+        new TeamMember("/images/people/dev-bharel.jpeg", "Dev Bharel", "Developer Advocate, Anagram.xyz"),
+        new TeamMember("/images/people/matt-batsinelas.jpeg", "Matt Batsinelas", "Founder, Glass Markets"),
+        new TeamMember("/images/people/gal-stern.jpeg", "Gal Stern", "Head of BD, deBridge")
+    ]
 };
 
 {/*
@@ -43,7 +62,6 @@ const teamMembers = {
         new TeamMember("/images/team/bennett.jpg", "Bennett Thompson", "", "Bennett Thompson is a second year undergraduate student at Northeastern University studying Computer Science and Business administration with a FinTech concentration. He is the Co-Founder and Co-President of the Northeastern Blockchain Organization. Bennett currently works for dClimate, the first decentralized network for climate data. He also works on Boston Blockchain Association’s “Gateway to Blockchain Entrepreneurship” program.", "https://www.linkedin.com/in/thompsonbennett/", "https://twitter.com/B1ggans12", "bennett@blockchainedu.org"),
         new TeamMember("/images/team/alec.jpg", "Alec Shaw", "", "As a Finance undergraduate at Marquette University, Alec founded Marquette's Blockchain Lab. In addition, Alec launched Euphrates Group Consulting in 2017: providing DLT education and implementation services to SMB's in the greater Milwaukee area. He was awarded Wisconsin Inno's 25 Under 25 Innovators for this work. After graduation, he worked at Marquette University's business school: managing the finances of student startups at Marquette's Student-run Business Program. Now, he is a partner of business development at Sperax, a decentralized stablecoin project on Ethereum. Outside of financial technology, Alec is passionate about snowboarding, digital privacy, men's streetwear and finding the best deli in your city.", "", "", "alec@blockchainedu.org"),
         new TeamMember("/images/team/buse.jpg", "Buse Kaya", "", "Buse is a sophomore at Istanbul University studying Mathematics and Management Information Systems. She is a board member and R&D lead of the Blocktech and was appointed BEN Turkey Ambassador of Istanbul University. She is Math and Blockchain enthusiast. She is looking forward to boosting make Blockchain more accessible to all students all around the world.", "https://www.linkedin.com/in/buse-kaya-6a1788198", "", "buse@blockchainedu.org"),
-
     */}
 export default function About() {
 
@@ -124,6 +142,29 @@ export default function About() {
                     )}
                 </div>
             </section>
+
+            <section className="py-24 -mb-14">
+
+                <h2 className="font-black text-4xl md:text-5xl text-black text-center pb-8">
+                    Notable Alumni
+                </h2>
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 max-w-7xl m-auto gap-y-4">
+                    {teamMembers["Alumni"].length > 0 && teamMembers["Alumni"].map(member =>
+                            <AlumniCard
+                              image={member.image}
+                              name={member.name}
+                              title={member.title}
+                              bio={member.bio}
+                              linkedin={member.linkedin}
+                              twitter={member.twitter}
+                              email={member.email}
+                              globalClick={globalClick}
+                              setGlobalClick={setGlobalClick}
+                            />
+                    )}
+                </div>
+            </section>
+
             <Footer />
         </div>
     )

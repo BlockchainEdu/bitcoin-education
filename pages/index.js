@@ -323,6 +323,8 @@ export default function Home({ locations }) {
         </div>
       </section>
 
+
+
       <section id="benefits" className="py-10">
         <div className=" mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
 
@@ -430,6 +432,7 @@ export default function Home({ locations }) {
           </div>
         </div>
       </section >
+
 
       <section className="bg-benorange-300 py-24 pb-24 mx-auto">
         <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
