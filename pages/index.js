@@ -245,35 +245,35 @@ export default function Home({ locations }) {
                 <div className="w-full grid grid-cols-8 gap-9 relative" style={{ margin: "-10px", width: "calc(20px * 8 + 4px * 7)" }}>
                   <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2">
                     <img
-                      src="/images/Jelena_noble.jpeg"
+                      src="/images/people/jelena-djuric.jpeg"
                       alt="User Image 1"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
                   <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-1">
                     <img
-                      src="/images/matt_founder.jpeg"
+                      src="/images/people/matt-batsinelas.jpeg"
                       alt="User Image 2"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
                   <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-2">
                     <img
-                      src="/images/Michael_gord.jpeg"
+                      src="/images/people/michael-gord.jpeg"
                       alt="User Image 2"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
                   <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-3">
                     <img
-                      src="/images/joeykrug.jpg"
+                      src="/images/people/joey-krug.jpeg"
                       alt="User Image 3"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
                   <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-4">
                     <img
-                      src="/images/JingWang.jpeg"
+                      src="/images/people/jinglan-wang.jpeg"
                       alt="User Image 4"
                       className="rounded-full w-full h-full object-cover"
                     />
@@ -287,14 +287,14 @@ export default function Home({ locations }) {
                   </div>
                   <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-6">
                     <img
-                      src="images/ryanbrewslow.png"
+                      src="images/people/ryan-breslow.jpeg"
                       alt="User Image 6"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
                   <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2 -z-7">
                     <img
-                      src="/images/stories//drew-cousin.jpeg"
+                      src="/images/stories/drew-cousin.jpeg"
                       alt="User Image 6"
                       className="rounded-full w-full h-full object-cover"
                     />

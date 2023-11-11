@@ -38,7 +38,7 @@ const teamMembers = {
     "Alumni": [
         new TeamMember("/images/people/michael-gord.jpeg", "Michael Gord", "Founder, GDA Capital"),
         new TeamMember("/images/people/ryan-breslow.jpeg", "Ryan Breslow", "Founder, Bolt"),
-        new TeamMember("/images/people/jing-wang.jpeg", "Jinglan Wang", "Co-founder, Optimism"),
+        new TeamMember("/images/people/jinglan-wang.jpeg", "Jinglan Wang", "Co-founder, Optimism"),
         new TeamMember("/images/people/joey-krug.jpeg", "Joey Krug", "Partner, Founders Fund"),
         new TeamMember("/images/people/bradley-miles.jpeg", "Bradley Miles", "Co-founder, Roll"),
         new TeamMember("/images/people/eric-chen.jpeg", "Eric Chen", "Founder, Injective"),
@@ -50,7 +50,10 @@ const teamMembers = {
         new TeamMember("/images/people/bennett-thompson.jpeg", "Bennett Thompson", "Founder, Blockbeam"),
         new TeamMember("/images/people/dev-bharel.jpeg", "Dev Bharel", "Developer Advocate, Anagram.xyz"),
         new TeamMember("/images/people/matt-batsinelas.jpeg", "Matt Batsinelas", "Founder, Glass Markets"),
-        new TeamMember("/images/people/gal-stern.jpeg", "Gal Stern", "Head of BD, deBridge")
+        new TeamMember("/images/people/gal-stern.jpeg", "Gal Stern", "Head of BD, deBridge"),
+        new TeamMember("/images/people/andy-bromberg.jpeg", "Andy Bromberg", "Co-founder, Coinlist | CEO, ECO"),
+        new TeamMember("/images/people/robert-klages.jpeg", "Robert Klages", "Co-founder, The Rollup"),
+        new TeamMember("/images/people/jelena-djuric.jpeg", "Jelena Djuric", "Co-founder, Noble"),
     ]
 };
 
