@@ -54,6 +54,9 @@ const teamMembers = {
         new TeamMember("/images/people/andy-bromberg.jpeg", "Andy Bromberg", "Co-founder, Coinlist | CEO, ECO"),
         new TeamMember("/images/people/robert-klages.jpeg", "Robert Klages", "Co-founder, The Rollup"),
         new TeamMember("/images/people/jelena-djuric.jpeg", "Jelena Djuric", "Co-founder, Noble"),
+        new TeamMember("/images/people/roshan-mirajkar.jpeg", "Roshan Mirajkar", "VP Marketing & Web3 Strategy, Mousebelt"),
+        new TeamMember("/images/people/scott-spiegel.jpeg", "Scott Spiegel", "Founder & CEO, BitBasel"),
+
     ]
 };
 
