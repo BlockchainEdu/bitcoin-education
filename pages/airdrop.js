@@ -3,6 +3,7 @@ import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import { TeamMemberService } from '../services';
 import Head from "next/head";
+import StandardButton from '../components/standardButton';
 
 export default function Events() {
   const [globalClick, setGlobalClick] = useState(false);
@@ -119,16 +120,20 @@ const renderLeaderboardRow = (entry, index) => {
       </Head>
 
       <div id="team-page">
-        <div className="countdown-section bg-blue-500 text-white p-10 text-center">
+        <div className="countdown-section bg-black text-white p-10 text-center">
           <h2 className="text-3xl font-bold mb-2">Airdrop Countdown</h2>
           <p className="text-xl">{countdown} until liftoff</p>
           <p>Mark your calendars for our Twitter Spaces on Jan 31st where we will be doing the airdrop live</p>
         </div>
-
-        <div className="countdown-section bg-yellow-100 text-black p-10 text-center">
-          <h2 className="text-3xl font-bold mb-2">$5k in prizes</h2>
-          <p>Sponsored by GDA and Life Wallet</p>
-        </div>
+        
+  <div className="countdown-section bg-yellow-100 text-black p-10 text-center">
+      <h2 className="text-3xl font-bold mb-2">$5k in prizes</h2>
+      <p className="mb-4">Sponsored by GDA and Life Wallet</p>
+      <div className="grid grid-cols-2 gap-4 items-center">
+          <img src="/images/airdrop/life-wallet.jpg" alt="Life Wallet" className="max-w-[100px]"/>
+          <img src="/images/airdrop/gda.jpeg" alt="GDA" className="max-w-[100px]" />
+      </div>
+  </div>
 
 <div className="airdrop-signup-section bg-gray-200 p-10 text-center">
   <h2 className="text-3xl font-bold mb-4">Join the BEN Global Airdrop</h2>
@@ -156,7 +161,13 @@ const renderLeaderboardRow = (entry, index) => {
       <option value="team2">Team 2</option>
       {/* Add more teams as needed */}
     </select>
-    <button className="bg-blue-500 text-white p-4 w-full">Sign Up</button>
+    <StandardButton
+      link="https://www.blockchainedu.org/apply"
+      text="Sign Up"
+      color="orange"
+      target="blank"
+      styling="text-center py-3 rounded-lg text-white w-full text size 10"
+    />
   </div>
   
   <p className="mt-4">Don't see your team? Add it now</p>
