@@ -222,7 +222,7 @@ export default function Home({ locations }) {
           <div className="col-span-1 lg:pt-10 lg:order-last">
 
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
-              Build Your Web3 Idea💡
+              Join 8,000+ Students
               <span style={{ fontSize: '31px' }}>  </span>
 
 
@@ -231,7 +231,7 @@ export default function Home({ locations }) {
             </h1>
 
             <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-              Founder news, fundraising opportunities, and free conference tickets — Straight to Your Inbox! 👇
+              Get exclusive access to crypto events and free conference tickets 👇
             </div>
 
             <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
@@ -301,7 +301,7 @@ export default function Home({ locations }) {
                   </div>
                 </div>
               </div>
-              <p className="mt-3 ml-20 text-bengrey-500 text-center text-md">Join thousands of subscribers!</p>
+              <p className="mt-3 ml-20 text-bengrey-500 text-center text-md">Join 8,000+ subscribers!</p>
             </div>
 
           </div>
@@ -313,13 +313,32 @@ export default function Home({ locations }) {
         </div>
       </section >
 
+      {/*
+      <section className="bg-benorange-300 py-24 pb-24 mx-auto">
+        <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
+        The BEN Model
+        Awareness -> Events -> Build
+        </div>
+      </section>
 
+      <section className="bg-black py-24 pb-24 mx-auto">
+        <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
+        Ready for the BEN Airdrop? Sign up now
+        </div>
+      </section>
+
+            <section className="bg-white-300 py-24 pb-24 mx-auto">
+        <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
+        Check out our events calendar of upcoming <a href="/events">events</a>
+        </div>
+      </section>
+
+*/}
       <section className=" bg-white mt-10">
         <div className=" m-auto">
           <PartnersSlider title="Event Partners" data={partners.filter(item => item.category === "Event Partners")} />
         </div>
       </section>
-
 
 
       <section id="benefits" className="py-10">
@@ -364,14 +383,6 @@ export default function Home({ locations }) {
                 <div className="text-2xl mb-2">🛠 Access to essential tools, resources.</div>
                 <div className="text-2xl mb-2">📈 Tailored growth strategies.</div>
                 <div className="text-2xl mb-2">🔐 Unlock the crypto realm with industry experts.</div>
-
-
-
-
-
-
-
-
 
                 <div className="flex justify-center items-center mt-5">
                   <StandardButton
@@ -732,7 +743,7 @@ export default function Home({ locations }) {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold mb-2 text-black">Ready?</h1>
-            <p className="text-xl mb-14 text-black">Get the latest crypto conference news and event tickets delivered to your inbox!👇</p>
+            <p className="text-xl mb-14 text-black">Get the latest crypto news and event tickets delivered to your inbox 👇</p>
             <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
               <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
                 <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=bottom&utm_content=bottom" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>

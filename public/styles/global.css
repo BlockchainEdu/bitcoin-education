@@ -849,3 +849,47 @@ a {
   --tw-border-opacity: 1;
   border-color: #ff872a;
 }
+
+
+
+/* Leaderboard CSS */
+.leaderboard-container {
+  background-color: black;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px; /* Adjust as needed */
+  margin: 40px auto;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.leaderboard-container table {
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+}
+.leaderboard-container th, .leaderboard-container td {
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid grey;
+}
+.leaderboard-container th {
+  font-size: 1.2em;
+}
+.leaderboard-container tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.rank-cell {
+  font-size: 24px; /* Adjust the size as needed */
+  /* Add any other styles you want for these cells */
+}
+
+.leaderboard-container table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Adjust the color and opacity as needed */
+  cursor: pointer; /* Optional, changes the cursor to indicate it's interactive */
+}
+
+.clickable-row:hover {
+  cursor: pointer; /* Indicates the row is clickable */
+  background-color: rgba(255, 255, 255, 0.2); /* Optional: for hover effect */
+}

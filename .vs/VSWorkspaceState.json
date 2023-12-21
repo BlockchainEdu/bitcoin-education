@@ -3,10 +3,12 @@
     "",
     "\\components",
     "\\pages",
+    "\\pages\\about",
     "\\public",
     "\\public\\styles",
     "\\services",
     "\\utils"
   ],
+  "SelectedNode": "\\pages\\programs.js",
   "PreviewInSolutionExplorer": false
 }
