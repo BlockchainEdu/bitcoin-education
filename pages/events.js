@@ -49,9 +49,9 @@ export default function Events() {
           acc[continent] = acc[continent] || [];
           acc[continent].push({
             name: item.name,
-            date: item.column_values[0].value,
-            location: item.column_values[1].value,
-            url: item.column_values[2].value
+            date: JSON.parse(item.column_values[0].value),
+            location: JSON.parse(item.column_values[1].value),
+            url: JSON.parse(item.column_values[2].value)
           });
           return acc;
         }, {});
@@ -75,10 +75,12 @@ export default function Events() {
 
   const renderEventSection = (events, continent) => (
     <section key={continent}>
+    <div className="w-11/12 md:w-7/12 mx-auto py-6">
       <h2 className="text-2xl font-semibold my-4">{continent}</h2>
       <div className="events-grid">
         {events.map(renderEventCard)}
       </div>
+    </div>
     </section>
   );
 
@@ -89,13 +91,15 @@ export default function Events() {
         <title>Events | Blockchain Education Network</title>
       </Head>
 
-      <div className="events-content">
-        {
-          Object.entries(eventsByContinent).map(([continent, eventsList]) => (
-            renderEventSection(eventsList, continent)
-          ))
-        }
-      </div>
+      <h1 className="text-xl text-center">
+        Events Calendar
+      </h1>
+
+      {
+        Object.entries(eventsByContinent).map(([continent, eventsList]) => (
+          renderEventSection(eventsList, continent)
+        ))
+      }
 
       <Footer />
     </div>
