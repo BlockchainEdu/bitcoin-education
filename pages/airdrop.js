@@ -4,15 +4,16 @@ import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import { TeamMemberService } from '../services';
 import Head from "next/head";
 import StandardButton from '../components/standardButton';
+import Countdown from '../components/Countdown';
 
-export default function Events() {
+export default function Airdrop() {
   const [globalClick, setGlobalClick] = useState(false);
   const [teamMembers, setTeamMembers] = useState([]);
   const [leaderboardData, setLeaderboardData] = useState([]);
-  const [deadline, setDeadline] = useState(new Date('2024-01-31'));
-  const [countdown, setCountdown] = useState('');
   const [ethAddress, setEthAddress] = useState('');
   const [selectedTeam, setSelectedTeam] = useState('');
+
+  const deadline = new Date('2024-01-31'); // You can keep this here or move it to where you use <Countdown />
 
   useEffect(() => {
     const mockLeaderboardData = [
@@ -40,18 +41,7 @@ export default function Events() {
 
     setLeaderboardData(mockLeaderboardData);
 
-    const interval = setInterval(() => {
-      const now = new Date();
-      const difference = deadline - now;
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-      setCountdown(`${days}d ${hours}h ${minutes}m ${seconds}s`);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [deadline]);
+  }, []);
 
   const handleEthAddressChange = (e) => {
     setEthAddress(e.target.value);
@@ -122,7 +112,7 @@ const renderLeaderboardRow = (entry, index) => {
       <div id="team-page">
         <div className="countdown-section bg-black text-white p-10 text-center">
           <h2 className="text-3xl font-bold mb-2">Airdrop Countdown</h2>
-          <p className="text-xl">{countdown} until liftoff</p>
+          <p><Countdown deadline={deadline} /> until liftoff</p>
           <p>Mark your calendars for our Twitter Spaces on Jan 31st where we will be doing the airdrop live</p>
         </div>
         

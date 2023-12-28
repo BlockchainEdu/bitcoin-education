@@ -1,116 +1,83 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState } from 'react';
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
-import { TeamMemberService } from '../services';
 import Head from "next/head";
 
 export default function Events() {
-  const [globalClick, setGlobalClick] = useState(false);
-  const [teamMembers, setTeamMembers] = useState([]);
 
-  const changeFlexProgram = () => {
-    return `max-w-7xl m-auto flex flex-col items-center ${teamMembers.index % 2 ? 'lg:flex-row-reverse' : 'hidden'}`
+  const [eventsNorthAmerica, setEventsNorthAmerica] = useState([
+    { name: 'Onchain Oasis', date: 'Jan 22 - 24', location: '🇧🇸 Massau, Bahamas', url: "https://www.oasisonchain.xyz/" },
+  ]);
+
+  const [eventsSouthAmerica, setEventsSouthAmerica] = useState([
+    { name: 'Blockchain NetZero', date: 'Q2', location: '🇨🇴 Medellin, Colombia', url: "https://blockchainnetzero.com/" },
+  ]);
+
+  const [eventsEurope, setEventsEurope] = useState([
+    { name: 'World Crypto Forum', date: 'Jan 15 - 19', location: '🇨🇭 Davos, Switzerland', url: "https://www.wcf2030.org/" },
+    { name: 'Web3 Hub Davos', date: 'Jan 15 - 18', location: '🇨🇭 Davos, Switzerland' , url: "https://web3hubdavos.com/"},
+    { name: 'World Innovation Economics Summit', date: 'Jan 16 - 18', location: '🇨🇭 Davos, Switzerland', url: "https://www.worldinnovationeconomics.org/" },
+  ]);
+
+  const [eventsAfrica, setEventsAfrica] = useState([
+  ]);
+
+  const [eventsAsia, setEventsAsia] = useState([
+    { name: 'CNX NFT Day', date: 'Jan 25 - 28', location: '🇹🇭 Chiang Mai, Thailand', url: "https://blockmountaincnx.com/" },
+  ]);
+  
+  const [eventsOceania, setEventsOceania] = useState([
+  ]);
+
+  const [eventsOnline, setEventsOnline] = useState([
+  ]);
+
+
+
+  const handleEventClick = (event) => {
+    // Handle the click event, e.g., navigate to event details or open a modal
+    console.log(`Navigating to ${event.name}`);
   };
 
-  const changeFlexDirection = [`max-w-7xl m-auto flex flex-col items-center lg:flex-row-reverse lg:gap-x-20`, `max-w-7xl m-auto flex flex-col items-center lg:flex-row`];
+  const renderEventCard = (event, index) => (
+    <a href={event.url} target="_blank" rel="noopener noreferrer" key={index} className="event-card" onClick={() => handleEventClick(event.url)}>
+      <div className="event-card-content grid grid-cols-3 gap-4 p-4">
+        <div className="event-date">{event.date}</div>
+        <div className="event-name">{event.name}</div>
+        <div className="event-location">{event.location}</div>
+      </div>
+    </a>
+  );
 
-  useEffect(() => {
-    async function fetchData() {
-      let body = {
-        query: `{
-          boards (ids: 5642546206) {
-            items (limit: 100) {
-              group {
-                title
-              }
-              name
-              column_values {
-                value
-              }
-              assets {
-                public_url
-              }
-            }
-          }
-        }`};
-      let result = await TeamMemberService.getMembers(body);
-      if (result?.data?.data?.boards) {
-        let items = result.data.data.boards[0].items;
-        console.log(items);
-        setTeamMembers(items);
-      } else {
-        setTeamMembers([]);
-      }
-    }
-    fetchData();
-  }, [setTeamMembers]);
-
-  return (
-    <div id="partners-page">
-      <HeaderWithLogoDark />
-      <Head>
-        <title>Programs | Blockchain Education Network</title>
-      </Head>
-      
-      <div id="team-page" onClick={(e) => {
-        if (e.target.getAttribute('flip-card-container') == "true") {
-          setGlobalClick(true);
-        } else {
-          setGlobalClick(false);
-        }
-      }}>
-        <div className="pt-20 lg:pt-24 md:pb-0 px-7">
-          {teamMembers.length > 0 && teamMembers.map((global, index) => {
-            if (global.group.title !== "Events") {
-              return null;
-            }
-
-            let description = '';
-            if (global.column_values[1] && global.column_values[1].value) {
-              try {
-                const descriptionObj = JSON.parse(global.column_values[1].value);
-                if (descriptionObj && descriptionObj.text) {
-                  description = descriptionObj.text;
-                }
-              } catch (error) {
-                console.error("Error parsing JSON:", error);
-              }
-            }
-
-            return (
-              <div key={index} className={index % 2 ? changeFlexDirection[0] : changeFlexDirection[1]}>
-                <div className="w-full lg:w-6/12">
-                  <h1 className="text-4xl md:text-4xl text-center lg:text-left font-black text-black max-w-5xl pt-10 leading-snug">
-                    {global.name}
-                  </h1>
-                  <ul className="space-y-10 text-lg pt-10 max-w-lg m-auto lg:m-0 text-center lg:text-left">
-                    {description && <li>{description}</li>}
-                  </ul>
-                </div>
-                <div className="w-full lg:w-6/12 m-auto pt-14 pb-0 lg:pb-24">
-                  {global.column_values.map((column, idx) => {
-                    if (column.value) {
-                      try {
-                        const parsedValue = JSON.parse(column.value);
-                        if (parsedValue && parsedValue.url) {
-                          return (
-                            <a key={idx} href={parsedValue.url} target="_blank" rel="noopener noreferrer">
-                              <img className="m-auto" src={global.assets.length > 0 ? global.assets[0]?.public_url : ""} />
-                            </a>
-                          );
-                        }
-                      } catch (error) {
-                        console.error("Error parsing JSON:", error);
-                      }
-                    }
-                    return null;
-                  })}
-                </div>
-              </div>
-            );
-          })}
+   const renderEventSection = (events, continent) => (
+    <section key={continent} className="bg-white">
+      <div className="w-11/12 md:w-8/12 mx-auto py-6 pb-6">
+        <h2 className="text-2xl font-semibold my-4">{continent}</h2>
+        <div className="events-grid">
+          {events.map(renderEventCard)}
         </div>
       </div>
+    </section>
+  );
+
+  return (
+    <div id="events-page" className="page-layout">
+      <HeaderWithLogoDark />
+      <Head>
+        <title>Events | Blockchain Education Network</title>
+      </Head>
+
+      <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
+      Events Calendar
+      </h1>
+
+      {renderEventSection(eventsNorthAmerica, 'North America')}
+      {renderEventSection(eventsSouthAmerica, 'South America')}
+      {renderEventSection(eventsEurope, 'Europe')}
+      {renderEventSection(eventsAfrica, 'Africa')}
+      {renderEventSection(eventsAsia, 'Asia')}
+      {renderEventSection(eventsOceania, 'Oceania')}
+      {renderEventSection(eventsOnline, 'Online')}
 
       <Footer />
     </div>
