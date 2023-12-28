@@ -1,46 +1,70 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
+import { TeamMemberService } from '../services';
 import Head from "next/head";
 
 export default function Events() {
+  const [eventsByContinent, setEventsByContinent] = useState({
+    NorthAmerica: [],
+    SouthAmerica: [],
+    Europe: [],
+    Africa: [],
+    Asia: [],
+    Oceania: [],
+    Online: [],
+  });
 
-  const [eventsNorthAmerica, setEventsNorthAmerica] = useState([
-    { name: 'Onchain Oasis', date: 'Jan 22 - 24', location: '🇧🇸 Massau, Bahamas', url: "https://www.oasisonchain.xyz/" },
-  ]);
+  useEffect(() => {
+    async function fetchEvents() {
+      const boardId = '5755322687';
+      const body = {
+        query: `{
+          boards (ids: ${boardId}) {
+            items (limit: 100) {
+              group {
+                title
+              }
+              name
+              column_values {
+                value
+              }
+              assets {
+                public_url
+              }
+            }
+          }
+        }`
+      };
 
-  const [eventsSouthAmerica, setEventsSouthAmerica] = useState([
-    { name: 'Blockchain NetZero', date: 'Q2', location: '🇨🇴 Medellin, Colombia', url: "https://blockchainnetzero.com/" },
-  ]);
+      let result = await TeamMemberService.getMembers(body);
 
-  const [eventsEurope, setEventsEurope] = useState([
-    { name: 'World Crypto Forum', date: 'Jan 15 - 19', location: '🇨🇭 Davos, Switzerland', url: "https://www.wcf2030.org/" },
-    { name: 'Web3 Hub Davos', date: 'Jan 15 - 18', location: '🇨🇭 Davos, Switzerland' , url: "https://web3hubdavos.com/"},
-    { name: 'World Innovation Economics Summit', date: 'Jan 16 - 18', location: '🇨🇭 Davos, Switzerland', url: "https://www.worldinnovationeconomics.org/" },
-  ]);
+      if (result?.data?.data?.boards) {
+        const items = result.data.data.boards[0].items;
 
-  const [eventsAfrica, setEventsAfrica] = useState([
-  ]);
+        console.log(items);
 
-  const [eventsAsia, setEventsAsia] = useState([
-    { name: 'CNX NFT Day', date: 'Jan 25 - 28', location: '🇹🇭 Chiang Mai, Thailand', url: "https://blockmountaincnx.com/" },
-  ]);
-  
-  const [eventsOceania, setEventsOceania] = useState([
-  ]);
+        const eventsByContinent = items.reduce((acc, item) => {
+          const continent = item.group.title;
+          acc[continent] = acc[continent] || [];
+          acc[continent].push({
+            name: item.name,
+            date: item.column_values[0].value,
+            location: item.column_values[1].value,
+            url: item.column_values[2].value
+          });
+          return acc;
+        }, {});
 
-  const [eventsOnline, setEventsOnline] = useState([
-  ]);
+        setEventsByContinent(eventsByContinent);
+      }
+    }
 
-
-
-  const handleEventClick = (event) => {
-    // Handle the click event, e.g., navigate to event details or open a modal
-    console.log(`Navigating to ${event.name}`);
-  };
+    fetchEvents();
+  }, []);
 
   const renderEventCard = (event, index) => (
-    <a href={event.url} target="_blank" rel="noopener noreferrer" key={index} className="event-card" onClick={() => handleEventClick(event.url)}>
+    <a href={event.url} target="_blank" rel="noopener noreferrer" key={index} className="event-card">
       <div className="event-card-content grid grid-cols-3 gap-4 p-4">
         <div className="event-date">{event.date}</div>
         <div className="event-name">{event.name}</div>
@@ -49,35 +73,29 @@ export default function Events() {
     </a>
   );
 
-   const renderEventSection = (events, continent) => (
-    <section key={continent} className="bg-white">
-      <div className="w-11/12 md:w-8/12 mx-auto py-6 pb-6">
-        <h2 className="text-2xl font-semibold my-4">{continent}</h2>
-        <div className="events-grid">
-          {events.map(renderEventCard)}
-        </div>
+  const renderEventSection = (events, continent) => (
+    <section key={continent}>
+      <h2 className="text-2xl font-semibold my-4">{continent}</h2>
+      <div className="events-grid">
+        {events.map(renderEventCard)}
       </div>
     </section>
   );
 
   return (
-    <div id="events-page" className="page-layout">
+    <div id="events-page">
       <HeaderWithLogoDark />
       <Head>
         <title>Events | Blockchain Education Network</title>
       </Head>
 
-      <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
-      Events Calendar
-      </h1>
-
-      {renderEventSection(eventsNorthAmerica, 'North America')}
-      {renderEventSection(eventsSouthAmerica, 'South America')}
-      {renderEventSection(eventsEurope, 'Europe')}
-      {renderEventSection(eventsAfrica, 'Africa')}
-      {renderEventSection(eventsAsia, 'Asia')}
-      {renderEventSection(eventsOceania, 'Oceania')}
-      {renderEventSection(eventsOnline, 'Online')}
+      <div className="events-content">
+        {
+          Object.entries(eventsByContinent).map(([continent, eventsList]) => (
+            renderEventSection(eventsList, continent)
+          ))
+        }
+      </div>
 
       <Footer />
     </div>
