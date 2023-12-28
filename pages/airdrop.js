@@ -4,7 +4,7 @@ import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import { TeamMemberService } from '../services';
 import Head from "next/head";
 import StandardButton from '../components/standardButton';
-import Countdown from '../components/Countdown';
+import Countdown from '../components/countdown';
 
 export default function Airdrop() {
   const [globalClick, setGlobalClick] = useState(false);
