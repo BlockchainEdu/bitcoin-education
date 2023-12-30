@@ -16,34 +16,87 @@ export default function Airdrop() {
   const [email, setEmail] = useState('');
   const [ethAddress, setEthAddress] = useState('');
   const [team, setTeam] = useState('');
-
   const deadline = new Date('2024-01-31'); // You can keep this here or move it to where you use <Countdown />
 
-  useEffect(() => {
-    const mockLeaderboardData = [
-      { rank: 1, name: 'MIT Bitcoin Club', url: 'https://bitcoin.mit.edu', participants: 50 },
-      { rank: 2, name: 'The Rollup', url: 'https://therollup.co', participants: 45 },
-      { rank: 3, name: 'CollegeDAO', url: 'https://collegedao.io/', participants: 45 },
-      { rank: 4, name: 'Kerala Blockchain Academy', url: 'https://kba.ai/', participants: 45 },
-      { rank: 5, name: 'MIT Bitcoin Club', url: 'https://bitcoin.mit.edu', participants: 50 },
-      { rank: 6, name: 'The Rollup', url: 'https://therollup.co', participants: 45 },
-      { rank: 7, name: 'CollegeDAO', url: 'https://collegedao.io/', participants: 45 },
-      { rank: 8, name: 'Kerala Blockchain Academy', url: 'https://kba.ai/', participants: 45 },
-      { rank: 9, name: 'MIT Bitcoin Club', url: 'https://bitcoin.mit.edu', participants: 50 },
-      { rank: 10, name: 'The Rollup', url: 'https://therollup.co', participants: 45 },
-      { rank: 11, name: 'CollegeDAO', url: 'https://collegedao.io/', participants: 45 },
-      { rank: 12, name: 'Kerala Blockchain Academy', url: 'https://kba.ai/', participants: 45 },
-    ];
+  const mockLeaderboardData = [
+    { rank: 1, name: 'MIT Bitcoin Club', url: 'https://bitcoin.mit.edu', participants: 50 },
+    { rank: 2, name: 'The Rollup', url: 'https://therollup.co', participants: 45 },
+    { rank: 3, name: 'CollegeDAO', url: 'https://collegedao.io/', participants: 45 },
+    { rank: 4, name: 'Kerala Blockchain Academy', url: 'https://kba.ai/', participants: 45 },
+    { rank: 5, name: 'MIT Bitcoin Club', url: 'https://bitcoin.mit.edu', participants: 50 },
+    { rank: 6, name: 'The Rollup', url: 'https://therollup.co', participants: 45 },
+    { rank: 7, name: 'CollegeDAO', url: 'https://collegedao.io/', participants: 45 },
+    { rank: 8, name: 'Kerala Blockchain Academy', url: 'https://kba.ai/', participants: 45 },
+    { rank: 9, name: 'MIT Bitcoin Club', url: 'https://bitcoin.mit.edu', participants: 50 },
+    { rank: 10, name: 'The Rollup', url: 'https://therollup.co', participants: 45 },
+    { rank: 11, name: 'CollegeDAO', url: 'https://collegedao.io/', participants: 45 },
+    { rank: 12, name: 'Kerala Blockchain Academy', url: 'https://kba.ai/', participants: 45 },
+  ];
 
-    mockLeaderboardData.splice(5, 0, {
-      rank: '',
-      name: 'Interested in Sponsoring? Get your token or wallet in front of thousands of blockchain enthusiasts',
-      participants: ''
-    });
+  mockLeaderboardData.splice(5, 0, {
+    rank: '',
+    name: 'Interested in Sponsoring? Get your token or wallet in front of thousands of blockchain enthusiasts',
+    participants: ''
+  });
 
-    setLeaderboardData(mockLeaderboardData);
+useEffect(() => {
+  async function fetchLeaderboardData() {
+    const body = {
+      query: `{
+        boards (ids: ${BOARD_ID}) {
+          items (limit: 100) {
+            column_values {
+              value
+            }
+          }
+        }
+      }`
+    };
 
-  }, []);
+    try {
+      const response = await axios.post('https://api.monday.com/v2', body, {
+        headers: {
+          'Authorization': process.env.NEXT_PUBLIC_MONDAY_API_KEY
+        }
+      });
+
+      if (response.data && response.data.data && response.data.data.boards) {
+        const items = response.data.data.boards[0].items;
+        
+        let teamCounts = {};
+        items.forEach(item => {
+          const teamName = item.column_values[2].value;
+          if (teamName) {
+            teamName = teamName.replace(/['"]+/g, '');
+
+            teamCounts[teamName] = (teamCounts[teamName] || 0) + 1;
+          }
+        });
+
+        let sortedTeams = Object.keys(teamCounts).map(team => ({
+          name: team,
+          participants: teamCounts[team]
+        })).sort((a, b) => b.participants - a.participants);
+
+        let rank = 1;
+        let prevParticipants = null;
+        const leaderboardArray = sortedTeams.map(team => {
+          if (prevParticipants !== team.participants) {
+            prevParticipants = team.participants;
+            rank = sortedTeams.indexOf(team) + 1;
+          }
+          return { ...team, rank };
+        });
+
+        setLeaderboardData(leaderboardArray);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  fetchLeaderboardData();
+}, []);
 
   const addEntryToMondayBoard = async (email, ethAddress, team) => {
 
@@ -162,8 +215,8 @@ export default function Airdrop() {
       onChange={(e) => setTeam(e.target.value)}
     >
       <option value="">Select a Team</option>
-      <option value="team1">Team 1</option>
-      <option value="team2">Team 2</option>
+      <option value="Team 1">Team 1</option>
+      <option value="Team 2">Team 2</option>
       {/* Add more teams as needed */}
     </select>
 
