@@ -950,4 +950,14 @@ a {
   color: #888;
 }
 
+/* Airdrop */
+.bg-yellow-100-important {
+    --tw-bg-opacity: 1 !important;
+    background-color: rgba(254, 243, 199, var(--tw-bg-opacity)) !important;
+}
 
+.clickable-row:hover {
+    --tw-bg-opacity: 1 !important;
+    background-color: rgba(0, 0, 0, var(--tw-bg-opacity)) !important;
+    color: #fff;
+}

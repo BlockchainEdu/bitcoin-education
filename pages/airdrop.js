@@ -1,4 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import { TeamMemberService } from '../services';
@@ -6,12 +7,15 @@ import Head from "next/head";
 import StandardButton from '../components/standardButton';
 import Countdown from '../components/countdown';
 
+const BOARD_ID = 5731747972;
+
 export default function Airdrop() {
   const [globalClick, setGlobalClick] = useState(false);
   const [teamMembers, setTeamMembers] = useState([]);
   const [leaderboardData, setLeaderboardData] = useState([]);
+  const [email, setEmail] = useState('');
   const [ethAddress, setEthAddress] = useState('');
-  const [selectedTeam, setSelectedTeam] = useState('');
+  const [team, setTeam] = useState('');
 
   const deadline = new Date('2024-01-31'); // You can keep this here or move it to where you use <Countdown />
 
@@ -29,8 +33,6 @@ export default function Airdrop() {
       { rank: 10, name: 'The Rollup', url: 'https://therollup.co', participants: 45 },
       { rank: 11, name: 'CollegeDAO', url: 'https://collegedao.io/', participants: 45 },
       { rank: 12, name: 'Kerala Blockchain Academy', url: 'https://kba.ai/', participants: 45 },
-
-      // ... more mock data ...
     ];
 
     mockLeaderboardData.splice(5, 0, {
@@ -43,22 +45,43 @@ export default function Airdrop() {
 
   }, []);
 
-  const handleEthAddressChange = (e) => {
-    setEthAddress(e.target.value);
+  const addEntryToMondayBoard = async (email, ethAddress, team) => {
+
+    const query = `mutation {
+      create_item (board_id: ${BOARD_ID}, item_name: "${email}", column_values: "{\\"text\\":\\"${ethAddress}\\", \\"text7\\":\\"${team}\\"}") {
+        id
+      }
+    }`;
+
+    try {
+      const response = await axios.post('https://api.monday.com/v2', {
+        query: query,
+      }, {
+        headers: {
+          'Authorization': process.env.NEXT_PUBLIC_MONDAY_API_KEY
+        }
+      });
+
+      console.log('Data sent to Monday:', response.data);
+    } catch (error) {
+      console.error('Error sending data to Monday:', error);
+    }
   };
 
-  const handleTeamChange = (e) => {
-    setSelectedTeam(e.target.value);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addEntryToMondayBoard(email, ethAddress, team);
   };
 
-const renderLeaderboardRow = (entry, index) => {
-  // Check if the current row is the "Interested in Sponsoring" row
-  const isSponsoringRow = entry.name === 'Interested in Sponsoring? Get your token or wallet in front of thousands of blockchain enthusiasts';
+  const renderLeaderboardRow = (entry, index) => {
+    // Check if the current row is the "Interested in Sponsoring" row
+    const isSponsoringRow = entry.name === 'Interested in Sponsoring? Get your token or wallet in front of thousands of blockchain enthusiasts';
 
   return (
     <tr 
       key={index} 
-      className={`clickable-row ${isSponsoringRow ? 'bg-yellow-100 text-black' : ''}`}
+      className={`clickable-row ${isSponsoringRow ? 'bg-yellow-100-important text-black' : ''}`}
       onClick={() => isSponsoringRow ? null : window.open(entry.url, '_blank')}
     >
       <td className="rank-cell">{entry.rank}</td>
@@ -68,7 +91,7 @@ const renderLeaderboardRow = (entry, index) => {
   );
 };
 
-  const renderTopTenLeaderboardTable = () => (
+  const renderLeaderboardTable = () => (
     <div className="leaderboard-container">
       <table className="min-w-full">
         <thead>
@@ -79,24 +102,7 @@ const renderLeaderboardRow = (entry, index) => {
           </tr>
         </thead>
         <tbody>
-          {leaderboardData.slice(0, 5).map(renderLeaderboardRow)}
-        </tbody>
-      </table>
-    </div>
-  );
-
-  const renderRemainingLeaderboardTable = () => (
-    <div className="leaderboard-container">
-      <table className="min-w-full">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Name</th>
-            <th># of Participants</th>
-          </tr>
-        </thead>
-        <tbody>
-          {leaderboardData.slice(5).map(renderLeaderboardRow)}
+          {leaderboardData.map(renderLeaderboardRow)}
         </tbody>
       </table>
     </div>
@@ -128,37 +134,47 @@ const renderLeaderboardRow = (entry, index) => {
 <div className="airdrop-signup-section bg-gray-200 p-10 text-center">
   <h2 className="text-3xl font-bold mb-4">Join the BEN Global Airdrop</h2>
   
-  <div className="form-container" style={{ padding: '20px', maxWidth: '500px', margin: '0 auto' }}>
+  <form
+    className="form-container"
+    style={{ padding: '20px', maxWidth: '500px', margin: '0 auto' }}
+    onSubmit={handleSubmit}
+   >
+
     <input 
       type="text" 
       placeholder="Enter your email address" 
       className="p-4 mb-4 w-full" 
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
     />
+
     <input 
       type="text" 
       placeholder="Enter your ETH address" 
       className="p-4 mb-4 w-full" 
       value={ethAddress}
-      onChange={handleEthAddressChange}
+      onChange={(e) => setEthAddress(e.target.value)}
     />
+
     <select 
       className="p-4 mb-4 w-full" 
-      value={selectedTeam}
-      onChange={handleTeamChange}
+      value={team}
+      onChange={(e) => setTeam(e.target.value)}
     >
       <option value="">Select a Team</option>
       <option value="team1">Team 1</option>
       <option value="team2">Team 2</option>
       {/* Add more teams as needed */}
     </select>
+
     <StandardButton
-      link="https://www.blockchainedu.org/apply"
+      type="submit"  
       text="Sign Up"
       color="orange"
-      target="blank"
       styling="text-center py-3 rounded-lg text-white w-full text size 10"
     />
-  </div>
+
+  </form>
   
   <p className="mt-4">Don't see your team? Add it now</p>
 </div>
@@ -170,19 +186,9 @@ const renderLeaderboardRow = (entry, index) => {
           <p>Be a part of the most exciting blockchain event this year! Exclusive rewards, community, and more!</p>
         </div>
 */}
-        {/* Leaderboard Table - Top 10 */}
+        {/* Leaderboard Table */}
         <div className="bg-black">
-          {renderTopTenLeaderboardTable()}
-        </div>
-
-        <div className="airdrop-blurb bg-yellow-100 p-10 text-center">
-          <h2 className="text-3xl font-bold mb-4">Interested in Sponsoring?</h2>
-          <p>Get your token or wallet in front of thousands of blockchain enthusiasts</p>
-        </div>
-
-        {/* Leaderboard Table - Remaining */}
-        <div className="bg-black">
-          {renderRemainingLeaderboardTable()}
+          {renderLeaderboardTable()}
         </div>
 
       </div>

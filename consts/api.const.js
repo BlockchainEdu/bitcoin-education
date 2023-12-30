@@ -1,2 +1,1 @@
-export const API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjExMzQxOTY5NCwidWlkIjoyMTQxNTY2MiwiaWFkIjoiMjAyMS0wNi0xMlQwMTowNDo0MS40ODVaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6ODcxMjk0NCwicmduIjoidXNlMSJ9.gi5d9K7NDAdi2htx0IisZJDXZ76NA3JatZSH2Y0Bnhg";
 export const APP_URL = "https://api.monday.com/v2";

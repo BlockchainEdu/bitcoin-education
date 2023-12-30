@@ -1,12 +1,12 @@
 import axios from "axios";
-import { API_KEY, APP_URL } from "../consts";
+import { APP_URL } from "../consts";
 
 const httpClient = axios.create({
   baseURL: APP_URL
 });
 
 httpClient.interceptors.request.use((config) => {
-  config.headers.Authorization = `${API_KEY}`;
+  config.headers.Authorization = `${process.env.NEXT_PUBLIC_MONDAY_API_KEY}`;
   return config;
 });
 
