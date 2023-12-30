@@ -65,7 +65,7 @@ useEffect(() => {
         
         let teamCounts = {};
         items.forEach(item => {
-          const teamName = item.column_values[2].value;
+          let teamName = item.column_values[2].value;
           if (teamName) {
             teamName = teamName.replace(/['"]+/g, '');
 
