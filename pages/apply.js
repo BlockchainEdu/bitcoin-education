@@ -9,7 +9,7 @@ export default function Sponsor() {
     <div className="overflow-hidden">
       <Header />
       <Head>
-        <title>Join Us | Blockchain Education Network</title>
+        <title>Apply | Blockchain Education Network</title>
       </Head>
 
 

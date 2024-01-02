@@ -12,7 +12,7 @@ export default function Professor() {
         <div id="partners-page">
             <HeaderWithLogoDark />
             <Head>
-                <title>Professor | Blockchain Education Network</title>
+                <title>Professors | Blockchain Education Network</title>
             </Head>
             <div className="pt-0 pb-14 md:py-14 px-7">
                 <div className="max-w-7xl m-auto">

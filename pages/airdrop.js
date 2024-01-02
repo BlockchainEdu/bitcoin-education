@@ -165,7 +165,7 @@ useEffect(() => {
     <div id="partners-page">
       <HeaderWithLogoDark />
       <Head>
-        <title>Programs | Blockchain Education Network</title>
+        <title>Airdrop | Blockchain Education Network</title>
       </Head>
 
       <div id="team-page">

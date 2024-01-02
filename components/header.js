@@ -35,11 +35,11 @@ export default function HeaderWithLogo({ className = "", children }) {
         <div className="w-2/12 lg:w-1/3 left-0"> <a href="/"><img className="w-24 mx-auto max-w-none" src={logoSrc} /></a> </div>
         <ul className={`font-mont text-black w-10/12 ${className}`}>
           <li className="flex justify-end items-center">
-            {/*
+{/*
             <a className="font-semibold" href="/contact">Contact</a>
             <a className="font-semibold" href="/about/partners">Partners </a>
             <a className="font-semibold" href="/about/team">Team </a>
-            */}
+*/}
             {offset > 0 && !shouldHideButton && (
               <>
                 {/*
