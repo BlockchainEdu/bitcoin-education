@@ -51,7 +51,8 @@ export default function Events() {
             name: item.name,
             date: JSON.parse(item.column_values[0].value),
             location: JSON.parse(item.column_values[1].value),
-            url: JSON.parse(item.column_values[2].value)
+            url: JSON.parse(item.column_values[2].value),
+            imageUrl: item.assets.length > 0 ? item.assets[0].public_url : ""
           });
           return acc;
         }, {});
@@ -64,18 +65,21 @@ export default function Events() {
   }, []);
 
   const renderEventCard = (event, index) => (
-    <a href={event.url} target="_blank" rel="noopener noreferrer" key={index} className="event-card">
-      <div className="event-card-content grid grid-cols-3 gap-4 p-4">
-        <div className="event-date">{event.date}</div>
-        <div className="event-name">{event.name}</div>
-        <div className="event-location">{event.location}</div>
+    <a href={event.url} target="_blank" rel="noopener noreferrer" key={index} className="event-card flex">
+      <div className="event-image-container">
+        <img src={event.imageUrl} alt={event.name} className="event-image" />
+      </div>
+     <div className="event-details">
+       <div className="event-name">{event.name}</div>
+       <div className="event-date">{event.date}</div>
+       <div className="event-location">{event.location}</div>
       </div>
     </a>
   );
 
   const renderEventSection = (events, continent) => (
     <section key={continent}>
-    <div className="w-11/12 md:w-7/12 mx-auto py-6">
+    <div className="w-11/12 lg:w-8/12 mx-auto py-6">
       <h2 className="text-2xl font-semibold my-4">{continent}</h2>
       <div className="events-grid">
         {events.map(renderEventCard)}
@@ -91,7 +95,7 @@ export default function Events() {
         <title>Events | Blockchain Education Network</title>
       </Head>
 
-      <section className="container pt-10">
+      <section className="container pt-10 mx-auto">
 
         <h1 className="text-xl text-center">
           Events Calendar

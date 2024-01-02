@@ -906,7 +906,6 @@ a {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 800px; /* Adjust based on your layout */
   gap: 20px;
 }
 
@@ -963,3 +962,38 @@ a {
 }
 
 html, body {overflow-x: hidden;}
+
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Adjust the spacing as needed */
+  padding: 0px;
+  text-decoration: none;
+  border: 1px solid #ccc; /* For visibility */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.event-image-container {
+  flex-shrink: 0;
+  width: 300px; /* Adjust the image size as needed */
+  max-height: 160px;
+}
+
+.event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-date,
+.event-name,
+.event-location {
+  padding: 4px 0; /* Adjust the padding as needed */
+}

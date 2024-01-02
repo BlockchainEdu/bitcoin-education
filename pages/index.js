@@ -216,7 +216,7 @@ export default function Home({ locations }) {
       </div>
       */}
 
-      <section className="container pt-10 lg:pb-0 px-7">
+      <section className="container pt-10 lg:pb-0 px-7 mx-auto">
         <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4" style={{ maxWidth: "1000px" }}>
 
           <div className="col-span-1 lg:pt-10 lg:order-last">
