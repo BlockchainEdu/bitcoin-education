@@ -104,10 +104,16 @@ useEffect(() => {
 
 const renderEventCard = (event, index) => {
   const deal = eventDeals[event.name];
+  let link = null;
+
   if (deal !== undefined) {
-    const link = JSON.parse(deal.link.value);
-    console.log("deal", deal.link.value);
-    console.log("deal", deal.url);
+    try {
+      link = JSON.parse(deal.link.value);
+      console.log("deal", deal.link.value);
+      console.log("deal", deal.url);
+    } catch (e) {
+      console.error("Error parsing deal link value:", e);
+    }
   }
 
   return (
@@ -122,7 +128,7 @@ const renderEventCard = (event, index) => {
           <div className="event-location">{event.location}</div>
         </div>
       </a>
-      {deal && (
+      {deal && link && (
         <StandardButton
           link={link.url}
           text={deal.message}
