@@ -75,33 +75,19 @@ export default function MobileDropdown(props) {
                     </svg>
                   </Popover.Button>
                 </div>
-                {/*
-                <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2 grow">
+                <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="font-mont text-chablack-300 font-semibold">
-                    <li className="my-8">
-                      <a href="/">Home</a>
-                    </li>
-                    <li className="my-8">
-                      <a href="/learn">Learn</a>
-                    </li>
-                    <li className="my-8">
-                      <a href="/contact">Contact</a>
-                    </li>
-                    <li className="my-8">
-                      <a href="/about/team">Team</a>
-                    </li>
+                    <li className="mb-8"><a href="/">Home</a></li>
+                    <li className="my-8"><a href="/Events">Events</a></li>
+                    <li className="my-8"><a href="/contact">Contact</a></li>
+                    <li className="mt-8"><a href="/about/team">Team</a></li>
                   </ul>
                 </div>
-                */}
-                <div className="bg-white pb-7 text-center">
-                  <StandardButton
-                    link="https://www.blockchainedu.org/joinnow"
-                    text="Join Now"
-                    color="orange"
-                    target="blank"
-                    styling="text-center py-3 rounded-lg w-full px-8"
-                  />
-                </div>
+                <StandardButton
+                  link="/subscribe"
+                  text="Join Now"
+                  color="orange"
+                />
                 {/*
                 <div className="bg-white pb-7 text-center">
                   <StandardButton

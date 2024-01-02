@@ -10,18 +10,28 @@ export default function HeaderWithLogo({ className = "", children }) {
   const logoSrc = `/images/ben-logo-color-no-slogan.svg`;
   const router = useRouter();
 
+  let scrolled = offset > 0;
+
+  // Turn on Scroll Menu Bar permanently
+  scrolled = true;
+
   useEffect(() => {
+
+    // Adds a scroll listener to update 'offset' state and ensures cleanup on component unmount.
     const onScroll = () => setOffset(window.pageYOffset);
     window.removeEventListener('scroll', onScroll);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+
+
   }, []);
 
+  // Hide Menu Bar on certain pages
   const hideButtonOnPage = ['/join'];
   const shouldHideButton = hideButtonOnPage.includes(router.pathname);
 
   return (
-    <section className={`pt-10 bg-white px-7 sticky top-0 z-10 white-header header ${offset > 0 ? "scrolled" : ""} ${className}`}>
+    <section className={`pt-10 bg-white px-7 sticky top-0 z-10 white-header header ${scrolled == true ? "scrolled" : ""} ${className}`}>
       <Head>
         <link rel="shortcut icon" href="" />
       </Head>
@@ -35,38 +45,15 @@ export default function HeaderWithLogo({ className = "", children }) {
         <div className="w-2/12 lg:w-1/3 left-0"> <a href="/"><img className="w-24 mx-auto max-w-none" src={logoSrc} /></a> </div>
         <ul className={`font-mont text-black w-10/12 ${className}`}>
           <li className="flex justify-end items-center">
-{/*
-            <a className="font-semibold" href="/contact">Contact</a>
-            <a className="font-semibold" href="/about/partners">Partners </a>
-            <a className="font-semibold" href="/about/team">Team </a>
-*/}
-            {offset > 0 && !shouldHideButton && (
-              <>
-                {/*
-                <StandardButton
-                  link="/donate"
-                  text="Scholarships"
-                  styling="hidden display-on-scroll text-center py-3 rounded-lg w-full px-8"
-                />
-                */}
 
-                <StandardButton
-                  link="https://www.blockchainedu.org/apply"
-                  text="Apply Now"
-                  target="blank"
-                  color="orange"
-                  styling="text-center py-3 rounded-lg w-full px-8"
-                />
-              </>
-            )}
+          {/* Menu Bar Before Scrolling */}
             {/*
-            <a className="px-4 font-semibold underline hidden-on-scroll" href="/donate">
+            <a className="hidden-on-scroll px-4 font-semibold" href="/donate">
                 Scholarships
             </a>
-            <a className="px-4 font-semibold underline hidden-on-scroll" target="_blank" href="https://beats.blockchainedu.org/">
+            <a className="hidden-on-scroll px-4 font-semibold" target="_blank" href="https://beats.blockchainedu.org/">
                 Subscribe
             </a>
-            */}
             {!shouldHideButton && (
               <StandardButton
                 link="https://www.blockchainedu.org/apply"
@@ -75,6 +62,34 @@ export default function HeaderWithLogo({ className = "", children }) {
                 styling="hidden-on-scroll text-center py-3 rounded-lg w-full px-8"
               />
             )}
+            */}
+
+          {/* Scrolled Menu Bar */}
+            {scrolled == true && !shouldHideButton && (
+              <>
+
+              <a className="display-on-scroll px-4 font-semibold" href="/events">Events</a>
+              <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>
+              <a className="display-on-scroll px-4 font-semibold" href="/about/team">Team</a>
+
+              {/*
+              <StandardButton
+                link="/donate"
+                text="Scholarships"
+                styling="display-on-scroll mx-4"
+              />
+              */}
+
+              <StandardButton
+                link="/subscribe"
+                text="Join Now"
+                target="blank"
+                color="orange"
+                styling="display-on-scroll mx-4"
+              />
+            </>
+          )}
+
           </li>
         </ul>
       </nav>

@@ -91,15 +91,18 @@ export default function Events() {
         <title>Events | Blockchain Education Network</title>
       </Head>
 
-      <h1 className="text-xl text-center">
-        Events Calendar
-      </h1>
+      <section className="container pt-10">
 
-      {
-        Object.entries(eventsByContinent).map(([continent, eventsList]) => (
-          renderEventSection(eventsList, continent)
-        ))
-      }
+        <h1 className="text-xl text-center">
+          Events Calendar
+        </h1>
+
+        {
+          Object.entries(eventsByContinent).map(([continent, eventsList]) => (
+            renderEventSection(eventsList, continent)
+          ))
+        }
+      </section>
 
       <Footer />
     </div>
