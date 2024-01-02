@@ -3,6 +3,7 @@ import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import { TeamMemberService } from '../services';
 import Head from "next/head";
+import StandardButton from '../components/standardButton';
 
 export default function Events() {
   const [eventsByContinent, setEventsByContinent] = useState({
@@ -15,67 +16,124 @@ export default function Events() {
     Online: [],
   });
 
-  useEffect(() => {
-    async function fetchEvents() {
-      const boardId = '5755322687';
-      const body = {
-        query: `{
-          boards (ids: ${boardId}) {
-            items (limit: 100) {
-              group {
-                title
-              }
-              name
-              column_values {
-                value
-              }
-              assets {
-                public_url
-              }
+  const [eventDeals, setEventDeals] = useState({});
+
+useEffect(() => {
+  async function fetchEvents() {
+    // Assume you have a function to get events, e.g., getEventsFromMonday
+    const eventsResult = await TeamMemberService.getMembers({
+      query: `{
+        boards (ids: 5755322687) {
+          items (limit: 100) {
+            group {
+              title
+            }
+            name
+            column_values {
+              value
+            }
+            assets {
+              public_url
             }
           }
-        }`
-      };
+        }
+      }`
+    });
 
-      let result = await TeamMemberService.getMembers(body);
+    // Fetch event messages from the second board
+    const dealsResult = await TeamMemberService.getMembers({
+      query: `{
+        boards (ids: 5775320038) {
+          items {
+            name
+            column_values{
+              value
+            }
+          }
+        }
+      }`
+    });
 
-      if (result?.data?.data?.boards) {
-        const items = result.data.data.boards[0].items;
+    if (eventsResult?.data?.data?.boards) {
+      const items = eventsResult.data.data.boards[0].items;
 
-        console.log(items);
+      const eventsByContinent = items.reduce((acc, item) => {
+        const continent = item.group.title;
+        acc[continent] = acc[continent] || [];
+        acc[continent].push({
+          name: item.name,
+          date: JSON.parse(item.column_values[0].value),
+          location: JSON.parse(item.column_values[1].value),
+          url: JSON.parse(item.column_values[2].value),
+          imageUrl: item.assets.length > 0 ? item.assets[0].public_url : ""
+        });
+        return acc;
+      }, {});
 
-        const eventsByContinent = items.reduce((acc, item) => {
-          const continent = item.group.title;
-          acc[continent] = acc[continent] || [];
-          acc[continent].push({
-            name: item.name,
-            date: JSON.parse(item.column_values[0].value),
-            location: JSON.parse(item.column_values[1].value),
-            url: JSON.parse(item.column_values[2].value),
-            imageUrl: item.assets.length > 0 ? item.assets[0].public_url : ""
-          });
-          return acc;
-        }, {});
-
-        setEventsByContinent(eventsByContinent);
-      }
+      setEventsByContinent(eventsByContinent);
     }
 
-    fetchEvents();
-  }, []);
+    if (dealsResult?.data?.data?.boards) {
+      const dealItems = dealsResult.data.data.boards[0].items;
 
-  const renderEventCard = (event, index) => (
-    <a href={event.url} target="_blank" rel="noopener noreferrer" key={index} className="event-card flex">
-      <div className="event-image-container">
-        <img src={event.imageUrl} alt={event.name} className="event-image" />
-      </div>
-     <div className="event-details">
-       <div className="event-name">{event.name}</div>
-       <div className="event-date">{event.date}</div>
-       <div className="event-location">{event.location}</div>
-      </div>
-    </a>
+      console.log("dealItems", dealItems);
+
+      const dealsByEventName = dealItems.reduce((acc, item) => {
+        console.log("item", item);
+        let event = item.column_values[0].value;
+
+        // Remove quotation marks from the event string
+        event = event.replace(/^"|"$/g, '');
+
+        const message = item.name;
+        const link = item.column_values[1];
+
+        if (event) {
+          acc[event] = { message, link };
+        }
+
+        return acc;
+      }, {});
+
+      setEventDeals(dealsByEventName);
+    }
+  }
+
+  fetchEvents();
+}, []);
+
+const renderEventCard = (event, index) => {
+  const deal = eventDeals[event.name];
+  if (deal !== undefined) {
+    const link = JSON.parse(deal.link.value);
+    console.log("deal", deal.link.value);
+    console.log("deal", deal.url);
+  }
+
+  return (
+    <div key={index} className="event-card-container">
+      <a href={event.url} target="_blank" rel="noopener noreferrer" className="event-card flex">
+        <div className="event-image-container">
+          <img src={event.imageUrl} alt={event.name} className="event-image" />
+        </div>
+        <div className="event-details">
+          <div className="event-name">{event.name}</div>
+          <div className="event-date">{event.date}</div>
+          <div className="event-location">{event.location}</div>
+        </div>
+      </a>
+      {deal && (
+        <StandardButton
+          link={link.url}
+          text={deal.message}
+          target="_blank"
+          styling="my-2 mx-auto flex justify-center"
+        /> 
+      )}
+    </div>
   );
+};
+
 
   const renderEventSection = (events, continent) => (
     <section key={continent}>
@@ -100,6 +158,7 @@ export default function Events() {
         <h1 className="text-xl text-center">
           Events Calendar
         </h1>
+
 
         {
           Object.entries(eventsByContinent).map(([continent, eventsList]) => (
