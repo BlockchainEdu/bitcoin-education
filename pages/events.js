@@ -155,10 +155,19 @@ const renderEventCard = (event, index) => {
 
       <section className="container pt-10 mx-auto">
 
-        <h1 className="text-xl text-center">
+        <h1 className="text-center mx-auto text-4xl lg:text-6xl font-black">
           Events Calendar
         </h1>
 
+        <p className="text-center mx-auto text-black text-md pt-4 max-w-xl">
+          Sign up to stay up to date with upcoming crypto conferences and free ticket opportunities!
+        </p>
+
+        <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
+          <div className="mx-auto lg:mx-0 w-full w-5/6 lg:w-8/12">
+            <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=events&utm_content=events" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+          </div>
+        </div>
 
         {
           Object.entries(eventsByContinent).map(([continent, eventsList]) => (
