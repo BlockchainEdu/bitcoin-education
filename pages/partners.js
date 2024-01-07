@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Footer from "../../components/footer";
-import HeaderWithLogoDark from "../../components/headerWithLogoDark";
+import Footer from "../components/footer";
+import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Image from "next/image";
-import PartnerShipBenefits from "../../components/partnershipBenefits";
-import PartnersSlider from "../../components/partnersSlider";
-import { TeamMemberService } from "../../services";
+import PartnerShipBenefits from "../components/partnershipBenefits";
+import PartnersSlider from "../components/partnersSlider";
+import { TeamMemberService } from "../services";
 import Head from "next/head"
 
 export default function Partners() {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../../components/footer";
-import HeaderWithLogoDark from "../../components/headerWithLogoDark";
-import ClubsDropdown from "../../components/clubsDropdown";
-import { TeamMemberService } from '../../services';
+import Footer from "../components/footer";
+import HeaderWithLogoDark from "../components/headerWithLogoDark";
+import ClubsDropdown from "../components/clubsDropdown";
+import { TeamMemberService } from '../services';
 import Head from "next/head"
 
 const Partners = () => {

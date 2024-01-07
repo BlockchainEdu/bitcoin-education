@@ -1,10 +1,10 @@
-import Footer from '../../components/footer'
-import HeaderWithLogoDark from '../../components/headerWithLogoDark'
-import Header from '../../components/header'
-import NationalTeamCard from '../../components/nationalTeamCard'
-import AlumniCard from '../../components/alumniCard'
-import TeamMembers from '../../content/team'
-import { TeamMemberService } from '../../services'
+import Footer from '../components/footer'
+import HeaderWithLogoDark from '../components/headerWithLogoDark'
+import Header from '../components/header'
+import NationalTeamCard from '../components/nationalTeamCard'
+import AlumniCard from '../components/alumniCard'
+import TeamMembers from '../content/team'
+import { TeamMemberService } from '../services'
 import Head from "next/head"
 
 import React, { useState, useEffect } from 'react';

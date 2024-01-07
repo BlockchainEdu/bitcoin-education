@@ -80,7 +80,7 @@ export default function MobileDropdown(props) {
                     <li className="mb-8"><a href="/">Home</a></li>
                     <li className="my-8"><a href="/events">Events</a></li>
                     <li className="my-8"><a href="/contact">Contact</a></li>
-                    <li className="mt-8"><a href="/about/team">Team</a></li>
+                    <li className="mt-8"><a href="/team">Team</a></li>
                   </ul>
                 </div>
                 <StandardButton

@@ -70,7 +70,7 @@ export default function HeaderWithLogo({ className = "", children }) {
 
               <a className="display-on-scroll px-4 font-semibold" href="/events">Events</a>
               <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>
-              <a className="display-on-scroll px-4 font-semibold" href="/about/team">Team</a>
+              <a className="display-on-scroll px-4 font-semibold" href="/team">Team</a>
 
               {/*
               <StandardButton
@@ -83,7 +83,6 @@ export default function HeaderWithLogo({ className = "", children }) {
               <StandardButton
                 link="/subscribe"
                 text="Join Now"
-                target="blank"
                 color="orange"
                 styling="display-on-scroll mx-4"
               />

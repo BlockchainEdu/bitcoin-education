@@ -4,11 +4,12 @@
     "\\components",
     "\\pages",
     "\\pages\\about",
+    "\\pages\\projects",
     "\\public",
     "\\public\\styles",
     "\\services",
     "\\utils"
   ],
-  "SelectedNode": "\\components\\countdown.js",
+  "SelectedNode": "\\pages\\about\\team.js",
   "PreviewInSolutionExplorer": false
 }
