@@ -81,7 +81,7 @@ export default function HeaderWithLogo({ className = "", children }) {
               */}
 
               <StandardButton
-                link="/subscribe"
+                link="https://t.me/+SMwh8vkel1KnZArV"
                 text="Join Now"
                 color="orange"
                 styling="display-on-scroll mx-4"

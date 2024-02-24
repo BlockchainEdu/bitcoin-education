@@ -386,8 +386,8 @@ export default function Home({ locations }) {
 
                 <div className="flex justify-center items-center mt-5">
                   <StandardButton
-                    link="https://www.blockchainedu.org/apply"
-                    text="Apply Now"
+                    link="https://t.me/+SMwh8vkel1KnZArV"
+                    text="Join Now"
                     color="orange"
                     target="blank"
                     styling="text-center py-3 rounded-lg text-white text size 10"
