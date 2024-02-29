@@ -15,6 +15,7 @@ export const getProjectsFromMonday = async function() {
   const body = {
     query: `{
             boards (ids: 1983862095) {
+              items_page (limit: 40) {
                 items {
                     id
                     name
@@ -22,13 +23,14 @@ export const getProjectsFromMonday = async function() {
                         value
                     }
                 }
+              }
             }
         }`
   }
   const result = await TeamMemberService.getMembers(body)
   let projects = []
   if (result?.data?.data?.boards) {
-    projects = result.data.data.boards[0].items.map(item => {
+    projects = result.data.data.boards[0].items_page.items.map(item => {
       let extras = { media_type: MediaType.none }
       const videos          = (JSON.parse(item.column_values[4].value || `{"text": ""}`).text || "").split(/\s+/)
       const images          = (JSON.parse(item.column_values[5].value || `{"text": ""}`).text || "").split(/\s+/)
@@ -61,16 +63,18 @@ export const getProjectIdsFromMonday = async function() {
   const body = {
     query: `{
             boards (ids: 1983862095) {
+              items_page (limit: 40) {
                 items {
                     id
                 }
+              }
             }
         }`
   }
   const result = await TeamMemberService.getMembers(body)
   let projects = []
   if (result?.data?.data?.boards) {
-    projects = result.data.data.boards[0].items.map(item => {
+    projects = result.data.data.boards[0].items_page.items.map(item => {
       return {
         id: item.id,
       }
@@ -82,18 +86,18 @@ export const getProjectIdsFromMonday = async function() {
 export const getProjectFromMonday = async function(id) {
   const body = {
     query: `{
-            boards (ids: 1983862095) {
+
                 items (ids: [${id}]) {
                     column_values {
                         value
                     }
                 }
-            }
+            
         }`
   }
   const result = await TeamMemberService.getMembers(body)
   if (result?.data?.data?.boards) {
-    const selectedItem = result.data.data.boards[0].items[0]
+    const selectedItem = result.data.data.items[0]
     let extras = { media_type: MediaType.none }
     const videos          = (JSON.parse(selectedItem.column_values[4].value || `{"text": ""}`).text || "").split(/\s+/)
     const images          = (JSON.parse(selectedItem.column_values[5].value || `{"text": ""}`).text || "").split(/\s+/)
