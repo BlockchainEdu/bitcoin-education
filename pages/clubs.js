@@ -29,20 +29,22 @@ const Partners = () => {
     let body = {
       query: `{
         boards (ids: 1452150315) {
-          items {
-            group {
+          items_page (limit: 100) {
+            items {
+              group {
+                  id
+                  title
+              }
+              id
+              name
+              column_values {
                 id
                 title
-            }
-            id
-            name
-            column_values {
-              id
-              title
-              value
-            }
-            assets {
-              public_url 
+                value
+              }
+              assets {
+                public_url 
+              }
             }
           }
         }
@@ -52,7 +54,7 @@ const Partners = () => {
     console.log(result);
     if (result?.data?.data?.boards) {
       let temp_locations = []
-      let temp = result.data.data.boards[0].items.map(item => {
+      let temp = result.data.data.boards[0].items_page.items.map(item => {
         !temp_locations.includes(item.group.title) && temp_locations.push(item.group.title)
         return {
           id: item.id,

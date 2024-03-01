@@ -69,6 +69,7 @@ export default function Home({ locations }) {
     let body = {
       query: `{
           boards (ids: 1449692436) {
+            items_page (limit: 40) {
               items {
                 group {
                     id
@@ -78,20 +79,22 @@ export default function Home({ locations }) {
                 name
                 column_values {
                     id
-                    title
+                    
                     value
                 }
                 assets {
                     public_url
                 }
+              }
             }
           }
       }`,
     };
     let result = await TeamMemberService.getMembers(body);
+    console.log(result)
     if (result?.data?.data?.boards) {
       let categories_temp = []
-      let temp = result.data.data.boards[0].items.map(item => {
+      let temp = result.data.data.boards[0].items_page.items.map(item => {
         !categories_temp.includes(item.group.title) && categories_temp.push(item.group.title)
         return {
           id: item.id,

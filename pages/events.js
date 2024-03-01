@@ -24,16 +24,18 @@ useEffect(() => {
     const eventsResult = await TeamMemberService.getMembers({
       query: `{
         boards (ids: 5755322687) {
-          items (limit: 100) {
-            group {
-              title
-            }
-            name
-            column_values {
-              value
-            }
-            assets {
-              public_url
+          items_page (limit:100){
+            items {
+              group {
+                title
+              }
+              name
+              column_values {
+                value
+              }
+              assets {
+                public_url
+              }
             }
           }
         }
@@ -44,18 +46,21 @@ useEffect(() => {
     const dealsResult = await TeamMemberService.getMembers({
       query: `{
         boards (ids: 5775320038) {
-          items {
-            name
-            column_values{
-              value
+          items_page (limit:100){
+            items {
+              name
+              column_values{
+                value
+              }
             }
           }
+
         }
       }`
     });
 
-    if (eventsResult?.data?.data?.boards) {
-      const items = eventsResult.data.data.boards[0].items;
+    if (eventsResult?.data?.data?.boards.length > 0) {
+      const items = eventsResult.data.data.boards[0].items_page.items;
 
       const eventsByContinent = items.reduce((acc, item) => {
         const continent = item.group.title;
@@ -74,7 +79,7 @@ useEffect(() => {
     }
 
     if (dealsResult?.data?.data?.boards) {
-      const dealItems = dealsResult.data.data.boards[0].items;
+      const dealItems = dealsResult.data.data.boards[0].items_page.items;
 
       console.log("dealItems", dealItems);
 
