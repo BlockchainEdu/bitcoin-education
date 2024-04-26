@@ -65,6 +65,7 @@ useEffect(() => {
         const continent = item.group.title;
         let formattedDate;  
         let todayDate = new Date();
+        todayDate.setDate(todayDate.getDate() + 7);
         try {
           let firstDate = new Date(JSON.parse(item.column_values[4].value).date);
           formattedDate =  firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
