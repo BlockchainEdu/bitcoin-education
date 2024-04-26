@@ -61,13 +61,31 @@ useEffect(() => {
 
     if (eventsResult?.data?.data?.boards.length > 0) {
       const items = eventsResult.data.data.boards[0].items_page.items;
-
       const eventsByContinent = items.reduce((acc, item) => {
         const continent = item.group.title;
+        let formattedDate;  
+        let todayDate = new Date();
+        todayDate.setDate(todayDate.getDate() + 7);
+        try {
+          let firstDate = new Date(JSON.parse(item.column_values[4].value).date);
+          formattedDate =  firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+          let dateToCompareToToday = firstDate;
+          if (item.column_values[5].value) {
+            let lastDate = new Date(JSON.parse(item.column_values[5].value).date);
+            formattedDate = formattedDate +  " - " + lastDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+            dateToCompareToToday = lastDate
+          }
+          if (dateToCompareToToday < todayDate) {
+            return acc;
+          }
+        } catch {
+          return acc;
+        }
+
         acc[continent] = acc[continent] || [];
         acc[continent].push({
           name: item.name,
-          date: JSON.parse(item.column_values[0].value),
+          date: formattedDate,
           location: JSON.parse(item.column_values[1].value),
           url: JSON.parse(item.column_values[2].value),
           imageUrl: item.assets.length > 0 ? item.assets[0].public_url : ""
