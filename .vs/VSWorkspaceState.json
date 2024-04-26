@@ -3,13 +3,12 @@
     "",
     "\\components",
     "\\pages",
-    "\\pages\\about",
     "\\pages\\projects",
     "\\public",
     "\\public\\styles",
     "\\services",
     "\\utils"
   ],
-  "SelectedNode": "\\pages\\about\\team.js",
+  "SelectedNode": "\\components\\footer.js",
   "PreviewInSolutionExplorer": false
 }

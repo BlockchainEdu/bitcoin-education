@@ -225,7 +225,7 @@ export default function Home({ locations }) {
           <div className="col-span-1 lg:pt-10 lg:order-last">
 
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
-              Join 8,000+ Students
+              Crypto news, events, jobs, & tools!
               <span style={{ fontSize: '31px' }}>  </span>
 
 
