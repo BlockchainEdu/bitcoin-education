@@ -77,6 +77,7 @@ export default function Footer() {
                 <li className="text-sm">
                   <a href="https://drive.google.com/drive/folders/1Y97OoDNiaM-zdge2TbQSTmXL4iK_wT6X?usp=share_link">Media Kit</a>
                 </li>
+                <li className="text-sm"><a href="/donate">Donate</a></li>
               </ul>
             </div>
             <div>
