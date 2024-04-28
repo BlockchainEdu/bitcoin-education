@@ -180,6 +180,5 @@ export const getTeamMembersFromModay = async function() {
       return acc
     }, [])
   }
-  console.log(teamMembers)
   return teamMembers
 }

@@ -54,15 +54,46 @@ let teamMembers = {
 export default function About() {
 
     const [globalClick, setGlobalClick] = useState(false);
-    const [teamMembersState, setTeamMembers] = useState([]);
+    const [teamMembers, setTeamMembers] = useState({
+        "BEN Team": [
+        ],
+        
+        "Advisors": [
+        ],
+    
+        "Alumni": [
+            new TeamMember("/images/people/michael-gord.jpeg", "Michael Gord", "Founder, GDA Capital"),
+            new TeamMember("/images/people/ryan-breslow.jpeg", "Ryan Breslow", "Founder, Bolt"),
+            new TeamMember("/images/people/jinglan-wang.jpeg", "Jinglan Wang", "Co-founder, Optimism"),
+            new TeamMember("/images/people/joey-krug.jpeg", "Joey Krug", "Partner, Founders Fund"),
+            new TeamMember("/images/people/bradley-miles.jpeg", "Bradley Miles", "Co-founder, Roll"),
+            new TeamMember("/images/people/eric-chen.jpeg", "Eric Chen", "Founder, Injective"),
+            new TeamMember("/images/people/dean-masley.jpeg", "Dean Masley", "Founder, NestEgg"),
+            new TeamMember("/images/people/ashton-barger.jpeg", "Ashton Barger", "President, Zebu Live"),
+            new TeamMember("/images/people/alec-shaw.jpeg", "Alec Shaw", "CEO, Tenderize.me"),
+            new TeamMember("/images/people/jeremy-guzman.jpeg", "Jeremy Guzman", "Founder, Mass Adoption"),
+            new TeamMember("/images/people/kate-stapleton.jpeg", "Kate Stapleton", "Community Lead, Axelar"),
+            new TeamMember("/images/people/bennett-thompson.jpeg", "Bennett Thompson", "Founder, Blockbeam"),
+            new TeamMember("/images/people/dev-bharel.jpeg", "Dev Bharel", "Developer Advocate, Anagram.xyz"),
+            new TeamMember("/images/people/matt-batsinelas.jpeg", "Matt Batsinelas", "Founder, Glass Markets"),
+            new TeamMember("/images/people/gal-stern.jpeg", "Gal Stern", "Head of BD, deBridge"),
+            new TeamMember("/images/people/andy-bromberg.jpeg", "Andy Bromberg", "Co-founder, Coinlist | CEO, ECO"),
+            new TeamMember("/images/people/robert-klages.jpeg", "Robert Klages", "Co-founder, The Rollup"),
+            new TeamMember("/images/people/jelena-djuric.jpeg", "Jelena Djuric", "Co-founder, Noble"),
+            new TeamMember("/images/people/roshan-mirajkar.jpeg", "Roshan Mirajkar", "VP Marketing & Web3 Strategy, Mousebelt"),
+            new TeamMember("/images/people/scott-spiegel.jpeg", "Scott Spiegel", "Founder & CEO, BitBasel"),
+    
+        ]
+    });
     useEffect(() => {
         async function fetchTeamMembers() {
             const teamMembersFromModay = await getTeamMembersFromModay();
-            setTeamMembers(teamMembersFromModay);
+            setTeamMembers(prevState => ({
+                ...prevState,
+                "BEN Team": teamMembersFromModay,
+            }));
         }
         fetchTeamMembers();
-        teamMembers["BEN Team"] = teamMembersState
-        console.log("team members", teamMembers)
     },[])
     return (
         <div id="team-page" onClick={(e) => {
