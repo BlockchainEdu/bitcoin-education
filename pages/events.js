@@ -67,11 +67,12 @@ useEffect(() => {
         let todayDate = new Date();
         todayDate.setDate(todayDate.getDate() + 7);
         try {
-          let firstDate = new Date(JSON.parse(item.column_values[4].value).date);
+          let firstDate = new Date(JSON.parse(item.column_values[5].value).date);
           formattedDate =  firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+          console.log("item", item)
           let dateToCompareToToday = firstDate;
-          if (item.column_values[5].value) {
-            let lastDate = new Date(JSON.parse(item.column_values[5].value).date);
+          if (item.column_values[6].value) {
+            let lastDate = new Date(JSON.parse(item.column_values[6].value).date);
             formattedDate = formattedDate +  " - " + lastDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
             dateToCompareToToday = lastDate
           }
