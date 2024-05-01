@@ -127,3 +127,58 @@ export const getProjectFromMonday = async function(id) {
     }
   }
 }
+export class TeamMember {
+    constructor(image, name, title, bio, linkedin, twitter, email="") {
+        this.image = image;
+        this.name = name;
+        this.title = title;
+        this.bio = bio;
+        this.linkedin = linkedin === "" ? undefined : linkedin;
+        this.twitter = twitter === "" ? undefined :  twitter;
+        this.email = email === "" ? undefined : `mailto:${email}`;
+    }
+}
+export const getTeamMembersFromModay = async function() {
+  const body = {
+    query: `{
+            boards (ids: 1383021348) {
+              items_page (limit: 40) {
+                items {
+                  group {
+                    title
+                  }
+                  name
+                  column_values {
+                    value
+                  }
+                  assets {
+                    public_url
+                  }
+                }
+              }
+            }
+        }`
+  }
+  const result = await TeamMemberService.getMembers(body)
+  let teamMembers = []
+  if (result.data?.data?.boards.length > 0) {
+    const items = result.data.data.boards[0].items_page.items;
+    teamMembers = items.reduce((acc, item) => {
+      if (item.group.title === "BEN Team") {
+        const teamMember = new TeamMember(
+          item.assets.length > 0 ? item.assets[0].public_url : "",
+          item.name,
+          JSON.parse(item.column_values[2].value),
+          JSON.parse(item.column_values[3].value),
+          JSON.parse(item.column_values[5].value),
+          JSON.parse(item.column_values[6].value),
+          JSON.parse(item.column_values[7].value)
+        )
+        acc.push(teamMember)
+        
+      }
+      return acc
+    }, [])
+  }
+  return teamMembers
+}

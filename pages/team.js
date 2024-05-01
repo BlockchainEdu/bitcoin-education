@@ -4,32 +4,14 @@ import Header from '../components/header'
 import NationalTeamCard from '../components/nationalTeamCard'
 import AlumniCard from '../components/alumniCard'
 import TeamMembers from '../content/team'
-import { TeamMemberService } from '../services'
+import { TeamMemberService, getTeamMembersFromModay, TeamMember } from '../services'
 import Head from "next/head"
 
 import React, { useState, useEffect } from 'react';
 
-class TeamMember {
-    constructor(image, name, title, bio, linkedin, twitter, email="") {
-        this.image = image;
-        this.name = name;
-        this.title = title;
-        this.bio = bio;
-        this.linkedin = linkedin === "" ? undefined : linkedin;
-        this.twitter = twitter === "" ? undefined : twitter;
-        this.email = email === "" ? undefined : `mailto:${email}`;
-    }
-}
 
-const teamMembers = {
+let teamMembers = {
     "BEN Team": [
-        new TeamMember("/images/team/erick.jpeg", "Erick Pinos", "President", "Erick Pinos is the President of the Blockchain Education Network (BEN). Erick is also the Americas Ecosystem Lead at Ontology Network, a public blockchain project focused on decentralized identity and data. Erick has a BS in Management from the Massachusetts Institute of Technology (MIT), where he was the President of the MIT Bitcoin Club, as well as a researcher at the MIT Digital Currency Initiative.", "https://www.linkedin.com/in/erickpinos/", "https://twitter.com/erickpinos", "erick@blockchainedu.org"),
-        new TeamMember("/images/team/antonio.jpg", "Antonio Gomes", "Vice President", "Antonio is the past president of Gator Blockchain Club and a 2020 graduate of Warrington College of Business at U of F. With a proven talent for aligning business strategy, Antonio worked for over a year at Oracle Inc headquarters, as part of the ISV BDC Team. He now focus in enabling students in developing nations to acquire educational opportunities in blockchain technology. In his free time he enjoys sailing.", "", "https://twitter.com/cryptoniooo", "antonio@blockchainedu.org"),
-        new TeamMember("/images/team/jeremy-gardner-new.jpg", "Jeremy Gardner", "Board Member", "Jeremy Gardner (born January 20, 1992), is an American serial entrepreneur, investor, and philanthropist based in Beverly Hills, California. He is primarily known for his early investments in Bitcoin, the CryptoCastle brand, and as a co-founder of Augur. His early investments in cryptocurrency made him a self-made millionaire. He was previously the founder and CEO of MadeMan, a men's skincare cosmetic company featured in publications Maxim, The Daily Front Row, and Wealth Magazine.", "", "https://twitter.com/Disruptepreneur", ""),
-        new TeamMember("/images/team/ba.jpg", "Ba Minuzzi", "Board Member", "Ba Minuzzi is the Founder & CEO of UMANA, Inc, and the co-founder and Chief Strategy Officer of Venture Studio and U House of Funds. At BEN she is our CFO.", "https://www.linkedin.com/in/baminuzzi", "https://twitter.com/ba_minuzzi", "ben@umana.family"),
-        new TeamMember("/images/team/dean.jpg", "Dean Masley", "Advisor", "Dean graduated from the University of Delaware, while simultaneously leading two global non-profits in addition to several startups. Jumping into bitcoin in the summer of 2013, Dean accelerated a global grassroots blockchain education movement on university campuses across the world. A believer in “power to the people”, Dean uses non-orthodox strategies (swarmwise) for leading decentralized organizations which focus on empowering individuals to take local action on a global initiative. Born and raised in Wilmington, Delaware; Dean now lives in Amsterdam to work with APG, the largest pension company in NL, working on the future of pensions and life-security. When not in the office, you can catch him hosting meetup groups and grassroots blockchain initiatives.", "", "https://twitter.com/dmasley"),
-        new TeamMember("/images/team/jinglan.jpg", "Jinglan Wang", "Advisor", "Jinglan Wang is a blockchain career professional and the founder of Optimism, a blockchain-based protocol that enables developers to build and deploy decentralized applications (dApps) on Ethereum. She is a leading figure in the blockchain industry and has been instrumental in driving the development of the technology.", "", ""),
-        new TeamMember("/images/team/mel.jpg", "Mel Vera", "Advisor", "Mel Vera is a Colombia native raised in New York City. After graduating from Babson College, her degree in Environmental Economics inspired her to start Atlus, a nonprofit based in Medellin focused on reducing youth violence and unemployment through blockchain, AI, and ecology education. After serving as Executive VP for the Blockchain Education Network and aiding Business Development at Injection Protocol, Mel began directing Ecosystem & Education and later became director of Community & Communications at DoinGud, an NFT platform empowering creators and social impact organizations. While her time at DoinGud Mel founded NFTclassroom.org a non-profit focused on reducing the socio-economic gap by teaching minority students about NFTs, art, and financial literacy.", "https://twitter.com/yosoymelvera", "")
     ],
     
     "Advisors": [
@@ -72,7 +54,47 @@ const teamMembers = {
 export default function About() {
 
     const [globalClick, setGlobalClick] = useState(false);
-
+    const [teamMembers, setTeamMembers] = useState({
+        "BEN Team": [
+        ],
+        
+        "Advisors": [
+        ],
+    
+        "Alumni": [
+            new TeamMember("/images/people/michael-gord.jpeg", "Michael Gord", "Founder, GDA Capital"),
+            new TeamMember("/images/people/ryan-breslow.jpeg", "Ryan Breslow", "Founder, Bolt"),
+            new TeamMember("/images/people/jinglan-wang.jpeg", "Jinglan Wang", "Co-founder, Optimism"),
+            new TeamMember("/images/people/joey-krug.jpeg", "Joey Krug", "Partner, Founders Fund"),
+            new TeamMember("/images/people/bradley-miles.jpeg", "Bradley Miles", "Co-founder, Roll"),
+            new TeamMember("/images/people/eric-chen.jpeg", "Eric Chen", "Founder, Injective"),
+            new TeamMember("/images/people/dean-masley.jpeg", "Dean Masley", "Founder, NestEgg"),
+            new TeamMember("/images/people/ashton-barger.jpeg", "Ashton Barger", "President, Zebu Live"),
+            new TeamMember("/images/people/alec-shaw.jpeg", "Alec Shaw", "CEO, Tenderize.me"),
+            new TeamMember("/images/people/jeremy-guzman.jpeg", "Jeremy Guzman", "Founder, Mass Adoption"),
+            new TeamMember("/images/people/kate-stapleton.jpeg", "Kate Stapleton", "Community Lead, Axelar"),
+            new TeamMember("/images/people/bennett-thompson.jpeg", "Bennett Thompson", "Founder, Blockbeam"),
+            new TeamMember("/images/people/dev-bharel.jpeg", "Dev Bharel", "Developer Advocate, Anagram.xyz"),
+            new TeamMember("/images/people/matt-batsinelas.jpeg", "Matt Batsinelas", "Founder, Glass Markets"),
+            new TeamMember("/images/people/gal-stern.jpeg", "Gal Stern", "Head of BD, deBridge"),
+            new TeamMember("/images/people/andy-bromberg.jpeg", "Andy Bromberg", "Co-founder, Coinlist | CEO, ECO"),
+            new TeamMember("/images/people/robert-klages.jpeg", "Robert Klages", "Co-founder, The Rollup"),
+            new TeamMember("/images/people/jelena-djuric.jpeg", "Jelena Djuric", "Co-founder, Noble"),
+            new TeamMember("/images/people/roshan-mirajkar.jpeg", "Roshan Mirajkar", "VP Marketing & Web3 Strategy, Mousebelt"),
+            new TeamMember("/images/people/scott-spiegel.jpeg", "Scott Spiegel", "Founder & CEO, BitBasel"),
+    
+        ]
+    });
+    useEffect(() => {
+        async function fetchTeamMembers() {
+            const teamMembersFromModay = await getTeamMembersFromModay();
+            setTeamMembers(prevState => ({
+                ...prevState,
+                "BEN Team": teamMembersFromModay,
+            }));
+        }
+        fetchTeamMembers();
+    },[])
     return (
         <div id="team-page" onClick={(e) => {
             if (e.target.getAttribute('flip-card-container') == "true") {
