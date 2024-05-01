@@ -87,8 +87,8 @@ useEffect(() => {
         acc[continent].push({
           name: item.name,
           date: formattedDate,
-          location: JSON.parse(item.column_values[1].value),
-          url: JSON.parse(item.column_values[2].value),
+          location: JSON.parse(item.column_values[2].value),
+          url: JSON.parse(item.column_values[3].value),
           imageUrl: item.assets.length > 0 ? item.assets[0].public_url : ""
         });
         return acc;
