@@ -24,7 +24,7 @@ useEffect(() => {
     const eventsResult = await TeamMemberService.getMembers({
       query: `{
         boards (ids: 5755322687) {
-          items_page (limit:100){
+          items_page (limit:500){
             items {
               group {
                 title
@@ -46,7 +46,7 @@ useEffect(() => {
     const dealsResult = await TeamMemberService.getMembers({
       query: `{
         boards (ids: 5775320038) {
-          items_page (limit:100){
+          items_page (limit:500){
             items {
               name
               column_values{
