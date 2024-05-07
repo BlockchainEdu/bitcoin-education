@@ -189,7 +189,7 @@ const renderEventCard = (event, index) => {
         </div>
 
         <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
-        <div className="flex justify-center items-center mt-5">
+        <div className="flex flex-col lg:flex-row justify-center items-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 mx-auto" style={{ "max-width": "800px" }}>
           {
             Object.entries(eventsByContinent).map(([continent, eventsList]) => (
               <StandardButton
