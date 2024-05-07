@@ -206,7 +206,8 @@ const renderEventCard = (event, index) => {
                 targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}
               color="orange"
-              styling="text-center py-3 rounded-lg text-white text size 10 m-1"
+              styling="text-center py-3 rounded-lg text-white text size 10 m-1 whitespace-nowrap w-full"
+              linkStyling="w-full lg:w-auto min-w-200px"
             />
             ))
           }

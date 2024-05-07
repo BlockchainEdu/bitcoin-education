@@ -5,7 +5,7 @@ export default function StandardButton(props) {
     }
 
     return (
-        <a href={props.link} onClick={props.onClick} target={props.target}>
+        <a href={props.link} onClick={props.onClick} target={props.target} className={props.linkStyling}>
             <button className={`${buttonColor()} ${props.styling}`}>
                 {props.text}
             </button>
