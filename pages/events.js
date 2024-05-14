@@ -7,13 +7,7 @@ import StandardButton from '../components/standardButton';
 
 export default function Events() {
   const [eventsByContinent, setEventsByContinent] = useState({
-    NorthAmerica: [],
-    SouthAmerica: [],
-    Europe: [],
-    Africa: [],
-    Asia: [],
-    Oceania: [],
-    Online: [],
+
   });
 
   const [eventDeals, setEventDeals] = useState({});
@@ -69,7 +63,6 @@ useEffect(() => {
         try {
           let firstDate = new Date(JSON.parse(item.column_values[5].value).date);
           formattedDate =  firstDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-          console.log("item", item)
           let dateToCompareToToday = firstDate;
           if (item.column_values[6].value) {
             let lastDate = new Date(JSON.parse(item.column_values[6].value).date);
@@ -100,10 +93,8 @@ useEffect(() => {
     if (dealsResult?.data?.data?.boards) {
       const dealItems = dealsResult.data.data.boards[0].items_page.items;
 
-      console.log("dealItems", dealItems);
 
       const dealsByEventName = dealItems.reduce((acc, item) => {
-        console.log("item", item);
         let event = item.column_values[0].value;
 
         // Remove quotation marks from the event string
@@ -133,8 +124,6 @@ const renderEventCard = (event, index) => {
   if (deal !== undefined) {
     try {
       link = JSON.parse(deal.link.value);
-      console.log("deal", deal.link.value);
-      console.log("deal", deal.url);
     } catch (e) {
       console.error("Error parsing deal link value:", e);
     }
@@ -168,7 +157,7 @@ const renderEventCard = (event, index) => {
   const renderEventSection = (events, continent) => (
     <section key={continent}>
     <div className="w-11/12 lg:w-8/12 mx-auto py-6">
-      <h2 className="text-2xl font-semibold my-4">{continent}</h2>
+      <h2 className="text-2xl font-semibold my-4" id={continent.replace(/\s/g, '')}>{continent}</h2>
       <div className="events-grid">
         {events.map(renderEventCard)}
       </div>
@@ -199,6 +188,31 @@ const renderEventCard = (event, index) => {
           </div>
         </div>
 
+        <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
+        <div className="flex flex-col lg:flex-row justify-center items-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 mx-auto" style={{ "max-width": "800px" }}>
+          {
+            Object.entries(eventsByContinent).map(([continent, eventsList]) => (
+              <StandardButton
+              link={`#${continent} `} 
+              text={continent}
+              onClick={(e) => {
+                e.preventDefault(); 
+                let identifier = continent.replace(/\s/g, '');
+
+                const targetId = `#${identifier}`;
+                console.log(targetId)
+                const targetElement = document.querySelector(targetId);
+            
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+              color="orange"
+              styling="text-center py-3 rounded-lg text-white text size 10 m-1 whitespace-nowrap w-full"
+              linkStyling="w-full lg:w-auto min-w-200px"
+            />
+            ))
+          }
+          </div>
+        </div>
         {
           Object.entries(eventsByContinent).map(([continent, eventsList]) => (
             renderEventSection(eventsList, continent)
