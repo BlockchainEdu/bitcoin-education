@@ -20,14 +20,17 @@ export default function Events({ eventsByContinent, eventDeals }) {
 
     return (
       <div key={index} className="event-card-container">
-        <a href={event.url} target="_blank" rel="noopener noreferrer" className="event-card flex">
-          <div className="event-image-container">
-            <img src={event.imageUrl} alt={event.name} className="event-image" />
-          </div>
-          <div className="event-details">
-            <div className="event-name">{event.name}</div>
-            <div className="event-date">{event.date}</div>
-            <div className="event-location">{event.location}</div>
+        <a href={event.url} target="_blank" rel="noopener noreferrer" className="event-card">
+
+          <div className="flex flex-col md:flex-row items-center space-x-4 w-full p-3">
+            <div className="flex-1">
+              <div className="event-name">{event.name}</div>
+            </div>
+            <div className="flex flex-col md:flex-row md:space-x-4">
+              <div className="event-date text-center">{event.date}</div>
+              <div className="event-location text-center">{event.location}</div>
+            </div>
+
           </div>
         </a>
         {deal && link && (
