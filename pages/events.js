@@ -211,6 +211,6 @@ export async function getStaticProps() {
       eventsByContinent,
       eventDeals
     },
-    revalidate: 1, // Revalidate data at most once every second
+    revalidate: 3600, // Revalidate data at most once every second
   };
 }
