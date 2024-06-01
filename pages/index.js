@@ -63,6 +63,26 @@ const Map = dynamic(() => import("../components/map"), {
 })
 
 export default function Home({ locations }) {
+  const companies = [
+    {"name": "Augur", "link": "https://augur.net/", "url": "/images/fintech/augur.webp"},
+    {"name": "Bitso", "link": "https://bitso.com/mx", "url": "/images/fintech/bitso.webp"},
+    {"name": "Blockbeam", "link": "https://www.blockbeam.io/", "url": "/images/fintech/blockbeam.webp"},
+    {"name": "Bolt", "link": "https://www.bolt.com/", "url": "/images/fintech/bolt.webp"},
+    {"name": "BTC Inc", "link": "https://b.tc/", "url": "/images/fintech/btc-inc.webp"},
+    {"name": "Chainside", "link": "https://www.chainside.net/en/home/", "url": "/images/fintech/chainside.webp"},
+    {"name": "GDA Capital", "link": "https://gda.capital/", "url": "/images/fintech/gda-capital.webp"},
+    {"name": "Glass Markets", "link": "https://glassmarkets.io/", "url": "/images/fintech/glass-markets.webp"},
+    {"name": "IntoTheVerse", "link": "https://intotheverse.xyz/", "url": "/images/fintech/into-the-verse.webp"},
+    {"name": "Iota", "link": "https://www.iota.org/", "url": "/images/fintech/iota.webp"},
+    {"name": "Neon", "link": "https://neonevm.org/", "url": "/images/fintech/neon.webp"},
+    {"name": "Noble", "link": "https://nobleassets.xyz/", "url": "/images/fintech/noble.webp"},
+    {"name": "Notional", "link": "https://notional.finance/", "url": "/images/fintech/notional.webp"},
+    {"name": "Numoen", "link": "https://www.numoen.com/", "url": "/images/fintech/numoen.webp"},
+    {"name": "Optimism", "link": "https://www.optimism.io/", "url": "/images/fintech/optimism.webp"},
+    {"name": "Roll", "link": "https://tryroll.com/", "url": "/images/fintech/roll.webp"},
+    {"name": "Tenderize", "link": "https://www.tenderize.me/", "url": "/images/fintech/tenderize.webp"},
+    {"name": "Wanchain", "link": "https://www.wanchain.org/", "url": "/images/fintech/wanchain.webp"},
+  ]
   const [partners, setPartners] = useState([]);
   const [categories, setCategorise] = useState([]);
   useEffect(async () => {
@@ -337,106 +357,42 @@ export default function Home({ locations }) {
       </section>
 
 */}
-      <section className=" bg-white mt-10">
+      <section className=" bg-white mt-20">
         <div className=" m-auto">
           <PartnersSlider title="Event Partners" data={partners.filter(item => item.category === "Event Partners")} />
         </div>
       </section>
 
 
-      <section id="benefits" className="py-10">
+      <section id="benefits" className="py-10 mt-20">
         <div className=" mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
 
-          <h2 className="mx-auto text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
-            What is included in the membership?
+          <h2 className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl" style={{color: "#FF872A"}}>
+            BEN Ventures invests into the ideas of talented, bright, and innovative students 
+            and recent graduates from top universities.
           </h2>
-
-          <div className="flex justify-center items-center">
-            {/* Card 1: Education */}
-            <div onClick={() => <a href="https://www.blockchainedu.org/joinnow?utm_source=blockchainedu.org">
-              <div>
-                {/* Your content here */}
-              </div>
-            </a>
-            } className="cursor-pointer mt-5">
-              <div className=" text-black rounded-lg shadow-lg p-6" style={{ backgroundColor: "#F7F7F7" }}>
-                <div className="text-2xl font-bold mb-4 text-center"></div>
-
-
-                <div className="text-2xl mb-2">🎟️ Free tickets to crypto conferences
-                  {/*
-                  <strong>
-                    <p className='text-base'>ETHGlobal - Pragma - Messari Mainnet - Bitcoin 2024 - ETH Miami - The Atlanta Bitcoin Conference - Solana Breakpoint - Paris Blockchain Week - Cosmosverse 2023</p>
-                  </strong>
-                  */}
-                </div>
-
-
-
-
-                <div className="text-2xl mb-2"> 💬 Vibrant networking community for growth.</div>
-                <div className="text-2xl mb-2"> 🚀 Tailored mentorship for success.</div>
-                <div className="text-2xl mb-2"> 🤝 Enriching annual member meetups.</div>
-                <div className="text-2xl mb-2">🌟 Collaborative project opportunities.</div>
-                <div className="text-2xl mb-2">🎤 Pitch to eager investors.</div>
-                <div className="text-2xl mb-2">👥 Connect with like-minded innovators.</div>
-                <div className="text-2xl mb-2">✅ Supportive network with seasoned mentorship.</div>
-                <div className="text-2xl mb-2"> 🌐 Decade-rich alumni network.</div>
-                <div className="text-2xl mb-2">💸 Funding opportunities for growth.</div>
-                <div className="text-2xl mb-2">🛠 Access to essential tools, resources.</div>
-                <div className="text-2xl mb-2">📈 Tailored growth strategies.</div>
-                <div className="text-2xl mb-2">🔐 Unlock the crypto realm with industry experts.</div>
-
-                <div className="flex justify-center items-center mt-5">
-                  <StandardButton
-                    link="https://t.me/+SMwh8vkel1KnZArV"
-                    text="Join Now"
-                    color="orange"
-                    target="blank"
-                    styling="text-center py-3 rounded-lg text-white text size 10"
-                  />
-                </div>
-              </div>
-            </div>
-
-
-            {/* Card 2: Resources */}
-            {/*
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <div className="text-2xl font-bold mb-4 text-center">Resources</div>
-                <div className="text-lg">✅ Useful tools and newsletters to boost your crypto education</div>
-                <div className="text-lg">✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
-              </div>
-            </div>
-          */}
-
-
-            {/* Card 3: Market Analysis */}
-            {/*
-            
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <div className="text-2xl font-bold mb-4 text-center">Market Analysis</div>
-                <div className="text-lg">✅ Insights from industry experts</div>
-                <div className="text-lg">✅ Deep dives on specific projects</div>
-                <div className="text-lg">✅ In-depth reports on the latest trends and tokens</div>
-              </div>
-            </div>
-        */}
-
-            {/* Placeholder Card 4: Events/Jobs */}
-            {/*
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <div className="text-2xl font-bold mb-4 text-center">Events/Jobs</div>
-                <div className="text-lg">✅ An events calendar of upcoming crypto events around the world</div>
-                <div className="text-lg">✅ New crypto job listings paying anywhere from $50k to $150k</div>
-              </div>
-            </div>
-      */}
-
+          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-center max-w-3xl">
+            Our deal flow across fintech, blockchain, AI, and metaverse comes from our network we 
+            have been curating over the past nine years.
+          </p>
+          <div className="flex justify-center items-center mt-5">
+            <StandardButton
+              link="https://docsend.com/view/x6f5vn82s258h8wc"
+              text="View Deck"
+              color="orange"
+              target="blank"
+              styling="text-center py-3 rounded-lg text-white text size 10"
+            />
           </div>
+          <p  className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl mt-5">
+            <span style={{color:"#FF872A"}}>BEN alumni</span> have gone on to produce a combined valuation of <span style={{color:"#FF872A"}}>~20 billion</span>
+            across blockchain and fintech:
+          </p>
+          <section className=" bg-white mt-10">
+        <div className=" m-auto">
+          <PartnersSlider title="" data={companies} />
+        </div>
+      </section>
 
           <div className="text-center my-4">
             {/* Your StandardButton or any other content goes here */}
@@ -445,7 +401,7 @@ export default function Home({ locations }) {
       </section >
 
 
-      <section className=" bg-white mt-10">
+      <section className=" bg-white mt-10 mt-20">
         <div className=" m-auto">
           <PartnersSlider title="Notable Alumni" data={partners.filter(item => item.category === "Alumni")} />
         </div>
