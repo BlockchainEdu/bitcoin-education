@@ -693,8 +693,7 @@ export default function Home({ locations }) {
 
 
 
-      <section id="ready" className="bg-benorange-300 mx-auto">
-
+      <section id="ready" className="bg-benorange-300 mx-auto p-1">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold mb-2 text-black">Ready?</h1>
@@ -707,7 +706,6 @@ export default function Home({ locations }) {
           </div>
         </div>
       </section>
-
       <Footer />
     </div >
   )
