@@ -388,18 +388,14 @@ export default function Home({ locations }) {
             <span style={{color:"#FF872A"}}>BEN alumni</span> have gone on to produce a combined valuation of <span style={{color:"#FF872A"}}>~20 billion</span>
             across blockchain and fintech:
           </p>
-          <section className=" bg-white mt-10">
+          <div className="text-center my-4">
+            {/* Your StandardButton or any other content goes here */}
+          </div>
+        </div>        
         <div className=" m-auto">
           <PartnersSlider title="" data={companies} />
         </div>
       </section>
-
-          <div className="text-center my-4">
-            {/* Your StandardButton or any other content goes here */}
-          </div>
-        </div>
-      </section >
-
 
       <section className=" bg-white mt-10 mt-20">
         <div className=" m-auto">
