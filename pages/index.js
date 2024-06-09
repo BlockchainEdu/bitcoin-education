@@ -468,7 +468,7 @@ export default function Home({ locations }) {
             Introducing BEN
           </h2>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            Founded in 2014 by students from the University of Michigan, MIT,
+            <span style={{ color: "#FF872A" }}> Founded in 2014</span> by students from the University of Michigan, MIT,
             and Stanford, with a mission to educate about blockchain technology.
             Today, BEN is dedicated to investing in the innovative ideas of
             talented students and recent graduates from universities worldwide.
@@ -490,7 +490,7 @@ export default function Home({ locations }) {
             We have educated and created job opportunities for thousands of university students. 
             <span style={{ color: "#FF872A" }}> BEN alumni</span> have created enterprises with a combined valuation of <span style={{ color: "#FF872A" }}>~20 billion</span> across blockchain and fintech.
 From ideas on a napkin, to launching into the market we can support your journey from the idea to success.
-Leverage a network built over a decade, connecting you to unique partners, market makers, launchpads, exchanges and more
+Leverage a network built over a decade, connecting you to unique partners, market makers, launchpads, exchanges and more:
           </p>
           <div className="text-center my-4">
             {/* Your StandardButton or any other content goes here */}
