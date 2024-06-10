@@ -1,30 +1,29 @@
-﻿﻿import React, { useEffect, useState } from 'react';
+﻿﻿import React, { useEffect, useState } from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import Image from 'next/image';
+import Image from "next/image";
 import Head from "next/head";
 import dynamic from "next/dynamic";
-import Script from 'next/script';
-import { getProjectsFromMonday } from '../services';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import Script from "next/script";
+import { getProjectsFromMonday } from "../services";
+import "mapbox-gl/dist/mapbox-gl.css";
 import styled from "styled-components";
-import Mailchimp from 'react-mailchimp-form';
-import { useAppContext } from '../context/state';
-import { Disclosure } from '@headlessui/react'
-import { ChevronUpIcon } from '@heroicons/react/solid'
-import FeatureSlider from '../components/featureSlider';
-import Modal from '../components/donateSliderButton';
-import StandardButton from '../components/standardButton';
-import DonateOptions from '../components/donateOptions';
-import PopUpVideo from '../components/popupVideo';
-import { MediaType } from "../components/map"
-import FAQItem from '../components/faqItem';
+import Mailchimp from "react-mailchimp-form";
+import { useAppContext } from "../context/state";
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/solid";
+import FeatureSlider from "../components/featureSlider";
+import Modal from "../components/donateSliderButton";
+import StandardButton from "../components/standardButton";
+import DonateOptions from "../components/donateOptions";
+import PopUpVideo from "../components/popupVideo";
+import { MediaType } from "../components/map";
+import FAQItem from "../components/faqItem";
 import MailchimpWithRedirect from "../components/mailchimpWithRedirect";
-import Popup from '../components/popup';
-import BlogGrid from '../components/blogGrid';
+import Popup from "../components/popup";
+import BlogGrid from "../components/blogGrid";
 import { TeamMemberService } from "../services";
 import PartnersSlider from "../components/partnersSlider";
-
 
 const impactStats = [
   {
@@ -32,37 +31,129 @@ const impactStats = [
     number: "200+",
     name: "Ambassadors",
     imageStyling: "translate-y-10 transform",
-    nameStyling: ""
+    nameStyling: "",
   },
   {
     image: "/images/companies-icon-home.png",
     number: "250+",
     name: "Companies Founded",
     imageStyling: "translate-y-10 transform",
-    nameStyling: ""
+    nameStyling: "",
   },
   {
     image: "/images/valuations-icon-home.png",
     number: "3B",
     name: "Valuation of companies founded through ben",
     imageStyling: "translate-y-5 transform mx-auto lg:mx-0",
-    nameStyling: ""
+    nameStyling: "",
   },
   {
     image: "/images/jobs-icon-home.png",
     number: "1500+",
     name: "Jobs matched",
     imageStyling: "translate-y-5 transform",
-    nameStyling: ""
+    nameStyling: "",
   },
-]
+];
 
 const Map = dynamic(() => import("../components/map"), {
   loading: () => "Loading...",
-  ssr: false
-})
+  ssr: false,
+});
 
 export default function Home({ locations }) {
+  const companies = [
+    {
+      name: "Augur",
+      link: "https://augur.net/",
+      url: "/images/fintech/augur.webp",
+    },
+    {
+      name: "Bitso",
+      link: "https://bitso.com/mx",
+      url: "/images/fintech/bitso.webp",
+    },
+    {
+      name: "Blockbeam",
+      link: "https://www.blockbeam.io/",
+      url: "/images/fintech/blockbeam.webp",
+    },
+    {
+      name: "Bolt",
+      link: "https://www.bolt.com/",
+      url: "/images/fintech/bolt.webp",
+    },
+    {
+      name: "BTC Inc",
+      link: "https://b.tc/",
+      url: "/images/fintech/btc-inc.webp",
+    },
+    {
+      name: "Chainside",
+      link: "https://www.chainside.net/en/home/",
+      url: "/images/fintech/chainside.webp",
+    },
+    {
+      name: "GDA Capital",
+      link: "https://gda.capital/",
+      url: "/images/fintech/gda-capital.webp",
+    },
+    {
+      name: "Glass Markets",
+      link: "https://glassmarkets.io/",
+      url: "/images/fintech/glass-markets.webp",
+    },
+    {
+      name: "IntoTheVerse",
+      link: "https://intotheverse.xyz/",
+      url: "/images/fintech/into-the-verse.webp",
+    },
+    {
+      name: "Iota",
+      link: "https://www.iota.org/",
+      url: "/images/fintech/iota.webp",
+    },
+    {
+      name: "Neon",
+      link: "https://neonevm.org/",
+      url: "/images/fintech/neon.webp",
+    },
+    {
+      name: "Noble",
+      link: "https://nobleassets.xyz/",
+      url: "/images/fintech/noble.webp",
+    },
+    {
+      name: "Notional",
+      link: "https://notional.finance/",
+      url: "/images/fintech/notional.webp",
+    },
+    {
+      name: "Numoen",
+      link: "https://www.numoen.com/",
+      url: "/images/fintech/numoen.webp",
+    },
+    {
+      name: "Optimism",
+      link: "https://www.optimism.io/",
+      url: "/images/fintech/optimism.webp",
+    },
+    {
+      name: "Roll",
+      link: "https://tryroll.com/",
+      url: "/images/fintech/roll.webp",
+    },
+    {
+      name: "Tenderize",
+      link: "https://www.tenderize.me/",
+      url: "/images/fintech/tenderize.webp",
+    },
+    {
+      name: "Wanchain",
+      link: "https://www.wanchain.org/",
+      url: "/images/fintech/wanchain.webp",
+    },
+  ];
   const [partners, setPartners] = useState([]);
   const [categories, setCategorise] = useState([]);
   useEffect(async () => {
@@ -91,20 +182,21 @@ export default function Home({ locations }) {
       }`,
     };
     let result = await TeamMemberService.getMembers(body);
-    console.log(result)
+    console.log(result);
     if (result?.data?.data?.boards) {
-      let categories_temp = []
-      let temp = result.data.data.boards[0].items_page.items.map(item => {
-        !categories_temp.includes(item.group.title) && categories_temp.push(item.group.title)
+      let categories_temp = [];
+      let temp = result.data.data.boards[0].items_page.items.map((item) => {
+        !categories_temp.includes(item.group.title) &&
+          categories_temp.push(item.group.title);
         return {
           id: item.id,
           name: item.name,
           category: item.group.title,
-          url: item.assets[0]?.public_url ? item.assets[0]?.public_url : null
-        }
-      })
-      setPartners(temp)
-      setCategorise(categories_temp)
+          url: item.assets[0]?.public_url ? item.assets[0]?.public_url : null,
+        };
+      });
+      setPartners(temp);
+      setCategorise(categories_temp);
     }
   }, []);
 
@@ -114,44 +206,44 @@ export default function Home({ locations }) {
   // Define the gtag_report_conversion function
   const gtag_report_conversion = (url) => {
     var callback = function () {
-      if (typeof (url) !== 'undefined') {
+      if (typeof url !== "undefined") {
         window.location = url;
       }
     };
-    gtag('event', 'conversion', {
-      'send_to': 'AW-11202135402/VQLfCM_u8LUYEOqKzN0p',
-      'event_callback': callback
+    gtag("event", "conversion", {
+      send_to: "AW-11202135402/VQLfCM_u8LUYEOqKzN0p",
+      event_callback: callback,
     });
     return false;
   };
 
   if (locations.length === 0) {
     setTimeout(() => {
-      window.location.reload()
-    }, 1000)
+      window.location.reload();
+    }, 1000);
   }
 
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     // Check if the UTM parameters are present in the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const utmSource = urlParams.get('utm_source');
-    const utmMedium = urlParams.get('utm_medium');
-    const utmCampaign = urlParams.get('utm_campaign');
+    const utmSource = urlParams.get("utm_source");
+    const utmMedium = urlParams.get("utm_medium");
+    const utmCampaign = urlParams.get("utm_campaign");
 
     // Retrieve the stored UTM parameters from session storage
-    const storedUtmSource = sessionStorage.getItem('utm_source');
-    const storedUtmMedium = sessionStorage.getItem('utm_medium');
-    const storedUtmCampaign = sessionStorage.getItem('utm_campaign');
+    const storedUtmSource = sessionStorage.getItem("utm_source");
+    const storedUtmMedium = sessionStorage.getItem("utm_medium");
+    const storedUtmCampaign = sessionStorage.getItem("utm_campaign");
 
     // Check if the UTM parameters are present in the URL and not already stored
     if (utmSource && !storedUtmSource) {
-      sessionStorage.setItem('utm_source', utmSource);
+      sessionStorage.setItem("utm_source", utmSource);
     }
     if (utmMedium && !storedUtmMedium) {
-      sessionStorage.setItem('utm_medium', utmMedium);
+      sessionStorage.setItem("utm_medium", utmMedium);
     }
     if (utmCampaign && !storedUtmCampaign) {
-      sessionStorage.setItem('utm_campaign', utmCampaign);
+      sessionStorage.setItem("utm_campaign", utmCampaign);
     }
   }
   // Add the following useEffect hook at the bottom of the component
@@ -159,41 +251,39 @@ export default function Home({ locations }) {
     console.log("useEffect executed!");
     // Get the query parameter "scroll" from the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const scrollParam = urlParams.get('scroll');
+    const scrollParam = urlParams.get("scroll");
 
     // If "scroll" is present and is equal to "ready", scroll to the "Ready?" section with an offset
-    if (scrollParam === 'ready') {
+    if (scrollParam === "ready") {
       scrollToSection("ready", -500); // Adjust the offset value as needed
     }
   }, []);
-
 
   // Scroll to section function with an offset
   const scrollToSection = (sectionId, offset = -200) => {
     const section = document.getElementById(sectionId);
     if (section) {
       const topPos = section.getBoundingClientRect().top;
-      window.scrollBy({ top: topPos + offset, behavior: 'smooth' });
+      window.scrollBy({ top: topPos + offset, behavior: "smooth" });
     }
   };
 
   return (
-
     <div id="home">
-
       <Header />
 
       <Head>
-
-        <script async
+        <script
+          async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7187550270272911"
-          crossOrigin="anonymous">
-        </script>
+          crossOrigin="anonymous"
+        ></script>
 
         {/* Event snippet for Begin checkout conversion page
             In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. */}
-        <script dangerouslySetInnerHTML={{
-          __html: `
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
             function gtag_report_conversion(url) {
               var callback = function () {
                 if (typeof(url) != 'undefined') {
@@ -207,8 +297,8 @@ export default function Home({ locations }) {
               return false;
             }
           `,
-        }}>
-        </script>
+          }}
+        ></script>
 
         <title>Home | Blockchain Education Network</title>
       </Head>
@@ -220,32 +310,52 @@ export default function Home({ locations }) {
       */}
 
       <section className="container pt-10 lg:pb-0 px-7 mx-auto">
-        <div className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4" style={{ maxWidth: "1000px" }}>
-
+        <div
+          className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4"
+          style={{ maxWidth: "1000px" }}
+        >
           <div className="col-span-1 lg:pt-10 lg:order-last">
-
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
               Crypto news, events, jobs, & tools!
-              <span style={{ fontSize: '31px' }}>  </span>
-
-
+              <span style={{ fontSize: "31px" }}> </span>
               <span className="font-bold"></span>
-
             </h1>
 
-            <div className="text-bengrey-500 text-xl text-center mx-auto leading-6" style={{ maxWidth: "610px" }}>
-              Get exclusive access to crypto events and free conference tickets 👇
+            <div
+              className="text-bengrey-500 text-xl text-center mx-auto leading-6"
+              style={{ maxWidth: "610px" }}
+            >
+              Get exclusive access to crypto events and free conference tickets
+              👇
             </div>
 
-            <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
+            <div
+              className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto"
+              style={{ "max-width": "800px" }}
+            >
               <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
-                <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=top&utm_content=top" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+                <iframe
+                  src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=top&utm_content=top"
+                  data-test-id="beehiiv-embed"
+                  height="52"
+                  frameborder="0"
+                  scrolling="no"
+                  style={{
+                    margin: "0",
+                    borderRadius: "0px",
+                    backgroundColor: "transparent",
+                    width: "100%",
+                  }}
+                ></iframe>
               </div>
             </div>
 
             <div className="col-span-2 mt-12 text-center">
               <div className="flex justify-center">
-                <div className="w-full grid grid-cols-8 gap-9 relative" style={{ margin: "-10px", width: "calc(20px * 8 + 4px * 7)" }}>
+                <div
+                  className="w-full grid grid-cols-8 gap-9 relative"
+                  style={{ margin: "-10px", width: "calc(20px * 8 + 4px * 7)" }}
+                >
                   <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2">
                     <img
                       src="/images/people/jelena-djuric.jpeg"
@@ -304,17 +414,20 @@ export default function Home({ locations }) {
                   </div>
                 </div>
               </div>
-              <p className="mt-3 ml-20 text-bengrey-500 text-center text-md">Join 8,000+ subscribers!</p>
+              <p className="mt-3 ml-20 text-bengrey-500 text-center text-md">
+                Join 8,000+ subscribers!
+              </p>
             </div>
-
           </div>
 
           <div className="flex justify-center items-center col-span-1 pb-12 rounded-lg">
-            <img style={{ borderRadius: "10px" }} src="/images/benevents.png"></img>
+            <img
+              style={{ borderRadius: "10px" }}
+              src="/images/benevents.png"
+            ></img>
           </div>
-
         </div>
-      </section >
+      </section>
 
       {/*
       <section className="bg-benorange-300 py-24 pb-24 mx-auto">
@@ -337,133 +450,88 @@ export default function Home({ locations }) {
       </section>
 
 */}
-      <section className=" bg-white mt-10">
+      <section className=" bg-white mt-20">
         <div className=" m-auto">
-          <PartnersSlider title="Event Partners" data={partners.filter(item => item.category === "Event Partners")} />
+          <PartnersSlider
+            title="Event Partners"
+            data={partners.filter((item) => item.category === "Event Partners")}
+          />
         </div>
       </section>
 
-
-      <section id="benefits" className="py-10">
+      <section id="benefits" className="py-10 mt-20">
         <div className=" mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
-
-          <h2 className="mx-auto text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
-            What is included in the membership?
+          <h2
+            className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl"
+            style={{ color: "#FF872A" }}
+          >
+            Introducing BEN
           </h2>
+          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
+            <span style={{ color: "#FF872A" }}> Founded in 2014</span> by students from the University of Michigan, MIT,
+            and Stanford, with a mission to educate about blockchain technology.
+            Today, BEN is dedicated to investing in the innovative ideas of
+            talented students and recent graduates from universities worldwide.
+            We aim to foster groundbreaking advancements in fintech, blockchain,
+            AI, and the metaverse.
+          </p>
+          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
+            Over the past nine years, we've built a robust network that empowers
+            the next generation of tech pioneers.
+          </p>
 
-          <div className="flex justify-center items-center">
-            {/* Card 1: Education */}
-            <div onClick={() => <a href="https://www.blockchainedu.org/joinnow?utm_source=blockchainedu.org">
-              <div>
-                {/* Your content here */}
-              </div>
-            </a>
-            } className="cursor-pointer mt-5">
-              <div className=" text-black rounded-lg shadow-lg p-6" style={{ backgroundColor: "#F7F7F7" }}>
-                <div className="text-2xl font-bold mb-4 text-center"></div>
-
-
-                <div className="text-2xl mb-2">🎟️ Free tickets to crypto conferences
-                  {/*
-                  <strong>
-                    <p className='text-base'>ETHGlobal - Pragma - Messari Mainnet - Bitcoin 2024 - ETH Miami - The Atlanta Bitcoin Conference - Solana Breakpoint - Paris Blockchain Week - Cosmosverse 2023</p>
-                  </strong>
-                  */}
-                </div>
-
-
-
-
-                <div className="text-2xl mb-2"> 💬 Vibrant networking community for growth.</div>
-                <div className="text-2xl mb-2"> 🚀 Tailored mentorship for success.</div>
-                <div className="text-2xl mb-2"> 🤝 Enriching annual member meetups.</div>
-                <div className="text-2xl mb-2">🌟 Collaborative project opportunities.</div>
-                <div className="text-2xl mb-2">🎤 Pitch to eager investors.</div>
-                <div className="text-2xl mb-2">👥 Connect with like-minded innovators.</div>
-                <div className="text-2xl mb-2">✅ Supportive network with seasoned mentorship.</div>
-                <div className="text-2xl mb-2"> 🌐 Decade-rich alumni network.</div>
-                <div className="text-2xl mb-2">💸 Funding opportunities for growth.</div>
-                <div className="text-2xl mb-2">🛠 Access to essential tools, resources.</div>
-                <div className="text-2xl mb-2">📈 Tailored growth strategies.</div>
-                <div className="text-2xl mb-2">🔐 Unlock the crypto realm with industry experts.</div>
-
-                <div className="flex justify-center items-center mt-5">
-                  <StandardButton
-                    link="https://t.me/+SMwh8vkel1KnZArV"
-                    text="Join Now"
-                    color="orange"
-                    target="blank"
-                    styling="text-center py-3 rounded-lg text-white text size 10"
-                  />
-                </div>
-              </div>
-            </div>
-
-
-            {/* Card 2: Resources */}
-            {/*
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <div className="text-2xl font-bold mb-4 text-center">Resources</div>
-                <div className="text-lg">✅ Useful tools and newsletters to boost your crypto education</div>
-                <div className="text-lg">✅ Promo codes and free flights to conferences like Consensus, Mainnet, and ETHDenver</div>
-              </div>
-            </div>
-          */}
-
-
-            {/* Card 3: Market Analysis */}
-            {/*
-            
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <div className="text-2xl font-bold mb-4 text-center">Market Analysis</div>
-                <div className="text-lg">✅ Insights from industry experts</div>
-                <div className="text-lg">✅ Deep dives on specific projects</div>
-                <div className="text-lg">✅ In-depth reports on the latest trends and tokens</div>
-              </div>
-            </div>
-        */}
-
-            {/* Placeholder Card 4: Events/Jobs */}
-            {/*
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-              <div className="bg-white rounded-lg shadow-lg p-6">
-                <div className="text-2xl font-bold mb-4 text-center">Events/Jobs</div>
-                <div className="text-lg">✅ An events calendar of upcoming crypto events around the world</div>
-                <div className="text-lg">✅ New crypto job listings paying anywhere from $50k to $150k</div>
-              </div>
-            </div>
-      */}
-
-          </div>
-
+          <h2
+            className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl mt-10"
+            style={{ color: "#FF872A" }}
+          >
+            Our Impact
+          </h2>
+          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
+            We have educated and created job opportunities for thousands of university students. 
+            <span style={{ color: "#FF872A" }}> BEN alumni</span> have created enterprises with a combined valuation of <span style={{ color: "#FF872A" }}>~20 billion</span> across blockchain and fintech.
+From ideas on a napkin, to launching into the market we can support your journey from the idea to success.
+Leverage a network built over a decade, connecting you to unique partners, market makers, launchpads, exchanges and more:
+          </p>
           <div className="text-center my-4">
             {/* Your StandardButton or any other content goes here */}
           </div>
         </div>
-      </section >
-
-
-      <section className=" bg-white mt-10">
         <div className=" m-auto">
-          <PartnersSlider title="Notable Alumni" data={partners.filter(item => item.category === "Alumni")} />
+          <PartnersSlider title="" data={companies} />
         </div>
       </section>
 
+      <section className=" bg-white mt-10 mt-20">
+        <div className=" m-auto">
+          <PartnersSlider
+            title="Notable Alumni"
+            data={partners.filter((item) => item.category === "Alumni")}
+          />
+        </div>
+      </section>
 
       <section className="bg-benorange-300 py-24 pb-24 mx-auto">
-        <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
-
+        <div
+          className="bg-benorange-300 mx-auto w-11/12"
+          style={{ maxWidth: "1000px" }}
+        >
           <h2 className="mx-auto text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
             Trusted by 8,000+ weekly readers
           </h2>
 
-          <div className="mx-auto text-lg text-center leading-6 my-6" style={{ maxWidth: "610px" }}>
-            The Blockchain Education Network delivers founder news, fundraising opportunities, free conference tickets, and insightful educational content.
+          <div
+            className="mx-auto text-lg text-center leading-6 my-6"
+            style={{ maxWidth: "610px" }}
+          >
+            The Blockchain Education Network delivers founder news, fundraising
+            opportunities, free conference tickets, and insightful educational
+            content.
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+            <div
+              onClick={() => scrollToSection("ready")}
+              className="cursor-pointer"
+            >
               <div className="border p-4 rounded-lg bg-white">
                 {/*
                             <div className="flex justify-between">
@@ -495,16 +563,23 @@ export default function Home({ locations }) {
                         className="rounded-full w-full h-full object-cover"
                       />
                     </div>
-                    <div className="ml-2" style={{ fontWeight: '600' }}>Sonny Monroe</div>
+                    <div className="ml-2" style={{ fontWeight: "600" }}>
+                      Sonny Monroe
+                    </div>
                   </div>
 
-                  <em>"BEN is like a swiss army knife with crypto news, education, meetups, and even some tools."</em>
+                  <em>
+                    "BEN is like a swiss army knife with crypto news, education,
+                    meetups, and even some tools."
+                  </em>
                 </div>
               </div>
             </div>
 
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
-
+            <div
+              onClick={() => scrollToSection("ready")}
+              className="cursor-pointer"
+            >
               <div className="border p-4 rounded-lg bg-white">
                 {/*
                             <div className="flex justify-between">
@@ -537,13 +612,15 @@ export default function Home({ locations }) {
                         className="rounded-full w-full h-full object-cover"
                       />
                     </div>
-                    <div className="ml-2" style={{ fontWeight: '600' }}>Sarah Roff</div>
+                    <div className="ml-2" style={{ fontWeight: "600" }}>
+                      Sarah Roff
+                    </div>
                   </div>
-                  <em>"BEN gives the best blockchain education so that we can become the next generation of innovators!"</em>
-
-
+                  <em>
+                    "BEN gives the best blockchain education so that we can
+                    become the next generation of innovators!"
+                  </em>
                 </div>
-
               </div>
             </div>
             {/*
@@ -624,7 +701,10 @@ export default function Home({ locations }) {
                                 BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
                             </div>
                         </a> */}
-            <div onClick={() => scrollToSection("ready")} className="cursor-pointer">
+            <div
+              onClick={() => scrollToSection("ready")}
+              className="cursor-pointer"
+            >
               <div className="border p-4 rounded-lg bg-white">
                 {/*
                             <div className="flex justify-between">
@@ -656,12 +736,14 @@ export default function Home({ locations }) {
                         className="rounded-full w-full h-full object-cover"
                       />
                     </div>
-                    <div className="ml-2" style={{ fontWeight: '600' }}>Dr. Marko Suvajdzic</div>
+                    <div className="ml-2" style={{ fontWeight: "600" }}>
+                      Dr. Marko Suvajdzic
+                    </div>
                   </div>
-                  <em>"In my work to promote blockchain technology, BEN has been an invaluable resource."</em>
-
-
-
+                  <em>
+                    "In my work to promote blockchain technology, BEN has been
+                    an invaluable resource."
+                  </em>
                 </div>
               </div>
             </div>
@@ -739,38 +821,55 @@ export default function Home({ locations }) {
 
       */}
 
-
-
-      <section id="ready" className="bg-benorange-300 mx-auto">
-
+      <section id="ready" className="bg-benorange-300 mx-auto p-1">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl font-bold mb-2 text-black">Ready?</h1>
-            <p className="text-xl mb-14 text-black">Get the latest crypto news and event tickets delivered to your inbox 👇</p>
-            <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
+            <p className="text-xl mb-14 text-black">
+              Get the latest crypto news and event tickets delivered to your
+              inbox 👇
+            </p>
+            <div
+              className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto"
+              style={{ "max-width": "800px" }}
+            >
               <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
-                <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=bottom&utm_content=bottom" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+                <iframe
+                  src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=bottom&utm_content=bottom"
+                  data-test-id="beehiiv-embed"
+                  height="52"
+                  frameborder="0"
+                  scrolling="no"
+                  style={{
+                    margin: "0",
+                    borderRadius: "0px",
+                    backgroundColor: "transparent",
+                    width: "100%",
+                  }}
+                ></iframe>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       <Footer />
-    </div >
-  )
+    </div>
+  );
 }
 
 const Container = styled.div`
   width: 100%;
   height: 60vh;
-  minHeight: 588px;
-`
+  minheight: 588px;
+`;
 
 export async function getStaticProps({ params }) {
-  let fetchedProjects = []
+  let fetchedProjects = [];
   while (fetchedProjects.length === 0) {
-    fetchedProjects = await getProjectsFromMonday() || []
+    fetchedProjects = (await getProjectsFromMonday()) || [];
   }
-  return { props: { locations: fetchedProjects }, revalidate: fetchedProjects.length ? 3600 : 1 }
+  return {
+    props: { locations: fetchedProjects },
+    revalidate: fetchedProjects.length ? 3600 : 1,
+  };
 }
