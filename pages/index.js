@@ -325,7 +325,7 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Build your idea with the help of dozens of founders 👇
+              Build your idea with the help of hundreds of alumni 👇
             </div>
 
             <div
