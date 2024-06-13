@@ -100,7 +100,7 @@ export default function Footer() {
                 <li className="text-sm"><a href="https://twitter.com/blockchainedu">Twitter</a></li>
                 <li className="text-sm"><a href="https://facebook.com/blockchainedu">Facebook</a></li>
                 <li className="text-sm"><a href="https://instagram.com/blockchainedu">Instagram</a></li>
-                <li className="text-sm"><a href="https://linkedin.com/in/blockchainedu">LinkedIn</a></li>
+                <li className="text-sm"><a href="https://linkedin.com/company/blockchainedu">LinkedIn</a></li>
                 <li className="text-sm"><a href="https://tiktok.com/@blockchainedu.org">TikTok</a></li>
               </ul>
             </div>
@@ -126,7 +126,7 @@ export default function Footer() {
             />
           </div>
           <div className="font-inter text-white text-sm">
-            © 2023 Blockchain Education Network
+            © 2024 Blockchain Education Network
           </div>
         </div>
       </div>

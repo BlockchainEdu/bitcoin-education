@@ -7,7 +7,7 @@ export default function Contact() {
         <div id="contact-page">
             <HeaderWithLogoDark />
             <Head>
-                <title>Internship | Blockchain Education Network</title>
+                <title>Internships | Blockchain Education Network</title>
             </Head>
             <section className="pt-10 lg:pt-24 py-24 rounded-md mt-4 lg:mt-10">
                 <div className="max-w-4xl m-auto">
