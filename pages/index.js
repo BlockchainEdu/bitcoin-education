@@ -316,7 +316,7 @@ export default function Home({ locations }) {
         >
           <div className="col-span-1 lg:pt-10 lg:order-last">
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
-              Crypto news, events, jobs, & tools!
+              Join the Network
               <span style={{ fontSize: "31px" }}> </span>
               <span className="font-bold"></span>
             </h1>
@@ -325,20 +325,19 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Get exclusive access to crypto events and free conference tickets
-              👇
+              Build your idea with the help of hundreds of alumni 👇
             </div>
 
             <div
               className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto"
-              style={{ "max-width": "800px" }}
+              style={{ "maxWidth": "800px" }}
             >
               <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
                 <iframe
                   src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=top&utm_content=top"
                   data-test-id="beehiiv-embed"
                   height="52"
-                  frameborder="0"
+                  frameBorder="0"
                   scrolling="no"
                   style={{
                     margin: "0",
@@ -427,6 +426,9 @@ export default function Home({ locations }) {
             ></img>
           </div>
         </div>
+        <div className=" m-auto">
+          <PartnersSlider title="" data={companies} />
+        </div>
       </section>
 
       {/*
@@ -451,12 +453,7 @@ export default function Home({ locations }) {
 
 */}
       <section className=" bg-white mt-20">
-        <div className=" m-auto">
-          <PartnersSlider
-            title="Event Partners"
-            data={partners.filter((item) => item.category === "Event Partners")}
-          />
-        </div>
+
       </section>
 
       <section id="benefits" className="py-10 mt-20">
@@ -497,8 +494,12 @@ Leverage a network built over a decade, connecting you to unique partners, marke
           </div>
         </div>
         <div className=" m-auto">
-          <PartnersSlider title="" data={companies} />
+          <PartnersSlider
+            title="Event Partners"
+            data={partners.filter((item) => item.category === "Event Partners")}
+          />
         </div>
+
       </section>
 
       <section className=" bg-white mt-10 mt-20">
@@ -727,7 +728,7 @@ Leverage a network built over a decade, connecting you to unique partners, marke
                                 Advertise With Us
                             </div>
 */}
-                <div class="text-md font-inter">
+                <div className="text-md font-inter">
                   <div className="flex items-center mb-2">
                     <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
                       <img
@@ -809,9 +810,9 @@ Leverage a network built over a decade, connecting you to unique partners, marke
               styling="text-center py-3 rounded-lg text-black"
               onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
             /> */}
-      {/*      <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
+      {/*      <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "maxWidth": "800px" }}>
             <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
-              <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
+              <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameBorder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
             </div>
   </div>
           </div> 
@@ -838,7 +839,7 @@ Leverage a network built over a decade, connecting you to unique partners, marke
                   src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=bottom&utm_content=bottom"
                   data-test-id="beehiiv-embed"
                   height="52"
-                  frameborder="0"
+                  frameBorder="0"
                   scrolling="no"
                   style={{
                     margin: "0",
