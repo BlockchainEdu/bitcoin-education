@@ -414,7 +414,7 @@ export default function Home({ locations }) {
                 </div>
               </div>
               <p className="mt-3 ml-20 text-bengrey-500 text-center text-md">
-                Join 8,000+ subscribers!
+                8,000+ blockchain students over 10 years!
               </p>
             </div>
           </div>
