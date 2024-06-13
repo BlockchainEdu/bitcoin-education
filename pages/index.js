@@ -325,7 +325,7 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Build your idea with the help of hundreds of alumni 👇
+              Build your idea with the help of dozens of founders 👇
             </div>
 
             <div
@@ -414,7 +414,7 @@ export default function Home({ locations }) {
                 </div>
               </div>
               <p className="mt-3 ml-20 text-bengrey-500 text-center text-md">
-                8,000+ blockchain students over 10 years!
+                8,000+ members over 10 years!
               </p>
             </div>
           </div>
@@ -465,15 +465,15 @@ export default function Home({ locations }) {
             Introducing BEN
           </h2>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            <span style={{ color: "#FF872A" }}> Founded in 2014</span> by students from the University of Michigan, MIT,
-            and Stanford, with a mission to educate about blockchain technology.
-            Today, BEN is dedicated to investing in the innovative ideas of
-            talented students and recent graduates from universities worldwide.
+            <span style={{ color: "#FF872A" }}> Founded in 2014</span> by University of Michigan, MIT,
+            and Stanford students with a mission to educate about blockchain.
+            Today, BEN invests in the innovative ideas of
+            talented students and alumni from universities worldwide.
             We aim to foster groundbreaking advancements in fintech, blockchain,
             AI, and the metaverse.
           </p>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            Over the past nine years, we've built a robust network that empowers
+            Over the past ten years, we've built a robust network that empowers
             the next generation of tech pioneers.
           </p>
 
@@ -484,22 +484,30 @@ export default function Home({ locations }) {
             Our Impact
           </h2>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            We have educated and created job opportunities for thousands of university students. 
-            <span style={{ color: "#FF872A" }}> BEN alumni</span> have created enterprises with a combined valuation of <span style={{ color: "#FF872A" }}>~20 billion</span> across blockchain and fintech.
-From ideas on a napkin, to launching into the market we can support your journey from the idea to success.
-Leverage a network built over a decade, connecting you to unique partners, market makers, launchpads, exchanges and more:
+            
+            <span style={{ color: "#FF872A" }}> BEN alumni</span> have started companies with a combined valuation of <span style={{ color: "#FF872A" }}>~20 billion</span>
+</p>            <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">From idea to market we can support your journey.
+Leverage a network built over a decade, connecting you to co-founders, investors, partners, exchanges and more!
           </p>
-          <div className="text-center my-4">
+          <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
+            <StandardButton
+                link="https://t.me/+SMwh8vkel1KnZArV"
+                text="Join Now"
+                color="orange"
+                styling="display-on-scroll mx-4"
+              />
           </div>
         </div>
+      </section>
+
+      <section className=" bg-white mt-10 mt-20">
         <div className=" m-auto">
           <PartnersSlider
-            title="Event Partners"
-            data={partners.filter((item) => item.category === "Event Partners")}
+          title="Event Partners"
+           data={partners.filter((item) => item.category === "Event Partners")}
           />
         </div>
-
       </section>
 
       <section className=" bg-white mt-10 mt-20">
