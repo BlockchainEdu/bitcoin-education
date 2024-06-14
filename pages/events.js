@@ -27,8 +27,8 @@ export default function Events({ eventsByContinent, eventDeals }) {
               <div className="event-name md:text-left text-center w-full">{event.name}</div>
             </div>
             <div className="flex flex-col items-center md:flex-row w-full">
-              <div className="event-date text-center md:text-left w-full mr-auto md:ml-9">{event.date}</div>
-              <div className="event-location w-full text-center md:text-left">{event.location}</div>
+              <div className="event-date text-center md:text-center w-full mr-auto md:ml-9">{event.date}</div>
+              <div className="event-location w-full text-center md:text-left md:ml-36">{event.location}</div>
             </div>
 
           </div>
