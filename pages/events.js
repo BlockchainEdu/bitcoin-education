@@ -1,11 +1,56 @@
-﻿import React from 'react';
+﻿import React, { useEffect, useState } from "react";
 import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import { TeamMemberService } from '../services';
 import Head from "next/head";
 import StandardButton from '../components/standardButton';
 
+import PartnersSlider from "../components/partnersSlider";
 export default function Events({ eventsByContinent, eventDeals }) {
+  const [partners, setPartners] = useState([]);
+
+  useEffect(async () => {
+    let body = {
+      query: `{
+          boards (ids: 1449692436) {
+            items_page (limit: 40) {
+              items {
+                group {
+                    id
+                    title
+                }
+                id
+                name
+                column_values {
+                    id
+                    
+                    value
+                }
+                assets {
+                    public_url
+                }
+              }
+            }
+          }
+      }`,
+    };
+    let result = await TeamMemberService.getMembers(body);
+    console.log(result);
+    if (result?.data?.data?.boards) {
+      let categories_temp = [];
+      let temp = result.data.data.boards[0].items_page.items.map((item) => {
+        !categories_temp.includes(item.group.title) &&
+          categories_temp.push(item.group.title);
+        return {
+          id: item.id,
+          name: item.name,
+          category: item.group.title,
+          url: item.assets[0]?.public_url ? item.assets[0]?.public_url : null,
+        };
+      });
+      setPartners(temp);
+    }
+  }, []);
   const renderEventCard = (event, index) => {
     const deal = eventDeals[event.name];
     let link = null;
@@ -102,6 +147,14 @@ export default function Events({ eventsByContinent, eventDeals }) {
             }
           </div>
         </div>
+        <section className=" bg-white mt-5">
+          <div className=" m-auto">
+            <PartnersSlider
+            title="Event Partners"
+            data={partners.filter((item) => item.category === "Event Partners")}
+            />
+          </div>
+        </section>
         {
           Object.entries(eventsByContinent).map(([continent, eventsList]) => (
             renderEventSection(eventsList, continent)

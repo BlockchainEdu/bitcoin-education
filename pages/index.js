@@ -426,9 +426,6 @@ export default function Home({ locations }) {
             ></img>
           </div>
         </div>
-        <div className=" m-auto">
-          <PartnersSlider title="" data={companies} />
-        </div>
       </section>
 
       {/*
@@ -452,11 +449,8 @@ export default function Home({ locations }) {
       </section>
 
 */}
-      <section className=" bg-white mt-20">
 
-      </section>
-
-      <section id="benefits" className="py-10 mt-20">
+      <section id="benefits" className="py-10 mb-10">
         <div className=" mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
           <h2
             className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl"
@@ -501,12 +495,9 @@ Leverage a network built over a decade, connecting you to co-founders, investors
         </div>
       </section>
 
-      <section className=" bg-white mt-10 mt-20">
+      <section>
         <div className=" m-auto">
-          <PartnersSlider
-          title="Event Partners"
-           data={partners.filter((item) => item.category === "Event Partners")}
-          />
+          <PartnersSlider title="" data={companies} />
         </div>
       </section>
 

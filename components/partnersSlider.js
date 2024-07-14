@@ -39,9 +39,10 @@ const PartnerSlider = ({ data, title }) => {
 
   return (
     <div className="mb-6">
+      {title && 
       <h2 className="text-center font-mont text-4xl md:text-5xl font-white pb-24">
         {title}
-      </h2>
+      </h2>}
       {data.length > 0 && (
         <Slider {...settings}>
           {data.map((item, index) =>
