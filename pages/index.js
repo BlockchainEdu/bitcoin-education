@@ -486,7 +486,7 @@ export default function Home({ locations }) {
         </div>
       </section>
 
-      <section className="bg-benorange-300 py-24 pb-24 mx-auto">
+      <section className="bg-benorange-300 py-24 pb-10 mx-auto">
         <div
           className="bg-benorange-300 mx-auto w-11/12"
           style={{ maxWidth: "1000px" }}
@@ -800,13 +800,8 @@ export default function Home({ locations }) {
       <section id="ready" className="bg-benorange-300 mx-auto p-1">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-2 text-black">Ready?</h1>
-            <p className="text-xl mb-14 text-black">
-              Get the latest crypto news and event tickets delivered to your
-              inbox 👇
-            </p>
             <div
-              className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto"
+              className="flex flex-col lg:flex-row justify-center lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto"
               style={{ "max-width": "800px" }}
             >
               <StandardButton
