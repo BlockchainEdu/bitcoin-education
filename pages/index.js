@@ -329,27 +329,17 @@ export default function Home({ locations }) {
             </div>
 
             <div
-              className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto"
-              style={{ "maxWidth": "800px" }}
+              className="flex flex-col items-center justify-center mt-8 mb-10 "
             >
-              <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
-                <iframe
-                  src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=top&utm_content=top"
-                  data-test-id="beehiiv-embed"
-                  height="52"
-                  frameBorder="0"
-                  scrolling="no"
-                  style={{
-                    margin: "0",
-                    borderRadius: "0px",
-                    backgroundColor: "transparent",
-                    width: "100%",
-                  }}
-                ></iframe>
-              </div>
+              <StandardButton
+                link="https://t.me/+SMwh8kKWR8mF2WkY"
+                text="Join Now"
+                color="orange"
+                styling="display-on-scroll mx-4"
+              />
             </div>
 
-            <div className="col-span-2 mt-12 text-center">
+            <div className="col-span-1 mt-12 text-center">
               <div className="flex justify-center">
                 <div
                   className="w-full grid grid-cols-8 gap-9 relative"
@@ -463,31 +453,17 @@ export default function Home({ locations }) {
             and Stanford students with a mission to educate about blockchain.
             Today, BEN invests in the innovative ideas of
             talented students and alumni from universities worldwide.
-            We aim to foster groundbreaking advancements in fintech, blockchain,
-            AI, and the metaverse.
-          </p>
-          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            Over the past ten years, we've built a robust network that empowers
-            the next generation of tech pioneers.
           </p>
 
-          <h2
-            className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl mt-10"
-            style={{ color: "#FF872A" }}
-          >
-            Our Impact
-          </h2>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
             
-            <span style={{ color: "#FF872A" }}> BEN alumni</span> have started companies with a combined valuation of <span style={{ color: "#FF872A" }}>~20 billion</span>
-</p>            <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">From idea to market we can support your journey.
-Leverage a network built over a decade, connecting you to co-founders, investors, partners, exchanges and more!
-          </p>
-          <div className="text-center mt-20 my-4">
+            <span style={{ color: "#FF872A" }}> BEN alumni</span> have started companies with a combined valuation of <span style={{ color: "#FF872A" }}>~20 billion</span>.
+          </p>            
+      <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
             <StandardButton
-                link="https://t.me/+SMwh8vkel1KnZArV"
-                text="Join Now"
+                link="https://docsend.com/view/x6f5vn82s258h8wc"
+                text="Learn More"
                 color="orange"
                 styling="display-on-scroll mx-4"
               />
@@ -510,7 +486,7 @@ Leverage a network built over a decade, connecting you to co-founders, investors
         </div>
       </section>
 
-      <section className="bg-benorange-300 py-24 pb-24 mx-auto">
+      <section className="bg-benorange-300 py-24 pb-10 mx-auto">
         <div
           className="bg-benorange-300 mx-auto w-11/12"
           style={{ maxWidth: "1000px" }}
@@ -824,30 +800,16 @@ Leverage a network built over a decade, connecting you to co-founders, investors
       <section id="ready" className="bg-benorange-300 mx-auto p-1">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-2 text-black">Ready?</h1>
-            <p className="text-xl mb-14 text-black">
-              Get the latest crypto news and event tickets delivered to your
-              inbox 👇
-            </p>
             <div
-              className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto"
+              className="flex flex-col lg:flex-row justify-center lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto"
               style={{ "max-width": "800px" }}
             >
-              <div className="mx-auto lg:mx-0 w-full lg:w-5/6">
-                <iframe
-                  src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=bottom&utm_content=bottom"
-                  data-test-id="beehiiv-embed"
-                  height="52"
-                  frameBorder="0"
-                  scrolling="no"
-                  style={{
-                    margin: "0",
-                    borderRadius: "0px",
-                    backgroundColor: "transparent",
-                    width: "100%",
-                  }}
-                ></iframe>
-              </div>
+              <StandardButton
+                link="https://t.me/+SMwh8kKWR8mF2WkY"
+                text="Join Now"
+                color="orange"
+                styling="display-on-scroll mx-4"
+              />
             </div>
           </div>
         </div>
