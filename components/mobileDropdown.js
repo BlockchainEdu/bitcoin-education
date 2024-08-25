@@ -78,6 +78,7 @@ export default function MobileDropdown(props) {
                 <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="font-mont text-chablack-300 font-semibold">
                     <li className="mb-8"><a href="/">Home</a></li>
+                    <li className="my-8"><a href="https://benventures.vc">Get Funding</a></li>
                     <li className="my-8"><a href="/events">Events</a></li>
                     <li className="my-8"><a href="/contact">Contact</a></li>
                     <li className="my-8"><a href="/internships">Internships</a></li>
