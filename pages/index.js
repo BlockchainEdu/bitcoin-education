@@ -153,6 +153,12 @@ export default function Home({ locations }) {
       link: "https://www.wanchain.org/",
       url: "/images/fintech/wanchain.webp",
     },
+    {
+      name: "Llama Network",
+      link: "https://www.llamanetwork.xyz/",
+      url: "/images/fintech/llama.jpeg",
+    },
+
   ];
   const [partners, setPartners] = useState([]);
   const [categories, setCategorise] = useState([]);
