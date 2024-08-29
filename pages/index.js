@@ -155,7 +155,7 @@ export default function Home({ locations }) {
     },
     {
       name: "Llama Network",
-      link: "https://www.llamanetwork.xyz/",
+      link: "https://www.llamanetwork.ai/",
       url: "/images/fintech/llama.jpeg",
     },
 
