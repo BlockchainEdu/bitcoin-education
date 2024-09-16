@@ -29,7 +29,7 @@ export default function GetFunding() {
                             BEN Ventures invests into the ideas of talented, bright, and innovative students and recent graduates from top universities.
                         </h2>
                         <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-                        Our deal flow across fintech, blockchain, AI, and metaverse comes from our network we have been curating over the past nine years.
+                        Our deal flow across fintech, blockchain, AI, and metaverse comes from our network we have been curating over the past 10 years.
                         </p>
 
                         <div className="text-center mt-10 my-4">
@@ -58,11 +58,11 @@ export default function GetFunding() {
                                     <h1 className="text-center md:text-left text-4xl md:text-6xl font-black text-black max-w-3xl pt-10 leading-snug">
                                         Our Vision
                                     </h1>
-                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl text-xl md:text-2xl">
                                         BEN Ventures invests into the ideas of talented, bright, and innovative students and recent graduates from top universities.
                                     </p> 
-                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
-                                        Our deal flow across fintech, blockchain, AI, and metaverse comes from our network we have been curating over the past nine years.
+                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl text-xl md:text-2xl">
+                                        Our deal flow across fintech, blockchain, AI, and metaverse comes from our network we have been curating over the past 10 years.
                                     </p>
                                 </div>
                                 <div className="w-full md:w-1/2 mx-auto">
@@ -79,13 +79,13 @@ export default function GetFunding() {
                                     <h1 className="text-center md:text-left text-4xl md:text-6xl font-black text-black max-w-3xl pt-10 leading-snug">
                                     Our History
                                     </h1>
-                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                     BEN was established in 2014 by University of Michigan, MIT, and Stanford students with the goal to educate about blockchain.
                                     </p> 
-                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                     Ever since, our alumni have founded some of the most valuable companies in the space: Augur, GDA Capital, SDM, Optimism, Iota, Injective, Roll, and many more.
                                     </p>
-                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                    <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                     BEN has created over a billion dollars in value from its network, and our aim is to create and capture even more value for in the decade to come...
                                     </p> 
                                 </div>
@@ -99,10 +99,7 @@ export default function GetFunding() {
                     className="mx-auto text-6xl lg:text-6xl font-bold text-center max-w-4xl mt-10"
                     style={{ color: "#FF872A" }}
                     >
-                        The Fund
-                    </h1>
-                    <h1 className="text-center text-4xl font-black text-black ">
-                    Investment Thesis
+                        Investment Thesis
                     </h1>
                     <div className="w-8/12 m-auto">
                         <div className="flex items-center flex-col mr-right ">
@@ -138,13 +135,13 @@ export default function GetFunding() {
                                 <h1 className="text-center text-4xl font-black text-black">
                                 Market Outlook
                                 </h1>
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                 Gartner forecasts estimate that the value generated by blockchain will grow at a very fast pace by the of this decade, from <span style={{ color: "#FF872A" }}>$176B in 2025 to $3.1T by 2030</span>.
                                 </p> 
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                 Additionally, estimated  that Blockchain will support the tracking of over <span style={{ color: "#FF872A" }}>$2T in goods and services annually </span>. Blockchain is set to be transforming business.
                                 </p>
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                 According to Sequoia Capital, the 2020s is poised to be the Crypto decade; with the highest statistical probability of outgrowing other Fintech industries. 
                                 </p> 
                             </div>
@@ -155,6 +152,7 @@ export default function GetFunding() {
                     </div>
                 </section>
 
+{/*
                 <section className='px-10'>
                     <h1
                     className="mx-auto text-6xl lg:text-6xl font-bold text-center max-w-4xl mt-20"
@@ -187,6 +185,7 @@ export default function GetFunding() {
                         </div>
                     </div>
                 </section>
+*/}
 
                 <section className='mx-10'>
                     <h1
@@ -198,11 +197,11 @@ export default function GetFunding() {
                     <div className="max-w-7xl m-auto mt-20">
                         <div className="flex items-center flex-col md:flex-row md:space-x-10">
                             <div className="w-full md:w-1/2">
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl ">
                                     <span style={{ color: "#FF872A" }}>BEN Ventures</span> invests into the ideas of <strong>talented, bright, and innovative</strong> students and recent graduates from top universities.
                                 </p> 
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
-                                    Our deal flow across <strong>fintech, blockchain, AI, and metaverse</strong> comes from our network we have been <strong>curating over the past nine years</strong>.
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
+                                    Our deal flow across <strong>fintech, blockchain, AI, and metaverse</strong> comes from our network we have been <strong>curating over the past 10 years</strong>.
                                 </p>
                             </div>
                             <div className="w-full md:w-1/2 mx-auto">
@@ -227,13 +226,13 @@ export default function GetFunding() {
                             <div className="w-full md:w-1/2">
                                 <h2 className='mx-auto text-5xl font-bold text-center md:text-left' style={{ color: "#FF872A" }}>Jeremy Gardner</h2>
                                 <p className='text-4xl text-center md:text-left'>Venture Partner</p>
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                     Jeremy Gardner founded BEN in 2014 while at the <strong>University of Michigan</strong>. 
                                 </p> 
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                     He has co-founded <strong>Augur, SAAVHA, Disrupt</strong>, and more. He has invested in over 100 startups as an angel and VC.
                                 </p>
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                     Jeremy is currently the Managing Partner at <strong>Ausum Ventures</strong> and <strong>Mystic Ventures</strong>.
                                 </p>
                             </div>
@@ -245,10 +244,10 @@ export default function GetFunding() {
                             <div className="w-full md:w-1/2">
                                 <h2 className='mx-auto text-5xl font-bold text-center md:text-left' style={{ color: "#FF872A" }}>Erick Pinos</h2>
                                 <p className='text-4xl text-center md:text-left'>Managing Partner</p>
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                 Erick Pinos is the President of the BEN. He is a metaverse investor specializing in <strong>virtual land</strong>.
                                 </p> 
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                 Erick has a BS in Management from <strong>MIT</strong>, where he was the President of the <strong>MIT Bitcoin Club</strong>, as well as a researcher at the <strong>MIT Digital Currency Initiative</strong>.
                                 </p>
                             </div>
@@ -260,10 +259,10 @@ export default function GetFunding() {
                             <div className="w-full md:w-1/2">
                                 <h2 className='mx-auto text-5xl font-bold text-center md:text-left' style={{ color: "#FF872A" }}>Antonio Gomes</h2>
                                 <p className='text-4xl text-center md:text-left'>Managing Partner</p>
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                 Antonio is the Director of Operations at BEN, past president of <strong>Gator Blockchain Club</strong>, and a 2020 graduate of B.A at the <strong>Warrington College of Business</strong>. 
                                 </p> 
-                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl">
+                                <p className="text-center md:text-left m-auto md:m-0 text-black text-md pt-2 max-w-xl text-xl md:text-2xl">
                                 Antonio worked for over a year at <strong>Oracle Inc</strong> headquarters with a proven talent for aligning business strategy, then interning at multiple <strong>VC firms</strong> and a <strong>Crypto OTC brokerage</strong>.
                                 </p>
                             </div>
