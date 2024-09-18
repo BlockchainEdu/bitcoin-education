@@ -102,6 +102,7 @@ export default function Footer() {
                 <li className="text-sm"><a href="https://instagram.com/blockchainedu">Instagram</a></li>
                 <li className="text-sm"><a href="https://linkedin.com/company/blockchainedu">LinkedIn</a></li>
                 <li className="text-sm"><a href="https://tiktok.com/@blockchainedu.org">TikTok</a></li>
+                <li className="text-sm"><a href="https://www.youtube.com/@BlockchainEdu">Youtube</a></li>
               </ul>
             </div>
           </div>
