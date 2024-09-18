@@ -71,7 +71,7 @@ export default function GetFunding() {
                             </div>
                         </div>
                         <div className="max-w-7xl m-auto">
-                            <div className="flex items-center flex-col md:flex-row md:space-x-10">
+                            <div className="flex items-center flex-col-reverse md:flex-row md:space-x-10">
                                 <div className="w-full md:w-1/2 mx-auto">
                                     <img className="" src="/images/get-funding/04.webp" />
                                 </div>
@@ -96,7 +96,7 @@ export default function GetFunding() {
 
                 <section className='px-7'>
                     <h1
-                    className="mx-auto text-6xl lg:text-6xl font-bold text-center max-w-4xl mt-10"
+                    className="mx-auto text-4xl lg:text-6xl font-bold text-center max-w-4xl mt-10"
                     style={{ color: "#FF872A" }}
                     >
                         Investment Thesis
@@ -104,7 +104,7 @@ export default function GetFunding() {
                     <div className="w-8/12 m-auto">
                         <div className="flex items-center flex-col mr-right ">
                             <div className="w-full  flex flex-col md:flex-row">
-                                <img className="mr-10 mb-5" src="/images/get-funding/05.webp" />
+                                <img className="md:mr-10 mb-5 mt-5" src="/images/get-funding/05.webp" />
                                 <ul className='m-auto list-disc pl-0 mb-10'>
                                     <li>Scalable to <strong>impact 10 million people.</strong></li>
                                     <li><strong>Driven</strong> by academic research.</li>
@@ -115,7 +115,7 @@ export default function GetFunding() {
                                 </ul>
                             </div>
                             <div className="w-full flex flex-col md:flex-row">
-                                <img className="mr-10 mb-5" src="/images/get-funding/06.webp" />
+                                <img className="md:mr-10 mb-5 mt-5" src="/images/get-funding/06.webp" />
                                 <ul className='m-auto pl-0 list-disc mb-10'>
                                     <li>Purpose-driven <strong>founders</strong> with a minimum time commitment of <strong>5 years</strong>.</li>
                                     <li><strong>Founder-Market Fit</strong></li>
@@ -280,9 +280,9 @@ export default function GetFunding() {
                     <div className="max-w-7xl m-auto mt-10">
                         <div className="flex items-center flex-col md:space-x-10">
                             <p className="text-center md:m-0 text-black text-md pt-2 max-w-xl text-2xl lg:text-2xl">
-                                If you have any questions or concerns, please feel free to reach out to us at contact@benventures.vc
+                                If you have any questions or concerns, please feel free to reach out to us at <a href="mailto:contact@benventures.vc">contact@benventures.vc</a>
                             </p> 
-                            <div className="text-center mt-10 my-4">
+                            <div className="text-center mt-10 my-4 mx-auto p-0">
                                 {/* Your StandardButton or any other content goes here */}
                                 <StandardButton
                                     link="https://docsend.com/view/x6f5vn82s258h8wc"
