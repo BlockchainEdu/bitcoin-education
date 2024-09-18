@@ -282,7 +282,7 @@ export default function GetFunding() {
                             <p className="text-center md:m-0 text-black text-md pt-2 max-w-xl text-2xl lg:text-2xl">
                                 If you have any questions or concerns, please feel free to reach out to us at <a href="mailto:contact@benventures.vc">contact@benventures.vc</a>
                             </p> 
-                            <div className="text-center mt-10 my-4 mx-auto p-0">
+                            <div className="mt-5 mb-5" style={{"margin-left":0}}>
                                 {/* Your StandardButton or any other content goes here */}
                                 <StandardButton
                                     link="https://docsend.com/view/x6f5vn82s258h8wc"
