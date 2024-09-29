@@ -4,6 +4,7 @@ import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import { TeamMemberService } from '../services';
 import Head from "next/head";
 import StandardButton from '../components/standardButton';
+import CustomDropdown from "../components/customDropdown";
 
 import PartnersSlider from "../components/partnersSlider";
 export default function Events({ eventsByContinent, eventDeals }) {
@@ -122,9 +123,10 @@ export default function Events({ eventsByContinent, eventDeals }) {
             <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true&utm_source=website&utm_medium=events&utm_content=events" data-test-id="beehiiv-embed" height="52" frameborder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
           </div>
         </div>
-
-        <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "max-width": "800px" }}>
-          <div className="flex flex-col lg:flex-row justify-center items-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 mx-auto" style={{ "max-width": "800px" }}>
+        <div className="flex flex-col justify-center mt-8 mb-10 m-auto" style={{ maxWidth: "800px" }}>
+          
+          {/* Buttons for large screens */}
+          <div className="hidden lg:flex lex-col lg:flex-row justify-center items-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 mx-auto" style={{ "max-width": "800px" }}>
             {
               Object.entries(eventsByContinent).map(([continent, eventsList]) => (
                 <StandardButton
@@ -145,6 +147,36 @@ export default function Events({ eventsByContinent, eventDeals }) {
                 />
               ))
             }
+          </div>
+          {/* Dropdown for small screens */}
+          <div className="block lg:hidden mx-auto w-full px-4 mb-10 mt-10">
+            <div className="relative">
+              <select
+                className="block apparence-none w-1/2 py-3 mx-auto px-4 rounded-lg bg-orange-500"
+                onChange={(e) => {
+                  const continent = e.target.value;
+                  if (continent) {
+                    const identifier = continent.replace(/\s/g, '');
+                    const targetElement = document.querySelector(`#${identifier}`);
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
+                <option value="" disabled selected hidden>
+                  Select Region
+                </option>
+                {Object.entries(eventsByContinent).map(([continent]) => (
+                  <option key={continent} value={continent} className=" bg-orange-500">
+                    {continent}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M10 12l-6-6h12l-6 6z" />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
         <section className=" bg-white mt-5">
