@@ -4,7 +4,6 @@ import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import { TeamMemberService } from '../services';
 import Head from "next/head";
 import StandardButton from '../components/standardButton';
-import CustomDropdown from "../components/customDropdown";
 
 import PartnersSlider from "../components/partnersSlider";
 export default function Events({ eventsByContinent, eventDeals }) {
