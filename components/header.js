@@ -73,6 +73,7 @@ export default function HeaderWithLogo({ className = "", children }) {
               <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>
               <a className="display-on-scroll px-4 font-semibold" href="/internships">Internships</a>
               <a className="display-on-scroll px-4 font-semibold" href="/team">Team</a>
+              <a className="display-on-scroll px-4 font-semibold" href="/donate">Donate</a>
 
               {/*
               <StandardButton
