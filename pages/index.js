@@ -492,6 +492,18 @@ export default function Home({ locations }) {
         </div>
       </section>
 
+      <section id="benefits" className="py-10 mb-10">
+        <div className=" mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
+          <h2
+            className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl mb-10"
+            style={{ color: "#FF872A" }}
+          >
+            BEN Podcast
+          </h2>
+          <iframe id="player_iframe" src="https://www.buzzsprout.com/1829321?artist=&client_source=large_player&iframe=true&limit=5&referrer=https%3A%2F%2Fwww.buzzsprout.com%2F1829321%2Fpodcast%2Fembed" loading="lazy" width="100%" height="375" frameborder="0" scrolling="no" title="Dropout Capital"></iframe>
+        </div>
+      </section>
+
       <section className="bg-benorange-300 py-24 pb-10 mx-auto">
         <div
           className="bg-benorange-300 mx-auto w-11/12"
