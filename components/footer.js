@@ -69,7 +69,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Quick Links</li>
                 <li className="text-sm"><a href="/donate">Scholarships</a></li>
-                <li className="text-sm"><a href="https://t.me/+SMwh8vkel1KnZArV">Join Now</a></li>
+                <li className="text-sm"><a href="https://x.com/blockchainedu">Join Now</a></li>
                 {/* <li className="text-sm">Programs</li>
                     <li className="text-sm">For Professors</li>
                     <li className="text-sm">For Projects</li>
@@ -98,6 +98,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Socials</li>
                 <li className="text-sm"><a href="https://twitter.com/blockchainedu">Twitter</a></li>
+                <li className="text-sm"><a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">Telegram</a></li>
                 <li className="text-sm"><a href="https://facebook.com/blockchainedu">Facebook</a></li>
                 <li className="text-sm"><a href="https://instagram.com/blockchainedu">Instagram</a></li>
                 <li className="text-sm"><a href="https://linkedin.com/company/blockchainedu">LinkedIn</a></li>
