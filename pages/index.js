@@ -338,7 +338,7 @@ export default function Home({ locations }) {
               className="flex flex-col items-center justify-center mt-8 mb-10 "
             >
               <StandardButton
-                link="https://t.me/+SMwh8kKWR8mF2WkY"
+                link="https://x.com/blockchainedu"
                 text="Join Now"
                 color="orange"
                 styling="display-on-scroll mx-4"
@@ -823,7 +823,7 @@ export default function Home({ locations }) {
               style={{ "max-width": "800px" }}
             >
               <StandardButton
-                link="https://t.me/+SMwh8kKWR8mF2WkY"
+                link="https://x.com/blockchainedu"
                 text="Join Now"
                 color="orange"
                 styling="display-on-scroll mx-4"

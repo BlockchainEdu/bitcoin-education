@@ -81,7 +81,6 @@ export default function MobileDropdown(props) {
                     <li className="my-8"><a href="https://benventures.vc">Get Funding</a></li>
                     <li className="my-8"><a href="/events">Events</a></li>
                     <li className="my-8"><a href="/contact">Contact</a></li>
-                    <li className="my-8"><a href="/internships">Internships</a></li>
                     <li className="mt-8"><a href="/team">Team</a></li>
                     <li className="mt-8"><a href="/donate">Donate</a></li>
                   </ul>

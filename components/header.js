@@ -71,7 +71,6 @@ export default function HeaderWithLogo({ className = "", children }) {
               <a className="display-on-scroll px-4 font-semibold" href="/get-funding">Get Funding</a>
               <a className="display-on-scroll px-4 font-semibold" href="/events">Events</a>
               <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>
-              <a className="display-on-scroll px-4 font-semibold" href="/internships">Internships</a>
               <a className="display-on-scroll px-4 font-semibold" href="/team">Team</a>
               <a className="display-on-scroll px-4 font-semibold" href="/donate">Donate</a>
 
@@ -84,7 +83,7 @@ export default function HeaderWithLogo({ className = "", children }) {
               */}
 
               <StandardButton
-                link="https://t.me/+SMwh8vkel1KnZArV"
+                link="https://x.com/blockchainedu"
                 text="Join Now"
                 color="orange"
                 styling="display-on-scroll mx-4"
