@@ -46,7 +46,7 @@ export default function HeaderWithLogo({ className = "", children }) {
         <ul className={`font-mont text-black w-10/12 ${className}`}>
           <li className="flex justify-end items-center">
 
-          {/* Menu Bar Before Scrolling */}
+            {/* Menu Bar Before Scrolling */}
             {/*
             <a className="hidden-on-scroll px-4 font-semibold" href="/donate">
                 Scholarships
@@ -64,17 +64,18 @@ export default function HeaderWithLogo({ className = "", children }) {
             )}
             */}
 
-          {/* Scrolled Menu Bar */}
+            {/* Scrolled Menu Bar */}
             {scrolled == true && !shouldHideButton && (
               <>
 
-              <a className="display-on-scroll px-4 font-semibold" href="/get-funding">Get Funding</a>
-              <a className="display-on-scroll px-4 font-semibold" href="/events">Events</a>
-              <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>
-              <a className="display-on-scroll px-4 font-semibold" href="/team">Team</a>
-              <a className="display-on-scroll px-4 font-semibold" href="/donate">Donate</a>
+                <a className="display-on-scroll px-4 font-semibold" href="https://dropoutcapital.vc">Get Funding</a>
+                <li className="display-on-scroll px-4 font-semibold"><a href="/sponsor">Sponsor</a></li>
+                <a className="display-on-scroll px-4 font-semibold" href="/events">Events</a>
+                <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>
+                <a className="display-on-scroll px-4 font-semibold" href="/team">Team</a>
+                <a className="display-on-scroll px-4 font-semibold" href="/donate">Donate</a>
 
-              {/*
+                {/*
               <StandardButton
                 link="/donate"
                 text="Scholarships"
@@ -82,14 +83,14 @@ export default function HeaderWithLogo({ className = "", children }) {
               />
               */}
 
-              <StandardButton
-                link="https://x.com/blockchainedu"
-                text="Join Now"
-                color="orange"
-                styling="display-on-scroll mx-4"
-              />
-            </>
-          )}
+                <StandardButton
+                  link="https://x.com/blockchainedu"
+                  text="Join Now"
+                  color="orange"
+                  styling="display-on-scroll mx-4"
+                />
+              </>
+            )}
 
           </li>
         </ul>
