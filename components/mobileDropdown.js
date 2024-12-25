@@ -90,6 +90,7 @@ export default function MobileDropdown(props) {
                   link="https://www.dropoutcapital.vc"
                   text="Invest Now"
                   color="orange"
+                  target="_blank"
                 />
                 {/*
                 <div className="bg-white pb-7 text-center">

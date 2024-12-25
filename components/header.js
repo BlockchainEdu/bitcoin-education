@@ -88,6 +88,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                   text="Invest Now"
                   color="orange"
                   styling="display-on-scroll mx-4"
+                  target="_blank"
                 />
               </>
             )}
