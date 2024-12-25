@@ -10,7 +10,10 @@ export default function Footer() {
   useEffect(() => {
     let timeoutId;
 
-    if (typeof window !== "undefined" && !window.sessionStorage.getItem("hasShownPopup")) {
+    if (
+      typeof window !== "undefined" &&
+      !window.sessionStorage.getItem("hasShownPopup")
+    ) {
       timeoutId = setTimeout(() => {
         window.sessionStorage.setItem("hasShownPopup", true);
         setShowPopup(true);
@@ -21,6 +24,38 @@ export default function Footer() {
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Adiciona o script do Web Component do ElevenLabs no DOM
+    const script = document.createElement("script");
+    script.id = "convai-script";
+    script.src = "https://elevenlabs.io/convai-widget/index.js";
+    script.async = true;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+
+    return () => {
+      // Remove o script ao desmontar o componente
+      const existingScript = document.getElementById("convai-script");
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // Adiciona o script do Web Component diretamente no DOM
+    const script = document.createElement("script");
+    script.src =
+      "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs";
+    script.type = "module";
+    document.body.appendChild(script);
+
+    return () => {
+      // Remove o script quando o componente desmonta
+      document.body.removeChild(script);
     };
   }, []);
 
@@ -40,24 +75,11 @@ export default function Footer() {
             <div className="font-bold mb-3">
               Blockchain Education Network EST. 2014
             </div>
-            <div className="mb-6">
-
-            </div>
+            <div className="mb-6"></div>
             <div className="mb-6">
               625 Kenmoor Ave Suite <br />
               301-97251 Grand Rapids, MI 49546
             </div>
-            {/*
-            <div className="mb-6">
-              <a target="_blank" href="https://drive.google.com/file/d/1DeVoRAEAOzxJQ1jSlykklOakaLs8o_fb/view?usp=sharing" className="text-white underline">
-                Blockchain Education Network is qualified non-profit with designation as a 501 (c)(3) public charity, EIN: 46-5280397
-              </a>
-            </div>
-            <a target="_blank" href="https://drive.google.com/file/d/1FmpY4Lmy5kX1U26q2b13NtQBf4mni5Es/view" className="text-white underline">
-              Blockchain Education Network is a qualified Puerto Rico 1101.01(a)(2)(A)(iv) public charity, as an Educational Organization.
-            </a>
-          */}
-
           </div>
         </div>
         <div className="w-full lg:w-1/2">
@@ -68,16 +90,18 @@ export default function Footer() {
             <div>
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Quick Links</li>
-                <li className="text-sm"><a href="/donate">Scholarships</a></li>
-                <li className="text-sm"><a href="https://x.com/blockchainedu">Join Now</a></li>
-                {/* <li className="text-sm">Programs</li>
-                    <li className="text-sm">For Professors</li>
-                    <li className="text-sm">For Projects</li>
-                    <li className="text-sm">For Clubs</li> */}
+                <li className="text-sm">
+                  <a href="/donate">Scholarships</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://x.com/blockchainedu">Join Now</a>
+                </li>
                 <li className="text-sm">
                   <a href="https://bit.ly/ben-media-kit">Media Kit</a>
                 </li>
-                <li className="text-sm"><a href="/donate">Donate</a></li>
+                <li className="text-sm">
+                  <a href="/donate">Donate</a>
+                </li>
               </ul>
             </div>
             <div>
@@ -97,13 +121,31 @@ export default function Footer() {
             <div>
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Socials</li>
-                <li className="text-sm"><a href="https://twitter.com/blockchainedu">Twitter</a></li>
-                <li className="text-sm"><a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">Telegram</a></li>
-                <li className="text-sm"><a href="https://facebook.com/blockchainedu">Facebook</a></li>
-                <li className="text-sm"><a href="https://instagram.com/blockchainedu">Instagram</a></li>
-                <li className="text-sm"><a href="https://linkedin.com/company/blockchainedu">LinkedIn</a></li>
-                <li className="text-sm"><a href="https://tiktok.com/@blockchainedu.org">TikTok</a></li>
-                <li className="text-sm"><a href="https://www.youtube.com/@BlockchainEdu">Youtube</a></li>
+                <li className="text-sm">
+                  <a href="https://twitter.com/blockchainedu">Twitter</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">
+                    Telegram
+                  </a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://facebook.com/blockchainedu">Facebook</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://instagram.com/blockchainedu">Instagram</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://linkedin.com/company/blockchainedu">
+                    LinkedIn
+                  </a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://tiktok.com/@blockchainedu.org">TikTok</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://www.youtube.com/@BlockchainEdu">Youtube</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -132,6 +174,32 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* ElevenLabs Conversation Widget */}
+      <elevenlabs-convai
+        id="convai-element"
+        agent-id="Q2cd71jD72zRucvMhVwa"
+        class="elevenlabs-container"
+      ></elevenlabs-convai>
+
+      {/* Styling or Animation Container */}
+      <div class="circle-container"></div>
+
+      {/* Lottie Animation */}
+      <dotlottie-player
+        id="green-button"
+        src="https://lottie.host/6ad5d51a-c988-45a5-b021-1783d56f8512/06jywudqbA.lottie"
+        class="lottie-container"
+        background="transparent"
+        speed="1"
+        style={{ width: "88px", height: "88px" }}
+        direction="-1"
+        playMode="normal"
+        loop
+        autoplay
+      ></dotlottie-player>
+
+      <div class="floating-box">Hey, this is Santoshi!</div>
     </section>
   );
 }
