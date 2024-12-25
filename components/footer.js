@@ -68,8 +68,8 @@ export default function Footer() {
             <div>
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Quick Links</li>
-                <li className="text-sm"><a href="/donate">Scholarships</a></li>
-                <li className="text-sm"><a href="https://x.com/blockchainedu">Join Now</a></li>
+                <li className="text-sm"><a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">Build with us</a></li>
+                <li className="text-sm"><a href="https://www.dropoutcapital.vc">Invest Now</a></li>
                 {/* <li className="text-sm">Programs</li>
                     <li className="text-sm">For Professors</li>
                     <li className="text-sm">For Projects</li>
