@@ -342,6 +342,7 @@ export default function Home({ locations }) {
                 text="Invest Now"
                 color="orange"
                 styling="display-on-scroll mx-4"
+                target="_blank"
               />
             </div>
 
@@ -472,6 +473,7 @@ export default function Home({ locations }) {
                 text="Invest Now"
                 color="orange"
                 styling="display-on-scroll mx-4"
+                target="_blank"
               />
           </div>
         </div>
@@ -827,6 +829,7 @@ export default function Home({ locations }) {
                 text="Invest Now"
                 color="orange"
                 styling="display-on-scroll mx-4"
+                target="_blank"
               />
             </div>
           </div>
