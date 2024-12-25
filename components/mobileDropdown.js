@@ -87,8 +87,8 @@ export default function MobileDropdown(props) {
                   </ul>
                 </div>
                 <StandardButton
-                  link="/subscribe"
-                  text="Join Now"
+                  link="https://www.dropoutcapital.vc"
+                  text="Invest Now"
                   color="orange"
                 />
                 {/*

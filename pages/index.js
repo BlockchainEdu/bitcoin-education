@@ -322,7 +322,7 @@ export default function Home({ locations }) {
         >
           <div className="col-span-1 lg:pt-10 lg:order-last">
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
-              Join the Network
+              Invest in the Network
               <span style={{ fontSize: "31px" }}> </span>
               <span className="font-bold"></span>
             </h1>
@@ -331,15 +331,15 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Build your idea with the help of hundreds of alumni 👇
+              Back the next wave of innovation alongside a global alumni network driving ~$20 billion in success 💸
             </div>
 
             <div
               className="flex flex-col items-center justify-center mt-8 mb-10 "
             >
               <StandardButton
-                link="https://x.com/blockchainedu"
-                text="Join Now"
+                link="https://www.dropoutcapital.vc"
+                text="Invest Now"
                 color="orange"
                 styling="display-on-scroll mx-4"
               />
@@ -468,8 +468,8 @@ export default function Home({ locations }) {
       <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
             <StandardButton
-                link="https://docsend.com/view/x6f5vn82s258h8wc"
-                text="Learn More"
+                link="https://www.dropoutcapital.vc"
+                text="Invest Now"
                 color="orange"
                 styling="display-on-scroll mx-4"
               />
@@ -797,7 +797,7 @@ export default function Home({ locations }) {
             <h1 className="text-4xl font-bold mb-14 text-white shadow-lg">Ready?</h1>
 {/*            <StandardButton
               link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
-              text="Join Now"
+              text="Invest Now"
               color="orange"
               target="blank"
               styling="text-center py-3 rounded-lg text-black"
@@ -823,8 +823,8 @@ export default function Home({ locations }) {
               style={{ "max-width": "800px" }}
             >
               <StandardButton
-                link="https://x.com/blockchainedu"
-                text="Join Now"
+                link="https://www.dropoutcapital.vc"
+                text="Invest Now"
                 color="orange"
                 styling="display-on-scroll mx-4"
               />

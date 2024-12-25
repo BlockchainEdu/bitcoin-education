@@ -84,8 +84,8 @@ export default function HeaderWithLogo({ className = "", children }) {
               */}
 
                 <StandardButton
-                  link="https://x.com/blockchainedu"
-                  text="Join Now"
+                  link="https://www.dropoutcapital.vc"
+                  text="Invest Now"
                   color="orange"
                   styling="display-on-scroll mx-4"
                 />
