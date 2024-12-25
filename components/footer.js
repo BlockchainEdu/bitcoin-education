@@ -170,7 +170,7 @@ export default function Footer() {
             />
           </div>
           <div className="font-inter text-white text-sm">
-            © 2024 Blockchain Education Network
+            © 2025 Blockchain Education Network
           </div>
         </div>
       </div>
