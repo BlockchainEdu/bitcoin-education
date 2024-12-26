@@ -1018,27 +1018,17 @@ body {
   padding: 4px 0; /* Adjust the padding as needed */
 }
 
-.circle-container {
-  width: 52.5px;
-  height: 52.5px;
-  border-radius: 50%;
-  background-color: #ff872a;
-  position: fixed;
-  bottom: 59px;
-  right: 48px;
-  z-index: 1;
-}
-
 .lottie-container {
-  bottom: 42px;
-  right: 31px;
+  bottom: 59px;
+  right: 66px;
+
   position: fixed;
   z-index: 10;
 }
 
 elevenlabs-convai {
   position: fixed;
-  bottom: 58px;
+  bottom: 70px;
   left: 0;
   right: 0;
   pointer-events: auto;
@@ -1049,7 +1039,7 @@ elevenlabs-convai {
 .floating-box {
   font-size: 12px;
   font-family: "Inter";
-  background-color: #202127;
+  background-color: #424242;
   color: white;
   padding: 10px;
   border-radius: 8px;
@@ -1059,4 +1049,15 @@ elevenlabs-convai {
   z-index: 10;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+}
+
+.circle-container {
+  width: 52.5px;
+  height: 52.5px;
+  border-radius: 50%;
+  background-color: #ffb77f;
+  position: fixed;
+  bottom: 77px;
+  right: 83px;
+  z-index: 1;
 }

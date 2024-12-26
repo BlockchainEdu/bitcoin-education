@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Subscribe from "./subscribe";
 import Popup from "./popup";
 import Image from "next/image";
 
@@ -28,7 +27,7 @@ export default function Footer() {
   }, []);
 
   useEffect(() => {
-    // Adiciona o script do Web Component do ElevenLabs no DOM
+    // add the script for the elevenlabs web component to the dom
     const script = document.createElement("script");
     script.id = "convai-script";
     script.src = "https://elevenlabs.io/convai-widget/index.js";
@@ -37,7 +36,7 @@ export default function Footer() {
     document.body.appendChild(script);
 
     return () => {
-      // Remove o script ao desmontar o componente
+      // remove the script when unmounting the component
       const existingScript = document.getElementById("convai-script");
       if (existingScript) {
         document.body.removeChild(existingScript);
@@ -46,7 +45,7 @@ export default function Footer() {
   }, []);
 
   useEffect(() => {
-    // Adiciona o script do Web Component diretamente no DOM
+    // add the web component script directly to the dom
     const script = document.createElement("script");
     script.src =
       "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs";
@@ -54,9 +53,35 @@ export default function Footer() {
     document.body.appendChild(script);
 
     return () => {
-      // Remove o script quando o componente desmonta
+      // remove the script when the component unmounts
       document.body.removeChild(script);
     };
+  }, []);
+
+  const [isMicrophoneActive, setIsMicrophoneActive] = useState(false);
+
+  useEffect(() => {
+    let stream; // store the microphone stream to monitor the state
+
+    document
+      .getElementById("convai-element")
+      .addEventListener("click", async () => {
+        try {
+          if (!stream) {
+            // activate microphone if inactive
+            stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            setIsMicrophoneActive(true);
+          } else {
+            // stop all tracks (disable the microphone)
+            stream.getTracks().forEach((track) => track.stop());
+            stream = null;
+            setIsMicrophoneActive(false);
+          }
+        } catch (err) {
+          // if unable to access the microphone
+          setIsMicrophoneActive(false);
+        }
+      });
   }, []);
 
   return (
@@ -114,7 +139,7 @@ export default function Footer() {
                   <a href="/contact">Contact</a>
                 </li>
                 <li className="text-sm">
-                  <a href="/sponsor">Advertise With Us</a>
+                  <a href="/sponsor">Sponsor</a>
                 </li>
               </ul>
             </div>
@@ -179,15 +204,19 @@ export default function Footer() {
       <elevenlabs-convai
         id="convai-element"
         agent-id="Q2cd71jD72zRucvMhVwa"
-        class="elevenlabs-container"
+        className="elevenlabs-container"
       ></elevenlabs-convai>
 
-      {/* Styling or Animation Container */}
-      <div class="circle-container"></div>
+      <div
+        className="circle-container"
+        style={{
+          backgroundColor: isMicrophoneActive ? "#ff7300" : "#ffb77f",
+          transition: "background-color 0.3s ease",
+        }}
+      ></div>
 
-      {/* Lottie Animation */}
       <dotlottie-player
-        id="green-button"
+        id="ai-animation-button"
         src="https://lottie.host/6ad5d51a-c988-45a5-b021-1783d56f8512/06jywudqbA.lottie"
         class="lottie-container"
         background="transparent"
@@ -199,7 +228,10 @@ export default function Footer() {
         autoplay
       ></dotlottie-player>
 
-      <div class="floating-box">Hey, this is Santoshi!</div>
+      <div className="floating-box">
+        Hi, I’m Satoshi! <br />
+        What can I help you with today?
+      </div>
     </section>
   );
 }
