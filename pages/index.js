@@ -158,7 +158,6 @@ export default function Home({ locations }) {
       link: "https://www.llamanetwork.ai/",
       url: "/images/fintech/llama.jpeg",
     },
-
   ];
   const [partners, setPartners] = useState([]);
   const [categories, setCategorise] = useState([]);
@@ -188,7 +187,6 @@ export default function Home({ locations }) {
       }`,
     };
     let result = await TeamMemberService.getMembers(body);
-    console.log(result);
     if (result?.data?.data?.boards) {
       let categories_temp = [];
       let temp = result.data.data.boards[0].items_page.items.map((item) => {
@@ -254,7 +252,6 @@ export default function Home({ locations }) {
   }
   // Add the following useEffect hook at the bottom of the component
   useEffect(() => {
-    console.log("useEffect executed!");
     // Get the query parameter "scroll" from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const scrollParam = urlParams.get("scroll");
@@ -334,9 +331,7 @@ export default function Home({ locations }) {
               Back the next wave of innovation alongside a global alumni network driving ~$20 billion in success 💸
             </div>
 
-            <div
-              className="flex flex-col items-center justify-center mt-8 mb-10 "
-            >
+            <div className="flex flex-col items-center justify-center mt-8 mb-10 ">
               <StandardButton
                 link="https://www.dropoutcapital.vc"
                 text="Invest Now"
@@ -456,17 +451,18 @@ export default function Home({ locations }) {
             Introducing BEN
           </h2>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            <span style={{ color: "#FF872A" }}> Founded in 2014</span> by University of Michigan, MIT,
-            and Stanford students with a mission to educate about blockchain.
-            Today, BEN invests in the innovative ideas of
-            talented students and alumni from universities worldwide.
+            <span style={{ color: "#FF872A" }}> Founded in 2014</span> by
+            University of Michigan, MIT, and Stanford students with a mission to
+            educate about blockchain. Today, BEN invests in the innovative ideas
+            of talented students and alumni from universities worldwide.
           </p>
 
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            
-            <span style={{ color: "#FF872A" }}> BEN alumni</span> have started companies with a combined valuation of <span style={{ color: "#FF872A" }}>~20 billion</span>.
-          </p>            
-      <div className="text-center mt-20 my-4">
+            <span style={{ color: "#FF872A" }}> BEN alumni</span> have started
+            companies with a combined valuation of{" "}
+            <span style={{ color: "#FF872A" }}>~20 billion</span>.
+          </p>
+          <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
             <StandardButton
                 link="https://www.dropoutcapital.vc"
@@ -502,7 +498,16 @@ export default function Home({ locations }) {
           >
             BEN Podcast
           </h2>
-          <iframe id="player_iframe" src="https://www.buzzsprout.com/1829321?artist=&client_source=large_player&iframe=true&limit=5&referrer=https%3A%2F%2Fwww.buzzsprout.com%2F1829321%2Fpodcast%2Fembed" loading="lazy" width="100%" height="375" frameborder="0" scrolling="no" title="Dropout Capital"></iframe>
+          <iframe
+            id="player_iframe"
+            src="https://www.buzzsprout.com/1829321?artist=&client_source=large_player&iframe=true&limit=5&referrer=https%3A%2F%2Fwww.buzzsprout.com%2F1829321%2Fpodcast%2Fembed"
+            loading="lazy"
+            width="100%"
+            height="375"
+            frameborder="0"
+            scrolling="no"
+            title="Dropout Capital"
+          ></iframe>
         </div>
       </section>
 

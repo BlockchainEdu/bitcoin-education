@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Subscribe from "./subscribe";
 import Popup from "./popup";
 import Image from "next/image";
 
@@ -10,7 +9,10 @@ export default function Footer() {
   useEffect(() => {
     let timeoutId;
 
-    if (typeof window !== "undefined" && !window.sessionStorage.getItem("hasShownPopup")) {
+    if (
+      typeof window !== "undefined" &&
+      !window.sessionStorage.getItem("hasShownPopup")
+    ) {
       timeoutId = setTimeout(() => {
         window.sessionStorage.setItem("hasShownPopup", true);
         setShowPopup(true);
@@ -22,6 +24,64 @@ export default function Footer() {
         clearTimeout(timeoutId);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    // add the script for the elevenlabs web component to the dom
+    const script = document.createElement("script");
+    script.id = "convai-script";
+    script.src = "https://elevenlabs.io/convai-widget/index.js";
+    script.async = true;
+    script.type = "text/javascript";
+    document.body.appendChild(script);
+
+    return () => {
+      // remove the script when unmounting the component
+      const existingScript = document.getElementById("convai-script");
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // add the web component script directly to the dom
+    const script = document.createElement("script");
+    script.src =
+      "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs";
+    script.type = "module";
+    document.body.appendChild(script);
+
+    return () => {
+      // remove the script when the component unmounts
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const [isMicrophoneActive, setIsMicrophoneActive] = useState(false);
+
+  useEffect(() => {
+    let stream; // store the microphone stream to monitor the state
+
+    document
+      .getElementById("convai-element")
+      .addEventListener("click", async () => {
+        try {
+          if (!stream) {
+            // activate microphone if inactive
+            stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            setIsMicrophoneActive(true);
+          } else {
+            // stop all tracks (disable the microphone)
+            stream.getTracks().forEach((track) => track.stop());
+            stream = null;
+            setIsMicrophoneActive(false);
+          }
+        } catch (err) {
+          // if unable to access the microphone
+          setIsMicrophoneActive(false);
+        }
+      });
   }, []);
 
   return (
@@ -40,24 +100,11 @@ export default function Footer() {
             <div className="font-bold mb-3">
               Blockchain Education Network EST. 2014
             </div>
-            <div className="mb-6">
-
-            </div>
+            <div className="mb-6"></div>
             <div className="mb-6">
               625 Kenmoor Ave Suite <br />
               301-97251 Grand Rapids, MI 49546
             </div>
-            {/*
-            <div className="mb-6">
-              <a target="_blank" href="https://drive.google.com/file/d/1DeVoRAEAOzxJQ1jSlykklOakaLs8o_fb/view?usp=sharing" className="text-white underline">
-                Blockchain Education Network is qualified non-profit with designation as a 501 (c)(3) public charity, EIN: 46-5280397
-              </a>
-            </div>
-            <a target="_blank" href="https://drive.google.com/file/d/1FmpY4Lmy5kX1U26q2b13NtQBf4mni5Es/view" className="text-white underline">
-              Blockchain Education Network is a qualified Puerto Rico 1101.01(a)(2)(A)(iv) public charity, as an Educational Organization.
-            </a>
-          */}
-
           </div>
         </div>
         <div className="w-full lg:w-1/2">
@@ -77,7 +124,9 @@ export default function Footer() {
                 <li className="text-sm">
                   <a href="https://bit.ly/ben-media-kit">Media Kit</a>
                 </li>
-                <li className="text-sm"><a href="/donate">Donate</a></li>
+                <li className="text-sm">
+                  <a href="/donate">Donate</a>
+                </li>
               </ul>
             </div>
             <div>
@@ -90,20 +139,38 @@ export default function Footer() {
                   <a href="/contact">Contact</a>
                 </li>
                 <li className="text-sm">
-                  <a href="/sponsor">Advertise With Us</a>
+                  <a href="/sponsor">Sponsor</a>
                 </li>
               </ul>
             </div>
             <div>
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Socials</li>
-                <li className="text-sm"><a href="https://twitter.com/blockchainedu">Twitter</a></li>
-                <li className="text-sm"><a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">Telegram</a></li>
-                <li className="text-sm"><a href="https://facebook.com/blockchainedu">Facebook</a></li>
-                <li className="text-sm"><a href="https://instagram.com/blockchainedu">Instagram</a></li>
-                <li className="text-sm"><a href="https://linkedin.com/company/blockchainedu">LinkedIn</a></li>
-                <li className="text-sm"><a href="https://tiktok.com/@blockchainedu.org">TikTok</a></li>
-                <li className="text-sm"><a href="https://www.youtube.com/@BlockchainEdu">Youtube</a></li>
+                <li className="text-sm">
+                  <a href="https://twitter.com/blockchainedu">Twitter</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">
+                    Telegram
+                  </a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://facebook.com/blockchainedu">Facebook</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://instagram.com/blockchainedu">Instagram</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://linkedin.com/company/blockchainedu">
+                    LinkedIn
+                  </a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://tiktok.com/@blockchainedu.org">TikTok</a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://www.youtube.com/@BlockchainEdu">Youtube</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -128,9 +195,42 @@ export default function Footer() {
             />
           </div>
           <div className="font-inter text-white text-sm">
-            © 2024 Blockchain Education Network
+            © 2025 Blockchain Education Network
           </div>
         </div>
+      </div>
+
+      {/* ElevenLabs Conversation Widget */}
+      <elevenlabs-convai
+        id="convai-element"
+        agent-id="4gr5vhQgKtZ54j8vvrV6"
+        className="elevenlabs-container"
+      ></elevenlabs-convai>
+
+      <div
+        className="circle-container"
+        style={{
+          backgroundColor: isMicrophoneActive ? "#ff7300" : "#ffb77f",
+          transition: "background-color 0.3s ease",
+        }}
+      ></div>
+
+      <dotlottie-player
+        id="ai-animation-button"
+        src="https://lottie.host/6ad5d51a-c988-45a5-b021-1783d56f8512/06jywudqbA.lottie"
+        class="lottie-container"
+        background="transparent"
+        speed="1"
+        style={{ width: "88px", height: "88px" }}
+        direction="-1"
+        playMode="normal"
+        loop
+        autoplay
+      ></dotlottie-player>
+
+      <div className="floating-box">
+        Hi, I’m Satoshi! <br />
+        What can I help you with today?
       </div>
     </section>
   );
