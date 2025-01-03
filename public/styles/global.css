@@ -1033,7 +1033,7 @@ elevenlabs-convai {
   right: 0;
   pointer-events: auto;
   z-index: 1000;
-  opacity: 0;
+  opacity: 100;
 }
 
 .floating-box {
