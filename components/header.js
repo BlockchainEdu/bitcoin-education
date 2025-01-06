@@ -68,7 +68,6 @@ export default function HeaderWithLogo({ className = "", children }) {
             {scrolled == true && !shouldHideButton && (
               <>
 
-                <a className="display-on-scroll px-4 font-semibold" href="https://dropoutcapital.vc">Get Funding</a>
                 <li className="display-on-scroll px-4 font-semibold"><a href="/sponsor">Sponsor</a></li>
                 <a className="display-on-scroll px-4 font-semibold" href="/events">Events</a>
                 <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>

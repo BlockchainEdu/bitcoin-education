@@ -328,7 +328,8 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Back the next wave of innovation alongside a global alumni network driving ~$20 billion in success 💸
+              Back the next wave of innovation alongside a global alumni network
+              driving ~$20 billion in success 💸
             </div>
 
             <div className="flex flex-col items-center justify-center mt-8 mb-10 ">
@@ -465,12 +466,12 @@ export default function Home({ locations }) {
           <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
             <StandardButton
-                link="https://www.dropoutcapital.vc"
-                text="Invest Now"
-                color="orange"
-                styling="display-on-scroll mx-4"
-                target="_blank"
-              />
+              link="https://www.dropoutcapital.vc"
+              text="Invest Now"
+              color="orange"
+              styling="display-on-scroll mx-4"
+              target="_blank"
+            />
           </div>
         </div>
       </section>
@@ -517,7 +518,7 @@ export default function Home({ locations }) {
           style={{ maxWidth: "1000px" }}
         >
           <h2 className="mx-auto text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
-            Trusted by 8,000+ weekly readers
+            Testimonials
           </h2>
 
           <div
