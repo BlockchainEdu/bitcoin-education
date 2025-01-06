@@ -145,7 +145,7 @@ export default function Donate() {
         <div className="flex flex-col lg:flex-row max-w-7xl m-auto py-0 lg:py-24">
           <div className="w-full lg:w-4/12">
             <h1 className="text-4xl mx-auto lg:mx-0 md:text-5xl text-center lg:text-left font-black text-white max-w-sm pt-2 leading-snug">
-              Why you should donate?
+              Why should you donate?
             </h1>
             <div className="pt-2">
               <VideoSlider />
