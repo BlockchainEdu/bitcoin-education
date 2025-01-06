@@ -51,7 +51,7 @@ const VideoSlider = () => {
                 },
               }}
               onReady={(event) => {
-                // Store the player instance for this slide
+                // store the player instance for this slide
                 playersRef.current[index] = event.target;
               }}
             />
