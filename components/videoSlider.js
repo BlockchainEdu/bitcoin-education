@@ -32,7 +32,7 @@ const VideoSlider = () => {
                   autoplay: 0, // dont autoplay videos
                   controls: 1, // show playback controls
                   modestbranding: 1, // disable YouTube logo in controls
-                  rel: 0, // do not show related videos at the end
+                  rel: 0, // dont show related videos at the end
                   showinfo: 0, // hide video title and uploader
                 },
               }}
