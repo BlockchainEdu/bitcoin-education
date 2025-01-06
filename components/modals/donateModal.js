@@ -18,7 +18,7 @@ export default function DonateModal(props) {
 
   return (
     <>
-      <div className="relative w-auto mx-auto max-w-2xl">
+      <div className="relative w-auto mx-auto max-w-2xl pb-4">
         {/*content*/}
         <div className="border-0 donation-modal rounded-2xl shadow-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
           {/*body*/}
