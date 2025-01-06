@@ -115,8 +115,16 @@ export default function Footer() {
             <div>
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Quick Links</li>
-                <li className="text-sm"><a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">Build with us</a></li>
-                <li className="text-sm"><a href="https://www.dropoutcapital.vc" target="_blank">Invest Now</a></li>
+                <li className="text-sm">
+                  <a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">
+                    Build with us
+                  </a>
+                </li>
+                <li className="text-sm">
+                  <a href="https://www.dropoutcapital.vc" target="_blank">
+                    Invest Now
+                  </a>
+                </li>
                 {/* <li className="text-sm">Programs</li>
                     <li className="text-sm">For Professors</li>
                     <li className="text-sm">For Projects</li>
@@ -229,8 +237,8 @@ export default function Footer() {
       ></dotlottie-player>
 
       <div className="floating-box">
-        Hi, I’m Satoshi! <br />
-        What can I help you with today?
+        Satoshi, the genius behind Bitcoin, lives in the orange ball!<br />
+        Tap it to chat!<br />
       </div>
     </section>
   );

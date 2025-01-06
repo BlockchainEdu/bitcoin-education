@@ -1023,9 +1023,8 @@ body {
 }
 
 .lottie-container {
-  bottom: 59px;
+  bottom: 78px;
   right: 66px;
-
   position: fixed;
   z-index: 10;
 }
@@ -1041,6 +1040,7 @@ elevenlabs-convai {
 }
 
 .floating-box {
+  width: 200px;
   font-size: 12px;
   font-family: "Inter";
   background-color: #424242;
@@ -1061,7 +1061,7 @@ elevenlabs-convai {
   border-radius: 50%;
   background-color: #ffb77f;
   position: fixed;
-  bottom: 77px;
+  bottom: 95px;
   right: 83px;
   z-index: 1;
 }
