@@ -67,7 +67,7 @@ export default function HeaderWithLogo({ className = "", children }) {
             {/* Scrolled Menu Bar */}
             {scrolled == true && !shouldHideButton && (
               <>
-
+                <li className="display-on-scroll px-4 font-semibold"><a href="/hackerHouse">Hacker House</a></li>
                 <li className="display-on-scroll px-4 font-semibold"><a href="/sponsor">Sponsor</a></li>
                 <a className="display-on-scroll px-4 font-semibold" href="/events">Events</a>
                 <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>

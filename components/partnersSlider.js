@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Slider from "react-slick";
 
 const PartnerSlider = ({ data, title }) => {
+  const randomKeys = useMemo(() => data.map(() => crypto.randomUUID()), [data]);
+
   const settings = {
     infinite: data.length > 4 ? true : false,
     slidesToShow: 5,
@@ -39,24 +41,26 @@ const PartnerSlider = ({ data, title }) => {
 
   return (
     <div className="mb-6">
-      {title && 
-      <h2 className="text-center font-mont text-4xl md:text-5xl font-white pb-24">
-        {title}
-      </h2>}
+      {title && (
+        <h2 className="text-center font-mont text-4xl md:text-5xl font-white pb-24">
+          {title}
+        </h2>
+      )}
       {data.length > 0 && (
         <Slider {...settings}>
           {data.map((item, index) =>
             item.link ? (
-              <a href={item.link} target="_blank">
-                <div key={index} className="font-mont">
+              <a href={item.link} target="_blank" key={randomKeys[index]}>
+                <div className="font-mont">
                   <div
                     className="flex items-center"
                     style={{ height: "175px" }}
                   >
                     <img
                       className="m-auto"
-                      style={{ maxWidth: "200px" }}
+                      style={{ maxWidth: "200px" }} // Corrigido maxWidth
                       src={item.url}
+                      alt={item.name}
                     />
                   </div>
                   <p className="font-bold text-lg pt-10 text-center">
@@ -65,12 +69,13 @@ const PartnerSlider = ({ data, title }) => {
                 </div>
               </a>
             ) : (
-              <div key={index} className="font-mont">
+              <div key={randomKeys[index]} className="font-mont">
                 <div className="flex items-center" style={{ height: "175px" }}>
                   <img
                     className="m-auto"
-                    style={{ maxWidth: "200px" }}
+                    style={{ maxWidth: "200px" }} // Corrigido maxWidth
                     src={item.url}
+                    alt={item.name}
                   />
                 </div>
                 <p className="font-bold text-lg pt-10 text-center">
