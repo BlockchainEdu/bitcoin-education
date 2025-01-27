@@ -9,7 +9,6 @@ import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import IndividualProgram from "../components/individualProgram";
 import PopUpVideo from "../components/popupVideo";
 import Modal from "../components/donateSliderButton";
-import PopupVideo from "../components/popupVideo";
 import StandardButton from "../components/standardButton";
 import { TeamMemberService } from "../services";
 import StoryCard from "../components/storyCard";
@@ -102,38 +101,40 @@ export default function Donate() {
   const [globalClick, setGlobalClick] = useState(false);
   const [teamMembers, setTeamMembers] = useState([]);
 
-  useEffect(async () => {
-    // Get Members list
-    let body = {
-      query: `{
-                boards (ids: 1980354702) {
-                    items {
-                        group {
-                            id
-                            title
-                        }
-                        id
-                        name
-                        column_values {
-                            id
-                            title
-                            value
-                        }
-                        assets {
-                            public_url 
-                        }
-                    }
-                }
-            }`,
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      let body = {
+        query: `{
+          boards (ids: 1980354702) {
+            items {
+              group {
+                id
+                title
+              }
+              id
+              name
+              column_values {
+                id
+                title
+                value
+              }
+              assets {
+                public_url 
+              }
+            }
+          }
+        }`,
+      };
+      let result = await TeamMemberService.getMembers(body);
+      if (result?.data?.data?.boards) {
+        setTeamMembers(result.data.data.boards[0].items);
+      } else {
+        setTeamMembers([]);
+      }
     };
-    let result = await TeamMemberService.getMembers(body);
-    if (result?.data?.data?.boards) {
-      console.log(result.data.data.boards[0].items);
-      setTeamMembers(result.data.data.boards[0].items);
-    } else {
-      setTeamMembers([]);
-    }
-  }, [setTeamMembers]);
+
+    fetchTeamMembers();
+  }, []);
 
   return (
     <div id="partners-page">
@@ -192,8 +193,8 @@ export default function Donate() {
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-                        !function(t,e,i,n,o,c,d,s){t.tgbWidgetOptions = { id: o, domain: n }, (d = e.createElement(i)).src = [n, "widget/script.js"].join(""), d.async = 1, (s = e.getElementById(c)).parentNode.insertBefore(d, s)}(window,document,"script","https://tgbwidget.com/","1189132154","tgb-widget-script");
-  `,
+              !function(t,e,i,n,o,c,d,s){t.tgbWidgetOptions = { id: o, domain: n }, (d = e.createElement(i)).src = [n, "widget/script.js"].join(""), d.async = 1, (s = e.getElementById(c)).parentNode.insertBefore(d, s)}(window,document,"script","https://tgbwidget.com/","1189132154","tgb-widget-script");
+            `,
           }}
         />
         <div className="flex flex-col lg:flex-row justify-between mx-auto max-w-7xl items-center">
@@ -285,19 +286,20 @@ export default function Donate() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 max-w-6xl m-auto gap-y-10 sm:gap-y-4">
-          {Stories.length > 0 &&
-            Stories.map((member) => (
-              <StoryCard
-                image={member.image}
-                name={member.name}
-                title={member.title}
-                bio={member.bio}
-                globalClick={globalClick}
-                setGlobalClick={setGlobalClick}
-              />
-            ))}
-        </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 max-w-6xl m-auto gap-y-10 sm:gap-y-4">
+            {Stories.length > 0 &&
+              Stories.map((member, index) => (
+                <StoryCard
+                  key={index}
+                  image={member.image}
+                  name={member.name}
+                  title={member.title}
+                  bio={member.bio}
+                  globalClick={globalClick}
+                  setGlobalClick={setGlobalClick}
+                />
+              ))}
+               </div>
       </section>
 
       <section>

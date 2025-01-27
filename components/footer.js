@@ -26,63 +26,63 @@ export default function Footer() {
     };
   }, []);
 
-  useEffect(() => {
-    // add the script for the elevenlabs web component to the dom
-    const script = document.createElement("script");
-    script.id = "convai-script";
-    script.src = "https://elevenlabs.io/convai-widget/index.js";
-    script.async = true;
-    script.type = "text/javascript";
-    document.body.appendChild(script);
+  // useEffect(() => {
+  //   // add the script for the elevenlabs web component to the dom
+  //   const script = document.createElement("script");
+  //   script.id = "convai-script";
+  //   script.src = "https://elevenlabs.io/convai-widget/index.js";
+  //   script.async = true;
+  //   script.type = "text/javascript";
+  //   document.body.appendChild(script);
 
-    return () => {
-      // remove the script when unmounting the component
-      const existingScript = document.getElementById("convai-script");
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-    };
-  }, []);
+  //   return () => {
+  //     // remove the script when unmounting the component
+  //     const existingScript = document.getElementById("convai-script");
+  //     if (existingScript) {
+  //       document.body.removeChild(existingScript);
+  //     }
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    // add the web component script directly to the dom
-    const script = document.createElement("script");
-    script.src =
-      "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs";
-    script.type = "module";
-    document.body.appendChild(script);
+  // useEffect(() => {
+  //   // add the web component script directly to the dom
+  //   const script = document.createElement("script");
+  //   script.src =
+  //     "https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs";
+  //   script.type = "module";
+  //   document.body.appendChild(script);
 
-    return () => {
-      // remove the script when the component unmounts
-      document.body.removeChild(script);
-    };
-  }, []);
+  //   return () => {
+  //     // remove the script when the component unmounts
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
 
-  const [isMicrophoneActive, setIsMicrophoneActive] = useState(false);
+  // const [isMicrophoneActive, setIsMicrophoneActive] = useState(false);
 
-  useEffect(() => {
-    let stream; // store the microphone stream to monitor the state
+  // useEffect(() => {
+  //   let stream; // store the microphone stream to monitor the state
 
-    document
-      .getElementById("convai-element")
-      .addEventListener("click", async () => {
-        try {
-          if (!stream) {
-            // activate microphone if inactive
-            stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-            setIsMicrophoneActive(true);
-          } else {
-            // stop all tracks (disable the microphone)
-            stream.getTracks().forEach((track) => track.stop());
-            stream = null;
-            setIsMicrophoneActive(false);
-          }
-        } catch (err) {
-          // if unable to access the microphone
-          setIsMicrophoneActive(false);
-        }
-      });
-  }, []);
+  //   document
+  //     .getElementById("convai-element")
+  //     .addEventListener("click", async () => {
+  //       try {
+  //         if (!stream) {
+  //           // activate microphone if inactive
+  //           stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  //           setIsMicrophoneActive(true);
+  //         } else {
+  //           // stop all tracks (disable the microphone)
+  //           stream.getTracks().forEach((track) => track.stop());
+  //           stream = null;
+  //           setIsMicrophoneActive(false);
+  //         }
+  //       } catch (err) {
+  //         // if unable to access the microphone
+  //         setIsMicrophoneActive(false);
+  //       }
+  //     });
+  // }, []);
 
   return (
     <section className="pt-20 pb-4" style={{ background: "#191C1F" }}>
@@ -209,7 +209,7 @@ export default function Footer() {
       </div>
 
       {/* ElevenLabs Conversation Widget */}
-      <elevenlabs-convai
+      {/* <elevenlabs-convai
         id="convai-element"
         agent-id="4gr5vhQgKtZ54j8vvrV6"
         className="elevenlabs-container"
@@ -239,7 +239,7 @@ export default function Footer() {
       <div className="floating-box">
         Satoshi, the genius behind Bitcoin, lives in the orange ball!<br />
         Tap it to chat!<br />
-      </div>
+      </div>*/}
     </section>
   );
 }
