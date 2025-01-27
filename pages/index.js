@@ -317,8 +317,8 @@ export default function Home({ locations }) {
           className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4"
           style={{ maxWidth: "1000px" }}
         >
-          <div className="col-span-1 lg:pt-10 lg:order-last">
-            <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-5 mb-2">
+          <div className="col-span-1 lg:pt-6 lg:order-last ml-2">
+            <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-0 mb-2">
               Invest in the Network
               <span style={{ fontSize: "31px" }}> </span>
               <span className="font-bold"></span>
@@ -332,7 +332,7 @@ export default function Home({ locations }) {
               driving ~$20 billion in success 💸
             </div>
 
-            <div className="flex flex-col items-center justify-center mt-8 mb-10 ">
+            <div className="flex flex-col items-center justify-center mt-6 mb-7">
               <StandardButton
                 link="https://www.dropoutcapital.vc"
                 text="Invest Now"
@@ -342,71 +342,68 @@ export default function Home({ locations }) {
               />
             </div>
 
-            <div className="col-span-1 mt-12 text-center">
-              <div className="flex justify-center">
-                <div
-                  className="w-full grid grid-cols-8 gap-9 relative"
-                  style={{ margin: "-10px", width: "calc(20px * 8 + 4px * 7)" }}
-                >
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2">
+            <div className="col-span-1 mt-2 text-center">
+              <div className="w-full flex justify-center">
+                <div className="grid grid-cols-8 gap-0">
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2">
                     <img
                       src="/images/people/jelena-djuric.jpeg"
                       alt="User Image 1"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-1">
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-1">
                     <img
                       src="/images/people/matt-batsinelas.jpeg"
                       alt="User Image 2"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-2">
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-2">
                     <img
                       src="/images/people/michael-gord.jpeg"
-                      alt="User Image 2"
-                      className="rounded-full w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-3">
-                    <img
-                      src="/images/people/joey-krug.jpeg"
                       alt="User Image 3"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-4">
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-3">
                     <img
-                      src="/images/people/jinglan-wang.jpeg"
+                      src="/images/people/joey-krug.jpeg"
                       alt="User Image 4"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-5">
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-4">
                     <img
-                      src="/images/jeremygardner.webp"
+                      src="/images/people/jinglan-wang.jpeg"
                       alt="User Image 5"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -z-6">
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-5">
                     <img
-                      src="images/people/ryan-breslow.jpeg"
+                      src="/images/jeremygardner.webp"
                       alt="User Image 6"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
-                  <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2 -z-7">
+                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-6">
+                    <img
+                      src="images/people/ryan-breslow.jpeg"
+                      alt="User Image 7"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2 -ml-2 -z-7">
                     <img
                       src="/images/stories/drew-cousin.jpeg"
-                      alt="User Image 6"
+                      alt="User Image 8"
                       className="rounded-full w-full h-full object-cover"
                     />
                   </div>
                 </div>
               </div>
-              <p className="mt-3 ml-20 text-bengrey-500 text-center text-md">
+              <p className="mt-3 text-bengrey-500 text-center text-md">
                 8,000+ members over 10 years!
               </p>
             </div>
