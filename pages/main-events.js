@@ -105,7 +105,7 @@ export default function Events({ eventsByContinent, eventDeals }) {
     <div id="events-page">
       <HeaderWithLogoDark />
       <Head>
-        <title>Events | Blockchain Education Network</title>
+        <title>Main Events | Blockchain Education Network</title>
       </Head>
 
       <section className="container pt-10 mx-auto">

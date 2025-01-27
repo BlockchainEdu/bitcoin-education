@@ -6,6 +6,7 @@ import DonationButtonSmall from '../components/donateButtonSmall'
 import { ChevronRightIcon } from '@heroicons/react/solid'
 import StandardButton from './standardButton'
 import { useRouter } from 'next/router';
+import { Menu } from '@headlessui/react';
 
 const solutions = [
   {
@@ -83,6 +84,34 @@ export default function MobileDropdown(props) {
                     <li className="my-8"><a href="/contact">Contact</a></li>
                     <li className="mt-8"><a href="/team">Team</a></li>
                     <li className="mt-8"><a href="/donate">Donate</a></li>
+                    <li className="mt-8">
+                    <Menu>
+                    <div className="relative"> {/* Added positioning wrapper */}
+                    <Menu.Button className=" ml-0 font-semibold inline-flex items-center">
+                      Events
+                      <svg className="w-5 h-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </Menu.Button>
+                    <Menu.Items className="absolute left-0 top-full mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a href="/main-events" className={`${active ? 'bg-gray-100' : ''} block px-4 py-2 font-semibold`}>
+                            Main Events
+                          </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <a href="/side-events" className={`${active ? 'bg-gray-100' : ''} block px-4 py-2 font-semibold`}>
+                            Side Events
+                          </a>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </div>
+                </Menu>
+                </li>
                   </ul>
                 </div>
                 <StandardButton
