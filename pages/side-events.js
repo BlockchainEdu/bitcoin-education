@@ -110,7 +110,7 @@ export default function Events({ eventsByContinent, eventDeals }) {
 
       <section className="container pt-10 mx-auto">
         <h1 className="text-center mx-auto text-4xl lg:text-6xl font-black">
-          Events Calendar
+          Side Events Calendar
         </h1>
 
         <p className="text-center mx-auto text-black text-md pt-4 max-w-xl">
