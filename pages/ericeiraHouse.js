@@ -9,14 +9,14 @@ export default function IbizaHackerHouse() {
     <div className="overflow-hidden">
       <Header />
       <Head>
-        <title>Ibiza Hacker House | Build the Future</title>
+        <title>Ericeira Hacker House | Build the Future</title>
       </Head>
 
       {/* Hero Section */}
       <section
         className="relative bg-benorange-500 h-screen flex items-center justify-center text-center"
         style={{
-          backgroundImage: "url('/images/hackerhouse/house.avif')",
+          backgroundImage: "url('/images/hackerhouses/ericeira/main.jpeg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -27,11 +27,11 @@ export default function IbizaHackerHouse() {
         {/* Section Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-6">
           <p className="text-sm uppercase font-light text-white tracking-widest">
-            IBIZA HACKER HOUSE
+            ERICEIRA HACKER HOUSE
           </p>
 
           <h1 className="text-4xl lg:text-5xl font-black text-white leading-snug">
-            Where Visionaries Build the Future in Ibiza
+            Where Visionaries Build the Future in Ericeira
           </h1>
           <p className="text-white text-lg mt-4">
             An Exclusive Mastermind Retreat for Web3’s Top Founders
@@ -47,7 +47,7 @@ export default function IbizaHackerHouse() {
       {/* About Section */}
       <section className="bg-white py-14 px-7">
         <div className="max-w-7xl m-auto text-center">
-          <h2 className="text-4xl font-black text-benblack-500">Why Ibiza?</h2>
+          <h2 className="text-4xl font-black text-benblack-500">Why Ericeira?</h2>
           <p className="text-benblack-500 text-lg mt-6">
             This island has always been a meeting place for creativity and
             forward-thinking ideas. From the Winklevoss twins first learning
@@ -72,7 +72,7 @@ export default function IbizaHackerHouse() {
         <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center lg:items-start">
           <div className="w-full lg:w-6/12 ml-10 mr-10">
             <h2 className="text-3xl font-black text-benblack-500 text-center lg:text-left">
-              Your Stay at the Ibiza Hacker House
+              Your Stay at the Ericeira Hacker House
             </h2>
             <p className="text-bengrey-400 text-center lg:text-left text-lg mt-6 mb-6">
               Tucked in the heart of Sant Antoni de Portmany, this Mediterranean
@@ -100,7 +100,7 @@ export default function IbizaHackerHouse() {
           </div>
 
           <div className="w-full lg:w-6/12 mt-20 lg:mt-20 ml-10 mr-10">
-            <ImageSlider />
+            <ImageSlider location="Ericeira"/>
           </div>
         </div>
       </section>
