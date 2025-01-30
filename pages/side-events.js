@@ -12,7 +12,7 @@ export default function Events({ eventsByContinent, eventDeals }) {
   useEffect(async () => {
     let body = {
       query: `{
-          boards (ids: 8335324210) {
+          boards (ids: 1449692436) {
             items_page (limit: 40) {
               items {
                 group {
@@ -125,7 +125,7 @@ export default function Events({ eventsByContinent, eventDeals }) {
         <div className="flex flex-col justify-center mt-8 mb-10 m-auto" style={{ maxWidth: "800px" }}>
           
           {/* Buttons for large screens */}
-          <div className="hidden lg:flex lex-col lg:flex-row justify-center items-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 mx-auto" style={{ "max-width": "800px" }}>
+          <div className="hidden lg:flex flex-wrap lex-col lg:flex-row justify-center items-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 mx-auto" style={{ "max-width": "800px" }}>
             {
               Object.entries(eventsByContinent).map(([continent, eventsList]) => (
                 <StandardButton
@@ -162,7 +162,7 @@ export default function Events({ eventsByContinent, eventDeals }) {
                 }}
               >
                 <option value="" disabled selected hidden>
-                  Select Region
+                  Select Event
                 </option>
                 {Object.entries(eventsByContinent).map(([continent]) => (
                   <option key={continent} value={continent} className=" bg-orange-500">
@@ -201,7 +201,7 @@ export default function Events({ eventsByContinent, eventDeals }) {
 export async function getStaticProps() {
   const eventsResult = await TeamMemberService.getMembers({
     query: `{
-      boards (ids: 5755322687) {
+      boards (ids: 8335324210) {
         items_page (limit:500){
           items {
             group {
