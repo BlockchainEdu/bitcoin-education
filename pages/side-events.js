@@ -124,31 +124,8 @@ export default function Events({ eventsByContinent, eventDeals }) {
         </div>
         <div className="flex flex-col justify-center mt-8 mb-10 m-auto" style={{ maxWidth: "800px" }}>
           
-          {/* Buttons for large screens */}
-          <div className="hidden lg:flex flex-wrap lex-col lg:flex-row justify-center items-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 mx-auto" style={{ "max-width": "800px" }}>
-            {
-              Object.entries(eventsByContinent).map(([continent, eventsList]) => (
-                <StandardButton
-                  link={`#${continent} `}
-                  text={continent}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    let identifier = continent.replace(/\s/g, '');
-
-                    const targetId = `#${identifier}`;
-                    const targetElement = document.querySelector(targetId);
-
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  color="orange"
-                  styling="text-center py-3 rounded-lg text-white text size 10 m-1 whitespace-nowrap w-full"
-                  linkStyling="w-full lg:w-auto min-w-200px"
-                />
-              ))
-            }
-          </div>
           {/* Dropdown for small screens */}
-          <div className="block lg:hidden mx-auto w-full px-4 mb-10 mt-10">
+          <div className="block mx-auto w-full px-4 mb-10 mt-10">
             <div className="relative">
               <select
                 className="block apparence-none w-1/2 py-3 mx-auto px-4 rounded-lg bg-orange-500"
