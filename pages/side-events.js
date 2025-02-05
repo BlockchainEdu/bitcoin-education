@@ -138,6 +138,7 @@ export default function Events({ eventsByContinent, eventDeals }) {
                   }
                 }}
               >
+                
                 <option value="" disabled selected hidden>
                   Select Event
                 </option>
