@@ -7,14 +7,12 @@ import { useRef } from "react";
 
 const VideoSlider = () => {
   const videoUrls = [
-    "TcpiJq1iZaQ",
     "DvBfOIxNldw",
-    "81hWsZOmOTY",
+    "dSrwr2oj910",
+    "TcpiJq1iZaQ",
     "X55t_B00bRk",
-    "r40LqZxwmdA",
     "6_AzuUhIJmk",
     "8aVwyWurv1E",
-    "dSrwr2oj910",
     "t0s9cNM5NU4",
     "SZvMgIj9r_I",
     "Lvs78FukfpI",
