@@ -9,7 +9,6 @@ const VideoSlider = () => {
   const videoUrls = [
     "DvBfOIxNldw",
     "dSrwr2oj910",
-    "TcpiJq1iZaQ",
     "X55t_B00bRk",
     "6_AzuUhIJmk",
     "8aVwyWurv1E",
