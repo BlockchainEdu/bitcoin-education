@@ -50,7 +50,7 @@ export default function HeaderWithLogo({ className = "", children }) {
             {scrolled == true && !shouldHideButton && (
               <>
 
-                <li className="display-on-scroll px-4 font-semibold"><a href="/sponsor">Sponsor</a></li>
+                <li className="display-on-scroll px-4 font-semibold"><a href="/sponsor">Podcast</a></li>
                 <Menu>
                   <div className="relative px-4 pr-1"> {/* Added positioning wrapper */}
                     <Menu.Button className="font-semibold inline-flex items-center">
@@ -91,7 +91,7 @@ export default function HeaderWithLogo({ className = "", children }) {
               */}
 
                 <StandardButton
-                  link="https://www.dropoutcapital.vc"
+                  link="https://twitter.com/ChainStoriesPod"
                   text="Invest Now"
                   color="orange"
                   styling="display-on-scroll mx-4"

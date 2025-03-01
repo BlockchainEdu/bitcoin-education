@@ -121,8 +121,8 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="text-sm">
-                  <a href="https://www.dropoutcapital.vc" target="_blank">
-                    Invest Now
+                  <a href="https://twitter.com/ChainStoriesPod" target="_blank">
+                    Start Learning
                   </a>
                 </li>
                 {/* <li className="text-sm">Programs</li>
@@ -147,7 +147,7 @@ export default function Footer() {
                   <a href="/contact">Contact</a>
                 </li>
                 <li className="text-sm">
-                  <a href="/sponsor">Sponsor</a>
+                  <a href="/sponsor">Podcast</a>
                 </li>
               </ul>
             </div>

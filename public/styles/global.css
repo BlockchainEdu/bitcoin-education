@@ -1086,3 +1086,12 @@ elevenlabs-convai {
   align-items: center;
   justify-content: center;
 }
+
+.checklist li::before {
+  content: "✓";
+  color: #F7931A; /* BEN orange color */
+  display: inline-block;
+  width: 1em;
+  margin-left: -1.5em;
+  margin-right: 0.5em;
+}
