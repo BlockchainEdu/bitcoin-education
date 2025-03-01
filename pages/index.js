@@ -319,7 +319,7 @@ export default function Home({ locations }) {
         >
           <div className="col-span-1 lg:pt-6 lg:order-last ml-2">
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-0 mb-2">
-              Invest in the Network
+              Empowering Education in Digital Assets
               <span style={{ fontSize: "31px" }}> </span>
               <span className="font-bold"></span>
             </h1>
@@ -328,14 +328,13 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Back the next wave of innovation alongside a global alumni network
-              driving ~$20 billion in success 💸
+              Unbiased digital asset education since 2014—learn, connect, and grow with a global network 💸
             </div>
 
             <div className="flex flex-col items-center justify-center mt-6 mb-7">
               <StandardButton
-                link="https://www.dropoutcapital.vc"
-                text="Invest Now"
+                link="https://twitter.com/ChainStoriesPod"
+                text="Start Learning"
                 color="orange"
                 styling="display-on-scroll mx-4"
                 target="_blank"
@@ -445,26 +444,34 @@ export default function Home({ locations }) {
           <h2
             className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl"
             style={{ color: "#FF872A" }}
+            
           >
             Introducing BEN
           </h2>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            <span style={{ color: "#FF872A" }}> Founded in 2014</span> by
-            University of Michigan, MIT, and Stanford students with a mission to
-            educate about blockchain. Today, BEN invests in the innovative ideas
-            of talented students and alumni from universities worldwide.
+          What began as a handful of students connecting <span style={{color:"#FF872A"}}>Bitcoin clubs</span> quickly ignited a global movement. 
+          In <span style={{color:"#FF872A"}}>2014</span>, Jeremy Gardner, Daniel Bloch, and Maxym Tkacz founded the College Cryptocurrency Network (CCN) at 
+          the University of Michigan with a simple mission—empower students with knowledge. Within months, it expanded to 160+ 
+          chapters in 35+ countries, uniting minds eager to shape the future of digital assets.
           </p>
 
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            <span style={{ color: "#FF872A" }}> BEN alumni</span> have started
-            companies with a combined valuation of{" "}
-            <span style={{ color: "#FF872A" }}>~20 billion</span>.
+          As the space evolved, so did the mission, rebranding as the <span style={{color:"#FF872A"}}>Blockchain Education Network</span> (BEN) 
+          to provide unbiased education that cut through the noise and empowered students to build, innovate, and lead.
+          </p>
+          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
+          From campus meetups to billion-dollar startups, its alumni have founded 
+          IOTA, Optimism, Bitso, Augur, Injective, GDA Capital, and more, proving that 
+          knowledge sparks action. Today, <span style={{color:"#FF872A"}}>BEN</span> thrives as an unbiased non-profit educational network, 
+          providing trusted, accessible education in digital assets. Beyond entrepreneurs, BEN equips governments, 
+          policymakers, and global leaders with the knowledge to shape the geopolitical future, ensuring informed 
+          decisions drive the industry forward.
           </p>
           <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
             <StandardButton
-              link="https://www.dropoutcapital.vc"
-              text="Invest Now"
+              link="https://twitter.com/ChainStoriesPod"
+              text="Start Learning"
               color="orange"
               styling="display-on-scroll mx-4"
               target="_blank"
@@ -494,7 +501,7 @@ export default function Home({ locations }) {
             className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl mb-10"
             style={{ color: "#FF872A" }}
           >
-            BEN Podcast
+            ChainStories Podcast
           </h2>
           <iframe
             id="player_iframe"
@@ -522,9 +529,7 @@ export default function Home({ locations }) {
             className="mx-auto text-lg text-center leading-6 my-6"
             style={{ maxWidth: "610px" }}
           >
-            The Blockchain Education Network delivers founder news, fundraising
-            opportunities, free conference tickets, and insightful educational
-            content.
+          The Blockchain Education Network provides insightful educational content to empower the next generation of digital asset leaders through trusted, unbiased knowledge.
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
             <div
@@ -828,8 +833,8 @@ export default function Home({ locations }) {
               style={{ "max-width": "800px" }}
             >
               <StandardButton
-                link="https://www.dropoutcapital.vc"
-                text="Invest Now"
+                link="https://twitter.com/ChainStoriesPod"
+                text="Start Learning"
                 color="orange"
                 styling="display-on-scroll mx-4"
                 target="_blank"

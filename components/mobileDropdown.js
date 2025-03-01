@@ -79,7 +79,7 @@ export default function MobileDropdown(props) {
                 <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="font-mont text-chablack-300 font-semibold">
                     <li className="mb-8"><a href="/">Home</a></li>
-                    <li className="mt-8"><a href="/sponsor">Sponsor</a></li>
+                    <li className="mt-8"><a href="/sponsor">Podcast</a></li>
                     <li className="mt-8">
                     <Menu>
                       <div className="relative"> {/* Added positioning wrapper */}
@@ -115,8 +115,8 @@ export default function MobileDropdown(props) {
                   </ul>
                 </div>
                 <StandardButton
-                  link="https://www.dropoutcapital.vc"
-                  text="Invest Now"
+                  link="https://twitter.com/ChainStoriesPod"
+                  text="Start Learning"
                   color="orange"
                   target="_blank"
                 />
