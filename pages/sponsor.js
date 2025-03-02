@@ -18,7 +18,7 @@ export default function Sponsor() {
 
 
           <h2 className="text-3xl font-bold text-center">ChainStories Podcast</h2>
-          <p>The ChainStories podcast is interviews ultra-successful founders in digital assets. Hosted by Cryptoniooo, this podcast upholds the highest standards to provide unbiased education and deep insights from the best minds in the industry.
+          <p>The ChainStories podcast interviews ultra-successful founders in digital assets. Hosted by Cryptoniooo, this podcast upholds the highest standards to provide unbiased education and deep insights from the best minds in the industry.
           </p>
           <p>Spots are extremely limited. </p>
 
