@@ -328,7 +328,7 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Unbiased digital asset education since 2014—learn, connect, and grow with a global network 💸
+              Empowering blockchain education since 2014. Learn, connect, and grow with a global network 📚.
             </div>
 
             <div className="flex flex-col items-center justify-center mt-6 mb-7">
