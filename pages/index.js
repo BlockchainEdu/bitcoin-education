@@ -319,7 +319,7 @@ export default function Home({ locations }) {
         >
           <div className="col-span-1 lg:pt-6 lg:order-last ml-2">
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-0 mb-2">
-              Empowering Education in Digital Assets
+            Learn. Innovate. Lead the Future of Web3
               <span style={{ fontSize: "31px" }}> </span>
               <span className="font-bold"></span>
             </h1>
@@ -328,7 +328,7 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Unbiased digital asset education since 2014—learn, connect, and grow with a global network 💸
+              Empowering blockchain education since 2014. Learn, connect, and grow with a global network 📚.
             </div>
 
             <div className="flex flex-col items-center justify-center mt-6 mb-7">
