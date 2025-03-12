@@ -50,7 +50,7 @@ export default function HeaderWithLogo({ className = "", children }) {
             {scrolled == true && !shouldHideButton && (
               <>
 
-                <li className="display-on-scroll px-4 font-semibold"><a href="/sponsor">Podcast</a></li>
+                <li className="display-on-scroll px-4 font-semibold"><a href="/podcast">Podcast</a></li>
                 <Menu>
                   <div className="relative px-4 pr-1"> {/* Added positioning wrapper */}
                     <Menu.Button className="font-semibold inline-flex items-center">
