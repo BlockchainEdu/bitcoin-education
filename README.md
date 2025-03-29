@@ -4,6 +4,19 @@ This example shows how to use [Tailwind CSS](https://tailwindcss.com/) (v2.1) wi
 
 It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
 
+## Environment Setup
+
+1. Copy `.env.example` to `.env.local`:
+```bash
+cp .env.example .env.local
+```
+
+2. Update the environment variables in `.env.local` with your actual values:
+- `NEXT_PUBLIC_MONDAY_API_KEY`: Your Monday.com API key
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Your Stripe publishable key (if using Stripe)
+- `STRIPE_SECRET_KEY`: Your Stripe secret key (if using Stripe)
+- `NEXT_PUBLIC_MAPBOX_KEY`: Your Mapbox key (if using maps)
+
 ## Deploy your own
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
