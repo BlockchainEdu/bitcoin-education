@@ -1,5 +1,4 @@
 import React from "react";
-import Mailchimp from 'react-mailchimp-form'
 import CryptoItemModal from "./modals/cryptoItemModal";
 
 

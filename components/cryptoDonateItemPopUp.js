@@ -1,5 +1,4 @@
 import React from "react";
-import Mailchimp from 'react-mailchimp-form'
 
 export default function CryptoDonateItemPopUp() {
     const [showModal, setShowModal] = React.useState(false);
