@@ -329,6 +329,7 @@ export default function Home({ locations }) {
               Empowering blockchain education since 2014. Learn, connect, and grow with a global network 📚.
             </div>
 
+{/*
             <div className="flex flex-col items-center justify-center mt-6 mb-7">
               <StandardButton
                 link="https://twitter.com/ChainStoriesPod"
@@ -338,6 +339,21 @@ export default function Home({ locations }) {
                 target="_blank"
               />
             </div>
+*/}
+
+            <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "maxWidth": "800px" }}>
+  <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
+    <iframe 
+      src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" 
+      data-test-id="beehiiv-embed" 
+      height="52" 
+      frameBorder="0" 
+      scrolling="no" 
+      style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
+    ></iframe>
+  </div>
+</div>
+
 
             <div className="col-span-1 mt-2 text-center">
               <div className="w-full flex justify-center">
@@ -401,7 +417,7 @@ export default function Home({ locations }) {
                 </div>
               </div>
               <p className="mt-3 text-bengrey-500 text-center text-md">
-                8,000+ members over 10 years!
+                13.8k+ subscribers
               </p>
             </div>
           </div>
@@ -468,7 +484,7 @@ export default function Home({ locations }) {
           <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
             <StandardButton
-              link="https://twitter.com/ChainStoriesPod"
+              link="https://buzzsprout.com/1829321"
               text="Start Learning"
               color="orange"
               styling="display-on-scroll mx-4"
@@ -519,43 +535,16 @@ export default function Home({ locations }) {
           className="bg-benorange-300 mx-auto w-11/12"
           style={{ maxWidth: "1000px" }}
         >
-          <h2 className="mx-auto text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
+          <h2 className="mx-auto mb-10 text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
             Testimonials
           </h2>
 
-          <div
-            className="mx-auto text-lg text-center leading-6 my-6"
-            style={{ maxWidth: "610px" }}
-          >
-          The Blockchain Education Network provides insightful educational content to empower the next generation of digital asset leaders through trusted, unbiased knowledge.
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
             <div
               onClick={() => scrollToSection("ready")}
               className="cursor-pointer"
             >
               <div className="border p-4 rounded-lg bg-white">
-                {/*
-                            <div className="flex justify-between">
-                                <div>
-                                    <Image
-                                        width="65px"
-                                        height="65px"
-                                        src="/images/ben-learn.svg"
-                                    />
-                                </div>
-                                <div>
-                                    <Image
-                                        width="24px"
-                                        height="24px"
-                                        src="/images/home-arrow.svg"
-                                    />
-                                </div>
-                            </div>
-                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                Newsletter
-                            </div>
-*/}
                 <div class="text-md font-inter">
                   <div className="flex items-center mb-2">
                     <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
@@ -583,28 +572,6 @@ export default function Home({ locations }) {
               className="cursor-pointer"
             >
               <div className="border p-4 rounded-lg bg-white">
-                {/*
-                            <div className="flex justify-between">
-                                <div>
-                                    <Image
-                                        width="65px"
-                                        height="65px"
-                                        src="/images/university-club.svg"
-                                    />
-                                </div>
-                                <div>
-                                    <Image
-                                        width="24px"
-                                        height="24px"
-                                        src="/images/home-arrow.svg"
-                                    />
-                                </div>
-                            </div>
-                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                COMMUNITY
-                            </div>
-*/}
-
                 <div class="text-md font-inter">
                   <div className="flex items-center mb-2">
                     <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
@@ -625,110 +592,11 @@ export default function Home({ locations }) {
                 </div>
               </div>
             </div>
-            {/*
-                        <a target="_blank" href="https://docs.google.com/presentation/d/1stVgjgui--ok7uG8t6QFvpGkv9rk2NuCRXIHctkbGN0/edit?usp=sharing" className="border p-8 rounded-lg bg-white">
-*/}
-            {/*
-                            <div className="flex justify-between">
-                                <div>
-                                    <Image
-                                        width="65px"
-                                        height="65px"
-                                        src="/images/ben-financials.svg"
-                                    />
-                                </div>
-                                <div>
-                                    <Image
-                                        width="24px"
-                                        height="24px"
-                                        src="/images/home-arrow.svg"
-                                    />
-                                </div>
-                            </div>
-                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                Ben Financials
-                            </div>
-*/}
-            {/*
-                            <div class="text-sm font-inter">
-                                Check out or latest financial reports and donate to support more Web 3.0 education
-                            </div>
-                        </a>
-*/}
-            {/* <a target="_blank" href="" className="border p-8 rounded-lg bg-white">
-                            <div className="flex justify-between">
-                                <div>
-                                    <Image
-                                        width="65px"
-                                        height="65px"
-                                        src="/images/ben-alumni.svg"
-                                    />
-                                </div>
-                                <div>
-                                    <Image
-                                        width="24px"
-                                        height="24px"
-                                        src="/images/home-arrow.svg"
-                                    />
-                                </div>
-                            </div>
-                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                Ben Alumni
-                            </div>
-                            <div class="text-sm font-inter">
-                                Become part of (or re-join) the largest and longest running blockchain student network in the world to connect with your fellow alumni and share your experience!
-                            </div>
-                        </a> */}
-            {/* <a target="_blank" href="" className="border p-8 rounded-lg bg-white">
-                            <div className="flex justify-between">
-                                <div>
-                                    <Image
-                                        width="65px"
-                                        height="65px"
-                                        src="/images/blockchain-partners.svg"
-                                    />
-                                </div>
-                                <div>
-                                    <Image
-                                        width="24px"
-                                        height="24px"
-                                        src="/images/home-arrow.svg"
-                                    />
-                                </div>
-                            </div>
-                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                Blockchain Partners
-                            </div>
-                            <div class="text-sm font-inter">
-                                BEN partners with committed protocols, startups, corporations and associations that have proven commitment to accelerating the adoption of blockchain technology and are actively seeking to further educate the next generation of blockchain leaders.
-                            </div>
-                        </a> */}
             <div
               onClick={() => scrollToSection("ready")}
               className="cursor-pointer"
             >
               <div className="border p-4 rounded-lg bg-white">
-                {/*
-                            <div className="flex justify-between">
-                                <div>
-                                    <Image
-                                        width="65px"
-                                        height="65px"
-                                        src="/images/about-us.svg"
-                                    />
-                                </div>
-                                <div>
-                                    <Image
-                                        width="24px"
-                                        height="24px"
-                                        src="/images/home-arrow.svg"
-                                    />
-                                </div>
-                            </div>
-                            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
-                                Advertise With Us
-                            </div>
-*/}
                 <div className="text-md font-inter">
                   <div className="flex items-center mb-2">
                     <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
@@ -794,53 +662,45 @@ export default function Home({ locations }) {
       </section>
       */}
 
-      {/*
-
-      <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+{/*
+   <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <div className="rounded-full overflow-hidden mx-auto w-28 h-28 mb-6">
               <img src="/images/ben-logo-white-border.jpg" alt="Image" className="mx-auto w-full h-full" />
             </div>
             <h1 className="text-4xl font-bold mb-14 text-white shadow-lg">Ready?</h1>
-{/*            <StandardButton
+{/*           <StandardButton
               link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
               text="Invest Now"
               color="orange"
               target="blank"
               styling="text-center py-3 rounded-lg text-black"
               onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
-            /> */}
-      {/*      <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "maxWidth": "800px" }}>
-            <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
-              <iframe src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" data-test-id="beehiiv-embed" height="52" frameBorder="0" scrolling="no" style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}></iframe>
-            </div>
+            />
+
+            </div> 
+        </div>
+      </section>
+*/}
+
+<section id="ready" className="bg-benorange-300 py-8">
+  <div className="container mx-auto px-4">
+    <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto" style={{ maxWidth: "800px" }}>
+      <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
+        <iframe 
+          src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" 
+          data-test-id="beehiiv-embed" 
+          height="52" 
+          frameBorder="0" 
+          scrolling="no" 
+          style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
+        ></iframe>
+      </div>
+    </div>
   </div>
-          </div> 
+</section>
 
-        </div>
-      </section>
-
-      */}
-
-      <section id="ready" className="bg-benorange-300 mx-auto p-1">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <div
-              className="flex flex-col lg:flex-row justify-center lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto"
-              style={{ "max-width": "800px" }}
-            >
-              <StandardButton
-                link="https://twitter.com/ChainStoriesPod"
-                text="Start Learning"
-                color="orange"
-                styling="display-on-scroll mx-4"
-                target="_blank"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
       <Footer />
     </div>
   );

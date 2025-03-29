@@ -91,8 +91,8 @@ export default function HeaderWithLogo({ className = "", children }) {
               */}
 
                 <StandardButton
-                  link="https://twitter.com/ChainStoriesPod"
-                  text="Invest Now"
+                  link="https://buzzsprout.com/1829321"
+                  text="Start Learning"
                   color="orange"
                   styling="display-on-scroll mx-4"
                   target="_blank"

@@ -99,42 +99,6 @@ const cryptoInfo = [
 
 export default function Donate() {
   const [globalClick, setGlobalClick] = useState(false);
-  const [teamMembers, setTeamMembers] = useState([]);
-
-  useEffect(() => {
-    const fetchTeamMembers = async () => {
-      let body = {
-        query: `{
-          boards (ids: 1980354702) {
-            items {
-              group {
-                id
-                title
-              }
-              id
-              name
-              column_values {
-                id
-                title
-                value
-              }
-              assets {
-                public_url 
-              }
-            }
-          }
-        }`,
-      };
-      let result = await TeamMemberService.getMembers(body);
-      if (result?.data?.data?.boards) {
-        setTeamMembers(result.data.data.boards[0].items);
-      } else {
-        setTeamMembers([]);
-      }
-    };
-
-    fetchTeamMembers();
-  }, []);
 
   return (
     <div id="partners-page">
@@ -211,21 +175,6 @@ export default function Donate() {
           </div>
         </div>
 
-        {/* <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-y-2 m-auto justify-between p-6 py-7" style={{ border: "1px solid #E5E5E5", maxWidth: "880px" }}>
-                    {teamMembers.length > 0 && teamMembers.map((global, index) => {
-                        return global.group.title == "Crypto" &&
-                            <div key={index}>
-                                <CryptoDonateItem
-                                    name={global.name}
-                                    tickerName={JSON.parse(global.column_values[0].value)}
-                                    address={JSON.parse(global.column_values[3].value)}
-                                    image={global.assets.length > 0 ? global.assets[0]?.public_url : ""}
-                                    qrCode={global.assets.length > 0 ? global.assets[1]?.public_url : ""}
-                                />
-                            </div>
-                    }
-                    )}
-                </div> */}
       </div>
       <section className="bg-benorange-300 pt-14">
         <div className="w-11/12 mx-auto">

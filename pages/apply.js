@@ -455,7 +455,7 @@ export default function Sponsor() {
 
                 </div>
 
-
+{/*
                 <p class="font-inter text-center text-lg mb-4">
                   Interested in investing with us?
                 </p>
@@ -466,7 +466,7 @@ export default function Sponsor() {
                     Invest Now
                   </a>
                 </div>
-
+*/}
 
 
 
