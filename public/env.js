@@ -59,7 +59,6 @@ window.env = {
   "npm_config_package_lock_only": "",
   "npm_config_save_dev": "",
   "npm_config_usage": "",
-  "npm_package_dependencies_react_mailchimp_form": "^1.0.2",
   "npm_package_readmeFilename": "README.md",
   "npm_config_metrics_registry": "http://registry.npmjs.org/",
   "npm_config_https_proxy": "",
