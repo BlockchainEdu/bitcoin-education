@@ -53,7 +53,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                 <li className="display-on-scroll px-4 font-semibold"><a href="/podcast">Podcast</a></li>
                 <Menu>
                   <div className="relative px-4 pr-1"> {/* Added positioning wrapper */}
-                    <Menu.Button className="font-semibold inline-flex items-center">
+                    <Menu.Button className="hidden font-semibold inline-flex items-center">
                       Events
                       <svg className="w-5 h-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -80,7 +80,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                 <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>
                 <a className="display-on-scroll px-4 font-semibold" href="/team">Team</a>
                 <a className="display-on-scroll px-4 font-semibold" href="/donate">Donate</a>
- 
+
 
                 {/*
               <StandardButton
@@ -91,7 +91,7 @@ export default function HeaderWithLogo({ className = "", children }) {
               */}
 
                 <StandardButton
-                  link="https://buzzsprout.com/1829321"
+                  link="https://www.chainstories.xyz/"
                   text="Start Learning"
                   color="orange"
                   styling="display-on-scroll mx-4"

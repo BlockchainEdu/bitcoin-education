@@ -317,7 +317,7 @@ export default function Home({ locations }) {
         >
           <div className="col-span-1 lg:pt-6 lg:order-last ml-2">
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-0 mb-2">
-            Learn. Innovate. Lead the Future of Web3
+              Learn. Innovate. Lead the Future of Web3
               <span style={{ fontSize: "31px" }}> </span>
               <span className="font-bold"></span>
             </h1>
@@ -329,7 +329,7 @@ export default function Home({ locations }) {
               Empowering blockchain education since 2014. Learn, connect, and grow with a global network 📚.
             </div>
 
-{/*
+            {/*
             <div className="flex flex-col items-center justify-center mt-6 mb-7">
               <StandardButton
                 link="https://twitter.com/ChainStoriesPod"
@@ -342,17 +342,17 @@ export default function Home({ locations }) {
 */}
 
             <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "maxWidth": "800px" }}>
-  <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
-    <iframe 
-      src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" 
-      data-test-id="beehiiv-embed" 
-      height="52" 
-      frameBorder="0" 
-      scrolling="no" 
-      style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
-    ></iframe>
-  </div>
-</div>
+              <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
+                <iframe
+                  src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
+                  data-test-id="beehiiv-embed"
+                  height="52"
+                  frameBorder="0"
+                  scrolling="no"
+                  style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
+                ></iframe>
+              </div>
+            </div>
 
 
             <div className="col-span-1 mt-2 text-center">
@@ -458,33 +458,33 @@ export default function Home({ locations }) {
           <h2
             className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl"
             style={{ color: "#FF872A" }}
-            
+
           >
             Introducing BEN
           </h2>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-          What began as a handful of students connecting <span style={{color:"#FF872A"}}>Bitcoin clubs</span> quickly ignited a global movement. 
-          In <span style={{color:"#FF872A"}}>2014</span>, Jeremy Gardner, Daniel Bloch, and Maxym Tkacz founded the College Cryptocurrency Network (CCN) at 
-          the University of Michigan with a simple mission—empower students with knowledge. Within months, it expanded to 160+ 
-          chapters in 35+ countries, uniting minds eager to shape the future of digital assets.
+            What began as a handful of students connecting <span style={{ color: "#FF872A" }}>Bitcoin clubs</span> quickly ignited a global movement.
+            In <span style={{ color: "#FF872A" }}>2014</span>, Jeremy Gardner, Daniel Bloch, and Maxym Tkacz founded the College Cryptocurrency Network (CCN) at
+            the University of Michigan with a simple mission—empower students with knowledge. Within months, it expanded to 160+
+            chapters in 35+ countries, uniting minds eager to shape the future of digital assets.
           </p>
 
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-          As the space evolved, so did the mission, rebranding as the <span style={{color:"#FF872A"}}>Blockchain Education Network</span> (BEN) 
-          to provide unbiased education that cut through the noise and empowered students to build, innovate, and lead.
+            As the space evolved, so did the mission, rebranding as the <span style={{ color: "#FF872A" }}>Blockchain Education Network</span> (BEN)
+            to provide unbiased education that cut through the noise and empowered students to build, innovate, and lead.
           </p>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-          From campus meetups to billion-dollar startups, its alumni have founded 
-          IOTA, Optimism, Bitso, Augur, Injective, GDA Capital, and more, proving that 
-          knowledge sparks action. Today, <span style={{color:"#FF872A"}}>BEN</span> thrives as an unbiased non-profit educational network, 
-          providing trusted, accessible education in digital assets. Beyond entrepreneurs, BEN equips governments, 
-          policymakers, and global leaders with the knowledge to shape the geopolitical future, ensuring informed 
-          decisions drive the industry forward.
+            From campus meetups to billion-dollar startups, its alumni have founded
+            IOTA, Optimism, Bitso, Augur, Injective, GDA Capital, and more, proving that
+            knowledge sparks action. Today, <span style={{ color: "#FF872A" }}>BEN</span> thrives as an unbiased non-profit educational network,
+            providing trusted, accessible education in digital assets. Beyond entrepreneurs, BEN equips governments,
+            policymakers, and global leaders with the knowledge to shape the geopolitical future, ensuring informed
+            decisions drive the industry forward.
           </p>
           <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
             <StandardButton
-              link="https://buzzsprout.com/1829321"
+              link="https://www.chainstories.xyz/"
               text="Start Learning"
               color="orange"
               styling="display-on-scroll mx-4"
@@ -662,7 +662,7 @@ export default function Home({ locations }) {
       </section>
       */}
 
-{/*
+      {/*
    <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -684,22 +684,22 @@ export default function Home({ locations }) {
       </section>
 */}
 
-<section id="ready" className="bg-benorange-300 py-8">
-  <div className="container mx-auto px-4">
-    <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto" style={{ maxWidth: "800px" }}>
-      <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
-        <iframe 
-          src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true" 
-          data-test-id="beehiiv-embed" 
-          height="52" 
-          frameBorder="0" 
-          scrolling="no" 
-          style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
-        ></iframe>
-      </div>
-    </div>
-  </div>
-</section>
+      <section id="ready" className="bg-benorange-300 py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto" style={{ maxWidth: "800px" }}>
+            <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
+              <iframe
+                src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
+                data-test-id="beehiiv-embed"
+                height="52"
+                frameBorder="0"
+                scrolling="no"
+                style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
