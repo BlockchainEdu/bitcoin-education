@@ -121,7 +121,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li className="text-sm">
-                  <a href="https://twitter.com/blockchainedu" target="_blank">
+                  <a href="https://www.chainstories.xyz/" target="_blank">
                     Start Learning
                   </a>
                 </li>
