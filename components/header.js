@@ -93,7 +93,7 @@ export default function HeaderWithLogo({ className = "", children }) {
               */}
 
                 <StandardButton
-                  link="https://www.chainstories.xyz/"
+                  link="https://x.com/BlockchainEdu"
                   text="Start Learning"
                   color="orange"
                   styling="display-on-scroll mx-4"

@@ -476,7 +476,7 @@ export default function Home({ locations }) {
             The <span style={{ color: "#FF872A" }}>Blockchain Education Network</span> (BEN) provides unbiased education that cut through the noise.
           </p>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            Since 2014, BEN alumni have built companies like Optimism, Bitso, and Injective — creating over $10B in market value across the Web3 ecosystem.
+            Since 2014, BEN alumni have built companies like Optimism, Bitso, Injective, and many more — creating over $10B in market value across the Web3 ecosystem.
           </p>
           <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
