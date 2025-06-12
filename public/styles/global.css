@@ -1063,7 +1063,7 @@ elevenlabs-convai {
   position: fixed;
   bottom: 95px;
   right: 83px;
-  z-index: 1;
+  z-index: 10;
 }
 
 .swiper {
@@ -1094,4 +1094,33 @@ elevenlabs-convai {
   width: 1em;
   margin-left: -1.5em;
   margin-right: 0.5em;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #eeeeee8a !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #edededc8 !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #edededaa !important;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto; 
+  max-height: 400px;
+  object-fit: cover; 
+  border-radius: 0.5rem; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .swiper-slide img {
+    max-height: 300px;
+  }
 }

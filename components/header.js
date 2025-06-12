@@ -77,13 +77,10 @@ export default function HeaderWithLogo({ className = "", children }) {
                     </Menu.Items>
                   </div>
                 </Menu>
-
+                <li className="display-on-scroll px-4 font-semibold"><a href="/ibizahouse">Hacker House</a></li>
                 <a className="display-on-scroll px-4 font-semibold" href="/team">Team</a>
                 <a className="display-on-scroll px-4 font-semibold" href="/donate">Donate</a>
-
                 <a className="display-on-scroll px-4 font-semibold" href="/contact">Contact</a>
-
-
                 {/*
               <StandardButton
                 link="/donate"

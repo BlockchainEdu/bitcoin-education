@@ -350,10 +350,10 @@ export default function Donate() {
                 />
               </div>
             </div>
-            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+            <div className="font-inter text-xl uppercase font-semibold mt-4 mb-2">
               Ben Financials
             </div>
-            <div class="text-sm font-inter">
+            <div className="text-sm font-inter">
               Check out or latest financial reports and donate to support more
               Web 3.0 education
             </div>
@@ -376,10 +376,10 @@ export default function Donate() {
                 />
               </div>
             </div>
-            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+            <div className="font-inter text-xl uppercase font-semibold mt-4 mb-2">
               501c3 Status
             </div>
-            <div class="text-sm font-inter">
+            <div className="text-sm font-inter">
               Blockchain Education Network is qualified non-profit with
               designation as a 501 (c)(3) public charity, EIN: 46-5280397
             </div>
@@ -406,10 +406,10 @@ export default function Donate() {
                 />
               </div>
             </div>
-            <div class="font-inter text-xl uppercase font-semibold mt-4 mb-2">
+            <div className="font-inter text-xl uppercase font-semibold mt-4 mb-2">
               1101 Status
             </div>
-            <div class="text-sm font-inter">
+            <div className="text-sm font-inter">
               Blockchain Education Network is a qualified Puerto Rico
               1101.01(a)(2)(A)(iv) public charity, as an Educational
               Organization.
