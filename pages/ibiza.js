@@ -19,6 +19,8 @@ export default function IbizaHackerHouse() {
           backgroundImage: "url('/images/hackerhouses/ibiza/house.avif')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          width: "100vw",
+          height: "100vh",
         }}
       >
         {/* Overlay Layer */}
