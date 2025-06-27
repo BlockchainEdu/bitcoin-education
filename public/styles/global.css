@@ -40,6 +40,11 @@
   cursor: pointer;
 }
 
+.hacker-house-main-text {
+  position: relative;
+  z-index: 1;
+}
+
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
@@ -830,6 +835,11 @@ a {
 }
 
 @media (max-width: 1023px) {
+  .mobile-menu {
+    position: relative;
+    z-index: 999999;
+  }
+
   .header .mobile-menu li > a:not(#always-visible-menu-button),
   .header li > div {
     visibility: visible;
@@ -1089,7 +1099,7 @@ elevenlabs-convai {
 
 .checklist li::before {
   content: "✓";
-  color: #F7931A; /* BEN orange color */
+  color: #f7931a; /* BEN orange color */
   display: inline-block;
   width: 1em;
   margin-left: -1.5em;
@@ -1112,10 +1122,10 @@ elevenlabs-convai {
 
 .swiper-slide img {
   width: 100%;
-  height: auto; 
+  height: auto;
   max-height: 400px;
-  object-fit: cover; 
-  border-radius: 0.5rem; 
+  object-fit: cover;
+  border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 

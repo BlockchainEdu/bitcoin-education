@@ -27,7 +27,7 @@ export default function IbizaHackerHouse() {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
         {/* Section Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-6">
+        <div className="hacker-house-main-text relative z-10 max-w-4xl mx-auto px-6">
           <p className="text-sm uppercase font-light text-white tracking-widest">
             IBIZA HACKER HOUSE
           </p>
