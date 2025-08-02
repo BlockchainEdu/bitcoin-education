@@ -31,13 +31,13 @@ export default function VolunteerPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative h-[90vh] bg-black overflow-hidden">
+      <section className="relative w-full min-h-screen sm:h-[90vh] bg-black overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-contain sm:object-cover z-0"
         >
           <source src="/videos/generation-blockchain.mp4" type="video/mp4" />
           Your browser does not support the video tag.
