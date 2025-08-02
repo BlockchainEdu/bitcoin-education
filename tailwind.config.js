@@ -1,7 +1,7 @@
 module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     extend: {
       colors: {
@@ -47,6 +47,19 @@ module.exports = {
         "-8": "-8",
       },
       scrollBehavior: ["responsive"],
+      backgroundImage: {
+        'radial-glow': 'radial-gradient(ellipse at top, rgba(255,255,255,0.06), transparent 70%)',
+      },
+      keyframes: {
+        'light-swipe': {
+          '0%': { left: '-75%' },
+          '100%': { left: '100%' },
+        },
+      },
+      animation: {
+        'pulse-slow': 'pulse 4s ease-in-out infinite',
+        'light-swipe': 'light-swipe 1.2s ease-in-out forwards',
+      },
     },
   },
   corePlugins: {
