@@ -140,7 +140,6 @@ export default function VolunteerPage() {
           Contact Us
         </a>
       </section>
-
       <Footer />
     </div>
   );
