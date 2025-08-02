@@ -32,12 +32,16 @@
     "react-modal": "^3.14.2",
     "react-modal-video": "^1.2.8",
     "react-slick": "^0.28.1",
+    "react-tsparticles": "^2.12.2",
     "react-youtube": "^10.1.0",
     "rss-parser": "^3.13.0",
     "slick-carousel": "^1.8.1",
     "stripe": "^8.191.0",
     "styled-components": "^5.3.3",
-    "swiper": "^11.2.0"
+    "swiper": "^11.2.0",
+    "tsparticles": "^3.9.0",
+    "tsparticles-engine": "^2.12.0",
+    "tsparticles-slim": "^2.12.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.4.12",
