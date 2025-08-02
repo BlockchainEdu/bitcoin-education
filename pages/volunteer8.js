@@ -44,20 +44,9 @@ export default function VolunteerPage() {
         </video>
 
         <div className="relative z-10 h-full flex flex-col justify-between items-center py-12 text-center">
-          {/* Título no topo */}
           <h1 className="text-4xl lg:text-5xl font-extrabold text-white drop-shadow-sm">
             Volunteer with BEN
           </h1>
-
-          {/* Botão lá embaixo */}
-          <button
-            onClick={() => {
-              rolesRef.current?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="px-6 py-3 bg-benorange-500 text-white rounded-full font-semibold hover:bg-benorange-400 transition"
-          >
-            See Opportunities
-          </button>
         </div>
       </section>
 
