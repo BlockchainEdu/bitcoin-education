@@ -42,12 +42,6 @@ export default function VolunteerPage() {
           <source src="/videos/generation-blockchain.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-
-        <div className="relative z-10 h-full flex flex-col justify-between items-center py-12 text-center">
-          <h1 className="text-4xl lg:text-5xl font-extrabold text-white drop-shadow-sm">
-            Volunteer with BEN
-          </h1>
-        </div>
       </section>
 
       {/* Roles Section */}
