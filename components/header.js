@@ -63,8 +63,8 @@ export default function HeaderWithLogo({ className = "", children }) {
               */}
 
                 <StandardButton
-                  link="https://x.com/BlockchainEdu"
-                  text="Start Learning"
+                  link="/volunteer"
+                  text="Volunteer Now"
                   color="orange"
                   styling="display-on-scroll mx-4"
                   target="_blank"

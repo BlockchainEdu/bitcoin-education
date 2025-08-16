@@ -55,7 +55,38 @@ export default function VolunteerPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
-            {[1, 2, 3, 4, 5, 6].map((_, idx) => (
+            {[
+              {
+                title: "Podcast Editor",
+                description:
+                  "Edit and polish podcast episodes to amplify founder stories.",
+              },
+              {
+                title: "Video & Audio Editor",
+                description:
+                  "Produce engaging video and audio content for our channels.",
+              },
+              {
+                title: "Social Media & Content Strategist",
+                description:
+                  "Craft narratives and manage social channels to grow BEN’s reach.",
+              },
+              {
+                title: "Investor Relations & Business Developer",
+                description:
+                  "Build and maintain relationships with investors and partners.",
+              },
+              {
+                title: "Marketing & Newsletter Writer",
+                description:
+                  "Write sharp newsletters and marketing copy to engage our community.",
+              },
+              {
+                title: "Deal Scout",
+                description:
+                  "Identify and source promising projects and founders for BEN to support.",
+              },
+            ].map((role, idx) => (
               <div
                 key={idx}
                 className="relative group bg-black border border-white/5 rounded-3xl p-10 overflow-hidden shadow-lg transition-all duration-500 ease-in-out hover:bg-neutral-900 hover:border-white/10"
@@ -65,14 +96,13 @@ export default function VolunteerPage() {
                 </div>
 
                 <h3 className="text-lg font-semibold mb-2 text-white drop-shadow-sm">
-                  Volunteer Role #{idx + 1}
+                  {role.title}
                 </h3>
                 <p className="text-white/80 text-sm mb-5 leading-relaxed">
-                  A short description of this position and why it matters to the
-                  mission.
+                  {role.description}
                 </p>
                 <a
-                  href="https://example.com/apply"
+                  href="https://t.me/cryptoniooo"
                   className="inline-block px-5 py-2 rounded-xl font-semibold text-xs tracking-wide text-white bg-benorange-500 transition-all duration-300 hover:text-white hover:bg-benorange-500 hover:scale-105 shadow-md hover:shadow-lg"
                 >
                   Apply Now
@@ -133,7 +163,7 @@ export default function VolunteerPage() {
           to contribute.
         </p>
         <a
-          href="https://example.com/contact"
+          href="https://t.me/cryptoniooo"
           className="inline-block px-8 py-3 bg-white text-benorange-500 font-semibold rounded-full hover:bg-gray-100 transition"
         >
           Contact Us
