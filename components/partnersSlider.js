@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import Slider from "react-slick";
 
 const PartnerSlider = ({ data, title }) => {
-  const randomKeys = useMemo(() => data.map(() => crypto.randomUUID()), [data]);
+  const randomKeys = '' // useMemo(() => data?.map(() => crypto?.randomUUID()), [data]);
 
   const settings = {
     infinite: data.length > 4 ? true : false,

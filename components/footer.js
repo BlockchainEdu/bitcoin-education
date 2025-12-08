@@ -144,10 +144,7 @@ export default function Footer() {
                   <a href="/team">About Us</a>
                 </li>
                 <li className="text-sm">
-                  <a href="/contact">Contact</a>
-                </li>
-                <li className="text-sm">
-                  <a href="/podcast">Podcast</a>
+                  <a href="/partners">Partners</a>
                 </li>
               </ul>
             </div>
