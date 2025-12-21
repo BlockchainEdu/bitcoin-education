@@ -22,6 +22,9 @@ module.exports = {
         bencustomorange: {
           500: "#dc6a13ff",
         },
+        bencustomblack: {
+          500: "#212528",
+        },
       },
       fontSize: {
         "5xl": "2.7rem",

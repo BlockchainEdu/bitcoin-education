@@ -12,7 +12,7 @@ cp .env.example .env.local
 ```
 
 2. Update the environment variables in `.env.local` with your actual values:
-- `NEXT_PUBLIC_MONDAY_API_KEY`: Your Monday.com API key
+- `MONDAY_API_KEY`: Your Monday.com API key
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Your Stripe publishable key (if using Stripe)
 - `STRIPE_SECRET_KEY`: Your Stripe secret key (if using Stripe)
 - `NEXT_PUBLIC_MAPBOX_KEY`: Your Mapbox key (if using maps)

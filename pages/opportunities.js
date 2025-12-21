@@ -158,15 +158,15 @@ export default function Opportunities({ events, eventDeals }) {
       {/* Form section */}
       <section
         id="apply"
-        className="relative py-20 px-6 bg-benorange-500 overflow-hidden"
+        className="relative py-20 px-6 bg-bencustomblack-500 overflow-hidden"
       >
-        <div
+        {/* <div
           className="absolute inset-0 pointer-events-none z-0 bg-cover bg-center opacity-80"
           style={{
             backgroundImage:
               "url('/images/opportunities/blob-scene-haikei.svg')",
           }}
-        />
+        /> */}
 
         <div className="relative z-10 max-w-4xl mx-auto">
           <div className="text-center mb-10">
@@ -296,14 +296,14 @@ export default function Opportunities({ events, eventDeals }) {
             px-10
             py-3
             rounded-full
-            bg-white
-            text-bencustomorange-500
+            bg-benorange-500
+            text-white
             text-sm
             font-semibold
             tracking-wide
             transition-colors
             duration-200
-            hover:bg-benorange-300
+            hover:bg-bencustomorange-500
           "
               >
                 Submit application
@@ -339,6 +339,11 @@ export async function getStaticProps() {
       }
     }`,
   });
+
+  console.log(
+    "TOTAL ITEMS:",
+    eventsResult?.data?.data?.boards[0]?.items_page?.items?.length
+  );
 
   const dealsResult = await TeamMemberService.getMembers({
     query: `{

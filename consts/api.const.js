@@ -1,1 +1,1 @@
-export const APP_URL = "https://api.monday.com/v2";
+export const APP_URL = "/api/monday";
