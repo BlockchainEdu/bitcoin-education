@@ -103,6 +103,7 @@ export default function MobileDropdown(props) {
                   link="https://buzzsprout.com/1829321"
                   text="Start Learning"
                   color="orange"
+                  textColor="white"
                   target="_blank"
                 />
               </div>

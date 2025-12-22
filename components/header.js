@@ -84,6 +84,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                 <StandardButton
                   link="/opportunities#apply"
                   text="Start Learning"
+                  textColor="white"
                   color="orange"
                   styling="display-on-scroll ml-4"
                 />

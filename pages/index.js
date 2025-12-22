@@ -317,9 +317,7 @@ export default function Home({ locations }) {
         >
           <div className="col-span-1 lg:pt-6 lg:order-last ml-2">
             <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-0 mb-2">
-
               Empowering Blockchain Education
-
               <span style={{ fontSize: "31px" }}> </span>
               <span className="font-bold"></span>
             </h1>
@@ -328,9 +326,9 @@ export default function Home({ locations }) {
               className="text-bengrey-500 text-xl text-center mx-auto leading-6"
               style={{ maxWidth: "610px" }}
             >
-              Where crypto founders and investors share success stories since 2014.
+              Where crypto founders and investors share success stories since
+              2014.
             </div>
-
 
             <div className="flex flex-col items-center justify-center mt-6 mb-7">
               <StandardButton
@@ -339,9 +337,9 @@ export default function Home({ locations }) {
                 color="orange"
                 styling="display-on-scroll mx-4"
                 target="_blank"
+                textColor="white"
               />
             </div>
-
 
             {/* <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "maxWidth": "800px" }}>
               <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
@@ -355,8 +353,6 @@ export default function Home({ locations }) {
                 ></iframe>
               </div>
             </div>  */}
-
-
 
             <div className="col-span-1 mt-2 text-center">
               <div className="w-full flex justify-center">
@@ -461,22 +457,28 @@ export default function Home({ locations }) {
           <h2
             className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl"
             style={{ color: "#FF872A" }}
-
           >
             Introducing BEN
           </h2>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            What began as a handful of students connecting <span style={{ color: "#FF872A" }}>Bitcoin clubs</span> quickly ignited a global movement.
-
-            Within months, it expanded to 160+
-            chapters in 35+ countries, uniting minds eager to shape the future of digital assets.
+            What began as a handful of students connecting{" "}
+            <span style={{ color: "#FF872A" }}>Bitcoin clubs</span> quickly
+            ignited a global movement. Within months, it expanded to 160+
+            chapters in 35+ countries, uniting minds eager to shape the future
+            of digital assets.
           </p>
 
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            The <span style={{ color: "#FF872A" }}>Blockchain Education Network</span> (BEN) provides unbiased education that cut through the noise.
+            The{" "}
+            <span style={{ color: "#FF872A" }}>
+              Blockchain Education Network
+            </span>{" "}
+            (BEN) provides unbiased education that cut through the noise.
           </p>
           <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            Since 2014, BEN alumni have built companies like Optimism, Bitso, Injective, and many more — creating over $10B in market value across the Web3 ecosystem.
+            Since 2014, BEN alumni have built companies like Optimism, Bitso,
+            Injective, and many more — creating over $10B in market value across
+            the Web3 ecosystem.
           </p>
           <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
@@ -515,7 +517,6 @@ export default function Home({ locations }) {
            
           
           </h2> >*/}
-
 
       <section className="bg-benorange-300 py-24 pb-10 mx-auto">
         <div
@@ -673,7 +674,10 @@ export default function Home({ locations }) {
 
       <section id="ready" className="bg-benorange-300 py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto" style={{ maxWidth: "800px" }}>
+          <div
+            className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto"
+            style={{ maxWidth: "800px" }}
+          >
             <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
               <iframe
                 src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
@@ -681,7 +685,12 @@ export default function Home({ locations }) {
                 height="52"
                 frameBorder="0"
                 scrolling="no"
-                style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
+                style={{
+                  margin: "0",
+                  borderRadius: "0px",
+                  backgroundColor: "transparent",
+                  width: "100%",
+                }}
               ></iframe>
             </div>
           </div>
@@ -694,10 +703,10 @@ export default function Home({ locations }) {
 }
 
 const Container = styled.div`
-        width: 100%;
-        height: 60vh;
-        minheight: 588px;
-        `;
+  width: 100%;
+  height: 60vh;
+  minheight: 588px;
+`;
 
 export async function getStaticProps({ params }) {
   let fetchedProjects = [];
