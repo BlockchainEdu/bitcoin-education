@@ -1134,3 +1134,11 @@ elevenlabs-convai {
     max-height: 300px;
   }
 }
+
+#unicorns,
+#universities {
+  scroll-margin-top: 96px;
+}
+html {
+  scroll-behavior: smooth;
+}
