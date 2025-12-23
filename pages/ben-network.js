@@ -298,7 +298,7 @@ export default function BenNetwork() {
           { name: "TBC", file: "TBC.png" },
           { name: "Unidentified Logo A", file: "Unidentified-Logo-A.png" },
           { name: "Unidentified Logo B", file: "Unidentified-Logo-B.png" },
-          { name: "VCU", file: "VCU.png" },
+          { name: "VCU", file: "VCU.jpg" },
         ],
       },
       {
@@ -1354,6 +1354,7 @@ export default function BenNetwork() {
           opacity: 0.001;
           animation: revealIn 520ms ease forwards;
         }
+
         @keyframes revealIn {
           to {
             transform: translateY(0);
@@ -1366,7 +1367,6 @@ export default function BenNetwork() {
           .floatv1,
           .floatv2,
           .floatv3,
-          .reveal,
           .logo-card,
           .card-premium,
           .mini-logo,
@@ -1377,6 +1377,10 @@ export default function BenNetwork() {
             animation: none !important;
             transition: none !important;
             transform: none !important;
+          }
+
+          .reveal {
+            opacity: 1 !important;
           }
         }
       `}</style>
