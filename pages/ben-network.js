@@ -303,7 +303,7 @@ export default function BenNetwork() {
         name: "CoinList",
         desc: "Token launch platform and compliant onboarding.",
         href: "#",
-        logoFile: "CoinList.png",
+        logoFile: "CoinList.jpg",
       },
       {
         name: "Axelar",
@@ -321,7 +321,7 @@ export default function BenNetwork() {
         name: "Roll",
         desc: "Social tokens for creators and communities.",
         href: "#",
-        logoFile: "Roll.png",
+        logoFile: "Roll.jpg",
       },
     ],
     []
