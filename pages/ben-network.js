@@ -10,9 +10,11 @@ function imgSrc(path) {
   return encodeURI(path);
 }
 
-function buildImageSrc(dir, file) {
-  if (!dir || !file) return "";
-  return imgSrc(`${BASE}/${dir}/${file}`);
+function joinSrc(...parts) {
+  const clean = parts
+    .filter(Boolean)
+    .map((p) => String(p).replace(/^\/+|\/+$/g, ""));
+  return imgSrc("/" + clean.join("/"));
 }
 
 function setFallbackImage(e, candidates) {
@@ -26,30 +28,30 @@ function setFallbackImage(e, candidates) {
       .filter(Boolean)
   );
 
-  for (const nextSrc of candidates) {
-    if (!nextSrc || tried.has(nextSrc)) continue;
-    tried.add(nextSrc);
+  for (const next of candidates) {
+    if (!next || tried.has(next)) continue;
+    tried.add(next);
     img.dataset.fallbackTried = Array.from(tried).join("|");
-    img.src = nextSrc;
+    img.src = next;
     return;
   }
 }
 
-function renderLogoImg({
+function LogoImage({
   primaryDir,
-  secondaryDir,
   file,
   alt,
   className,
   loading = "lazy",
+  fallbackDirs = [],
 }) {
-  const primary = buildImageSrc(primaryDir, file);
-  const secondary = secondaryDir ? buildImageSrc(secondaryDir, file) : "";
+  const primary = joinSrc(BASE, primaryDir, file);
+  const fallbacks = fallbackDirs.map((d) => joinSrc(BASE, d, file));
 
   return (
     <img
       src={primary}
-      onError={(e) => setFallbackImage(e, [secondary])}
+      onError={(e) => setFallbackImage(e, fallbacks)}
       alt={alt || ""}
       className={className}
       loading={loading}
@@ -582,7 +584,7 @@ export default function BenNetwork() {
 
     for (const item of pick) {
       if (!item?.file) continue;
-      const key = `${item.file}`.toLowerCase();
+      const key = item.file.toLowerCase();
       if (seen.has(key)) continue;
       seen.add(key);
       uniq.push(item);
@@ -657,17 +659,12 @@ export default function BenNetwork() {
                 aria-hidden="true"
               >
                 <div className="floating-chip-inner">
-                  <img
-                    src={buildImageSrc(l.dir || "portfolio-companies", l.file)}
-                    onError={(e) =>
-                      setFallbackImage(e, [
-                        buildImageSrc("portfolio-companies", l.file),
-                        buildImageSrc("companies-from-ben", l.file),
-                      ])
-                    }
-                    alt=""
+                  <LogoImage
+                    primaryDir={l.dir || "companies-from-ben"}
+                    fallbackDirs={["companies-from-ben", "portfolio-companies"]}
+                    file={l.file}
                     className="floating-img"
-                    loading="lazy"
+                    alt=""
                   />
                 </div>
               </div>
@@ -733,13 +730,13 @@ export default function BenNetwork() {
               {portfolioCompanies.map((c) => (
                 <div key={c.name} className="logo-card reveal">
                   <div className="logo-wrap">
-                    {renderLogoImg({
-                      primaryDir: c.dir || "portfolio-companies",
-                      secondaryDir: "companies-from-ben",
-                      file: c.file,
-                      alt: c.name,
-                      className: "logo-img",
-                    })}
+                    <LogoImage
+                      primaryDir={c.dir}
+                      fallbackDirs={["companies-from-ben"]}
+                      file={c.file}
+                      alt={c.name}
+                      className="logo-img"
+                    />
                   </div>
                   <div className="mt-3">
                     <div className="text-sm font-semibold">{c.name}</div>
@@ -820,13 +817,13 @@ export default function BenNetwork() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
               {companiesFromBen.slice(0, 18).map((c) => (
                 <div key={c.name} className="mini-logo reveal">
-                  {renderLogoImg({
-                    primaryDir: c.dir || "companies-from-ben",
-                    secondaryDir: "portfolio-companies",
-                    file: c.file,
-                    alt: c.name,
-                    className: "mini-logo-img",
-                  })}
+                  <LogoImage
+                    primaryDir={c.dir}
+                    fallbackDirs={["portfolio-companies"]}
+                    file={c.file}
+                    alt={c.name}
+                    className="mini-logo-img"
+                  />
                   <div className="mt-2 text-xs font-semibold text-center">
                     {c.name}
                   </div>
@@ -857,17 +854,12 @@ export default function BenNetwork() {
                   <div className="flex items-start gap-4">
                     {p.logoFile ? (
                       <div className="project-logo">
-                        <img
-                          src={buildImageSrc("companies-from-ben", p.logoFile)}
-                          onError={(e) =>
-                            setFallbackImage(e, [
-                              buildImageSrc("portfolio-companies", p.logoFile),
-                              buildImageSrc("companies-from-ben", p.logoFile),
-                            ])
-                          }
+                        <LogoImage
+                          primaryDir="companies-from-ben"
+                          fallbackDirs={["portfolio-companies"]}
+                          file={p.logoFile}
                           alt={p.name}
                           className="project-logo-img"
-                          loading="lazy"
                         />
                       </div>
                     ) : null}
@@ -910,10 +902,7 @@ export default function BenNetwork() {
               <div className="row-grid">
                 {universitiesByRow
                   .flatMap((row) =>
-                    row.items.map((u) => ({
-                      ...u,
-                      row: row.row,
-                    }))
+                    row.items.map((u) => ({ ...u, row: row.row }))
                   )
                   .map((u) => (
                     <div
@@ -925,18 +914,40 @@ export default function BenNetwork() {
                         src={imgSrc(
                           `${BASE}/network-of-universities/${u.row}/${u.file}`
                         )}
+                        onError={(e) =>
+                          setFallbackImage(e, [
+                            imgSrc(
+                              `${BASE}/network-of-universities/${u.row}/${u.file}`
+                            ),
+                            imgSrc(
+                              `${BASE}/network-of-universities/row-1/${u.file}`
+                            ),
+                            imgSrc(
+                              `${BASE}/network-of-universities/row-2/${u.file}`
+                            ),
+                            imgSrc(
+                              `${BASE}/network-of-universities/row-3/${u.file}`
+                            ),
+                            imgSrc(
+                              `${BASE}/network-of-universities/row-4/${u.file}`
+                            ),
+                            imgSrc(
+                              `${BASE}/network-of-universities/row-5/${u.file}`
+                            ),
+                            imgSrc(
+                              `${BASE}/network-of-universities/row-6/${u.file}`
+                            ),
+                            imgSrc(
+                              `${BASE}/network-of-universities/row-7/${u.file}`
+                            ),
+                          ])
+                        }
                         alt={u.name}
                         className="uni-logo-img"
                         loading="lazy"
                       />
                     </div>
                   ))}
-
-                {universitiesByRow.every((r) => r.items.length === 0) ? (
-                  <div className="text-sm text-benblack-500/50 py-4">
-                    Add university logos.
-                  </div>
-                ) : null}
               </div>
             </div>
 
