@@ -13,19 +13,19 @@ function imgSrc(path) {
 export default function BenNetwork() {
   const portfolioCompanies = useMemo(
     () => [
-      { name: "Algebra Finance", tagline: "DeFi", file: "Algebra Finance.jpg" },
+      { name: "Algebra Finance", tagline: "DeFi", file: "Algebra-Finance.jpg" },
       {
         name: "Alpaca Network",
         tagline: "Infrastructure",
-        file: "Alpaca Network.jpeg",
+        file: "Alpaca-Network.jpeg",
       },
       {
         name: "CreatorBid",
         tagline: "Creator economy",
         file: "CreatorBid.jpg",
       },
-      { name: "CWAP SWAP", tagline: "DEX / DeFi", file: "CWAP SWAP.jpg" },
-      { name: "Flashy Cash", tagline: "Payments", file: "Flashy Cash.jpg" },
+      { name: "CWAP SWAP", tagline: "DEX / DeFi", file: "CWAP-SWAP.jpg" },
+      { name: "Flashy Cash", tagline: "Payments", file: "Flashy-Cash.jpg" },
       { name: "G.A.M.E", tagline: "Gaming", file: "G.A.M.E.jpg" },
       { name: "SatLayer", tagline: "Infrastructure", file: "SatLayer.png" },
       { name: "Tenderize", tagline: "Staking", file: "Tenderize.jpg" },
@@ -41,12 +41,12 @@ export default function BenNetwork() {
       {
         name: "Alpha Blockchain",
         tagline: "Research",
-        file: "Alpha Blockchain.png",
+        file: "Alpha-Blockchain.png",
       },
       {
         name: "Au Sum Ventures",
         tagline: "Venture",
-        file: "Au Sum Ventures.png",
+        file: "Au-Sum-Ventures.png",
       },
       { name: "Augur", tagline: "Prediction markets", file: "Augur.png" },
       { name: "Axelar", tagline: "Interoperability", file: "Axelar.png" },
@@ -57,17 +57,17 @@ export default function BenNetwork() {
       {
         name: "Distributed ID",
         tagline: "Identity",
-        file: "Distributed ID.jpg",
+        file: "Distributed-ID.jpg",
       },
       { name: "DropSpaceNFT", tagline: "NFT", file: "DropSpaceNFT.jpg" },
       { name: "Eco", tagline: "Payments", file: "Eco.png" },
-      { name: "GDA Capital", tagline: "Fund", file: "GDA Capital.jpg" },
+      { name: "GDA Capital", tagline: "Fund", file: "GDA-Capital.jpg" },
       { name: "Immuto", tagline: "Data integrity", file: "Immuto.jpg" },
       { name: "Iota", tagline: "DLT", file: "Iota.png" },
       {
         name: "Metaverse Group",
         tagline: "Metaverse",
-        file: "Metaverse Group.png",
+        file: "Metaverse-Group.png",
       },
       { name: "Metis", tagline: "L2", file: "Metis.png" },
       { name: "Optimism", tagline: "L2 infrastructure", file: "Optimism.png" },
@@ -77,7 +77,7 @@ export default function BenNetwork() {
       {
         name: "Secure Digital Markets",
         tagline: "Markets",
-        file: "Secure Digital Markets.png",
+        file: "Secure-Digital-Markets.png",
       },
     ],
     []
@@ -86,235 +86,199 @@ export default function BenNetwork() {
   const universitiesByRow = useMemo(
     () => [
       {
-        row: "Row 1",
+        row: "row-1",
         items: [
           {
             name: "Alabama Blockchain Innovation Academy",
-            file: "Alabama Blockchain Innovation Academy.jpg",
+            file: "Alabama-Blockchain-Innovation-Academy.jpg",
           },
           {
             name: "Association of Cryptocurrency Education",
-            file: "Association of Cryptocurrency Education.png",
+            file: "Association-of-Cryptocurrency-Education.png",
           },
-          { name: "B and C GT", file: "B and C GT.png" },
+          { name: "B and C GT", file: "B-and-C-GT.png" },
           {
             name: "Blockchain at Columbia",
-            file: "Blockchain at Columbia.png",
+            file: "Blockchain-at-Columbia.png",
           },
-          { name: "Crypto Club", file: "Crypto Club.png" },
+          { name: "Crypto Club", file: "Crypto-Club.png" },
           {
             name: "Marquette Blockchain Lab",
-            file: "Marquette Blockchain Lab.jpg",
+            file: "Marquette-Blockchain-Lab.jpg",
           },
-          { name: "Middlebury College", file: "Middlebury College.jpg" },
+          { name: "Middlebury College", file: "Middlebury-College.jpg" },
           { name: "MUBC", file: "MUBC.jpg" },
           { name: "OBC", file: "OBC.png" },
           {
             name: "Oxford Blockchain Society",
-            file: "Oxford Blockchain Society.jpg",
+            file: "Oxford-Blockchain-Society.jpg",
           },
-          { name: "Singapore Polytechnic", file: "Singapore Polytechnic.png" },
+          { name: "Singapore Polytechnic", file: "Singapore-Polytechnic.png" },
           { name: "TBC", file: "TBC.png" },
-          { name: "Unidentified Logo A", file: "Unidentified Logo A.png" },
-          { name: "Unidentified Logo B", file: "Unidentified Logo B.png" },
+          { name: "Unidentified Logo A", file: "Unidentified-Logo-A.png" },
+          { name: "Unidentified Logo B", file: "Unidentified-Logo-B.png" },
           { name: "VCU", file: "VCU.png" },
         ],
       },
       {
-        row: "Row 2",
+        row: "row-2",
         items: [
-          {
-            name: "1848",
-            file: "1848.png",
-          },
-          {
-            name: "BC Blockchain",
-            file: "BC Blockchain.png",
-          },
+          { name: "1848", file: "1848.png" },
+          { name: "BC Blockchain", file: "BC-Blockchain.png" },
           {
             name: "BTC Istanbul Bilgi University",
-            file: "BTC Istanbul Bilgi University.jpg",
+            file: "BTC-Istanbul-Bilgi-University.jpg",
           },
           {
             name: "Harvard Business School",
-            file: "Harvard Business School.png",
+            file: "Harvard-Business-School.png",
           },
-          {
-            name: "HLSBFI",
-            file: "HLSBFI.png",
-          },
-          {
-            name: "Knust Blockchain Hub",
-            file: "Knust Blockchain Hub.jpg",
-          },
-          {
-            name: "Link",
-            file: "Link.png",
-          },
-          {
-            name: "Luu Cabs",
-            file: "Luu Cabs.png",
-          },
+          { name: "HLSBFI", file: "HLSBFI.png" },
+          { name: "Knust Blockchain Hub", file: "Knust-Blockchain-Hub.jpg" },
+          { name: "Link", file: "Link.png" },
+          { name: "Luu Cabs", file: "Luu-Cabs.png" },
           {
             name: "Rutgers Business School Blockchain Hub",
-            file: "Rutgers Business School Blockchain Hub.png",
+            file: "Rutgers-Business-School-Blockchain-Hub.png",
           },
-          {
-            name: "Spartan Blockchain",
-            file: "Spartan Blockchain.png",
-          },
-          {
-            name: "UB",
-            file: "UB.png",
-          },
-          {
-            name: "Unidentified Logo C",
-            file: "Unidentified Logo C.png",
-          },
-          {
-            name: "Unidentified Logo D",
-            file: "Unidentified Logo D.png",
-          },
-          {
-            name: "Unidentified Logo E",
-            file: "Unidentified Logo E.png",
-          },
-          {
-            name: "WSU Blockchain Club",
-            file: "WSU Blockchain Club.png",
-          },
+          { name: "Spartan Blockchain", file: "Spartan-Blockchain.png" },
+          { name: "UB", file: "UB.png" },
+          { name: "Unidentified Logo C", file: "Unidentified-Logo-C.png" },
+          { name: "Unidentified Logo D", file: "Unidentified-Logo-D.png" },
+          { name: "Unidentified Logo E", file: "Unidentified-Logo-E.png" },
+          { name: "WSU Blockchain Club", file: "WSU-Blockchain-Club.png" },
         ],
       },
       {
-        row: "Row 3",
+        row: "row-3",
         items: [
           { name: "B.TECH", file: "B.TECH.png" },
-          { name: "Blockchain at Mason", file: "Blockchain at Mason.png" },
+          { name: "Blockchain at Mason", file: "Blockchain-at-Mason.png" },
           {
             name: "Blockchain at Michigan",
-            file: "Blockchain at Michigan.png",
+            file: "Blockchain-at-Michigan.png",
           },
-          { name: "Blockchain Collective", file: "Blockchain Collective.png" },
-          { name: "Blockchain Lab at NYU", file: "Blockchain Lab at NYU.jpg" },
+          { name: "Blockchain Collective", file: "Blockchain-Collective.png" },
+          { name: "Blockchain Lab at NYU", file: "Blockchain-Lab-at-NYU.jpg" },
           {
             name: "Blockchain Ryerson University",
-            file: "Blockchain Ryerson University.png",
+            file: "Blockchain-Ryerson-University.png",
           },
           { name: "Bull", file: "Bull.png" },
-          { name: "Drexel Blockchain", file: "Drexel Blockchain.png" },
+          { name: "Drexel Blockchain", file: "Drexel-Blockchain.png" },
           {
             name: "Frankfurt School Blockchain Center",
-            file: "Frankfurt School Blockchain Center.png",
+            file: "Frankfurt-School-Blockchain-Center.png",
           },
-          { name: "Itu Blockchain", file: "Itu Blockchain.jpg" },
-          { name: "Trojan Crypto", file: "Trojan Crypto.png" },
+          { name: "Itu Blockchain", file: "Itu-Blockchain.jpg" },
+          { name: "Trojan Crypto", file: "Trojan-Crypto.png" },
           { name: "UNIC", file: "UNIC.png" },
-          { name: "Unidentified Logo F", file: "Unidentified Logo F.png" },
-          { name: "Unidentified Logo G", file: "Unidentified Logo G.png" },
-          { name: "Unidentified Logo H", file: "Unidentified Logo H.png" },
+          { name: "Unidentified Logo F", file: "Unidentified-Logo-F.png" },
+          { name: "Unidentified Logo G", file: "Unidentified-Logo-G.png" },
+          { name: "Unidentified Logo H", file: "Unidentified-Logo-H.png" },
         ],
       },
       {
-        row: "Row 4",
+        row: "row-4",
         items: [
-          { name: "Blockchain Lab", file: "Blockchain Lab.png" },
-          { name: "CU Blockchain", file: "CU Blockchain.png" },
-          { name: "Fapa Tech", file: "Fapa Tech.png" },
+          { name: "Blockchain Lab", file: "Blockchain-Lab.png" },
+          { name: "CU Blockchain", file: "CU-Blockchain.png" },
+          { name: "Fapa Tech", file: "Fapa-Tech.png" },
           {
             name: "Finance and Investment Club Uniandes",
-            file: "Finance and Investment Club Uniandes.jpg",
+            file: "Finance-and-Investment-Club-Uniandes.jpg",
           },
-          { name: "Harding Hawks", file: "Harding Hawks.png" },
-          { name: "Minority Programmers", file: "Minority Programmers.png" },
+          { name: "Harding Hawks", file: "Harding-Hawks.png" },
+          { name: "Minority Programmers", file: "Minority-Programmers.png" },
           {
             name: "Nova SouthEastern University",
-            file: "Nova SouthEastern University.png",
+            file: "Nova-SouthEastern-University.png",
           },
           {
             name: "Omaha Blockchain Initiative",
-            file: "Omaha Blockchain Initiative.png",
+            file: "Omaha-Blockchain-Initiative.png",
           },
-          { name: "Penn Blockchain", file: "Penn Blockchain.png" },
+          { name: "Penn Blockchain", file: "Penn-Blockchain.png" },
           { name: "PVFO", file: "PVFO.png" },
           { name: "T", file: "T.png" },
           { name: "TIBA", file: "TIBA.png" },
-          { name: "Unidentified Logo I", file: "Unidentified Logo I.jpg" },
-          { name: "Unidentified Logo J", file: "Unidentified Logo J.jpg" },
-          { name: "Unidentified Logo K", file: "Unidentified Logo K.png" },
+          { name: "Unidentified Logo I", file: "Unidentified-Logo-I.jpg" },
+          { name: "Unidentified Logo J", file: "Unidentified-Logo-J.jpg" },
+          { name: "Unidentified Logo K", file: "Unidentified-Logo-K.png" },
         ],
       },
       {
-        row: "Row 5",
+        row: "row-5",
         items: [
           { name: "BaNSC", file: "BaNSC.jpg" },
           {
             name: "Birla Institute of Technology and Science Pilani",
-            file: "Birla Institute of Technology and Science Pilani.png",
+            file: "Birla-Institute-of-Technology-and-Science-Pilani.png",
           },
-          { name: "Blockchain at McGill", file: "Blockchain at McGill.jpg" },
-          { name: "Blockchain Club", file: "Blockchain Club.png" },
+          { name: "Blockchain at McGill", file: "Blockchain-at-McGill.jpg" },
+          { name: "Blockchain Club", file: "Blockchain-Club.png" },
           {
             name: "Blockchain Society of Carleton",
-            file: "Blockchain Society of Carleton.png",
+            file: "Blockchain-Society-of-Carleton.png",
           },
-          { name: "CMU Blockchain", file: "CMU Blockchain.png" },
-          { name: "Cornell Blockchain", file: "Cornell Blockchain.png" },
-          { name: "Elon Blockchain", file: "Elon Blockchain.png" },
-          { name: "IEEE Computer Society", file: "IEEE Computer Society.png" },
+          { name: "CMU Blockchain", file: "CMU-Blockchain.png" },
+          { name: "Cornell Blockchain", file: "Cornell-Blockchain.png" },
+          { name: "Elon Blockchain", file: "Elon-Blockchain.png" },
+          { name: "IEEE Computer Society", file: "IEEE-Computer-Society.png" },
           { name: "IEEE", file: "IEEE.png" },
           {
             name: "Istanbul University Blockchain Technology Club",
-            file: "Istanbul University Blockchain Technology Club.png",
+            file: "Istanbul-University-Blockchain-Technology-Club.png",
           },
           {
             name: "Kocaeli University Blockchain Technology Club",
-            file: "Kocaeli University Blockchain Technology Club.jpg",
+            file: "Kocaeli-University-Blockchain-Technology-Club.jpg",
           },
           { name: "MCC", file: "MCC.jpg" },
-          { name: "Unidentified Logo L", file: "Unidentified Logo L.jpg" },
-          { name: "Unidentified Logo M", file: "Unidentified Logo M.png" },
+          { name: "Unidentified Logo L", file: "Unidentified-Logo-L.jpg" },
+          { name: "Unidentified Logo M", file: "Unidentified-Logo-M.png" },
         ],
       },
       {
-        row: "Row 6",
+        row: "row-6",
         items: [
-          { name: "Bennett University", file: "Bennett University.png" },
+          { name: "Bennett University", file: "Bennett-University.png" },
           {
             name: "Blockchain at Berkeley",
-            file: "Blockchain at Berkeley.png",
+            file: "Blockchain-at-Berkeley.png",
           },
-          { name: "Blockchain Collective", file: "Blockchain Collective.png" },
+          { name: "Blockchain Collective", file: "Blockchain-Collective.png" },
           { name: "Hackslash", file: "Hackslash.png" },
-          { name: "Harvard Blockchain", file: "Harvard Blockchain.jpg" },
+          { name: "Harvard Blockchain", file: "Harvard-Blockchain.jpg" },
           { name: "Muba", file: "Muba.jpg" },
-          { name: "Stanford Blockchain", file: "Stanford Blockchain.jpg" },
-          { name: "Sup de Vinci", file: "Sup de Vinci.png" },
-          { name: "Unidentified Logo N", file: "Unidentified Logo N.png" },
-          { name: "Unidentified Logo O", file: "Unidentified Logo O.png" },
-          { name: "Unidentified Logo P", file: "Unidentified Logo P.png" },
-          { name: "Unidentified Logo Q", file: "Unidentified Logo Q.jpg" },
-          { name: "Unidentified Logo R", file: "Unidentified Logo R.png" },
-          { name: "Unidentified Logo S", file: "Unidentified Logo S.png" },
+          { name: "Stanford Blockchain", file: "Stanford-Blockchain.jpg" },
+          { name: "Sup de Vinci", file: "Sup-de-Vinci.png" },
+          { name: "Unidentified Logo N", file: "Unidentified-Logo-N.png" },
+          { name: "Unidentified Logo O", file: "Unidentified-Logo-O.png" },
+          { name: "Unidentified Logo P", file: "Unidentified-Logo-P.png" },
+          { name: "Unidentified Logo Q", file: "Unidentified-Logo-Q.jpg" },
+          { name: "Unidentified Logo R", file: "Unidentified-Logo-R.png" },
+          { name: "Unidentified Logo S", file: "Unidentified-Logo-S.png" },
         ],
       },
       {
-        row: "Row 7",
+        row: "row-7",
         items: [
-          { name: "Badger Blockchain", file: "Badger Blockchain.jpg" },
+          { name: "Badger Blockchain", file: "Badger-Blockchain.jpg" },
           {
             name: "Blockchain Cleveland State",
-            file: "Blockchain Cleveland State.png",
+            file: "Blockchain-Cleveland-State.png",
           },
           {
             name: "Financial Group Javeriana",
-            file: "Financial Group Javeriana.png",
+            file: "Financial-Group-Javeriana.png",
           },
           { name: "HUBG", file: "HUBG.png" },
           { name: "Kryptosphere", file: "Kryptosphere.png" },
           { name: "Ru", file: "Ru.jpg" },
           { name: "Subchain", file: "Subchain.jpg" },
-          { name: "Unidentified Logo T", file: "Unidentified Logo T.jpg" },
-          { name: "Unidentified Logo U", file: "Unidentified Logo U.png" },
+          { name: "Unidentified Logo T", file: "Unidentified-Logo-T.jpg" },
+          { name: "Unidentified Logo U", file: "Unidentified-Logo-U.png" },
         ],
       },
     ],
@@ -514,10 +478,10 @@ export default function BenNetwork() {
               >
                 <div className="floating-chip-inner">
                   <img
-                    src={imgSrc(`${BASE}/Portfolio Companies/${l.file}`)}
+                    src={imgSrc(`${BASE}/portfolio-companies/${l.file}`)}
                     onError={(e) => {
                       e.currentTarget.src = imgSrc(
-                        `${BASE}/Companies from BEN/${l.file}`
+                        `${BASE}/companies-from-ben/${l.file}`
                       );
                     }}
                     alt=""
@@ -589,7 +553,7 @@ export default function BenNetwork() {
                 <div key={c.name} className="logo-card reveal">
                   <div className="logo-wrap">
                     <img
-                      src={imgSrc(`${BASE}/Portfolio Companies/${c.file}`)}
+                      src={imgSrc(`${BASE}/portfolio-companies/${c.file}`)}
                       alt={c.name}
                       className="logo-img"
                       loading="lazy"
@@ -675,7 +639,7 @@ export default function BenNetwork() {
               {companiesFromBen.slice(0, 18).map((c) => (
                 <div key={c.name} className="mini-logo reveal">
                   <img
-                    src={imgSrc(`${BASE}/Companies from BEN/${c.file}`)}
+                    src={imgSrc(`${BASE}/companies-from-ben/${c.file}`)}
                     alt={c.name}
                     className="mini-logo-img"
                     loading="lazy"
@@ -712,11 +676,11 @@ export default function BenNetwork() {
                       <div className="project-logo">
                         <img
                           src={imgSrc(
-                            `${BASE}/Companies from BEN/${p.logoFile}`
+                            `${BASE}/companies-from-ben/${p.logoFile}`
                           )}
                           onError={(e) => {
                             e.currentTarget.src = imgSrc(
-                              `${BASE}/Portfolio Companies/${p.logoFile}`
+                              `${BASE}/portfolio-companies/${p.logoFile}`
                             );
                           }}
                           alt={p.name}
@@ -777,7 +741,7 @@ export default function BenNetwork() {
                     >
                       <img
                         src={imgSrc(
-                          `${BASE}/Network of Universities/${u.row}/${u.file}`
+                          `${BASE}/network-of-universities/${u.row}/${u.file}`
                         )}
                         alt={u.name}
                         className="uni-logo-img"
