@@ -10,74 +10,253 @@ function imgSrc(path) {
   return encodeURI(path);
 }
 
+function buildImageSrc(dir, file) {
+  if (!dir || !file) return "";
+  return imgSrc(`${BASE}/${dir}/${file}`);
+}
+
+function setFallbackImage(e, candidates) {
+  const img = e.currentTarget;
+  if (!img) return;
+
+  const tried = new Set(
+    (img.dataset.fallbackTried || "")
+      .split("|")
+      .map((x) => x.trim())
+      .filter(Boolean)
+  );
+
+  for (const nextSrc of candidates) {
+    if (!nextSrc || tried.has(nextSrc)) continue;
+    tried.add(nextSrc);
+    img.dataset.fallbackTried = Array.from(tried).join("|");
+    img.src = nextSrc;
+    return;
+  }
+}
+
+function renderLogoImg({
+  primaryDir,
+  secondaryDir,
+  file,
+  alt,
+  className,
+  loading = "lazy",
+}) {
+  const primary = buildImageSrc(primaryDir, file);
+  const secondary = secondaryDir ? buildImageSrc(secondaryDir, file) : "";
+
+  return (
+    <img
+      src={primary}
+      onError={(e) => setFallbackImage(e, [secondary])}
+      alt={alt || ""}
+      className={className}
+      loading={loading}
+    />
+  );
+}
+
 export default function BenNetwork() {
   const portfolioCompanies = useMemo(
     () => [
-      { name: "Algebra Finance", tagline: "DeFi", file: "Algebra-Finance.jpg" },
+      {
+        name: "Algebra Finance",
+        tagline: "DeFi",
+        file: "Algebra-Finance.jpg",
+        dir: "portfolio-companies",
+      },
       {
         name: "Alpaca Network",
         tagline: "Infrastructure",
         file: "Alpaca-Network.jpeg",
+        dir: "portfolio-companies",
       },
       {
         name: "CreatorBid",
         tagline: "Creator economy",
         file: "CreatorBid.jpg",
+        dir: "portfolio-companies",
       },
-      { name: "CWAP SWAP", tagline: "DEX / DeFi", file: "CWAP-SWAP.jpg" },
-      { name: "Flashy Cash", tagline: "Payments", file: "Flashy-Cash.jpg" },
-      { name: "G.A.M.E", tagline: "Gaming", file: "G.A.M.E.jpg" },
-      { name: "SatLayer", tagline: "Infrastructure", file: "SatLayer.png" },
-      { name: "Tenderize", tagline: "Staking", file: "Tenderize.jpg" },
-      { name: "Vana", tagline: "Data / AI", file: "Vana.jpg" },
-      { name: "YesNoError", tagline: "Dev tools", file: "YesNoError.png" },
+      {
+        name: "CWAP SWAP",
+        tagline: "DEX / DeFi",
+        file: "CWAP-SWAP.jpg",
+        dir: "portfolio-companies",
+      },
+      {
+        name: "Flashy Cash",
+        tagline: "Payments",
+        file: "Flashy-Cash.jpg",
+        dir: "portfolio-companies",
+      },
+      {
+        name: "G.A.M.E",
+        tagline: "Gaming",
+        file: "G.A.M.E.jpg",
+        dir: "portfolio-companies",
+      },
+      {
+        name: "SatLayer",
+        tagline: "Infrastructure",
+        file: "SatLayer.png",
+        dir: "portfolio-companies",
+      },
+      {
+        name: "Tenderize",
+        tagline: "Staking",
+        file: "Tenderize.jpg",
+        dir: "portfolio-companies",
+      },
+      {
+        name: "Vana",
+        tagline: "Data / AI",
+        file: "Vana.jpg",
+        dir: "portfolio-companies",
+      },
+      {
+        name: "YesNoError",
+        tagline: "Dev tools",
+        file: "YesNoError.png",
+        dir: "portfolio-companies",
+      },
     ],
     []
   );
 
   const companiesFromBen = useMemo(
     () => [
-      { name: "Algorand", tagline: "L1", file: "Algorand.png" },
+      {
+        name: "Algorand",
+        tagline: "L1",
+        file: "Algorand.png",
+        dir: "companies-from-ben",
+      },
       {
         name: "Alpha Blockchain",
         tagline: "Research",
         file: "Alpha-Blockchain.png",
+        dir: "companies-from-ben",
       },
       {
         name: "Au Sum Ventures",
         tagline: "Venture",
         file: "Au-Sum-Ventures.png",
+        dir: "companies-from-ben",
       },
-      { name: "Augur", tagline: "Prediction markets", file: "Augur.png" },
-      { name: "Axelar", tagline: "Interoperability", file: "Axelar.png" },
-      { name: "Bitquick", tagline: "Exchange", file: "Bitquick.png" },
-      { name: "BlockHack", tagline: "Hackathon", file: "BlockHack.png" },
-      { name: "Bolt", tagline: "Payments", file: "Bolt.png" },
-      { name: "CoinList", tagline: "Launchpad", file: "CoinList.jpg" },
+      {
+        name: "Augur",
+        tagline: "Prediction markets",
+        file: "Augur.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Axelar",
+        tagline: "Interoperability",
+        file: "Axelar.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Bitquick",
+        tagline: "Exchange",
+        file: "Bitquick.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "BlockHack",
+        tagline: "Hackathon",
+        file: "BlockHack.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Bolt",
+        tagline: "Payments",
+        file: "Bolt.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "CoinList",
+        tagline: "Launchpad",
+        file: "CoinList.jpg",
+        dir: "companies-from-ben",
+      },
       {
         name: "Distributed ID",
         tagline: "Identity",
         file: "Distributed-ID.jpg",
+        dir: "companies-from-ben",
       },
-      { name: "DropSpaceNFT", tagline: "NFT", file: "DropSpaceNFT.jpg" },
-      { name: "Eco", tagline: "Payments", file: "Eco.png" },
-      { name: "GDA Capital", tagline: "Fund", file: "GDA-Capital.jpg" },
-      { name: "Immuto", tagline: "Data integrity", file: "Immuto.jpg" },
-      { name: "Iota", tagline: "DLT", file: "Iota.png" },
+      {
+        name: "DropSpaceNFT",
+        tagline: "NFT",
+        file: "DropSpaceNFT.jpg",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Eco",
+        tagline: "Payments",
+        file: "Eco.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "GDA Capital",
+        tagline: "Fund",
+        file: "GDA-Capital.jpg",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Immuto",
+        tagline: "Data integrity",
+        file: "Immuto.jpg",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Iota",
+        tagline: "DLT",
+        file: "Iota.png",
+        dir: "companies-from-ben",
+      },
       {
         name: "Metaverse Group",
         tagline: "Metaverse",
         file: "Metaverse-Group.png",
+        dir: "companies-from-ben",
       },
-      { name: "Metis", tagline: "L2", file: "Metis.png" },
-      { name: "Optimism", tagline: "L2 infrastructure", file: "Optimism.png" },
-      { name: "Qtum", tagline: "L1", file: "Qtum.png" },
-      { name: "Roll", tagline: "Social tokens", file: "Roll.jpg" },
-      { name: "SecretNetwork", tagline: "Privacy", file: "SecretNetwork.jpg" },
+      {
+        name: "Metis",
+        tagline: "L2",
+        file: "Metis.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Optimism",
+        tagline: "L2 infrastructure",
+        file: "Optimism.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Qtum",
+        tagline: "L1",
+        file: "Qtum.png",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "Roll",
+        tagline: "Social tokens",
+        file: "Roll.jpg",
+        dir: "companies-from-ben",
+      },
+      {
+        name: "SecretNetwork",
+        tagline: "Privacy",
+        file: "SecretNetwork.jpg",
+        dir: "companies-from-ben",
+      },
       {
         name: "Secure Digital Markets",
         tagline: "Markets",
         file: "Secure-Digital-Markets.png",
+        dir: "companies-from-ben",
       },
     ],
     []
@@ -334,63 +513,63 @@ export default function BenNetwork() {
         role: "Founder",
         company: "Augur",
         subtitle: "University of Michigan",
-        image: "/images/ben-network/alumni/Jeremy_Gardner.png",
+        image: `${BASE}/alumni/Jeremy_Gardner.png`,
       },
       {
         name: "Michael Gord",
         role: "Founder",
         company: "GDA Capital",
         subtitle: "McGill University",
-        image: "/images/ben-network/alumni/Michael_Gord.png",
+        image: `${BASE}/alumni/Michael_Gord.png`,
       },
       {
         name: "Ryan Breslow",
         role: "Founder",
         company: "Bolt",
         subtitle: "Stanford University",
-        image: "/images/ben-network/alumni/Ryan_Breslow.png",
+        image: `${BASE}/alumni/Ryan_Breslow.png`,
       },
       {
         name: "Jinglan Wang",
         role: "Co-founder",
         company: "Optimism",
         subtitle: "Wellesley / MIT",
-        image: "/images/ben-network/alumni/Jinglan_Wang.png",
+        image: `${BASE}/alumni/Jinglan_Wang.png`,
       },
       {
         name: "Joey Krug",
         role: "Founder",
         company: "Augur",
         subtitle: "Pomona Dropout",
-        image: "/images/ben-network/alumni/Joey_Krug.png",
+        image: `${BASE}/alumni/Joey_Krug.png`,
       },
       {
         name: "Bradley Miles",
         role: "Co-founder",
         company: "Roll",
         subtitle: "Columbia University",
-        image: "/images/ben-network/alumni/Bradley_Miles.png",
+        image: `${BASE}/alumni/Bradley_Miles.png`,
       },
       {
         name: "Sid Ramesh",
         role: "Growth Advisor",
         company: " Notional",
         subtitle: "UW-Madison",
-        image: "/images/ben-network/alumni/Sid_Ramesh.png",
+        image: `${BASE}/alumni/Sid_Ramesh.png`,
       },
       {
         name: "Eric Chen",
         role: "Founder",
         company: "Injective",
         subtitle: "New York University",
-        image: "/images/ben-network/alumni/Eric_Chen.png",
+        image: `${BASE}/alumni/Eric_Chen.png`,
       },
       {
         name: "Dean Masley",
         role: "Founder",
         company: "NestEgg",
         subtitle: "University of Delaware",
-        image: "/images/ben-network/alumni/Dean_Masley.png",
+        image: `${BASE}/alumni/Dean_Masley.png`,
       },
     ],
     []
@@ -400,9 +579,10 @@ export default function BenNetwork() {
     const pick = [...portfolioCompanies, ...companiesFromBen];
     const uniq = [];
     const seen = new Set();
+
     for (const item of pick) {
       if (!item?.file) continue;
-      const key = item.file.toLowerCase();
+      const key = `${item.file}`.toLowerCase();
       if (seen.has(key)) continue;
       seen.add(key);
       uniq.push(item);
@@ -478,12 +658,13 @@ export default function BenNetwork() {
               >
                 <div className="floating-chip-inner">
                   <img
-                    src={imgSrc(`${BASE}/portfolio-companies/${l.file}`)}
-                    onError={(e) => {
-                      e.currentTarget.src = imgSrc(
-                        `${BASE}/companies-from-ben/${l.file}`
-                      );
-                    }}
+                    src={buildImageSrc(l.dir || "portfolio-companies", l.file)}
+                    onError={(e) =>
+                      setFallbackImage(e, [
+                        buildImageSrc("portfolio-companies", l.file),
+                        buildImageSrc("companies-from-ben", l.file),
+                      ])
+                    }
                     alt=""
                     className="floating-img"
                     loading="lazy"
@@ -552,12 +733,13 @@ export default function BenNetwork() {
               {portfolioCompanies.map((c) => (
                 <div key={c.name} className="logo-card reveal">
                   <div className="logo-wrap">
-                    <img
-                      src={imgSrc(`${BASE}/portfolio-companies/${c.file}`)}
-                      alt={c.name}
-                      className="logo-img"
-                      loading="lazy"
-                    />
+                    {renderLogoImg({
+                      primaryDir: c.dir || "portfolio-companies",
+                      secondaryDir: "companies-from-ben",
+                      file: c.file,
+                      alt: c.name,
+                      className: "logo-img",
+                    })}
                   </div>
                   <div className="mt-3">
                     <div className="text-sm font-semibold">{c.name}</div>
@@ -600,7 +782,7 @@ export default function BenNetwork() {
                 <div key={a.name} className="alumni-card reveal">
                   <div className="alumni-avatar">
                     <img
-                      src={a.image}
+                      src={imgSrc(a.image)}
                       alt={a.name}
                       className="alumni-avatar-img"
                       loading="lazy"
@@ -638,12 +820,13 @@ export default function BenNetwork() {
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
               {companiesFromBen.slice(0, 18).map((c) => (
                 <div key={c.name} className="mini-logo reveal">
-                  <img
-                    src={imgSrc(`${BASE}/companies-from-ben/${c.file}`)}
-                    alt={c.name}
-                    className="mini-logo-img"
-                    loading="lazy"
-                  />
+                  {renderLogoImg({
+                    primaryDir: c.dir || "companies-from-ben",
+                    secondaryDir: "portfolio-companies",
+                    file: c.file,
+                    alt: c.name,
+                    className: "mini-logo-img",
+                  })}
                   <div className="mt-2 text-xs font-semibold text-center">
                     {c.name}
                   </div>
@@ -675,14 +858,13 @@ export default function BenNetwork() {
                     {p.logoFile ? (
                       <div className="project-logo">
                         <img
-                          src={imgSrc(
-                            `${BASE}/companies-from-ben/${p.logoFile}`
-                          )}
-                          onError={(e) => {
-                            e.currentTarget.src = imgSrc(
-                              `${BASE}/portfolio-companies/${p.logoFile}`
-                            );
-                          }}
+                          src={buildImageSrc("companies-from-ben", p.logoFile)}
+                          onError={(e) =>
+                            setFallbackImage(e, [
+                              buildImageSrc("portfolio-companies", p.logoFile),
+                              buildImageSrc("companies-from-ben", p.logoFile),
+                            ])
+                          }
                           alt={p.name}
                           className="project-logo-img"
                           loading="lazy"
