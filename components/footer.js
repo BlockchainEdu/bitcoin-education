@@ -122,7 +122,7 @@ export default function Footer() {
                 </li>
                 <li className="text-sm">
                   <a href="https://x.com/BlockchainEdu" target="_blank">
-                    Start Learning
+                    Apply
                   </a>
                 </li>
                 {/* <li className="text-sm">Programs</li>
@@ -200,7 +200,7 @@ export default function Footer() {
             />
           </div>
           <div className="font-inter text-white text-sm">
-            © 2025 Blockchain Education Network
+            © 2026 Blockchain Education Network
           </div>
         </div>
       </div>

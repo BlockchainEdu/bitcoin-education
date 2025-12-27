@@ -577,6 +577,17 @@ export default function BenNetwork() {
     []
   );
 
+  const users = [
+    "/images/people/jelena-djuric.jpeg",
+    "/images/people/matt-batsinelas.jpeg",
+    "/images/people/michael-gord.jpeg",
+    "/images/people/joey-krug.jpeg",
+    "/images/people/jinglan-wang.jpeg",
+    "/images/jeremygardner.webp",
+    "/images/people/ryan-breslow.jpeg",
+    "/images/stories/drew-cousin.jpeg",
+  ];
+
   const floating = useMemo(() => {
     const pick = [...portfolioCompanies, ...companiesFromBen];
     const uniq = [];
@@ -617,8 +628,8 @@ export default function BenNetwork() {
               { top: 10, left: 8 },
               { top: 14, left: 22 },
               { top: 12, left: 33 },
-              { top: 12, left: 52 },
-              { top: 16, left: 68 },
+              { top: 8, left: 95 },
+              { top: 10, left: 68 },
               { top: 12, left: 84 },
               { top: 26, left: 10 },
               { top: 30, left: 24 },
@@ -626,17 +637,16 @@ export default function BenNetwork() {
               { top: 80, left: 83 },
               { top: 30, left: 74 },
               { top: 26, left: 90 },
-              { top: 42, left: 6 },
+              { top: 46, left: 6 },
               { top: 44, left: 18 },
-              { top: 38, left: 30 },
-              { top: 42, left: 50 },
+              { top: 80, left: 30 },
               { top: 82, left: 71 },
               { top: 44, left: 82 },
               { top: 42, left: 94 },
-              { top: 58, left: 12 },
+              { top: 65, left: 12 },
               { top: 60, left: 28 },
-              { top: 92, left: 30 },
-              { top: 58, left: 60 },
+              { top: 86, left: 10 },
+              { top: 88, left: 92 },
               { top: 62, left: 76 },
               { top: 60, left: 90 },
             ];
@@ -676,37 +686,57 @@ export default function BenNetwork() {
           <div className="hero-badge inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs mb-6 shadow-sm">
             <span className="font-semibold">Proof of impact</span>
             <span className="opacity-70">
-              10B+ total project value supported
+              $20B+ in value created, 160+ chapters in 35+ countries and 2.2M
+              impressions on X
             </span>
           </div>
 
           <div className="max-w-xl mx-auto text-center hero-glass">
-            <h1 className="text-4xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.05]">
-              <span className="text-benorange-500">BEN</span>{" "}
-              <span className="text-benblack-500">Network</span>
-            </h1>
+            <div className="hero-glass-content">
+              <h1 className="text-4xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.05]">
+                <span className="text-benorange-500">BEN</span>{" "}
+                <span className="text-benblack-500">Network</span>
+              </h1>
 
-            <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-2xl mx-auto">
-              A global network of student founders, alumni and companies built
-              through the Blockchain Education Network.
-            </p>
+              <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-2xl mx-auto">
+                A global network of student founders, alumni and companies built
+                through the Blockchain Education Network.
+              </p>
 
-            <div className="mt-8 flex items-center justify-center gap-3">
-              <a
-                className="btn-premium"
-                href="/ben-network#unicorns"
-                onClick={(e) => e.stopPropagation()}
-              >
-                Explore companies <span className="arrow">→</span>
-              </a>
+              <div className="mt-8 flex items-center justify-center gap-3">
+                <a
+                  className="btn-premium"
+                  href="/ben-network#unicorns"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Explore companies <span className="arrow">→</span>
+                </a>
 
-              <a
-                className="btn-ghost"
-                href="/ben-network#universities"
-                onClick={(e) => e.stopPropagation()}
-              >
-                View universities <span className="arrow">→</span>
-              </a>
+                <a
+                  className="btn-ghost"
+                  href="/ben-network#universities"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  View universities <span className="arrow">→</span>
+                </a>
+              </div>
+
+              <div className="mt-8 text-center">
+                <div className="flex justify-center">
+                  {users.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`User ${i + 1}`}
+                      className="w-10 h-10 rounded-full border-2 border-benorange -ml-2 object-cover"
+                    />
+                  ))}
+                </div>
+
+                <p className="mt-2 text-sm text-bengrey-500">
+                  📡 Followed by 25k+ in Web3
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -980,7 +1010,6 @@ export default function BenNetwork() {
           user-select: none;
           text-decoration: none;
         }
-
         .btn-premium {
           background: #111;
           color: #fff;
@@ -994,7 +1023,6 @@ export default function BenNetwork() {
         .btn-premium:active {
           transform: translateY(0px) scale(0.99);
         }
-
         .btn-ghost {
           background: rgba(255, 255, 255, 0.7);
           color: #111;
@@ -1007,7 +1035,6 @@ export default function BenNetwork() {
           transform: translateY(-1px);
           border-color: rgba(0, 0, 0, 0.14);
         }
-
         .arrow {
           transition: transform 180ms ease;
         }
@@ -1015,7 +1042,6 @@ export default function BenNetwork() {
         .btn-ghost:hover .arrow {
           transform: translateX(3px);
         }
-
         .logo-card {
           background: #fff;
           border: 1px solid rgba(0, 0, 0, 0.06);
@@ -1203,54 +1229,76 @@ export default function BenNetwork() {
           position: relative;
           padding: 22px 18px;
           border-radius: 28px;
-          overflow: hidden;
+
+          overflow: visible;
+          isolation: isolate;
+          z-index: 0;
+        }
+
+        .hero-glass-content {
+          position: relative;
+          z-index: 2;
+          transform: translateZ(0);
         }
 
         .hero-glass::before {
           content: "";
           position: absolute;
-          inset: -12px -128px -18px -18px;
+          inset: -80px;
           border-radius: inherit;
+          pointer-events: none;
+          z-index: 0;
 
-          /* glass layer */
-          background: rgba(255, 255, 255, 0.08);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          background: rgba(255, 255, 255, 0.66);
+          filter: blur(80px);
 
           -webkit-mask-image: radial-gradient(
-            circle at 50% 52%,
-            rgba(0, 0, 0, 0.9) 60%,
-            rgba(0, 0, 0, 0.35) 78%,
+            70% 65% at 50% 45%,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.95) 38%,
+            rgba(0, 0, 0, 0.55) 62%,
             rgba(0, 0, 0, 0) 100%
           );
           mask-image: radial-gradient(
-            circle at 50% 52%,
-            rgba(0, 0, 0, 0.9) 60%,
-            rgba(0, 0, 0, 0.35) 78%,
+            70% 65% at 50% 45%,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.95) 38%,
+            rgba(0, 0, 0, 0.55) 62%,
             rgba(0, 0, 0, 0) 100%
           );
-
-          z-index: 0;
-          pointer-events: none;
-        }
-
-        .hero-glass > * {
-          position: relative;
-          z-index: 1;
         }
 
         .hero-glass::after {
           content: "";
           position: absolute;
-          inset: 0;
+          inset: -80px;
           border-radius: inherit;
           pointer-events: none;
-          background-image: radial-gradient(
-            rgba(0, 0, 0, 0.04) 1px,
-            transparent 0
+          z-index: 1;
+
+          background: radial-gradient(
+              70% 65% at 50% 45%,
+              rgba(255, 255, 255, 0.55) 0%,
+              rgba(255, 255, 255, 0.22) 45%,
+              rgba(255, 255, 255, 0) 75%
+            ),
+            radial-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 0) 0 0 / 3px
+              3px;
+
+          -webkit-mask-image: radial-gradient(
+            70% 65% at 50% 45%,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.9) 40%,
+            rgba(0, 0, 0, 0.45) 65%,
+            rgba(0, 0, 0, 0) 100%
           );
-          background-size: 3px 3px;
-          opacity: 0.08;
+          mask-image: radial-gradient(
+            70% 65% at 50% 45%,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.9) 40%,
+            rgba(0, 0, 0, 0.45) 65%,
+            rgba(0, 0, 0, 0) 100%
+          );
         }
 
         .alumni-card {

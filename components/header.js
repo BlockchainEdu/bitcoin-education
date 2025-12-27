@@ -83,7 +83,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                 {/* Primary CTA */}
                 <StandardButton
                   link="/opportunities#apply"
-                  text="Start Learning"
+                  text="Apply"
                   textColor="white"
                   color="orange"
                   styling="display-on-scroll ml-4"

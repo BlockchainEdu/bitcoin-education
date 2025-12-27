@@ -101,7 +101,7 @@ export default function MobileDropdown(props) {
                 </div>
                 <StandardButton
                   link="https://buzzsprout.com/1829321"
-                  text="Start Learning"
+                  text="Apply"
                   color="orange"
                   textColor="white"
                   target="_blank"
