@@ -59,6 +59,31 @@ function LogoImage({
   );
 }
 
+const OFFICIAL_LINKS = {
+  Algorand: "https://www.algorand.foundation",
+  "Alpha Blockchain": "https://alphablockchain.io",
+  Augur: "https://www.augur.net",
+  "Au Sum Ventures": "https://www.ausum.vc",
+  Axelar: "https://axelar.network",
+  Bitquick: "https://bitquick.co",
+  BlockHack: "https://blockhack.io",
+  Bolt: "https://bolt.global",
+  CoinList: "https://coinlist.co",
+  "Distributed ID": "https://distributedid.com",
+  Eco: "https://eco.org",
+  "GDA Capital": "https://gdacapital.com",
+  Immuto: "https://immuto.io",
+  Iota: "https://www.iota.org",
+  Metis: "https://www.metis.io",
+  Optimism: "https://www.optimism.io",
+  Qtum: "https://qtum.org",
+};
+
+function withHref(item) {
+  const href = OFFICIAL_LINKS[item.name] || item.href || "#";
+  return { ...item, href };
+}
+
 export default function BenNetwork() {
   const portfolioCompanies = useMemo(
     () => [
@@ -67,200 +92,216 @@ export default function BenNetwork() {
         tagline: "DeFi",
         file: "Algebra-Finance.jpg",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "Alpaca Network",
         tagline: "Infrastructure",
         file: "Alpaca-Network.jpeg",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "CreatorBid",
         tagline: "Creator economy",
         file: "CreatorBid.jpg",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "CWAP SWAP",
         tagline: "DEX / DeFi",
         file: "CWAP-SWAP.jpg",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "Flashy Cash",
         tagline: "Payments",
         file: "Flashy-Cash.jpg",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "G.A.M.E",
         tagline: "Gaming",
         file: "G.A.M.E.jpg",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "SatLayer",
         tagline: "Infrastructure",
         file: "SatLayer.png",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "Tenderize",
         tagline: "Staking",
         file: "Tenderize.jpg",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "Vana",
         tagline: "Data / AI",
         file: "Vana.jpg",
         dir: "portfolio-companies",
+        href: "#",
       },
       {
         name: "YesNoError",
         tagline: "Dev tools",
         file: "YesNoError.png",
         dir: "portfolio-companies",
+        href: "#",
       },
     ],
     []
   );
 
   const companiesFromBen = useMemo(
-    () => [
-      {
-        name: "Algorand",
-        tagline: "L1",
-        file: "Algorand.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Alpha Blockchain",
-        tagline: "Research",
-        file: "Alpha-Blockchain.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Au Sum Ventures",
-        tagline: "Venture",
-        file: "Au-Sum-Ventures.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Augur",
-        tagline: "Prediction markets",
-        file: "Augur.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Axelar",
-        tagline: "Interoperability",
-        file: "Axelar.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Bitquick",
-        tagline: "Exchange",
-        file: "Bitquick.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "BlockHack",
-        tagline: "Hackathon",
-        file: "BlockHack.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Bolt",
-        tagline: "Payments",
-        file: "Bolt.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "CoinList",
-        tagline: "Launchpad",
-        file: "CoinList.jpg",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Distributed ID",
-        tagline: "Identity",
-        file: "Distributed-ID.jpg",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "DropSpaceNFT",
-        tagline: "NFT",
-        file: "DropSpaceNFT.jpg",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Eco",
-        tagline: "Payments",
-        file: "Eco.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "GDA Capital",
-        tagline: "Fund",
-        file: "GDA-Capital.jpg",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Immuto",
-        tagline: "Data integrity",
-        file: "Immuto.jpg",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Iota",
-        tagline: "DLT",
-        file: "Iota.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Metaverse Group",
-        tagline: "Metaverse",
-        file: "Metaverse-Group.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Metis",
-        tagline: "L2",
-        file: "Metis.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Optimism",
-        tagline: "L2 infrastructure",
-        file: "Optimism.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Qtum",
-        tagline: "L1",
-        file: "Qtum.png",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Roll",
-        tagline: "Social tokens",
-        file: "Roll.jpg",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "SecretNetwork",
-        tagline: "Privacy",
-        file: "SecretNetwork.jpg",
-        dir: "companies-from-ben",
-      },
-      {
-        name: "Secure Digital Markets",
-        tagline: "Markets",
-        file: "Secure-Digital-Markets.png",
-        dir: "companies-from-ben",
-      },
-    ],
+    () =>
+      [
+        {
+          name: "Algorand",
+          tagline: "L1",
+          file: "Algorand.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Alpha Blockchain",
+          tagline: "Research",
+          file: "Alpha-Blockchain.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Au Sum Ventures",
+          tagline: "Venture",
+          file: "Au-Sum-Ventures.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Augur",
+          tagline: "Prediction markets",
+          file: "Augur.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Axelar",
+          tagline: "Interoperability",
+          file: "Axelar.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Bitquick",
+          tagline: "Exchange",
+          file: "Bitquick.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "BlockHack",
+          tagline: "Hackathon",
+          file: "BlockHack.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Bolt",
+          tagline: "Payments",
+          file: "Bolt.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "CoinList",
+          tagline: "Launchpad",
+          file: "CoinList.jpg",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Distributed ID",
+          tagline: "Identity",
+          file: "Distributed-ID.jpg",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "DropSpaceNFT",
+          tagline: "NFT",
+          file: "DropSpaceNFT.jpg",
+          dir: "companies-from-ben",
+          href: "#",
+        },
+        {
+          name: "Eco",
+          tagline: "Payments",
+          file: "Eco.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "GDA Capital",
+          tagline: "Fund",
+          file: "GDA-Capital.jpg",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Immuto",
+          tagline: "Data integrity",
+          file: "Immuto.jpg",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Iota",
+          tagline: "DLT",
+          file: "Iota.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Metaverse Group",
+          tagline: "Metaverse",
+          file: "Metaverse-Group.png",
+          dir: "companies-from-ben",
+          href: "#",
+        },
+        {
+          name: "Metis",
+          tagline: "L2",
+          file: "Metis.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Optimism",
+          tagline: "L2 infrastructure",
+          file: "Optimism.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Qtum",
+          tagline: "L1",
+          file: "Qtum.png",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Roll",
+          tagline: "Social tokens",
+          file: "Roll.jpg",
+          dir: "companies-from-ben",
+          href: "#",
+        },
+        {
+          name: "SecretNetwork",
+          tagline: "Privacy",
+          file: "SecretNetwork.jpg",
+          dir: "companies-from-ben",
+          href: "#",
+        },
+        {
+          name: "Secure Digital Markets",
+          tagline: "Markets",
+          file: "Secure-Digital-Markets.png",
+          dir: "companies-from-ben",
+          href: "#",
+        },
+      ].map(withHref),
     []
   );
 
@@ -471,31 +512,31 @@ export default function BenNetwork() {
       {
         name: "Optimism",
         desc: "Scaling Ethereum through Layer 2 infrastructure.",
-        href: "#",
+        href: OFFICIAL_LINKS["Optimism"],
         logoFile: "Optimism.png",
       },
       {
         name: "IOTA",
         desc: "Distributed ledger technology for IoT and beyond.",
-        href: "#",
+        href: OFFICIAL_LINKS["Iota"],
         logoFile: "Iota.png",
       },
       {
         name: "CoinList",
         desc: "Token launch platform and compliant onboarding.",
-        href: "#",
+        href: OFFICIAL_LINKS["CoinList"],
         logoFile: "CoinList.jpg",
       },
       {
         name: "Axelar",
         desc: "Cross-chain interoperability for apps and assets.",
-        href: "https://www.axelar.network/",
+        href: OFFICIAL_LINKS["Axelar"],
         logoFile: "Axelar.png",
       },
       {
         name: "Metis",
         desc: "Layer 2 ecosystem focused on scalable execution.",
-        href: "#",
+        href: OFFICIAL_LINKS["Metis"],
         logoFile: "Metis.png",
       },
       {
@@ -589,7 +630,7 @@ export default function BenNetwork() {
   ];
 
   const floating = useMemo(() => {
-    const pick = [...portfolioCompanies, ...companiesFromBen];
+    const pick = [...portfolioCompanies, ...companiesFromBen].map(withHref);
     const uniq = [];
     const seen = new Set();
 
@@ -621,21 +662,21 @@ export default function BenNetwork() {
         <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-benorange-100 opacity-90" />
         <div className="hero-vignette" aria-hidden="true" />
 
-        {/* Floating logos */}
-        <div className="pointer-events-none absolute inset-0">
+        {/* Floating logos (clicáveis) */}
+        <div className="floating-layer absolute inset-0">
           {floating.map((l, idx) => {
             const positions = [
               { top: 10, left: 8 },
-              { top: 14, left: 22 },
-              { top: 12, left: 33 },
+              { top: 14, left: 18 },
+              { top: 8, left: 26 },
               { top: 8, left: 95 },
-              { top: 10, left: 68 },
+              { top: 10, left: 74 },
               { top: 12, left: 84 },
               { top: 26, left: 10 },
               { top: 30, left: 24 },
               { top: 75, left: 20 },
               { top: 80, left: 83 },
-              { top: 30, left: 74 },
+              { top: 29, left: 77 },
               { top: 26, left: 90 },
               { top: 46, left: 6 },
               { top: 44, left: 18 },
@@ -660,13 +701,25 @@ export default function BenNetwork() {
                 : "floating-chip";
 
             const v = `floatv${(idx % 3) + 1}`;
+            const href = l.href || "#";
+            const clickable = href && href !== "#";
 
             return (
-              <div
+              <a
                 key={`${l.name}-${idx}`}
-                className={`${sizeClass} ${v}`}
+                href={href}
+                target={clickable ? "_blank" : undefined}
+                rel={clickable ? "noopener noreferrer" : undefined}
+                aria-label={clickable ? `Abrir site de ${l.name}` : l.name}
+                title={clickable ? `Abrir ${l.name}` : l.name}
+                className={`${sizeClass} ${v} ${
+                  clickable ? "is-clickable" : "is-disabled"
+                }`}
                 style={{ top: `${p.top}%`, left: `${p.left}%` }}
-                aria-hidden="true"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (!clickable) e.preventDefault();
+                }}
               >
                 <div className="floating-chip-inner">
                   <LogoImage
@@ -674,15 +727,15 @@ export default function BenNetwork() {
                     fallbackDirs={["companies-from-ben", "portfolio-companies"]}
                     file={l.file}
                     className="floating-img"
-                    alt=""
+                    alt={l.name}
                   />
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
 
-        <div className="relative container mx-auto pt-24 pb-16 px-6">
+        <div className="relative container mx-auto pt-24 pb-16 px-6 hero-content">
           <div className="hero-badge inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs mb-6 shadow-sm">
             <span className="font-semibold">Proof of impact</span>
             <span className="opacity-70">
@@ -1042,6 +1095,7 @@ export default function BenNetwork() {
         .btn-ghost:hover .arrow {
           transform: translateX(3px);
         }
+
         .logo-card {
           background: #fff;
           border: 1px solid rgba(0, 0, 0, 0.06);
@@ -1125,14 +1179,6 @@ export default function BenNetwork() {
           background: #fff;
           box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
         }
-        .row-label {
-          font-size: 12px;
-          font-weight: 700;
-          color: rgba(0, 0, 0, 0.55);
-          margin-bottom: 10px;
-          text-transform: uppercase;
-          letter-spacing: 0.08em;
-        }
         .row-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1171,6 +1217,11 @@ export default function BenNetwork() {
           object-fit: contain;
         }
 
+        .floating-layer {
+          z-index: 50;
+          pointer-events: none; 
+        }
+
         .floating-chip {
           position: absolute;
           width: 62px;
@@ -1179,7 +1230,17 @@ export default function BenNetwork() {
           transform: translate(-50%, -50%);
           opacity: 0.9;
           filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
+          pointer-events: auto; /* reativa clique nos <a> */
+          text-decoration: none;
+          cursor: pointer;
+          z-index: 60;
         }
+
+        .floating-chip:focus-visible {
+          outline: 2px solid rgba(0, 0, 0, 0.35);
+          outline-offset: 3px;
+        }
+
         .floating-chip-inner {
           width: 100%;
           height: 100%;
@@ -1191,25 +1252,44 @@ export default function BenNetwork() {
           align-items: center;
           justify-content: center;
           overflow: hidden;
+          transition: transform 160ms ease;
         }
+
+        .floating-chip:hover .floating-chip-inner {
+          transform: translateY(-1px);
+        }
+
         .floating-img {
           width: 70%;
           height: 70%;
           object-fit: contain;
+          pointer-events: none;
         }
+
+        .hero-content {
+          z-index: 10;
+          pointer-events: none;
+        }
+
+        .hero-content a,
+        .hero-content button,
+        .hero-content [role="button"] {
+          pointer-events: auto;
+        }
+
         .hero-badge {
           position: absolute;
           top: 75px;
           left: 50%;
           transform: translateX(-50%);
-          z-index: 20;
+          z-index: 80;
+          pointer-events: auto;
         }
 
         .hero-vignette {
           position: absolute;
           inset: 0;
           pointer-events: none;
-
           background: radial-gradient(
               circle at 50% 45%,
               rgba(255, 255, 255, 0.92),
@@ -1229,7 +1309,6 @@ export default function BenNetwork() {
           position: relative;
           padding: 22px 18px;
           border-radius: 28px;
-
           overflow: visible;
           isolation: isolate;
           z-index: 0;
@@ -1248,10 +1327,8 @@ export default function BenNetwork() {
           border-radius: inherit;
           pointer-events: none;
           z-index: 0;
-
           background: rgba(255, 255, 255, 0.66);
           filter: blur(80px);
-
           -webkit-mask-image: radial-gradient(
             70% 65% at 50% 45%,
             rgba(0, 0, 0, 1) 0%,
@@ -1275,7 +1352,6 @@ export default function BenNetwork() {
           border-radius: inherit;
           pointer-events: none;
           z-index: 1;
-
           background: radial-gradient(
               70% 65% at 50% 45%,
               rgba(255, 255, 255, 0.55) 0%,
@@ -1284,7 +1360,6 @@ export default function BenNetwork() {
             ),
             radial-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 0) 0 0 / 3px
               3px;
-
           -webkit-mask-image: radial-gradient(
             70% 65% at 50% 45%,
             rgba(0, 0, 0, 1) 0%,

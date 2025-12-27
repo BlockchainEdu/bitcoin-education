@@ -333,7 +333,7 @@ export default function Home({ locations }) {
             <div className="flex flex-col items-center justify-center mt-6 mb-7">
               <StandardButton
                 link="https://twitter.com/blockchainedu"
-                text="Start Learning"
+                text="Apply"
                 color="orange"
                 styling="display-on-scroll mx-4"
                 target="_blank"
