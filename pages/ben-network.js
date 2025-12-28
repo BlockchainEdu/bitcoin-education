@@ -5,6 +5,7 @@ import Footer from "../components/footer";
 import StandardButton from "../components/standardButton";
 
 const BASE = "/images/ben-network";
+const BENEVENTS_IMG = "/images/benevents.png";
 
 function imgSrc(path) {
   return encodeURI(path);
@@ -516,7 +517,7 @@ export default function BenNetwork() {
         logoFile: "Optimism.png",
       },
       {
-        name: "IOTA",
+        name: "Iota",
         desc: "Distributed ledger technology for IoT and beyond.",
         href: OFFICIAL_LINKS["Iota"],
         logoFile: "Iota.png",
@@ -632,7 +633,7 @@ export default function BenNetwork() {
       {
         name: "Sid Ramesh",
         role: "Growth Advisor",
-        company: " Notional",
+        company: "Notional",
         subtitle: "UW-Madison",
         image: `${BASE}/alumni/Sid_Ramesh.png`,
       },
@@ -687,7 +688,7 @@ export default function BenNetwork() {
         <title>BEN Network | Blockchain Education Network</title>
         <meta
           name="description"
-          content="BEN Network: a global network of student founders, alumni and companies built through the Blockchain Education Network."
+          content="BEN Network: a global network of student founders, alumni and companies built through the Blockchain Education Network"
         />
       </Head>
 
@@ -701,6 +702,15 @@ export default function BenNetwork() {
         {/* Floating logos */}
         <div className="floating-layer absolute inset-0">
           {floating.map((l, idx) => {
+            const sizeVariant =
+              idx % 9 === 0
+                ? "xl"
+                : idx % 5 === 0
+                ? "lg"
+                : idx % 3 === 0
+                ? "sm"
+                : "md";
+
             const positions = [
               { top: 10, left: 8 },
               { top: 14, left: 18 },
@@ -718,8 +728,8 @@ export default function BenNetwork() {
               { top: 44, left: 18 },
               { top: 80, left: 30 },
               { top: 82, left: 71 },
-              { top: 44, left: 82 },
-              { top: 42, left: 94 },
+              { top: 48, left: 82 },
+              { top: 41, left: 95 },
               { top: 65, left: 12 },
               { top: 60, left: 28 },
               { top: 86, left: 10 },
@@ -748,7 +758,7 @@ export default function BenNetwork() {
                 rel={clickable ? "noopener noreferrer" : undefined}
                 aria-label={clickable ? `Abrir site de ${l.name}` : l.name}
                 title={clickable ? `Abrir ${l.name}` : l.name}
-                className={`${sizeClass} ${v} ${
+                className={`${sizeClass} ${v} size-${sizeVariant} ${
                   clickable ? "is-clickable" : "is-disabled"
                 }`}
                 style={{ top: `${p.top}%`, left: `${p.left}%` }}
@@ -794,24 +804,30 @@ export default function BenNetwork() {
 
               <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-2xl mx-auto">
                 A global network of student founders, alumni and companies built
-                through the Blockchain Education Network.
+                through the Blockchain Education Network
               </p>
+
+              <div className="hero-media mt-8">
+                <div className="benevents-card">
+                  <div className="benevents-frame">
+                    <img
+                      src={BENEVENTS_IMG}
+                      alt="BEN Events"
+                      className="benevents-img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              </div>
 
               <div className="mt-8 flex items-center justify-center gap-3">
                 <a
                   className="btn-premium"
-                  href="/ben-network#unicorns"
+                  href="/opportunities"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Explore companies <span className="arrow">→</span>
-                </a>
-
-                <a
-                  className="btn-ghost"
-                  href="/ben-network#universities"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  View universities <span className="arrow">→</span>
+                  Apply <span className="arrow">→</span>
                 </a>
               </div>
 
@@ -837,7 +853,7 @@ export default function BenNetwork() {
       </section>
 
       {/* UNICORNS / MAJOR */}
-      <section id="unicorns" className="bg-white py-16 mb-10">
+      <section id="unicorns" className="bg-gray-50 py-16 mb-10">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
@@ -878,7 +894,7 @@ export default function BenNetwork() {
       </section>
 
       {/* NOTABLE ALUMNI */}
-      <section className="bg-gray-50 py-16">
+      <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
@@ -928,7 +944,7 @@ export default function BenNetwork() {
       </section>
 
       {/* CLASS OF 2025 */}
-      <section className="bg-white py-16">
+      <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
@@ -961,7 +977,7 @@ export default function BenNetwork() {
       </section>
 
       {/* FOUNDERS & PROJECTS */}
-      <section className="bg-gray-50 py-16">
+      <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
@@ -1377,6 +1393,7 @@ export default function BenNetwork() {
           text-decoration: none;
           cursor: pointer;
           z-index: 60;
+          will-change: transform, filter;
         }
 
         .floating-chip:focus-visible {
@@ -1543,6 +1560,71 @@ export default function BenNetwork() {
           );
         }
 
+        .hero-media {
+          display: flex;
+          justify-content: center;
+          pointer-events: auto;
+        }
+        .benevents-card {
+          width: min(520px, 92%);
+          border-radius: 22px;
+          border: 1px solid rgba(0, 0, 0, 0.06);
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(10px);
+          box-shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
+          overflow: hidden;
+          transition: transform 160ms ease, box-shadow 180ms ease,
+            border-color 180ms ease;
+        }
+        .benevents-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 26px 70px rgba(0, 0, 0, 0.12);
+          border-color: rgba(0, 0, 0, 0.1);
+        }
+        .benevents-frame {
+          position: relative;
+          width: 100%;
+          background: radial-gradient(
+              260px 120px at 12% 12%,
+              rgba(255, 135, 42, 0.18),
+              transparent 58%
+            ),
+            radial-gradient(
+              260px 120px at 92% 18%,
+              rgba(34, 211, 238, 0.14),
+              transparent 60%
+            ),
+            rgba(255, 255, 255, 0.55);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+        .benevents-img {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          transform: translateZ(0);
+        }
+        .benevents-caption {
+          padding: 12px 14px 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        .benevents-pill {
+          font-size: 12px;
+          font-weight: 700;
+          padding: 6px 10px;
+          border-radius: 999px;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          background: rgba(255, 255, 255, 0.75);
+        }
+        .benevents-text {
+          font-size: 12px;
+          color: rgba(0, 0, 0, 0.65);
+        }
+
         .alumni-card {
           background: #fff;
           border: 1px solid rgba(0, 0, 0, 0.06);
@@ -1620,40 +1702,56 @@ export default function BenNetwork() {
           color: #ff872a;
         }
 
-        @keyframes floatY {
+        @keyframes floatY2 {
           0% {
-            transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg);
+            transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg)
+              scale(1);
           }
           50% {
-            transform: translate(-50%, -50%) translate3d(0, -12px, 0)
-              rotate(2deg);
+            transform: translate(-50%, -50%) translate3d(0, -18px, 0)
+              rotate(3deg) scale(1.03);
           }
           100% {
-            transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg);
+            transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg)
+              scale(1);
           }
         }
-        @keyframes driftX {
+        @keyframes driftX2 {
           0% {
             transform: translate(-50%, -50%) translate3d(0, 0, 0);
           }
           50% {
-            transform: translate(-50%, -50%) translate3d(10px, 0, 0);
+            transform: translate(-50%, -50%) translate3d(14px, 0, 0);
           }
           100% {
             transform: translate(-50%, -50%) translate3d(0, 0, 0);
+          }
+        }
+        @keyframes bobShadow {
+          0% {
+            filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
+          }
+          50% {
+            filter: drop-shadow(0 22px 46px rgba(0, 0, 0, 0.16));
+          }
+          100% {
+            filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
           }
         }
 
         .floatv1 {
-          animation: floatY 6.6s ease-in-out infinite;
+          animation: floatY2 5.8s ease-in-out infinite,
+            bobShadow 5.8s ease-in-out infinite;
         }
         .floatv2 {
-          animation: floatY 7.8s ease-in-out infinite,
-            driftX 9.2s ease-in-out infinite;
+          animation: floatY2 7.2s ease-in-out infinite,
+            driftX2 9.4s ease-in-out infinite,
+            bobShadow 7.2s ease-in-out infinite;
         }
         .floatv3 {
-          animation: floatY 6.9s ease-in-out infinite,
-            driftX 11s ease-in-out infinite;
+          animation: floatY2 6.4s ease-in-out infinite,
+            driftX2 12s ease-in-out infinite,
+            bobShadow 6.4s ease-in-out infinite;
         }
 
         .reveal {
@@ -1684,6 +1782,7 @@ export default function BenNetwork() {
             animation: none !important;
             transition: none !important;
             transform: none !important;
+            filter: none !important;
           }
 
           .reveal {
@@ -1741,6 +1840,22 @@ export default function BenNetwork() {
             background-size: 220% 220%;
             animation: alumniOrangeShift 3.2s ease-in-out infinite;
           }
+        }
+        .size-sm {
+          width: 102px;
+          height: 102px;
+        }
+        .size-md {
+          width: 76px;
+          height: 76px;
+        }
+        .size-lg {
+          width: 104px;
+          height: 104px;
+        }
+        .size-xl {
+          width: 98px;
+          height: 98px;
         }
       `}</style>
     </div>

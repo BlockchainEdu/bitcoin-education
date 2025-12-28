@@ -98,7 +98,7 @@ export default function Opportunities({ events, eventDeals }) {
           <div
             className="
               rounded-xl
-              bg-black/45
+              bg-white/85
               border border-white/12
               backdrop-blur-[3px]
               p-4
@@ -309,9 +309,7 @@ export default function Opportunities({ events, eventDeals }) {
           <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1 text-white">
-                  Full name
-                </label>
+                <label className={requiredLabel}>Full name</label>
                 <input
                   type="text"
                   name="fullName"
@@ -319,10 +317,9 @@ export default function Opportunities({ events, eventDeals }) {
                   className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
                 />
               </div>
+
               <div>
-                <label className="block text-sm font-medium mb-1 text-white">
-                  Email
-                </label>
+                <label className={requiredLabel}>Email</label>
                 <input
                   type="email"
                   name="email"
@@ -332,11 +329,20 @@ export default function Opportunities({ events, eventDeals }) {
               </div>
             </div>
 
+            <div>
+              <label className={requiredLabel}>Telegram username</label>
+              <input
+                type="text"
+                name="telegram"
+                required
+                placeholder="@username"
+                className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
+              />
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1 text-white">
-                  University / School
-                </label>
+                <label className={requiredLabel}>University / School</label>
                 <input
                   type="text"
                   name="university"
@@ -344,10 +350,9 @@ export default function Opportunities({ events, eventDeals }) {
                   className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
                 />
               </div>
+
               <div>
-                <label className="block text-sm font-medium mb-1 text-white">
-                  Country
-                </label>
+                <label className={requiredLabel}>Country</label>
                 <input
                   type="text"
                   name="country"
@@ -357,10 +362,23 @@ export default function Opportunities({ events, eventDeals }) {
               </div>
             </div>
 
+            <div className="grid grid-cols-1">
+              <div>
+                <label className={requiredLabel}>GPA</label>
+                <input
+                  type="number"
+                  name="gpa"
+                  required
+                  min="0"
+                  step="0.01"
+                  placeholder="e.g. 3.8"
+                  className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
+                />
+              </div>
+            </div>
+
             <div>
-              <label className="block text-sm font-medium mb-1 text-white">
-                LinkedIn profile
-              </label>
+              <label className={requiredLabel}>LinkedIn profile</label>
               <input
                 type="url"
                 name="linkedin"
@@ -370,18 +388,17 @@ export default function Opportunities({ events, eventDeals }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1 text-white">
-                GitHub or project link (optional)
-              </label>
+              <label className={requiredLabel}>GitHub or project link</label>
               <input
                 type="url"
                 name="projectLink"
+                required
                 className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1 text-white">
+              <label className={requiredLabel}>
                 What are you building or what do you want to build?
               </label>
               <textarea
@@ -398,10 +415,13 @@ export default function Opportunities({ events, eventDeals }) {
                   id="founderPipeline"
                   type="checkbox"
                   name="founderPipeline"
+                  required
+                  aria-required="true"
                   className="mt-1 h-4 w-4"
                 />
                 <label htmlFor="founderPipeline" className="text-sm text-white">
                   I want to join the BEN founder pipeline
+                  <span className="ml-1 text-red-400">*</span>
                 </label>
               </div>
 
