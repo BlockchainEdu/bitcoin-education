@@ -685,7 +685,7 @@ export default function BenNetwork() {
   return (
     <div className="bg-benwhite-500 min-h-screen text-benblack-500">
       <Head>
-        <title>BEN Network | Blockchain Education Network</title>
+        <title>TESTE BEN Network | Blockchain Education Network</title>
         <meta
           name="description"
           content="BEN Network: a global network of student founders, alumni and companies built through the Blockchain Education Network"
