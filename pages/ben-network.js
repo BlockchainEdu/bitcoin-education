@@ -801,16 +801,16 @@ export default function BenNetwork() {
       </section>
 
       {/* UNICORNS / MAJOR */}
-      <section id="unicorns" className="bg-white py-16">
+      <section id="unicorns" className="bg-white py-16 mb-10">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                Unicorns and major companies
+                Unicorns and major companies 🦄
               </h2>
               <p className="mt-2 text-sm text-benblack-500/70">
                 A selection of well-known companies connected to the BEN
-                ecosystem.
+                ecosystem
               </p>
             </header>
 
@@ -1108,13 +1108,97 @@ export default function BenNetwork() {
           padding: 16px;
           box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
           transition: transform 160ms ease, box-shadow 180ms ease,
-            border-color 180ms ease;
+          border-color 180ms ease;
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
         }
+
+        .logo-card::before{
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 4px;
+          background: linear-gradient(
+            135deg,
+            #a855f7, 
+            #22d3ee,
+            #60a5fa,
+            #fb7185, 
+            #f59e0b  
+          );
+          opacity: 0;
+          transition: opacity 180ms ease, filter 180ms ease;
+          pointer-events: none;
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+        }
+
+        .logo-card span,
+        .logo-card .logo-wrap{
+          position: relative;
+          z-index: 1;
+        }
+          
+        .logo-card::after{
+          content: "";
+          position: absolute;
+          inset: -14px;            
+          border-radius: inherit;
+          pointer-events: none;
+          z-index: -1;
+          opacity: 0;
+          filter: blur(14px);
+          transition: opacity 180ms ease;
+          background:
+            radial-gradient(180px 100px at 10% 12%, rgba(168,85,247,.20), transparent 62%),
+            radial-gradient(180px 140px at 92% 14%, rgba(34,211,238,.22), transparent 60%),
+            radial-gradient(120px 190px at 12% 90%, rgba(96,165,250,.18), transparent 60%), 
+            radial-gradient(185px 120px at 92% 90%, rgba(251,113,133,.32), transparent 62%);
+        }
+
         .logo-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
-          border-color: rgba(0, 0, 0, 0.1);
+          transform: translateY(-1px);
+
+          box-shadow:
+            15px 10px 25px 20px rgba(255,255,255,1),
+            0 0 10px rgba(255,255,255,0.95),
+            0 0 22px rgba(255,255,255,0.8),
+            0 0 40px rgba(173,216,255,0.66),
+            0 15px 70px rgba(255,200,150,0.35),
+            -10px -10px 45px rgba(0,0,0,0.10);
         }
+
+        .logo-card:hover::before{
+          opacity: 1;
+          filter:
+            drop-shadow(0 0 6px rgba(255,255,255,0.65))
+            drop-shadow(0 0 14px rgba(255,255,255,0.35))
+            drop-shadow(0 0 22px rgba(168,85,247,0.25))
+            drop-shadow(0 0 28px rgba(34,211,238,0.22));
+        }
+        
+
+        .logo-card:hover::after{
+          opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: no-preference){
+          .logo-card:hover::before{
+            background-size: 200% 200%;
+            animation: unicornShift 2.2s ease-in-out infinite;
+          }
+          @keyframes unicornShift{
+            0%{ background-position: 0% 50%; }
+            50%{ background-position: 100% 50%; }
+            100%{ background-position: 0% 50%; }
+          }
+        }
+
         .logo-wrap {
           height: 56px;
           display: flex;
