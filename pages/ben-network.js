@@ -1842,16 +1842,16 @@ export default function BenNetwork() {
           }
         }
         .size-sm {
-          width: 102px;
-          height: 102px;
+          width: 92px;
+          height: 92px;
         }
         .size-md {
           width: 76px;
           height: 76px;
         }
         .size-lg {
-          width: 104px;
-          height: 104px;
+          width: 93px;
+          height: 93px;
         }
         .size-xl {
           width: 98px;
