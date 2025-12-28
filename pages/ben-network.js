@@ -549,6 +549,42 @@ export default function BenNetwork() {
     []
   );
 
+  const unicorns = useMemo(
+    () => [
+      {
+        name: "Augur",
+        tagline: "Prediction markets",
+        file: "Augur.png",
+        dir: "unicorns",
+      },
+      {
+        name: "Iota",
+        tagline: "DLT",
+        file: "Iota.png",
+        dir: "unicorns",
+      },
+      {
+        name: "Bolt",
+        tagline: "Payments",
+        file: "Bolt.png",
+        dir: "unicorns",
+      },
+      {
+        name: "Optimism",
+        tagline: "L2 infrastructure",
+        file: "Optimism.png",
+        dir: "unicorns",
+      },
+      {
+        name: "Injective",
+        tagline: "L1 DeFi infrastructure",
+        file: "Injective.png",
+        dir: "unicorns",
+      },
+    ],
+    []
+  );
+
   const alumni = useMemo(
     () => [
       {
@@ -815,7 +851,7 @@ export default function BenNetwork() {
             </header>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
-              {portfolioCompanies.map((c) => (
+              {unicorns.map((c) => (
                 <div key={c.name} className="logo-card reveal">
                   <div className="logo-wrap">
                     <LogoImage
@@ -853,25 +889,27 @@ export default function BenNetwork() {
                 </span>
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                Our Alumni
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight font-mont">
+                <span className="text-benorange-500">Our</span>{" "}
+                <span className="text-benblack-500">Alumni</span>
               </h2>
               <p className="mt-2 text-sm text-benblack-500/70">
-                Proof of builders. Names you can recognize, work you can
-                measure.
+                Proof of builders. Names you can recognize, work you can measure
               </p>
             </header>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {alumni.map((a) => (
-                <div key={a.name} className="alumni-card reveal">
-                  <div className="alumni-avatar">
-                    <img
-                      src={imgSrc(a.image)}
-                      alt={a.name}
-                      className="alumni-avatar-img"
-                      loading="lazy"
-                    />
+                <div key={a.name} className="alumni-card alumni-glow reveal">
+                  <div className="alumni-avatar-wrap alumni-icon-glow">
+                    <div className="alumni-avatar">
+                      <img
+                        src={imgSrc(a.image)}
+                        alt={a.name}
+                        className="alumni-avatar-img"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
 
                   <div className="alumni-body">
@@ -898,7 +936,7 @@ export default function BenNetwork() {
                 Class of 2025
               </h2>
               <p className="mt-2 text-sm text-benblack-500/70">
-                Current builders and projects coming out of the network.
+                Current builders and projects coming out of the network
               </p>
             </header>
 
@@ -932,7 +970,7 @@ export default function BenNetwork() {
               </h2>
               <p className="mt-2 text-sm text-benblack-500/70">
                 A curated set of founders and projects shaped by the BEN
-                community.
+                community
               </p>
             </header>
 
@@ -981,8 +1019,7 @@ export default function BenNetwork() {
                 Universities
               </h2>
               <p className="mt-2 text-sm text-benblack-500/70">
-                A global footprint across campuses and student-led
-                organizations.
+                A global footprint across campuses and student-led organizations
               </p>
             </header>
 
@@ -1108,13 +1145,13 @@ export default function BenNetwork() {
           padding: 16px;
           box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
           transition: transform 160ms ease, box-shadow 180ms ease,
-          border-color 180ms ease;
+            border-color 180ms ease;
           position: relative;
           isolation: isolate;
           overflow: hidden;
         }
 
-        .logo-card::before{
+        .logo-card::before {
           content: "";
           position: absolute;
           inset: 0;
@@ -1122,80 +1159,97 @@ export default function BenNetwork() {
           padding: 4px;
           background: linear-gradient(
             135deg,
-            #a855f7, 
+            #a855f7,
             #22d3ee,
             #60a5fa,
-            #fb7185, 
-            #f59e0b  
+            #fb7185,
+            #f59e0b
           );
           opacity: 0;
           transition: opacity 180ms ease, filter 180ms ease;
           pointer-events: none;
-          -webkit-mask:
-            linear-gradient(#000 0 0) content-box,
+          -webkit-mask: linear-gradient(#000 0 0) content-box,
             linear-gradient(#000 0 0);
           -webkit-mask-composite: xor;
           mask-composite: exclude;
         }
 
         .logo-card span,
-        .logo-card .logo-wrap{
+        .logo-card .logo-wrap {
           position: relative;
           z-index: 1;
         }
-          
-        .logo-card::after{
+
+        .logo-card::after {
           content: "";
           position: absolute;
-          inset: -14px;            
+          inset: -14px;
           border-radius: inherit;
           pointer-events: none;
           z-index: -1;
           opacity: 0;
           filter: blur(14px);
           transition: opacity 180ms ease;
-          background:
-            radial-gradient(180px 100px at 10% 12%, rgba(168,85,247,.20), transparent 62%),
-            radial-gradient(180px 140px at 92% 14%, rgba(34,211,238,.22), transparent 60%),
-            radial-gradient(120px 190px at 12% 90%, rgba(96,165,250,.18), transparent 60%), 
-            radial-gradient(185px 120px at 92% 90%, rgba(251,113,133,.32), transparent 62%);
+          background: radial-gradient(
+              180px 100px at 10% 12%,
+              rgba(168, 85, 247, 0.2),
+              transparent 62%
+            ),
+            radial-gradient(
+              180px 140px at 92% 14%,
+              rgba(34, 211, 238, 0.22),
+              transparent 60%
+            ),
+            radial-gradient(
+              120px 190px at 12% 90%,
+              rgba(96, 165, 250, 0.18),
+              transparent 60%
+            ),
+            radial-gradient(
+              185px 120px at 92% 90%,
+              rgba(251, 113, 133, 0.32),
+              transparent 62%
+            );
         }
 
         .logo-card:hover {
           transform: translateY(-1px);
 
-          box-shadow:
-            15px 10px 25px 20px rgba(255,255,255,1),
-            0 0 10px rgba(255,255,255,0.95),
-            0 0 22px rgba(255,255,255,0.8),
-            0 0 40px rgba(173,216,255,0.66),
-            0 15px 70px rgba(255,200,150,0.35),
-            -10px -10px 45px rgba(0,0,0,0.10);
+          box-shadow: 15px 10px 25px 20px rgba(255, 255, 255, 1),
+            0 0 10px rgba(255, 255, 255, 0.95),
+            0 0 22px rgba(255, 255, 255, 0.8),
+            0 0 40px rgba(173, 216, 255, 0.66),
+            0 15px 70px rgba(255, 200, 150, 0.35),
+            -10px -10px 45px rgba(0, 0, 0, 0.1);
         }
 
-        .logo-card:hover::before{
+        .logo-card:hover::before {
           opacity: 1;
-          filter:
-            drop-shadow(0 0 6px rgba(255,255,255,0.65))
-            drop-shadow(0 0 14px rgba(255,255,255,0.35))
-            drop-shadow(0 0 22px rgba(168,85,247,0.25))
-            drop-shadow(0 0 28px rgba(34,211,238,0.22));
+          filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.65))
+            drop-shadow(0 0 14px rgba(255, 255, 255, 0.35))
+            drop-shadow(0 0 22px rgba(168, 85, 247, 0.25))
+            drop-shadow(0 0 28px rgba(34, 211, 238, 0.22));
         }
-        
 
-        .logo-card:hover::after{
+        .logo-card:hover::after {
           opacity: 1;
         }
 
-        @media (prefers-reduced-motion: no-preference){
-          .logo-card:hover::before{
+        @media (prefers-reduced-motion: no-preference) {
+          .logo-card:hover::before {
             background-size: 200% 200%;
             animation: unicornShift 2.2s ease-in-out infinite;
           }
-          @keyframes unicornShift{
-            0%{ background-position: 0% 50%; }
-            50%{ background-position: 100% 50%; }
-            100%{ background-position: 0% 50%; }
+          @keyframes unicornShift {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
           }
         }
 
@@ -1319,7 +1373,7 @@ export default function BenNetwork() {
           transform: translate(-50%, -50%);
           opacity: 0.9;
           filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
-          pointer-events: auto; /* reativa clique nos <a> */
+          pointer-events: auto;
           text-decoration: none;
           cursor: pointer;
           z-index: 60;
@@ -1384,7 +1438,7 @@ export default function BenNetwork() {
 
         .hero-badge > span:last-child {
           flex: 1 1 auto;
-          min-width: 0,
+          min-width: 0;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -1512,11 +1566,28 @@ export default function BenNetwork() {
           border-radius: 999px;
           overflow: hidden;
           flex: 0 0 auto;
-          border: 1px solid rgba(0, 0, 0, 0.08);
           background: rgba(0, 0, 0, 0.02);
           box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+          overflow: hidden !important;
         }
+
+        .alumni-avatar-wrap {
+          position: relative;
+        }
+
+        .alumni-icon-glow {
+          overflow: visible;
+        }
+
+        .alumni-avatar {
+          overflow: hidden;
+          border-radius: 999px;
+          width: 70px;
+          height: 70px;
+        }
+
         .alumni-avatar-img {
+          display: block;
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -1546,7 +1617,7 @@ export default function BenNetwork() {
         }
         .alumni-company {
           font-weight: 700;
-          color: #000;
+          color: #ff872a;
         }
 
         @keyframes floatY {
@@ -1617,6 +1688,58 @@ export default function BenNetwork() {
 
           .reveal {
             opacity: 1 !important;
+          }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+          .alumni-glow::before {
+            background-size: 220% 220%;
+            animation: alumniOrangeShift 3.2s ease-in-out infinite;
+          }
+
+          @keyframes alumniOrangeShift {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+        }
+
+        .alumni-icon-glow::before {
+          content: "";
+          position: absolute;
+          inset: -1px;
+          border-radius: 999px;
+          padding: 3px;
+          pointer-events: none;
+          z-index: 1;
+
+          background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.95),
+            #ff5900cc,
+            #f7c9a1d5,
+            rgba(255, 255, 255, 0.95)
+          );
+
+          -webkit-mask: linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+          opacity: 0.95;
+          filter: drop-shadow(0 0 6px rgba(255, 135, 42, 0.22));
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+          .alumni-icon-glow::before {
+            background-size: 220% 220%;
+            animation: alumniOrangeShift 3.2s ease-in-out infinite;
           }
         }
       `}</style>

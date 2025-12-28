@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Popup from "./popup";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   const popupDelayInSeconds = 15;
@@ -115,10 +116,9 @@ export default function Footer() {
             <div>
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Quick Links</li>
+
                 <li className="text-sm">
-                  <a href="https://t.me/+SMwh8vkel1KnZArV?utm_source=blockchainedu.org">
-                    Build with us
-                  </a>
+                  <Link href="/opportunities">Build with us</Link>
                 </li>
                 <li className="text-sm">
                   <a href="https://x.com/BlockchainEdu" target="_blank">
