@@ -60,22 +60,22 @@ function LogoImage({
 }
 
 const OFFICIAL_LINKS = {
-  Algorand: "https://www.algorand.foundation",
-  "Alpha Blockchain": "https://alphablockchain.io",
-  Augur: "https://www.augur.net",
-  "Au Sum Ventures": "https://www.ausum.vc",
+  Algorand: "https://algorand.foundation",
+  "Alpha Blockchain": null,
+  Augur: "https://augur.net",
+  "Au Sum Ventures": "https://ausum.vc",
   Axelar: "https://axelar.network",
-  Bitquick: "https://bitquick.co",
+  Bitquick: "https://bitquick.com",
   BlockHack: "https://blockhack.io",
-  Bolt: "https://bolt.global",
+  Bolt: "https://bolt.com",
   CoinList: "https://coinlist.co",
-  "Distributed ID": "https://distributedid.com",
+  "Distributed ID": null,
   Eco: "https://eco.org",
-  "GDA Capital": "https://gdacapital.com",
-  Immuto: "https://immuto.io",
-  Iota: "https://www.iota.org",
-  Metis: "https://www.metis.io",
-  Optimism: "https://www.optimism.io",
+  "GDA Capital": "https://gda.capital",
+  Immuto: null,
+  Iota: "https://iota.org",
+  Metis: "https://metis.io",
+  Optimism: "https://optimism.io",
   Qtum: "https://qtum.org",
 };
 
@@ -662,7 +662,7 @@ export default function BenNetwork() {
         <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-benorange-100 opacity-90" />
         <div className="hero-vignette" aria-hidden="true" />
 
-        {/* Floating logos (clicáveis) */}
+        {/* Floating logos */}
         <div className="floating-layer absolute inset-0">
           {floating.map((l, idx) => {
             const positions = [
@@ -736,7 +736,7 @@ export default function BenNetwork() {
         </div>
 
         <div className="relative container mx-auto pt-24 pb-16 px-6 hero-content">
-          <div className="hero-badge inline-flex items-center gap-2 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs mb-6 shadow-sm">
+          <div className="hero-badge inline-flex items-center gap-4 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs mb-6 shadow-sm">
             <span className="font-semibold">Proof of impact</span>
             <span className="opacity-70">
               $20B+ in value created, 160+ chapters in 35+ countries and 2.2M
@@ -746,9 +746,14 @@ export default function BenNetwork() {
 
           <div className="max-w-xl mx-auto text-center hero-glass">
             <div className="hero-glass-content">
-              <h1 className="text-4xl lg:text-7xl font-extrabold tracking-[-0.03em] leading-[1.05]">
-                <span className="text-benorange-500">BEN</span>{" "}
-                <span className="text-benblack-500">Network</span>
+              <h1 className="flex items-center justify-center gap-3 lg:gap-4 leading-none">
+                <img
+                  src="/images/ben-network/ben-network-logo.png"
+                  alt="BEN"
+                  className="h-20 w-auto sm:h-12 lg:h-auto drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
+                  loading="eager"
+                  decoding="async"
+                />
               </h1>
 
               <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-2xl mx-auto">
@@ -1218,8 +1223,8 @@ export default function BenNetwork() {
         }
 
         .floating-layer {
-          z-index: 50;
-          pointer-events: none; 
+          z-index: 5;
+          pointer-events: none;
         }
 
         .floating-chip {
@@ -1267,7 +1272,7 @@ export default function BenNetwork() {
         }
 
         .hero-content {
-          z-index: 10;
+          z-index: 20;
           pointer-events: none;
         }
 
@@ -1282,8 +1287,32 @@ export default function BenNetwork() {
           top: 75px;
           left: 50%;
           transform: translateX(-50%);
-          z-index: 80;
+          z-index: 30;
           pointer-events: auto;
+          width: min(87vw, 575px);
+          justify-content: center;
+        }
+
+        .hero-badge > span:first-child {
+          white-space: nowrap;
+          flex: 0 0 auto;
+        }
+
+        .hero-badge > span:last-child {
+          flex: 1 1 auto;
+          min-width: 0,
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        @media (max-width: 640px) {
+          .hero-badge {
+            top: 64px;
+            padding: 10px 14px;
+            gap: 10px;
+            font-size: 12px;
+          }
         }
 
         .hero-vignette {
