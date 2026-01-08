@@ -991,36 +991,49 @@ export default function BenNetwork() {
             </header>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {foundersAndProjects.map((p) => (
-                <div key={p.name} className="card-premium reveal">
-                  <div className="flex items-start gap-4">
-                    {p.logoFile ? (
-                      <div className="project-logo">
-                        <LogoImage
-                          primaryDir="companies-from-ben"
-                          fallbackDirs={["portfolio-companies"]}
-                          file={p.logoFile}
-                          alt={p.name}
-                          className="project-logo-img"
-                        />
+              {foundersAndProjects.map((p) => {
+                const href = p.href || "#";
+                const clickable = href && href !== "#";
+
+                return (
+                  <div key={p.name} className="card-premium reveal">
+                    <div className="flex items-start gap-4">
+                      {p.logoFile ? (
+                        <a
+                          href={href}
+                          target={clickable ? "_blank" : undefined}
+                          rel={clickable ? "noopener noreferrer" : undefined}
+                          aria-label={
+                            clickable ? `Abrir site de ${p.name}` : p.name
+                          }
+                          title={clickable ? `Abrir ${p.name}` : p.name}
+                          className={`project-logo ${
+                            clickable ? "cursor-pointer" : "cursor-default"
+                          }`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (!clickable) e.preventDefault();
+                          }}
+                        >
+                          <LogoImage
+                            primaryDir="companies-from-ben"
+                            fallbackDirs={["portfolio-companies"]}
+                            file={p.logoFile}
+                            alt={p.name}
+                            className="project-logo-img"
+                          />
+                        </a>
+                      ) : null}
+
+                      <div>
+                        <h3 className="text-lg font-semibold mb-1">{p.name}</h3>
+                        <p className="text-sm text-benblack-500/70">{p.desc}</p>
                       </div>
-                    ) : null}
-
-                    <div>
-                      <h3 className="text-lg font-semibold mb-1">{p.name}</h3>
-                      <p className="text-sm text-benblack-500/70">{p.desc}</p>
                     </div>
-                  </div>
 
-                  <div className="mt-5">
-                    <StandardButton
-                      text="Learn more"
-                      link={p.href || "#"}
-                      styling="w-fit"
-                    />
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
