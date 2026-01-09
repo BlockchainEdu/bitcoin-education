@@ -1,8 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import Head from "next/head";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
-import StandardButton from "../components/standardButton";
 
 const BASE = "/images/ben-network";
 const BENEVENTS_IMG = "/images/benevents.png";
@@ -38,6 +37,84 @@ function setFallbackImage(e, candidates) {
   }
 }
 
+function extractDominantColor(imgEl) {
+  try {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return null;
+
+    const SIZE = 48;
+    canvas.width = SIZE;
+    canvas.height = SIZE;
+
+    ctx.drawImage(imgEl, 0, 0, SIZE, SIZE);
+    const { data } = ctx.getImageData(0, 0, SIZE, SIZE);
+
+    const buckets = new Map();
+    const STEP = 24;
+
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+      const a = data[i + 3];
+
+      if (a < 200) continue;
+
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+
+      if (max < 20 && min < 20) continue;
+
+      const qr = Math.round(r / STEP) * STEP;
+      const qg = Math.round(g / STEP) * STEP;
+      const qb = Math.round(b / STEP) * STEP;
+
+      const key = `${qr},${qg},${qb}`;
+      buckets.set(key, (buckets.get(key) || 0) + 1);
+    }
+
+    let top = null;
+    let maxCount = 0;
+
+    for (const [color, count] of buckets) {
+      if (count > maxCount) {
+        maxCount = count;
+        top = color;
+      }
+    }
+
+    if (!top) return null;
+    return `rgb(${top})`;
+  } catch {
+    return null;
+  }
+}
+
+function SmartImage({
+  src,
+  fallbackSrcs = [],
+  alt,
+  className,
+  loading = "lazy",
+  decoding = "async",
+  crossOrigin = "anonymous",
+  onLoad,
+}) {
+  return (
+    <img
+      src={src}
+      onError={(e) => setFallbackImage(e, fallbackSrcs)}
+      onLoad={onLoad}
+      alt={alt || ""}
+      className={className}
+      loading={loading}
+      decoding={decoding}
+      crossOrigin={crossOrigin}
+    />
+  );
+}
+
 function LogoImage({
   primaryDir,
   file,
@@ -45,19 +122,31 @@ function LogoImage({
   className,
   loading = "lazy",
   fallbackDirs = [],
+  onLoad,
 }) {
   const primary = joinSrc(BASE, primaryDir, file);
   const fallbacks = fallbackDirs.map((d) => joinSrc(BASE, d, file));
 
   return (
-    <img
+    <SmartImage
       src={primary}
-      onError={(e) => setFallbackImage(e, fallbacks)}
-      alt={alt || ""}
+      fallbackSrcs={fallbacks}
+      alt={alt}
       className={className}
       loading={loading}
+      onLoad={onLoad}
     />
   );
+}
+
+function useDominantBg() {
+  return useCallback((e) => {
+    const img = e.currentTarget;
+    const wrap = img?.closest?.("[data-dominant-bg]");
+    if (!wrap) return;
+    const c = extractDominantColor(img);
+    if (c) wrap.style.setProperty("--logo-bg", c);
+  }, []);
 }
 
 const OFFICIAL_LINKS = {
@@ -86,79 +175,100 @@ function withHref(item) {
 }
 
 export default function BenNetwork() {
-  const portfolioCompanies = useMemo(
-    () => [
-      {
-        name: "Algebra Finance",
-        tagline: "DeFi",
-        file: "Algebra-Finance.jpg",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "Alpaca Network",
-        tagline: "Infrastructure",
-        file: "Alpaca-Network.jpeg",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "CreatorBid",
-        tagline: "Creator economy",
-        file: "CreatorBid.jpg",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "CWAP SWAP",
-        tagline: "DEX / DeFi",
-        file: "CWAP-SWAP.jpg",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "Flashy Cash",
-        tagline: "Payments",
-        file: "Flashy-Cash.jpg",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "G.A.M.E",
-        tagline: "Gaming",
-        file: "G.A.M.E.jpg",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "SatLayer",
-        tagline: "Infrastructure",
-        file: "SatLayer.png",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "Tenderize",
-        tagline: "Staking",
-        file: "Tenderize.jpg",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "Vana",
-        tagline: "Data / AI",
-        file: "Vana.jpg",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-      {
-        name: "YesNoError",
-        tagline: "Dev tools",
-        file: "YesNoError.png",
-        dir: "portfolio-companies",
-        href: "#",
-      },
-    ],
+  const onDominantBgLoad = useDominantBg();
+
+  const floatingIcons = useMemo(
+    () =>
+      [
+        {
+          name: "CreatorBid",
+          file: "CreatorBid.jpg",
+          dir: "portfolio-companies",
+        },
+        { name: "SWAP", file: "SWAP.jpg", dir: "portfolio-companies" },
+        {
+          name: "Alpaca-Network",
+          file: "Alpaca-Network.jpeg",
+          dir: "portfolio-companies",
+        },
+        { name: "Algorand", file: "Algorand.png", dir: "companies-from-ben" },
+        { name: "SatLayer", file: "SatLayer.png", dir: "portfolio-companies" },
+        { name: "Injective", file: "Injective.png", dir: "companies-from-ben" },
+        {
+          name: "Unidentified Logo N",
+          file: "Unidentified-Logo-N.png",
+          dir: "network-of-universities/row-6",
+        },
+        {
+          name: "Muba",
+          file: "Muba.jpg",
+          dir: "network-of-universities/row-6",
+        },
+        { name: "Metis", file: "Metis.png", dir: "companies-from-ben" },
+        { name: "Vana", file: "Vana.jpg", dir: "portfolio-companies" },
+        {
+          name: "Algebra-Finance",
+          file: "Algebra-Finance.jpg",
+          dir: "portfolio-companies",
+        },
+        {
+          name: "Unidentified Logo Q",
+          file: "Unidentified-Logo-Q.jpg",
+          dir: "network-of-universities/row-6",
+        },
+        {
+          name: "DropSpaceNFT",
+          file: "DropSpaceNFT.jpg",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Harvard Blockchain",
+          file: "Harvard-Blockchain.jpg",
+          dir: "network-of-universities/row-6",
+        },
+        { name: "Roll", file: "Roll.jpg", dir: "companies-from-ben" },
+        {
+          name: "Tenderize",
+          file: "Tenderize.jpg",
+          dir: "portfolio-companies",
+        },
+        {
+          name: "Oxford Blockchain Society",
+          file: "Oxford-Blockchain-Society.jpg",
+          dir: "network-of-universities/row-1",
+        },
+        {
+          name: "MUBC",
+          file: "MUBC.jpg",
+          dir: "network-of-universities/row-1",
+        },
+        { name: "G.A.M.E", file: "G.A.M.E.jpg", dir: "portfolio-companies" },
+        {
+          name: "Hackslash",
+          file: "Hackslash.png",
+          dir: "network-of-universities/row-6",
+        },
+        {
+          name: "B.TECH",
+          file: "B.TECH.png",
+          dir: "network-of-universities/row-3",
+        },
+        {
+          name: "GDA-Capital",
+          file: "GDA-Capital.jpg",
+          dir: "companies-from-ben",
+        },
+        {
+          name: "Unidentified Logo R",
+          file: "Unidentified-Logo-R.png",
+          dir: "network-of-universities/row-6",
+        },
+        {
+          name: "Kryptosphere",
+          file: "Kryptosphere.png",
+          dir: "network-of-universities/row-7",
+        },
+      ].map(withHref),
     []
   );
 
@@ -558,18 +668,8 @@ export default function BenNetwork() {
         file: "Augur.png",
         dir: "unicorns",
       },
-      {
-        name: "Iota",
-        tagline: "DLT",
-        file: "Iota.png",
-        dir: "unicorns",
-      },
-      {
-        name: "Bolt",
-        tagline: "Payments",
-        file: "Bolt.png",
-        dir: "unicorns",
-      },
+      { name: "Iota", tagline: "DLT", file: "Iota.png", dir: "unicorns" },
+      { name: "Bolt", tagline: "Payments", file: "Bolt.png", dir: "unicorns" },
       {
         name: "Optimism",
         tagline: "L2 infrastructure",
@@ -594,6 +694,7 @@ export default function BenNetwork() {
         company: "Augur",
         subtitle: "University of Michigan",
         image: `${BASE}/alumni/Jeremy_Gardner.png`,
+        linkedin: "https://www.linkedin.com/in/jg1578/",
       },
       {
         name: "Michael Gord",
@@ -601,6 +702,7 @@ export default function BenNetwork() {
         company: "GDA Capital",
         subtitle: "McGill University",
         image: `${BASE}/alumni/Michael_Gord.png`,
+        linkedin: "https://ca.linkedin.com/in/mgord",
       },
       {
         name: "Ryan Breslow",
@@ -608,6 +710,7 @@ export default function BenNetwork() {
         company: "Bolt",
         subtitle: "Stanford University",
         image: `${BASE}/alumni/Ryan_Breslow.png`,
+        linkedin: "https://www.linkedin.com/in/ryanbreslow",
       },
       {
         name: "Jinglan Wang",
@@ -615,6 +718,7 @@ export default function BenNetwork() {
         company: "Optimism",
         subtitle: "Wellesley / MIT",
         image: `${BASE}/alumni/Jinglan_Wang.png`,
+        linkedin: "https://ky.linkedin.com/in/jing-wang-576a3772",
       },
       {
         name: "Joey Krug",
@@ -622,6 +726,7 @@ export default function BenNetwork() {
         company: "Augur",
         subtitle: "Pomona Dropout",
         image: `${BASE}/alumni/Joey_Krug.png`,
+        linkedin: "https://pr.linkedin.com/in/joeykrug",
       },
       {
         name: "Bradley Miles",
@@ -629,6 +734,7 @@ export default function BenNetwork() {
         company: "Roll",
         subtitle: "Columbia University",
         image: `${BASE}/alumni/Bradley_Miles.png`,
+        linkedin: "https://www.linkedin.com/in/bmiles1",
       },
       {
         name: "Sid Ramesh",
@@ -636,6 +742,7 @@ export default function BenNetwork() {
         company: "Notional",
         subtitle: "UW-Madison",
         image: `${BASE}/alumni/Sid_Ramesh.png`,
+        linkedin: "https://www.linkedin.com/in/sidramesh",
       },
       {
         name: "Eric Chen",
@@ -643,6 +750,7 @@ export default function BenNetwork() {
         company: "Injective",
         subtitle: "New York University",
         image: `${BASE}/alumni/Eric_Chen.png`,
+        linkedin: null,
       },
       {
         name: "Dean Masley",
@@ -650,6 +758,7 @@ export default function BenNetwork() {
         company: "NestEgg",
         subtitle: "University of Delaware",
         image: `${BASE}/alumni/Dean_Masley.png`,
+        linkedin: "https://www.linkedin.com/pub/dean-masley/96/149/a22",
       },
     ],
     []
@@ -666,21 +775,59 @@ export default function BenNetwork() {
     "/images/stories/drew-cousin.jpeg",
   ];
 
-  const floating = useMemo(() => {
-    const pick = [...portfolioCompanies, ...companiesFromBen].map(withHref);
-    const uniq = [];
-    const seen = new Set();
+  const allUniversities = useMemo(() => {
+    return universitiesByRow.flatMap((row) =>
+      row.items.map((u) => ({ ...u, row: row.row }))
+    );
+  }, [universitiesByRow]);
 
-    for (const item of pick) {
-      if (!item?.file) continue;
-      const key = item.file.toLowerCase();
-      if (seen.has(key)) continue;
-      seen.add(key);
-      uniq.push(item);
-    }
+  const UNI_PAGE_SIZE = 21;
+  const [uniPage, setUniPage] = useState(1);
+  const [uniPageInput, setUniPageInput] = useState("1");
 
-    return uniq.slice(0, 25);
-  }, [portfolioCompanies, companiesFromBen]);
+  const totalUniPages = Math.max(
+    1,
+    Math.ceil(allUniversities.length / UNI_PAGE_SIZE)
+  );
+
+  useEffect(() => {
+    setUniPageInput(String(uniPage));
+  }, [uniPage]);
+
+  const pagedUniversities = useMemo(() => {
+    const start = (uniPage - 1) * UNI_PAGE_SIZE;
+    return allUniversities.slice(start, start + UNI_PAGE_SIZE);
+  }, [allUniversities, uniPage]);
+
+  const uniVisiblePages = useMemo(() => {
+    const windowSize = 5;
+    const half = Math.floor(windowSize / 2);
+
+    let start = Math.max(1, uniPage - half);
+    let end = Math.min(totalUniPages, start + windowSize - 1);
+
+    start = Math.max(1, end - windowSize + 1);
+
+    const pages = [];
+    for (let p = start; p <= end; p++) pages.push(p);
+
+    return {
+      pages,
+      showLeftDots: start > 1,
+      showRightDots: end < totalUniPages,
+    };
+  }, [uniPage, totalUniPages]);
+
+  function clampPage(p) {
+    const n = Number(p);
+    if (!Number.isFinite(n)) return uniPage;
+    return Math.min(totalUniPages, Math.max(1, Math.trunc(n)));
+  }
+
+  function commitUniPage(value) {
+    const next = clampPage(value);
+    setUniPage(next);
+  }
 
   return (
     <div className="bg-benwhite-500 min-h-screen text-benblack-500">
@@ -694,14 +841,12 @@ export default function BenNetwork() {
 
       <HeaderWithLogoDark />
 
-      {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-benorange-100 opacity-90" />
         <div className="hero-vignette" aria-hidden="true" />
 
-        {/* Floating logos */}
         <div className="floating-layer absolute inset-0">
-          {floating.map((l, idx) => {
+          {floatingIcons.map((l, idx) => {
             const sizeVariant =
               idx % 9 === 0
                 ? "xl"
@@ -739,13 +884,6 @@ export default function BenNetwork() {
             ];
 
             const p = positions[idx % positions.length];
-            const sizeClass =
-              idx % 7 === 0
-                ? "floating-chip lg"
-                : idx % 5 === 0
-                ? "floating-chip sm"
-                : "floating-chip";
-
             const v = `floatv${(idx % 3) + 1}`;
             const href = l.href || "#";
             const clickable = href && href !== "#";
@@ -758,7 +896,7 @@ export default function BenNetwork() {
                 rel={clickable ? "noopener noreferrer" : undefined}
                 aria-label={clickable ? `Abrir site de ${l.name}` : l.name}
                 title={clickable ? `Abrir ${l.name}` : l.name}
-                className={`${sizeClass} ${v} size-${sizeVariant} ${
+                className={`floating-chip ${v} size-${sizeVariant} ${
                   clickable ? "is-clickable" : "is-disabled"
                 }`}
                 style={{ top: `${p.top}%`, left: `${p.left}%` }}
@@ -770,7 +908,17 @@ export default function BenNetwork() {
                 <div className="floating-chip-inner">
                   <LogoImage
                     primaryDir={l.dir || "companies-from-ben"}
-                    fallbackDirs={["companies-from-ben", "portfolio-companies"]}
+                    fallbackDirs={[
+                      "companies-from-ben",
+                      "portfolio-companies",
+                      "network-of-universities/row-1",
+                      "network-of-universities/row-2",
+                      "network-of-universities/row-3",
+                      "network-of-universities/row-4",
+                      "network-of-universities/row-5",
+                      "network-of-universities/row-6",
+                      "network-of-universities/row-7",
+                    ]}
                     file={l.file}
                     className="floating-img"
                     alt={l.name}
@@ -852,8 +1000,109 @@ export default function BenNetwork() {
         </div>
       </section>
 
-      {/* UNICORNS / MAJOR */}
-      <section id="unicorns" className="bg-gray-50 py-16 mb-10">
+      <section className="py-2 mb-12">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <header className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-black/5 px-4 py-2 text-xs shadow-sm mb-6">
+                <span className="font-semibold">Notable Alumni</span>
+                <span className="opacity-70">
+                  Founders and leaders from the BEN network
+                </span>
+              </div>
+
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight font-mont">
+                <span className="text-benorange-500">Our</span>{" "}
+                <span className="text-benblack-500">Alumni</span>
+              </h2>
+              <p className="mt-2 text-sm text-benblack-500/70">
+                Proof of builders. Names you can recognize, work you can measure
+              </p>
+            </header>
+
+            <div className="people-grid reveal">
+              {alumni.map((a) => (
+                <div key={a.name} className="people-item">
+                  <div className="people-avatar">
+                    <img
+                      src={imgSrc(a.image)}
+                      alt={a.name}
+                      className="people-avatar-img"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+
+                  <div className="people-meta">
+                    <div className="people-name">{a.name}</div>
+                    <div className="people-company">{a.company}</div>
+                    <div className="people-role">{a.role}</div>
+
+                    <div className="people-socials">
+                      {a.linkedin ? (
+                        <a
+                          className="social-btn"
+                          href={a.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`LinkedIn de ${a.name}`}
+                          title="LinkedIn"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V23h-4V8Zm7 0h3.83v2.05h.05C12 8.88 13.57 7.7 15.94 7.7 20.02 7.7 21 10.29 21 14.1V23h-4v-7.9c0-1.88-.04-4.29-2.61-4.29-2.61 0-3.01 2.04-3.01 4.16V23h-4V8Z"
+                            />
+                          </svg>
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <header className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                Class of 2025
+              </h2>
+              <p className="mt-2 text-sm text-benblack-500/70">
+                Current builders and projects coming out of the network
+              </p>
+            </header>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+              {companiesFromBen.slice(0, 18).map((c) => (
+                <div key={c.name} className="mini-logo reveal">
+                  <LogoImage
+                    primaryDir={c.dir}
+                    fallbackDirs={["portfolio-companies"]}
+                    file={c.file}
+                    alt={c.name}
+                    className="mini-logo-img"
+                  />
+                  <div className="mt-2 text-xs font-semibold text-center">
+                    {c.name}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="unicorns" className="py-16 mb-10">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
@@ -893,90 +1142,6 @@ export default function BenNetwork() {
         </div>
       </section>
 
-      {/* NOTABLE ALUMNI */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <header className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-black/5 px-2 py-2 text-xs shadow-sm mb-6">
-                <span className="font-semibold">Notable Alumni</span>
-                <span className="opacity-70">
-                  Founders and leaders from the BEN network
-                </span>
-              </div>
-
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight font-mont">
-                <span className="text-benorange-500">Our</span>{" "}
-                <span className="text-benblack-500">Alumni</span>
-              </h2>
-              <p className="mt-2 text-sm text-benblack-500/70">
-                Proof of builders. Names you can recognize, work you can measure
-              </p>
-            </header>
-
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {alumni.map((a) => (
-                <div key={a.name} className="alumni-card alumni-glow reveal">
-                  <div className="alumni-avatar-wrap alumni-icon-glow">
-                    <div className="alumni-avatar">
-                      <img
-                        src={imgSrc(a.image)}
-                        alt={a.name}
-                        className="alumni-avatar-img"
-                        loading="lazy"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="alumni-body">
-                    <div className="alumni-name">{a.name}</div>
-                    <div className="alumni-title">
-                      {a.role},{" "}
-                      <span className="alumni-company">{a.company}</span>
-                    </div>
-                    <div className="alumni-subtitle">{a.subtitle}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CLASS OF 2025 */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            <header className="text-center mb-10">
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
-                Class of 2025
-              </h2>
-              <p className="mt-2 text-sm text-benblack-500/70">
-                Current builders and projects coming out of the network
-              </p>
-            </header>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-              {companiesFromBen.slice(0, 18).map((c) => (
-                <div key={c.name} className="mini-logo reveal">
-                  <LogoImage
-                    primaryDir={c.dir}
-                    fallbackDirs={["portfolio-companies"]}
-                    file={c.file}
-                    alt={c.name}
-                    className="mini-logo-img"
-                  />
-                  <div className="mt-2 text-xs font-semibold text-center">
-                    {c.name}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FOUNDERS & PROJECTS */}
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
@@ -1000,6 +1165,7 @@ export default function BenNetwork() {
                     <div className="flex items-start gap-4">
                       {p.logoFile ? (
                         <a
+                          data-dominant-bg
                           href={href}
                           target={clickable ? "_blank" : undefined}
                           rel={clickable ? "noopener noreferrer" : undefined}
@@ -1021,6 +1187,7 @@ export default function BenNetwork() {
                             file={p.logoFile}
                             alt={p.name}
                             className="project-logo-img"
+                            onLoad={onDominantBgLoad}
                           />
                         </a>
                       ) : null}
@@ -1030,7 +1197,6 @@ export default function BenNetwork() {
                         <p className="text-sm text-benblack-500/70">{p.desc}</p>
                       </div>
                     </div>
-
                   </div>
                 );
               })}
@@ -1039,80 +1205,133 @@ export default function BenNetwork() {
         </div>
       </section>
 
-      {/* UNIVERSITIES */}
       <section id="universities" className="bg-white py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
-            <header className="text-center mb-10">
+            <header className="uni-head">
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
                 Universities
               </h2>
-              <p className="mt-2 text-sm text-benblack-500/70">
-                A global footprint across campuses and student-led organizations
-              </p>
             </header>
 
-            <div className="university-row reveal">
-              <div className="row-grid">
-                {universitiesByRow
-                  .flatMap((row) =>
-                    row.items.map((u) => ({ ...u, row: row.row }))
-                  )
-                  .map((u) => (
+            <div className="uni-panel reveal">
+              <div className="uni-grid">
+                {pagedUniversities.map((u, idx) => {
+                  const globalRank = (uniPage - 1) * UNI_PAGE_SIZE + idx + 1;
+
+                  const primary = imgSrc(
+                    `${BASE}/network-of-universities/${u.row}/${u.file}`
+                  );
+
+                  const allRows = [
+                    "row-1",
+                    "row-2",
+                    "row-3",
+                    "row-4",
+                    "row-5",
+                    "row-6",
+                    "row-7",
+                  ];
+
+                  const fallbacks = allRows
+                    .filter((r) => r !== u.row)
+                    .map((r) =>
+                      imgSrc(`${BASE}/network-of-universities/${r}/${u.file}`)
+                    );
+
+                  return (
                     <div
-                      key={`${u.row}-${u.name}-${u.file}`}
-                      className="uni-logo"
+                      key={`${u.row}-${u.name}-${u.file}-${globalRank}`}
+                      className="uni-item"
                       title={u.name}
                     >
-                      <img
-                        src={imgSrc(
-                          `${BASE}/network-of-universities/${u.row}/${u.file}`
-                        )}
-                        onError={(e) =>
-                          setFallbackImage(e, [
-                            imgSrc(
-                              `${BASE}/network-of-universities/${u.row}/${u.file}`
-                            ),
-                            imgSrc(
-                              `${BASE}/network-of-universities/row-1/${u.file}`
-                            ),
-                            imgSrc(
-                              `${BASE}/network-of-universities/row-2/${u.file}`
-                            ),
-                            imgSrc(
-                              `${BASE}/network-of-universities/row-3/${u.file}`
-                            ),
-                            imgSrc(
-                              `${BASE}/network-of-universities/row-4/${u.file}`
-                            ),
-                            imgSrc(
-                              `${BASE}/network-of-universities/row-5/${u.file}`
-                            ),
-                            imgSrc(
-                              `${BASE}/network-of-universities/row-6/${u.file}`
-                            ),
-                            imgSrc(
-                              `${BASE}/network-of-universities/row-7/${u.file}`
-                            ),
-                          ])
-                        }
-                        alt={u.name}
-                        className="uni-logo-img"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-              </div>
-            </div>
+                      <div className="uni-rank">{globalRank}</div>
 
-            <div className="mt-10 flex justify-center">
-              <a
-                className="btn-ghost"
-                href="/ben-network#unicorns"
-                onClick={(e) => e.stopPropagation()}
-              >
-                Back to top companies <span className="arrow">→</span>
-              </a>
+                      <div className="uni-logoWrap" data-dominant-bg>
+                        <SmartImage
+                          src={primary}
+                          fallbackSrcs={fallbacks}
+                          alt={u.name}
+                          className="uni-logoImg"
+                          loading="lazy"
+                          onLoad={onDominantBgLoad}
+                        />
+                      </div>
+
+                      <div className="uni-name">{u.name}</div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="uni-pager">
+                <div className="uni-total">Total {allUniversities.length}</div>
+
+                <div className="uni-nav">
+                  <button
+                    className="uni-navBtn"
+                    onClick={() => setUniPage((p) => Math.max(1, p - 1))}
+                    disabled={uniPage <= 1}
+                    aria-label="Página anterior"
+                    title="Anterior"
+                  >
+                    ‹
+                  </button>
+
+                  <div className="uni-pages">
+                    {uniVisiblePages.showLeftDots ? (
+                      <span className="uni-dots">…</span>
+                    ) : null}
+
+                    {uniVisiblePages.pages.map((p) => (
+                      <button
+                        key={p}
+                        className={`uni-pageBtn ${
+                          p === uniPage ? "is-active" : ""
+                        }`}
+                        onClick={() => setUniPage(p)}
+                        aria-label={`Página ${p}`}
+                        title={`Página ${p}`}
+                      >
+                        {p}
+                      </button>
+                    ))}
+
+                    {uniVisiblePages.showRightDots ? (
+                      <span className="uni-dots">…</span>
+                    ) : null}
+                  </div>
+
+                  <button
+                    className="uni-navBtn"
+                    onClick={() =>
+                      setUniPage((p) => Math.min(totalUniPages, p + 1))
+                    }
+                    disabled={uniPage >= totalUniPages}
+                    aria-label="Próxima página"
+                    title="Próxima"
+                  >
+                    ›
+                  </button>
+                </div>
+
+                <div className="uni-pageJump">
+                  <span className="uni-pageLabel">Page</span>
+                  <input
+                    className="uni-pageInput"
+                    value={uniPageInput}
+                    inputMode="numeric"
+                    onChange={(e) =>
+                      setUniPageInput(e.target.value.replace(/[^\d]/g, ""))
+                    }
+                    onBlur={() => commitUniPage(uniPageInput)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") commitUniPage(uniPageInput);
+                    }}
+                    aria-label="Ir para página"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1121,20 +1340,17 @@ export default function BenNetwork() {
       <Footer />
 
       <style jsx global>{`
-        .btn-premium,
-        .btn-ghost {
+        .btn-premium {
           display: inline-flex;
           align-items: center;
           gap: 10px;
           padding: 12px 18px;
           border-radius: 999px;
-          font-weight: 600;
+          font-weight: 500;
           transition: background 180ms ease, color 180ms ease,
-            transform 120ms ease, box-shadow 180ms ease, border-color 180ms ease;
+            transform 120ms ease, border-color 180ms ease;
           user-select: none;
           text-decoration: none;
-        }
-        .btn-premium {
           background: #111;
           color: #fff;
           border: 1px solid rgba(0, 0, 0, 0.08);
@@ -1147,23 +1363,10 @@ export default function BenNetwork() {
         .btn-premium:active {
           transform: translateY(0px) scale(0.99);
         }
-        .btn-ghost {
-          background: rgba(255, 255, 255, 0.7);
-          color: #111;
-          border: 1px solid rgba(0, 0, 0, 0.08);
-          backdrop-filter: blur(8px);
-        }
-        .btn-ghost:hover {
-          background: #111;
-          color: #fff;
-          transform: translateY(-1px);
-          border-color: rgba(0, 0, 0, 0.14);
-        }
         .arrow {
           transition: transform 180ms ease;
         }
-        .btn-premium:hover .arrow,
-        .btn-ghost:hover .arrow {
+        .btn-premium:hover .arrow {
           transform: translateX(3px);
         }
 
@@ -1173,13 +1376,12 @@ export default function BenNetwork() {
           border-radius: 18px;
           padding: 16px;
           box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
-          transition: transform 160ms ease, box-shadow 180ms ease,
-            border-color 180ms ease;
+          transition: transform 160ms ease, border-color 180ms ease,
+            box-shadow 180ms ease;
           position: relative;
           isolation: isolate;
           overflow: hidden;
         }
-
         .logo-card::before {
           content: "";
           position: absolute;
@@ -1194,78 +1396,29 @@ export default function BenNetwork() {
             #fb7185,
             #f59e0b
           );
-          opacity: 0;
-          transition: opacity 180ms ease, filter 180ms ease;
+          opacity: 1;
           pointer-events: none;
           -webkit-mask: linear-gradient(#000 0 0) content-box,
             linear-gradient(#000 0 0);
           -webkit-mask-composite: xor;
           mask-composite: exclude;
+          filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45))
+            drop-shadow(0 0 14px rgba(0, 0, 0, 0.06));
         }
-
-        .logo-card span,
         .logo-card .logo-wrap {
           position: relative;
           z-index: 1;
         }
 
-        .logo-card::after {
-          content: "";
-          position: absolute;
-          inset: -14px;
-          border-radius: inherit;
-          pointer-events: none;
-          z-index: -1;
-          opacity: 0;
-          filter: blur(14px);
-          transition: opacity 180ms ease;
-          background: radial-gradient(
-              180px 100px at 10% 12%,
-              rgba(168, 85, 247, 0.2),
-              transparent 62%
-            ),
-            radial-gradient(
-              180px 140px at 92% 14%,
-              rgba(34, 211, 238, 0.22),
-              transparent 60%
-            ),
-            radial-gradient(
-              120px 190px at 12% 90%,
-              rgba(96, 165, 250, 0.18),
-              transparent 60%
-            ),
-            radial-gradient(
-              185px 120px at 92% 90%,
-              rgba(251, 113, 133, 0.32),
-              transparent 62%
-            );
-        }
-
         .logo-card:hover {
           transform: translateY(-1px);
-
-          box-shadow: 15px 10px 25px 20px rgba(255, 255, 255, 1),
-            0 0 10px rgba(255, 255, 255, 0.95),
-            0 0 22px rgba(255, 255, 255, 0.8),
-            0 0 40px rgba(173, 216, 255, 0.66),
-            0 15px 70px rgba(255, 200, 150, 0.35),
-            -10px -10px 45px rgba(0, 0, 0, 0.1);
-        }
-
-        .logo-card:hover::before {
-          opacity: 1;
-          filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.65))
-            drop-shadow(0 0 14px rgba(255, 255, 255, 0.35))
-            drop-shadow(0 0 22px rgba(168, 85, 247, 0.25))
-            drop-shadow(0 0 28px rgba(34, 211, 238, 0.22));
-        }
-
-        .logo-card:hover::after {
-          opacity: 1;
+          border-color: rgba(0, 0, 0, 0.08);
+          box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
+          background: #fff;
         }
 
         @media (prefers-reduced-motion: no-preference) {
-          .logo-card:hover::before {
+          .logo-card::before {
             background-size: 200% 200%;
             animation: unicornShift 2.2s ease-in-out infinite;
           }
@@ -1299,31 +1452,32 @@ export default function BenNetwork() {
           border: 1px solid rgba(0, 0, 0, 0.06);
           border-radius: 24px;
           padding: 22px;
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
-          transition: transform 160ms ease, box-shadow 180ms ease,
-            border-color 180ms ease;
+          transition: transform 160ms ease, border-color 180ms ease;
         }
         .card-premium:hover {
           transform: translateY(-2px);
-          box-shadow: 0 20px 46px rgba(0, 0, 0, 0.1);
           border-color: rgba(0, 0, 0, 0.1);
         }
 
         .project-logo {
-          width: 44px;
-          height: 44px;
-          border-radius: 14px;
-          background: rgba(0, 0, 0, 0.03);
+          width: 52px;
+          height: 52px;
+          border-radius: 999px;
+          --logo-bg: rgba(0, 0, 0, 0.03);
+          background: var(--logo-bg);
           display: flex;
           align-items: center;
           justify-content: center;
           flex: 0 0 auto;
           overflow: hidden;
+          border: 1px solid rgba(0, 0, 0, 0.06);
         }
         .project-logo-img {
-          width: 34px;
-          height: 34px;
+          width: 100%;
+          height: 100%;
           object-fit: contain;
+          padding: 10px;
+          display: block;
         }
 
         .mini-logo {
@@ -1331,12 +1485,10 @@ export default function BenNetwork() {
           border: 1px solid rgba(0, 0, 0, 0.06);
           border-radius: 18px;
           padding: 14px;
-          transition: transform 160ms ease, box-shadow 180ms ease;
-          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+          transition: transform 160ms ease;
         }
         .mini-logo:hover {
           transform: translateY(-2px);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09);
         }
         .mini-logo-img {
           width: 100%;
@@ -1344,49 +1496,170 @@ export default function BenNetwork() {
           object-fit: contain;
         }
 
-        .university-row {
+        .uni-head {
+          margin-bottom: 30px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .uni-panel {
           border: 1px solid rgba(0, 0, 0, 0.06);
-          border-radius: 20px;
-          padding: 14px;
+          border-radius: 22px;
           background: #fff;
-          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.04);
+          padding: 18px 18px 14px;
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.03);
         }
-        .row-grid {
+
+        .uni-grid {
           display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 10px;
+          grid-template-columns: 1fr;
+          column-gap: 34px;
+          row-gap: 16px;
+          padding: 6px 4px 10px;
         }
-        @media (min-width: 640px) {
-          .row-grid {
-            grid-template-columns: repeat(5, minmax(0, 1fr));
+        @media (min-width: 820px) {
+          .uni-grid {
+            grid-template-columns: repeat(2, 1fr);
           }
         }
-        @media (min-width: 1024px) {
-          .row-grid {
-            grid-template-columns: repeat(8, minmax(0, 1fr));
+        @media (min-width: 1140px) {
+          .uni-grid {
+            grid-template-columns: repeat(3, 1fr);
           }
         }
 
-        .uni-logo {
-          border-radius: 16px;
+        .uni-item {
+          display: grid;
+          grid-template-columns: 22px 46px 1fr auto;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 6px;
+          min-height: 44px;
+        }
+
+        .uni-rank {
+          font-size: 13px;
+          color: rgba(0, 0, 0, 0.45);
+          text-align: right;
+          padding-right: 2px;
+        }
+
+        .uni-logoWrap {
+          width: 44px;
+          height: 44px;
+          border-radius: 999px;
+          --logo-bg: rgba(0, 0, 0, 0.03);
+          background: var(--logo-bg);
           border: 1px solid rgba(0, 0, 0, 0.06);
-          background: rgba(0, 0, 0, 0.02);
-          height: 64px;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: transform 160ms ease, background 180ms ease,
-            box-shadow 180ms ease;
+          overflow: hidden;
         }
-        .uni-logo:hover {
-          transform: translateY(-2px);
-          background: rgba(0, 0, 0, 0.03);
-          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
-        }
-        .uni-logo-img {
-          max-height: 44px;
-          max-width: 90%;
+        .uni-logoImg {
+          width: 100%;
+          height: 100%;
           object-fit: contain;
+          padding: 7px;
+          display: block;
+        }
+
+        .uni-name {
+          font-size: 14px;
+          font-weight: 500;
+          color: rgba(0, 0, 0, 0.82);
+          line-height: 1.25;
+        }
+
+        .uni-pager {
+          margin-top: 18px;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
+          align-items: center;
+          gap: 10px;
+          padding-top: 10px;
+          border-top: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .uni-total {
+          font-size: 12px;
+          color: rgba(0, 0, 0, 0.55);
+          justify-self: center;
+        }
+
+        .uni-nav {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          justify-self: center;
+        }
+
+        .uni-navBtn {
+          width: 32px;
+          height: 32px;
+          border-radius: 10px;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 1;
+          transition: transform 120ms ease, background 180ms ease;
+        }
+        .uni-navBtn:disabled {
+          opacity: 0.4;
+          cursor: not-allowed;
+        }
+        .uni-navBtn:not(:disabled):hover {
+          transform: translateY(-1px);
+        }
+
+        .uni-pages {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .uni-pageBtn {
+          width: 32px;
+          height: 32px;
+          font-weight: 400;
+          font-size: 12px;
+          color: rgba(0, 0, 0, 0.67);
+          transition: transform 120ms ease, background 180ms ease,
+            color 180ms ease, border-color 180ms ease;
+        }
+        .uni-pageBtn:hover {
+          transform: translateY(-1px);
+        }
+        .uni-pageBtn.is-active {
+          color: #212528d5;
+          font-weight: 500;
+        }
+        .uni-dots {
+          font-weight: 800;
+          opacity: 0.55;
+          padding: 0 2px;
+        }
+
+        .uni-pageJump {
+          justify-self: center;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .uni-pageLabel {
+          font-size: 12px;
+          color: rgba(0, 0, 0, 0.55);
+        }
+        .uni-pageInput {
+          width: 44px;
+          height: 32px;
+          border-radius: 8px;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          padding: 0 10px;
+          font-size: 12px;
+          color: rgba(0, 0, 0, 0.8);
+          outline: none;
+        }
+        .uni-pageInput:focus {
+          border-color: rgba(0, 0, 0, 0.18);
         }
 
         .floating-layer {
@@ -1398,7 +1671,7 @@ export default function BenNetwork() {
           position: absolute;
           width: 62px;
           height: 62px;
-          border-radius: 18px;
+          border-radius: 999px;
           transform: translate(-50%, -50%);
           opacity: 0.9;
           filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
@@ -1407,43 +1680,46 @@ export default function BenNetwork() {
           cursor: pointer;
           z-index: 60;
           will-change: transform, filter;
+          overflow: hidden;
         }
-
         .floating-chip:focus-visible {
           outline: 2px solid rgba(0, 0, 0, 0.35);
           outline-offset: 3px;
         }
-
         .floating-chip-inner {
           width: 100%;
           height: 100%;
-          background: rgba(255, 255, 255, 0.7);
+          border-radius: 999px;
+          --logo-bg: rgba(255, 255, 255, 0.7);
           border: 1px solid rgba(0, 0, 0, 0.06);
-          backdrop-filter: blur(8px);
-          border-radius: 18px;
+          backdrop-filter: blur(10px);
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
           transition: transform 160ms ease;
         }
-
         .floating-chip:hover .floating-chip-inner {
-          transform: translateY(-1px);
+          background: radial-gradient(
+            circle at 50% 50%,
+            var(--logo-bg),
+            transparent 70%
+          );
         }
 
         .floating-img {
-          width: 70%;
-          height: 70%;
-          object-fit: contain;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
           pointer-events: none;
+          display: block;
         }
 
         .hero-content {
           z-index: 20;
           pointer-events: none;
         }
-
         .hero-content a,
         .hero-content button,
         .hero-content [role="button"] {
@@ -1460,12 +1736,10 @@ export default function BenNetwork() {
           width: min(87vw, 575px);
           justify-content: center;
         }
-
         .hero-badge > span:first-child {
           white-space: nowrap;
           flex: 0 0 auto;
         }
-
         .hero-badge > span:last-child {
           flex: 1 1 auto;
           min-width: 0;
@@ -1473,7 +1747,6 @@ export default function BenNetwork() {
           overflow: hidden;
           text-overflow: ellipsis;
         }
-
         @media (max-width: 640px) {
           .hero-badge {
             top: 64px;
@@ -1510,13 +1783,11 @@ export default function BenNetwork() {
           isolation: isolate;
           z-index: 0;
         }
-
         .hero-glass-content {
           position: relative;
           z-index: 2;
           transform: translateZ(0);
         }
-
         .hero-glass::before {
           content: "";
           position: absolute;
@@ -1541,7 +1812,6 @@ export default function BenNetwork() {
             rgba(0, 0, 0, 0) 100%
           );
         }
-
         .hero-glass::after {
           content: "";
           position: absolute;
@@ -1572,12 +1842,12 @@ export default function BenNetwork() {
             rgba(0, 0, 0, 0) 100%
           );
         }
-
         .hero-media {
           display: flex;
           justify-content: center;
           pointer-events: auto;
         }
+
         .benevents-card {
           width: min(520px, 92%);
           border-radius: 22px;
@@ -1586,8 +1856,7 @@ export default function BenNetwork() {
           backdrop-filter: blur(10px);
           box-shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
           overflow: hidden;
-          transition: transform 160ms ease, box-shadow 180ms ease,
-            border-color 180ms ease;
+          transition: transform 160ms ease, border-color 180ms ease;
         }
         .benevents-card:hover {
           transform: translateY(-2px);
@@ -1617,102 +1886,93 @@ export default function BenNetwork() {
           object-fit: contain;
           transform: translateZ(0);
         }
-        .benevents-caption {
-          padding: 12px 14px 14px;
+
+        .people-grid {
           display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
           flex-wrap: wrap;
-        }
-        .benevents-pill {
-          font-size: 12px;
-          font-weight: 700;
-          padding: 6px 10px;
-          border-radius: 999px;
-          border: 1px solid rgba(0, 0, 0, 0.08);
-          background: rgba(255, 255, 255, 0.75);
-        }
-        .benevents-text {
-          font-size: 12px;
-          color: rgba(0, 0, 0, 0.65);
+          justify-content: center;
+          gap: 26px 22px;
+          max-width: 950px;
+          margin: 0 auto;
         }
 
-        .alumni-card {
-          background: #fff;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          border-radius: 24px;
-          padding: 22px;
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
-          transition: transform 160ms ease, box-shadow 180ms ease,
-            border-color 180ms ease;
+        @media (min-width: 1024px) {
+          .people-grid {
+            gap: 30px 26px;
+            max-width: 950px;
+          }
+        }
+
+        .people-item {
+          width: 150px;
+          flex: 0 0 150px;
           display: flex;
-          align-items: center;
-          gap: 16px;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          padding: 0;
         }
-        .alumni-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 20px 46px rgba(0, 0, 0, 0.1);
-          border-color: rgba(0, 0, 0, 0.1);
-        }
-        .alumni-avatar {
-          width: 70px;
-          height: 70px;
+
+        .people-avatar {
+          width: 110px;
+          height: 110px;
           border-radius: 999px;
           overflow: hidden;
-          flex: 0 0 auto;
-          background: rgba(0, 0, 0, 0.02);
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-          overflow: hidden !important;
+          background: rgba(0, 0, 0, 0.03);
         }
-
-        .alumni-avatar-wrap {
-          position: relative;
-        }
-
-        .alumni-icon-glow {
-          overflow: visible;
-        }
-
-        .alumni-avatar {
-          overflow: hidden;
-          border-radius: 999px;
-          width: 70px;
-          height: 70px;
-        }
-
-        .alumni-avatar-img {
-          display: block;
+        .people-avatar-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transform: scale(1.02);
-          transition: transform 220ms ease;
+          display: block;
         }
-        .alumni-card:hover .alumni-avatar-img {
-          transform: scale(1.06);
+
+        .people-meta {
+          margin-top: 10px;
+          width: 100%;
         }
-        .alumni-body {
-          min-width: 0;
+
+        .people-name {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 1.15;
+          color: rgba(0, 0, 0, 0.9);
         }
-        .alumni-name {
-          font-weight: 700;
-          font-size: 16px;
-          line-height: 1.2;
-        }
-        .alumni-title {
+
+        .people-company {
           margin-top: 6px;
+          font-weight: 500;
           font-size: 13px;
-          color: rgba(0, 0, 0, 0.72);
-        }
-        .alumni-subtitle {
-          margin-top: 2px;
-          font-size: 13px;
-          color: rgba(0, 0, 0, 0.55);
-        }
-        .alumni-company {
-          font-weight: 700;
           color: #ff872a;
+        }
+
+        .people-role {
+          margin-top: 4px;
+          font-size: 13px;
+          color: rgba(0, 0, 0, 0.62);
+        }
+
+        .people-socials {
+          margin-top: 10px;
+          display: flex;
+          gap: 10px;
+        }
+
+        .social-btn {
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(0, 0, 0, 0.06);
+          color: rgba(0, 0, 0, 0.8);
+          text-decoration: none;
+          transition: transform 120ms ease, background 180ms ease;
+        }
+        .social-btn:hover {
+          transform: translateY(-1px);
+          background: rgba(0, 0, 0, 0.085);
         }
 
         @keyframes floatY2 {
@@ -1740,6 +2000,7 @@ export default function BenNetwork() {
             transform: translate(-50%, -50%) translate3d(0, 0, 0);
           }
         }
+
         @keyframes bobShadow {
           0% {
             filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
@@ -1772,7 +2033,6 @@ export default function BenNetwork() {
           opacity: 0.001;
           animation: revealIn 520ms ease forwards;
         }
-
         @keyframes revealIn {
           to {
             transform: translateY(0);
@@ -1788,72 +2048,18 @@ export default function BenNetwork() {
           .logo-card,
           .card-premium,
           .mini-logo,
-          .uni-logo,
           .btn-premium,
-          .btn-ghost,
           .arrow {
             animation: none !important;
             transition: none !important;
             transform: none !important;
             filter: none !important;
           }
-
           .reveal {
             opacity: 1 !important;
           }
         }
 
-        @media (prefers-reduced-motion: no-preference) {
-          .alumni-glow::before {
-            background-size: 220% 220%;
-            animation: alumniOrangeShift 3.2s ease-in-out infinite;
-          }
-
-          @keyframes alumniOrangeShift {
-            0% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 50%;
-            }
-            100% {
-              background-position: 0% 50%;
-            }
-          }
-        }
-
-        .alumni-icon-glow::before {
-          content: "";
-          position: absolute;
-          inset: -1px;
-          border-radius: 999px;
-          padding: 3px;
-          pointer-events: none;
-          z-index: 1;
-
-          background: linear-gradient(
-            135deg,
-            rgba(255, 255, 255, 0.95),
-            #ff5900cc,
-            #f7c9a1d5,
-            rgba(255, 255, 255, 0.95)
-          );
-
-          -webkit-mask: linear-gradient(#000 0 0) content-box,
-            linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-
-          opacity: 0.95;
-          filter: drop-shadow(0 0 6px rgba(255, 135, 42, 0.22));
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-          .alumni-icon-glow::before {
-            background-size: 220% 220%;
-            animation: alumniOrangeShift 3.2s ease-in-out infinite;
-          }
-        }
         .size-sm {
           width: 92px;
           height: 92px;
