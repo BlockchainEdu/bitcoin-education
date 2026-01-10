@@ -2,11 +2,14 @@ import React, { useMemo, useState, useEffect, useCallback } from "react";
 import Head from "next/head";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
+import { TeamMemberService } from "../services";
 
 const BASE = "/images/ben-network";
 const BENEVENTS_IMG = "/images/benevents.png";
 
 function imgSrc(path) {
+  if (!path) return path;
+  if (/^https?:\/\//i.test(path)) return path;
   return encodeURI(path);
 }
 
@@ -15,26 +18,6 @@ function joinSrc(...parts) {
     .filter(Boolean)
     .map((p) => String(p).replace(/^\/+|\/+$/g, ""));
   return imgSrc("/" + clean.join("/"));
-}
-
-function setFallbackImage(e, candidates) {
-  const img = e.currentTarget;
-  if (!img) return;
-
-  const tried = new Set(
-    (img.dataset.fallbackTried || "")
-      .split("|")
-      .map((x) => x.trim())
-      .filter(Boolean)
-  );
-
-  for (const next of candidates) {
-    if (!next || tried.has(next)) continue;
-    tried.add(next);
-    img.dataset.fallbackTried = Array.from(tried).join("|");
-    img.src = next;
-    return;
-  }
 }
 
 function extractDominantColor(imgEl) {
@@ -91,6 +74,50 @@ function extractDominantColor(imgEl) {
   }
 }
 
+function useRemoteBlobSrc(src) {
+  const [blobUrl, setBlobUrl] = useState(null);
+
+  useEffect(() => {
+    let revoked = false;
+    let currentObjectUrl = null;
+    const controller = new AbortController();
+
+    async function run() {
+      setBlobUrl(null);
+
+      if (!src) return;
+
+      const isRemote = /^https?:\/\//i.test(src);
+      if (!isRemote) {
+        setBlobUrl(null);
+        return;
+      }
+
+      try {
+        const res = await fetch(src, {
+          signal: controller.signal,
+          cache: "no-store",
+        });
+        if (!res.ok) return;
+
+        const blob = await res.blob();
+        currentObjectUrl = URL.createObjectURL(blob);
+        if (!revoked) setBlobUrl(currentObjectUrl);
+      } catch {}
+    }
+
+    run();
+
+    return () => {
+      revoked = true;
+      controller.abort();
+      if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+    };
+  }, [src]);
+
+  return blobUrl;
+}
+
 function SmartImage({
   src,
   fallbackSrcs = [],
@@ -98,19 +125,43 @@ function SmartImage({
   className,
   loading = "lazy",
   decoding = "async",
-  crossOrigin = "anonymous",
   onLoad,
+  onFinalError,
 }) {
+  const [current, setCurrent] = useState(src || null);
+
+  useEffect(() => {
+    setCurrent(src || null);
+  }, [src]);
+
+  const blobSrc = useRemoteBlobSrc(current);
+  const resolvedSrc = blobSrc || current || "";
+
+  const handleError = () => {
+    const candidates = [src, ...fallbackSrcs].filter(Boolean);
+    const idx = candidates.findIndex((x) => x === current);
+    const next =
+      idx >= 0 ? candidates.slice(idx + 1).find(Boolean) : candidates[0];
+
+    if (next && next !== current) {
+      setCurrent(next);
+      return;
+    }
+
+    onFinalError?.();
+  };
+
+  if (!current) return null;
+
   return (
     <img
-      src={src}
-      onError={(e) => setFallbackImage(e, fallbackSrcs)}
+      src={resolvedSrc}
+      onError={handleError}
       onLoad={onLoad}
       alt={alt || ""}
       className={className}
       loading={loading}
       decoding={decoding}
-      crossOrigin={crossOrigin}
     />
   );
 }
@@ -149,6 +200,44 @@ function useDominantBg() {
   }, []);
 }
 
+function initialsFromName(name) {
+  const parts = String(name || "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+
+  const a = parts[0]?.[0] || "?";
+  const b = parts.length > 1 ? parts[parts.length - 1]?.[0] : "";
+  return (a + b).toUpperCase();
+}
+
+function PersonAvatar({ src, name, className }) {
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setFailed(false);
+  }, [src]);
+
+  if (!src || failed) {
+    return (
+      <div className="people-avatar-placeholder" aria-label={name || "Avatar"}>
+        {initialsFromName(name)}
+      </div>
+    );
+  }
+
+  return (
+    <SmartImage
+      src={src}
+      fallbackSrcs={[]}
+      alt={name}
+      className={className}
+      loading="lazy"
+      onFinalError={() => setFailed(true)}
+    />
+  );
+}
+
 const OFFICIAL_LINKS = {
   Algorand: "https://algorand.foundation",
   "Alpha Blockchain": null,
@@ -174,7 +263,79 @@ function withHref(item) {
   return { ...item, href };
 }
 
-export default function BenNetwork() {
+function extractAssetIdFromFilesColumn(cv) {
+  const parsed = safeJsonParse(cv?.value);
+  const id = parsed?.files?.[0]?.assetId;
+  return id ? String(id) : null;
+}
+
+function buildAssetsById(assets = []) {
+  const m = new Map();
+  assets.forEach((a) => {
+    if (a?.id && a?.public_url) m.set(String(a.id), a.public_url);
+  });
+  return m;
+}
+
+function safeJsonParse(value) {
+  if (!value || typeof value !== "string") return value;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return value;
+  }
+}
+
+function buildTitleToId(columns = []) {
+  const map = new Map();
+  columns.forEach((c) => {
+    if (c?.id && c?.title) map.set(c.title.trim().toLowerCase(), c.id);
+  });
+  return map;
+}
+
+function pickId(map, titles) {
+  for (const t of titles) {
+    const id = map.get(String(t).toLowerCase());
+    if (id) return id;
+  }
+  return null;
+}
+
+function col(item, id) {
+  return item?.column_values?.find((c) => c.id === id) ?? null;
+}
+
+function parseTitleToRoleCompany(titleText) {
+  const t = (titleText || "").trim();
+  if (!t) return { role: "", company: "" };
+
+  const parts = t
+    .split(",")
+    .map((x) => x.trim())
+    .filter(Boolean);
+  if (parts.length <= 1) return { role: t, company: "" };
+
+  return { role: parts[0], company: parts.slice(1).join(", ") };
+}
+
+function extractUrlFromMondayValue(cv) {
+  const raw = cv?.value ?? cv?.text;
+  const parsed = safeJsonParse(raw);
+
+  const url =
+    parsed?.url ||
+    parsed?.link?.url ||
+    parsed?.link?.url?.url ||
+    parsed?.files?.[0]?.url ||
+    parsed?.files?.[0]?.public_url ||
+    parsed?.files?.[0]?.publicUrl ||
+    null;
+
+  return url || null;
+}
+
+export default function BenNetwork({ alumni = [] }) {
   const onDominantBgLoad = useDominantBg();
 
   const floatingIcons = useMemo(
@@ -686,84 +847,6 @@ export default function BenNetwork() {
     []
   );
 
-  const alumni = useMemo(
-    () => [
-      {
-        name: "Jeremy Gardner",
-        role: "Founder",
-        company: "Augur",
-        subtitle: "University of Michigan",
-        image: `${BASE}/alumni/Jeremy_Gardner.png`,
-        linkedin: "https://www.linkedin.com/in/jg1578/",
-      },
-      {
-        name: "Michael Gord",
-        role: "Founder",
-        company: "GDA Capital",
-        subtitle: "McGill University",
-        image: `${BASE}/alumni/Michael_Gord.png`,
-        linkedin: "https://ca.linkedin.com/in/mgord",
-      },
-      {
-        name: "Ryan Breslow",
-        role: "Founder",
-        company: "Bolt",
-        subtitle: "Stanford University",
-        image: `${BASE}/alumni/Ryan_Breslow.png`,
-        linkedin: "https://www.linkedin.com/in/ryanbreslow",
-      },
-      {
-        name: "Jinglan Wang",
-        role: "Co-founder",
-        company: "Optimism",
-        subtitle: "Wellesley / MIT",
-        image: `${BASE}/alumni/Jinglan_Wang.png`,
-        linkedin: "https://ky.linkedin.com/in/jing-wang-576a3772",
-      },
-      {
-        name: "Joey Krug",
-        role: "Founder",
-        company: "Augur",
-        subtitle: "Pomona Dropout",
-        image: `${BASE}/alumni/Joey_Krug.png`,
-        linkedin: "https://pr.linkedin.com/in/joeykrug",
-      },
-      {
-        name: "Bradley Miles",
-        role: "Co-founder",
-        company: "Roll",
-        subtitle: "Columbia University",
-        image: `${BASE}/alumni/Bradley_Miles.png`,
-        linkedin: "https://www.linkedin.com/in/bmiles1",
-      },
-      {
-        name: "Sid Ramesh",
-        role: "Growth Advisor",
-        company: "Notional",
-        subtitle: "UW-Madison",
-        image: `${BASE}/alumni/Sid_Ramesh.png`,
-        linkedin: "https://www.linkedin.com/in/sidramesh",
-      },
-      {
-        name: "Eric Chen",
-        role: "Founder",
-        company: "Injective",
-        subtitle: "New York University",
-        image: `${BASE}/alumni/Eric_Chen.png`,
-        linkedin: null,
-      },
-      {
-        name: "Dean Masley",
-        role: "Founder",
-        company: "NestEgg",
-        subtitle: "University of Delaware",
-        image: `${BASE}/alumni/Dean_Masley.png`,
-        linkedin: "https://www.linkedin.com/pub/dean-masley/96/149/a22",
-      },
-    ],
-    []
-  );
-
   const users = [
     "/images/people/jelena-djuric.jpeg",
     "/images/people/matt-batsinelas.jpeg",
@@ -1012,8 +1095,7 @@ export default function BenNetwork() {
               </div>
 
               <h2 className="text-2xl md:text-3xl font-semibold tracking-tight font-mont">
-                <span className="text-benorange-500">Our</span>{" "}
-                <span className="text-benblack-500">Alumni</span>
+                <span className="text-benblack-500">Our Alumni</span>
               </h2>
               <p className="mt-2 text-sm text-benblack-500/70">
                 Proof of builders. Names you can recognize, work you can measure
@@ -1022,14 +1104,12 @@ export default function BenNetwork() {
 
             <div className="people-grid reveal">
               {alumni.map((a) => (
-                <div key={a.name} className="people-item">
+                <div key={a.id || a.name} className="people-item">
                   <div className="people-avatar">
-                    <img
-                      src={imgSrc(a.image)}
-                      alt={a.name}
+                    <PersonAvatar
+                      src={a.image ? imgSrc(a.image) : null}
+                      name={a.name}
                       className="people-avatar-img"
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
 
@@ -1057,6 +1137,29 @@ export default function BenNetwork() {
                             <path
                               fill="currentColor"
                               d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V23h-4V8Zm7 0h3.83v2.05h.05C12 8.88 13.57 7.7 15.94 7.7 20.02 7.7 21 10.29 21 14.1V23h-4v-7.9c0-1.88-.04-4.29-2.61-4.29-2.61 0-3.01 2.04-3.01 4.16V23h-4V8Z"
+                            />
+                          </svg>
+                        </a>
+                      ) : null}
+
+                      {a.twitter ? (
+                        <a
+                          className="social-btn"
+                          href={a.twitter}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Twitter/X de ${a.name}`}
+                          title="X"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M18.244 2H21l-6.54 7.47L22.5 22h-6.6l-5.17-6.77L4.8 22H2l7.06-8.07L1.5 2h6.77l4.67 6.12L18.244 2Zm-1.16 18h1.83L7.27 3.9H5.31L17.084 20Z"
                             />
                           </svg>
                         </a>
@@ -1340,6 +1443,18 @@ export default function BenNetwork() {
       <Footer />
 
       <style jsx global>{`
+        .people-avatar-placeholder {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          font-size: 20px;
+          color: rgba(0, 0, 0, 0.16);
+          user-select: none;
+        }
+
         .btn-premium {
           display: inline-flex;
           align-items: center;
@@ -2079,4 +2194,79 @@ export default function BenNetwork() {
       `}</style>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const ALIASES = {
+    title: ["title", "text"],
+    pictures: ["files", "pictures"],
+    linkedin: ["text2", "linkedin"],
+    twitter: ["text4", "twitter", "x"],
+  };
+
+  const res = await TeamMemberService.getMembers({
+    query: `{
+      boards (ids: 18394862500) {
+        columns { id title type }
+        items_page (limit: 500) {
+          items {
+            id
+            name
+            assets { id public_url }
+            column_values { id value text }
+          }
+        }
+      }
+    }`,
+  });
+
+  const board = res?.data?.data?.boards?.[0];
+  const items = board?.items_page?.items ?? [];
+  const map = buildTitleToId(board?.columns ?? []);
+
+  const titleId = "text";
+  const picturesId = "files";
+  const linkedinId = "text2";
+  const twitterId = "text4";
+
+  const alumni = items.map((item) => {
+    const titleText = col(item, titleId)?.text ?? "";
+    const { role, company } = parseTitleToRoleCompany(titleText);
+
+    const linkedin =
+      extractUrlFromMondayValue(col(item, linkedinId)) ||
+      col(item, linkedinId)?.text ||
+      null;
+
+    const twitter =
+      extractUrlFromMondayValue(col(item, twitterId)) ||
+      col(item, twitterId)?.text ||
+      null;
+
+    const picsCv = col(item, picturesId);
+
+    const assetId = extractAssetIdFromFilesColumn(picsCv);
+    const assetsById = buildAssetsById(item?.assets ?? []);
+    const imgFromAssets =
+      (assetId ? assetsById.get(assetId) : null) ||
+      item?.assets?.[0]?.public_url ||
+      null;
+
+    const imgFallback = picsCv?.text || null;
+
+    return {
+      id: item.id,
+      name: item.name,
+      role,
+      company,
+      image: imgFromAssets || imgFallback || null,
+      linkedin,
+      twitter,
+    };
+  });
+
+  return {
+    props: { alumni },
+    revalidate: 3600,
+  };
 }
