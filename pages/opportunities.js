@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import Head from "next/head";
 import Footer from "../components/footer";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
-import StandardButton from "../components/standardButton";
 import { TeamMemberService } from "../services";
 
 function safeJsonParse(value) {
@@ -52,240 +51,357 @@ function formatRange(start, end) {
     : f(start);
 }
 
-export default function Opportunities({ events, eventDeals }) {
-  const hasEvents = Array.isArray(events) && events.length > 0;
+function getYouTubeEmbedUrl(url) {
+  if (!url || typeof url !== "string") return "";
+  if (url.includes("youtube.com/embed/")) return url;
 
-  const renderEventCard = (event, i) => {
-    const deal = eventDeals?.[event.name];
-    const dealUrl = safeJsonParse(deal?.link?.value)?.url;
+  try {
+    const u = new URL(url);
 
-    const hasMoreInfo = Boolean(event.url);
-    const hasDeal = Boolean(dealUrl);
+    if (u.hostname.includes("youtu.be")) {
+      const id = u.pathname.replace("/", "").trim();
+      return id ? `https://www.youtube.com/embed/${id}` : "";
+    }
 
-    return (
-      <div
-        key={event.id ?? `${event.name}-${i}`}
-        className="
-  relative h-[360px] md:h-[380px] rounded-3xl overflow-hidden
-  border border-white/10 shadow-sm
-  transition hover:-translate-y-1 hover:shadow-md
-"
-      >
-        {/* Background */}
-        {event.image ? (
-          <>
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `url("${event.image}")`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                filter: "saturate(0.95) contrast(1.08)",
-                transform: "scale(1.03)",
-              }}
-            />
-            <div className="absolute inset-0 bg-black/55" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/25" />
-          </>
+    const v = u.searchParams.get("v");
+    if (v) return `https://www.youtube.com/embed/${v}`;
+
+    const liveMatch = u.pathname.match(/\/live\/([^/]+)/);
+    if (liveMatch?.[1]) return `https://www.youtube.com/embed/${liveMatch[1]}`;
+
+    const embedMatch = u.pathname.match(/\/embed\/([^/]+)/);
+    if (embedMatch?.[1])
+      return `https://www.youtube.com/embed/${embedMatch[1]}`;
+
+    return "";
+  } catch {
+    return "";
+  }
+}
+
+function SectionShell({ children, className = "", max = "max-w-4xl" }) {
+  return (
+    <div className={`mx-auto w-full ${max} px-4 sm:px-6 ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+function VideoCard({ title, description, url }) {
+  const embed = getYouTubeEmbedUrl(url);
+
+  return (
+    <div className="rounded-xl overflow-hidden bg-white border border-bengrey-200">
+      <div className="relative w-full bg-black">
+        <div style={{ paddingTop: "56.25%" }} />
+        {embed ? (
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src={embed}
+            title={title}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
         ) : (
-          <>
-            <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-800" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
-          </>
+          <div className="absolute inset-0 flex items-center justify-center text-white/80 text-sm">
+            Invalid YouTube URL
+          </div>
         )}
+      </div>
 
-        <div className="relative h-full p-6 flex flex-col">
-          <div
-            className="
-              rounded-xl
-              bg-white/85
-              border border-white/12
-              backdrop-blur-[3px]
-              p-4
-            "
-          >
-            <h3
-              className="text-lg font-semibold text-white line-clamp-2"
-              style={{ textShadow: "0 2px 14px rgba(0,0,0,0.75)" }}
-            >
-              {event.name}
+      <div className="p-4 sm:p-5">
+        <div className="flex items-start gap-3">
+          <span className="mt-1.5 h-4 w-1 rounded-full bg-benorange-500" />
+          <div className="min-w-0">
+            <h3 className="text-sm sm:text-[15px] font-semibold text-benblack-500">
+              {title}
             </h3>
-
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              <span
-                className="
-                  text-xs font-semibold
-                  px-2.5 py-1 rounded-full
-                  bg-white/14 text-white
-                  border border-white/18
-                "
-                style={{ textShadow: "0 2px 14px rgba(0,0,0,0.75)" }}
-              >
-                {event.dateLabel}
-              </span>
-
-              {event.location ? (
-                <span
-                  className="text-xs text-white/95"
-                  style={{ textShadow: "0 2px 14px rgba(0,0,0,0.75)" }}
-                >
-                  • {event.location}
-                </span>
-              ) : null}
-            </div>
-
-            {event.description ? (
-              <p
-                className="mt-3 text-sm text-white/95 line-clamp-2"
-                style={{ textShadow: "0 2px 14px rgba(0,0,0,0.75)" }}
-              >
-                {event.description}
+            {description ? (
+              <p className="mt-1.5 text-sm text-bengrey-500 leading-relaxed">
+                {description}
               </p>
             ) : null}
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-          <div className="mt-auto pt-4 flex flex-col gap-2">
-            <div className="h-[52px]">
-              {hasDeal ? (
-                <StandardButton
-                  link={dealUrl}
-                  textColor="white"
-                  text={deal.message}
-                  target="_blank"
-                  color="orange"
-                  styling="w-full h-full flex items-center justify-center font-semibold"
-                />
-              ) : (
-                <div className="h-full" />
-              )}
-            </div>
+function EventTile({ event }) {
+  const hasMoreInfo = Boolean(event.url);
 
-            <div className="h-[50px]">
-              {hasMoreInfo ? (
-                <StandardButton
-                  link={event.url}
-                  text="More info"
-                  target="_blank"
-                  textColor="white"
-                  styling="
-                    w-full h-full flex items-center justify-center
-                    font-semibold
-                    bg-white/5
-                    border border-white/25
-                    backdrop-blur-sm
-                    hover:bg-white/10
-                  "
-                />
-              ) : (
-                <div className="h-full" />
+  return (
+    <div className="h-full rounded-2xl bg-white pl-5 pr-4 px-5 py-4">
+      <div className="flex gap-6 items-stretch">
+        <div className="min-w-0 flex-1 flex flex-col">
+          <div className="min-w-0">
+            <h3 className="text-[14px] font-semibold text-benblack-500 leading-snug">
+              {event.name}
+            </h3>
+
+            <div className="mt-2 text-[12px]">
+              <div className="font-semibold text-benblack-500">
+                {event.dateLabel}
+              </div>
+
+              {event.location && (
+                <div className="text-bengrey-500">{event.location}</div>
               )}
             </div>
           </div>
+
+          <div className="mt-auto pt-3 -ml-1">
+            {hasMoreInfo && (
+              <a
+                href={event.url}
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  inline-flex items-center justify-center
+                  h-8 px-4 rounded-md
+                  text-xs font-semibold
+                  border border-benorange-500
+                  text-benorange-500
+                  transition-colors
+                  hover:border-bencustomorange-500
+                  hover:text-bencustomorange-500
+                "
+              >
+                More info
+              </a>
+            )}
+          </div>
+        </div>
+
+        <div className="shrink-0">
+          <div className="w-32 h-32 rounded-xl overflow-hidden bg-bengrey-100 border border-bengrey-200">
+            {event.image ? (
+              <img
+                src={event.image}
+                alt={event.name}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-bengrey-100 to-bengrey-200" />
+            )}
+          </div>
         </div>
       </div>
-    );
-  };
+    </div>
+  );
+}
+
+function Pagination({ page, totalPages, onPrev, onNext, onGo }) {
+  if (totalPages <= 1) return null;
+
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  const prevDisabled = page === 1;
+  const nextDisabled = page === totalPages;
+
+  const linkBase =
+    "h-10 px-4 rounded-lg inline-flex items-center justify-center " +
+    "text-sm font-semibold text-bengrey-500 select-none " +
+    "transition-colors duration-150 hover:text-benblack-500";
+
+  const linkDisabled = "opacity-40 pointer-events-none";
 
   return (
-    <div className="min-h-screen bg-benwhite-500">
+    <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+      <a
+        role="button"
+        tabIndex={prevDisabled ? -1 : 0}
+        aria-disabled={prevDisabled}
+        onClick={(e) => {
+          e.preventDefault();
+          if (!prevDisabled) onPrev();
+        }}
+        onKeyDown={(e) => {
+          if ((e.key === "Enter" || e.key === " ") && !prevDisabled) onPrev();
+        }}
+        className={`${linkBase} ${prevDisabled ? linkDisabled : ""}`}
+      >
+        Prev
+      </a>
+
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        {pages.map((p) => {
+          const isActive = p === page;
+          return (
+            <button
+              key={p}
+              type="button"
+              onClick={() => onGo(p)}
+              className={
+                isActive
+                  ? "h-10 w-10 rounded-lg bg-benorange-500 text-white text-sm font-bold transition-colors duration-150"
+                  : "h-10 w-10 rounded-lg bg-white text-sm font-semibold text-bengrey-500 border border-bengrey-200 transition-colors duration-150 hover:border-bengrey-300 hover:text-benblack-500"
+              }
+            >
+              {p}
+            </button>
+          );
+        })}
+      </div>
+
+      <a
+        role="button"
+        tabIndex={nextDisabled ? -1 : 0}
+        aria-disabled={nextDisabled}
+        onClick={(e) => {
+          e.preventDefault();
+          if (!nextDisabled) onNext();
+        }}
+        onKeyDown={(e) => {
+          if ((e.key === "Enter" || e.key === " ") && !nextDisabled) onNext();
+        }}
+        className={`${linkBase} ${nextDisabled ? linkDisabled : ""}`}
+      >
+        Next
+      </a>
+    </div>
+  );
+}
+
+export default function Opportunities({ events, eventDeals }) {
+  const hasEvents = Array.isArray(events) && events.length > 0;
+
+  const requiredLabel =
+    "text-sm font-semibold text-white/90 mb-2 inline-flex items-center gap-1";
+
+  const videos = [
+    {
+      title: "Blockchain Madness",
+      description: "Competition overview.",
+      url: "https://www.youtube.com/watch?v=X55t_B00bRk",
+    },
+    {
+      title: "How it works",
+      description: "Format and expectations.",
+      url: "https://www.youtube.com/watch?v=Lvs78FukfpI",
+    },
+    {
+      title: "Tips & strategy",
+      description: "What to focus on to win.",
+      url: "https://www.youtube.com/watch?v=dSrwr2oj910",
+    },
+    {
+      title: "Live session",
+      description: "Live updates and highlights.",
+      url: "https://www.youtube.com/live/mSOZ-3CCSeM",
+    },
+  ];
+
+  const PAGE_SIZE = 6;
+  const [page, setPage] = useState(1);
+
+  const totalPages = useMemo(() => {
+    const count = Array.isArray(events) ? events.length : 0;
+    return Math.max(1, Math.ceil(count / PAGE_SIZE));
+  }, [events]);
+
+  const pageEvents = useMemo(() => {
+    if (!Array.isArray(events)) return [];
+    const start = (page - 1) * PAGE_SIZE;
+    return events.slice(start, start + PAGE_SIZE);
+  }, [events, page]);
+
+  useEffect(() => {
+    if (page > totalPages) setPage(1);
+  }, [totalPages, page]);
+
+  const goTo = (p) => {
+    const next = Math.min(Math.max(1, p), totalPages);
+    setPage(next);
+  };
+
+  const onPrev = () => goTo(page - 1);
+  const onNext = () => goTo(page + 1);
+
+  return (
+    <div className="min-h-screen bg-white">
       <Head>
         <title>Opportunities for Student Builders</title>
       </Head>
 
       <HeaderWithLogoDark />
 
-      {/* hero */}
-      <section className="pt-20 pb-10 text-center bg-gradient-to-br from-orange-50 via-white to-benorange-100">
-        <h1 className="text-5xl font-extrabold mb-4">
-          <span className="text-benorange-500">Opportunities</span> for Student
-          Builders
-        </h1>
-        <p className="text-lg text-gray-600">
-          Conferences, hackathons and scholarships worldwide.
-        </p>
+      <section className="pt-16 pb-10">
+        <SectionShell>
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-benblack-500">
+              Opportunities{" "}
+              <span className="text-benorange-500">for Student Builders</span>
+            </h1>
+            <p className="mt-3 text-base sm:text-lg text-bengrey-500">
+              Conferences, hackathons and scholarships worldwide.
+            </p>
+          </div>
+        </SectionShell>
       </section>
 
-      {/* events */}
-      <section className="pt-3 pb-16">
-        <div className="container mx-auto px-4 max-w-[1400px] px-8">
+      <section className="py-10 bg-white">
+        <SectionShell>
+          <div className="text-center mb-6">
+            <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-benblack-500">
+              Blockchain Madness Competition
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+            {videos.map((v) => (
+              <VideoCard
+                key={v.url}
+                title={v.title}
+                description={v.description}
+                url={v.url}
+              />
+            ))}
+          </div>
+        </SectionShell>
+      </section>
+
+      <section className="py-14 bg-[#F6F6EF]">
+        <SectionShell max="max-w-6xl">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-benblack-500">
+              Upcoming events
+            </h2>
+
+            <p className="mt-2 text-sm text-bengrey-500">
+              Showing {Math.min(PAGE_SIZE, pageEvents.length)} of{" "}
+              {events?.length ?? 0} events
+            </p>
+          </div>
+
           {!hasEvents ? (
-            <div className="text-center bg-white p-8 rounded-2xl border border-gray-100">
-              <p className="font-semibold text-gray-700">
+            <div className="text-center bg-white p-6 rounded-2xl">
+              <p className="font-semibold text-bengrey-500">
                 No upcoming events found
               </p>
             </div>
           ) : (
-            <div className="relative">
+            <>
               <div
-                className="
-      pointer-events-none
-      absolute -top-8 inset-x-0
-      h-20
-      bg-gradient-to-b
-      from-white
-      via-white/90
-      to-transparent
-      z-10
-    "
-              />
-
-              <div
-                className="
-      pointer-events-none
-      absolute -bottom-8 inset-x-0
-      h-20
-      bg-gradient-to-t
-      from-white
-      via-white/90
-      to-transparent
-      z-10
-    "
-              />
-
-              <div
-                className="
-      max-h-[980px] overflow-y-auto
-      rounded-3xl
-      bg-transparent
-      p-4
-    "
-                style={{
-                  scrollbarWidth: "thin",
-                  scrollbarColor: "transparent transparent",
-                }}
+                className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 auto-rows-fr`}
               >
-                <style jsx>{`
-                  .scrollBox::-webkit-scrollbar {
-                    width: 4px;
-                  }
-                  .scrollBox::-webkit-scrollbar-track {
-                    background: transparent;
-                  }
-                  .scrollBox::-webkit-scrollbar-thumb {
-                    border-radius: 999px;
-                    border: 2px solid transparent;
-                    background-clip: content-box;
-                    background: transparent;
-                  }
-                  .scrollBox:hover::-webkit-scrollbar-thumb {
-                    background: rgba(0, 0, 0, 0.16);
-                    background-clip: content-box;
-                  }
-                  .scrollBox::-webkit-scrollbar-thumb:hover {
-                    background: rgba(0, 0, 0, 0.22);
-                    background-clip: content-box;
-                  }
-                `}</style>
-
-                <div className="scrollBox">
-                  <div className="grid gap-7 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-                    {events.map(renderEventCard)}
-                  </div>
-                </div>
+                {pageEvents.map((event) => (
+                  <EventTile key={event.id} event={event} />
+                ))}
               </div>
-            </div>
+
+              <Pagination
+                page={page}
+                totalPages={totalPages}
+                onPrev={onPrev}
+                onNext={onNext}
+                onGo={goTo}
+              />
+            </>
           )}
-        </div>
+        </SectionShell>
       </section>
 
       <section
@@ -487,6 +603,8 @@ export async function getStaticProps() {
 
   const board = eventsRes?.data?.data?.boards?.[0];
   const items = board?.items_page?.items ?? [];
+  buildTitleToId(board?.columns ?? []);
+
   const map = buildTitleToId(board?.columns ?? []);
   const now = new Date();
 
