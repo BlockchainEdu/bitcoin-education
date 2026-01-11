@@ -265,11 +265,21 @@ function Pagination({ page, totalPages, onPrev, onNext, onGo }) {
   );
 }
 
+function RequiredLabel({ children, className = "" }) {
+  return (
+    <label
+      className={`text-sm font-semibold text-white/90 mb-2 inline-flex items-center gap-1 ${className}`}
+    >
+      <span>{children}</span>
+      <span className="text-red-400" aria-hidden="true">
+        *
+      </span>
+    </label>
+  );
+}
+
 export default function Opportunities({ events, eventDeals }) {
   const hasEvents = Array.isArray(events) && events.length > 0;
-
-  const requiredLabel =
-    "text-sm font-semibold text-white/90 mb-2 inline-flex items-center gap-1";
 
   const videos = [
     {
@@ -425,32 +435,35 @@ export default function Opportunities({ events, eventDeals }) {
           <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className={requiredLabel}>Full name</label>
+                <RequiredLabel>Full name</RequiredLabel>
                 <input
                   type="text"
                   name="fullName"
                   required
+                  aria-required="true"
                   className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
                 />
               </div>
 
               <div>
-                <label className={requiredLabel}>Email</label>
+                <RequiredLabel>Email</RequiredLabel>
                 <input
                   type="email"
                   name="email"
                   required
+                  aria-required="true"
                   className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
                 />
               </div>
             </div>
 
             <div>
-              <label className={requiredLabel}>Telegram username</label>
+              <RequiredLabel>Telegram username</RequiredLabel>
               <input
                 type="text"
                 name="telegram"
                 required
+                aria-required="true"
                 placeholder="@username"
                 className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
               />
@@ -458,21 +471,23 @@ export default function Opportunities({ events, eventDeals }) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className={requiredLabel}>University / School</label>
+                <RequiredLabel>University / School</RequiredLabel>
                 <input
                   type="text"
                   name="university"
                   required
+                  aria-required="true"
                   className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
                 />
               </div>
 
               <div>
-                <label className={requiredLabel}>Country</label>
+                <RequiredLabel>Country</RequiredLabel>
                 <input
                   type="text"
                   name="country"
                   required
+                  aria-required="true"
                   className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
                 />
               </div>
@@ -480,11 +495,12 @@ export default function Opportunities({ events, eventDeals }) {
 
             <div className="grid grid-cols-1">
               <div>
-                <label className={requiredLabel}>GPA</label>
+                <RequiredLabel>GPA</RequiredLabel>
                 <input
                   type="number"
                   name="gpa"
                   required
+                  aria-required="true"
                   min="0"
                   step="0.01"
                   placeholder="e.g. 3.8"
@@ -494,32 +510,35 @@ export default function Opportunities({ events, eventDeals }) {
             </div>
 
             <div>
-              <label className={requiredLabel}>LinkedIn profile</label>
+              <RequiredLabel>LinkedIn profile</RequiredLabel>
               <input
                 type="url"
                 name="linkedin"
                 required
+                aria-required="true"
                 className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
               />
             </div>
 
             <div>
-              <label className={requiredLabel}>GitHub or project link</label>
+              <RequiredLabel>GitHub or project link</RequiredLabel>
               <input
                 type="url"
                 name="projectLink"
                 required
+                aria-required="true"
                 className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
               />
             </div>
 
             <div>
-              <label className={requiredLabel}>
+              <RequiredLabel>
                 What are you building or what do you want to build?
-              </label>
+              </RequiredLabel>
               <textarea
                 name="whatBuilding"
                 required
+                aria-required="true"
                 rows={4}
                 className="w-full bg-white rounded-xl px-3 py-3 text-benblack-600 focus:outline-none focus:ring-2 focus:ring-white/70"
               />
@@ -536,8 +555,10 @@ export default function Opportunities({ events, eventDeals }) {
                   className="mt-1 h-4 w-4"
                 />
                 <label htmlFor="founderPipeline" className="text-sm text-white">
-                  I want to join the BEN founder pipeline
-                  <span className="ml-1 text-red-400">*</span>
+                  I want to join the BEN founder pipeline{" "}
+                  <span className="text-red-400" aria-hidden="true">
+                    *
+                  </span>
                 </label>
               </div>
 
