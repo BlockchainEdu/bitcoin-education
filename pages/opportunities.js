@@ -550,15 +550,10 @@ export default function Opportunities({ events, eventDeals }) {
                   id="founderPipeline"
                   type="checkbox"
                   name="founderPipeline"
-                  required
-                  aria-required="true"
                   className="mt-1 h-4 w-4"
                 />
                 <label htmlFor="founderPipeline" className="text-sm text-white">
                   I want to join the BEN founder pipeline{" "}
-                  <span className="text-red-400" aria-hidden="true">
-                    *
-                  </span>
                 </label>
               </div>
 
