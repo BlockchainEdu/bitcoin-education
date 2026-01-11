@@ -263,20 +263,6 @@ function withHref(item) {
   return { ...item, href };
 }
 
-function extractAssetIdFromFilesColumn(cv) {
-  const parsed = safeJsonParse(cv?.value);
-  const id = parsed?.files?.[0]?.assetId;
-  return id ? String(id) : null;
-}
-
-function buildAssetsById(assets = []) {
-  const m = new Map();
-  assets.forEach((a) => {
-    if (a?.id && a?.public_url) m.set(String(a.id), a.public_url);
-  });
-  return m;
-}
-
 function safeJsonParse(value) {
   if (!value || typeof value !== "string") return value;
   try {
@@ -335,7 +321,52 @@ function extractUrlFromMondayValue(cv) {
   return url || null;
 }
 
-export default function BenNetwork({ alumni = [] }) {
+function extractAssetIdFromFilesColumn(cv) {
+  const parsed = safeJsonParse(cv?.value);
+  const id = parsed?.files?.[0]?.assetId;
+  return id ? String(id) : null;
+}
+
+function buildAssetsById(assets = []) {
+  const m = new Map();
+  assets.forEach((a) => {
+    if (a?.id && a?.public_url) m.set(String(a.id), a.public_url);
+  });
+  return m;
+}
+
+function parseNumberFromMonday(cv) {
+  const parsed = safeJsonParse(cv?.value);
+  if (typeof parsed === "number") return parsed;
+  if (parsed?.number != null) return Number(parsed.number) || 0;
+  const n = Number(String(cv?.text || "").replace(/[^\d.-]/g, ""));
+  return Number.isFinite(n) ? n : 0;
+}
+
+function buildPageWindow(current, total, maxVisible = 5) {
+  if (total <= maxVisible)
+    return Array.from({ length: total }, (_, i) => i + 1);
+
+  const half = Math.floor(maxVisible / 2);
+  let start = current - half;
+  let end = current + half;
+
+  if (maxVisible % 2 === 0) end -= 1;
+
+  if (start < 1) {
+    start = 1;
+    end = maxVisible;
+  }
+
+  if (end > total) {
+    end = total;
+    start = total - maxVisible + 1;
+  }
+
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+}
+
+export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
   const onDominantBgLoad = useDominantBg();
 
   const floatingIcons = useMemo(
@@ -577,208 +608,6 @@ export default function BenNetwork({ alumni = [] }) {
     []
   );
 
-  const universitiesByRow = useMemo(
-    () => [
-      {
-        row: "row-1",
-        items: [
-          {
-            name: "Alabama Blockchain Innovation Academy",
-            file: "Alabama-Blockchain-Innovation-Academy.jpg",
-          },
-          {
-            name: "Association of Cryptocurrency Education",
-            file: "Association-of-Cryptocurrency-Education.png",
-          },
-          { name: "B and C GT", file: "B-and-C-GT.png" },
-          {
-            name: "Blockchain at Columbia",
-            file: "Blockchain-at-Columbia.png",
-          },
-          { name: "Crypto Club", file: "Crypto-Club.png" },
-          {
-            name: "Marquette Blockchain Lab",
-            file: "Marquette-Blockchain-Lab.jpg",
-          },
-          { name: "Middlebury College", file: "Middlebury-College.jpg" },
-          { name: "MUBC", file: "MUBC.jpg" },
-          { name: "OBC", file: "OBC.png" },
-          {
-            name: "Oxford Blockchain Society",
-            file: "Oxford-Blockchain-Society.jpg",
-          },
-          { name: "Singapore Polytechnic", file: "Singapore-Polytechnic.png" },
-          { name: "TBC", file: "TBC.png" },
-          { name: "Unidentified Logo A", file: "Unidentified-Logo-A.png" },
-          { name: "Unidentified Logo B", file: "Unidentified-Logo-B.png" },
-          { name: "VCU", file: "VCU.jpg" },
-        ],
-      },
-      {
-        row: "row-2",
-        items: [
-          { name: "1848", file: "1848.png" },
-          { name: "BC Blockchain", file: "BC-Blockchain.png" },
-          {
-            name: "BTC Istanbul Bilgi University",
-            file: "BTC-Istanbul-Bilgi-University.jpg",
-          },
-          {
-            name: "Harvard Business School",
-            file: "Harvard-Business-School.png",
-          },
-          { name: "HLSBFI", file: "HLSBFI.png" },
-          { name: "Knust Blockchain Hub", file: "Knust-Blockchain-Hub.jpg" },
-          { name: "Link", file: "Link.png" },
-          { name: "Luu Cabs", file: "Luu-Cabs.png" },
-          {
-            name: "Rutgers Business School Blockchain Hub",
-            file: "Rutgers-Business-School-Blockchain-Hub.png",
-          },
-          { name: "Spartan Blockchain", file: "Spartan-Blockchain.png" },
-          { name: "UB", file: "UB.png" },
-          { name: "Unidentified Logo C", file: "Unidentified-Logo-C.png" },
-          { name: "Unidentified Logo D", file: "Unidentified-Logo-D.png" },
-          { name: "Unidentified Logo E", file: "Unidentified-Logo-E.png" },
-          { name: "WSU Blockchain Club", file: "WSU-Blockchain-Club.png" },
-        ],
-      },
-      {
-        row: "row-3",
-        items: [
-          { name: "B.TECH", file: "B.TECH.png" },
-          { name: "Blockchain at Mason", file: "Blockchain-at-Mason.png" },
-          {
-            name: "Blockchain at Michigan",
-            file: "Blockchain-at-Michigan.png",
-          },
-          { name: "Blockchain Collective", file: "Blockchain-Collective.png" },
-          { name: "Blockchain Lab at NYU", file: "Blockchain-Lab-at-NYU.jpg" },
-          {
-            name: "Blockchain Ryerson University",
-            file: "Blockchain-Ryerson-University.png",
-          },
-          { name: "Bull", file: "Bull.png" },
-          { name: "Drexel Blockchain", file: "Drexel-Blockchain.png" },
-          {
-            name: "Frankfurt School Blockchain Center",
-            file: "Frankfurt-School-Blockchain-Center.png",
-          },
-          { name: "Itu Blockchain", file: "Itu-Blockchain.jpg" },
-          { name: "Trojan Crypto", file: "Trojan-Crypto.png" },
-          { name: "UNIC", file: "UNIC.png" },
-          { name: "Unidentified Logo F", file: "Unidentified-Logo-F.png" },
-          { name: "Unidentified Logo G", file: "Unidentified-Logo-G.png" },
-          { name: "Unidentified Logo H", file: "Unidentified-Logo-H.png" },
-        ],
-      },
-      {
-        row: "row-4",
-        items: [
-          { name: "Blockchain Lab", file: "Blockchain-Lab.png" },
-          { name: "CU Blockchain", file: "CU-Blockchain.png" },
-          { name: "Fapa Tech", file: "Fapa-Tech.png" },
-          {
-            name: "Finance and Investment Club Uniandes",
-            file: "Finance-and-Investment-Club-Uniandes.jpg",
-          },
-          { name: "Harding Hawks", file: "Harding-Hawks.png" },
-          { name: "Minority Programmers", file: "Minority-Programmers.png" },
-          {
-            name: "Nova SouthEastern University",
-            file: "Nova-SouthEastern-University.png",
-          },
-          {
-            name: "Omaha Blockchain Initiative",
-            file: "Omaha-Blockchain-Initiative.png",
-          },
-          { name: "Penn Blockchain", file: "Penn-Blockchain.png" },
-          { name: "PVFO", file: "PVFO.png" },
-          { name: "T", file: "T.png" },
-          { name: "TIBA", file: "TIBA.png" },
-          { name: "Unidentified Logo I", file: "Unidentified-Logo-I.jpg" },
-          { name: "Unidentified Logo J", file: "Unidentified-Logo-J.jpg" },
-          { name: "Unidentified Logo K", file: "Unidentified-Logo-K.png" },
-        ],
-      },
-      {
-        row: "row-5",
-        items: [
-          { name: "BaNSC", file: "BaNSC.jpg" },
-          {
-            name: "Birla Institute of Technology and Science Pilani",
-            file: "Birla-Institute-of-Technology-and-Science-Pilani.png",
-          },
-          { name: "Blockchain at McGill", file: "Blockchain-at-McGill.jpg" },
-          { name: "Blockchain Club", file: "Blockchain-Club.png" },
-          {
-            name: "Blockchain Society of Carleton",
-            file: "Blockchain-Society-of-Carleton.png",
-          },
-          { name: "CMU Blockchain", file: "CMU-Blockchain.png" },
-          { name: "Cornell Blockchain", file: "Cornell-Blockchain.png" },
-          { name: "Elon Blockchain", file: "Elon-Blockchain.png" },
-          { name: "IEEE Computer Society", file: "IEEE-Computer-Society.png" },
-          { name: "IEEE", file: "IEEE.png" },
-          {
-            name: "Istanbul University Blockchain Technology Club",
-            file: "Istanbul-University-Blockchain-Technology-Club.png",
-          },
-          {
-            name: "Kocaeli University Blockchain Technology Club",
-            file: "Kocaeli-University-Blockchain-Technology-Club.jpg",
-          },
-          { name: "MCC", file: "MCC.jpg" },
-          { name: "Unidentified Logo L", file: "Unidentified-Logo-L.jpg" },
-          { name: "Unidentified Logo M", file: "Unidentified-Logo-M.png" },
-        ],
-      },
-      {
-        row: "row-6",
-        items: [
-          { name: "Bennett University", file: "Bennett-University.png" },
-          {
-            name: "Blockchain at Berkeley",
-            file: "Blockchain-at-Berkeley.png",
-          },
-          { name: "Blockchain Collective", file: "Blockchain-Collective.png" },
-          { name: "Hackslash", file: "Hackslash.png" },
-          { name: "Harvard Blockchain", file: "Harvard-Blockchain.jpg" },
-          { name: "Muba", file: "Muba.jpg" },
-          { name: "Stanford Blockchain", file: "Stanford-Blockchain.jpg" },
-          { name: "Sup de Vinci", file: "Sup-de-Vinci.png" },
-          { name: "Unidentified Logo N", file: "Unidentified-Logo-N.png" },
-          { name: "Unidentified Logo O", file: "Unidentified-Logo-O.png" },
-          { name: "Unidentified Logo P", file: "Unidentified-Logo-P.png" },
-          { name: "Unidentified Logo Q", file: "Unidentified-Logo-Q.jpg" },
-          { name: "Unidentified Logo R", file: "Unidentified-Logo-R.png" },
-          { name: "Unidentified Logo S", file: "Unidentified-Logo-S.png" },
-        ],
-      },
-      {
-        row: "row-7",
-        items: [
-          { name: "Badger Blockchain", file: "Badger-Blockchain.jpg" },
-          {
-            name: "Blockchain Cleveland State",
-            file: "Blockchain-Cleveland-State.png",
-          },
-          {
-            name: "Financial Group Javeriana",
-            file: "Financial-Group-Javeriana.png",
-          },
-          { name: "HUBG", file: "HUBG.png" },
-          { name: "Kryptosphere", file: "Kryptosphere.png" },
-          { name: "Ru", file: "Ru.jpg" },
-          { name: "Subchain", file: "Subchain.jpg" },
-          { name: "Unidentified Logo T", file: "Unidentified-Logo-T.jpg" },
-          { name: "Unidentified Logo U", file: "Unidentified-Logo-U.png" },
-        ],
-      },
-    ],
-    []
-  );
-
   const foundersAndProjects = useMemo(
     () => [
       {
@@ -858,59 +687,53 @@ export default function BenNetwork({ alumni = [] }) {
     "/images/stories/drew-cousin.jpeg",
   ];
 
-  const allUniversities = useMemo(() => {
-    return universitiesByRow.flatMap((row) =>
-      row.items.map((u) => ({ ...u, row: row.row }))
-    );
-  }, [universitiesByRow]);
+  const visibleUniGroups = useMemo(() => {
+    return (universitiesGroups || [])
+      .filter((g) => (g?.items?.length || 0) > 0)
+      .map((g) => ({
+        ...g,
+        items: (g.items || []).filter((it) => it?.name),
+      }));
+  }, [universitiesGroups]);
 
-  const UNI_PAGE_SIZE = 21;
-  const [uniPage, setUniPage] = useState(1);
-  const [uniPageInput, setUniPageInput] = useState("1");
+  const allUniFlat = useMemo(() => {
+    const out = [];
+    visibleUniGroups.forEach((g) => {
+      (g.items || []).forEach((it) => out.push({ ...it, groupId: g.id }));
+    });
+    return out;
+  }, [visibleUniGroups]);
 
-  const totalUniPages = Math.max(
-    1,
-    Math.ceil(allUniversities.length / UNI_PAGE_SIZE)
-  );
+  const uniRankById = useMemo(() => {
+    const m = new Map();
+    allUniFlat.forEach((it, idx) => m.set(String(it.id), idx + 1));
+    return m;
+  }, [allUniFlat]);
+
+  const PAGE_SIZE = 21;
+  const [uniPages, setUniPages] = useState({});
 
   useEffect(() => {
-    setUniPageInput(String(uniPage));
-  }, [uniPage]);
+    if (!visibleUniGroups?.length) return;
+    setUniPages((prev) => {
+      const next = { ...prev };
+      for (const g of visibleUniGroups) {
+        if (!next[g.id]) next[g.id] = 1;
+      }
+      return next;
+    });
+  }, [visibleUniGroups]);
 
-  const pagedUniversities = useMemo(() => {
-    const start = (uniPage - 1) * UNI_PAGE_SIZE;
-    return allUniversities.slice(start, start + UNI_PAGE_SIZE);
-  }, [allUniversities, uniPage]);
+  const getGroupPage = (groupId) => {
+    const p = Number(uniPages?.[groupId] || 1);
+    return Number.isFinite(p) ? p : 1;
+  };
 
-  const uniVisiblePages = useMemo(() => {
-    const windowSize = 5;
-    const half = Math.floor(windowSize / 2);
+  const setGroupPage = (groupId, page) => {
+    setUniPages((prev) => ({ ...prev, [groupId]: page }));
+  };
 
-    let start = Math.max(1, uniPage - half);
-    let end = Math.min(totalUniPages, start + windowSize - 1);
-
-    start = Math.max(1, end - windowSize + 1);
-
-    const pages = [];
-    for (let p = start; p <= end; p++) pages.push(p);
-
-    return {
-      pages,
-      showLeftDots: start > 1,
-      showRightDots: end < totalUniPages,
-    };
-  }, [uniPage, totalUniPages]);
-
-  function clampPage(p) {
-    const n = Number(p);
-    if (!Number.isFinite(n)) return uniPage;
-    return Math.min(totalUniPages, Math.max(1, Math.trunc(n)));
-  }
-
-  function commitUniPage(value) {
-    const next = clampPage(value);
-    setUniPage(next);
-  }
+  const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
   return (
     <div className="bg-benwhite-500 min-h-screen text-benblack-500">
@@ -1318,123 +1141,173 @@ export default function BenNetwork({ alumni = [] }) {
             </header>
 
             <div className="uni-panel reveal">
-              <div className="uni-grid">
-                {pagedUniversities.map((u, idx) => {
-                  const globalRank = (uniPage - 1) * UNI_PAGE_SIZE + idx + 1;
-
-                  const primary = imgSrc(
-                    `${BASE}/network-of-universities/${u.row}/${u.file}`
-                  );
-
-                  const allRows = [
-                    "row-1",
-                    "row-2",
-                    "row-3",
-                    "row-4",
-                    "row-5",
-                    "row-6",
-                    "row-7",
-                  ];
-
-                  const fallbacks = allRows
-                    .filter((r) => r !== u.row)
-                    .map((r) =>
-                      imgSrc(`${BASE}/network-of-universities/${r}/${u.file}`)
+              {visibleUniGroups.length === 0 ? (
+                <div className="uni-empty">Sem dados de Universities.</div>
+              ) : (
+                <div className="uni-groups">
+                  {visibleUniGroups.map((g) => {
+                    const groupTotal = g.items.length;
+                    const totalPages = Math.max(
+                      1,
+                      Math.ceil(groupTotal / PAGE_SIZE)
                     );
+                    const page = clamp(getGroupPage(g.id), 1, totalPages);
 
-                  return (
-                    <div
-                      key={`${u.row}-${u.name}-${u.file}-${globalRank}`}
-                      className="uni-item"
-                      title={u.name}
-                    >
-                      <div className="uni-rank">{globalRank}</div>
+                    const start = (page - 1) * PAGE_SIZE;
+                    const paged = g.items.slice(start, start + PAGE_SIZE);
 
-                      <div className="uni-logoWrap" data-dominant-bg>
-                        <SmartImage
-                          src={primary}
-                          fallbackSrcs={fallbacks}
-                          alt={u.name}
-                          className="uni-logoImg"
-                          loading="lazy"
-                          onLoad={onDominantBgLoad}
-                        />
+                    const pages = buildPageWindow(page, totalPages, 5);
+
+                    return (
+                      <div key={g.id} className="uni-group">
+                        <div className="uni-groupHead">
+                          <div className="uni-groupTitle">{g.title}</div>
+                        </div>
+
+                        <div className="uni-grid">
+                          {paged.map((u) => {
+                            const globalRank =
+                              uniRankById.get(String(u.id)) || 0;
+                            const badge = Number(u.peopleCount || 0);
+
+                            return (
+                              <div
+                                key={u.id}
+                                className="uni-item"
+                                title={u.name}
+                              >
+                                <div className="uni-rank">{globalRank}</div>
+
+                                <div className="uni-logoWrap" data-dominant-bg>
+                                  {u.image ? (
+                                    <SmartImage
+                                      src={imgSrc(u.image)}
+                                      fallbackSrcs={[]}
+                                      alt={u.name}
+                                      className="uni-logoImg"
+                                      loading="lazy"
+                                      onLoad={onDominantBgLoad}
+                                    />
+                                  ) : (
+                                    <div
+                                      className="uni-logoFallback"
+                                      aria-label={u.name}
+                                    >
+                                      {initialsFromName(u.name)}
+                                    </div>
+                                  )}
+                                </div>
+
+                                <div className="uni-name">{u.name}</div>
+
+                                <div className="uni-badgeWrap">
+                                  <span
+                                    className={`uni-badge ${
+                                      badge > 0 ? "" : "is-zero"
+                                    }`}
+                                    aria-label={`Number of People: ${badge}`}
+                                    title={`Number of People: ${badge}`}
+                                  >
+                                    <svg
+                                      className="uni-badgeIcon"
+                                      viewBox="0 0 24 24"
+                                      width="14"
+                                      height="14"
+                                      aria-hidden="true"
+                                    >
+                                      <path
+                                        fill="currentColor"
+                                        d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
+                                      />
+                                    </svg>
+                                    <span className="uni-badgeNum">
+                                      {badge}
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        <div className="uni-footerMeta uni-footerMeta--pager">
+                          <div className="uni-pager">
+                            <button
+                              className="uni-pagerBtn"
+                              onClick={() =>
+                                setGroupPage(
+                                  g.id,
+                                  clamp(page - 1, 1, totalPages)
+                                )
+                              }
+                              disabled={page <= 1}
+                              aria-label="Página anterior"
+                              title="Anterior"
+                            >
+                              ‹
+                            </button>
+
+                            <div
+                              className="uni-pageNums"
+                              role="navigation"
+                              aria-label="Paginação"
+                            >
+                              {pages.map((p) => (
+                                <button
+                                  key={p}
+                                  className={`uni-pageNum ${
+                                    p === page ? "is-active" : ""
+                                  }`}
+                                  onClick={() => setGroupPage(g.id, p)}
+                                  aria-label={`Ir para página ${p}`}
+                                >
+                                  {p}
+                                </button>
+                              ))}
+                            </div>
+
+                            <button
+                              className="uni-pagerBtn"
+                              onClick={() =>
+                                setGroupPage(
+                                  g.id,
+                                  clamp(page + 1, 1, totalPages)
+                                )
+                              }
+                              disabled={page >= totalPages}
+                              aria-label="Próxima página"
+                              title="Próxima"
+                            >
+                              ›
+                            </button>
+                          </div>
+
+                          <div className="uni-pageJump">
+                            <span className="uni-pageLabel">Page</span>
+                            <input
+                              className="uni-pageInput"
+                              type="number"
+                              min={1}
+                              max={totalPages}
+                              value={page}
+                              onChange={(e) => {
+                                const v = Number(e.target.value || 1);
+                                if (!Number.isFinite(v)) return;
+                                setGroupPage(g.id, clamp(v, 1, totalPages));
+                              }}
+                              onBlur={(e) => {
+                                const v = Number(e.target.value || 1);
+                                setGroupPage(g.id, clamp(v, 1, totalPages));
+                              }}
+                              aria-label="Selecionar página"
+                            />
+                          </div>
+                        </div>
                       </div>
-
-                      <div className="uni-name">{u.name}</div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="uni-pager">
-                <div className="uni-total">Total {allUniversities.length}</div>
-
-                <div className="uni-nav">
-                  <button
-                    className="uni-navBtn"
-                    onClick={() => setUniPage((p) => Math.max(1, p - 1))}
-                    disabled={uniPage <= 1}
-                    aria-label="Página anterior"
-                    title="Anterior"
-                  >
-                    ‹
-                  </button>
-
-                  <div className="uni-pages">
-                    {uniVisiblePages.showLeftDots ? (
-                      <span className="uni-dots">…</span>
-                    ) : null}
-
-                    {uniVisiblePages.pages.map((p) => (
-                      <button
-                        key={p}
-                        className={`uni-pageBtn ${
-                          p === uniPage ? "is-active" : ""
-                        }`}
-                        onClick={() => setUniPage(p)}
-                        aria-label={`Página ${p}`}
-                        title={`Página ${p}`}
-                      >
-                        {p}
-                      </button>
-                    ))}
-
-                    {uniVisiblePages.showRightDots ? (
-                      <span className="uni-dots">…</span>
-                    ) : null}
-                  </div>
-
-                  <button
-                    className="uni-navBtn"
-                    onClick={() =>
-                      setUniPage((p) => Math.min(totalUniPages, p + 1))
-                    }
-                    disabled={uniPage >= totalUniPages}
-                    aria-label="Próxima página"
-                    title="Próxima"
-                  >
-                    ›
-                  </button>
+                    );
+                  })}
                 </div>
-
-                <div className="uni-pageJump">
-                  <span className="uni-pageLabel">Page</span>
-                  <input
-                    className="uni-pageInput"
-                    value={uniPageInput}
-                    inputMode="numeric"
-                    onChange={(e) =>
-                      setUniPageInput(e.target.value.replace(/[^\d]/g, ""))
-                    }
-                    onBlur={() => commitUniPage(uniPageInput)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") commitUniPage(uniPageInput);
-                    }}
-                    aria-label="Ir para página"
-                  />
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -1490,7 +1363,7 @@ export default function BenNetwork({ alumni = [] }) {
           border: 1px solid rgba(0, 0, 0, 0.06);
           border-radius: 18px;
           padding: 16px;
-          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 10px 28px rgba(93, 93, 93, 0.06);
           transition: transform 160ms ease, border-color 180ms ease,
             box-shadow 180ms ease;
           position: relative;
@@ -1502,7 +1375,7 @@ export default function BenNetwork({ alumni = [] }) {
           position: absolute;
           inset: 0;
           border-radius: inherit;
-          padding: 4px;
+          padding: 3px;
           background: linear-gradient(
             135deg,
             #a855f7,
@@ -1622,7 +1495,42 @@ export default function BenNetwork({ alumni = [] }) {
           border-radius: 22px;
           background: #fff;
           padding: 18px 18px 14px;
-          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.03);
+        }
+
+        .uni-empty {
+          padding: 18px 6px;
+          font-size: 13px;
+          color: rgba(0, 0, 0, 0.6);
+          text-align: center;
+        }
+
+        .uni-groups {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .uni-group {
+          border-top: 1px solid rgba(0, 0, 0, 0.06);
+          padding-top: 16px;
+        }
+        .uni-group:first-child {
+          border-top: none;
+          padding-top: 4px;
+        }
+
+        .uni-groupHead {
+          display: flex;
+          align-items: baseline;
+          justify-content: space-between;
+          gap: 12px;
+          padding: 0 4px 10px;
+        }
+        .uni-groupTitle {
+          font-weight: 600;
+          font-size: 14px;
+          color: rgba(0, 0, 0, 0.86);
+          letter-spacing: -0.01em;
         }
 
         .uni-grid {
@@ -1678,6 +1586,17 @@ export default function BenNetwork({ alumni = [] }) {
           padding: 7px;
           display: block;
         }
+        .uni-logoFallback {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 600;
+          font-size: 13px;
+          color: rgba(0, 0, 0, 0.25);
+          user-select: none;
+        }
 
         .uni-name {
           font-size: 14px;
@@ -1686,92 +1605,135 @@ export default function BenNetwork({ alumni = [] }) {
           line-height: 1.25;
         }
 
-        .uni-pager {
-          margin-top: 18px;
-          display: grid;
-          grid-template-columns: 1fr auto 1fr;
+        .uni-badgeWrap {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .uni-badge {
+          min-width: 34px;
+          height: 22px;
+          padding: 0 8px;
+          border-radius: 10px;
+          display: inline-flex;
           align-items: center;
-          gap: 10px;
+          justify-content: center;
+          gap: 6px;
+          font-size: 12px;
+          font-weight: 500;
+          color: #fff;
+          background: #ff872a;
+          border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .uni-badge.is-zero {
+          opacity: 0.55;
+        }
+
+        .uni-badgeIcon {
+          display: inline-block;
+          flex: 0 0 auto;
+          filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.08));
+        }
+
+        .uni-badgeNum {
+          line-height: 1;
+        }
+
+        .uni-footerMeta {
+          margin-top: 10px;
           padding-top: 10px;
           border-top: 1px solid rgba(0, 0, 0, 0.06);
+          display: flex;
+          justify-content: center;
+        }
+
+        .uni-footerMeta--pager {
+          justify-content: center;
+          align-items: center;
+          gap: 14px;
+          flex-wrap: wrap;
+          margin-top: 6px;
         }
 
         .uni-total {
           font-size: 12px;
           color: rgba(0, 0, 0, 0.55);
-          justify-self: center;
+          min-width: 90px;
         }
 
-        .uni-nav {
+        .uni-pager {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          justify-self: center;
+          flex: 0 0 auto;
         }
 
-        .uni-navBtn {
-          width: 32px;
-          height: 32px;
-          border-radius: 10px;
-          font-weight: 500;
-          font-size: 16px;
-          line-height: 1;
-          transition: transform 120ms ease, background 180ms ease;
-        }
-        .uni-navBtn:disabled {
-          opacity: 0.4;
-          cursor: not-allowed;
-        }
-        .uni-navBtn:not(:disabled):hover {
-          transform: translateY(-1px);
-        }
-
-        .uni-pages {
+        .uni-pagerBtn {
+          width: 34px;
+          height: 34px;
+          color: rgba(0, 0, 0, 0.65);
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-        }
-        .uni-pageBtn {
-          width: 32px;
-          height: 32px;
-          font-weight: 400;
-          font-size: 12px;
-          color: rgba(0, 0, 0, 0.67);
+          justify-content: center;
           transition: transform 120ms ease, background 180ms ease,
-            color 180ms ease, border-color 180ms ease;
+            border-color 180ms ease;
+          user-select: none;
         }
-        .uni-pageBtn:hover {
+        .uni-pagerBtn:hover:not(:disabled) {
           transform: translateY(-1px);
         }
-        .uni-pageBtn.is-active {
-          color: #212528d5;
-          font-weight: 500;
+        .uni-pagerBtn:disabled {
+          opacity: 0.45;
+          cursor: not-allowed;
         }
-        .uni-dots {
-          font-weight: 800;
-          opacity: 0.55;
-          padding: 0 2px;
+
+        .uni-pageNums {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .uni-pageNum {
+          width: 34px;
+          height: 34px;
+          background: transparent;
+          color: rgba(0, 0, 0, 0.7);
+          font-size: 12px;
+          transition: background 180ms ease, border-color 180ms ease,
+            transform 120ms ease;
+        }
+        .uni-pageNum:hover {
+          color: rgba(0, 0, 0, 0.77);
+
+          transform: translateY(-1px);
+        }
+        .uni-pageNum.is-active {
+          font-weight: 600;
+          transform: none;
         }
 
         .uni-pageJump {
-          justify-self: center;
           display: inline-flex;
           align-items: center;
-          gap: 8px;
+          gap: 10px;
+          min-width: 120px;
+          justify-content: flex-end;
         }
+
         .uni-pageLabel {
           font-size: 12px;
           color: rgba(0, 0, 0, 0.55);
         }
+
         .uni-pageInput {
-          width: 44px;
-          height: 32px;
-          border-radius: 8px;
-          border: 1px solid rgba(0, 0, 0, 0.08);
+          width: 52px;
+          height: 34px;
+          border-radius: 10px;
           padding: 0 10px;
-          font-size: 12px;
-          color: rgba(0, 0, 0, 0.8);
+          font-size: 13px;
           outline: none;
+          color: rgba(0, 0, 0, 0.75);
         }
         .uni-pageInput:focus {
           border-color: rgba(0, 0, 0, 0.18);
@@ -2197,39 +2159,51 @@ export default function BenNetwork({ alumni = [] }) {
 }
 
 export async function getStaticProps() {
-  const ALIASES = {
-    title: ["title", "text"],
-    pictures: ["files", "pictures"],
-    linkedin: ["text2", "linkedin"],
-    twitter: ["text4", "twitter", "x"],
-  };
-
-  const res = await TeamMemberService.getMembers({
-    query: `{
-      boards (ids: 18394862500) {
-        columns { id title type }
-        items_page (limit: 500) {
-          items {
-            id
-            name
-            assets { id public_url }
-            column_values { id value text }
-          }
+  const alumniQuery = `{
+    boards (ids: 18394862500) {
+      columns { id title type }
+      items_page (limit: 500) {
+        items {
+          id
+          name
+          assets { id public_url }
+          column_values { id value text }
         }
       }
-    }`,
-  });
+    }
+  }`;
 
-  const board = res?.data?.data?.boards?.[0];
-  const items = board?.items_page?.items ?? [];
-  const map = buildTitleToId(board?.columns ?? []);
+  const universitiesQuery = `{
+    boards (ids: 18394872099) {
+      id
+      columns { id title type }
+      groups { id title }
+      items_page (limit: 500) {
+        items {
+          id
+          name
+          group { id title }
+          assets { id public_url }
+          column_values { id value text }
+        }
+      }
+    }
+  }`;
+
+  const [alumniRes, uniRes] = await Promise.all([
+    TeamMemberService.getMembers({ query: alumniQuery }),
+    TeamMemberService.getMembers({ query: universitiesQuery }),
+  ]);
+
+  const alumniBoard = alumniRes?.data?.data?.boards?.[0];
+  const alumniItems = alumniBoard?.items_page?.items ?? [];
 
   const titleId = "text";
   const picturesId = "files";
   const linkedinId = "text2";
   const twitterId = "text4";
 
-  const alumni = items.map((item) => {
+  const alumni = alumniItems.map((item) => {
     const titleText = col(item, titleId)?.text ?? "";
     const { role, company } = parseTitleToRoleCompany(titleText);
 
@@ -2244,7 +2218,6 @@ export async function getStaticProps() {
       null;
 
     const picsCv = col(item, picturesId);
-
     const assetId = extractAssetIdFromFilesColumn(picsCv);
     const assetsById = buildAssetsById(item?.assets ?? []);
     const imgFromAssets =
@@ -2265,8 +2238,73 @@ export async function getStaticProps() {
     };
   });
 
+  const uniBoard = uniRes?.data?.data?.boards?.[0];
+  const uniItems = uniBoard?.items_page?.items ?? [];
+  const uniColumnsMap = buildTitleToId(uniBoard?.columns ?? []);
+
+  const uniPicturesId =
+    pickId(uniColumnsMap, ["Pictures", "files", "pictures"]) || "files";
+  const uniPeopleId =
+    pickId(uniColumnsMap, [
+      "Number of People",
+      "number of people",
+      "People",
+      "people",
+      "Number",
+      "numbers",
+    ]) || "numbers";
+
+  const groupsIndex = new Map(
+    (uniBoard?.groups ?? []).map((g, idx) => [String(g.id), idx])
+  );
+
+  const groupBuckets = new Map();
+
+  for (const item of uniItems) {
+    const groupId = String(item?.group?.id || "unknown");
+    const groupTitle = item?.group?.title || "Other";
+
+    const picsCv = col(item, uniPicturesId);
+    const assetId = extractAssetIdFromFilesColumn(picsCv);
+    const assetsById = buildAssetsById(item?.assets ?? []);
+    const imgFromAssets =
+      (assetId ? assetsById.get(assetId) : null) ||
+      item?.assets?.[0]?.public_url ||
+      null;
+
+    const imgFallback =
+      extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
+
+    const peopleCount = parseNumberFromMonday(col(item, uniPeopleId));
+
+    if (!groupBuckets.has(groupId)) {
+      groupBuckets.set(groupId, {
+        id: groupId,
+        title: groupTitle,
+        items: [],
+      });
+    }
+
+    groupBuckets.get(groupId).items.push({
+      id: item.id,
+      name: item.name,
+      image: imgFromAssets || imgFallback || null,
+      peopleCount,
+    });
+  }
+
+  const universitiesGroups = Array.from(groupBuckets.values()).sort((a, b) => {
+    const ai = groupsIndex.has(String(a.id))
+      ? groupsIndex.get(String(a.id))
+      : 9999;
+    const bi = groupsIndex.has(String(b.id))
+      ? groupsIndex.get(String(b.id))
+      : 9999;
+    return ai - bi;
+  });
+
   return {
-    props: { alumni },
+    props: { alumni, universitiesGroups },
     revalidate: 3600,
   };
 }
