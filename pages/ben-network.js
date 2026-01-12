@@ -17,6 +17,10 @@ import styles from "../styles/ben-network.module.css";
 const BASE = "/images/ben-network";
 const BENEVENTS_IMG = "/images/benevents.png";
 
+const BG_BASE = "bg-benwhite-500";
+const BG_WARM = "bg-[#FFFBF2]";
+const BG_WHITE = "bg-white";
+
 const FLOATING_POSITIONS = [
   { top: 10, left: 8 },
   { top: 14, left: 18 },
@@ -437,11 +441,9 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
   const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
   return (
-    <div
-      className={`${styles.root} bg-benwhite-500 min-h-screen text-benblack-500`}
-    >
+    <div className={`${styles.root} ${BG_BASE} min-h-screen text-benblack-500`}>
       <Head>
-        <title>TESTE BEN Network | Blockchain Education Network</title>
+        <title>BEN Network | Blockchain Education Network</title>
         <meta
           name="description"
           content="BEN Network: a global network of student founders, alumni and companies built through the Blockchain Education Network"
@@ -551,16 +553,6 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
                 </div>
               </div>
 
-              <div className="mt-8 flex items-center justify-center gap-3">
-                <a
-                  className="btn-premium"
-                  href="/opportunities"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  Apply <span className="arrow">→</span>
-                </a>
-              </div>
-
               <div className="mt-8 text-center">
                 <div className="flex justify-center">
                   {users.map((src, i) => (
@@ -582,7 +574,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section className="py-16 bg-[#F7F4EE]">
+      <section className={`py-16 ${BG_WARM} border-t border-black/5`}>
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
@@ -590,7 +582,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
               <span className="text-benorange-500">success</span>.
             </h2>
 
-            <div className="mt-8 overflow-hidden shadow-sm border border-black/5 bg-black">
+            <div className="mt-8 overflow-hidden shadow-sm border border-black/5 bg-black rounded-xl">
               <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                 <iframe
                   className="absolute inset-0 w-full h-full"
@@ -606,7 +598,161 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className={`py-16 ${BG_WHITE} border-t border-black/5`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+              Who <span className="text-benorange-500">We</span> Are
+            </h2>
+
+            <p className="mt-4 text-sm md:text-base text-benblack-500/75 max-w-3xl mx-auto">
+              BEN (est. 2014) is one of the largest and longest-running networks
+              connecting blockchain students, professors, and alumni worldwide.
+            </p>
+
+            <div className="mt-10 grid md:grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
+              {[
+                "Founded in 2014 and built by student leaders.",
+                "A global network connecting chapters and alumni.",
+                "Helping founders launch and scale real projects.",
+                "Community-led: students, professors, builders.",
+                "Events, mentorship, and warm intros across the ecosystem.",
+                "From universities to unicorns: a full-stack network.",
+              ].map((text) => (
+                <div key={text} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-benorange-500 shrink-0" />
+                  <p className="text-sm md:text-base text-benblack-500/80">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                "/images/ben-network/ben-group-pic-1.jpg",
+                "/images/ben-network/ben-group-pic-2.png",
+                "/images/ben-network/ben-group-pic-3.png",
+              ].map((src) => (
+                <div
+                  key={src}
+                  className="rounded-xl overflow-hidden border border-black/5 bg-white"
+                >
+                  <div
+                    className="relative w-full"
+                    style={{ paddingTop: "56.25%" }}
+                  >
+                    <img
+                      src={src}
+                      alt="BEN community"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+              {[
+                { value: "25k+", label: "X Followers" },
+                { value: "8k+", label: "Newsletter" },
+                { value: "4k+", label: "Students & Alumni" },
+                { value: "15+", label: "Startups Founded" },
+                { value: "60+", label: "Blockchain Clubs" },
+                { value: "200+", label: "Schools" },
+              ].map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-2xl bg-white border border-black/5 px-4 py-5 text-center shadow-sm"
+                >
+                  <div className="text-2xl md:text-3xl font-semibold tracking-tight">
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-xs md:text-sm text-benblack-500/70">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-16 ${BG_WARM} border-t border-black/5`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="text-sm font-semibold tracking-wide text-benorange-500">
+                BEN LEARN&apos;S SOLUTION
+              </div>
+
+              <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+                One scalable platform for{" "}
+                <span className="text-benorange-500">education</span> +{" "}
+                <span className="text-benorange-500">entrepreneurship</span>
+              </h2>
+
+              <p className="mt-5 text-base md:text-lg text-benblack-500/75 leading-relaxed">
+                We believe the best way to start a project in Web3 is by
+                combining education and entrepreneurship in one scalable
+                platform to empower learners, identify their needs, and connect
+                them with the right set of resources, scalable to thousands of
+                potential learners.
+              </p>
+            </div>
+
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px]">
+                {[
+                  {
+                    src: "/images/ben-network/ben-learn-1.png",
+                    pos: "top-0 left-10",
+                  },
+                  {
+                    src: "/images/ben-network/ben-learn-2.png",
+                    pos: "top-10 right-0",
+                  },
+                  {
+                    src: "/images/ben-network/ben-learn-3.png",
+                    pos: "bottom-10 left-0",
+                  },
+                  {
+                    src: "/images/ben-network/ben-learn-4.png",
+                    pos: "bottom-0 right-10",
+                  },
+                ].map((img) => (
+                  <div
+                    key={img.src}
+                    className={`absolute ${img.pos} w-[170px] h-[170px] sm:w-[190px] sm:h-[190px]
+                      rounded-full overflow-hidden border border-black/5 bg-white shadow-sm`}
+                  >
+                    <img
+                      src={img.src}
+                      alt="BEN Learn"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ))}
+
+                <div
+                  className="absolute inset-0 rounded-full blur-3xl opacity-30"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 50% 50%, rgba(255,122,0,0.28), transparent 60%)",
+                  }}
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-16 ${BG_WHITE} border-t border-black/5`}>
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <header className="text-center mb-10">
@@ -644,18 +790,18 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section className="py-2 mb-12">
+      <section className={`py-16 ${BG_WHITE} border-y border-black/5`}>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-black/5 px-4 py-2 text-xs shadow-sm mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-black/5 px-4 py-2 text-xs shadow-sm mb-6">
                 <span className="font-semibold">Notable Alumni</span>
                 <span className="opacity-70">
                   Founders and leaders from the BEN network
                 </span>
               </div>
 
-              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight font-mont">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight font-sans">
                 <span className="text-benblack-500">Our Alumni</span>
               </h2>
               <p className="mt-2 text-sm text-benblack-500/70">
@@ -734,7 +880,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className={`py-16 ${BG_WARM}`}>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
@@ -766,7 +912,10 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section id="unicorns" className="py-16 mb-10">
+      <section
+        id="unicorns"
+        className={`py-16 ${BG_WHITE} border-t border-black/5`}
+      >
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
@@ -806,7 +955,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className={`py-16 ${BG_WARM} border-t border-black/5`}>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="text-center mb-10">
@@ -869,7 +1018,10 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section id="universities" className="bg-white py-16">
+      <section
+        id="universities"
+        className={`${BG_WHITE} py-16 border-t border-black/5`}
+      >
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <header className="uni-head">

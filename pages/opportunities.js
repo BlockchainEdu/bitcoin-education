@@ -373,7 +373,7 @@ export default function Opportunities({ events, eventDeals }) {
         </SectionShell>
       </section>
 
-      <section className="py-14 bg-[#F6F6EF]">
+      <section className="py-14 bg-[#FFFBF2]">
         <SectionShell max="max-w-6xl">
           <div className="text-center mb-10">
             <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-benblack-500">
