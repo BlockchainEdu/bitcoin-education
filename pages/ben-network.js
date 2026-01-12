@@ -582,6 +582,30 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
+      <section className="py-16 bg-[#F7F4EE]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
+              Our formula for{" "}
+              <span className="text-benorange-500">success</span>.
+            </h2>
+
+            <div className="mt-8 overflow-hidden shadow-sm border border-black/5 bg-black">
+              <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/Lvs78FukfpI?rel=0&modestbranding=1"
+                  title="Our formula for success"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
