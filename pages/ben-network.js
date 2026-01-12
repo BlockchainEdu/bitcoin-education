@@ -3,9 +3,46 @@ import Head from "next/head";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
 import { TeamMemberService } from "../services";
+import {
+  OFFICIAL_LINKS,
+  FLOATING_ICONS,
+  COMPANIES_FROM_BEN,
+  FOUNDERS_AND_PROJECTS,
+  UNICORNS,
+  USERS,
+  TESTIMONIALS,
+} from "../content/ben-network.data";
+import styles from "../styles/ben-network.module.css";
 
 const BASE = "/images/ben-network";
 const BENEVENTS_IMG = "/images/benevents.png";
+
+const FLOATING_POSITIONS = [
+  { top: 10, left: 8 },
+  { top: 14, left: 18 },
+  { top: 8, left: 26 },
+  { top: 8, left: 95 },
+  { top: 10, left: 74 },
+  { top: 12, left: 84 },
+  { top: 26, left: 10 },
+  { top: 30, left: 24 },
+  { top: 75, left: 20 },
+  { top: 80, left: 83 },
+  { top: 29, left: 77 },
+  { top: 26, left: 90 },
+  { top: 46, left: 6 },
+  { top: 44, left: 18 },
+  { top: 80, left: 30 },
+  { top: 82, left: 71 },
+  { top: 48, left: 82 },
+  { top: 41, left: 95 },
+  { top: 65, left: 12 },
+  { top: 60, left: 28 },
+  { top: 86, left: 10 },
+  { top: 88, left: 92 },
+  { top: 62, left: 76 },
+  { top: 60, left: 90 },
+];
 
 function imgSrc(path) {
   if (!path) return path;
@@ -238,31 +275,6 @@ function PersonAvatar({ src, name, className }) {
   );
 }
 
-const OFFICIAL_LINKS = {
-  Algorand: "https://algorand.foundation",
-  "Alpha Blockchain": null,
-  Augur: "https://augur.net",
-  "Au Sum Ventures": "https://ausum.vc",
-  Axelar: "https://axelar.network",
-  Bitquick: "https://bitquick.com",
-  BlockHack: "https://blockhack.io",
-  Bolt: "https://bolt.com",
-  CoinList: "https://coinlist.co",
-  "Distributed ID": null,
-  Eco: "https://eco.org",
-  "GDA Capital": "https://gda.capital",
-  Immuto: null,
-  Iota: "https://iota.org",
-  Metis: "https://metis.io",
-  Optimism: "https://optimism.io",
-  Qtum: "https://qtum.org",
-};
-
-function withHref(item) {
-  const href = OFFICIAL_LINKS[item.name] || item.href || "#";
-  return { ...item, href };
-}
-
 function safeJsonParse(value) {
   if (!value || typeof value !== "string") return value;
   try {
@@ -369,323 +381,12 @@ function buildPageWindow(current, total, maxVisible = 5) {
 export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
   const onDominantBgLoad = useDominantBg();
 
-  const floatingIcons = useMemo(
-    () =>
-      [
-        {
-          name: "CreatorBid",
-          file: "CreatorBid.jpg",
-          dir: "portfolio-companies",
-        },
-        { name: "SWAP", file: "SWAP.jpg", dir: "portfolio-companies" },
-        {
-          name: "Alpaca-Network",
-          file: "Alpaca-Network.jpeg",
-          dir: "portfolio-companies",
-        },
-        { name: "Algorand", file: "Algorand.png", dir: "companies-from-ben" },
-        { name: "SatLayer", file: "SatLayer.png", dir: "portfolio-companies" },
-        { name: "Injective", file: "Injective.png", dir: "companies-from-ben" },
-        {
-          name: "Unidentified Logo N",
-          file: "Unidentified-Logo-N.png",
-          dir: "network-of-universities/row-6",
-        },
-        {
-          name: "Muba",
-          file: "Muba.jpg",
-          dir: "network-of-universities/row-6",
-        },
-        { name: "Metis", file: "Metis.png", dir: "companies-from-ben" },
-        { name: "Vana", file: "Vana.jpg", dir: "portfolio-companies" },
-        {
-          name: "Algebra-Finance",
-          file: "Algebra-Finance.jpg",
-          dir: "portfolio-companies",
-        },
-        {
-          name: "Unidentified Logo Q",
-          file: "Unidentified-Logo-Q.jpg",
-          dir: "network-of-universities/row-6",
-        },
-        {
-          name: "DropSpaceNFT",
-          file: "DropSpaceNFT.jpg",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Harvard Blockchain",
-          file: "Harvard-Blockchain.jpg",
-          dir: "network-of-universities/row-6",
-        },
-        { name: "Roll", file: "Roll.jpg", dir: "companies-from-ben" },
-        {
-          name: "Tenderize",
-          file: "Tenderize.jpg",
-          dir: "portfolio-companies",
-        },
-        {
-          name: "Oxford Blockchain Society",
-          file: "Oxford-Blockchain-Society.jpg",
-          dir: "network-of-universities/row-1",
-        },
-        {
-          name: "MUBC",
-          file: "MUBC.jpg",
-          dir: "network-of-universities/row-1",
-        },
-        { name: "G.A.M.E", file: "G.A.M.E.jpg", dir: "portfolio-companies" },
-        {
-          name: "Hackslash",
-          file: "Hackslash.png",
-          dir: "network-of-universities/row-6",
-        },
-        {
-          name: "B.TECH",
-          file: "B.TECH.png",
-          dir: "network-of-universities/row-3",
-        },
-        {
-          name: "GDA-Capital",
-          file: "GDA-Capital.jpg",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Unidentified Logo R",
-          file: "Unidentified-Logo-R.png",
-          dir: "network-of-universities/row-6",
-        },
-        {
-          name: "Kryptosphere",
-          file: "Kryptosphere.png",
-          dir: "network-of-universities/row-7",
-        },
-      ].map(withHref),
-    []
-  );
-
-  const companiesFromBen = useMemo(
-    () =>
-      [
-        {
-          name: "Algorand",
-          tagline: "L1",
-          file: "Algorand.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Alpha Blockchain",
-          tagline: "Research",
-          file: "Alpha-Blockchain.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Au Sum Ventures",
-          tagline: "Venture",
-          file: "Au-Sum-Ventures.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Augur",
-          tagline: "Prediction markets",
-          file: "Augur.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Axelar",
-          tagline: "Interoperability",
-          file: "Axelar.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Bitquick",
-          tagline: "Exchange",
-          file: "Bitquick.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "BlockHack",
-          tagline: "Hackathon",
-          file: "BlockHack.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Bolt",
-          tagline: "Payments",
-          file: "Bolt.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "CoinList",
-          tagline: "Launchpad",
-          file: "CoinList.jpg",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Distributed ID",
-          tagline: "Identity",
-          file: "Distributed-ID.jpg",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "DropSpaceNFT",
-          tagline: "NFT",
-          file: "DropSpaceNFT.jpg",
-          dir: "companies-from-ben",
-          href: "#",
-        },
-        {
-          name: "Eco",
-          tagline: "Payments",
-          file: "Eco.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "GDA Capital",
-          tagline: "Fund",
-          file: "GDA-Capital.jpg",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Immuto",
-          tagline: "Data integrity",
-          file: "Immuto.jpg",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Iota",
-          tagline: "DLT",
-          file: "Iota.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Metaverse Group",
-          tagline: "Metaverse",
-          file: "Metaverse-Group.png",
-          dir: "companies-from-ben",
-          href: "#",
-        },
-        {
-          name: "Metis",
-          tagline: "L2",
-          file: "Metis.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Optimism",
-          tagline: "L2 infrastructure",
-          file: "Optimism.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Qtum",
-          tagline: "L1",
-          file: "Qtum.png",
-          dir: "companies-from-ben",
-        },
-        {
-          name: "Roll",
-          tagline: "Social tokens",
-          file: "Roll.jpg",
-          dir: "companies-from-ben",
-          href: "#",
-        },
-        {
-          name: "SecretNetwork",
-          tagline: "Privacy",
-          file: "SecretNetwork.jpg",
-          dir: "companies-from-ben",
-          href: "#",
-        },
-        {
-          name: "Secure Digital Markets",
-          tagline: "Markets",
-          file: "Secure-Digital-Markets.png",
-          dir: "companies-from-ben",
-          href: "#",
-        },
-      ].map(withHref),
-    []
-  );
-
-  const foundersAndProjects = useMemo(
-    () => [
-      {
-        name: "Optimism",
-        desc: "Scaling Ethereum through Layer 2 infrastructure.",
-        href: OFFICIAL_LINKS["Optimism"],
-        logoFile: "Optimism.png",
-      },
-      {
-        name: "Iota",
-        desc: "Distributed ledger technology for IoT and beyond.",
-        href: OFFICIAL_LINKS["Iota"],
-        logoFile: "Iota.png",
-      },
-      {
-        name: "CoinList",
-        desc: "Token launch platform and compliant onboarding.",
-        href: OFFICIAL_LINKS["CoinList"],
-        logoFile: "CoinList.jpg",
-      },
-      {
-        name: "Axelar",
-        desc: "Cross-chain interoperability for apps and assets.",
-        href: OFFICIAL_LINKS["Axelar"],
-        logoFile: "Axelar.png",
-      },
-      {
-        name: "Metis",
-        desc: "Layer 2 ecosystem focused on scalable execution.",
-        href: OFFICIAL_LINKS["Metis"],
-        logoFile: "Metis.png",
-      },
-      {
-        name: "Roll",
-        desc: "Social tokens for creators and communities.",
-        href: "#",
-        logoFile: "Roll.jpg",
-      },
-    ],
-    []
-  );
-
-  const unicorns = useMemo(
-    () => [
-      {
-        name: "Augur",
-        tagline: "Prediction markets",
-        file: "Augur.png",
-        dir: "unicorns",
-      },
-      { name: "Iota", tagline: "DLT", file: "Iota.png", dir: "unicorns" },
-      { name: "Bolt", tagline: "Payments", file: "Bolt.png", dir: "unicorns" },
-      {
-        name: "Optimism",
-        tagline: "L2 infrastructure",
-        file: "Optimism.png",
-        dir: "unicorns",
-      },
-      {
-        name: "Injective",
-        tagline: "L1 DeFi infrastructure",
-        file: "Injective.png",
-        dir: "unicorns",
-      },
-    ],
-    []
-  );
-
-  const users = [
-    "/images/people/jelena-djuric.jpeg",
-    "/images/people/matt-batsinelas.jpeg",
-    "/images/people/michael-gord.jpeg",
-    "/images/people/joey-krug.jpeg",
-    "/images/people/jinglan-wang.jpeg",
-    "/images/jeremygardner.webp",
-    "/images/people/ryan-breslow.jpeg",
-    "/images/stories/drew-cousin.jpeg",
-  ];
+  const floatingIcons = FLOATING_ICONS;
+  const companiesFromBen = COMPANIES_FROM_BEN;
+  const foundersAndProjects = FOUNDERS_AND_PROJECTS;
+  const unicorns = UNICORNS;
+  const users = USERS;
+  const testimonials = TESTIMONIALS;
 
   const visibleUniGroups = useMemo(() => {
     return (universitiesGroups || [])
@@ -736,7 +437,9 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
   const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
   return (
-    <div className="bg-benwhite-500 min-h-screen text-benblack-500">
+    <div
+      className={`${styles.root} bg-benwhite-500 min-h-screen text-benblack-500`}
+    >
       <Head>
         <title>TESTE BEN Network | Blockchain Education Network</title>
         <meta
@@ -762,34 +465,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
                 ? "sm"
                 : "md";
 
-            const positions = [
-              { top: 10, left: 8 },
-              { top: 14, left: 18 },
-              { top: 8, left: 26 },
-              { top: 8, left: 95 },
-              { top: 10, left: 74 },
-              { top: 12, left: 84 },
-              { top: 26, left: 10 },
-              { top: 30, left: 24 },
-              { top: 75, left: 20 },
-              { top: 80, left: 83 },
-              { top: 29, left: 77 },
-              { top: 26, left: 90 },
-              { top: 46, left: 6 },
-              { top: 44, left: 18 },
-              { top: 80, left: 30 },
-              { top: 82, left: 71 },
-              { top: 48, left: 82 },
-              { top: 41, left: 95 },
-              { top: 65, left: 12 },
-              { top: 60, left: 28 },
-              { top: 86, left: 10 },
-              { top: 88, left: 92 },
-              { top: 62, left: 76 },
-              { top: 60, left: 90 },
-            ];
-
-            const p = positions[idx % positions.length];
+            const p = FLOATING_POSITIONS[idx % FLOATING_POSITIONS.length];
             const v = `floatv${(idx % 3) + 1}`;
             const href = l.href || "#";
             const clickable = href && href !== "#";
@@ -901,6 +577,44 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
                   📡 Followed by 25k+ in Web3
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <header className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                Testimonials
+              </h2>
+            </header>
+
+            <div className="testimonials-list">
+              {testimonials.map((t) => (
+                <div key={t.name} className="testimonial-row">
+                  <div className="testimonial-avatar">
+                    <img
+                      src={t.img}
+                      alt={t.name}
+                      className="testimonial-avatarImg"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+
+                  <div className="testimonial-body">
+                    <p className="testimonial-quote">“{t.quote}”</p>
+                    <div className="testimonial-byline">
+                      <span className="testimonial-name">{t.name}</span>
+                      {t.title ? (
+                        <span className="testimonial-title">, {t.title}</span>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -1252,16 +966,16 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
                               role="navigation"
                               aria-label="Paginação"
                             >
-                              {pages.map((p) => (
+                              {pages.map((pNum) => (
                                 <button
-                                  key={p}
+                                  key={pNum}
                                   className={`uni-pageNum ${
-                                    p === page ? "is-active" : ""
+                                    pNum === page ? "is-active" : ""
                                   }`}
-                                  onClick={() => setGroupPage(g.id, p)}
-                                  aria-label={`Ir para página ${p}`}
+                                  onClick={() => setGroupPage(g.id, pNum)}
+                                  aria-label={`Ir para página ${pNum}`}
                                 >
-                                  {p}
+                                  {pNum}
                                 </button>
                               ))}
                             </div>
@@ -1314,846 +1028,6 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
       </section>
 
       <Footer />
-
-      <style jsx global>{`
-        .people-avatar-placeholder {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 600;
-          font-size: 20px;
-          color: rgba(0, 0, 0, 0.16);
-          user-select: none;
-        }
-
-        .btn-premium {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          padding: 12px 18px;
-          border-radius: 999px;
-          font-weight: 500;
-          transition: background 180ms ease, color 180ms ease,
-            transform 120ms ease, border-color 180ms ease;
-          user-select: none;
-          text-decoration: none;
-          background: #111;
-          color: #fff;
-          border: 1px solid rgba(0, 0, 0, 0.08);
-        }
-        .btn-premium:hover {
-          background: #fff;
-          color: #111;
-          transform: translateY(-1px);
-        }
-        .btn-premium:active {
-          transform: translateY(0px) scale(0.99);
-        }
-        .arrow {
-          transition: transform 180ms ease;
-        }
-        .btn-premium:hover .arrow {
-          transform: translateX(3px);
-        }
-
-        .logo-card {
-          background: #fff;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          border-radius: 18px;
-          padding: 16px;
-          box-shadow: 0 10px 28px rgba(93, 93, 93, 0.06);
-          transition: transform 160ms ease, border-color 180ms ease,
-            box-shadow 180ms ease;
-          position: relative;
-          isolation: isolate;
-          overflow: hidden;
-        }
-        .logo-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: inherit;
-          padding: 3px;
-          background: linear-gradient(
-            135deg,
-            #a855f7,
-            #22d3ee,
-            #60a5fa,
-            #fb7185,
-            #f59e0b
-          );
-          opacity: 1;
-          pointer-events: none;
-          -webkit-mask: linear-gradient(#000 0 0) content-box,
-            linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45))
-            drop-shadow(0 0 14px rgba(0, 0, 0, 0.06));
-        }
-        .logo-card .logo-wrap {
-          position: relative;
-          z-index: 1;
-        }
-
-        .logo-card:hover {
-          transform: translateY(-1px);
-          border-color: rgba(0, 0, 0, 0.08);
-          box-shadow: 0 14px 36px rgba(0, 0, 0, 0.08);
-          background: #fff;
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-          .logo-card::before {
-            background-size: 200% 200%;
-            animation: unicornShift 2.2s ease-in-out infinite;
-          }
-          @keyframes unicornShift {
-            0% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 50%;
-            }
-            100% {
-              background-position: 0% 50%;
-            }
-          }
-        }
-
-        .logo-wrap {
-          height: 56px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .logo-img {
-          max-height: 56px;
-          max-width: 100%;
-          object-fit: contain;
-        }
-
-        .card-premium {
-          background: #fff;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          border-radius: 24px;
-          padding: 22px;
-          transition: transform 160ms ease, border-color 180ms ease;
-        }
-        .card-premium:hover {
-          transform: translateY(-2px);
-          border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        .project-logo {
-          width: 52px;
-          height: 52px;
-          border-radius: 999px;
-          --logo-bg: rgba(0, 0, 0, 0.03);
-          background: var(--logo-bg);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: 0 0 auto;
-          overflow: hidden;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-        .project-logo-img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          padding: 10px;
-          display: block;
-        }
-
-        .mini-logo {
-          background: #fff;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          border-radius: 18px;
-          padding: 14px;
-          transition: transform 160ms ease;
-        }
-        .mini-logo:hover {
-          transform: translateY(-2px);
-        }
-        .mini-logo-img {
-          width: 100%;
-          height: 44px;
-          object-fit: contain;
-        }
-
-        .uni-head {
-          margin-bottom: 30px;
-          display: flex;
-          justify-content: center;
-        }
-
-        .uni-panel {
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          border-radius: 22px;
-          background: #fff;
-          padding: 18px 18px 14px;
-        }
-
-        .uni-empty {
-          padding: 18px 6px;
-          font-size: 13px;
-          color: rgba(0, 0, 0, 0.6);
-          text-align: center;
-        }
-
-        .uni-groups {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .uni-group {
-          border-top: 1px solid rgba(0, 0, 0, 0.06);
-          padding-top: 16px;
-        }
-        .uni-group:first-child {
-          border-top: none;
-          padding-top: 4px;
-        }
-
-        .uni-groupHead {
-          display: flex;
-          align-items: baseline;
-          justify-content: space-between;
-          gap: 12px;
-          padding: 0 4px 10px;
-        }
-        .uni-groupTitle {
-          font-weight: 600;
-          font-size: 14px;
-          color: rgba(0, 0, 0, 0.86);
-          letter-spacing: -0.01em;
-        }
-
-        .uni-grid {
-          display: grid;
-          grid-template-columns: 1fr;
-          column-gap: 34px;
-          row-gap: 16px;
-          padding: 6px 4px 10px;
-        }
-        @media (min-width: 820px) {
-          .uni-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-        }
-        @media (min-width: 1140px) {
-          .uni-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
-        }
-
-        .uni-item {
-          display: grid;
-          grid-template-columns: 22px 46px 1fr auto;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 6px;
-          min-height: 44px;
-        }
-
-        .uni-rank {
-          font-size: 13px;
-          color: rgba(0, 0, 0, 0.45);
-          text-align: right;
-          padding-right: 2px;
-        }
-
-        .uni-logoWrap {
-          width: 44px;
-          height: 44px;
-          border-radius: 999px;
-          --logo-bg: rgba(0, 0, 0, 0.03);
-          background: var(--logo-bg);
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-        }
-        .uni-logoImg {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          padding: 7px;
-          display: block;
-        }
-        .uni-logoFallback {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: 600;
-          font-size: 13px;
-          color: rgba(0, 0, 0, 0.25);
-          user-select: none;
-        }
-
-        .uni-name {
-          font-size: 14px;
-          font-weight: 500;
-          color: rgba(0, 0, 0, 0.82);
-          line-height: 1.25;
-        }
-
-        .uni-badgeWrap {
-          display: flex;
-          justify-content: flex-end;
-        }
-
-        .uni-badge {
-          min-width: 34px;
-          height: 22px;
-          padding: 0 8px;
-          border-radius: 10px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          font-size: 12px;
-          font-weight: 500;
-          color: #fff;
-          background: #ff872a;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .uni-badge.is-zero {
-          opacity: 0.55;
-        }
-
-        .uni-badgeIcon {
-          display: inline-block;
-          flex: 0 0 auto;
-          filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.08));
-        }
-
-        .uni-badgeNum {
-          line-height: 1;
-        }
-
-        .uni-footerMeta {
-          margin-top: 10px;
-          padding-top: 10px;
-          border-top: 1px solid rgba(0, 0, 0, 0.06);
-          display: flex;
-          justify-content: center;
-        }
-
-        .uni-footerMeta--pager {
-          justify-content: center;
-          align-items: center;
-          gap: 14px;
-          flex-wrap: wrap;
-          margin-top: 6px;
-        }
-
-        .uni-total {
-          font-size: 12px;
-          color: rgba(0, 0, 0, 0.55);
-          min-width: 90px;
-        }
-
-        .uni-pager {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          flex: 0 0 auto;
-        }
-
-        .uni-pagerBtn {
-          width: 34px;
-          height: 34px;
-          color: rgba(0, 0, 0, 0.65);
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          transition: transform 120ms ease, background 180ms ease,
-            border-color 180ms ease;
-          user-select: none;
-        }
-        .uni-pagerBtn:hover:not(:disabled) {
-          transform: translateY(-1px);
-        }
-        .uni-pagerBtn:disabled {
-          opacity: 0.45;
-          cursor: not-allowed;
-        }
-
-        .uni-pageNums {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .uni-pageNum {
-          width: 34px;
-          height: 34px;
-          background: transparent;
-          color: rgba(0, 0, 0, 0.7);
-          font-size: 12px;
-          transition: background 180ms ease, border-color 180ms ease,
-            transform 120ms ease;
-        }
-        .uni-pageNum:hover {
-          color: rgba(0, 0, 0, 0.77);
-
-          transform: translateY(-1px);
-        }
-        .uni-pageNum.is-active {
-          font-weight: 600;
-          transform: none;
-        }
-
-        .uni-pageJump {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          min-width: 120px;
-          justify-content: flex-end;
-        }
-
-        .uni-pageLabel {
-          font-size: 12px;
-          color: rgba(0, 0, 0, 0.55);
-        }
-
-        .uni-pageInput {
-          width: 52px;
-          height: 34px;
-          border-radius: 10px;
-          padding: 0 10px;
-          font-size: 13px;
-          outline: none;
-          color: rgba(0, 0, 0, 0.75);
-        }
-        .uni-pageInput:focus {
-          border-color: rgba(0, 0, 0, 0.18);
-        }
-
-        .floating-layer {
-          z-index: 5;
-          pointer-events: none;
-        }
-
-        .floating-chip {
-          position: absolute;
-          width: 62px;
-          height: 62px;
-          border-radius: 999px;
-          transform: translate(-50%, -50%);
-          opacity: 0.9;
-          filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
-          pointer-events: auto;
-          text-decoration: none;
-          cursor: pointer;
-          z-index: 60;
-          will-change: transform, filter;
-          overflow: hidden;
-        }
-        .floating-chip:focus-visible {
-          outline: 2px solid rgba(0, 0, 0, 0.35);
-          outline-offset: 3px;
-        }
-        .floating-chip-inner {
-          width: 100%;
-          height: 100%;
-          border-radius: 999px;
-          --logo-bg: rgba(255, 255, 255, 0.7);
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          backdrop-filter: blur(10px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
-          transition: transform 160ms ease;
-        }
-        .floating-chip:hover .floating-chip-inner {
-          background: radial-gradient(
-            circle at 50% 50%,
-            var(--logo-bg),
-            transparent 70%
-          );
-        }
-
-        .floating-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          pointer-events: none;
-          display: block;
-        }
-
-        .hero-content {
-          z-index: 20;
-          pointer-events: none;
-        }
-        .hero-content a,
-        .hero-content button,
-        .hero-content [role="button"] {
-          pointer-events: auto;
-        }
-
-        .hero-badge {
-          position: absolute;
-          top: 75px;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 30;
-          pointer-events: auto;
-          width: min(87vw, 575px);
-          justify-content: center;
-        }
-        .hero-badge > span:first-child {
-          white-space: nowrap;
-          flex: 0 0 auto;
-        }
-        .hero-badge > span:last-child {
-          flex: 1 1 auto;
-          min-width: 0;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        @media (max-width: 640px) {
-          .hero-badge {
-            top: 64px;
-            padding: 10px 14px;
-            gap: 10px;
-            font-size: 12px;
-          }
-        }
-
-        .hero-vignette {
-          position: absolute;
-          inset: 0;
-          pointer-events: none;
-          background: radial-gradient(
-              circle at 50% 45%,
-              rgba(255, 255, 255, 0.92),
-              rgba(255, 255, 255, 0) 60%
-            ),
-            linear-gradient(
-              to right,
-              rgba(255, 255, 255, 0.65),
-              rgba(255, 255, 255, 0) 30%,
-              rgba(255, 255, 255, 0) 70%,
-              rgba(255, 255, 255, 0.65)
-            );
-          z-index: 0;
-        }
-
-        .hero-glass {
-          position: relative;
-          padding: 22px 18px;
-          border-radius: 28px;
-          overflow: visible;
-          isolation: isolate;
-          z-index: 0;
-        }
-        .hero-glass-content {
-          position: relative;
-          z-index: 2;
-          transform: translateZ(0);
-        }
-        .hero-glass::before {
-          content: "";
-          position: absolute;
-          inset: -80px;
-          border-radius: inherit;
-          pointer-events: none;
-          z-index: 0;
-          background: rgba(255, 255, 255, 0.66);
-          filter: blur(80px);
-          -webkit-mask-image: radial-gradient(
-            70% 65% at 50% 45%,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.95) 38%,
-            rgba(0, 0, 0, 0.55) 62%,
-            rgba(0, 0, 0, 0) 100%
-          );
-          mask-image: radial-gradient(
-            70% 65% at 50% 45%,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.95) 38%,
-            rgba(0, 0, 0, 0.55) 62%,
-            rgba(0, 0, 0, 0) 100%
-          );
-        }
-        .hero-glass::after {
-          content: "";
-          position: absolute;
-          inset: -80px;
-          border-radius: inherit;
-          pointer-events: none;
-          z-index: 1;
-          background: radial-gradient(
-              70% 65% at 50% 45%,
-              rgba(255, 255, 255, 0.55) 0%,
-              rgba(255, 255, 255, 0.22) 45%,
-              rgba(255, 255, 255, 0) 75%
-            ),
-            radial-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 0) 0 0 / 3px
-              3px;
-          -webkit-mask-image: radial-gradient(
-            70% 65% at 50% 45%,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.9) 40%,
-            rgba(0, 0, 0, 0.45) 65%,
-            rgba(0, 0, 0, 0) 100%
-          );
-          mask-image: radial-gradient(
-            70% 65% at 50% 45%,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.9) 40%,
-            rgba(0, 0, 0, 0.45) 65%,
-            rgba(0, 0, 0, 0) 100%
-          );
-        }
-        .hero-media {
-          display: flex;
-          justify-content: center;
-          pointer-events: auto;
-        }
-
-        .benevents-card {
-          width: min(520px, 92%);
-          border-radius: 22px;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(10px);
-          box-shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
-          overflow: hidden;
-          transition: transform 160ms ease, border-color 180ms ease;
-        }
-        .benevents-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 26px 70px rgba(0, 0, 0, 0.12);
-          border-color: rgba(0, 0, 0, 0.1);
-        }
-        .benevents-frame {
-          position: relative;
-          width: 100%;
-          background: radial-gradient(
-              260px 120px at 12% 12%,
-              rgba(255, 135, 42, 0.18),
-              transparent 58%
-            ),
-            radial-gradient(
-              260px 120px at 92% 18%,
-              rgba(34, 211, 238, 0.14),
-              transparent 60%
-            ),
-            rgba(255, 255, 255, 0.55);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-        }
-        .benevents-img {
-          display: block;
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-          transform: translateZ(0);
-        }
-
-        .people-grid {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 26px 22px;
-          max-width: 950px;
-          margin: 0 auto;
-        }
-
-        @media (min-width: 1024px) {
-          .people-grid {
-            gap: 30px 26px;
-            max-width: 950px;
-          }
-        }
-
-        .people-item {
-          width: 150px;
-          flex: 0 0 150px;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          text-align: left;
-          padding: 0;
-        }
-
-        .people-avatar {
-          width: 110px;
-          height: 110px;
-          border-radius: 999px;
-          overflow: hidden;
-          background: rgba(0, 0, 0, 0.03);
-        }
-        .people-avatar-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .people-meta {
-          margin-top: 10px;
-          width: 100%;
-        }
-
-        .people-name {
-          font-weight: 500;
-          font-size: 14px;
-          line-height: 1.15;
-          color: rgba(0, 0, 0, 0.9);
-        }
-
-        .people-company {
-          margin-top: 6px;
-          font-weight: 500;
-          font-size: 13px;
-          color: #ff872a;
-        }
-
-        .people-role {
-          margin-top: 4px;
-          font-size: 13px;
-          color: rgba(0, 0, 0, 0.62);
-        }
-
-        .people-socials {
-          margin-top: 10px;
-          display: flex;
-          gap: 10px;
-        }
-
-        .social-btn {
-          width: 36px;
-          height: 36px;
-          border-radius: 10px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(0, 0, 0, 0.06);
-          color: rgba(0, 0, 0, 0.8);
-          text-decoration: none;
-          transition: transform 120ms ease, background 180ms ease;
-        }
-        .social-btn:hover {
-          transform: translateY(-1px);
-          background: rgba(0, 0, 0, 0.085);
-        }
-
-        @keyframes floatY2 {
-          0% {
-            transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg)
-              scale(1);
-          }
-          50% {
-            transform: translate(-50%, -50%) translate3d(0, -18px, 0)
-              rotate(3deg) scale(1.03);
-          }
-          100% {
-            transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg)
-              scale(1);
-          }
-        }
-        @keyframes driftX2 {
-          0% {
-            transform: translate(-50%, -50%) translate3d(0, 0, 0);
-          }
-          50% {
-            transform: translate(-50%, -50%) translate3d(14px, 0, 0);
-          }
-          100% {
-            transform: translate(-50%, -50%) translate3d(0, 0, 0);
-          }
-        }
-
-        @keyframes bobShadow {
-          0% {
-            filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
-          }
-          50% {
-            filter: drop-shadow(0 22px 46px rgba(0, 0, 0, 0.16));
-          }
-          100% {
-            filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
-          }
-        }
-
-        .floatv1 {
-          animation: floatY2 5.8s ease-in-out infinite,
-            bobShadow 5.8s ease-in-out infinite;
-        }
-        .floatv2 {
-          animation: floatY2 7.2s ease-in-out infinite,
-            driftX2 9.4s ease-in-out infinite,
-            bobShadow 7.2s ease-in-out infinite;
-        }
-        .floatv3 {
-          animation: floatY2 6.4s ease-in-out infinite,
-            driftX2 12s ease-in-out infinite,
-            bobShadow 6.4s ease-in-out infinite;
-        }
-
-        .reveal {
-          transform: translateY(10px);
-          opacity: 0.001;
-          animation: revealIn 520ms ease forwards;
-        }
-        @keyframes revealIn {
-          to {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .floating-chip,
-          .floatv1,
-          .floatv2,
-          .floatv3,
-          .logo-card,
-          .card-premium,
-          .mini-logo,
-          .btn-premium,
-          .arrow {
-            animation: none !important;
-            transition: none !important;
-            transform: none !important;
-            filter: none !important;
-          }
-          .reveal {
-            opacity: 1 !important;
-          }
-        }
-
-        .size-sm {
-          width: 92px;
-          height: 92px;
-        }
-        .size-md {
-          width: 76px;
-          height: 76px;
-        }
-        .size-lg {
-          width: 93px;
-          height: 93px;
-        }
-        .size-xl {
-          width: 98px;
-          height: 98px;
-        }
-      `}</style>
     </div>
   );
 }

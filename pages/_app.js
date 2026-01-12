@@ -1,40 +1,39 @@
-import 'tailwindcss/tailwind.css'
-import { useEffect } from 'react';
-import { AppWrapper } from '../context/state';
-import '../public/styles/global.css'
-import TagManager from 'react-gtm-module';
-import Head from 'next/head';
-import '../utils/utm-tracking.js';
-import { useRouter } from 'next/router';
+import "tailwindcss/tailwind.css";
+import { useEffect } from "react";
+import { AppWrapper } from "../context/state";
+import "../styles/global.css";
+import TagManager from "react-gtm-module";
+import Head from "next/head";
+import "../utils/utm-tracking.js";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    TagManager.initialize({ gtmId: 'GTM-213540060-2' });
+    TagManager.initialize({ gtmId: "GTM-213540060-2" });
   }, []);
 
-  const pageTitle = 'Blockchain Education Network';
-  const pageDescription = 'Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!';
-  const ogImageUrl = '/images/light-2-logo.jpg';
+  const pageTitle = "Blockchain Education Network";
+  const pageDescription =
+    "Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!";
+  const ogImageUrl = "/images/light-2-logo.jpg";
 
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const currentUrl = typeof window !== "undefined" ? window.location.href : "";
 
   useEffect(() => {
-
     // Redirect specific paths
-    if (router.pathname === '/join') {
-      window.location.href = 'https://learn.blockchainedu.org';
+    if (router.pathname === "/join") {
+      window.location.href = "https://learn.blockchainedu.org";
     }
 
-    if (router.pathname === '/learn') {
-      window.location.href = 'https://learn.blockchainedu.org';
+    if (router.pathname === "/learn") {
+      window.location.href = "https://learn.blockchainedu.org";
     }
 
-    if (router.pathname === '/playbook') {
-      window.location.href = 'https://blockchainedu.org';
+    if (router.pathname === "/playbook") {
+      window.location.href = "https://blockchainedu.org";
     }
-
   }, [router.pathname, router.asPath, router.isFallback]);
 
   return (
@@ -42,7 +41,11 @@ function MyApp({ Component, pageProps }) {
       <div>
         <Head>
           {/*crazy egg*/}
-          <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0120/4754.js" async="async"></script>
+          <script
+            type="text/javascript"
+            src="//script.crazyegg.com/pages/scripts/0120/4754.js"
+            async="async"
+          ></script>
 
           {/* Intercom script */}
           <script>
@@ -149,15 +152,32 @@ function MyApp({ Component, pageProps }) {
             }}
           />
           <noscript>
-            <img height="1" width="1" src="https://www.facebook.com/tr?id=647331727208880&ev=PageView&noscript=1" />
+            <img
+              height="1"
+              width="1"
+              src="https://www.facebook.com/tr?id=647331727208880&ev=PageView&noscript=1"
+            />
           </noscript>
 
           {/* CrazyEgg Analytics */}
-          <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0118/3905.js" async="async"></script>
+          <script
+            type="text/javascript"
+            src="//script.crazyegg.com/pages/scripts/0118/3905.js"
+            async="async"
+          ></script>
           <link rel="shortcut icon" href="" />
-          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></link>
-          <link href="https://fonts.googleapis.com/css2?family=Average&display=swap" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+          ></link>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Average&display=swap"
+            rel="stylesheet"
+          />
 
           {/* Social Media Thumbnails */}
           <meta property="og:title" content={pageTitle} />
@@ -169,9 +189,14 @@ function MyApp({ Component, pageProps }) {
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Blockchain Education Network" />
-          <meta name="twitter:description" content="Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!" />
-          <meta name="twitter:image" content="https://www.blockchainedu.org/images/ben-beats-thumbnail.png" />
-
+          <meta
+            name="twitter:description"
+            content="Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!"
+          />
+          <meta
+            name="twitter:image"
+            content="https://www.blockchainedu.org/images/ben-beats-thumbnail.png"
+          />
         </Head>
 
         <Component {...pageProps} />
@@ -183,19 +208,19 @@ function MyApp({ Component, pageProps }) {
 export async function getServerSideProps({ req }) {
   const { url } = req;
 
-  if (url === '/join') {
+  if (url === "/join") {
     return {
       redirect: {
-        destination: 'https://learn.blockchainedu.org',
+        destination: "https://learn.blockchainedu.org",
         permanent: true,
       },
     };
   }
 
-  if (url === '/playbook') {
+  if (url === "/playbook") {
     return {
       redirect: {
-        destination: 'https://blockchainedu.org',
+        destination: "https://blockchainedu.org",
         permanent: true,
       },
     };
@@ -206,4 +231,4 @@ export async function getServerSideProps({ req }) {
   };
 }
 
-export default MyApp
+export default MyApp;
