@@ -582,7 +582,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
               <span className="text-benorange-500">success</span>.
             </h2>
 
-            <div className="mt-8 overflow-hidden shadow-sm border border-black/5 bg-black rounded-xl">
+            <div className="mt-8 overflow-hidden shadow-sm border border-black/5 bg-black">
               <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
                 <iframe
                   className="absolute inset-0 w-full h-full"
