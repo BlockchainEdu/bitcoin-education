@@ -223,25 +223,17 @@ export async function getServerSideProps({ params, res }) {
     image: uniImgFromAssets || uniImgFallback || null,
   };
 
-  const studentsQuery = `{
+  const studentsColumnsQuery = `{
     boards (ids: ${STUDENTS_BOARD_ID}) {
       columns { id title type }
-      items_page (limit: 500) {
-        items {
-          id
-          name
-          assets { id public_url }
-          column_values { id value text }
-        }
-      }
     }
   }`;
 
-  const studentsRes = await TeamMemberService.getMembers({
-    query: studentsQuery,
+  const studentsColumnsRes = await TeamMemberService.getMembers({
+    query: studentsColumnsQuery,
   });
-  const studentsBoard = studentsRes?.data?.data?.boards?.[0];
-  const studentsItems = studentsBoard?.items_page?.items ?? [];
+
+  const studentsBoard = studentsColumnsRes?.data?.data?.boards?.[0];
   const studentsColumnsMap = buildTitleToId(studentsBoard?.columns ?? []);
 
   const titleId = pickId(studentsColumnsMap, ["Title"]) || "text";
@@ -250,53 +242,70 @@ export async function getServerSideProps({ params, res }) {
   const linkedinId = pickId(studentsColumnsMap, ["LinkedIn"]) || null;
   const twitterId = pickId(studentsColumnsMap, ["Twitter"]) || null;
 
-  const uniNameNorm = String(university.name || "")
-    .trim()
-    .toLowerCase();
+  const uniNameExact = String(university.name || "").trim();
+  const uniNameEscaped = uniNameExact
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"');
 
-  const students = (studentsItems || [])
-    .filter((it) => {
-      if (!universityId) return false;
-      const v = col(it, universityId)?.text || "";
-      return String(v).trim().toLowerCase() === uniNameNorm;
-    })
-    .map((it) => {
-      const titleText = col(it, titleId)?.text ?? "";
-      const { role, company } = parseTitleToRoleCompany(titleText);
+  let studentsItems = [];
 
-      const ln = linkedinId
-        ? extractUrlFromMondayValue(col(it, linkedinId)) ||
-          col(it, linkedinId)?.text ||
-          null
-        : null;
+  if (universityId) {
+    const studentsQuery = `{
+      items_by_column_values(
+        board_id: ${STUDENTS_BOARD_ID},
+        column_id: "${universityId}",
+        column_value: "${uniNameEscaped}"
+      ) {
+        id
+        name
+        assets { id public_url }
+        column_values { id value text }
+      }
+    }`;
 
-      const tw = twitterId
-        ? extractUrlFromMondayValue(col(it, twitterId)) ||
-          col(it, twitterId)?.text ||
-          null
-        : null;
-
-      const picsCv = col(it, picturesId);
-      const assetId = extractAssetIdFromFilesColumn(picsCv);
-      const assetsById = buildAssetsById(it?.assets ?? []);
-      const imgFromAssets =
-        (assetId ? assetsById.get(assetId) : null) ||
-        it?.assets?.[0]?.public_url ||
-        null;
-
-      const imgFallback =
-        extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
-
-      return {
-        id: it.id,
-        name: it.name,
-        role,
-        company,
-        image: imgFromAssets || imgFallback || null,
-        linkedin: ln,
-        twitter: tw,
-      };
+    const studentsRes = await TeamMemberService.getMembers({
+      query: studentsQuery,
     });
+    studentsItems = studentsRes?.data?.data?.items_by_column_values ?? [];
+  }
+
+  const students = (studentsItems || []).map((it) => {
+    const titleText = col(it, titleId)?.text ?? "";
+    const { role, company } = parseTitleToRoleCompany(titleText);
+
+    const ln = linkedinId
+      ? extractUrlFromMondayValue(col(it, linkedinId)) ||
+        col(it, linkedinId)?.text ||
+        null
+      : null;
+
+    const tw = twitterId
+      ? extractUrlFromMondayValue(col(it, twitterId)) ||
+        col(it, twitterId)?.text ||
+        null
+      : null;
+
+    const picsCv = col(it, picturesId);
+    const assetId = extractAssetIdFromFilesColumn(picsCv);
+    const assetsById = buildAssetsById(it?.assets ?? []);
+    const imgFromAssets =
+      (assetId ? assetsById.get(assetId) : null) ||
+      it?.assets?.[0]?.public_url ||
+      null;
+
+    const imgFallback =
+      extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
+
+    return {
+      id: it.id,
+      name: it.name,
+      role,
+      company,
+      image: imgFromAssets || imgFallback || null,
+      linkedin: ln,
+      twitter: tw,
+    };
+  });
 
   return { props: { university, students } };
 }
