@@ -419,10 +419,19 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
 
   const PAGE_SIZE = 21;
   const [uniPage, setUniPage] = useState(1);
+  const [navigatingTo, setNavigatingTo] = useState(null);
 
   useEffect(() => {
     setUniPage(1);
   }, [allUniFlat.length]);
+
+  useEffect(() => {
+    const onDone = () => setNavigatingTo(null);
+    if (typeof window === "undefined") return;
+
+    window.addEventListener("pageshow", onDone);
+    return () => window.removeEventListener("pageshow", onDone);
+  }, []);
 
   const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
@@ -591,7 +600,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section className={`py-16 ${BG_WHITE} border-t border-black/5`}>
+      <section className={`${BG_WHITE} py-16 border-t border-black/5`}>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
@@ -1032,64 +1041,74 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
                     {uniPaged.map((u) => {
                       const globalRank = uniRankById.get(String(u.id)) || 0;
                       const badge = Number(u.peopleCount || 0);
+                      const href = `/universities/${slugify(u.name)}`;
+                      const isLoading = navigatingTo === u.id;
 
                       return (
-                        <div key={u.id} className="uni-item" title={u.name}>
-                          <div className="uni-rank">{globalRank}</div>
+                        <Link key={u.id} href={href} prefetch>
+                          <a
+                            className={`uni-item ${
+                              isLoading ? "is-loading" : ""
+                            }`}
+                            title={u.name}
+                            onClick={() => setNavigatingTo(u.id)}
+                            aria-label={`Open ${u.name}`}
+                          >
+                            <div className="uni-rank">{globalRank}</div>
 
-                          <div className="uni-logoWrap" data-dominant-bg>
-                            {u.image ? (
-                              <SmartImage
-                                src={imgSrc(u.image)}
-                                fallbackSrcs={[]}
-                                alt={u.name}
-                                className="uni-logoImg"
-                                loading="lazy"
-                                onLoad={onDominantBgLoad}
-                              />
-                            ) : (
-                              <div
-                                className="uni-logoFallback"
-                                aria-label={u.name}
-                              >
-                                {initialsFromName(u.name)}
-                              </div>
-                            )}
-                          </div>
-
-                          <div className="uni-name">
-                            <Link
-                              href={`/universities/${slugify(u.name)}`}
-                              className="uni-nameLink"
-                            >
-                              {u.name}
-                            </Link>
-                          </div>
-
-                          <div className="uni-badgeWrap">
-                            <span
-                              className={`uni-badge ${
-                                badge > 0 ? "" : "is-zero"
-                              }`}
-                              aria-label={`Number of People: ${badge}`}
-                              title={`Number of People: ${badge}`}
-                            >
-                              <svg
-                                className="uni-badgeIcon"
-                                viewBox="0 0 24 24"
-                                width="14"
-                                height="14"
-                                aria-hidden="true"
-                              >
-                                <path
-                                  fill="currentColor"
-                                  d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
+                            <div className="uni-logoWrap" data-dominant-bg>
+                              {u.image ? (
+                                <SmartImage
+                                  src={imgSrc(u.image)}
+                                  fallbackSrcs={[]}
+                                  alt={u.name}
+                                  className="uni-logoImg"
+                                  loading="lazy"
+                                  onLoad={onDominantBgLoad}
                                 />
-                              </svg>
-                              <span className="uni-badgeNum">{badge}</span>
-                            </span>
-                          </div>
-                        </div>
+                              ) : (
+                                <div
+                                  className="uni-logoFallback"
+                                  aria-label={u.name}
+                                >
+                                  {initialsFromName(u.name)}
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="uni-name">
+                              {u.name}
+                              {isLoading ? (
+                                <div className="uni-loading">Loading...</div>
+                              ) : null}
+                            </div>
+
+                            <div className="uni-badgeWrap">
+                              <span
+                                className={`uni-badge ${
+                                  badge > 0 ? "" : "is-zero"
+                                }`}
+                                aria-label={`Number of People: ${badge}`}
+                                title={`Number of People: ${badge}`}
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <svg
+                                  className="uni-badgeIcon"
+                                  viewBox="0 0 24 24"
+                                  width="14"
+                                  height="14"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    fill="currentColor"
+                                    d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
+                                  />
+                                </svg>
+                                <span className="uni-badgeNum">{badge}</span>
+                              </span>
+                            </div>
+                          </a>
+                        </Link>
                       );
                     })}
                   </div>

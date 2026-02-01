@@ -173,7 +173,7 @@ export default function UniversityPage({ university, students }) {
 export async function getServerSideProps({ params, res }) {
   res.setHeader(
     "Cache-Control",
-    "public, s-maxage=600, stale-while-revalidate=3600",
+    "public, s-maxage=60, stale-while-revalidate=300",
   );
 
   const slug = params?.slug || "";
@@ -199,12 +199,21 @@ export async function getServerSideProps({ params, res }) {
   const uniItems = uniBoard?.items_page?.items ?? [];
   const uniColumnsMap = buildTitleToId(uniBoard?.columns ?? []);
 
+  const uniTitleId =
+    pickId(uniColumnsMap, ["Title", "title", "Name"]) || "name";
   const uniPicturesId =
     pickId(uniColumnsMap, ["Pictures", "pictures", "files", "Logo", "Image"]) ||
     "files";
 
-  const uniItem = uniItems.find((it) => slugify(it?.name) === slug);
+  const uniItem = uniItems.find((it) => {
+    const titleText = col(it, uniTitleId)?.text || it?.name || "";
+    return slugify(titleText) === slug;
+  });
+
   if (!uniItem) return { notFound: true };
+
+  const uniTitle =
+    col(uniItem, uniTitleId)?.text || uniItem?.name || "University";
 
   const uniPicsCv = col(uniItem, uniPicturesId);
   const uniAssetId = extractAssetIdFromFilesColumn(uniPicsCv);
@@ -219,93 +228,87 @@ export async function getServerSideProps({ params, res }) {
 
   const university = {
     id: uniItem.id,
-    name: uniItem.name,
+    name: uniTitle,
     image: uniImgFromAssets || uniImgFallback || null,
   };
 
-  const studentsColumnsQuery = `{
+  const studentsQuery = `{
     boards (ids: ${STUDENTS_BOARD_ID}) {
       columns { id title type }
+      items_page (limit: 500) {
+        items {
+          id
+          name
+          assets { id public_url }
+          column_values { id value text }
+        }
+      }
     }
   }`;
 
-  const studentsColumnsRes = await TeamMemberService.getMembers({
-    query: studentsColumnsQuery,
+  const studentsRes = await TeamMemberService.getMembers({
+    query: studentsQuery,
   });
-
-  const studentsBoard = studentsColumnsRes?.data?.data?.boards?.[0];
+  const studentsBoard = studentsRes?.data?.data?.boards?.[0];
+  const studentsItems = studentsBoard?.items_page?.items ?? [];
   const studentsColumnsMap = buildTitleToId(studentsBoard?.columns ?? []);
 
-  const titleId = pickId(studentsColumnsMap, ["Title"]) || "text";
-  const universityId = pickId(studentsColumnsMap, ["University"]) || null;
-  const picturesId = pickId(studentsColumnsMap, ["Pictures"]) || "files";
-  const linkedinId = pickId(studentsColumnsMap, ["LinkedIn"]) || null;
-  const twitterId = pickId(studentsColumnsMap, ["Twitter"]) || null;
+  const titleId = pickId(studentsColumnsMap, ["Title", "title"]) || "text";
+  const universityId =
+    pickId(studentsColumnsMap, ["University", "university", "School", "Uni"]) ||
+    null;
+  const picturesId =
+    pickId(studentsColumnsMap, ["Pictures", "pictures"]) || "files";
+  const linkedinId =
+    pickId(studentsColumnsMap, ["LinkedIn", "linkedin"]) || null;
+  const twitterId =
+    pickId(studentsColumnsMap, ["Twitter", "twitter", "X"]) || null;
 
-  const uniNameExact = String(university.name || "").trim();
-  const uniNameEscaped = uniNameExact
-    .replace(/\\/g, "\\\\")
-    .replace(/"/g, '\\"');
+  const uniSlug = slugify(university.name);
 
-  let studentsItems = [];
+  const students = (studentsItems || [])
+    .filter((it) => {
+      if (!universityId) return false;
+      const v = col(it, universityId)?.text || "";
+      return slugify(v) === uniSlug;
+    })
+    .map((it) => {
+      const titleText = col(it, titleId)?.text ?? "";
+      const { role, company } = parseTitleToRoleCompany(titleText);
 
-  if (universityId) {
-    const studentsQuery = `{
-      items_by_column_values(
-        board_id: ${STUDENTS_BOARD_ID},
-        column_id: "${universityId}",
-        column_value: "${uniNameEscaped}"
-      ) {
-        id
-        name
-        assets { id public_url }
-        column_values { id value text }
-      }
-    }`;
+      const ln = linkedinId
+        ? extractUrlFromMondayValue(col(it, linkedinId)) ||
+          col(it, linkedinId)?.text ||
+          null
+        : null;
 
-    const studentsRes = await TeamMemberService.getMembers({
-      query: studentsQuery,
+      const tw = twitterId
+        ? extractUrlFromMondayValue(col(it, twitterId)) ||
+          col(it, twitterId)?.text ||
+          null
+        : null;
+
+      const picsCv = col(it, picturesId);
+      const assetId = extractAssetIdFromFilesColumn(picsCv);
+      const assetsById = buildAssetsById(it?.assets ?? []);
+      const imgFromAssets =
+        (assetId ? assetsById.get(assetId) : null) ||
+        it?.assets?.[0]?.public_url ||
+        null;
+
+      const imgFallback =
+        extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
+
+      return {
+        id: it.id,
+        name: it.name,
+        role,
+        company,
+        image: imgFromAssets || imgFallback || null,
+        linkedin: ln,
+        twitter: tw,
+      };
     });
-    studentsItems = studentsRes?.data?.data?.items_by_column_values ?? [];
-  }
-
-  const students = (studentsItems || []).map((it) => {
-    const titleText = col(it, titleId)?.text ?? "";
-    const { role, company } = parseTitleToRoleCompany(titleText);
-
-    const ln = linkedinId
-      ? extractUrlFromMondayValue(col(it, linkedinId)) ||
-        col(it, linkedinId)?.text ||
-        null
-      : null;
-
-    const tw = twitterId
-      ? extractUrlFromMondayValue(col(it, twitterId)) ||
-        col(it, twitterId)?.text ||
-        null
-      : null;
-
-    const picsCv = col(it, picturesId);
-    const assetId = extractAssetIdFromFilesColumn(picsCv);
-    const assetsById = buildAssetsById(it?.assets ?? []);
-    const imgFromAssets =
-      (assetId ? assetsById.get(assetId) : null) ||
-      it?.assets?.[0]?.public_url ||
-      null;
-
-    const imgFallback =
-      extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
-
-    return {
-      id: it.id,
-      name: it.name,
-      role,
-      company,
-      image: imgFromAssets || imgFallback || null,
-      linkedin: ln,
-      twitter: tw,
-    };
-  });
 
   return { props: { university, students } };
 }
