@@ -82,7 +82,9 @@
   border-radius: 18px;
   padding: 16px;
   box-shadow: 0 10px 28px rgba(93, 93, 93, 0.06);
-  transition: transform 160ms ease, border-color 180ms ease,
+  transition:
+    transform 160ms ease,
+    border-color 180ms ease,
     box-shadow 180ms ease;
   position: relative;
   isolation: isolate;
@@ -104,7 +106,9 @@
   );
   opacity: 1;
   pointer-events: none;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45))
@@ -157,7 +161,9 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 24px;
   padding: 22px;
-  transition: transform 160ms ease, border-color 180ms ease;
+  transition:
+    transform 160ms ease,
+    border-color 180ms ease;
 }
 .root :global(.card-premium:hover) {
   transform: translateY(-2px);
@@ -393,7 +399,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 120ms ease, background 180ms ease,
+  transition:
+    transform 120ms ease,
+    background 180ms ease,
     border-color 180ms ease;
   user-select: none;
 }
@@ -417,7 +425,9 @@
   background: transparent;
   color: rgba(0, 0, 0, 0.7);
   font-size: 12px;
-  transition: background 180ms ease, border-color 180ms ease,
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
     transform 120ms ease;
 }
 .root :global(.uni-pageNum:hover) {
@@ -553,7 +563,8 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       circle at 50% 45%,
       rgba(255, 255, 255, 0.92),
       rgba(255, 255, 255, 0) 60%
@@ -612,7 +623,8 @@
   border-radius: inherit;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       70% 65% at 50% 45%,
       rgba(255, 255, 255, 0.55) 0%,
       rgba(255, 255, 255, 0.22) 45%,
@@ -648,7 +660,9 @@
   backdrop-filter: blur(10px);
   box-shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: transform 160ms ease, border-color 180ms ease;
+  transition:
+    transform 160ms ease,
+    border-color 180ms ease;
 }
 .root :global(.benevents-card:hover) {
   transform: translateY(-2px);
@@ -658,7 +672,8 @@
 .root :global(.benevents-frame) {
   position: relative;
   width: 100%;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       260px 120px at 12% 12%,
       rgba(255, 135, 42, 0.18),
       transparent 58%
@@ -759,7 +774,9 @@
   background: rgba(0, 0, 0, 0.06);
   color: rgba(0, 0, 0, 0.8);
   text-decoration: none;
-  transition: transform 120ms ease, background 180ms ease;
+  transition:
+    transform 120ms ease,
+    background 180ms ease;
 }
 .root :global(.social-btn:hover) {
   transform: translateY(-1px);
@@ -802,15 +819,20 @@
 }
 
 .root :global(.floatv1) {
-  animation: floatY2 5.8s ease-in-out infinite,
+  animation:
+    floatY2 5.8s ease-in-out infinite,
     bobShadow 5.8s ease-in-out infinite;
 }
 .root :global(.floatv2) {
-  animation: floatY2 7.2s ease-in-out infinite,
-    driftX2 9.4s ease-in-out infinite, bobShadow 7.2s ease-in-out infinite;
+  animation:
+    floatY2 7.2s ease-in-out infinite,
+    driftX2 9.4s ease-in-out infinite,
+    bobShadow 7.2s ease-in-out infinite;
 }
 .root :global(.floatv3) {
-  animation: floatY2 6.4s ease-in-out infinite, driftX2 12s ease-in-out infinite,
+  animation:
+    floatY2 6.4s ease-in-out infinite,
+    driftX2 12s ease-in-out infinite,
     bobShadow 6.4s ease-in-out infinite;
 }
 
@@ -861,4 +883,13 @@
 .root :global(.size-xl) {
   width: 98px;
   height: 98px;
+}
+
+.root :global(.uni-nameLink) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.root :global(.uni-nameLink:hover) {
+  text-decoration: underline;
 }

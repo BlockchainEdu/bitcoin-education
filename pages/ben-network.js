@@ -1,8 +1,10 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
 import Head from "next/head";
+import Link from "next/link";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
 import { TeamMemberService } from "../services";
+import { slugify } from "../lib/slugify";
 import {
   OFFICIAL_LINKS,
   FLOATING_ICONS,
@@ -416,29 +418,20 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
   }, [allUniFlat]);
 
   const PAGE_SIZE = 21;
-  const [uniPages, setUniPages] = useState({});
+  const [uniPage, setUniPage] = useState(1);
 
   useEffect(() => {
-    if (!visibleUniGroups?.length) return;
-    setUniPages((prev) => {
-      const next = { ...prev };
-      for (const g of visibleUniGroups) {
-        if (!next[g.id]) next[g.id] = 1;
-      }
-      return next;
-    });
-  }, [visibleUniGroups]);
-
-  const getGroupPage = (groupId) => {
-    const p = Number(uniPages?.[groupId] || 1);
-    return Number.isFinite(p) ? p : 1;
-  };
-
-  const setGroupPage = (groupId, page) => {
-    setUniPages((prev) => ({ ...prev, [groupId]: page }));
-  };
+    setUniPage(1);
+  }, [allUniFlat.length]);
 
   const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+
+  const uniTotal = allUniFlat.length;
+  const uniTotalPages = Math.max(1, Math.ceil(uniTotal / PAGE_SIZE));
+  const uniPageClamped = clamp(uniPage, 1, uniTotalPages);
+  const uniStart = (uniPageClamped - 1) * PAGE_SIZE;
+  const uniPaged = allUniFlat.slice(uniStart, uniStart + PAGE_SIZE);
+  const uniPagesWindow = buildPageWindow(uniPageClamped, uniTotalPages, 5);
 
   return (
     <div className={`${styles.root} ${BG_BASE} min-h-screen text-benblack-500`}>
@@ -462,10 +455,10 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
               idx % 9 === 0
                 ? "xl"
                 : idx % 5 === 0
-                ? "lg"
-                : idx % 3 === 0
-                ? "sm"
-                : "md";
+                  ? "lg"
+                  : idx % 3 === 0
+                    ? "sm"
+                    : "md";
 
             const p = FLOATING_POSITIONS[idx % FLOATING_POSITIONS.length];
             const v = `floatv${(idx % 3) + 1}`;
@@ -1031,172 +1024,148 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
             </header>
 
             <div className="uni-panel reveal">
-              {visibleUniGroups.length === 0 ? (
+              {uniTotal === 0 ? (
                 <div className="uni-empty">Sem dados de Universities.</div>
               ) : (
-                <div className="uni-groups">
-                  {visibleUniGroups.map((g) => {
-                    const groupTotal = g.items.length;
-                    const totalPages = Math.max(
-                      1,
-                      Math.ceil(groupTotal / PAGE_SIZE)
-                    );
-                    const page = clamp(getGroupPage(g.id), 1, totalPages);
+                <>
+                  <div className="uni-grid">
+                    {uniPaged.map((u) => {
+                      const globalRank = uniRankById.get(String(u.id)) || 0;
+                      const badge = Number(u.peopleCount || 0);
 
-                    const start = (page - 1) * PAGE_SIZE;
-                    const paged = g.items.slice(start, start + PAGE_SIZE);
+                      return (
+                        <div key={u.id} className="uni-item" title={u.name}>
+                          <div className="uni-rank">{globalRank}</div>
 
-                    const pages = buildPageWindow(page, totalPages, 5);
-
-                    return (
-                      <div key={g.id} className="uni-group">
-                        <div className="uni-groupHead">
-                          <div className="uni-groupTitle">{g.title}</div>
-                        </div>
-
-                        <div className="uni-grid">
-                          {paged.map((u) => {
-                            const globalRank =
-                              uniRankById.get(String(u.id)) || 0;
-                            const badge = Number(u.peopleCount || 0);
-
-                            return (
+                          <div className="uni-logoWrap" data-dominant-bg>
+                            {u.image ? (
+                              <SmartImage
+                                src={imgSrc(u.image)}
+                                fallbackSrcs={[]}
+                                alt={u.name}
+                                className="uni-logoImg"
+                                loading="lazy"
+                                onLoad={onDominantBgLoad}
+                              />
+                            ) : (
                               <div
-                                key={u.id}
-                                className="uni-item"
-                                title={u.name}
+                                className="uni-logoFallback"
+                                aria-label={u.name}
                               >
-                                <div className="uni-rank">{globalRank}</div>
-
-                                <div className="uni-logoWrap" data-dominant-bg>
-                                  {u.image ? (
-                                    <SmartImage
-                                      src={imgSrc(u.image)}
-                                      fallbackSrcs={[]}
-                                      alt={u.name}
-                                      className="uni-logoImg"
-                                      loading="lazy"
-                                      onLoad={onDominantBgLoad}
-                                    />
-                                  ) : (
-                                    <div
-                                      className="uni-logoFallback"
-                                      aria-label={u.name}
-                                    >
-                                      {initialsFromName(u.name)}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className="uni-name">{u.name}</div>
-
-                                <div className="uni-badgeWrap">
-                                  <span
-                                    className={`uni-badge ${
-                                      badge > 0 ? "" : "is-zero"
-                                    }`}
-                                    aria-label={`Number of People: ${badge}`}
-                                    title={`Number of People: ${badge}`}
-                                  >
-                                    <svg
-                                      className="uni-badgeIcon"
-                                      viewBox="0 0 24 24"
-                                      width="14"
-                                      height="14"
-                                      aria-hidden="true"
-                                    >
-                                      <path
-                                        fill="currentColor"
-                                        d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
-                                      />
-                                    </svg>
-                                    <span className="uni-badgeNum">
-                                      {badge}
-                                    </span>
-                                  </span>
-                                </div>
+                                {initialsFromName(u.name)}
                               </div>
-                            );
-                          })}
-                        </div>
-
-                        <div className="uni-footerMeta uni-footerMeta--pager">
-                          <div className="uni-pager">
-                            <button
-                              className="uni-pagerBtn"
-                              onClick={() =>
-                                setGroupPage(
-                                  g.id,
-                                  clamp(page - 1, 1, totalPages)
-                                )
-                              }
-                              disabled={page <= 1}
-                              aria-label="Página anterior"
-                              title="Anterior"
-                            >
-                              ‹
-                            </button>
-
-                            <div
-                              className="uni-pageNums"
-                              role="navigation"
-                              aria-label="Paginação"
-                            >
-                              {pages.map((pNum) => (
-                                <button
-                                  key={pNum}
-                                  className={`uni-pageNum ${
-                                    pNum === page ? "is-active" : ""
-                                  }`}
-                                  onClick={() => setGroupPage(g.id, pNum)}
-                                  aria-label={`Ir para página ${pNum}`}
-                                >
-                                  {pNum}
-                                </button>
-                              ))}
-                            </div>
-
-                            <button
-                              className="uni-pagerBtn"
-                              onClick={() =>
-                                setGroupPage(
-                                  g.id,
-                                  clamp(page + 1, 1, totalPages)
-                                )
-                              }
-                              disabled={page >= totalPages}
-                              aria-label="Próxima página"
-                              title="Próxima"
-                            >
-                              ›
-                            </button>
+                            )}
                           </div>
 
-                          <div className="uni-pageJump">
-                            <span className="uni-pageLabel">Page</span>
-                            <input
-                              className="uni-pageInput"
-                              type="number"
-                              min={1}
-                              max={totalPages}
-                              value={page}
-                              onChange={(e) => {
-                                const v = Number(e.target.value || 1);
-                                if (!Number.isFinite(v)) return;
-                                setGroupPage(g.id, clamp(v, 1, totalPages));
-                              }}
-                              onBlur={(e) => {
-                                const v = Number(e.target.value || 1);
-                                setGroupPage(g.id, clamp(v, 1, totalPages));
-                              }}
-                              aria-label="Selecionar página"
-                            />
+                          <div className="uni-name">
+                            <Link
+                              href={`/universities/${slugify(u.name)}`}
+                              className="uni-nameLink"
+                            >
+                              {u.name}
+                            </Link>
+                          </div>
+
+                          <div className="uni-badgeWrap">
+                            <span
+                              className={`uni-badge ${
+                                badge > 0 ? "" : "is-zero"
+                              }`}
+                              aria-label={`Number of People: ${badge}`}
+                              title={`Number of People: ${badge}`}
+                            >
+                              <svg
+                                className="uni-badgeIcon"
+                                viewBox="0 0 24 24"
+                                width="14"
+                                height="14"
+                                aria-hidden="true"
+                              >
+                                <path
+                                  fill="currentColor"
+                                  d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
+                                />
+                              </svg>
+                              <span className="uni-badgeNum">{badge}</span>
+                            </span>
                           </div>
                         </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="uni-footerMeta uni-footerMeta--pager">
+                    <div className="uni-pager">
+                      <button
+                        className="uni-pagerBtn"
+                        onClick={() =>
+                          setUniPage(
+                            clamp(uniPageClamped - 1, 1, uniTotalPages),
+                          )
+                        }
+                        disabled={uniPageClamped <= 1}
+                        aria-label="Página anterior"
+                        title="Anterior"
+                      >
+                        ‹
+                      </button>
+
+                      <div
+                        className="uni-pageNums"
+                        role="navigation"
+                        aria-label="Paginação"
+                      >
+                        {uniPagesWindow.map((pNum) => (
+                          <button
+                            key={pNum}
+                            className={`uni-pageNum ${
+                              pNum === uniPageClamped ? "is-active" : ""
+                            }`}
+                            onClick={() => setUniPage(pNum)}
+                            aria-label={`Ir para página ${pNum}`}
+                          >
+                            {pNum}
+                          </button>
+                        ))}
                       </div>
-                    );
-                  })}
-                </div>
+
+                      <button
+                        className="uni-pagerBtn"
+                        onClick={() =>
+                          setUniPage(
+                            clamp(uniPageClamped + 1, 1, uniTotalPages),
+                          )
+                        }
+                        disabled={uniPageClamped >= uniTotalPages}
+                        aria-label="Próxima página"
+                        title="Próxima"
+                      >
+                        ›
+                      </button>
+                    </div>
+
+                    <div className="uni-pageJump">
+                      <span className="uni-pageLabel">Page</span>
+                      <input
+                        className="uni-pageInput"
+                        type="number"
+                        min={1}
+                        max={uniTotalPages}
+                        value={uniPageClamped}
+                        onChange={(e) => {
+                          const v = Number(e.target.value || 1);
+                          if (!Number.isFinite(v)) return;
+                          setUniPage(clamp(v, 1, uniTotalPages));
+                        }}
+                        onBlur={(e) => {
+                          const v = Number(e.target.value || 1);
+                          setUniPage(clamp(v, 1, uniTotalPages));
+                        }}
+                        aria-label="Selecionar página"
+                      />
+                    </div>
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -1305,7 +1274,7 @@ export async function getStaticProps() {
     ]) || "numbers";
 
   const groupsIndex = new Map(
-    (uniBoard?.groups ?? []).map((g, idx) => [String(g.id), idx])
+    (uniBoard?.groups ?? []).map((g, idx) => [String(g.id), idx]),
   );
 
   const groupBuckets = new Map();
