@@ -88,7 +88,7 @@ export default function UniversityPage({ university, students }) {
               </div>
             </header>
 
-            <div className="people-grid reveal">
+            <div className="uni-people-grid reveal">
               {students.map((a) => (
                 <div key={a.id || a.name} className="people-item">
                   <div className="people-avatar">

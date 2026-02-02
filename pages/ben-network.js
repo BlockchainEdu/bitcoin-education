@@ -812,7 +812,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
               </p>
             </header>
 
-            <div className="people-grid reveal">
+            <div className="people-grid people-grid--alumni reveal">
               {alumni.map((a) => (
                 <div key={a.id || a.name} className="people-item">
                   <div className="people-avatar">

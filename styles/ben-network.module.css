@@ -914,3 +914,117 @@
 .root :global(.uni-nameLink:visited) {
   color: inherit;
 }
+
+.root :global(.uni-people-grid) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px 18px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 6px 2px 0;
+  justify-items: center;
+}
+
+@media (min-width: 420px) {
+  .root :global(.uni-people-grid) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .root :global(.uni-people-grid) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 30px 24px;
+  }
+}
+
+@media (min-width: 1180px) {
+  .root :global(.uni-people-grid) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.root :global(.uni-people-grid .people-item) {
+  width: 100%;
+  max-width: 220px;
+  flex: initial;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+
+.root :global(.uni-people-grid .people-avatar) {
+  width: 92px;
+  height: 92px;
+}
+
+@media (min-width: 900px) {
+  .root :global(.uni-people-grid .people-avatar) {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+.root :global(.uni-people-grid .people-meta) {
+  margin-top: 12px;
+  width: 100%;
+}
+
+.root :global(.uni-people-grid .people-socials) {
+  justify-content: center;
+}
+
+.root :global(.uni-people-grid .people-name),
+.root :global(.uni-people-grid .people-company),
+.root :global(.uni-people-grid .people-role) {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.root :global(.people-grid--alumni) {
+  max-width: 950px;
+}
+
+@media (max-width: 640px) {
+  .root :global(.people-grid--alumni) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px 18px;
+    justify-items: center;
+    padding: 6px 2px 0;
+  }
+
+  .root :global(.people-grid--alumni .people-item) {
+    width: 100%;
+    max-width: 170px;
+    flex: initial;
+    align-items: center;
+    text-align: center;
+  }
+
+  .root :global(.people-grid--alumni .people-socials) {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .root :global(.people-grid--alumni) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px 22px;
+    justify-items: center;
+  }
+
+  .root :global(.people-grid--alumni .people-item) {
+    width: 100%;
+    max-width: 190px;
+    flex: initial;
+    align-items: center;
+    text-align: center;
+  }
+
+  .root :global(.people-grid--alumni .people-socials) {
+    justify-content: center;
+  }
+}
