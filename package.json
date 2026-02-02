@@ -20,6 +20,7 @@
     "@tailwindcss/line-clamp": "^0.3.1",
     "@u-wave/react-vimeo": "^0.9.5",
     "axios": "^0.21.4",
+    "formidable": "^3.5.4",
     "heroicons-react": "^1.4.1",
     "mapbox-gl": "^2.6.1",
     "next": "^12.0.7",
