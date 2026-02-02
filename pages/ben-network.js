@@ -530,7 +530,8 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
                 <img
                   src="/images/ben-network/ben-network-logo.png"
                   alt="BEN"
-                  className="h-20 w-auto sm:h-12 lg:h-auto drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
+                  className="h-auto w-auto max-w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
+                  style={{ width: "clamp(220px, 42vw, 560px)" }}
                   loading="eager"
                   decoding="async"
                 />
