@@ -526,11 +526,11 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
 
           <div className="max-w-xl mx-auto text-center hero-glass">
             <div className="hero-glass-content">
-              <h1 className="flex items-center justify-center gap-3 lg:gap-4 leading-none">
+              <h1 className="flex justify-center leading-none">
                 <img
                   src="/images/ben-network/ben-network-logo.png"
-                  alt="BEN"
-                  className="h-auto w-auto max-w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
+                  alt="BEN Network"
+                  className="h-auto max-w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
                   style={{ width: "clamp(220px, 42vw, 560px)" }}
                   loading="eager"
                   decoding="async"
