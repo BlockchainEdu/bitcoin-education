@@ -16,7 +16,7 @@ export default function Airdrop() {
   const [email, setEmail] = useState("");
   const [ethAddress, setEthAddress] = useState("");
   const [team, setTeam] = useState("");
-  const deadline = new Date("2024-01-31"); // You can keep this here or move it to where you use <Countdown />
+  const deadline = new Date("2024-01-31");
 
   const mockLeaderboardData = [
     {
@@ -178,7 +178,6 @@ export default function Airdrop() {
   };
 
   const renderLeaderboardRow = (entry, index) => {
-    // Check if the current row is the "Interested in Sponsoring" row
     const isSponsoringRow =
       entry.name ===
       "Interested in Sponsoring? Get your token or wallet in front of thousands of blockchain enthusiasts";

@@ -205,7 +205,6 @@ export default function Home({ locations }) {
   const { sharedState, setSharedState } = useAppContext();
   const [globalClick, setGlobalClick] = useState(false);
 
-  // Define the gtag_report_conversion function
   const gtag_report_conversion = (url) => {
     var callback = function () {
       if (typeof url !== "undefined") {
@@ -226,18 +225,15 @@ export default function Home({ locations }) {
   }
 
   if (typeof window !== "undefined") {
-    // Check if the UTM parameters are present in the URL
     const urlParams = new URLSearchParams(window.location.search);
     const utmSource = urlParams.get("utm_source");
     const utmMedium = urlParams.get("utm_medium");
     const utmCampaign = urlParams.get("utm_campaign");
 
-    // Retrieve the stored UTM parameters from session storage
     const storedUtmSource = sessionStorage.getItem("utm_source");
     const storedUtmMedium = sessionStorage.getItem("utm_medium");
     const storedUtmCampaign = sessionStorage.getItem("utm_campaign");
 
-    // Check if the UTM parameters are present in the URL and not already stored
     if (utmSource && !storedUtmSource) {
       sessionStorage.setItem("utm_source", utmSource);
     }
@@ -248,19 +244,15 @@ export default function Home({ locations }) {
       sessionStorage.setItem("utm_campaign", utmCampaign);
     }
   }
-  // Add the following useEffect hook at the bottom of the component
   useEffect(() => {
-    // Get the query parameter "scroll" from the URL
     const urlParams = new URLSearchParams(window.location.search);
     const scrollParam = urlParams.get("scroll");
 
-    // If "scroll" is present and is equal to "ready", scroll to the "Ready?" section with an offset
     if (scrollParam === "ready") {
-      scrollToSection("ready", -500); // Adjust the offset value as needed
+      scrollToSection("ready", -500);
     }
   }, []);
 
-  // Scroll to section function with an offset
   const scrollToSection = (sectionId, offset = -200) => {
     const section = document.getElementById(sectionId);
     if (section) {
