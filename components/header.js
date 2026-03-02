@@ -63,12 +63,6 @@ export default function HeaderWithLogo({ className = "", children }) {
                 </a>
                 <a
                   className="display-on-scroll px-4 font-semibold"
-                  href="/ben-network"
-                >
-                  BEN Network
-                </a>
-                <a
-                  className="display-on-scroll px-4 font-semibold"
                   href="/donate"
                 >
                   Donate
