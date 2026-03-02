@@ -1,688 +1,1192 @@
-﻿﻿import React, { useEffect, useState } from "react";
-import Footer from "../components/footer";
-import Header from "../components/header";
-import Image from "next/image";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import Head from "next/head";
-import dynamic from "next/dynamic";
-import Script from "next/script";
-import { getProjectsFromMonday } from "../services";
-import "mapbox-gl/dist/mapbox-gl.css";
-import styled from "styled-components";
-import { useAppContext } from "../context/state";
-import { Disclosure } from "@headlessui/react";
-import { ChevronUpIcon } from "@heroicons/react/solid";
-import FeatureSlider from "../components/featureSlider";
-import Modal from "../components/donateSliderButton";
-import StandardButton from "../components/standardButton";
-import DonateOptions from "../components/donateOptions";
-import PopUpVideo from "../components/popupVideo";
-import { MediaType } from "../components/map";
-import FAQItem from "../components/faqItem";
-import Popup from "../components/popup";
-import BlogGrid from "../components/blogGrid";
+import Link from "next/link";
+import HeaderWithLogoDark from "../components/headerWithLogoDark";
+import Footer from "../components/footer";
 import { TeamMemberService } from "../services";
-import PartnersSlider from "../components/partnersSlider";
+import { slugify } from "../lib/slugify";
+import {
+  OFFICIAL_LINKS,
+  FLOATING_ICONS,
+  COMPANIES_FROM_BEN,
+  FOUNDERS_AND_PROJECTS,
+  UNICORNS,
+  USERS,
+  TESTIMONIALS,
+} from "../content/ben-network.data";
+import styles from "../styles/ben-network.module.css";
 
-const impactStats = [
-  {
-    image: "/images/ambassadors-icon-home.png",
-    number: "200+",
-    name: "Ambassadors",
-    imageStyling: "translate-y-10 transform",
-    nameStyling: "",
-  },
-  {
-    image: "/images/companies-icon-home.png",
-    number: "250+",
-    name: "Companies Founded",
-    imageStyling: "translate-y-10 transform",
-    nameStyling: "",
-  },
-  {
-    image: "/images/valuations-icon-home.png",
-    number: "3B",
-    name: "Valuation of companies founded through ben",
-    imageStyling: "translate-y-5 transform mx-auto lg:mx-0",
-    nameStyling: "",
-  },
-  {
-    image: "/images/jobs-icon-home.png",
-    number: "1500+",
-    name: "Jobs matched",
-    imageStyling: "translate-y-5 transform",
-    nameStyling: "",
-  },
+const BASE = "/images/ben-network";
+const BENEVENTS_IMG = "/images/benevents.png";
+
+const BG_BASE = "bg-benwhite-500";
+const BG_WARM = "bg-[#FFFBF2]";
+const BG_WHITE = "bg-white";
+
+const FLOATING_POSITIONS = [
+  { top: 10, left: 8 },
+  { top: 14, left: 18 },
+  { top: 8, left: 26 },
+  { top: 8, left: 95 },
+  { top: 10, left: 74 },
+  { top: 12, left: 84 },
+  { top: 26, left: 10 },
+  { top: 30, left: 24 },
+  { top: 75, left: 20 },
+  { top: 80, left: 83 },
+  { top: 29, left: 77 },
+  { top: 26, left: 90 },
+  { top: 46, left: 6 },
+  { top: 44, left: 18 },
+  { top: 80, left: 30 },
+  { top: 82, left: 71 },
+  { top: 48, left: 82 },
+  { top: 41, left: 95 },
+  { top: 65, left: 12 },
+  { top: 60, left: 28 },
+  { top: 86, left: 10 },
+  { top: 88, left: 92 },
+  { top: 62, left: 76 },
+  { top: 60, left: 90 },
 ];
 
-const Map = dynamic(() => import("../components/map"), {
-  loading: () => "Loading...",
-  ssr: false,
-});
+function imgSrc(path) {
+  if (!path) return path;
+  if (/^https?:\/\//i.test(path)) return path;
+  return encodeURI(path);
+}
 
-export default function Home({ locations }) {
-  const companies = [
-    {
-      name: "Augur",
-      link: "https://augur.net/",
-      url: "/images/fintech/augur.webp",
-    },
-    {
-      name: "Bitso",
-      link: "https://bitso.com/mx",
-      url: "/images/fintech/bitso.webp",
-    },
-    {
-      name: "Blockbeam",
-      link: "https://www.blockbeam.io/",
-      url: "/images/fintech/blockbeam.webp",
-    },
-    {
-      name: "Bolt",
-      link: "https://www.bolt.com/",
-      url: "/images/fintech/bolt.webp",
-    },
-    {
-      name: "BTC Inc",
-      link: "https://b.tc/",
-      url: "/images/fintech/btc-inc.webp",
-    },
-    {
-      name: "Chainside",
-      link: "https://www.chainside.net/en/home/",
-      url: "/images/fintech/chainside.webp",
-    },
-    {
-      name: "GDA Capital",
-      link: "https://gda.capital/",
-      url: "/images/fintech/gda-capital.webp",
-    },
-    {
-      name: "Glass Markets",
-      link: "https://glassmarkets.io/",
-      url: "/images/fintech/glass-markets.webp",
-    },
-    {
-      name: "IntoTheVerse",
-      link: "https://intotheverse.xyz/",
-      url: "/images/fintech/into-the-verse.webp",
-    },
-    {
-      name: "Iota",
-      link: "https://www.iota.org/",
-      url: "/images/fintech/iota.webp",
-    },
-    {
-      name: "Neon",
-      link: "https://neonevm.org/",
-      url: "/images/fintech/neon.webp",
-    },
-    {
-      name: "Noble",
-      link: "https://nobleassets.xyz/",
-      url: "/images/fintech/noble.webp",
-    },
-    {
-      name: "Notional",
-      link: "https://notional.finance/",
-      url: "/images/fintech/notional.webp",
-    },
-    {
-      name: "Numoen",
-      link: "https://www.numoen.com/",
-      url: "/images/fintech/numoen.webp",
-    },
-    {
-      name: "Optimism",
-      link: "https://www.optimism.io/",
-      url: "/images/fintech/optimism.webp",
-    },
-    {
-      name: "Roll",
-      link: "https://tryroll.com/",
-      url: "/images/fintech/roll.webp",
-    },
-    {
-      name: "Tenderize",
-      link: "https://www.tenderize.me/",
-      url: "/images/fintech/tenderize.webp",
-    },
-    {
-      name: "Wanchain",
-      link: "https://www.wanchain.org/",
-      url: "/images/fintech/wanchain.webp",
-    },
-    {
-      name: "Llama Network",
-      link: "https://www.llamanetwork.ai/",
-      url: "/images/fintech/llama.jpeg",
-    },
-  ];
-  const [partners, setPartners] = useState([]);
-  const [categories, setCategorise] = useState([]);
-  useEffect(async () => {
-    let body = {
-      query: `{
-          boards (ids: 1449692436) {
-            items_page (limit: 40) {
-              items {
-                group {
-                    id
-                    title
-                }
-                id
-                name
-                column_values {
-                    id
-                    
-                    value
-                }
-                assets {
-                    public_url
-                }
-              }
-            }
-          }
-      }`,
-    };
-    let result = await TeamMemberService.getMembers(body);
-    if (result?.data?.data?.boards) {
-      let categories_temp = [];
-      let temp = result.data.data.boards[0].items_page.items.map((item) => {
-        !categories_temp.includes(item.group.title) &&
-          categories_temp.push(item.group.title);
-        return {
-          id: item.id,
-          name: item.name,
-          category: item.group.title,
-          url: item.assets[0]?.public_url ? item.assets[0]?.public_url : null,
-        };
-      });
-      setPartners(temp);
-      setCategorise(categories_temp);
+function joinSrc(...parts) {
+  const clean = parts
+    .filter(Boolean)
+    .map((p) => String(p).replace(/^\/+|\/+$/g, ""));
+  return imgSrc("/" + clean.join("/"));
+}
+
+function extractDominantColor(imgEl) {
+  try {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return null;
+
+    const SIZE = 48;
+    canvas.width = SIZE;
+    canvas.height = SIZE;
+
+    ctx.drawImage(imgEl, 0, 0, SIZE, SIZE);
+    const { data } = ctx.getImageData(0, 0, SIZE, SIZE);
+
+    const buckets = new Map();
+    const STEP = 24;
+
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+      const a = data[i + 3];
+
+      if (a < 200) continue;
+
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+
+      if (max < 20 && min < 20) continue;
+
+      const qr = Math.round(r / STEP) * STEP;
+      const qg = Math.round(g / STEP) * STEP;
+      const qb = Math.round(b / STEP) * STEP;
+
+      const key = `${qr},${qg},${qb}`;
+      buckets.set(key, (buckets.get(key) || 0) + 1);
     }
-  }, []);
 
-  const { sharedState, setSharedState } = useAppContext();
-  const [globalClick, setGlobalClick] = useState(false);
+    let top = null;
+    let maxCount = 0;
 
-  // Define the gtag_report_conversion function
-  const gtag_report_conversion = (url) => {
-    var callback = function () {
-      if (typeof url !== "undefined") {
-        window.location = url;
+    for (const [color, count] of buckets) {
+      if (count > maxCount) {
+        maxCount = count;
+        top = color;
       }
-    };
-    gtag("event", "conversion", {
-      send_to: "AW-11202135402/VQLfCM_u8LUYEOqKzN0p",
-      event_callback: callback,
-    });
-    return false;
-  };
+    }
 
-  if (locations.length === 0) {
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    if (!top) return null;
+    return `rgb(${top})`;
+  } catch {
+    return null;
   }
+}
 
-  if (typeof window !== "undefined") {
-    // Check if the UTM parameters are present in the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const utmSource = urlParams.get("utm_source");
-    const utmMedium = urlParams.get("utm_medium");
-    const utmCampaign = urlParams.get("utm_campaign");
+function useRemoteBlobSrc(src) {
+  const [blobUrl, setBlobUrl] = useState(null);
 
-    // Retrieve the stored UTM parameters from session storage
-    const storedUtmSource = sessionStorage.getItem("utm_source");
-    const storedUtmMedium = sessionStorage.getItem("utm_medium");
-    const storedUtmCampaign = sessionStorage.getItem("utm_campaign");
-
-    // Check if the UTM parameters are present in the URL and not already stored
-    if (utmSource && !storedUtmSource) {
-      sessionStorage.setItem("utm_source", utmSource);
-    }
-    if (utmMedium && !storedUtmMedium) {
-      sessionStorage.setItem("utm_medium", utmMedium);
-    }
-    if (utmCampaign && !storedUtmCampaign) {
-      sessionStorage.setItem("utm_campaign", utmCampaign);
-    }
-  }
-  // Add the following useEffect hook at the bottom of the component
   useEffect(() => {
-    // Get the query parameter "scroll" from the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const scrollParam = urlParams.get("scroll");
+    let revoked = false;
+    let currentObjectUrl = null;
+    const controller = new AbortController();
 
-    // If "scroll" is present and is equal to "ready", scroll to the "Ready?" section with an offset
-    if (scrollParam === "ready") {
-      scrollToSection("ready", -500); // Adjust the offset value as needed
-    }
-  }, []);
+    async function run() {
+      setBlobUrl(null);
 
-  // Scroll to section function with an offset
-  const scrollToSection = (sectionId, offset = -200) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const topPos = section.getBoundingClientRect().top;
-      window.scrollBy({ top: topPos + offset, behavior: "smooth" });
+      if (!src) return;
+
+      const isRemote = /^https?:\/\//i.test(src);
+      if (!isRemote) {
+        setBlobUrl(null);
+        return;
+      }
+
+      try {
+        const res = await fetch(src, {
+          signal: controller.signal,
+          cache: "no-store",
+        });
+        if (!res.ok) return;
+
+        const blob = await res.blob();
+        currentObjectUrl = URL.createObjectURL(blob);
+        if (!revoked) setBlobUrl(currentObjectUrl);
+      } catch {}
     }
+
+    run();
+
+    return () => {
+      revoked = true;
+      controller.abort();
+      if (currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+    };
+  }, [src]);
+
+  return blobUrl;
+}
+
+function SmartImage({
+  src,
+  fallbackSrcs = [],
+  alt,
+  className,
+  loading = "lazy",
+  decoding = "async",
+  onLoad,
+  onFinalError,
+}) {
+  const [current, setCurrent] = useState(src || null);
+
+  useEffect(() => {
+    setCurrent(src || null);
+  }, [src]);
+
+  const blobSrc = useRemoteBlobSrc(current);
+  const resolvedSrc = blobSrc || current || "";
+
+  const handleError = () => {
+    const candidates = [src, ...fallbackSrcs].filter(Boolean);
+    const idx = candidates.findIndex((x) => x === current);
+    const next =
+      idx >= 0 ? candidates.slice(idx + 1).find(Boolean) : candidates[0];
+
+    if (next && next !== current) {
+      setCurrent(next);
+      return;
+    }
+
+    onFinalError?.();
   };
+
+  if (!current) return null;
 
   return (
-    <div id="home">
-      <Header />
+    <img
+      src={resolvedSrc}
+      onError={handleError}
+      onLoad={onLoad}
+      alt={alt || ""}
+      className={className}
+      loading={loading}
+      decoding={decoding}
+    />
+  );
+}
 
+function LogoImage({
+  primaryDir,
+  file,
+  alt,
+  className,
+  loading = "lazy",
+  fallbackDirs = [],
+  onLoad,
+}) {
+  const primary = joinSrc(BASE, primaryDir, file);
+  const fallbacks = fallbackDirs.map((d) => joinSrc(BASE, d, file));
+
+  return (
+    <SmartImage
+      src={primary}
+      fallbackSrcs={fallbacks}
+      alt={alt}
+      className={className}
+      loading={loading}
+      onLoad={onLoad}
+    />
+  );
+}
+
+function useDominantBg() {
+  return useCallback((e) => {
+    const img = e.currentTarget;
+    const wrap = img?.closest?.("[data-dominant-bg]");
+    if (!wrap) return;
+    const c = extractDominantColor(img);
+    if (c) wrap.style.setProperty("--logo-bg", c);
+  }, []);
+}
+
+function initialsFromName(name) {
+  const parts = String(name || "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+
+  const a = parts[0]?.[0] || "?";
+  const b = parts.length > 1 ? parts[parts.length - 1]?.[0] : "";
+  return (a + b).toUpperCase();
+}
+
+function PersonAvatar({ src, name, className }) {
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setFailed(false);
+  }, [src]);
+
+  if (!src || failed) {
+    return (
+      <div className="people-avatar-placeholder" aria-label={name || "Avatar"}>
+        {initialsFromName(name)}
+      </div>
+    );
+  }
+
+  return (
+    <SmartImage
+      src={src}
+      fallbackSrcs={[]}
+      alt={name}
+      className={className}
+      loading="lazy"
+      onFinalError={() => setFailed(true)}
+    />
+  );
+}
+
+function safeJsonParse(value) {
+  if (!value || typeof value !== "string") return value;
+  try {
+    return JSON.parse(value);
+  } catch {
+    return value;
+  }
+}
+
+function buildTitleToId(columns = []) {
+  const map = new Map();
+  columns.forEach((c) => {
+    if (c?.id && c?.title) map.set(c.title.trim().toLowerCase(), c.id);
+  });
+  return map;
+}
+
+function pickId(map, titles) {
+  for (const t of titles) {
+    const id = map.get(String(t).toLowerCase());
+    if (id) return id;
+  }
+  return null;
+}
+
+function col(item, id) {
+  return item?.column_values?.find((c) => c.id === id) ?? null;
+}
+
+function parseTitleToRoleCompany(titleText) {
+  const t = (titleText || "").trim();
+  if (!t) return { role: "", company: "" };
+
+  const parts = t
+    .split(",")
+    .map((x) => x.trim())
+    .filter(Boolean);
+  if (parts.length <= 1) return { role: t, company: "" };
+
+  return { role: parts[0], company: parts.slice(1).join(", ") };
+}
+
+function extractUrlFromMondayValue(cv) {
+  const raw = cv?.value ?? cv?.text;
+  const parsed = safeJsonParse(raw);
+
+  const url =
+    parsed?.url ||
+    parsed?.link?.url ||
+    parsed?.link?.url?.url ||
+    parsed?.files?.[0]?.url ||
+    parsed?.files?.[0]?.public_url ||
+    parsed?.files?.[0]?.publicUrl ||
+    null;
+
+  return url || null;
+}
+
+function extractAssetIdFromFilesColumn(cv) {
+  const parsed = safeJsonParse(cv?.value);
+  const id = parsed?.files?.[0]?.assetId;
+  return id ? String(id) : null;
+}
+
+function buildAssetsById(assets = []) {
+  const m = new Map();
+  assets.forEach((a) => {
+    if (a?.id && a?.public_url) m.set(String(a.id), a.public_url);
+  });
+  return m;
+}
+
+function parseNumberFromMonday(cv) {
+  const parsed = safeJsonParse(cv?.value);
+  if (typeof parsed === "number") return parsed;
+  if (parsed?.number != null) return Number(parsed.number) || 0;
+  const n = Number(String(cv?.text || "").replace(/[^\d.-]/g, ""));
+  return Number.isFinite(n) ? n : 0;
+}
+
+function buildPageWindow(current, total, maxVisible = 5) {
+  if (total <= maxVisible)
+    return Array.from({ length: total }, (_, i) => i + 1);
+
+  const half = Math.floor(maxVisible / 2);
+  let start = current - half;
+  let end = current + half;
+
+  if (maxVisible % 2 === 0) end -= 1;
+
+  if (start < 1) {
+    start = 1;
+    end = maxVisible;
+  }
+
+  if (end > total) {
+    end = total;
+    start = total - maxVisible + 1;
+  }
+
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+}
+
+export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
+  const onDominantBgLoad = useDominantBg();
+
+  const floatingIcons = FLOATING_ICONS;
+  const companiesFromBen = COMPANIES_FROM_BEN;
+  const foundersAndProjects = FOUNDERS_AND_PROJECTS;
+  const unicorns = UNICORNS;
+  const users = USERS;
+  const testimonials = TESTIMONIALS;
+
+  const visibleUniGroups = useMemo(() => {
+    return (universitiesGroups || [])
+      .filter((g) => (g?.items?.length || 0) > 0)
+      .map((g) => ({
+        ...g,
+        items: (g.items || []).filter((it) => it?.name),
+      }));
+  }, [universitiesGroups]);
+
+  const allUniFlat = useMemo(() => {
+    const out = [];
+    visibleUniGroups.forEach((g) => {
+      (g.items || []).forEach((it) => out.push({ ...it, groupId: g.id }));
+    });
+    return out;
+  }, [visibleUniGroups]);
+
+  const uniRankById = useMemo(() => {
+    const m = new Map();
+    allUniFlat.forEach((it, idx) => m.set(String(it.id), idx + 1));
+    return m;
+  }, [allUniFlat]);
+
+  const PAGE_SIZE = 21;
+  const [uniPage, setUniPage] = useState(1);
+  const [navigatingTo, setNavigatingTo] = useState(null);
+
+  useEffect(() => {
+    setUniPage(1);
+  }, [allUniFlat.length]);
+
+  useEffect(() => {
+    const onDone = () => setNavigatingTo(null);
+    if (typeof window === "undefined") return;
+
+    window.addEventListener("pageshow", onDone);
+    return () => window.removeEventListener("pageshow", onDone);
+  }, []);
+
+  const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+
+  const uniTotal = allUniFlat.length;
+  const uniTotalPages = Math.max(1, Math.ceil(uniTotal / PAGE_SIZE));
+  const uniPageClamped = clamp(uniPage, 1, uniTotalPages);
+  const uniStart = (uniPageClamped - 1) * PAGE_SIZE;
+  const uniPaged = allUniFlat.slice(uniStart, uniStart + PAGE_SIZE);
+  const uniPagesWindow = buildPageWindow(uniPageClamped, uniTotalPages, 5);
+
+  return (
+    <div className={`${styles.root} ${BG_BASE} min-h-screen text-benblack-500`}>
       <Head>
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7187550270272911"
-          crossOrigin="anonymous"
-        ></script>
-
-        {/* Event snippet for Begin checkout conversion page
-            In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            function gtag_report_conversion(url) {
-              var callback = function () {
-                if (typeof(url) != 'undefined') {
-                  window.location = url;
-                }
-              };
-              gtag('event', 'conversion', {
-                  'send_to': 'AW-11202135402/VQLfCM_u8LUYEOqKzN0p',
-                  'event_callback': callback
-              });
-              return false;
-            }
-          `,
-          }}
-        ></script>
-
-        <title>Home | Blockchain Education Network</title>
+        <title>BEN Network | Blockchain Education Network</title>
+        <meta
+          name="description"
+          content="BEN Network: a global network of student founders, alumni and companies built through the Blockchain Education Network"
+        />
       </Head>
 
-      {/*
-      <div className="text-white px-6 py-4 flex justify-center items-center" style={{ background: "orange" }}>
-        <a href="https://bit.ly/ben-bitcoin2023" target="_blank"><div className="text-white text-lg font-bold text-center hover:text-black" style={{ transition: "color 0.2s" }}>Students! Apply for Free Bitcoin 2023 Tickets (May 18 - 24)🚀</div></a>
-      </div>
-      */}
+      <HeaderWithLogoDark />
 
-      <section className="container pt-10 lg:pb-0 px-7 mx-auto">
-        <div
-          className="w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4"
-          style={{ maxWidth: "1000px" }}
-        >
-          <div className="col-span-1 lg:pt-6 lg:order-last ml-2">
-            <h1 className="font-average text-5xl xl:text-6xl text-center max-w-4xl mx-auto mt-0 mb-2">
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-benorange-100 opacity-90" />
+        <div className="hero-vignette" aria-hidden="true" />
 
-              Empowering Blockchain Education
+        <div className="floating-layer absolute inset-0">
+          {floatingIcons.map((l, idx) => {
+            const sizeVariant =
+              idx % 9 === 0
+                ? "xl"
+                : idx % 5 === 0
+                  ? "lg"
+                  : idx % 3 === 0
+                    ? "sm"
+                    : "md";
 
-              <span style={{ fontSize: "31px" }}> </span>
-              <span className="font-bold"></span>
-            </h1>
+            const p = FLOATING_POSITIONS[idx % FLOATING_POSITIONS.length];
+            const v = `floatv${(idx % 3) + 1}`;
+            const href = l.href || "#";
+            const clickable = href && href !== "#";
 
-            <div
-              className="text-bengrey-500 text-xl text-center mx-auto leading-6"
-              style={{ maxWidth: "610px" }}
-            >
-              Where crypto founders and investors share success stories since 2014.
-            </div>
+            return (
+              <a
+                key={`${l.name}-${idx}`}
+                href={href}
+                target={clickable ? "_blank" : undefined}
+                rel={clickable ? "noopener noreferrer" : undefined}
+                aria-label={clickable ? `Abrir site de ${l.name}` : l.name}
+                title={clickable ? `Abrir ${l.name}` : l.name}
+                className={`floating-chip ${v} size-${sizeVariant} ${
+                  clickable ? "is-clickable" : "is-disabled"
+                }`}
+                style={{ top: `${p.top}%`, left: `${p.left}%` }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (!clickable) e.preventDefault();
+                }}
+              >
+                <div className="floating-chip-inner">
+                  <LogoImage
+                    primaryDir={l.dir || "companies-from-ben"}
+                    fallbackDirs={[
+                      "companies-from-ben",
+                      "portfolio-companies",
+                      "network-of-universities/row-1",
+                      "network-of-universities/row-2",
+                      "network-of-universities/row-3",
+                      "network-of-universities/row-4",
+                      "network-of-universities/row-5",
+                      "network-of-universities/row-6",
+                      "network-of-universities/row-7",
+                    ]}
+                    file={l.file}
+                    className="floating-img"
+                    alt={l.name}
+                  />
+                </div>
+              </a>
+            );
+          })}
+        </div>
 
+        <div className="relative container mx-auto pt-24 pb-16 px-6 hero-content">
+          <div className="hero-badge inline-flex items-center gap-4 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs mb-6 shadow-sm">
+            <span className="font-semibold">Proof of impact</span>
+            <span className="opacity-70">
+              $20B+ in value created, 160+ chapters in 35+ countries and 2.2M
+              impressions on X
+            </span>
+          </div>
 
-            <div className="flex flex-col items-center justify-center mt-6 mb-7">
-              <StandardButton
-                link="https://twitter.com/blockchainedu"
-                text="Start Learning"
-                color="orange"
-                styling="display-on-scroll mx-4"
-                target="_blank"
-              />
-            </div>
+          <div className="max-w-xl mx-auto text-center hero-glass">
+            <div className="hero-glass-content">
+              <h1 className="flex justify-center leading-none">
+                <img
+                  src="/images/ben-network/ben-network-logo.png"
+                  alt="BEN Network"
+                  className="h-auto max-w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
+                  style={{ width: "clamp(220px, 42vw, 560px)" }}
+                  loading="eager"
+                  decoding="async"
+                />
+              </h1>
 
+              <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-2xl mx-auto">
+                A global network of student founders, alumni and companies built
+                through the Blockchain Education Network
+              </p>
 
-            {/* <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-8 mb-10 m-auto" style={{ "maxWidth": "800px" }}>
-              <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
-                <iframe
-                  src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
-                  data-test-id="beehiiv-embed"
-                  height="52"
-                  frameBorder="0"
-                  scrolling="no"
-                  style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
-                ></iframe>
-              </div>
-            </div>  */}
-
-
-
-            <div className="col-span-1 mt-2 text-center">
-              <div className="w-full flex justify-center">
-                <div className="grid grid-cols-8 gap-0">
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2">
+              <div className="hero-media mt-8">
+                <div className="benevents-card">
+                  <div className="benevents-frame">
                     <img
-                      src="/images/people/jelena-djuric.jpeg"
-                      alt="User Image 1"
-                      className="rounded-full w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-1">
-                    <img
-                      src="/images/people/matt-batsinelas.jpeg"
-                      alt="User Image 2"
-                      className="rounded-full w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-2">
-                    <img
-                      src="/images/people/michael-gord.jpeg"
-                      alt="User Image 3"
-                      className="rounded-full w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-3">
-                    <img
-                      src="/images/people/joey-krug.jpeg"
-                      alt="User Image 4"
-                      className="rounded-full w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-4">
-                    <img
-                      src="/images/people/jinglan-wang.jpeg"
-                      alt="User Image 5"
-                      className="rounded-full w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-5">
-                    <img
-                      src="/images/jeremygardner.webp"
-                      alt="User Image 6"
-                      className="rounded-full w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-full bg-gray-300 w-12 h-12 border-benorange border-2 -ml-2 -z-6">
-                    <img
-                      src="images/people/ryan-breslow.jpeg"
-                      alt="User Image 7"
-                      className="rounded-full w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2 -ml-2 -z-7">
-                    <img
-                      src="/images/stories/drew-cousin.jpeg"
-                      alt="User Image 8"
-                      className="rounded-full w-full h-full object-cover"
+                      src={BENEVENTS_IMG}
+                      alt="BEN Events"
+                      className="benevents-img"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </div>
               </div>
-              <p className="mt-3 text-bengrey-500 text-center text-md">
-                📡 Followed by 25k+ in Web3.
+
+              <div className="mt-8 text-center">
+                <div className="flex justify-center">
+                  {users.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt={`User ${i + 1}`}
+                      className="w-10 h-10 rounded-full border-2 border-benorange -ml-2 object-cover"
+                    />
+                  ))}
+                </div>
+
+                <p className="mt-2 text-sm text-bengrey-500">
+                  📡 Followed by 25k+ in Web3
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-16 ${BG_WARM} border-t border-black/5`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-xl md:text-2xl font-semibold tracking-tight">
+              Our formula for{" "}
+              <span className="text-benorange-500">success</span>.
+            </h2>
+
+            <div className="mt-8 overflow-hidden shadow-sm border border-black/5 bg-black">
+              <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/Lvs78FukfpI?rel=0&modestbranding=1"
+                  title="Our formula for success"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`${BG_WHITE} py-16 border-t border-black/5`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+              Who <span className="text-benorange-500">We</span> Are
+            </h2>
+
+            <p className="mt-4 text-sm md:text-base text-benblack-500/75 max-w-3xl mx-auto">
+              BEN (est. 2014) is one of the largest and longest-running networks
+              connecting blockchain students, professors, and alumni worldwide.
+            </p>
+
+            <div className="mt-10 grid md:grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
+              {[
+                "Founded in 2014 and built by student leaders.",
+                "A global network connecting chapters and alumni.",
+                "Helping founders launch and scale real projects.",
+                "Community-led: students, professors, builders.",
+                "Events, mentorship, and warm intros across the ecosystem.",
+                "From universities to unicorns: a full-stack network.",
+              ].map((text) => (
+                <div key={text} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-benorange-500 shrink-0" />
+                  <p className="text-sm md:text-base text-benblack-500/80">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                "/images/ben-network/ben-group-pic-1.jpg",
+                "/images/ben-network/ben-group-pic-2.png",
+                "/images/ben-network/ben-group-pic-3.png",
+              ].map((src) => (
+                <div
+                  key={src}
+                  className="rounded-xl overflow-hidden border border-black/5 bg-white"
+                >
+                  <div
+                    className="relative w-full"
+                    style={{ paddingTop: "56.25%" }}
+                  >
+                    <img
+                      src={src}
+                      alt="BEN community"
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+              {[
+                { value: "25k+", label: "X Followers" },
+                { value: "8k+", label: "Newsletter" },
+                { value: "4k+", label: "Students & Alumni" },
+                { value: "15+", label: "Startups Founded" },
+                { value: "60+", label: "Blockchain Clubs" },
+                { value: "200+", label: "Schools" },
+              ].map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-2xl bg-white border border-black/5 px-4 py-5 text-center shadow-sm"
+                >
+                  <div className="text-2xl md:text-3xl font-semibold tracking-tight">
+                    {s.value}
+                  </div>
+                  <div className="mt-1 text-xs md:text-sm text-benblack-500/70">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-16 ${BG_WARM} border-t border-black/5`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <div className="text-sm font-semibold tracking-wide text-benorange-500">
+                BEN LEARN&apos;S SOLUTION
+              </div>
+
+              <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
+                One scalable platform for{" "}
+                <span className="text-benorange-500">education</span> +{" "}
+                <span className="text-benorange-500">entrepreneurship</span>
+              </h2>
+
+              <p className="mt-5 text-base md:text-lg text-benblack-500/75 leading-relaxed">
+                We believe the best way to start a project in Web3 is by
+                combining education and entrepreneurship in one scalable
+                platform to empower learners, identify their needs, and connect
+                them with the right set of resources, scalable to thousands of
+                potential learners.
               </p>
             </div>
-          </div>
 
-          <div className="flex justify-center items-center col-span-1 pb-12 rounded-lg">
-            <img
-              style={{ borderRadius: "10px" }}
-              src="/images/benevents.png"
-            ></img>
-          </div>
-        </div>
-      </section>
-
-      {/*
-      <section className="bg-benorange-300 py-24 pb-24 mx-auto">
-        <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
-        The BEN Model
-        Awareness -> Events -> Build
-        </div>
-      </section>
-
-      <section className="bg-black py-24 pb-24 mx-auto">
-        <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
-        Ready for the BEN Airdrop? Sign up now
-        </div>
-      </section>
-
-            <section className="bg-white-300 py-24 pb-24 mx-auto">
-        <div className="bg-benorange-300 mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
-        Check out our events calendar of upcoming <a href="/events">events</a>
-        </div>
-      </section>
-
-*/}
-
-      <section id="benefits" className="py-10 mb-10">
-        <div className=" mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
-          <h2
-            className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl"
-            style={{ color: "#FF872A" }}
-
-          >
-            Introducing BEN
-          </h2>
-          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            What began as a handful of students connecting <span style={{ color: "#FF872A" }}>Bitcoin clubs</span> quickly ignited a global movement.
-
-            Within months, it expanded to 160+
-            chapters in 35+ countries, uniting minds eager to shape the future of digital assets.
-          </p>
-
-          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            The <span style={{ color: "#FF872A" }}>Blockchain Education Network</span> (BEN) provides unbiased education that cut through the noise.
-          </p>
-          <p className="mt-5 mx-auto text-2xl lg:text-2xl text-justify max-w-3xl">
-            Since 2014, BEN alumni have built companies like Optimism, Bitso, Injective, and many more — creating over $10B in market value across the Web3 ecosystem.
-          </p>
-          <div className="text-center mt-20 my-4">
-            {/* Your StandardButton or any other content goes here */}
-            <StandardButton
-              link="https://chainstories.vc"
-              text="Invest Now"
-              color="orange"
-              styling="display-on-scroll mx-4"
-              target="_blank"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div className=" m-auto">
-          <PartnersSlider title="" data={companies} />
-        </div>
-      </section>
-
-      <section className=" bg-white mt-10 mt-20">
-        <div className=" m-auto">
-          <PartnersSlider
-            title="Notable Alumni"
-            data={partners.filter((item) => item.category === "Alumni")}
-          />
-        </div>
-      </section>
-
-      {/*</div>   <section id="benefits" className="py-10 mb-10">
-        <div className=" mx-auto w-11/12" style={{ maxWidth: "1000px" }}>
-          <h2
-            className="mx-auto text-2xl lg:text-4xl font-bold text-center max-w-4xl mb-10"
-            style={{ color: "#FF872A" }}
-            
-           
-          
-          </h2> >*/}
-
-
-      <section className="bg-benorange-300 py-24 pb-10 mx-auto">
-        <div
-          className="bg-benorange-300 mx-auto w-11/12"
-          style={{ maxWidth: "1000px" }}
-        >
-          <h2 className="mx-auto mb-10 text-benblack-500 text-4xl lg:text-5xl text-center max-w-4xl">
-            Testimonials
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 bg-benorange-300">
-            <div
-              onClick={() => scrollToSection("ready")}
-              className="cursor-pointer"
-            >
-              <div className="border p-4 rounded-lg bg-white">
-                <div class="text-md font-inter">
-                  <div className="flex items-center mb-2">
-                    <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
-                      <img
-                        src="/images/stories//sonny-monroe.jpg"
-                        alt="User Image 6"
-                        className="rounded-full w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="ml-2" style={{ fontWeight: "600" }}>
-                      Sonny Monroe
-                    </div>
-                  </div>
-
-                  <em>
-                    "BEN is like a swiss army knife with crypto news, education,
-                    meetups, and even some tools."
-                  </em>
-                </div>
-              </div>
-            </div>
-
-            <div
-              onClick={() => scrollToSection("ready")}
-              className="cursor-pointer"
-            >
-              <div className="border p-4 rounded-lg bg-white">
-                <div class="text-md font-inter">
-                  <div className="flex items-center mb-2">
-                    <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
-                      <img
-                        src="images/Sarahroff.png"
-                        alt="User Image 6"
-                        className="rounded-full w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="ml-2" style={{ fontWeight: "600" }}>
-                      Sarah Roff
-                    </div>
-                  </div>
-                  <em>
-                    "BEN gives the best blockchain education so that we can
-                    become the next generation of innovators!"
-                  </em>
-                </div>
-              </div>
-            </div>
-            <div
-              onClick={() => scrollToSection("ready")}
-              className="cursor-pointer"
-            >
-              <div className="border p-4 rounded-lg bg-white">
-                <div className="text-md font-inter">
-                  <div className="flex items-center mb-2">
-                    <div className="rounded-full bg-benorange-500 w-12 h-12 border-benorange border-2">
-                      <img
-                        src="/images/stories/dr-marko-suvajdzic-square.jpg"
-                        alt="User Image 6"
-                        className="rounded-full w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="ml-2" style={{ fontWeight: "600" }}>
-                      Dr. Marko Suvajdzic
-                    </div>
-                  </div>
-                  <em>
-                    "In my work to promote blockchain technology, BEN has been
-                    an invaluable resource."
-                  </em>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* <div className="flex flex-col lg:flex-row justify-between pt-16 mx-auto items-center lg:items-end w-11/12" style={{ maxWidth: "1000px" }}>
-                    <div className="ml-0 w-full rounded-2xl p-2" style={{ maxWidth: "600px" }}>
-                        <FAQItem
-                            question="How many courses are included in BEN Learn?"
-                            answer="We offer various courses, from Bitcoin Basics to coding in Solidity, and even on crypto Taxes! We are on a mission to continuously expand on our course offering, with at least one new course published on bi-monthly basis."
-                        />
-                        <FAQItem
-                            question="How does the Blockchain Education Network help students?"
-                            answer="We offer various courses, from Bitcoin Basics to coding in Solidity, and even on crypto Taxes! We are on a mission to continuously expand on our course offering, with at least one new course published on bi-monthly basis."
-                        />
-                        <FAQItem
-                            question="How often are courses updated?"
-                            answer="We offer various courses, from Bitcoin Basics to coding in Solidity, and even on crypto Taxes! We are on a mission to continuously expand on our course offering, with at least one new course published on bi-monthly basis."
-                        />
-                        <FAQItem
-                            question="I am an industry expert or professor, how can I create a course on BEN Learn?"
-                            answer="We offer various courses, from Bitcoin Basics to coding in Solidity, and even on crypto Taxes! We are on a mission to continuously expand on our course offering, with at least one new course published on bi-monthly basis."
-                        />
-                        <FAQItem
-                            question="Do you guys offer refunds or course cancellations? "
-                            answer="We offer various courses, from Bitcoin Basics to coding in Solidity, and even on crypto Taxes! We are on a mission to continuously expand on our course offering, with at least one new course published on bi-monthly basis."
-                        />
-                    </div>
-                    <Image
-                        width="275px"
-                        height="267px"
-                        src="/images/faq-home-image.jpg"
-                        quality={100}
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="relative w-[320px] h-[320px] sm:w-[380px] sm:h-[380px]">
+                {[
+                  {
+                    src: "/images/ben-network/ben-learn-1.png",
+                    pos: "top-0 left-10",
+                  },
+                  {
+                    src: "/images/ben-network/ben-learn-2.png",
+                    pos: "top-10 right-0",
+                  },
+                  {
+                    src: "/images/ben-network/ben-learn-3.png",
+                    pos: "bottom-10 left-0",
+                  },
+                  {
+                    src: "/images/ben-network/ben-learn-4.png",
+                    pos: "bottom-0 right-10",
+                  },
+                ].map((img) => (
+                  <div
+                    key={img.src}
+                    className={`absolute ${img.pos} w-[170px] h-[170px] sm:w-[190px] sm:h-[190px]
+                      rounded-full overflow-hidden border border-black/5 bg-white shadow-sm`}
+                  >
+                    <img
+                      src={img.src}
+                      alt="BEN Learn"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
-                </div> */}
-      </section>
+                  </div>
+                ))}
 
-      {/*
-      <section className="pt-0">
-        <h2 className="font-average text-4xl lg:text-5xl text-center max-w-4xl mx-auto mb-4">
-          Recent Posts
-        </h2>
-        <div className="mx-auto flex justify-center pb-12">
-          <BlogGrid />
-        </div>
-      </section>
-      */}
-
-      {/*
-   <section className="py-20 bg-black text-white mt-5" style={{backgroundImage: 'url("/images/more-dark-2.jpg")', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="rounded-full overflow-hidden mx-auto w-28 h-28 mb-6">
-              <img src="/images/ben-logo-white-border.jpg" alt="Image" className="mx-auto w-full h-full" />
+                <div
+                  className="absolute inset-0 rounded-full blur-3xl opacity-30"
+                  style={{
+                    background:
+                      "radial-gradient(circle at 50% 50%, rgba(255,122,0,0.28), transparent 60%)",
+                  }}
+                  aria-hidden="true"
+                />
+              </div>
             </div>
-            <h1 className="text-4xl font-bold mb-14 text-white shadow-lg">Ready?</h1>
-{/*           <StandardButton
-              link="https://learn.blockchainedu.org/sign_up?plan_id=486348"
-              text="Invest Now"
-              color="orange"
-              target="blank"
-              styling="text-center py-3 rounded-lg text-black"
-              onClick={() => gtag_report_conversion('https://learn.blockchainedu.org/sign_up?plan_id=486348')}
-            />
-
-            </div> 
+          </div>
         </div>
       </section>
-*/}
 
-      <section id="ready" className="bg-benorange-300 py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row justify-center space-y-6 lg:space-y-0 lg:space-x-4 mt-2 mb-10 m-auto" style={{ maxWidth: "800px" }}>
-            <div className="mx-auto lg:mx-0 w-full lg:w-4/5">
-              <iframe
-                src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
-                data-test-id="beehiiv-embed"
-                height="52"
-                frameBorder="0"
-                scrolling="no"
-                style={{ margin: "0", borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
-              ></iframe>
+      <section className={`py-16 ${BG_WHITE} border-t border-black/5`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <header className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                Testimonials
+              </h2>
+            </header>
+
+            <div className="testimonials-list">
+              {testimonials.map((t) => (
+                <div key={t.name} className="testimonial-row">
+                  <div className="testimonial-avatar">
+                    <img
+                      src={t.img}
+                      alt={t.name}
+                      className="testimonial-avatarImg"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+
+                  <div className="testimonial-body">
+                    <p className="testimonial-quote">“{t.quote}”</p>
+                    <div className="testimonial-byline">
+                      <span className="testimonial-name">{t.name}</span>
+                      {t.title ? (
+                        <span className="testimonial-title">, {t.title}</span>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-16 ${BG_WHITE} border-y border-black/5`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <header className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white border border-black/5 px-4 py-2 text-xs shadow-sm mb-6">
+                <span className="font-semibold">Notable Alumni</span>
+                <span className="opacity-70">
+                  Founders and leaders from the BEN network
+                </span>
+              </div>
+
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight font-sans">
+                <span className="text-benblack-500">Our Alumni</span>
+              </h2>
+              <p className="mt-2 text-sm text-benblack-500/70">
+                Proof of builders. Names you can recognize, work you can measure
+              </p>
+            </header>
+
+            <div className="people-grid people-grid--alumni reveal">
+              {alumni.map((a) => (
+                <div key={a.id || a.name} className="people-item">
+                  <div className="people-avatar">
+                    <PersonAvatar
+                      src={a.image ? imgSrc(a.image) : null}
+                      name={a.name}
+                      className="people-avatar-img"
+                    />
+                  </div>
+
+                  <div className="people-meta">
+                    <div className="people-name">{a.name}</div>
+                    <div className="people-company">{a.company}</div>
+                    <div className="people-role">{a.role}</div>
+
+                    <div className="people-socials">
+                      {a.linkedin ? (
+                        <a
+                          className="social-btn"
+                          href={a.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`LinkedIn de ${a.name}`}
+                          title="LinkedIn"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V23h-4V8Zm7 0h3.83v2.05h.05C12 8.88 13.57 7.7 15.94 7.7 20.02 7.7 21 10.29 21 14.1V23h-4v-7.9c0-1.88-.04-4.29-2.61-4.29-2.61 0-3.01 2.04-3.01 4.16V23h-4V8Z"
+                            />
+                          </svg>
+                        </a>
+                      ) : null}
+
+                      {a.twitter ? (
+                        <a
+                          className="social-btn"
+                          href={a.twitter}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Twitter/X de ${a.name}`}
+                          title="X"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            width="18"
+                            height="18"
+                            aria-hidden="true"
+                          >
+                            <path
+                              fill="currentColor"
+                              d="M18.244 2H21l-6.54 7.47L22.5 22h-6.6l-5.17-6.77L4.8 22H2l7.06-8.07L1.5 2h6.77l4.67 6.12L18.244 2Zm-1.16 18h1.83L7.27 3.9H5.31L17.084 20Z"
+                            />
+                          </svg>
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-16 ${BG_WARM}`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <header className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                Class of 2025
+              </h2>
+              <p className="mt-2 text-sm text-benblack-500/70">
+                Current builders and projects coming out of the network
+              </p>
+            </header>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+              {companiesFromBen.slice(0, 18).map((c) => (
+                <div key={c.name} className="mini-logo reveal">
+                  <LogoImage
+                    primaryDir={c.dir}
+                    fallbackDirs={["portfolio-companies"]}
+                    file={c.file}
+                    alt={c.name}
+                    className="mini-logo-img"
+                  />
+                  <div className="mt-2 text-xs font-semibold text-center">
+                    {c.name}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="unicorns"
+        className={`py-16 ${BG_WHITE} border-t border-black/5`}
+      >
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <header className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                Unicorns and major companies 🦄
+              </h2>
+              <p className="mt-2 text-sm text-benblack-500/70">
+                A selection of well-known companies connected to the BEN
+                ecosystem
+              </p>
+            </header>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">
+              {unicorns.map((c) => (
+                <div key={c.name} className="logo-card reveal">
+                  <div className="logo-wrap">
+                    <LogoImage
+                      primaryDir={c.dir}
+                      fallbackDirs={["companies-from-ben"]}
+                      file={c.file}
+                      alt={c.name}
+                      className="logo-img"
+                    />
+                  </div>
+                  <div className="mt-3">
+                    <div className="text-sm font-semibold">{c.name}</div>
+                    {c.tagline ? (
+                      <div className="text-xs text-benblack-500/60">
+                        {c.tagline}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={`py-16 ${BG_WARM} border-t border-black/5`}>
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <header className="text-center mb-10">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                BEN founders and projects
+              </h2>
+              <p className="mt-2 text-sm text-benblack-500/70">
+                A curated set of founders and projects shaped by the BEN
+                community
+              </p>
+            </header>
+
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {foundersAndProjects.map((p) => {
+                const href = p.href || "#";
+                const clickable = href && href !== "#";
+
+                return (
+                  <div key={p.name} className="card-premium reveal">
+                    <div className="flex items-start gap-4">
+                      {p.logoFile ? (
+                        <a
+                          data-dominant-bg
+                          href={href}
+                          target={clickable ? "_blank" : undefined}
+                          rel={clickable ? "noopener noreferrer" : undefined}
+                          aria-label={
+                            clickable ? `Abrir site de ${p.name}` : p.name
+                          }
+                          title={clickable ? `Abrir ${p.name}` : p.name}
+                          className={`project-logo ${
+                            clickable ? "cursor-pointer" : "cursor-default"
+                          }`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (!clickable) e.preventDefault();
+                          }}
+                        >
+                          <LogoImage
+                            primaryDir="companies-from-ben"
+                            fallbackDirs={["portfolio-companies"]}
+                            file={p.logoFile}
+                            alt={p.name}
+                            className="project-logo-img"
+                            onLoad={onDominantBgLoad}
+                          />
+                        </a>
+                      ) : null}
+
+                      <div>
+                        <h3 className="text-lg font-semibold mb-1">{p.name}</h3>
+                        <p className="text-sm text-benblack-500/70">{p.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="universities"
+        className={`${BG_WHITE} py-16 border-t border-black/5`}
+      >
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <header className="uni-head">
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+                Universities
+              </h2>
+            </header>
+
+            <div className="uni-panel reveal">
+              {uniTotal === 0 ? (
+                <div className="uni-empty">Sem dados de Universities.</div>
+              ) : (
+                <>
+                  <div className="uni-grid">
+                    {uniPaged.map((u) => {
+                      const globalRank = uniRankById.get(String(u.id)) || 0;
+                      const badge = Number(u.peopleCount || 0);
+                      const href = `/universities/${slugify(u.name)}`;
+                      const isLoading = navigatingTo === u.id;
+
+                      return (
+                        <Link key={u.id} href={href} prefetch>
+                          <a
+                            className={`uni-item ${
+                              isLoading ? "is-loading" : ""
+                            }`}
+                            title={u.name}
+                            onClick={() => setNavigatingTo(u.id)}
+                            aria-label={`Open ${u.name}`}
+                          >
+                            <div className="uni-rank">{globalRank}</div>
+
+                            <div className="uni-logoWrap" data-dominant-bg>
+                              {u.image ? (
+                                <SmartImage
+                                  src={imgSrc(u.image)}
+                                  fallbackSrcs={[]}
+                                  alt={u.name}
+                                  className="uni-logoImg"
+                                  loading="lazy"
+                                  onLoad={onDominantBgLoad}
+                                />
+                              ) : (
+                                <div
+                                  className="uni-logoFallback"
+                                  aria-label={u.name}
+                                >
+                                  {initialsFromName(u.name)}
+                                </div>
+                              )}
+                            </div>
+
+                            <div className="uni-name">
+                              {u.name}
+                              {isLoading ? (
+                                <div className="uni-loading">Loading...</div>
+                              ) : null}
+                            </div>
+
+                            <div className="uni-badgeWrap">
+                              <span
+                                className={`uni-badge ${
+                                  badge > 0 ? "" : "is-zero"
+                                }`}
+                                aria-label={`Number of People: ${badge}`}
+                                title={`Number of People: ${badge}`}
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <svg
+                                  className="uni-badgeIcon"
+                                  viewBox="0 0 24 24"
+                                  width="14"
+                                  height="14"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    fill="currentColor"
+                                    d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
+                                  />
+                                </svg>
+                                <span className="uni-badgeNum">{badge}</span>
+                              </span>
+                            </div>
+                          </a>
+                        </Link>
+                      );
+                    })}
+                  </div>
+
+                  <div className="uni-footerMeta uni-footerMeta--pager">
+                    <div className="uni-pager">
+                      <button
+                        className="uni-pagerBtn"
+                        onClick={() =>
+                          setUniPage(
+                            clamp(uniPageClamped - 1, 1, uniTotalPages),
+                          )
+                        }
+                        disabled={uniPageClamped <= 1}
+                        aria-label="Página anterior"
+                        title="Anterior"
+                      >
+                        ‹
+                      </button>
+
+                      <div
+                        className="uni-pageNums"
+                        role="navigation"
+                        aria-label="Paginação"
+                      >
+                        {uniPagesWindow.map((pNum) => (
+                          <button
+                            key={pNum}
+                            className={`uni-pageNum ${
+                              pNum === uniPageClamped ? "is-active" : ""
+                            }`}
+                            onClick={() => setUniPage(pNum)}
+                            aria-label={`Ir para página ${pNum}`}
+                          >
+                            {pNum}
+                          </button>
+                        ))}
+                      </div>
+
+                      <button
+                        className="uni-pagerBtn"
+                        onClick={() =>
+                          setUniPage(
+                            clamp(uniPageClamped + 1, 1, uniTotalPages),
+                          )
+                        }
+                        disabled={uniPageClamped >= uniTotalPages}
+                        aria-label="Próxima página"
+                        title="Próxima"
+                      >
+                        ›
+                      </button>
+                    </div>
+
+                    <div className="uni-pageJump">
+                      <span className="uni-pageLabel">Page</span>
+                      <input
+                        className="uni-pageInput"
+                        type="number"
+                        min={1}
+                        max={uniTotalPages}
+                        value={uniPageClamped}
+                        onChange={(e) => {
+                          const v = Number(e.target.value || 1);
+                          if (!Number.isFinite(v)) return;
+                          setUniPage(clamp(v, 1, uniTotalPages));
+                        }}
+                        onBlur={(e) => {
+                          const v = Number(e.target.value || 1);
+                          setUniPage(clamp(v, 1, uniTotalPages));
+                        }}
+                        aria-label="Selecionar página"
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -693,19 +1197,153 @@ export default function Home({ locations }) {
   );
 }
 
-const Container = styled.div`
-        width: 100%;
-        height: 60vh;
-        minheight: 588px;
-        `;
+export async function getStaticProps() {
+  const alumniQuery = `{
+    boards (ids: 18394862500) {
+      columns { id title type }
+      items_page (limit: 500) {
+        items {
+          id
+          name
+          assets { id public_url }
+          column_values { id value text }
+        }
+      }
+    }
+  }`;
 
-export async function getStaticProps({ params }) {
-  let fetchedProjects = [];
-  while (fetchedProjects.length === 0) {
-    fetchedProjects = (await getProjectsFromMonday()) || [];
+  const universitiesQuery = `{
+    boards (ids: 18394872099) {
+      id
+      columns { id title type }
+      groups { id title }
+      items_page (limit: 500) {
+        items {
+          id
+          name
+          group { id title }
+          assets { id public_url }
+          column_values { id value text }
+        }
+      }
+    }
+  }`;
+
+  const [alumniRes, uniRes] = await Promise.all([
+    TeamMemberService.getMembers({ query: alumniQuery }),
+    TeamMemberService.getMembers({ query: universitiesQuery }),
+  ]);
+
+  const alumniBoard = alumniRes?.data?.data?.boards?.[0];
+  const alumniItems = alumniBoard?.items_page?.items ?? [];
+
+  const titleId = "text";
+  const picturesId = "files";
+  const linkedinId = "text2";
+  const twitterId = "text4";
+
+  const alumni = alumniItems.map((item) => {
+    const titleText = col(item, titleId)?.text ?? "";
+    const { role, company } = parseTitleToRoleCompany(titleText);
+
+    const linkedin =
+      extractUrlFromMondayValue(col(item, linkedinId)) ||
+      col(item, linkedinId)?.text ||
+      null;
+
+    const twitter =
+      extractUrlFromMondayValue(col(item, twitterId)) ||
+      col(item, twitterId)?.text ||
+      null;
+
+    const picsCv = col(item, picturesId);
+    const assetId = extractAssetIdFromFilesColumn(picsCv);
+    const assetsById = buildAssetsById(item?.assets ?? []);
+    const imgFromAssets =
+      (assetId ? assetsById.get(assetId) : null) ||
+      item?.assets?.[0]?.public_url ||
+      null;
+
+    const imgFallback = picsCv?.text || null;
+
+    return {
+      id: item.id,
+      name: item.name,
+      role,
+      company,
+      image: imgFromAssets || imgFallback || null,
+      linkedin,
+      twitter,
+    };
+  });
+
+  const uniBoard = uniRes?.data?.data?.boards?.[0];
+  const uniItems = uniBoard?.items_page?.items ?? [];
+  const uniColumnsMap = buildTitleToId(uniBoard?.columns ?? []);
+
+  const uniPicturesId =
+    pickId(uniColumnsMap, ["Pictures", "files", "pictures"]) || "files";
+  const uniPeopleId =
+    pickId(uniColumnsMap, [
+      "Number of People",
+      "number of people",
+      "People",
+      "people",
+      "Number",
+      "numbers",
+    ]) || "numbers";
+
+  const groupsIndex = new Map(
+    (uniBoard?.groups ?? []).map((g, idx) => [String(g.id), idx]),
+  );
+
+  const groupBuckets = new Map();
+
+  for (const item of uniItems) {
+    const groupId = String(item?.group?.id || "unknown");
+    const groupTitle = item?.group?.title || "Other";
+
+    const picsCv = col(item, uniPicturesId);
+    const assetId = extractAssetIdFromFilesColumn(picsCv);
+    const assetsById = buildAssetsById(item?.assets ?? []);
+    const imgFromAssets =
+      (assetId ? assetsById.get(assetId) : null) ||
+      item?.assets?.[0]?.public_url ||
+      null;
+
+    const imgFallback =
+      extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
+
+    const peopleCount = parseNumberFromMonday(col(item, uniPeopleId));
+
+    if (!groupBuckets.has(groupId)) {
+      groupBuckets.set(groupId, {
+        id: groupId,
+        title: groupTitle,
+        items: [],
+      });
+    }
+
+    groupBuckets.get(groupId).items.push({
+      id: item.id,
+      name: item.name,
+      image: imgFromAssets || imgFallback || null,
+      peopleCount,
+    });
   }
+
+  const universitiesGroups = Array.from(groupBuckets.values()).sort((a, b) => {
+    const ai = groupsIndex.has(String(a.id))
+      ? groupsIndex.get(String(a.id))
+      : 9999;
+    const bi = groupsIndex.has(String(b.id))
+      ? groupsIndex.get(String(b.id))
+      : 9999;
+    return ai - bi;
+  });
+
   return {
-    props: { locations: fetchedProjects },
-    revalidate: fetchedProjects.length ? 3600 : 1,
+    props: { alumni, universitiesGroups },
+    revalidate: 3600,
   };
 }

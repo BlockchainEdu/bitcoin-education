@@ -19,8 +19,11 @@ module.exports = {
           400: "#626363",
           500: "#5C606B",
         },
-        bencustomgrey: {
-          500: "#737373",
+        bencustomorange: {
+          500: "#dc6a13ff",
+        },
+        bencustomblack: {
+          500: "#212528",
         },
       },
       fontSize: {
@@ -48,17 +51,18 @@ module.exports = {
       },
       scrollBehavior: ["responsive"],
       backgroundImage: {
-        'radial-glow': 'radial-gradient(ellipse at top, rgba(255,255,255,0.06), transparent 70%)',
+        "radial-glow":
+          "radial-gradient(ellipse at top, rgba(255,255,255,0.06), transparent 70%)",
       },
       keyframes: {
-        'light-swipe': {
-          '0%': { left: '-75%' },
-          '100%': { left: '100%' },
+        "light-swipe": {
+          "0%": { left: "-75%" },
+          "100%": { left: "100%" },
         },
       },
       animation: {
-        'pulse-slow': 'pulse 4s ease-in-out infinite',
-        'light-swipe': 'light-swipe 1.2s ease-in-out forwards',
+        "pulse-slow": "pulse 4s ease-in-out infinite",
+        "light-swipe": "light-swipe 1.2s ease-in-out forwards",
       },
     },
   },

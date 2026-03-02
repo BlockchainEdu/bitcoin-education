@@ -256,7 +256,6 @@ export async function getStaticProps() {
     eventDeals = dealItems.reduce((acc, item) => {
       let event = item.column_values[0].value;
 
-      // Remove quotation marks from the event string
       event = event.replace(/^"|"$/g, '');
 
       const message = item.name;
@@ -275,6 +274,6 @@ export async function getStaticProps() {
       eventsByContinent,
       eventDeals
     },
-    revalidate: 3600, // Revalidate data at most once every second
+    revalidate: 3600,
   };
 }
