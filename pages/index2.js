@@ -429,62 +429,63 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-benorange-100 opacity-90" />
         <div className="hero-vignette" aria-hidden="true" />
 
-        <div className="relative container mx-auto pt-24 pb-16 px-6 hero-content">
-          <div className="hero-badge inline-flex items-center gap-4 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs mb-6 shadow-sm">
-            <span className="font-semibold">Proof of impact</span>
-            <span className="opacity-70">
-              $20B+ in value created, 160+ chapters in 35+ countries and 2.2M
-              impressions on X
-            </span>
-          </div>
-
-          <div className="max-w-xl mx-auto text-center hero-glass">
-            <div className="hero-glass-content">
-              <h1 className="flex justify-center leading-none">
-                <img
-                  src="/images/ben-network/ben-network-logo.png"
-                  alt="BEN Network"
-                  className="h-auto max-w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
-                  style={{ width: "clamp(220px, 42vw, 560px)" }}
-                  loading="eager"
-                  decoding="async"
-                />
-              </h1>
-
-              <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-2xl mx-auto">
-                A global network of student founders, alumni and companies built
-                through the Blockchain Education Network
-              </p>
-
-              <div className="hero-media mt-8">
-                <div className="benevents-card">
-                  <div className="benevents-frame">
-                    <img
-                      src={BENEVENTS_IMG}
-                      alt="BEN Events"
-                      className="benevents-img"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
+        <div className="relative container mx-auto pt-24 pb-16 px-6">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="order-2 lg:order-1 flex justify-center">
+              <div className="benevents-card">
+                <div className="benevents-frame">
+                  <img
+                    src={BENEVENTS_IMG}
+                    alt="BEN Events"
+                    className="benevents-img"
+                    loading="eager"
+                    decoding="async"
+                  />
                 </div>
               </div>
+            </div>
 
-              <div className="mt-8 text-center">
-                <div className="flex justify-center">
-                  {users.map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt={`User ${i + 1}`}
-                      className="w-10 h-10 rounded-full border-2 border-benorange -ml-2 object-cover"
-                    />
-                  ))}
+            <div className="order-1 lg:order-2 flex justify-center">
+              <div className="hero-copy">
+                <div className="hero-badge inline-flex items-center justify-center gap-3 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs shadow-sm">
+                  <span className="font-semibold">Proof of impact</span>
+                  <span className="opacity-70">
+                    $20B+ created across 160+ chapters in 35+ countries
+                  </span>
                 </div>
 
-                <p className="mt-2 text-sm text-bengrey-500">
-                  📡 Followed by 25k+ in Web3
+                <div className="hero-logoWrap mt-6">
+                  <img
+                    src="/images/ben-network/ben-network-logo.png"
+                    alt="BEN Network"
+                    className="h-auto max-w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
+                    style={{ width: "clamp(220px, 34vw, 520px)" }}
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+
+                <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-xl text-center">
+                  A global network of student founders, alumni and companies
+                  built through the Blockchain Education Network
                 </p>
+
+                <div className="mt-8 flex flex-col items-center w-full">
+                  <div className="hero-users">
+                    {users.map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt={`User ${i + 1}`}
+                        className="hero-user-avatar"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="mt-3 text-sm text-bengrey-500 text-center">
+                    📡 Followed by 25k+ in Web3
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -642,8 +643,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
                 ].map((img) => (
                   <div
                     key={img.src}
-                    className={`absolute ${img.pos} w-[170px] h-[170px] sm:w-[190px] sm:h-[190px]
-                      rounded-full overflow-hidden border border-black/5 bg-white shadow-sm`}
+                    className={`absolute ${img.pos} w-[170px] h-[170px] sm:w-[190px] sm:h-[190px] rounded-full overflow-hidden border border-black/5 bg-white shadow-sm`}
                   >
                     <img
                       src={img.src}

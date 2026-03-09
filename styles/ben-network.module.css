@@ -90,6 +90,7 @@
   isolation: isolate;
   overflow: hidden;
 }
+
 .root :global(.logo-card::before) {
   content: "";
   position: absolute;
@@ -114,6 +115,7 @@
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45))
     drop-shadow(0 0 14px rgba(0, 0, 0, 0.06));
 }
+
 .root :global(.logo-card .logo-wrap) {
   position: relative;
   z-index: 1;
@@ -131,13 +133,16 @@
     background-size: 200% 200%;
     animation: unicornShift 2.2s ease-in-out infinite;
   }
+
   @keyframes unicornShift {
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -150,6 +155,7 @@
   align-items: center;
   justify-content: center;
 }
+
 .root :global(.logo-img) {
   max-height: 56px;
   max-width: 100%;
@@ -165,6 +171,7 @@
     transform 160ms ease,
     border-color 180ms ease;
 }
+
 .root :global(.card-premium:hover) {
   transform: translateY(-2px);
   border-color: rgba(0, 0, 0, 0.1);
@@ -183,6 +190,7 @@
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
+
 .root :global(.project-logo-img) {
   width: 100%;
   height: 100%;
@@ -198,9 +206,11 @@
   padding: 14px;
   transition: transform 160ms ease;
 }
+
 .root :global(.mini-logo:hover) {
   transform: translateY(-2px);
 }
+
 .root :global(.mini-logo-img) {
   width: 100%;
   height: 44px;
@@ -237,6 +247,7 @@
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   padding-top: 16px;
 }
+
 .root :global(.uni-group:first-child) {
   border-top: none;
   padding-top: 4px;
@@ -249,6 +260,7 @@
   gap: 12px;
   padding: 0 4px 10px;
 }
+
 .root :global(.uni-groupTitle) {
   font-weight: 600;
   font-size: 14px;
@@ -263,11 +275,13 @@
   row-gap: 16px;
   padding: 6px 4px 10px;
 }
+
 @media (min-width: 820px) {
   .root :global(.uni-grid) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (min-width: 1140px) {
   .root :global(.uni-grid) {
     grid-template-columns: repeat(3, 1fr);
@@ -303,13 +317,15 @@
   justify-content: center;
   overflow: hidden;
 }
+
 .root :global(.uni-logoImg) {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 7px;
+  padding: 0;
   display: block;
 }
+
 .root :global(.uni-logoFallback) {
   width: 100%;
   height: 100%;
@@ -327,7 +343,6 @@
   font-weight: 500;
   color: rgba(0, 0, 0, 0.82);
   line-height: 1.25;
-
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -417,9 +432,11 @@
     border-color 180ms ease;
   user-select: none;
 }
+
 .root :global(.uni-pagerBtn:hover:not(:disabled)) {
   transform: translateY(-1px);
 }
+
 .root :global(.uni-pagerBtn:disabled) {
   opacity: 0.45;
   cursor: not-allowed;
@@ -442,10 +459,12 @@
     border-color 180ms ease,
     transform 120ms ease;
 }
+
 .root :global(.uni-pageNum:hover) {
   color: rgba(0, 0, 0, 0.77);
   transform: translateY(-1px);
 }
+
 .root :global(.uni-pageNum.is-active) {
   font-weight: 600;
   transform: none;
@@ -473,6 +492,7 @@
   outline: none;
   color: rgba(0, 0, 0, 0.75);
 }
+
 .root :global(.uni-pageInput:focus) {
   border-color: rgba(0, 0, 0, 0.18);
 }
@@ -497,10 +517,12 @@
   will-change: transform, filter;
   overflow: hidden;
 }
+
 .root :global(.floating-chip:focus-visible) {
   outline: 2px solid rgba(0, 0, 0, 0.35);
   outline-offset: 3px;
 }
+
 .root :global(.floating-chip-inner) {
   width: 100%;
   height: 100%;
@@ -514,6 +536,7 @@
   overflow: hidden;
   transition: transform 160ms ease;
 }
+
 .root :global(.floating-chip:hover .floating-chip-inner) {
   background: radial-gradient(
     circle at 50% 50%,
@@ -535,26 +558,35 @@
   z-index: 20;
   pointer-events: none;
 }
+
 .root :global(.hero-content a),
 .root :global(.hero-content button),
 .root :global(.hero-content [role="button"]) {
   pointer-events: auto;
 }
 
+.root :global(.hero-copy) {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .root :global(.hero-badge) {
-  position: absolute;
-  top: 75px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 30;
-  pointer-events: auto;
-  width: min(87vw, 575px);
+  position: static;
+  width: min(100%, 420px);
+  margin: 0 auto;
   justify-content: center;
 }
+
 .root :global(.hero-badge > span:first-child) {
   white-space: nowrap;
   flex: 0 0 auto;
 }
+
 .root :global(.hero-badge > span:last-child) {
   flex: 1 1 auto;
   min-width: 0;
@@ -562,13 +594,33 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-@media (max-width: 640px) {
-  .root :global(.hero-badge) {
-    top: 64px;
-    padding: 10px 14px;
-    gap: 10px;
-    font-size: 12px;
-  }
+
+.root :global(.hero-logoWrap) {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.root :global(.hero-users) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.root :global(.hero-user-avatar) {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 2px solid #ff872a;
+  object-fit: cover;
+  display: block;
+  margin-left: -8px;
+}
+
+.root :global(.hero-user-avatar:first-child) {
+  margin-left: 0;
 }
 
 .root :global(.hero-vignette) {
@@ -599,11 +651,13 @@
   isolation: isolate;
   z-index: 0;
 }
+
 .root :global(.hero-glass-content) {
   position: relative;
   z-index: 2;
   transform: translateZ(0);
 }
+
 .root :global(.hero-glass::before) {
   content: "";
   position: absolute;
@@ -628,6 +682,7 @@
     rgba(0, 0, 0, 0) 100%
   );
 }
+
 .root :global(.hero-glass::after) {
   content: "";
   position: absolute;
@@ -658,6 +713,7 @@
     rgba(0, 0, 0, 0) 100%
   );
 }
+
 .root :global(.hero-media) {
   display: flex;
   justify-content: center;
@@ -665,22 +721,22 @@
 }
 
 .root :global(.benevents-card) {
-  width: min(520px, 92%);
+  width: 100%;
+  max-width: 520px;
   border-radius: 22px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   box-shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition:
-    transform 160ms ease,
-    border-color 180ms ease;
 }
+
 .root :global(.benevents-card:hover) {
-  transform: translateY(-2px);
-  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.12);
-  border-color: rgba(0, 0, 0, 0.1);
+  transform: none;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.06);
 }
+
 .root :global(.benevents-frame) {
   position: relative;
   width: 100%;
@@ -698,12 +754,13 @@
     rgba(255, 255, 255, 0.55);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
+
 .root :global(.benevents-img) {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
-  transform: translateZ(0);
+  transform: none;
 }
 
 .root :global(.people-grid) {
@@ -714,6 +771,7 @@
   max-width: 950px;
   margin: 0 auto;
 }
+
 @media (min-width: 1024px) {
   .root :global(.people-grid) {
     gap: 30px 26px;
@@ -738,6 +796,7 @@
   overflow: hidden;
   background: rgba(0, 0, 0, 0.03);
 }
+
 .root :global(.people-avatar-img) {
   width: 100%;
   height: 100%;
@@ -790,6 +849,7 @@
     transform 120ms ease,
     background 180ms ease;
 }
+
 .root :global(.social-btn:hover) {
   transform: translateY(-1px);
   background: rgba(0, 0, 0, 0.085);
@@ -799,32 +859,40 @@
   0% {
     transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
+
   50% {
     transform: translate(-50%, -50%) translate3d(0, -18px, 0) rotate(3deg)
       scale(1.03);
   }
+
   100% {
     transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg) scale(1);
   }
 }
+
 @keyframes driftX2 {
   0% {
     transform: translate(-50%, -50%) translate3d(0, 0, 0);
   }
+
   50% {
     transform: translate(-50%, -50%) translate3d(14px, 0, 0);
   }
+
   100% {
     transform: translate(-50%, -50%) translate3d(0, 0, 0);
   }
 }
+
 @keyframes bobShadow {
   0% {
     filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
   }
+
   50% {
     filter: drop-shadow(0 22px 46px rgba(0, 0, 0, 0.16));
   }
+
   100% {
     filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.12));
   }
@@ -835,12 +903,14 @@
     floatY2 5.8s ease-in-out infinite,
     bobShadow 5.8s ease-in-out infinite;
 }
+
 .root :global(.floatv2) {
   animation:
     floatY2 7.2s ease-in-out infinite,
     driftX2 9.4s ease-in-out infinite,
     bobShadow 7.2s ease-in-out infinite;
 }
+
 .root :global(.floatv3) {
   animation:
     floatY2 6.4s ease-in-out infinite,
@@ -853,6 +923,7 @@
   opacity: 0.001;
   animation: revealIn 520ms ease forwards;
 }
+
 @keyframes revealIn {
   to {
     transform: translateY(0);
@@ -875,6 +946,7 @@
     transform: none !important;
     filter: none !important;
   }
+
   .root :global(.reveal) {
     opacity: 1 !important;
   }
@@ -884,14 +956,17 @@
   width: 92px;
   height: 92px;
 }
+
 .root :global(.size-md) {
   width: 76px;
   height: 76px;
 }
+
 .root :global(.size-lg) {
   width: 93px;
   height: 93px;
 }
+
 .root :global(.size-xl) {
   width: 98px;
   height: 98px;
@@ -987,6 +1062,48 @@
 }
 
 @media (max-width: 640px) {
+  .root :global(.hero-copy) {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 0;
+    padding-inline: 0;
+    align-items: center;
+    text-align: center;
+  }
+
+  .root :global(.hero-badge) {
+    width: min(100%, 360px);
+    margin: 0 auto 14px;
+    padding: 10px 14px;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .root :global(.hero-badge > span:last-child) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .root :global(.hero-logoWrap) {
+    margin-top: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .root :global(.hero-users) {
+    justify-content: center;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .root :global(.hero-user-avatar) {
+    width: 36px;
+    height: 36px;
+    margin-left: -6px;
+  }
+
   .root :global(.people-grid--alumni) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
