@@ -78,7 +78,7 @@ export default function NationalTeamCard({
             alt={`${name} — ${title}`}
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-transform duration-500 group-hover:scale-105"
-            style={{ backgroundColor: "#E1E1E1" }}
+            style={{ backgroundColor: "#E1E1E1", objectPosition: "top" }}
           />
 
           {/* Hover gradient overlay */}

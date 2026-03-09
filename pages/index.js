@@ -313,13 +313,14 @@ export default function BenNetwork({ universities = [] }) {
     return m;
   }, [allUniFlat]);
 
-  const PAGE_SIZE = 21;
+  const PAGE_SIZE = 24;
   const [uniPage, setUniPage] = useState(1);
+  const [uniSearch, setUniSearch] = useState("");
   const [navigatingTo, setNavigatingTo] = useState(null);
 
   useEffect(() => {
     setUniPage(1);
-  }, [allUniFlat.length]);
+  }, [allUniFlat.length, uniSearch]);
 
   useEffect(() => {
     const onDone = () => setNavigatingTo(null);
@@ -331,16 +332,25 @@ export default function BenNetwork({ universities = [] }) {
 
   const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
+  const uniFiltered = useMemo(() => {
+    if (!uniSearch.trim()) return allUniFlat;
+    const q = uniSearch.trim().toLowerCase();
+    return allUniFlat.filter((u) => u.name.toLowerCase().includes(q));
+  }, [allUniFlat, uniSearch]);
+
+  const isSearching = uniSearch.trim().length > 0;
   const uniTotal = allUniFlat.length;
-  const uniTotalPages = Math.max(1, Math.ceil(uniTotal / PAGE_SIZE));
+  const uniFilteredTotal = uniFiltered.length;
+  const uniTotalPages = Math.max(1, Math.ceil(uniFilteredTotal / PAGE_SIZE));
   const uniPageClamped = clamp(uniPage, 1, uniTotalPages);
   const uniStart = (uniPageClamped - 1) * PAGE_SIZE;
-  const uniPaged = allUniFlat.slice(uniStart, uniStart + PAGE_SIZE);
+  const uniPaged = uniFiltered.slice(uniStart, uniStart + PAGE_SIZE);
   const uniPagesWindow = buildPageWindow(uniPageClamped, uniTotalPages, 5);
 
-  const uniColumns = useMemo(() => {
-    return chunkUniversitiesForColumns(uniPaged, 3);
-  }, [uniPaged]);
+  // Top 3 only shown on page 1 without search
+  const showPodium = !isSearching && uniPageClamped === 1;
+  const uniTop3 = showPodium ? uniPaged.slice(0, 3) : [];
+  const uniRest = showPodium ? uniPaged.slice(3) : uniPaged;
 
   return (
     <div className={`${styles.root} min-h-screen text-benblack-500`}>
@@ -459,7 +469,7 @@ export default function BenNetwork({ universities = [] }) {
                 <span className="text-benorange-500">billion-dollar protocols</span>
               </h2>
               <p className="mt-4 sm:mt-5 font-inter text-sm sm:text-base text-benblack-500/60 leading-relaxed">
-                Founded in 2014, BEN is one of the largest and longest-running networks connecting blockchain students, professors, and alumni worldwide. We help founders launch and scale real projects through events, mentorship, and warm intros across the ecosystem.
+                Founded in 2014, BEN is one of the largest and longest-running networks connecting blockchain students, professors, and alumni worldwide. We help founders launch and scale real projects through events, mentorship, and warm intros across the ecosystem. BEN Ventures backs student founders building Web3 startups, and our partnerships with university blockchain labs — including UF&apos;s Algorand-funded Blockchain Lab — bridge academic research and industry.
               </p>
             </div>
             <div className="space-y-0">
@@ -525,186 +535,186 @@ export default function BenNetwork({ universities = [] }) {
         </div>
       </section>
 
-      {/* ── UNIVERSITIES ── Cream bg, prominent */}
-      <section id="universities" style={{ backgroundColor: "#FFFBF2" }} className="py-12 sm:py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-5 sm:px-10">
-          <div className="text-center mb-8 sm:mb-10">
+      {/* ── UNIVERSITIES ── Premium leaderboard */}
+      <section id="universities" style={{ backgroundColor: "#f8f8fa" }} className="py-14 sm:py-20 md:py-28 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-5 sm:px-10 overflow-hidden">
+          <div className="text-center mb-10 sm:mb-14">
             <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-inter font-semibold tracking-wide uppercase" style={{ backgroundColor: "rgba(255,135,42,0.08)", color: "#FF872A" }}>
               Global Reach
             </span>
-            <h2 className="mt-3 sm:mt-4 font-mont font-bold text-2xl sm:text-3xl text-benblack-500 tracking-tight">
-              Our university network
+            <h2 className="mt-4 sm:mt-5 font-mont font-bold text-3xl sm:text-4xl md:text-5xl text-benblack-500 tracking-tight">
+              University Network
             </h2>
-            <p className="mt-2 sm:mt-3 font-inter text-xs sm:text-sm text-benblack-500/60 max-w-xl mx-auto">
-              {uniTotal} universities and blockchain clubs across 35+ countries.
+            <p className="mt-3 sm:mt-4 font-inter text-sm sm:text-base max-w-lg mx-auto" style={{ color: "rgba(0,0,0,0.45)" }}>
+              {uniTotal} universities and blockchain clubs across 35+ countries
             </p>
           </div>
 
-            <div className="uni-panel reveal">
-              {uniTotal === 0 ? (
-                <div className="uni-empty">Sem dados de Universities.</div>
-              ) : (
-                <>
-                  <div className="uni-grid">
-                    {uniColumns.map((column, columnIndex) => (
-                      <div key={columnIndex} className="uni-column">
-                        {column.map((u) => {
-                          const globalRank = uniRankById.get(String(u.id)) || 0;
-                          const badge = Number(u.peopleCount || 0);
-                          const href = `/universities/${slugify(u.name)}`;
-                          const isLoading = navigatingTo === u.id;
-
-                          return (
-                            <Link key={u.id} href={href} prefetch>
-                              <a
-                                className={`uni-item ${
-                                  isLoading ? "is-loading" : ""
-                                }`}
-                                title={u.name}
-                                onClick={() => setNavigatingTo(u.id)}
-                                aria-label={`Open ${u.name}`}
-                              >
-                                <div className="uni-rank">{globalRank}</div>
-
-                                <div className="uni-logoWrap" data-dominant-bg>
-                                  {u.image ? (
-                                    <SmartImage
-                                      src={imgSrc(u.image)}
-                                      fallbackSrcs={[]}
-                                      alt={u.name}
-                                      className="uni-logoImg"
-                                      loading="lazy"
-                                      onLoad={onDominantBgLoad}
-                                    />
-                                  ) : (
-                                    <div
-                                      className="uni-logoFallback"
-                                      aria-label={u.name}
-                                    >
-                                      {initialsFromName(u.name)}
-                                    </div>
-                                  )}
-                                </div>
-
-                                <div className="uni-name">
-                                  {u.name}
-                                  {isLoading ? (
-                                    <div className="uni-loading">
-                                      Loading...
-                                    </div>
-                                  ) : null}
-                                </div>
-
-                                <div className="uni-badgeWrap">
-                                  <span
-                                    className={`uni-badge ${
-                                      badge > 0 ? "" : "is-zero"
-                                    }`}
-                                    aria-label={`Number of People: ${badge}`}
-                                    title={`Number of People: ${badge}`}
-                                    onClick={(e) => e.preventDefault()}
-                                  >
-                                    <svg
-                                      className="uni-badgeIcon"
-                                      viewBox="0 0 24 24"
-                                      width="14"
-                                      height="14"
-                                      aria-hidden="true"
-                                    >
-                                      <path
-                                        fill="currentColor"
-                                        d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
-                                      />
-                                    </svg>
-                                    <span className="uni-badgeNum">
-                                      {badge}
-                                    </span>
-                                  </span>
-                                </div>
-                              </a>
-                            </Link>
-                          );
-                        })}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="uni-footerMeta uni-footerMeta--pager">
-                    <div className="uni-pager">
-                      <button
-                        className="uni-pagerBtn"
-                        onClick={() =>
-                          setUniPage(
-                            clamp(uniPageClamped - 1, 1, uniTotalPages),
-                          )
-                        }
-                        disabled={uniPageClamped <= 1}
-                        aria-label="Página anterior"
-                        title="Anterior"
-                      >
-                        ‹
-                      </button>
-
-                      <div
-                        className="uni-pageNums"
-                        role="navigation"
-                        aria-label="Paginação"
-                      >
-                        {uniPagesWindow.map((pNum) => (
-                          <button
-                            key={pNum}
-                            className={`uni-pageNum ${
-                              pNum === uniPageClamped ? "is-active" : ""
-                            }`}
-                            onClick={() => setUniPage(pNum)}
-                            aria-label={`Ir para página ${pNum}`}
-                          >
-                            {pNum}
-                          </button>
-                        ))}
-                      </div>
-
-                      <button
-                        className="uni-pagerBtn"
-                        onClick={() =>
-                          setUniPage(
-                            clamp(uniPageClamped + 1, 1, uniTotalPages),
-                          )
-                        }
-                        disabled={uniPageClamped >= uniTotalPages}
-                        aria-label="Próxima página"
-                        title="Próxima"
-                      >
-                        ›
-                      </button>
-                    </div>
-
-                    <div className="uni-pageJump">
-                      <span className="uni-pageLabel">Page</span>
-                      <input
-                        className="uni-pageInput"
-                        type="number"
-                        min={1}
-                        max={uniTotalPages}
-                        value={uniPageClamped}
-                        onChange={(e) => {
-                          const v = Number(e.target.value || 1);
-                          if (!Number.isFinite(v)) return;
-                          setUniPage(clamp(v, 1, uniTotalPages));
-                        }}
-                        onBlur={(e) => {
-                          const v = Number(e.target.value || 1);
-                          setUniPage(clamp(v, 1, uniTotalPages));
-                        }}
-                        aria-label="Selecionar página"
-                      />
-                    </div>
-                  </div>
-                </>
-              )}
+          <div className="uni-panel">
+            {/* Search */}
+            <div className="uni-search">
+              <svg className="uni-searchIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="M21 21l-4.35-4.35" />
+              </svg>
+              <input
+                className="uni-searchInput"
+                type="text"
+                placeholder="Search universities..."
+                value={uniSearch}
+                onChange={(e) => setUniSearch(e.target.value)}
+              />
             </div>
+
+            {uniFilteredTotal === 0 ? (
+              <div className="uni-empty">No universities found for &ldquo;{uniSearch}&rdquo;</div>
+            ) : (
+              <>
+                {/* Top 3 podium cards */}
+                {showPodium && uniTop3.length > 0 && (
+                  <>
+                    <div className="uni-podium">
+                      {uniTop3.map((u, i) => {
+                        const badge = Number(u.peopleCount || 0);
+                        const href = `/universities/${slugify(u.name)}`;
+                        const isLoading = navigatingTo === u.id;
+                        const rankColors = ["#FF872A", "#64748b", "#a1785c"];
+                        return (
+                          <Link key={u.id} href={href} prefetch>
+                            <a
+                              className={`uni-podiumCard ${isLoading ? "is-loading" : ""}`}
+                              onClick={() => setNavigatingTo(u.id)}
+                            >
+                              <div className="uni-podiumRank" style={{ backgroundColor: rankColors[i] }}>
+                                {i + 1}
+                              </div>
+                              <div className="uni-podiumLogo" data-dominant-bg>
+                                {u.image ? (
+                                  <SmartImage
+                                    src={imgSrc(u.image)}
+                                    fallbackSrcs={[]}
+                                    alt={u.name}
+                                    loading="eager"
+                                    onLoad={onDominantBgLoad}
+                                  />
+                                ) : (
+                                  <div className="uni-cardLogoFallback">{initialsFromName(u.name)}</div>
+                                )}
+                              </div>
+                              <div className="uni-podiumName">{u.name}</div>
+                              <div className="uni-podiumCount">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                  <circle cx="9" cy="7" r="4" />
+                                  <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                                  <path d="M16 3.13a4 4 0 010 7.75" />
+                                </svg>
+                                {badge} members
+                              </div>
+                            </a>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                    <div className="uni-divider" />
+                  </>
+                )}
+
+                {/* Card grid */}
+                <div className="uni-grid">
+                  {uniRest.map((u) => {
+                    const globalRank = uniRankById.get(String(u.id)) || 0;
+                    const badge = Number(u.peopleCount || 0);
+                    const href = `/universities/${slugify(u.name)}`;
+                    const isLoading = navigatingTo === u.id;
+
+                    return (
+                      <Link key={u.id} href={href} prefetch>
+                        <a
+                          className={`uni-card ${isLoading ? "is-loading" : ""}`}
+                          onClick={() => setNavigatingTo(u.id)}
+                        >
+                          <div className="uni-cardRank">{globalRank}</div>
+                          <div className="uni-cardLogo" data-dominant-bg>
+                            {u.image ? (
+                              <SmartImage
+                                src={imgSrc(u.image)}
+                                fallbackSrcs={[]}
+                                alt={u.name}
+                                className="uni-cardLogoImg"
+                                loading="lazy"
+                                onLoad={onDominantBgLoad}
+                              />
+                            ) : (
+                              <div className="uni-cardLogoFallback">{initialsFromName(u.name)}</div>
+                            )}
+                          </div>
+                          <div className="uni-cardBody">
+                            <div className="uni-cardName">{u.name}</div>
+                            <div className="uni-cardCount">
+                              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                                <path d="M16 3.13a4 4 0 010 7.75" />
+                              </svg>
+                              {badge}
+                            </div>
+                          </div>
+                        </a>
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                {/* Pagination */}
+                {uniTotalPages > 1 && (
+                  <div className="uni-pagerWrap">
+                    <button
+                      className="uni-pagerBtn"
+                      onClick={() => setUniPage(clamp(uniPageClamped - 1, 1, uniTotalPages))}
+                      disabled={uniPageClamped <= 1}
+                      aria-label="Previous page"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 18l-6-6 6-6" />
+                      </svg>
+                    </button>
+
+                    {uniPagesWindow.map((pNum) => (
+                      <button
+                        key={pNum}
+                        className={`uni-pageNum ${pNum === uniPageClamped ? "is-active" : ""}`}
+                        onClick={() => setUniPage(pNum)}
+                      >
+                        {pNum}
+                      </button>
+                    ))}
+
+                    <button
+                      className="uni-pagerBtn"
+                      onClick={() => setUniPage(clamp(uniPageClamped + 1, 1, uniTotalPages))}
+                      disabled={uniPageClamped >= uniTotalPages}
+                      aria-label="Next page"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
+
+                {/* Result count */}
+                {isSearching && (
+                  <div className="uni-resultCount">
+                    {uniFilteredTotal} {uniFilteredTotal === 1 ? "university" : "universities"} found
+                  </div>
+                )}
+              </>
+            )}
           </div>
-        </section>
+        </div>
+      </section>
 
       {/* ── CTA ── */}
       <section className="relative overflow-hidden py-16 sm:py-24 md:py-32" style={{ backgroundColor: "#202127" }}>

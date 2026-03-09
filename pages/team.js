@@ -15,8 +15,8 @@ export default function About() {
       new TeamMember(
         "/images/team/antonio-photo.jpg",
         "Antonio Gomes",
-        "President & Head of Ecosystem Growth, BEN",
-        "UF Warrington grad and past president of the Gator Blockchain Club. Worked at Oracle before going full-time on BEN, where he leads ecosystem growth, strategic partnerships, and network expansion across 10,000+ students in 35+ countries. Also at GDA Capital, helping Web3 founders raise and scale. Based in San Francisco.",
+        "President & GP, BEN | Advisory Board, UF Blockchain Lab",
+        "UF Warrington College of Business grad ('20) and past president of the Gator Blockchain Club. General Partner at BEN Ventures, a fund backing student founders building Web3 startups. Advisory Board member at the UF Blockchain Lab, which secured a $270K Algorand Foundation grant to build open-source blockchain education. Previously at Oracle HQ, multiple VC firms, and GDA Capital. Leads BEN's ecosystem growth, strategic partnerships, and network expansion across 10,000+ students in 35+ countries.",
         "",
         "",
         "",
@@ -55,9 +55,17 @@ export default function About() {
         ""
       ),
       new TeamMember(
+        "/images/team/reynaldo-darit.jpg",
+        "Reynaldo Darit",
+        "Operations & Research Analyst, BEN",
+        "University of Mindanao grad. Manages data operations, research workflows, and intelligence gathering across BEN's global network. Supports leadership with structured analysis and operational insights across BEN's 10,000+ student network.",
+        "",
+        ""
+      ),
+      new TeamMember(
         "/images/team/dean-masley.jpg",
         "Dean Masley",
-        "Executive Director & Head of Partnerships, BEN",
+        "Advisor, Partnerships & Ecosystem, BEN",
         "Last Executive Director of BEN before going full-time founder. Building NestEgg — blockchain-powered investing in real-world infrastructure like solar. Deep experience in blockchain partnerships and network strategy.",
         "",
         "",
@@ -65,10 +73,17 @@ export default function About() {
         "https://www.youtube.com/watch?v=kktID_s-KWo"
       ),
       new TeamMember(
-        "/images/team/reynaldo-darit.jpg",
-        "Reynaldo Darit",
-        "Operations & Research Analyst, BEN",
-        "University of Mindanao grad. Manages data operations, research workflows, and intelligence gathering across BEN's global network. Supports leadership with structured analysis and operational insights across BEN's 10,000+ student network.",
+        "/images/people/pablo-casilimas.jpg",
+        "Pablo Casilimas",
+        "Advisor, Ventures & Partnerships, BEN",
+        "Managing Partner and Co-Founder of OneSixOne Ventures. Previously founded Gainesville-based content marketing agency Rootex and is a publishing partner at Innovations of the World. Advises BEN on venture strategy, fund operations, and LP relationships.",
+        ""
+      ),
+      new TeamMember(
+        "/images/people/michael-gord.jpeg",
+        "Michael Gord",
+        "Advisor, Capital Markets & Strategy, BEN",
+        "Been in crypto since 2013 — 3 exits, 4 acquisitions, 70+ portfolio companies. Founded Bitcoin Canada and MLG Blockchain before building GDA Capital. Took Tron ($20B peak) and Loopring to capital markets. Advises BEN on capital markets strategy and institutional partnerships.",
         "",
         ""
       ),
@@ -103,6 +118,16 @@ export default function About() {
         "",
         "",
         "https://youtu.be/J7VXIAp9Sy8"
+      ),
+      new TeamMember(
+        "/images/people/perianne-boring.jpg",
+        "Perianne Boring",
+        "Founder & Chair, The Digital Chamber",
+        "UF grad (2010) and former TV host on RT America. Founded The Digital Chamber in 2014 — the largest blockchain trade association in the U.S., representing over 200 companies. Former legislative analyst in the U.S. House of Representatives. Named to Forbes 30 Under 30 and recognized as one of the most influential people in blockchain policy.",
+        "",
+        "",
+        "",
+        "https://youtu.be/ocC0zIYzmtQ"
       ),
       new TeamMember(
         "/images/people/jinglan-wang.jpeg",
@@ -171,14 +196,6 @@ export default function About() {
         ""
       ),
       new TeamMember(
-        "/images/people/michael-gord.jpeg",
-        "Michael Gord",
-        "Co-Founder & CEO, GDA Capital",
-        "Been in crypto since 2013 — 3 exits, 4 acquisitions, 70+ portfolio companies. Founded Bitcoin Canada and MLG Blockchain before building GDA Capital.",
-        "",
-        ""
-      ),
-      new TeamMember(
         "/images/people/gal-stern.jpeg",
         "Gal Stern",
         "Head of BD, deBridge",
@@ -239,6 +256,14 @@ export default function About() {
         "Andy",
         "Co-Founder, The Rollup",
         "UF dropout turned entrepreneur. Co-founded The Rollup and The Rollup Ventures in 2020. 50+ investments, 1,000+ podcast episodes, and events across 40+ countries.",
+        "",
+        ""
+      ),
+      new TeamMember(
+        "/images/people/marko-suvajdzic.png",
+        "Marko Suvajdzic",
+        "Director, UF Blockchain Lab",
+        "Associate Professor at the University of Florida and Director of the UF Blockchain Research Lab, established with a $270K Algorand Foundation grant. 25+ years in academia and digital research, $7M in external grants, and five digital media startups founded. Presented at Talks at Google and GDC. Also Entrepreneur in Residence at UF Warrington College of Business.",
         "",
         ""
       ),
@@ -327,19 +352,21 @@ export default function About() {
   "foundingDate": "2014",
   "description": "The world's largest university blockchain network, spanning 10,000+ students across 35+ countries.",
   "member": [
-    {"@type": "Person", "name": "Antonio Gomes", "jobTitle": "President & Head of Ecosystem Growth"},
+    {"@type": "Person", "name": "Antonio Gomes", "jobTitle": "President & GP, BEN | Advisory Board, UF Blockchain Lab"},
     {"@type": "Person", "name": "Erick Pinos", "jobTitle": "Board Director & Head of Strategy"},
     {"@type": "Person", "name": "Zsofia Kerekes", "jobTitle": "Chief Marketing Officer"},
     {"@type": "Person", "name": "Filipe Lucas Ines", "jobTitle": "Head of AI & Product"},
     {"@type": "Person", "name": "Gabriela de Almeida", "jobTitle": "Lead Software Engineer"},
     {"@type": "Person", "name": "Ashton Barger", "jobTitle": "Advisor, Events & Partnerships"},
+    {"@type": "Person", "name": "Michael Gord", "jobTitle": "Advisor, Capital Markets & Strategy"},
     {"@type": "Person", "name": "Jeremy Gardner", "jobTitle": "Co-Founder, Augur & BEN"},
     {"@type": "Person", "name": "Paul Veradittakit", "jobTitle": "Managing Partner, Pantera Capital"},
     {"@type": "Person", "name": "Jinglan Wang", "jobTitle": "Co-Founder, Optimism"},
     {"@type": "Person", "name": "Ryan Breslow", "jobTitle": "Founder & CEO, Bolt"},
     {"@type": "Person", "name": "Andy Bromberg", "jobTitle": "Co-Founder, CoinList"},
     {"@type": "Person", "name": "Eric Chen", "jobTitle": "Co-Founder & CEO, Injective"},
-    {"@type": "Person", "name": "Joey Krug", "jobTitle": "Partner, Founders Fund"}
+    {"@type": "Person", "name": "Joey Krug", "jobTitle": "Partner, Founders Fund"},
+    {"@type": "Person", "name": "Perianne Boring", "jobTitle": "Founder & Chair, The Digital Chamber"}
   ]
 }`
         }}

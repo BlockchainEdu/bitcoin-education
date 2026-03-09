@@ -223,76 +223,117 @@
   justify-content: center;
 }
 
+/* ── University Grid: Apple-style card layout ── */
+
 .root :global(.uni-panel) {
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 22px;
-  background: #fff;
-  padding: 18px 18px 14px;
+  padding: 0;
 }
 
 .root :global(.uni-empty) {
-  padding: 18px 6px;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.6);
+  padding: 40px 20px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
-.root :global(.uni-grid) {
+/* Search bar */
+.root :global(.uni-search) {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto 32px;
+}
+
+.root :global(.uni-searchIcon) {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+}
+
+.root :global(.uni-searchInput) {
+  width: 100%;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  padding: 0 16px 0 46px;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  color: rgba(0, 0, 0, 0.8);
+  outline: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.root :global(.uni-searchInput::placeholder) {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.root :global(.uni-searchInput:focus) {
+  border-color: rgba(255, 135, 42, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 135, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Podium: top 3 featured universities */
+.root :global(.uni-podium) {
   display: grid;
   grid-template-columns: 1fr;
-  column-gap: 34px;
-  row-gap: 16px;
-  padding: 6px 4px 10px;
-}
-
-.root :global(.uni-column) {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-@media (min-width: 820px) {
-  .root :global(.uni-grid) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1140px) {
-  .root :global(.uni-grid) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.root :global(.uni-item) {
-  display: grid;
-  grid-template-columns: 22px 46px 1fr auto;
-  align-items: center;
-  gap: 10px;
-  min-height: 48px;
-  cursor: pointer;
-  padding: 4px 0;
-  -webkit-tap-highlight-color: transparent;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 @media (min-width: 640px) {
-  .root :global(.uni-item) {
-    gap: 12px;
-    min-height: 44px;
-    padding: 0;
+  .root :global(.uni-podium) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
   }
 }
 
-.root :global(.uni-rank) {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.45);
-  text-align: right;
-  padding-right: 2px;
+.root :global(.uni-podiumCard) {
+  background: #fff;
+  border-radius: 18px;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
 }
 
-.root :global(.uni-logoWrap) {
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
+.root :global(.uni-podiumCard:hover) {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.root :global(.uni-podiumRank) {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+}
+
+.root :global(.uni-podiumLogo) {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
   --logo-bg: rgba(0, 0, 0, 0.03);
   background: var(--logo-bg);
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -300,17 +341,149 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-bottom: 14px;
 }
 
-.root :global(.uni-logoImg) {
+.root :global(.uni-podiumLogo img) {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 0;
   display: block;
 }
 
-.root :global(.uni-logoFallback) {
+.root :global(.uni-podiumName) {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 1.3;
+  margin-bottom: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.root :global(.uni-podiumCount) {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ff872a;
+  font-family: "Inter", sans-serif;
+}
+
+/* Divider between podium and grid */
+.root :global(.uni-divider) {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+@media (min-width: 640px) {
+  .root :global(.uni-divider) {
+    margin-bottom: 28px;
+  }
+}
+
+/* Card grid — vertical showcase cards */
+.root :global(.uni-grid) {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 0;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .root :global(.uni-grid) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (min-width: 900px) {
+  .root :global(.uni-grid) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .root :global(.uni-grid) {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+}
+
+.root :global(.uni-card) {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 22px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  min-width: 0;
+  position: relative;
+  transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 300ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.root :global(.uni-card:hover) {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.root :global(.uni-card.is-loading) {
+  opacity: 0.7;
+}
+
+.root :global(.uni-cardRank) {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.2);
+  font-family: "Montserrat", sans-serif;
+}
+
+.root :global(.uni-cardLogo) {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  --logo-bg: rgba(0, 0, 0, 0.03);
+  background: var(--logo-bg);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 640px) {
+  .root :global(.uni-cardLogo) {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+  }
+}
+
+.root :global(.uni-cardLogo img) {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.root :global(.uni-cardLogoFallback) {
   width: 100%;
   height: 100%;
   display: flex;
@@ -318,171 +491,117 @@
   justify-content: center;
   font-weight: 600;
   font-size: 13px;
-  color: rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.2);
   user-select: none;
 }
 
-.root :global(.uni-name) {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.82);
-  line-height: 1.25;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.root :global(.uni-cardBody) {
+  width: 100%;
   min-width: 0;
+  overflow: hidden;
 }
 
-.root :global(.uni-loading) {
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-  line-height: 1.1;
+.root :global(.uni-cardName) {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.82);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
 }
 
-.root :global(.uni-badgeWrap) {
-  display: flex;
-  justify-content: flex-end;
+@media (min-width: 640px) {
+  .root :global(.uni-cardName) {
+    font-size: 14px;
+  }
 }
 
-.root :global(.uni-badge) {
-  min-width: 34px;
-  height: 22px;
-  padding: 0 8px;
-  border-radius: 10px;
+.root :global(.uni-cardCount) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 4px;
   font-size: 12px;
   font-weight: 500;
-  color: #fff;
-  background: #ff872a;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  color: #ff872a;
+  margin-top: 6px;
+  font-family: "Inter", sans-serif;
+  white-space: nowrap;
 }
 
-.root :global(.uni-badge.is-zero) {
-  opacity: 0.55;
-}
-
-.root :global(.uni-badgeIcon) {
-  display: inline-block;
-  flex: 0 0 auto;
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.08));
-}
-
-.root :global(.uni-badgeNum) {
-  line-height: 1;
-}
-
-.root :global(.uni-footerMeta) {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
+/* Pagination */
+.root :global(.uni-pagerWrap) {
+  margin-top: 28px;
   display: flex;
   justify-content: center;
-}
-
-.root :global(.uni-footerMeta--pager) {
-  justify-content: center;
   align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-top: 6px;
-}
-
-.root :global(.uni-total) {
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-  min-width: 90px;
-}
-
-.root :global(.uni-pager) {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  flex: 0 0 auto;
+  gap: 6px;
 }
 
 .root :global(.uni-pagerBtn) {
-  width: 34px;
-  height: 34px;
-  color: rgba(0, 0, 0, 0.65);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  color: rgba(0, 0, 0, 0.5);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition:
-    transform 120ms ease,
-    background 180ms ease,
-    border-color 180ms ease;
+  cursor: pointer;
+  transition: all 200ms ease;
   user-select: none;
 }
 
 .root :global(.uni-pagerBtn:hover:not(:disabled)) {
-  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .root :global(.uni-pagerBtn:disabled) {
-  opacity: 0.45;
+  opacity: 0.3;
   cursor: not-allowed;
 }
 
-.root :global(.uni-pageNums) {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-}
-
 .root :global(.uni-pageNum) {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid transparent;
   background: transparent;
-  color: rgba(0, 0, 0, 0.7);
-  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+  font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition:
-    background 180ms ease,
-    border-color 180ms ease,
-    transform 120ms ease;
+  cursor: pointer;
+  transition: all 200ms ease;
+  font-family: "Inter", sans-serif;
 }
 
 .root :global(.uni-pageNum:hover) {
-  color: rgba(0, 0, 0, 0.77);
-  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.03);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .root :global(.uni-pageNum.is-active) {
+  background: #ff872a;
+  color: #fff;
   font-weight: 600;
-  transform: none;
+  border-color: transparent;
 }
 
-.root :global(.uni-pageJump) {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 120px;
-  justify-content: flex-end;
-}
-
-.root :global(.uni-pageLabel) {
+.root :global(.uni-resultCount) {
+  text-align: center;
   font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-.root :global(.uni-pageInput) {
-  width: 52px;
-  height: 34px;
-  border-radius: 10px;
-  padding: 0 10px;
-  font-size: 13px;
-  outline: none;
-  color: rgba(0, 0, 0, 0.75);
-}
-
-.root :global(.uni-pageInput:focus) {
-  border-color: rgba(0, 0, 0, 0.18);
+  color: rgba(0, 0, 0, 0.35);
+  margin-top: 16px;
+  font-family: "Inter", sans-serif;
 }
 
 .root :global(.floating-layer) {
