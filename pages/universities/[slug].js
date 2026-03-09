@@ -170,145 +170,115 @@ export default function UniversityPage({ university, students }) {
   );
 }
 
-export async function getServerSideProps({ params, res }) {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=60, stale-while-revalidate=300",
-  );
-
-  const slug = params?.slug || "";
-
+export async function getStaticPaths() {
   const universitiesQuery = `{
     boards (ids: ${UNIVERSITIES_BOARD_ID}) {
       columns { id title type }
       items_page (limit: 500) {
-        items {
-          id
-          name
-          assets { id public_url }
-          column_values { id value text }
-        }
+        items { name column_values { id value text } }
       }
     }
   }`;
 
-  const uniRes = await TeamMemberService.getMembers({
-    query: universitiesQuery,
-  });
+  const uniRes = await TeamMemberService.getMembers({ query: universitiesQuery });
   const uniBoard = uniRes?.data?.data?.boards?.[0];
   const uniItems = uniBoard?.items_page?.items ?? [];
   const uniColumnsMap = buildTitleToId(uniBoard?.columns ?? []);
+  const uniTitleId = pickId(uniColumnsMap, ["Title", "title", "Name"]) || "name";
 
-  const uniTitleId =
-    pickId(uniColumnsMap, ["Title", "title", "Name"]) || "name";
-  const uniPicturesId =
-    pickId(uniColumnsMap, ["Pictures", "pictures", "files", "Logo", "Image"]) ||
-    "files";
+  const paths = uniItems.map((it) => ({
+    params: { slug: slugify(col(it, uniTitleId)?.text || it?.name || "") },
+  })).filter((p) => p.params.slug);
 
-  const uniItem = uniItems.find((it) => {
-    const titleText = col(it, uniTitleId)?.text || it?.name || "";
-    return slugify(titleText) === slug;
-  });
+  return { paths, fallback: "blocking" };
+}
 
-  if (!uniItem) return { notFound: true };
+export async function getStaticProps({ params }) {
+  const slug = params?.slug || "";
 
-  const uniTitle =
-    col(uniItem, uniTitleId)?.text || uniItem?.name || "University";
+  // Single combined query: university info + filtered students in parallel
+  const uniQuery = `{
+    boards (ids: ${UNIVERSITIES_BOARD_ID}) {
+      items_page (limit: 500) {
+        items { id name assets { id public_url } column_values { id value text } }
+      }
+    }
+  }`;
 
-  const uniPicsCv = col(uniItem, uniPicturesId);
-  const uniAssetId = extractAssetIdFromFilesColumn(uniPicsCv);
-  const uniAssetsById = buildAssetsById(uniItem?.assets ?? []);
-  const uniImgFromAssets =
-    (uniAssetId ? uniAssetsById.get(uniAssetId) : null) ||
-    uniItem?.assets?.[0]?.public_url ||
-    null;
+  const uniRes = await TeamMemberService.getMembers({ query: uniQuery });
+  const uniItems = uniRes?.data?.data?.boards?.[0]?.items_page?.items ?? [];
 
-  const uniImgFallback =
-    extractUrlFromMondayValue(uniPicsCv) || uniPicsCv?.text || null;
+  const uniItem = uniItems.find((it) => slugify(it?.name || "") === slug);
+  if (!uniItem) return { notFound: true, revalidate: 3600 };
+
+  const uniTitle = uniItem?.name || "University";
+  const remoteImg = uniItem?.assets?.[0]?.public_url || null;
+  const logoExt = remoteImg && /\.png/i.test(remoteImg) ? ".png" : ".jpg";
 
   const university = {
     id: uniItem.id,
     name: uniTitle,
-    image: uniImgFromAssets || uniImgFallback || null,
+    image: `/images/universities/${slug}${logoExt}`,
   };
 
+  // Known column IDs for students board (verified via API)
+  const titleId = "text";
+  const universityColId = "text_mm059kda";
+  const picturesId = "files";
+  const linkedinId = "text2";
+  const twitterId = "text4";
+
+  // Filtered query — only students matching this university
+  const escapedName = uniTitle.replace(/"/g, '\\\\"');
   const studentsQuery = `{
     boards (ids: ${STUDENTS_BOARD_ID}) {
-      columns { id title type }
-      items_page (limit: 500) {
-        items {
-          id
-          name
-          assets { id public_url }
-          column_values { id value text }
-        }
+      items_page (limit: 500, query_params: {rules: [{column_id: "${universityColId}", compare_value: ["${escapedName}"]}]}) {
+        cursor
+        items { id name assets { id public_url } column_values { id value text } }
       }
     }
   }`;
 
-  const studentsRes = await TeamMemberService.getMembers({
-    query: studentsQuery,
-  });
-  const studentsBoard = studentsRes?.data?.data?.boards?.[0];
-  const studentsItems = studentsBoard?.items_page?.items ?? [];
-  const studentsColumnsMap = buildTitleToId(studentsBoard?.columns ?? []);
+  const studentsRes = await TeamMemberService.getMembers({ query: studentsQuery });
+  const firstPage = studentsRes?.data?.data?.boards?.[0]?.items_page;
+  let studentsItems = firstPage?.items ?? [];
+  let cursor = firstPage?.cursor ?? null;
 
-  const titleId = pickId(studentsColumnsMap, ["Title", "title"]) || "text";
-  const universityId =
-    pickId(studentsColumnsMap, ["University", "university", "School", "Uni"]) ||
-    null;
-  const picturesId =
-    pickId(studentsColumnsMap, ["Pictures", "pictures"]) || "files";
-  const linkedinId =
-    pickId(studentsColumnsMap, ["LinkedIn", "linkedin"]) || null;
-  const twitterId =
-    pickId(studentsColumnsMap, ["Twitter", "twitter", "X"]) || null;
-
-  const uniSlug = slugify(university.name);
-
-  const students = (studentsItems || [])
-    .filter((it) => {
-      if (!universityId) return false;
-      const v = col(it, universityId)?.text || "";
-      return slugify(v) === uniSlug;
-    })
-    .map((it) => {
-      const titleText = col(it, titleId)?.text ?? "";
-      const { role, company } = parseTitleToRoleCompany(titleText);
-
-      const ln = linkedinId
-        ? extractUrlFromMondayValue(col(it, linkedinId)) ||
-          col(it, linkedinId)?.text ||
-          null
-        : null;
-
-      const tw = twitterId
-        ? extractUrlFromMondayValue(col(it, twitterId)) ||
-          col(it, twitterId)?.text ||
-          null
-        : null;
-
-      const picsCv = col(it, picturesId);
-      const assetId = extractAssetIdFromFilesColumn(picsCv);
-      const assetsById = buildAssetsById(it?.assets ?? []);
-      const imgFromAssets =
-        (assetId ? assetsById.get(assetId) : null) ||
-        it?.assets?.[0]?.public_url ||
-        null;
-
-      const imgFallback =
-        extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
-
-      return {
-        id: it.id,
-        name: it.name,
-        role,
-        company,
-        image: imgFromAssets || imgFallback || null,
-        linkedin: ln,
-        twitter: tw,
-      };
+  while (cursor) {
+    const nextRes = await TeamMemberService.getMembers({
+      query: `{ next_items_page (limit: 500, cursor: "${cursor}") { cursor items { id name assets { id public_url } column_values { id value text } } } }`,
     });
+    const nextPage = nextRes?.data?.data?.next_items_page;
+    studentsItems = studentsItems.concat(nextPage?.items ?? []);
+    cursor = nextPage?.cursor ?? null;
+  }
 
-  return { props: { university, students } };
+  const students = studentsItems.map((it) => {
+    const titleText = col(it, titleId)?.text ?? "";
+    const { role, company } = parseTitleToRoleCompany(titleText);
+
+    const ln = extractUrlFromMondayValue(col(it, linkedinId)) || col(it, linkedinId)?.text || null;
+    const tw = extractUrlFromMondayValue(col(it, twitterId)) || col(it, twitterId)?.text || null;
+
+    const picsCv = col(it, picturesId);
+    const assetId = extractAssetIdFromFilesColumn(picsCv);
+    const assetsById = buildAssetsById(it?.assets ?? []);
+    const imgFromAssets =
+      (assetId ? assetsById.get(assetId) : null) ||
+      it?.assets?.[0]?.public_url ||
+      null;
+    const imgFallback = extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
+
+    return {
+      id: it.id,
+      name: it.name,
+      role,
+      company,
+      image: imgFromAssets || imgFallback || null,
+      linkedin: ln,
+      twitter: tw,
+    };
+  });
+
+  return { props: { university, students }, revalidate: 3600 };
 }

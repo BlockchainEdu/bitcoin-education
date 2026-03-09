@@ -797,10 +797,16 @@ export async function getStaticProps() {
 
       const peopleCount = parseNumberFromMonday(col(item, uniPeopleId));
 
+      // Use local logo file instead of slow Monday.com S3 signed URLs
+      const slug = slugify(item.name);
+      const remoteUrl = imgFromAssets || imgFallback || null;
+      const ext = remoteUrl && /\.png/i.test(remoteUrl) ? ".png" : ".jpg";
+      const localImage = `/images/universities/${slug}${ext}`;
+
       return {
         id: item.id,
         name: item.name,
-        image: imgFromAssets || imgFallback || null,
+        image: localImage,
         peopleCount,
       };
     }),

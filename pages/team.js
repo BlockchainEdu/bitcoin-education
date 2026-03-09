@@ -179,26 +179,10 @@ export default function About() {
         ""
       ),
       new TeamMember(
-        "/images/team/ba-intro.jpg",
-        "Ba Minuzzi",
-        "Founder & GP, UMANA & Babel Ventures",
-        "First Latina to start a VC firm in Silicon Valley. Raised $29M for her debut fund, invested in 100+ startups, and manages over $370M in assets across UMANA.",
-        "",
-        ""
-      ),
-      new TeamMember(
         "/images/people/gal-stern.jpeg",
         "Gal Stern",
         "Head of BD, deBridge",
         "Leads BD at deBridge, the cross-chain interoperability protocol. In crypto since 2017 — previously at Orbs and Kyber Network.",
-        "",
-        ""
-      ),
-      new TeamMember(
-        "/images/team/kate-photo.jpg",
-        "Kate Stapleton",
-        "Community Lead, Axelar; Former VP, BEN",
-        "Community Lead at Axelar and former BEN Vice President. Came into crypto from cybersecurity and red team ops.",
         "",
         ""
       ),
@@ -235,14 +219,6 @@ export default function About() {
         ""
       ),
       new TeamMember(
-        "/images/people/bennett-thompson.jpeg",
-        "Bennett Thompson",
-        "Co-Founder, BlockBeam",
-        "Co-founded BlockBeam (acquired by Rise In) — a Web3 recruiting network that partnered with top U.S. universities. Also started Northeastern's blockchain club.",
-        "",
-        ""
-      ),
-      new TeamMember(
         "/images/people/dev-bharel.jpeg",
         "Dev Bharel",
         "Founder, Seedplex",
@@ -271,22 +247,6 @@ export default function About() {
         "Scott Spiegel",
         "Founder & CEO, BitBasel",
         "Runs BitBasel — Web3 art events during Miami Art Week every year. Co-founded the Miami Blockchain Center.",
-        "",
-        ""
-      ),
-      new TeamMember(
-        "/images/people/jeremy-guzman.jpeg",
-        "Jeremy Guzman",
-        "Founder & CEO, Mass Adoption",
-        "Built Mass Adoption, a crypto education platform. Trading since 2016, previously at Fidelity Investments.",
-        "",
-        ""
-      ),
-      new TeamMember(
-        "/images/people/drasen-rasmussen.jpg",
-        "Drasen Rasmussen",
-        "Founder, Drasen Marketing",
-        "Runs Drasen Marketing — social media automation and growth. Former Marketing Director at BEN.",
         "",
         ""
       ),
