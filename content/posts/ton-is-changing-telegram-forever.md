@@ -3,7 +3,7 @@ title: "TON Is Changing Telegram Forever - Interview with Ecosystem Lead at TON"
 excerpt: "See how TON's integration with Telegram is creating better user experiences and driving innovation in decentralized applications."
 date: "2025-02-28"
 author: "BEN"
-cover: "https://img.youtube.com/vi/e6XyOS7bofE/maxresdefault.jpg"
+cover: "/images/covers/ton-is-changing-telegram-forever.jpg"
 featured: false
 tags: ["TON", "Telegram", "Web3", "dApps", "podcast"]
 ---
@@ -19,5 +19,5 @@ Learn how TON's unique integration with Telegram is creating better user experie
 - Developer Ecosystem: What makes TON attractive to developers and how the ecosystem is growing.
 - Social Meets Financial: The convergence of social networking and financial infrastructure on a single platform.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/e6XyOS7bofE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/e6XyOS7bofE?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

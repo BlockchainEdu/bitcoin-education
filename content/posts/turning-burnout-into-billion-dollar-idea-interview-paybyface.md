@@ -3,7 +3,7 @@ title: "Turning Burnout into a Billion-Dollar Idea - Interview with CEO of PayBy
 excerpt: "Mihai Draghici from PayByFace on how burnout led him to build face recognition payments."
 date: "2024-11-18"
 author: "BEN"
-cover: "https://img.youtube.com/vi/N8n1sSj4EAA/maxresdefault.jpg"
+cover: "/images/covers/turning-burnout-into-billion-dollar-idea-interview-paybyface.jpg"
 featured: false
 tags: ["biometrics", "payments", "fintech", "startup", "podcast"]
 ---
@@ -19,5 +19,5 @@ Mihai shares his story - from early tech ventures and launching new startups to 
 - 7 Years of Development: With 12 million lines of code, PayByFace represents years of dedicated engineering and iteration.
 - Mass Adoption Challenges: Mihai discusses the technical and regulatory hurdles of bringing biometric payments to the mainstream.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/N8n1sSj4EAA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/N8n1sSj4EAA?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

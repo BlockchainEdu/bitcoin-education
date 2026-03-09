@@ -1,9 +1,9 @@
 ---
 title: "University of Florida Blockchain Lab: How BEN is Bridging Academia and Industry"
 excerpt: "Inside the UF Blockchain Lab's $270K Algorand Foundation grant, open-source education initiative, and BEN's advisory role shaping the next generation of blockchain builders."
-date: "2026-03-09"
+date: "2022-01-25"
 author: "The BEN Team"
-cover: "/images/universities/university-of-florida.jpg"
+cover: "/images/universities/uf-library-west.jpg"
 featured: true
 tags: ["blockchain-education", "university-of-florida", "algorand", "BEN", "web3-education", "blockchain-lab"]
 ---

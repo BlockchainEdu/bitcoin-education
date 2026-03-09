@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
 import Head from "next/head";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
 import { TeamMemberService } from "../services";
@@ -299,6 +299,7 @@ function chunkUniversitiesForColumns(items = [], columnCount = 3) {
 }
 
 export default function BenNetwork({ universities = [] }) {
+  const router = useRouter();
   const onDominantBgLoad = useDominantBg();
 
   const users = USERS;
@@ -507,14 +508,14 @@ export default function BenNetwork({ universities = [] }) {
                 One scalable platform to empower learners, identify their needs, and connect them with the right resources — scalable to thousands of potential Web3 builders.
               </p>
               <div className="mt-6 sm:mt-8">
-                <a
-                  href="/opportunities"
-                  className="inline-flex items-center gap-2 font-mont font-bold text-sm text-white px-6 py-3.5 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95"
+                <span
+                  onClick={() => router.push("/opportunities")}
+                  className="inline-flex items-center gap-2 font-mont font-bold text-sm text-white px-6 py-3.5 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
                   style={{ backgroundColor: "#FF872A" }}
                 >
                   Get Involved
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
-                </a>
+                </span>
               </div>
             </div>
             <div className="order-1 lg:order-2 flex justify-center">
@@ -580,11 +581,12 @@ export default function BenNetwork({ universities = [] }) {
                         const isLoading = navigatingTo === u.id;
                         const rankColors = ["#FF872A", "#64748b", "#a1785c"];
                         return (
-                          <Link key={u.id} href={href} prefetch>
-                            <a
-                              className={`uni-podiumCard ${isLoading ? "is-loading" : ""}`}
-                              onClick={() => setNavigatingTo(u.id)}
-                            >
+                          <div
+                            key={u.id}
+                            className={`uni-podiumCard ${isLoading ? "is-loading" : ""}`}
+                            onClick={() => { setNavigatingTo(u.id); router.push(href); }}
+                            style={{ cursor: "pointer" }}
+                          >
                               <div className="uni-podiumRank" style={{ backgroundColor: rankColors[i] }}>
                                 {i + 1}
                               </div>
@@ -611,8 +613,7 @@ export default function BenNetwork({ universities = [] }) {
                                 </svg>
                                 {badge} members
                               </div>
-                            </a>
-                          </Link>
+                          </div>
                         );
                       })}
                     </div>
@@ -629,11 +630,12 @@ export default function BenNetwork({ universities = [] }) {
                     const isLoading = navigatingTo === u.id;
 
                     return (
-                      <Link key={u.id} href={href} prefetch>
-                        <a
-                          className={`uni-card ${isLoading ? "is-loading" : ""}`}
-                          onClick={() => setNavigatingTo(u.id)}
-                        >
+                      <div
+                        key={u.id}
+                        className={`uni-card ${isLoading ? "is-loading" : ""}`}
+                        onClick={() => { setNavigatingTo(u.id); router.push(href); }}
+                        style={{ cursor: "pointer" }}
+                      >
                           <div className="uni-cardRank">{globalRank}</div>
                           <div className="uni-cardLogo" data-dominant-bg>
                             {u.image ? (
@@ -661,8 +663,7 @@ export default function BenNetwork({ universities = [] }) {
                               {badge}
                             </div>
                           </div>
-                        </a>
-                      </Link>
+                      </div>
                     );
                   })}
                 </div>
@@ -728,21 +729,21 @@ export default function BenNetwork({ universities = [] }) {
           </p>
           {/* Full-width stacked buttons on mobile, side-by-side on sm+ */}
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <a
-              href="/opportunities#apply"
-              className="inline-flex items-center justify-center gap-2 font-mont font-bold text-sm text-white px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95"
+            <span
+              onClick={() => router.push("/opportunities#apply")}
+              className="inline-flex items-center justify-center gap-2 font-mont font-bold text-sm text-white px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
               style={{ backgroundColor: "#FF872A", boxShadow: "0 4px 24px rgba(255,135,42,0.3)" }}
             >
               Join BEN
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
-            </a>
-            <a
-              href="/blog"
-              className="inline-flex items-center justify-center gap-2 font-mont font-bold text-sm px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95"
+            </span>
+            <span
+              onClick={() => router.push("/blog")}
+              className="inline-flex items-center justify-center gap-2 font-mont font-bold text-sm px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
               style={{ color: "rgba(255,255,255,0.85)", border: "1px solid rgba(255,255,255,0.2)", backgroundColor: "rgba(255,255,255,0.05)" }}
             >
               Subscribe to Newsletter
-            </a>
+            </span>
           </div>
           <p className="mt-5 sm:mt-6 font-inter text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
             Free weekly newsletter. No spam.

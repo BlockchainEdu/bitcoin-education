@@ -68,12 +68,6 @@ We were pleased with the number of different universities and countries represen
 
 We look forward to hosting an even larger BEN Excellence Awards in 2021.
 
-*🚀 How do you join the revolution? 🚀*
+---
 
-*✉️ *[*Sign up*](https://blockchainedu.org/join)* for access to resources like free event tickets, job opportunities, and educational blockchain content.*
-
-*💓 Show our social media some love — Upvote our post, like our Facebook Page and follow us on *[*Twitter*](https://twitter.com/blockchainedu)* and *[*Instagram*](https://instagram.com/blockchainedu)*.*
-
-![](https://cdn-images-1.medium.com/max/75/0*6L9zGkDge1juheKw.png)
-
-#BlockchainEdu
+*Want to nominate a chapter for next year's awards? [Get involved with BEN](/opportunities) or [explore our university network](/).*

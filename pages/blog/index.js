@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import HeaderWithLogoDark from "../../components/headerWithLogoDark";
 import Footer from "../../components/footer";
-import { getPostsPage } from "../../lib/posts";
+import { getAllPostsMeta } from "../../lib/posts";
+
+const PAGE_SIZE = 9;
 
 function formatDate(d) {
   const dt = new Date(d || "");
@@ -75,42 +77,31 @@ function PostCard({ post }) {
   );
 }
 
-function Pagination({ currentPage, totalPages }) {
+function Pagination({ currentPage, totalPages, onPageChange }) {
   if (totalPages <= 1) return null;
 
-  const prevHref =
-    currentPage <= 2 ? "/blog" : `/blog/page/${currentPage - 1}`;
-  const nextHref = `/blog/page/${currentPage + 1}`;
+  const btn = (label, page, disabled) => (
+    <button
+      key={label}
+      onClick={() => !disabled && onPageChange(page)}
+      disabled={disabled}
+      className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter transition-all duration-200"
+      style={
+        disabled
+          ? { color: "rgba(0,0,0,0.2)", border: "1px solid rgba(0,0,0,0.06)" }
+          : { backgroundColor: "#fff", border: "1px solid rgba(0,0,0,0.1)", color: "#202127", cursor: "pointer" }
+      }
+    >
+      {label}
+    </button>
+  );
 
   return (
     <div
       className="mt-12 flex items-center justify-center"
       style={{ gap: "1rem" }}
     >
-      {currentPage > 1 ? (
-        <Link href={prevHref}>
-          <a
-            className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter transition-all duration-200"
-            style={{
-              backgroundColor: "#fff",
-              border: "1px solid rgba(0,0,0,0.1)",
-              color: "#202127",
-            }}
-          >
-            ← Previous
-          </a>
-        </Link>
-      ) : (
-        <span
-          className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter"
-          style={{
-            color: "rgba(0,0,0,0.2)",
-            border: "1px solid rgba(0,0,0,0.06)",
-          }}
-        >
-          ← Previous
-        </span>
-      )}
+      {btn("← Previous", currentPage - 1, currentPage <= 1)}
 
       <span
         className="text-sm font-inter px-3"
@@ -119,35 +110,51 @@ function Pagination({ currentPage, totalPages }) {
         {currentPage} of {totalPages}
       </span>
 
-      {currentPage < totalPages ? (
-        <Link href={nextHref}>
-          <a
-            className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter transition-all duration-200"
-            style={{
-              backgroundColor: "#fff",
-              border: "1px solid rgba(0,0,0,0.1)",
-              color: "#202127",
-            }}
-          >
-            Next →
-          </a>
-        </Link>
-      ) : (
-        <span
-          className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter"
-          style={{
-            color: "rgba(0,0,0,0.2)",
-            border: "1px solid rgba(0,0,0,0.06)",
-          }}
-        >
-          Next →
-        </span>
-      )}
+      {btn("Next →", currentPage + 1, currentPage >= totalPages)}
     </div>
   );
 }
 
-export default function BlogIndexPage({ featured, rest, pagination }) {
+export default function BlogIndexPage({ allPosts }) {
+  const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+
+  const isSearching = search.trim().length > 0;
+
+  const featured = useMemo(
+    () => allPosts.find((p) => p.featured) || allPosts[0] || null,
+    [allPosts]
+  );
+
+  const filtered = useMemo(() => {
+    if (!isSearching) {
+      return allPosts.filter((p) => p.slug !== featured?.slug);
+    }
+    const q = search.toLowerCase();
+    return allPosts.filter(
+      (p) =>
+        p.title?.toLowerCase().includes(q) ||
+        p.excerpt?.toLowerCase().includes(q) ||
+        p.author?.toLowerCase().includes(q) ||
+        p.tags?.some((t) => t.toLowerCase().includes(q))
+    );
+  }, [allPosts, search, isSearching, featured]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const visible = filtered.slice(
+    (safePage - 1) * PAGE_SIZE,
+    safePage * PAGE_SIZE
+  );
+
+  useEffect(() => setPage(1), [search]);
+
+  const handlePageChange = (p) => {
+    setPage(p);
+    const el = document.getElementById("blog-posts-section");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div id="blog-page">
       <HeaderWithLogoDark />
@@ -235,7 +242,7 @@ export default function BlogIndexPage({ featured, rest, pagination }) {
               <iframe
                 src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
                 data-test-id="beehiiv-embed"
-               
+
                 height="52"
                 frameBorder="0"
                 scrolling="no"
@@ -272,8 +279,8 @@ export default function BlogIndexPage({ featured, rest, pagination }) {
           </div>
         </section>
 
-        {/* ── Featured Post ── */}
-        {featured ? (
+        {/* ── Featured Post (hidden during search) ── */}
+        {featured && !isSearching ? (
           <section
             className="py-16 md:py-20"
             style={{ backgroundColor: "#FFFBF2" }}
@@ -386,8 +393,9 @@ export default function BlogIndexPage({ featured, rest, pagination }) {
           </section>
         ) : null}
 
-        {/* ── Latest Posts ── */}
+        {/* ── Posts Section ── */}
         <section
+          id="blog-posts-section"
           className="py-16 md:py-20"
           style={{
             backgroundColor: "#f5f7f7",
@@ -406,26 +414,75 @@ export default function BlogIndexPage({ featured, rest, pagination }) {
                   paddingBottom: "5px",
                 }}
               >
-                Latest
+                {isSearching ? "Search" : "Latest"}
               </div>
               <h2 className="font-mont font-black text-3xl md:text-4xl text-black mb-3">
-                Recent posts
+                {isSearching ? "Search results" : "Recent posts"}
               </h2>
               <p className="text-bengrey-500 text-sm md:text-base max-w-md mx-auto font-inter leading-relaxed">
-                Playbooks, founder stories, and market analysis from the BEN
-                network.
+                {isSearching
+                  ? `${filtered.length} post${filtered.length !== 1 ? "s" : ""} found`
+                  : "Playbooks, founder stories, and market analysis from the BEN network."}
               </p>
+
+              {/* Search bar */}
+              <div className="mt-8 max-w-md mx-auto relative">
+                <svg
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="rgba(0,0,0,0.3)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search posts by title, tag, or author..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3.5 rounded-xl font-inter text-sm focus:outline-none"
+                  style={{
+                    backgroundColor: "#fff",
+                    border: "1px solid rgba(0,0,0,0.08)",
+                    boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
+                    transition: "border-color 200ms ease, box-shadow 200ms ease",
+                  }}
+                  onFocus={(e) => {
+                    e.target.style.borderColor = "rgba(255, 135, 42, 0.4)";
+                    e.target.style.boxShadow = "0 0 0 3px rgba(255, 135, 42, 0.08), 0 1px 3px rgba(0,0,0,0.04)";
+                  }}
+                  onBlur={(e) => {
+                    e.target.style.borderColor = "rgba(0,0,0,0.08)";
+                    e.target.style.boxShadow = "0 1px 4px rgba(0,0,0,0.04)";
+                  }}
+                />
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rest.map((p) => (
-                <PostCard key={p.slug} post={p} />
-              ))}
-            </div>
+            {visible.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {visible.map((p) => (
+                  <PostCard key={p.slug} post={p} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12">
+                <p className="font-inter text-sm" style={{ color: "rgba(0,0,0,0.4)" }}>
+                  No posts match your search.
+                </p>
+              </div>
+            )}
 
             <Pagination
-              currentPage={pagination.currentPage}
-              totalPages={pagination.totalPages}
+              currentPage={safePage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
             />
           </div>
         </section>
@@ -461,7 +518,7 @@ export default function BlogIndexPage({ featured, rest, pagination }) {
               <iframe
                 src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
                 data-test-id="beehiiv-embed"
-               
+
                 height="52"
                 frameBorder="0"
                 scrolling="no"
@@ -489,18 +546,10 @@ export default function BlogIndexPage({ featured, rest, pagination }) {
 }
 
 export async function getStaticProps() {
-  const PAGE_SIZE = 9;
-  const { items, totalPages, currentPage } = getPostsPage(1, PAGE_SIZE);
-
-  const featured = items.find((p) => p.featured) || items[0] || null;
-  const rest = items.filter((p) => p.slug !== featured?.slug);
+  const allPosts = getAllPostsMeta();
 
   return {
-    props: {
-      featured,
-      rest,
-      pagination: { totalPages, currentPage },
-    },
+    props: { allPosts },
     revalidate: 3600,
   };
 }

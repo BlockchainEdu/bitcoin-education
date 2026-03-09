@@ -3,7 +3,7 @@ title: "Real World Assets But Make It Blockchain - with CEO of Plume Network"
 excerpt: "Chris Yin from Plume Network on tokenizing everything from Pokemon cards to real estate."
 date: "2025-01-25"
 author: "BEN"
-cover: "https://img.youtube.com/vi/cp1LlPs-0Fo/maxresdefault.jpg"
+cover: "/images/covers/real-world-assets-blockchain-plume-network.jpg"
 featured: false
 tags: ["RWA", "tokenization", "Plume-Network", "DeFi", "podcast"]
 ---
@@ -19,5 +19,5 @@ From turning Pokemon cards and real estate into tradable assets to creating new 
 - New York Advantage: Why being based in New York gives crypto founders a unique edge in the traditional finance crossover.
 - Token Launch and Mainnet: What's next for Plume Network as they prepare for their token launch and mainnet deployment.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/cp1LlPs-0Fo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/cp1LlPs-0Fo?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

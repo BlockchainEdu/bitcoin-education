@@ -69,7 +69,7 @@ export default function NationalTeamCard({
       <div className="flex flex-col items-center text-center group" ref={cardRef}>
         {/* Image container */}
         <div
-          className="relative w-56 h-72 rounded-2xl overflow-hidden cursor-pointer transition-shadow duration-300 group-hover:shadow-lg"
+          className="relative w-full h-40 sm:w-44 sm:h-56 rounded-2xl overflow-hidden cursor-pointer transition-shadow duration-300 group-hover:shadow-lg"
           onClick={handleCardClick}
         >
           {/* Photo */}
@@ -160,12 +160,12 @@ export default function NationalTeamCard({
         </div>
 
         {/* Name & Title */}
-        <h3 className="font-mont font-bold text-lg text-black mt-5 leading-tight">
+        <h3 className="font-mont font-bold text-sm sm:text-lg text-black mt-3 sm:mt-5 leading-tight">
           {name}
         </h3>
         {title && (
           <p
-            className="text-bengrey-300 text-sm mt-1 font-inter"
+            className="text-bengrey-300 text-xs sm:text-sm mt-1 font-inter"
             style={{ maxWidth: "200px" }}
           >
             {title}

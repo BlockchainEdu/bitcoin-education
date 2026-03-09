@@ -45,12 +45,8 @@ With this in mind, we encourage hedge fund managers and its ilk to reach out if 
 
 **📲 Feel free to reach out to us at cryptofund@blockchainedu.org for more information**
 
-Check out our onboarding session*🚀 How do you join the revolution? 🚀*
+Check out our onboarding session
 
-*✉️ *[*Sign up*](https://blockchainedu.org/join)* for access to resources like free event tickets, job opportunities, and educational blockchain content.*
+---
 
-*💓 Show our social media some love — Upvote our post, like our Facebook Page and follow us on *[*Twitter*](https://twitter.com/blockchainedu)* and *[*Instagram*](https://instagram.com/blockchainedu)*.*
-
-![](https://cdn-images-1.medium.com/max/60/0*bp14mEHhGqrC49Cq.png)
-
-#BlockchainEdu
+*Interested in crypto investing and education? [Get involved with BEN](/opportunities) or [explore our university network](/).*

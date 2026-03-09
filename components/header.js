@@ -26,7 +26,7 @@ export default function HeaderWithLogo({ className = "", children }) {
 
   return (
     <section
-      className={`pt-10 bg-white px-7 sticky top-0 z-[100] white-header header ${
+      className={`pt-10 bg-white px-7 sticky top-0 z-50 white-header header ${
         scrolled ? "scrolled" : ""
       } ${className}`}
     >
@@ -42,10 +42,8 @@ export default function HeaderWithLogo({ className = "", children }) {
 
       {/* Desktop menu */}
       <nav className="flex max-w-7xl m-auto justify-between items-start lg:items-center relative">
-        <div className="w-2/12 lg:w-1/3 left-0">
-          <a href="/">
-            <img className="w-24 mx-auto max-w-none" src={logoSrc} />
-          </a>
+        <div className="w-2/12 lg:w-1/3 left-0 cursor-pointer" onClick={() => router.push("/")}>
+          <img className="w-24 mx-auto max-w-none" src={logoSrc} alt="BEN home" />
         </div>
 
         <ul
@@ -55,30 +53,30 @@ export default function HeaderWithLogo({ className = "", children }) {
             {scrolled && !shouldHideButton && (
               <>
                 {/* Main navigation */}
-                <a
-                  className="display-on-scroll px-4 font-semibold"
-                  href="/opportunities"
+                <span
+                  className="display-on-scroll px-4 font-semibold cursor-pointer"
+                  onClick={() => router.push("/opportunities")}
                 >
                   Get Involved
-                </a>
-                <a
-                  className="display-on-scroll px-4 font-semibold"
-                  href="/blog"
+                </span>
+                <span
+                  className="display-on-scroll px-4 font-semibold cursor-pointer"
+                  onClick={() => router.push("/blog")}
                 >
                   Blog
-                </a>
-                <a
-                  className="display-on-scroll px-4 font-semibold"
-                  href="/team"
+                </span>
+                <span
+                  className="display-on-scroll px-4 font-semibold cursor-pointer"
+                  onClick={() => router.push("/team")}
                 >
                   Our People
-                </a>
-                <a
-                  className="display-on-scroll px-4 font-semibold"
-                  href="/donate"
+                </span>
+                <span
+                  className="display-on-scroll px-4 font-semibold cursor-pointer"
+                  onClick={() => router.push("/donate")}
                 >
                   Support Us
-                </a>
+                </span>
                 {/* Primary CTA */}
                 <StandardButton
                   link="/opportunities#apply"

@@ -3,7 +3,7 @@ title: "The Fascinating Story of a Founder - Interview with CEO of YesNoError"
 excerpt: "Matt from YesNoError on building a crypto platform in 24 hours that did $150M volume on day one."
 date: "2025-02-12"
 author: "BEN"
-cover: "https://img.youtube.com/vi/jJWms28epfs/maxresdefault.jpg"
+cover: "/images/covers/fascinating-story-of-a-founder-yesnoerror.jpg"
 featured: false
 tags: ["AI", "startup", "Web3", "entrepreneurship", "podcast"]
 ---
@@ -19,5 +19,5 @@ A self-taught entrepreneur, Matt skipped the traditional college route and went 
 - AI Meets Crypto: The intersection of artificial intelligence and blockchain technology in building next-generation platforms.
 - Unconventional Paths: Why the traditional education-to-career pipeline isn't the only way to succeed in tech.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/jJWms28epfs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/jJWms28epfs?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

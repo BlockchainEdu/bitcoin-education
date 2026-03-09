@@ -81,9 +81,9 @@ export default function MobileDropdown(props) {
                       aria-hidden="true"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
@@ -92,16 +92,16 @@ export default function MobileDropdown(props) {
                 <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="font-mont text-chablack-300 font-semibold">
                     <li className="my-8">
-                      <a href="/opportunities">Get Involved</a>
+                      <span className="cursor-pointer" onClick={() => router.push("/opportunities")}>Get Involved</span>
                     </li>
                     <li className="my-8">
-                      <a href="/blog">Blog</a>
+                      <span className="cursor-pointer" onClick={() => router.push("/blog")}>Blog</span>
                     </li>
                     <li className="my-8">
-                      <a href="/team">Our People</a>
+                      <span className="cursor-pointer" onClick={() => router.push("/team")}>Our People</span>
                     </li>
                     <li className="mt-8">
-                      <a href="/donate">Support Us</a>
+                      <span className="cursor-pointer" onClick={() => router.push("/donate")}>Support Us</span>
                     </li>
                   </ul>
                 </div>

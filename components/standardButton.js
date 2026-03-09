@@ -1,4 +1,8 @@
+import { useRouter } from "next/router";
+
 export default function StandardButton(props) {
+  const router = useRouter();
+
   const buttonStyle = () => {
     const forceWhiteText = props.textColor === "white";
 
@@ -15,16 +19,23 @@ export default function StandardButton(props) {
     `;
   };
 
+  const handleClick = (e) => {
+    if (props.onClick) {
+      props.onClick(e);
+    }
+    if (props.link) {
+      router.push(props.link);
+    }
+  };
+
   return (
-    <a
-      href={props.link}
-      onClick={props.onClick}
-      target={props.target}
-      className={props.linkStyling}
+    <span
+      onClick={handleClick}
+      className={`${props.linkStyling || ""} cursor-pointer`}
     >
       <button className={`${buttonStyle()} ${props.styling || ""}`}>
         {props.text}
       </button>
-    </a>
+    </span>
   );
 }

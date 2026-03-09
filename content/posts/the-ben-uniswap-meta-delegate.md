@@ -54,12 +54,6 @@ We’ll be measuring our success based on how many universities and countries ar
 - Hold our monthly Uniswap governance call meeting, assess whether we should increase the frequency of the meeting to more than once a month.- If we don’t attain 10 million UNI, we will continue reviewing and discussing existing proposals, hosting internal polls with the university chapters, and casting our vote.- If we attain 10 million UNI, we aim to successfully submit our own well-defined proposal for official Uniswap community voting.- Vet, guide, and mentor at least one university chapter in setting up their own Uniswap delegate.- Apply to Wave 2 of UNI Grants Program.
 We look forward to taking this journey with our students. If you would like to delegate voting power to the BEN meta-delegate, [please do so here](https://sybil.org/#/delegates/uniswap/0x66Aa8Bee5366b6b48811AE0Dac9Fe5e1EEfE1621).
 
-*🚀 How do you join the revolution? 🚀*
+---
 
-*✉️ *[*Sign up*](https://blockchainedu.org/join)* for access to resources like free event tickets, job opportunities, and educational blockchain content.*
-
-*💓 Show our social media some love — Upvote our post, like our *[*Facebook Page*](https://www.facebook.com/BlockchainEdu)* and follow us on *[*Twitter*](https://twitter.com/blockchainedu)* and *[*Instagram*](https://instagram.com/blockchainedu)*.*
-
-![](https://cdn-images-1.medium.com/max/100/1*eHNtpSxxESjoYA1qMl82Vw.png)
-
-#BlockchainEdu
+*Interested in blockchain governance? [Get involved with BEN](/opportunities) or [explore our university network](/).*

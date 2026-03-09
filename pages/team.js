@@ -476,7 +476,7 @@ export default function About() {
           </div>
 
           {/* Team grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-8 gap-y-8 sm:gap-y-10">
             {teamMembers["BEN Team"].length > 0 &&
               teamMembers["BEN Team"].map((member, idx) => (
                 <NationalTeamCard
@@ -519,7 +519,7 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 sm:gap-x-6 gap-y-8 sm:gap-y-10">
             {teamMembers["Alumni"].length > 0 &&
               teamMembers["Alumni"].map((member, idx) => (
                 <NationalTeamCard
@@ -534,6 +534,54 @@ export default function About() {
                   email={member.email}
                 />
               ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── In Memoriam ── */}
+      <section aria-label="In memoriam" className="py-10 md:py-12" style={{ backgroundColor: "#18181b" }}>
+        <div className="max-w-4xl mx-auto px-6 sm:px-10">
+          <div className="flex items-center" style={{ gap: "1.25rem" }}>
+            <div className="shrink-0">
+              <div
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden"
+                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+              >
+                <img
+                  src="/images/people/jesse-xiong.png"
+                  alt="Jesse Xiong"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: "top" }}
+                />
+              </div>
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center flex-wrap" style={{ gap: "0.5rem 1rem" }}>
+                <h3 className="font-mont font-black text-base sm:text-lg text-white">
+                  Jesse Xiong
+                </h3>
+                <span className="text-xs font-inter" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  1995 &ndash; 2023
+                </span>
+              </div>
+              <p className="mt-0.5 text-xs sm:text-sm font-inter" style={{ color: "rgba(255,255,255,0.4)" }}>
+                Global Director of Community. Co-founded BlockHack and organized Delaware&apos;s first blockchain hackathon.
+              </p>
+            </div>
+            <div className="shrink-0 hidden sm:block">
+              <Link href="/blog/memorial-of-jesse-xiong">
+                <a
+                  className="inline-flex items-center text-xs font-inter font-semibold transition-all duration-200"
+                  style={{ color: "rgba(255,255,255,0.35)", gap: "0.3rem" }}
+                >
+                  Memorial
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -614,7 +662,7 @@ export default function About() {
           <div className="mt-14 md:mt-16 text-center">
             <p
               className="text-xs font-inter font-medium uppercase mb-5"
-              style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.15em" }}
+              style={{ color: "rgba(255,255,255,0.45)", letterSpacing: "0.15em" }}
             >
               Alumni also at
             </p>
@@ -629,7 +677,7 @@ export default function About() {
                 <span
                   key={name}
                   className="font-mont font-bold text-sm md:text-base"
-                  style={{ color: "rgba(255,255,255,0.25)" }}
+                  style={{ color: "rgba(255,255,255,0.55)" }}
                 >
                   {name}
                 </span>

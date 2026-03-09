@@ -30,12 +30,6 @@ The EEA is a member-led industry organization whose objective is to drive the us
 
 The Blockchain Education Network (BEN) is the largest and longest running network of students, alumni, professors, teachers, professionals, and community leaders excited about blockchain across the world. We are on a mission to spur blockchain adoption by empowering our leaders to bring blockchain to their companies and communities.
 
-*🚀 How do you join the revolution? 🚀*
+---
 
-*✉️ *[*Sign up*](https://blockchainedu.org/join)* for access to resources like free event tickets, job opportunities, and educational blockchain content.*
-
-*💓 Show our social media some love — Upvote our post, like our *[*Facebook Page*](https://www.facebook.com/BlockchainEdu)* and follow us on *[*Twitter*](https://twitter.com/blockchainedu)* and *[*Instagram*](https://instagram.com/blockchainedu)*.*
-
-![](https://cdn-images-1.medium.com/max/100/0*WVZDQYheSib2DfqA.png)
-
-#BlockchainEdu
+*Interested in blockchain talent and education? [Get involved with BEN](/opportunities) or [explore our university network](/).*

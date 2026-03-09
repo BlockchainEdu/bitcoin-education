@@ -3,7 +3,7 @@ title: "Creating a Society of AI Agents - with Virtuals Protocol"
 excerpt: "Jansen Teng from Virtuals Protocol on building a digital country run by autonomous AI agents."
 date: "2025-01-14"
 author: "BEN"
-cover: "https://img.youtube.com/vi/D6Fm58b018w/maxresdefault.jpg"
+cover: "/images/covers/creating-society-of-ai-agents-virtuals-protocol.jpg"
 featured: false
 tags: ["AI-agents", "Virtuals-Protocol", "tokenization", "Web3", "podcast"]
 ---
@@ -19,5 +19,5 @@ Jansen breaks down how Virtuals Protocol evolved from a simple idea to a new pla
 - Digital Country Vision: Building a self-organizing virtual economy where AI agents form their own society.
 - From Idea to Platform: The evolution of Virtuals Protocol and the technical challenges of building autonomous AI systems.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/D6Fm58b018w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/D6Fm58b018w?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

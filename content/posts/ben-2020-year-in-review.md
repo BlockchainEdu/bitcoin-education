@@ -199,12 +199,6 @@ We look forward to a stronger 2021 with more initiatives and campaigns to onboar
 - Best,The BEN Team
 [Read our 2019 Year in Review here](https://medium.com/blockchainedu/ben-2019-year-in-review-in-pictures-8f2c186b1214)
 
-*🚀 How do you join the revolution? 🚀*
+---
 
-*✉️ *[*Sign up*](https://blockchainedu.org/join)* for access to resources like free event tickets, job opportunities, and educational blockchain content.*
-
-*💓 Show our social media some love — Upvote our post, like our Facebook Page and follow us on *[*Twitter*](https://twitter.com/blockchainedu)* and *[*Instagram*](https://instagram.com/blockchainedu)*.*
-
-![](https://cdn-images-1.medium.com/max/75/0*Aak4vY9xjf6L0-0L.png)
-
-#BlockchainEdu
+*Want to be part of BEN's next chapter? [Get involved](/opportunities) or [explore our university network](/).*

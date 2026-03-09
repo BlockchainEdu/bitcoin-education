@@ -169,7 +169,7 @@ export default function ArticlePage({ post }) {
             }}
           />
 
-          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-16 md:py-24 text-center">
+          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center">
             <Link href="/blog">
               <a
                 className="inline-flex items-center text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-6 transition-all duration-200"
@@ -236,8 +236,8 @@ export default function ArticlePage({ post }) {
 
         {/* ── Cover Image ── */}
         {meta.cover ? (
-          <section style={{ backgroundColor: "#FFFBF2" }}>
-            <div className="max-w-4xl mx-auto px-6 sm:px-10" style={{ marginTop: "-2rem" }}>
+          <section className="pt-8" style={{ backgroundColor: "#FFFBF2" }}>
+            <div className="max-w-4xl mx-auto px-6 sm:px-10">
               <div
                 className="rounded-2xl overflow-hidden"
                 style={{ border: "1px solid rgba(0,0,0,0.06)" }}
@@ -274,7 +274,7 @@ export default function ArticlePage({ post }) {
             ) : null}
 
             <div
-              className="prose prose-lg max-w-none blog-prose prose-headings:text-benblack-500 prose-p:text-benblack-500/80 prose-a:text-benorange-500 prose-strong:text-benblack-500 prose-li:text-benblack-500/80"
+              className="max-w-none blog-prose"
               dangerouslySetInnerHTML={{ __html: contentHtml }}
             />
           </div>

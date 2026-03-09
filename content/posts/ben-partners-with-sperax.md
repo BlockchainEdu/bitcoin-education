@@ -31,12 +31,6 @@ The [Blockchain Education Network (BEN)](https://blockchainedu.org) is the large
 
 Founded in 2019, [Sperax](https://sperax.io) is missioned to connect all with its modern money platform. Sperax provides a hybrid stablecoin, USDs, on top of its BDLS public blockchain. A combination of crypto-collateralized stablecoins and dual token algorithmic stablecoins, USDs is a highly scalable, trustless and decentralized stablecoin that operates fully on-chain. USDs serve both purposes of wealth preservation and passive income generation. Sperax is backed by Outlier Ventures and FBG Capital.
 
-*🚀 How do you join the revolution? 🚀*
+---
 
-*✉️ *[*Sign up*](https://blockchainedu.org/join)* for access to resources like free event tickets, job opportunities, and educational blockchain content.*
-
-*💓 Show our social media some love — Upvote our post, like our *[*Facebook Page*](https://www.facebook.com/BlockchainEdu)* and follow us on *[*Twitter*](https://twitter.com/blockchainedu)* and *[*Instagram*](https://instagram.com/blockchainedu)*.*
-
-![](https://cdn-images-1.medium.com/max/100/0*myUqGdF-IQT584zb.png)
-
-#BlockchainEdu
+*Interested in blockchain partnerships and education? [Get involved with BEN](/opportunities) or [explore our university network](/).*

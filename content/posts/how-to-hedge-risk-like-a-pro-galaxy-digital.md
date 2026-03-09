@@ -3,7 +3,7 @@ title: "How to Hedge Risk Like a Pro - with Quantitative Trading Analyst at Gala
 excerpt: "Chris Buren from Galaxy Digital on going from Rutgers to trading at one of the biggest crypto firms."
 date: "2024-11-26"
 author: "BEN"
-cover: "https://img.youtube.com/vi/aJg6bNOaH-s/maxresdefault.jpg"
+cover: "/images/covers/how-to-hedge-risk-like-a-pro-galaxy-digital.jpg"
 featured: false
 tags: ["trading", "risk-management", "Galaxy-Digital", "DeFi", "podcast"]
 ---
@@ -17,5 +17,5 @@ With Chris Buren from Galaxy Digital, we get into the wild world of crypto tradi
 - Hedging Strategies: Professional risk management techniques that protect portfolios during volatile market conditions.
 - Staying Ahead: Insights on how to remain competitive in one of the fastest-moving industries on the planet.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/aJg6bNOaH-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/aJg6bNOaH-s?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

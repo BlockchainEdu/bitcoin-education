@@ -3,7 +3,7 @@ title: "Crypto Will Outperform Big Tech - EigenLayer"
 excerpt: "Ishaan from EigenLayer on restaking, actively validated services and why crypto will outperform big tech."
 date: "2024-12-27"
 author: "BEN"
-cover: "https://img.youtube.com/vi/n4c3iL6QZFM/maxresdefault.jpg"
+cover: "/images/covers/crypto-will-outperform-big-tech-eigenlayer.jpg"
 featured: false
 tags: ["EigenLayer", "Ethereum", "scalability", "restaking", "podcast"]
 ---
@@ -19,5 +19,5 @@ From using stablecoins to save small businesses to pioneering new tech like ZK p
 - Actively Validated Services (AVSs): EigenLayer's new approach to extending Ethereum's security to new protocols.
 - Restaking Revolution: How restaking is unlocking new possibilities for Ethereum validators and the broader ecosystem.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/n4c3iL6QZFM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/n4c3iL6QZFM?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

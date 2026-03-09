@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps }) {
       <>
         {/* Top loading bar */}
         {routeLoading ? (
-          <div className="fixed top-0 left-0 right-0 h-1 bg-benorange-500 animate-pulse z-[9999]" />
+          <div className="fixed top-0 left-0 right-0 h-1 bg-benorange-500 animate-pulse z-50" />
         ) : null}
 
         <Head>
@@ -69,47 +69,6 @@ function MyApp({ Component, pageProps }) {
             type="text/javascript"
             src="//script.crazyegg.com/pages/scripts/0120/4754.js"
             async="async"
-          />
-
-          {/* Intercom settings */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.intercomSettings = { app_id: 'bf65zudc' };
-              `,
-            }}
-          />
-
-          {/* Intercom loader */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function () {
-                  var w = window;
-                  var ic = w.Intercom;
-                  if (typeof ic === 'function') {
-                    ic('reattach_activator');
-                    ic('update', window.intercomSettings);
-                  } else {
-                    var d = document;
-                    var i = function () { i.c(arguments); };
-                    i.q = [];
-                    i.c = function (args) { i.q.push(args); };
-                    w.Intercom = i;
-                    var l = function () {
-                      var s = d.createElement('script');
-                      s.type = 'text/javascript';
-                      s.async = true;
-                      s.src = 'https://widget.intercom.io/widget/bf65zudc';
-                      var x = d.getElementsByTagName('script')[0];
-                      x.parentNode.insertBefore(s, x);
-                    };
-                    if (w.attachEvent) w.attachEvent('onload', l);
-                    else w.addEventListener('load', l, false);
-                  }
-                })();
-              `,
-            }}
           />
 
           {/* Google Analytics (UA) */}

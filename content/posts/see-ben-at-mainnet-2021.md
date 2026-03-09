@@ -66,10 +66,6 @@ Additionally, during the conference, we will be conducting interviews between th
 
 We look forward to meeting you there! Look for someone wearing a BEN shirt or feel free to [tag or DM us on Twitter](https://twitter.com/BlockchainEdu) to get in touch.
 
-*🚀 How do you join the revolution? 🚀*
+---
 
-*✉️ *[*Sign up*](https://learn.blockchainedu.org/)* for access to resources like free event tickets, job opportunities, and educational blockchain content.*
-
-*💓 Show our social media some love — Upvote our post and follow us on *[*Twitter*](https://twitter.com/blockchainedu)* and *[*Instagram*](https://instagram.com/blockchainedu)*.*
-
-![](https://cdn-images-1.medium.com/max/60/0*eWWjBLuobz8NkTi-)
+*Want to attend blockchain conferences with BEN? [Get involved](/opportunities) or [explore our university network](/).*

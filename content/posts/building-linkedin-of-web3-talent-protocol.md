@@ -3,7 +3,7 @@ title: "Building the LinkedIn of Web3 - with CEO of Talent Protocol"
 excerpt: "Pedro Oliveira shares how Talent Protocol is changing talent sourcing in Web3, from launching the Builder Score to embracing AI-driven tools."
 date: "2025-01-01"
 author: "BEN"
-cover: "https://img.youtube.com/vi/Xr6OY15Y3nQ/maxresdefault.jpg"
+cover: "/images/covers/building-linkedin-of-web3-talent-protocol.jpg"
 featured: false
 tags: ["Web3", "talent", "hiring", "Builder-Score", "podcast"]
 ---
@@ -19,5 +19,5 @@ Pedro Oliveira shares how Talent Protocol is changing talent sourcing in Web3, f
 - AI-Driven Talent Tools: How artificial intelligence is helping match talent with opportunities in the blockchain space.
 - Challenging LinkedIn: Why Web3 needs its own professional network built on transparency and verifiable credentials.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/Xr6OY15Y3nQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/Xr6OY15Y3nQ?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

@@ -3,7 +3,7 @@ title: "How BEN Helps Students Achieve Their Dreams"
 excerpt: "How Thomas went from student in Istanbul to landing a crypto job through BEN's network."
 date: "2025-02-14"
 author: "BEN"
-cover: "https://img.youtube.com/vi/DvBfOIxNldw/maxresdefault.jpg"
+cover: "/images/covers/how-ben-helps-students-achieve-their-dreams.jpg"
 featured: false
 tags: ["BEN", "education", "students", "networking", "podcast"]
 ---
@@ -19,5 +19,5 @@ From Istanbul to Lisbon, follow Thomas as he attends life-changing conferences, 
 - Networking Power: How attending the right events and connecting with the right people can transform a career.
 - BEN's Mission: Supporting the next generation of blockchain leaders through education, mentorship, and real-world opportunities.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/DvBfOIxNldw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/DvBfOIxNldw?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

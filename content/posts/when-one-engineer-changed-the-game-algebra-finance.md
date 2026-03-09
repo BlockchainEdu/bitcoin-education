@@ -3,7 +3,7 @@ title: "When One Engineer Changed the Game - Interview with CEO of Algebra Finan
 excerpt: "Vlad from Algebra Finance on going from Motorola engineer to powering 50+ DEXs."
 date: "2025-02-23"
 author: "BEN"
-cover: "https://img.youtube.com/vi/gNT0a7RjSPw/maxresdefault.jpg"
+cover: "/images/covers/when-one-engineer-changed-the-game-algebra-finance.jpg"
 featured: false
 tags: ["DeFi", "DEX", "Algebra-Finance", "liquidity", "podcast"]
 ---
@@ -19,5 +19,5 @@ Learn how he overcame early challenges, pivoted to power over 50 DEXs, and devel
 - Dynamic Fees: An innovative fee mechanism that automatically adjusts based on market conditions and trading volume.
 - Customizable Liquidity: Algebra's liquidity layers allow DEX operators to tailor their AMM behavior to specific use cases.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/gNT0a7RjSPw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/gNT0a7RjSPw?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

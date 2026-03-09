@@ -3,7 +3,7 @@ title: "Is Crypto Really Worth It - Interview with Trireme Trading"
 excerpt: "The real value in crypto as we look at dormant Bitcoin wallets, massive OTC deals, token unlocks, and AI-powered nodes with Jenite from Trireme Trading."
 date: "2024-12-11"
 author: "BEN"
-cover: "https://img.youtube.com/vi/3WdtG5ROK_8/maxresdefault.jpg"
+cover: "/images/covers/is-crypto-really-worth-it-trireme-trading.jpg"
 featured: false
 tags: ["crypto", "tokenomics", "Bitcoin", "Web3", "podcast"]
 ---
@@ -19,5 +19,5 @@ Are dormant Bitcoin wallets and massive OTC deals signaling a shift in the marke
 - Token Unlocks: Breaking down the $155 billion in upcoming token unlocks and their potential market impact.
 - AI-Powered Nodes: How artificial intelligence is being integrated into blockchain infrastructure for better performance.
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/3WdtG5ROK_8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube-nocookie.com/embed/3WdtG5ROK_8?rel=0&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
