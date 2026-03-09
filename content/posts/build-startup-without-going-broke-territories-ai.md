@@ -2,7 +2,7 @@
 title: "Build a Startup Without Going Broke - with CEO of Territories.ai"
 excerpt: "Adam Kling from Territories.ai on taking an 80% pay cut and using AI for startup revenue planning."
 date: "2025-01-09"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/lk6-Qgizr3M/maxresdefault.jpg"
 featured: false
 tags: ["startup", "AI", "revenue", "entrepreneurship", "podcast"]

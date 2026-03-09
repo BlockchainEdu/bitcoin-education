@@ -18,23 +18,9 @@ export default function About() {
         "President & Head of Ecosystem Growth, BEN",
         "UF Warrington grad and past president of the Gator Blockchain Club. Worked at Oracle before going full-time on BEN, where he leads ecosystem growth, strategic partnerships, and network expansion across 10,000+ students in 35+ countries. Also at GDA Capital, helping Web3 founders raise and scale. Based in San Francisco.",
         "",
-        ""
-      ),
-      new TeamMember(
-        "/images/team/erick-photo.jpg",
-        "Erick Pinos",
-        "Board Director & Head of Strategy, BEN",
-        "MIT grad and former president of the MIT Bitcoin Club. Researched with the MIT Digital Currency Initiative. Oversees strategic direction at BEN while serving as Ecosystem Lead at Nibiru Chain.",
         "",
-        ""
-      ),
-      new TeamMember(
-        "/images/team/mel-vera-new.jpeg",
-        "Mel Vera",
-        "Advisor, Operations & Community, BEN",
-        "Babson College grad and Colombia native raised in New York City. Founder of Vera Ventures. Advises BEN on global operations, community strategy, and cross-border growth initiatives.",
         "",
-        ""
+        "https://www.youtube.com/live/geBcmjzpqVY"
       ),
       new TeamMember(
         "/images/team/zsofia-kerekes.jpg",
@@ -69,12 +55,42 @@ export default function About() {
         ""
       ),
       new TeamMember(
+        "/images/team/dean-masley.jpg",
+        "Dean Masley",
+        "Executive Director & Head of Partnerships, BEN",
+        "Last Executive Director of BEN before going full-time founder. Building NestEgg — blockchain-powered investing in real-world infrastructure like solar. Deep experience in blockchain partnerships and network strategy.",
+        "",
+        "",
+        "",
+        "https://www.youtube.com/watch?v=kktID_s-KWo"
+      ),
+      new TeamMember(
         "/images/team/reynaldo-darit.jpg",
         "Reynaldo Darit",
         "Operations & Research Analyst, BEN",
         "University of Mindanao grad. Manages data operations, research workflows, and intelligence gathering across BEN's global network. Supports leadership with structured analysis and operational insights across BEN's 10,000+ student network.",
         "",
         ""
+      ),
+      new TeamMember(
+        "/images/team/erick-photo.jpg",
+        "Erick Pinos",
+        "Board Director & Head of Strategy, BEN",
+        "MIT grad and former president of the MIT Bitcoin Club. Researched with the MIT Digital Currency Initiative. Oversees strategic direction at BEN while serving as Ecosystem Lead at Nibiru Chain.",
+        "",
+        "",
+        "",
+        "https://youtu.be/RH7_-Fs8ze4"
+      ),
+      new TeamMember(
+        "/images/team/mel-vera-new.jpeg",
+        "Mel Vera",
+        "Advisor, Operations & Community, BEN",
+        "Babson College grad and Colombia native raised in New York City. Founder of Vera Ventures. Advises BEN on global operations, community strategy, and cross-border growth initiatives.",
+        "",
+        "",
+        "",
+        "https://youtu.be/SwaZWpL0fqg"
       ),
     ],
     Alumni: [
@@ -84,7 +100,9 @@ export default function About() {
         "Co-Founder, Augur & BEN",
         "Founded BEN at the University of Michigan in 2014, then co-founded Augur — the first decentralized prediction market on Ethereum and first utility token ICO. Also founded SAAVHA and was EIR at Blockchain Capital.",
         "",
-        ""
+        "",
+        "",
+        "https://youtu.be/J7VXIAp9Sy8"
       ),
       new TeamMember(
         "/images/people/jinglan-wang.jpeg",
@@ -92,7 +110,9 @@ export default function About() {
         "Co-Founder, Optimism",
         "Co-founded Optimism, the Ethereum L2. Started in crypto at the MIT Bitcoin Club, then went to Nasdaq as blockchain PM and co-founded Eximchain before building Optimism.",
         "",
-        ""
+        "",
+        "",
+        "https://www.youtube.com/watch?v=yeyEVvZyuLQ&t=31s"
       ),
       new TeamMember(
         "/images/people/paul-veradittakit.jpg",
@@ -211,14 +231,6 @@ export default function About() {
         "Bennett Thompson",
         "Co-Founder, BlockBeam",
         "Co-founded BlockBeam (acquired by Rise In) — a Web3 recruiting network that partnered with top U.S. universities. Also started Northeastern's blockchain club.",
-        "",
-        ""
-      ),
-      new TeamMember(
-        "/images/people/dean-masley.jpeg",
-        "Dean Masley",
-        "Co-Founder, NestEgg",
-        "Building NestEgg — blockchain-powered investing in real-world infrastructure like solar. Was the last Executive Director of BEN before going full-time founder.",
         "",
         ""
       ),
@@ -481,6 +493,7 @@ export default function About() {
                   linkedin={member.linkedin}
                   twitter={member.twitter}
                   email={member.email}
+                  video={member.video}
                 />
               ))}
           </div>
@@ -522,6 +535,7 @@ export default function About() {
                   bio={member.bio}
                   linkedin={member.linkedin}
                   twitter={member.twitter}
+                  video={member.video}
                   email={member.email}
                 />
               ))}

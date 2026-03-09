@@ -2,7 +2,7 @@
 title: "How to Hedge Risk Like a Pro - with Quantitative Trading Analyst at Galaxy Digital"
 excerpt: "Chris Buren from Galaxy Digital on going from Rutgers to trading at one of the biggest crypto firms."
 date: "2024-11-26"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/aJg6bNOaH-s/maxresdefault.jpg"
 featured: false
 tags: ["trading", "risk-management", "Galaxy-Digital", "DeFi", "podcast"]

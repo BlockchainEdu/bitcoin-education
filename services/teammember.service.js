@@ -231,7 +231,7 @@ export const getProjectFromMonday = async function (id) {
 };
 
 export class TeamMember {
-  constructor(image, name, title, bio, linkedin, twitter, email = "") {
+  constructor(image, name, title, bio, linkedin, twitter, email = "", video = "") {
     this.image = image;
     this.name = name;
     this.title = title;
@@ -239,6 +239,7 @@ export class TeamMember {
     this.linkedin = linkedin === "" ? undefined : linkedin;
     this.twitter = twitter === "" ? undefined : twitter;
     this.email = email === "" ? undefined : `mailto:${email}`;
+    this.video = video === "" ? undefined : video;
   }
 }
 

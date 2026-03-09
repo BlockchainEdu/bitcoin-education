@@ -2,7 +2,7 @@
 title: "How to Manage Your Bitcoin - CEO of CoVault"
 excerpt: "See how CoVault is bringing easy-to-use, secure Bitcoin yield strategies to the masses while ensuring you keep full custody of your assets."
 date: "2024-12-08"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/r3W4wa10yeo/maxresdefault.jpg"
 featured: false
 tags: ["Bitcoin", "DeFi", "self-custody", "yield", "podcast"]

@@ -1,7 +1,7 @@
 ﻿import Head from "next/head";
 
 export default function PodcastRedirect() {
-  const url = "https://www.chainstories.xyz/";
+  const url = "https://www.youtube.com/@BlockchainEdu";
   return (
     <>
       <Head>
@@ -10,7 +10,7 @@ export default function PodcastRedirect() {
       </Head>
       <div className="min-h-screen flex items-center justify-center">
         <p>
-          Redirecting to <a href={url} className="underline">ChainStories</a>…
+          Redirecting to <a href={url} className="underline">BEN YouTube</a>…
         </p>
       </div>
       <script

@@ -2,7 +2,7 @@
 title: "From Scams to Success - with Co-founder of Sonar Platform"
 excerpt: "Jacob from Sonar on leaving traditional finance and using AI to make DeFi safer."
 date: "2025-02-07"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/8ikEvlFO4HI/maxresdefault.jpg"
 featured: false
 tags: ["DeFi", "security", "AI", "Sonar", "podcast"]

@@ -2,7 +2,7 @@
 title: "Building the LinkedIn of Web3 - with CEO of Talent Protocol"
 excerpt: "Pedro Oliveira shares how Talent Protocol is changing talent sourcing in Web3, from launching the Builder Score to embracing AI-driven tools."
 date: "2025-01-01"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/Xr6OY15Y3nQ/maxresdefault.jpg"
 featured: false
 tags: ["Web3", "talent", "hiring", "Builder-Score", "podcast"]

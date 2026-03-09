@@ -2,7 +2,7 @@
 title: "Creating a Society of AI Agents - with Virtuals Protocol"
 excerpt: "Jansen Teng from Virtuals Protocol on building a digital country run by autonomous AI agents."
 date: "2025-01-14"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/D6Fm58b018w/maxresdefault.jpg"
 featured: false
 tags: ["AI-agents", "Virtuals-Protocol", "tokenization", "Web3", "podcast"]

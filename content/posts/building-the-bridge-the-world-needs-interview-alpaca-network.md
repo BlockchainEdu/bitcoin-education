@@ -2,7 +2,7 @@
 title: "Building the Bridge the World Needs - Interview with Alpaca Network"
 excerpt: "We talked to Joaquim and Vaughn from Alpaca Network to dive into the exciting intersection of AI and crypto, exploring Initial Model Offerings and decentralized AI."
 date: "2024-11-13"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/elvyDsrVeVk/maxresdefault.jpg"
 featured: false
 tags: ["AI", "decentralization", "crypto", "podcast", "Alpaca-Network"]

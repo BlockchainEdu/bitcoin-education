@@ -2,7 +2,7 @@
 title: "Real World Assets But Make It Blockchain - with CEO of Plume Network"
 excerpt: "Chris Yin from Plume Network on tokenizing everything from Pokemon cards to real estate."
 date: "2025-01-25"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/cp1LlPs-0Fo/maxresdefault.jpg"
 featured: false
 tags: ["RWA", "tokenization", "Plume-Network", "DeFi", "podcast"]

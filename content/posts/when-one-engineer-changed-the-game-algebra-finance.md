@@ -2,7 +2,7 @@
 title: "When One Engineer Changed the Game - Interview with CEO of Algebra Finance"
 excerpt: "Vlad from Algebra Finance on going from Motorola engineer to powering 50+ DEXs."
 date: "2025-02-23"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/gNT0a7RjSPw/maxresdefault.jpg"
 featured: false
 tags: ["DeFi", "DEX", "Algebra-Finance", "liquidity", "podcast"]

@@ -53,9 +53,9 @@ At Dropout Capital, we've backed early-stage companies including:
 - **Tenderize**, launched by students at Marquette University, building a liquid staking marketplace
 - **Algebra.Finance**, founded by a Ph.D. in Computer Science, rethinking on-chain prediction infrastructure
 
-### ChainStories Podcast
+### BEN Podcast
 
-One place where these stories, and the stories of the next generation are already being shared is [ChainStories](https://www.chainstories.xyz), a podcast I host alongside Erick. ChainStories takes listeners behind the scenes of some of the most successful projects in crypto, including Plume Network, YesNoError, Algebra.Finance, Virtuals.io, TON, Horizon Labs, and many others.
+One place where these stories, and the stories of the next generation are already being shared is the BEN podcast, which I host alongside Erick. It takes listeners behind the scenes of some of the most successful projects in crypto, including Plume Network, YesNoError, Algebra.Finance, Virtuals.io, TON, Horizon Labs, and many others.
 
 ### The Future
 

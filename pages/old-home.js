@@ -475,7 +475,7 @@ export default function Home({ locations }) {
           <div className="text-center mt-20 my-4">
             {/* Your StandardButton or any other content goes here */}
             <StandardButton
-              link="https://chainstories.vc"
+              link="https://www.blockchainedu.org/contact"
               text="Invest Now"
               color="orange"
               styling="display-on-scroll mx-4"

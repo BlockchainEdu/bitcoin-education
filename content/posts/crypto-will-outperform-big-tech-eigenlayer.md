@@ -2,7 +2,7 @@
 title: "Crypto Will Outperform Big Tech - EigenLayer"
 excerpt: "Ishaan from EigenLayer on restaking, actively validated services and why crypto will outperform big tech."
 date: "2024-12-27"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/n4c3iL6QZFM/maxresdefault.jpg"
 featured: false
 tags: ["EigenLayer", "Ethereum", "scalability", "restaking", "podcast"]

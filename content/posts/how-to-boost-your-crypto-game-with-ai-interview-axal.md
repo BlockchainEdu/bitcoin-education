@@ -2,7 +2,7 @@
 title: "How to Boost Your Crypto Game with AI - Interview with AXAL"
 excerpt: "We talked to Ari Santos from AXAL to discuss how they are changing the game with smart on-chain automation using autonomous agents."
 date: "2024-11-12"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/fP7ytStEvq0/maxresdefault.jpg"
 featured: false
 tags: ["AI", "crypto-trading", "automation", "DeFi", "podcast"]

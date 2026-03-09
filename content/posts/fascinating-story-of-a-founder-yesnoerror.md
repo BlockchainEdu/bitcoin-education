@@ -2,7 +2,7 @@
 title: "The Fascinating Story of a Founder - Interview with CEO of YesNoError"
 excerpt: "Matt from YesNoError on building a crypto platform in 24 hours that did $150M volume on day one."
 date: "2025-02-12"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/jJWms28epfs/maxresdefault.jpg"
 featured: false
 tags: ["AI", "startup", "Web3", "entrepreneurship", "podcast"]

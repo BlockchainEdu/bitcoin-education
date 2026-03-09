@@ -2,7 +2,7 @@
 title: "I Hosted the Event Where Vitalik Introduced Ethereum"
 excerpt: "Moe Levin on hosting the event where Vitalik first introduced Ethereum and building Miami into a crypto hub."
 date: "2024-12-12"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/RePdvpYIbfQ/maxresdefault.jpg"
 featured: false
 tags: ["Ethereum", "Vitalik-Buterin", "WAGMI", "Miami", "podcast"]

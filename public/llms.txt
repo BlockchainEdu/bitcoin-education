@@ -36,11 +36,10 @@ BEN alumni have founded or led companies including Augur, Optimism, Bolt ($11B),
 
 ## Blog Content
 
-BEN publishes founder interviews (ChainStories podcast), market analysis, crypto career resources, and network updates. Topics include DeFi, AI and crypto, tokenization, blockchain privacy, trading, Web3 careers, and student success stories.
+BEN publishes founder interviews, market analysis, crypto career resources, and network updates. Topics include DeFi, AI and crypto, tokenization, blockchain privacy, trading, Web3 careers, and student success stories.
 
 ## Social
 
 - Twitter/X: https://x.com/BlockchainEdu
 - YouTube: https://www.youtube.com/@BlockchainEdu
 - Medium: https://medium.com/blockchainedu
-- Podcast: https://www.chainstories.xyz/

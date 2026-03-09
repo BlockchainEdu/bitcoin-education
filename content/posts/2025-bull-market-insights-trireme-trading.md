@@ -2,7 +2,7 @@
 title: "2025 Bull Market Insights - from Primary Market Specialist"
 excerpt: "Nicholas from Trireme Trading on the Bitcoin bull market, meme coins and why liquidity is everything."
 date: "2024-12-03"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/f-JLPV3LWXg/maxresdefault.jpg"
 featured: false
 tags: ["bull-market", "Bitcoin", "meme-coins", "trading", "podcast"]

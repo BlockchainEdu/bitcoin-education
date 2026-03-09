@@ -2,7 +2,7 @@
 title: "Can Blockchain Technology Truly Be Private - Interview with CEO of Horizon Labs"
 excerpt: "Robert from Horizon Labs on going from the Air Force to building privacy-focused blockchain."
 date: "2025-02-18"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/kNH4lQQLwys/maxresdefault.jpg"
 featured: false
 tags: ["privacy", "blockchain", "stablecoins", "military", "podcast"]

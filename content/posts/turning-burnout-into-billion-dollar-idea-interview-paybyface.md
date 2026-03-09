@@ -2,7 +2,7 @@
 title: "Turning Burnout into a Billion-Dollar Idea - Interview with CEO of PayByFace"
 excerpt: "Mihai Draghici from PayByFace on how burnout led him to build face recognition payments."
 date: "2024-11-18"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/N8n1sSj4EAA/maxresdefault.jpg"
 featured: false
 tags: ["biometrics", "payments", "fintech", "startup", "podcast"]

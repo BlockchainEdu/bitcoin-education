@@ -2,7 +2,7 @@
 title: "TON Is Changing Telegram Forever - Interview with Ecosystem Lead at TON"
 excerpt: "See how TON's integration with Telegram is creating better user experiences and driving innovation in decentralized applications."
 date: "2025-02-28"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/e6XyOS7bofE/maxresdefault.jpg"
 featured: false
 tags: ["TON", "Telegram", "Web3", "dApps", "podcast"]

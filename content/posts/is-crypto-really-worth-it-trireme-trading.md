@@ -2,7 +2,7 @@
 title: "Is Crypto Really Worth It - Interview with Trireme Trading"
 excerpt: "The real value in crypto as we look at dormant Bitcoin wallets, massive OTC deals, token unlocks, and AI-powered nodes with Jenite from Trireme Trading."
 date: "2024-12-11"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/3WdtG5ROK_8/maxresdefault.jpg"
 featured: false
 tags: ["crypto", "tokenomics", "Bitcoin", "Web3", "podcast"]

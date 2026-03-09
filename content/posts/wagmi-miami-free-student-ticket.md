@@ -36,11 +36,11 @@ BEN has partnered with [WAGMI Miami](https://wagmi.miami/ben-tickets) to bring t
 
 ---
 
-## The ChainStories Podcast
+## BEN Podcast
 
 **"I Hosted the Event where Vitalik Introduced Ethereum"** -- Interview with Moe Levin
 
-Explore blockchain event evolution with Moe Levin, architect of Miami's emergence as a global blockchain hub. [Listen Now](https://www.chainstories.xyz/1829321/episodes/16280806-i-hosted-the-event-where-vitalik-introduced-ethereum-interview-with-moe-levin)
+Explore blockchain event evolution with Moe Levin, architect of Miami's emergence as a global blockchain hub.
 
 ---
 

@@ -2,7 +2,7 @@
 title: "How BEN Helps Students Achieve Their Dreams"
 excerpt: "How Thomas went from student in Istanbul to landing a crypto job through BEN's network."
 date: "2025-02-14"
-author: "BEN ChainStories"
+author: "BEN"
 cover: "https://img.youtube.com/vi/DvBfOIxNldw/maxresdefault.jpg"
 featured: false
 tags: ["BEN", "education", "students", "networking", "podcast"]
