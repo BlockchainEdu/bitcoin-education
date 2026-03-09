@@ -65,7 +65,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                   className="display-on-scroll px-4 font-semibold"
                   href="/blog"
                 >
-                  Insights
+                  Blog
                 </a>
                 <a
                   className="display-on-scroll px-4 font-semibold"

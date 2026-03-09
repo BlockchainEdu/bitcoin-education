@@ -51,6 +51,10 @@ export default function NationalTeamCard({
   }, [showVideo]);
 
   const handleCardClick = () => {
+    if (showBio) {
+      setShowBio(false);
+      return;
+    }
     if (video) {
       setShowVideo(true);
     } else if (bio) {
@@ -86,8 +90,8 @@ export default function NationalTeamCard({
             }}
           />
 
-          {/* Bio overlay (non-video cards only) */}
-          {bio && !video && (
+          {/* Bio overlay (all cards with bio) */}
+          {bio && (
             <div
               className={`absolute inset-0 p-5 flex items-center transition-all duration-300 ${
                 showBio
@@ -127,11 +131,15 @@ export default function NationalTeamCard({
             </div>
           )}
 
-          {/* Bio hint icon (non-video cards only) */}
-          {bio && !video && !showBio && (
+          {/* Bio hint icon — shows on all cards with bio, when bio is hidden */}
+          {bio && !showBio && (
             <div
-              className="absolute bottom-3 right-3 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              className="absolute bottom-3 right-3 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
               style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowBio(true);
+              }}
             >
               <svg
                 width="14"

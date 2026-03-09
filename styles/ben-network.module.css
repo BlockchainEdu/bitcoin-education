@@ -267,9 +267,19 @@
   display: grid;
   grid-template-columns: 22px 46px 1fr auto;
   align-items: center;
-  gap: 12px;
-  min-height: 44px;
+  gap: 10px;
+  min-height: 48px;
   cursor: pointer;
+  padding: 4px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 640px) {
+  .root :global(.uni-item) {
+    gap: 12px;
+    min-height: 44px;
+    padding: 0;
+  }
 }
 
 .root :global(.uni-rank) {

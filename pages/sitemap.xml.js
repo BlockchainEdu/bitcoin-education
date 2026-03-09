@@ -20,15 +20,11 @@ export async function getServerSideProps({ res }) {
     "/learn",
     "/clubs",
     "/professors",
-    "/podcast",
     "/impact",
     "/get-involved",
     "/get-funding",
-    "/internships",
     "/volunteer",
-    "/apply",
     "/subscribe",
-    "/playbook",
   ];
 
   const posts = getAllPostsMeta();

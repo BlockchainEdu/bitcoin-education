@@ -122,7 +122,7 @@ export default function Map({ locations, style }) {
                       className={
                         (location.gallery &&
                           location.gallery[currSlideIdx]?.file_extension !==
-                            ".jpg" &&
+                          ".jpg" &&
                           "video-slide w-full") ||
                         "w-full"
                       }

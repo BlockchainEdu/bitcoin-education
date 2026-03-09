@@ -115,6 +115,14 @@ export default function About() {
         "https://www.youtube.com/watch?v=yeyEVvZyuLQ&t=31s"
       ),
       new TeamMember(
+        "/images/people/dominik-schiener.jpeg",
+        "Dominik Schiener",
+        "Co-Founder, IOTA",
+        "Co-founded IOTA, the distributed ledger for the Internet of Things, which reached a peak market cap of over $14 billion. Won his first hackathon at 16 and has been building in crypto since 2011. Based in Berlin.",
+        "",
+        ""
+      ),
+      new TeamMember(
         "/images/people/paul-veradittakit.jpg",
         "Paul Veradittakit",
         "Managing Partner, Pantera Capital",
@@ -539,6 +547,107 @@ export default function About() {
                   email={member.email}
                 />
               ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── What They Built ── */}
+      <section aria-label="Companies built by BEN alumni" className="relative overflow-hidden py-20 md:py-28" style={{ backgroundColor: "#0a0a0b" }}>
+        {/* Ambient glow */}
+        <div
+          className="absolute inset-0"
+          style={{
+            opacity: 0.06,
+            backgroundImage:
+              "radial-gradient(ellipse at 50% 30%, #FF872A 0%, transparent 60%)",
+          }}
+        />
+
+        <div className="relative max-w-4xl mx-auto px-6 sm:px-10">
+          {/* Headline */}
+          <div className="text-center mb-16 md:mb-20">
+            <h2
+              className="font-mont font-black text-4xl sm:text-5xl md:text-6xl text-white tracking-tight"
+              style={{ lineHeight: 1.05 }}
+            >
+              $20B+
+            </h2>
+            <p
+              className="mt-3 text-base sm:text-lg font-inter"
+              style={{ color: "rgba(255,255,255,0.35)" }}
+            >
+              in companies founded by people from this network.
+            </p>
+          </div>
+
+          {/* Company list — typography-driven */}
+          <div className="space-y-0" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+            {[
+              { company: "Augur", person: "Jeremy Gardner & Joey Krug", detail: "First decentralized prediction market on Ethereum. First utility token ICO." },
+              { company: "IOTA", person: "Dominik Schiener", detail: "Distributed ledger for the Internet of Things. $14B peak market cap." },
+              { company: "Bolt", person: "Ryan Breslow", detail: "Payments super app. $11B+ valuation." },
+              { company: "Optimism", person: "Jinglan Wang", detail: "Leading Ethereum Layer 2. Powers thousands of apps onchain." },
+              { company: "Injective", person: "Eric Chen", detail: "DeFi infrastructure chain. $1.3B valuation. Backed by Mark Cuban." },
+              { company: "CoinList", person: "Andy Bromberg", detail: "Token launch platform. Ran sales for Solana, Filecoin, and Near." },
+              { company: "Noble", person: "Jelena Djuric", detail: "Brought native USDC to the Cosmos ecosystem." },
+              { company: "GDA Capital", person: "Michael Gord", detail: "Took Tron ($20B peak) and Loopring to capital markets. 70+ portfolio companies." },
+            ].map((item) => (
+              <div
+                key={item.company}
+                className="flex flex-col sm:flex-row sm:items-baseline py-5 sm:py-6"
+                style={{
+                  borderBottom: "1px solid rgba(255,255,255,0.06)",
+                  gap: "0.25rem 0",
+                }}
+              >
+                <div className="sm:w-44 shrink-0">
+                  <span className="font-mont font-black text-lg sm:text-xl text-white">
+                    {item.company}
+                  </span>
+                </div>
+                <div className="flex-1 sm:pl-4">
+                  <span
+                    className="text-sm font-inter font-medium"
+                    style={{ color: "rgba(255,255,255,0.55)" }}
+                  >
+                    {item.person}
+                  </span>
+                  <span
+                    className="hidden sm:inline text-sm font-inter"
+                    style={{ color: "rgba(255,255,255,0.22)" }}
+                  >
+                    {" — "}{item.detail}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Backed-by line */}
+          <div className="mt-14 md:mt-16 text-center">
+            <p
+              className="text-xs font-inter font-medium uppercase mb-5"
+              style={{ color: "rgba(255,255,255,0.3)", letterSpacing: "0.15em" }}
+            >
+              Alumni also at
+            </p>
+            <div
+              className="flex flex-wrap justify-center items-center"
+              style={{ gap: "0.8rem 2rem" }}
+            >
+              {[
+                "Pantera Capital", "Founders Fund", "Blockchain Capital",
+                "Coinbase", "NestEgg", "Eco", "The Rollup", "deBridge",
+              ].map((name) => (
+                <span
+                  key={name}
+                  className="font-mont font-bold text-sm md:text-base"
+                  style={{ color: "rgba(255,255,255,0.25)" }}
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>

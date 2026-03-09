@@ -95,7 +95,7 @@ export default function MobileDropdown(props) {
                       <a href="/opportunities">Get Involved</a>
                     </li>
                     <li className="my-8">
-                      <a href="/blog">Insights</a>
+                      <a href="/blog">Blog</a>
                     </li>
                     <li className="my-8">
                       <a href="/team">Our People</a>

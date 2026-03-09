@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /images/ben-wire-details.pdf
 
 User-agent: GPTBot
 Allow: /

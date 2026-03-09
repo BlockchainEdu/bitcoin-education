@@ -24,6 +24,12 @@ module.exports = withBundleAnalyzer({
         ],
       },
       {
+        source: "/images/ben-wire-details.pdf",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+      {
         source: "/images/(.*)",
         headers: [
           { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
@@ -45,12 +51,6 @@ module.exports = withBundleAnalyzer({
     ];
   },
   async redirects() {
-    return [
-      {
-        source: '/internship',
-        destination: '/internships',
-        permanent: true,
-      },
-    ];
+    return [];
   },
 });
