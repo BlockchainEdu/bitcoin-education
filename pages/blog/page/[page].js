@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import HeaderWithLogoDark from "../../../components/headerWithLogoDark";
 import Footer from "../../../components/footer";
+import NewsletterSignup from "../../../components/newsletterSignup";
 import { getPostsPage } from "../../../lib/posts";
 
 function formatDate(d) {
@@ -18,13 +19,13 @@ function formatDate(d) {
 function PostCard({ post }) {
   return (
     <Link href={`/blog/${post.slug}`}>
-      <a className="group block rounded-2xl overflow-hidden bg-white border border-black/5 hover:border-black/10 transition">
+      <a className="group block rounded-2xl overflow-hidden bg-white border-2 border-black/30 hover:border-benorange-500/50 hover:shadow-lg transition-all duration-200">
         <div className="blog-card-media">
           {post.cover ? (
             <img
               src={post.cover}
               alt={post.title}
-              className="group-hover:scale-[1.02] transition-transform"
+              className="group-hover:scale-[1.03] transition-transform duration-300"
               loading="lazy"
               decoding="async"
             />
@@ -32,21 +33,21 @@ function PostCard({ post }) {
         </div>
 
         <div className="p-5">
-          <div className="text-xs text-bengrey-500 flex items-center gap-2">
-            <span>{formatDate(post.date)}</span>
-            <span className="opacity-40">•</span>
-            <span>{post.readingMinutes} min</span>
-          </div>
+          {post.tags?.[0] ? (
+            <span className="inline-block text-[11px] font-semibold uppercase tracking-wide text-benorange-500 mb-2">
+              {post.tags[0].replace(/-/g, " ")}
+            </span>
+          ) : null}
 
-          <h3 className="mt-2 text-[15px] font-semibold text-benblack-500 leading-snug">
+          <h3 className="text-base font-bold text-benblack-500 leading-snug group-hover:text-benorange-500 transition-colors">
             {post.title}
           </h3>
 
-          {post.excerpt ? (
-            <p className="mt-2 text-sm text-bengrey-500 leading-relaxed line-clamp-3">
-              {post.excerpt}
-            </p>
-          ) : null}
+          <div className="mt-3 flex items-center gap-2 text-xs text-bengrey-500">
+            <span>{formatDate(post.date)}</span>
+            <span className="opacity-40">·</span>
+            <span>{post.readingMinutes} min read</span>
+          </div>
         </div>
       </a>
     </Link>
@@ -60,57 +61,89 @@ function Pagination({ currentPage, totalPages }) {
   const nextHref = `/blog/page/${currentPage + 1}`;
 
   return (
-    <div className="mt-10 flex items-center justify-center gap-6 text-sm text-bengrey-500">
+    <div className="mt-12 flex items-center justify-center gap-4">
       {currentPage > 1 ? (
         <Link href={prevHref}>
-          <a className="hover:text-benblack-500">← Prev</a>
+          <a className="px-5 py-2.5 rounded-lg border-2 border-black/30 text-sm font-semibold text-benblack-500 hover:border-benorange-500/50 transition">
+            ← Previous
+          </a>
         </Link>
       ) : (
-        <span className="opacity-30">← Prev</span>
+        <span className="px-5 py-2.5 rounded-lg border-2 border-black/10 text-sm font-semibold text-bengrey-500/40">
+          ← Previous
+        </span>
       )}
 
-      <span className="text-benblack-500/70">
-        Page {currentPage} / {totalPages}
+      <span className="text-sm text-bengrey-500 px-3">
+        {currentPage} of {totalPages}
       </span>
 
       {currentPage < totalPages ? (
         <Link href={nextHref}>
-          <a className="hover:text-benblack-500">Next →</a>
+          <a className="px-5 py-2.5 rounded-lg border-2 border-black/30 text-sm font-semibold text-benblack-500 hover:border-benorange-500/50 transition">
+            Next →
+          </a>
         </Link>
       ) : (
-        <span className="opacity-30">Next →</span>
+        <span className="px-5 py-2.5 rounded-lg border-2 border-black/10 text-sm font-semibold text-bengrey-500/40">
+          Next →
+        </span>
       )}
+    </div>
+  );
+}
+
+function BlogHeader() {
+  return (
+    <div className="bg-white border-b-2 border-black/30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-benblack-500">
+              BEN <span className="text-benorange-500">Blog</span>
+            </h1>
+            <p className="mt-1.5 text-sm text-bengrey-500">
+              From dorm rooms to billion-dollar protocols.
+            </p>
+          </div>
+
+          <div className="flex-shrink-0 w-full sm:w-[320px]">
+            <iframe
+              src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
+              data-test-id="beehiiv-embed"
+              height="52"
+              frameBorder="0"
+              scrolling="no"
+              style={{ margin: 0, borderRadius: "0px", backgroundColor: "transparent", width: "100%" }}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default function BlogPage({ posts, pagination }) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#fafafa]">
       <Head>
-        <title>Blog | BEN</title>
+        <title>{`Blog - Page ${pagination.currentPage} | Blockchain Education Network`}</title>
+        <meta
+          name="description"
+          content={`Founder interviews, market breakdowns and crypto careers from BEN — page ${pagination.currentPage} of ${pagination.totalPages}.`}
+        />
+        <link
+          rel="canonical"
+          href={`https://www.blockchainedu.org/blog/page/${pagination.currentPage}`}
+        />
       </Head>
 
       <HeaderWithLogoDark />
+      <BlogHeader />
 
-      <section className="pt-16 pb-12">
+      <section className="py-10 sm:py-14">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white border border-black/5 px-4 py-2 text-xs shadow-sm">
-              <span className="font-semibold">Articles</span>
-              <span className="opacity-70">Updates, recaps and stories</span>
-            </div>
-
-            <h1 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-benblack-500">
-              BEN <span className="text-benorange-500">Stories</span>
-            </h1>
-
-            <p className="mt-3 text-base sm:text-lg text-bengrey-500">
-              Latest posts, ordered by date.
-            </p>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((p) => (
               <PostCard key={p.slug} post={p} />
             ))}
@@ -120,6 +153,10 @@ export default function BlogPage({ posts, pagination }) {
             currentPage={pagination.currentPage}
             totalPages={pagination.totalPages}
           />
+
+          <div className="mt-16">
+            <NewsletterSignup />
+          </div>
         </div>
       </section>
 
@@ -129,7 +166,7 @@ export default function BlogPage({ posts, pagination }) {
 }
 
 export async function getStaticPaths() {
-  const PAGE_SIZE = 7;
+  const PAGE_SIZE = 9;
   const { totalPages } = getPostsPage(1, PAGE_SIZE);
 
   const paths = [];
@@ -144,7 +181,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const PAGE_SIZE = 7;
+  const PAGE_SIZE = 9;
   const page = Number(params?.page || 1) || 1;
   const { items, totalPages, currentPage } = getPostsPage(page, PAGE_SIZE);
 

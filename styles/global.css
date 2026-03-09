@@ -898,6 +898,24 @@ elevenlabs-convai {
   object-fit: cover;
 }
 
+.blog-prose iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+@media (max-width: 640px) {
+  .blog-prose p {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  .blog-prose h2 {
+    margin-top: 2.5rem;
+  }
+}
+
 .blog-card-media {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -910,4 +928,69 @@ elevenlabs-convai {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Team social icons */
+.team-social-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #E1E1E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9FA9B9;
+  transition: all 200ms ease;
+}
+
+.team-social-icon:hover {
+  background-color: #FF872A;
+  color: #fff;
+}
+
+.team-social-icon-sm {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: #E1E1E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9FA9B9;
+  transition: all 200ms ease;
+}
+
+.team-social-icon-sm:hover {
+  background-color: #FF872A;
+  color: #fff;
+}
+
+/* Alumni card social reveal */
+.alumni-card .alumni-socials {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.alumni-card:hover .alumni-socials {
+  opacity: 1;
+}
+
+/* Alumni avatar ring on hover */
+.alumni-card .alumni-avatar {
+  transition: box-shadow 300ms ease, transform 300ms ease;
+}
+
+.alumni-card:hover .alumni-avatar {
+  box-shadow: 0 0 0 2px rgba(255, 135, 42, 0.4);
+}
+
+.alumni-card:hover .alumni-avatar img {
+  transform: scale(1.1);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

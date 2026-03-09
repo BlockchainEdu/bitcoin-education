@@ -20,8 +20,8 @@ const solutions = [
     href: '/about/team',
   },
   {
-    name: 'Partners',
-    href: '/about/partners'
+    name: 'Contact',
+    href: '/contact'
   },
   {
     name: 'Alumni',

@@ -109,11 +109,6 @@ const TeamMembers = {
             title: "Co-Founder / Managing Partner, Ausum Ventures, MadeMan"
         },
         {
-            image: "/images/team/dean-masley.jpg",
-            name: "Dean Masley",
-            title: "Co-Founder, NestEgg"
-        },
-        {
             image: "/images/team/jinglan-wang.jpg",
             name: "Jinglan Wang",
             title: "Co-Founder, Optimism"

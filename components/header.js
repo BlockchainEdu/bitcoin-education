@@ -31,7 +31,7 @@ export default function HeaderWithLogo({ className = "", children }) {
       } ${className}`}
     >
       <Head>
-        <link rel="shortcut icon" href="" />
+        <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
 
       {/* Mobile menu */}
@@ -59,25 +59,30 @@ export default function HeaderWithLogo({ className = "", children }) {
                   className="display-on-scroll px-4 font-semibold"
                   href="/opportunities"
                 >
-                  Opportunities
+                  Get Involved
+                </a>
+                <a
+                  className="display-on-scroll px-4 font-semibold"
+                  href="/blog"
+                >
+                  Insights
+                </a>
+                <a
+                  className="display-on-scroll px-4 font-semibold"
+                  href="/team"
+                >
+                  Our People
                 </a>
                 <a
                   className="display-on-scroll px-4 font-semibold"
                   href="/donate"
                 >
-                  Donate
+                  Support Us
                 </a>
-                <a
-                  className="display-on-scroll px-4 font-semibold"
-                  href="/contact"
-                >
-                  Contact
-                </a>
-
                 {/* Primary CTA */}
                 <StandardButton
                   link="/opportunities#apply"
-                  text="Apply"
+                  text="Join BEN"
                   textColor="white"
                   color="orange"
                   styling="display-on-scroll ml-4"

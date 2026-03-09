@@ -1,0 +1,46 @@
+# Blockchain Education Network (BEN)
+
+> BEN is the largest and longest-running network of blockchain students, professors, and alumni worldwide. Founded in 2014, BEN has reached 10,000+ students across 35+ countries.
+
+## About
+
+BEN provides education, mentorship, and career access to students entering the blockchain industry. Alumni have founded companies collectively valued at over $20 billion.
+
+## Key Pages
+
+- [Homepage](https://www.blockchainedu.org/)
+- [Blog](https://www.blockchainedu.org/blog)
+- [About](https://www.blockchainedu.org/about)
+- [Programs](https://www.blockchainedu.org/programs)
+- [Alumni](https://www.blockchainedu.org/alumni)
+- [Team](https://www.blockchainedu.org/team)
+- [Contact](https://www.blockchainedu.org/contact)
+- [Clubs](https://www.blockchainedu.org/clubs)
+- [Donate](https://www.blockchainedu.org/donate)
+- [Contact](https://www.blockchainedu.org/contact)
+
+## Leadership
+
+- **Antonio Gomes** — President & Head of Ecosystem Growth, BEN. UF Warrington grad. Leads ecosystem growth, strategic partnerships, and network expansion across 10,000+ students in 35+ countries. Also at GDA Capital. Based in San Francisco.
+- **Erick Pinos** — Board Director & Head of Strategy, BEN. MIT grad, former president of the MIT Bitcoin Club. Ecosystem Lead at Nibiru Chain.
+- **Mel Vera** — Advisor, Operations & Community, BEN. Babson College grad. Founder of Vera Ventures. Advises on global operations and community strategy.
+- **Zsofia Kerekes** — Chief Marketing Officer, BEN. Former finance lead at Morgan Stanley in Budapest.
+- **Filipe Lucas Inês** — Head of AI & Product, BEN. Instituto Superior Técnico grad. Building AI agents and tools at the intersection of AI and blockchain.
+- **Gabriela de Almeida** — Lead Software Engineer, BEN. Previously a software engineer at IBM.
+- **Ashton Barger** — Advisor, Events & Partnerships, BEN. Miami University grad. Runs Zebu Live conference in London. Also at Onchain Foundation.
+- **Reynaldo Darit** — Operations & Research Analyst, BEN. University of Mindanao grad. Manages data operations and research workflows across BEN's global network.
+
+## Notable Alumni
+
+BEN alumni have founded or led companies including Augur, Optimism, Bolt ($11B), CoinList ($1.5B), Injective ($1.3B), GDA Capital, Noble, UMANA, deBridge, Axelar, Roll, Tenderize, and more. Notable names include Jeremy Gardner, Jinglan Wang, Ryan Breslow, Andy Bromberg, Eric Chen, Joey Krug, and Jelena Djuric.
+
+## Blog Content
+
+BEN publishes founder interviews (ChainStories podcast), market analysis, crypto career resources, and network updates. Topics include DeFi, AI and crypto, tokenization, blockchain privacy, trading, Web3 careers, and student success stories.
+
+## Social
+
+- Twitter/X: https://x.com/BlockchainEdu
+- YouTube: https://www.youtube.com/@BlockchainEdu
+- Medium: https://medium.com/blockchainedu
+- Podcast: https://www.chainstories.xyz/

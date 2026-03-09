@@ -92,19 +92,24 @@ export default function MobileDropdown(props) {
                 <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="font-mont text-chablack-300 font-semibold">
                     <li className="my-8">
-                      <a href="/contact">Contact</a>
+                      <a href="/opportunities">Get Involved</a>
+                    </li>
+                    <li className="my-8">
+                      <a href="/blog">Insights</a>
+                    </li>
+                    <li className="my-8">
+                      <a href="/team">Our People</a>
                     </li>
                     <li className="mt-8">
-                      <a href="/donate">Donate</a>
+                      <a href="/donate">Support Us</a>
                     </li>
                   </ul>
                 </div>
                 <StandardButton
-                  link="https://buzzsprout.com/1829321"
-                  text="Apply"
+                  link="/opportunities#apply"
+                  text="Join BEN"
                   color="orange"
                   textColor="white"
-                  target="_blank"
                 />
               </div>
             </Popover.Panel>

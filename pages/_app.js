@@ -2,7 +2,7 @@ import "tailwindcss/tailwind.css";
 import "../styles/global.css";
 import "../utils/utm-tracking.js";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { AppWrapper } from "../context/state";
 import TagManager from "react-gtm-module";
 import Head from "next/head";
@@ -12,15 +12,13 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [routeLoading, setRouteLoading] = useState(false);
 
+  const SITE_URL = "https://www.blockchainedu.org";
   const pageTitle = "Blockchain Education Network";
   const pageDescription =
-    "Join 50k+ for crypto news, events, jobs, and tools in just 2 min a day!";
-  const ogImageUrl = "/images/light-2-logo.jpg";
+    "The largest and longest running network of blockchain students, professors, and alumni. Join 50k+ for crypto news, events, jobs, and tools.";
+  const ogImageUrl = `${SITE_URL}/images/light-2-logo.jpg`;
 
-  const currentUrl = useMemo(() => {
-    if (typeof window === "undefined") return "";
-    return window.location.href;
-  }, [router.asPath]);
+  const canonicalUrl = `${SITE_URL}${router.asPath.split("?")[0]}`;
 
   // GTM init
   useEffect(() => {
@@ -183,37 +181,41 @@ function MyApp({ Component, pageProps }) {
             async="async"
           />
 
-          <link rel="shortcut icon" href="" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+          <link rel="canonical" href={canonicalUrl} />
+          <meta name="description" content={pageDescription} />
+          <link rel="shortcut icon" href="/favicon.ico" />
 
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Average&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=Average&display=swap"
             rel="stylesheet"
           />
 
-          {/* Social thumbnails */}
+          {/* Open Graph */}
+          <meta property="og:site_name" content="Blockchain Education Network" />
           <meta property="og:title" content={pageTitle} />
           <meta property="og:description" content={pageDescription} />
           <meta property="og:image" content={ogImageUrl} />
           <meta property="og:image:width" content="960" />
           <meta property="og:image:height" content="540" />
-          <meta property="og:url" content={currentUrl} />
+          <meta property="og:url" content={canonicalUrl} />
           <meta property="og:type" content="website" />
+          <meta property="og:locale" content="en_US" />
 
+          {/* Twitter */}
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@BlockchainEdu" />
           <meta name="twitter:title" content={pageTitle} />
           <meta name="twitter:description" content={pageDescription} />
           <meta
             name="twitter:image"
-            content="https://www.blockchainedu.org/images/ben-beats-thumbnail.png"
+            content={`${SITE_URL}/images/ben-beats-thumbnail.png`}
           />
+
+          {/* AI Crawlers */}
+          <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         </Head>
 
         <Component {...pageProps} />

@@ -118,11 +118,11 @@ export default function Footer() {
                 <li className="uppercase font-bold text-xs">Quick Links</li>
 
                 <li className="text-sm">
-                  <Link href="/opportunities">Build with us</Link>
+                  <Link href="/opportunities">Get Involved</Link>
                 </li>
                 <li className="text-sm">
-                  <a href="https://x.com/BlockchainEdu" target="_blank">
-                    Apply
+                  <a href="/opportunities#apply">
+                    Join BEN
                   </a>
                 </li>
                 {/* <li className="text-sm">Programs</li>
@@ -141,10 +141,10 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li className="uppercase font-bold text-xs">Company</li>
                 <li className="text-sm">
-                  <a href="/team">About Us</a>
+                  <a href="/team">Our People</a>
                 </li>
                 <li className="text-sm">
-                  <a href="/partners">Partners</a>
+                  <a href="/contact">Talk to Us</a>
                 </li>
               </ul>
             </div>

@@ -1,59 +1,168 @@
-import React from "react"
-import MobileDropdown from "./mobileDropdown"
+import { useState, useRef, useEffect } from "react";
 
-class NationalTeamCard extends React.Component {
+export default function NationalTeamCard({
+  image,
+  name,
+  title,
+  bio,
+  linkedin,
+  twitter,
+  email,
+}) {
+  const [showBio, setShowBio] = useState(false);
+  const cardRef = useRef(null);
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            toggle: false
-        }
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (cardRef.current && !cardRef.current.contains(e.target)) {
+        setShowBio(false);
+      }
     }
-
-    onClickFlip = () => {
-        this.props.setGlobalClick(true);
-        this.setState({ toggle: !this.state.toggle })
+    if (showBio) {
+      document.addEventListener("mousedown", handleClickOutside);
     }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showBio]);
 
-    render() {
-        return (
-            <div className="text-center m-auto">
-                <div>
-                    <div className={"flip-card " + (this.state.toggle && this.props.globalClick ? "hover" : "")}>
-                        <div className="flip-card-inner" onClick={() => this.onClickFlip()} >
-                            <div className="flip-card-front" flip-card-container="true" style={{backgroundImage: `url(${this.props.image})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}>
-                            </div>
-                            <div className="flip-card-back text-black font-mont p-5 text-sm text-left overflow-y-scroll">
-                                {/* <div flip-card-container="true">Ashton Barger is a Past President of the Miami University Blockchain Club and a 2020 Graduate of Miami University of Ohio. He currently works full time as an Account Manager for Zebu Digital, a Crypto and Blockchain Marketing Agency. He has been volunteering as the President of BEN USA since January of 2021 and is loving the progress the team has made since joining BEN. In his free time he enjoys hiking, skiing,</div> */}
-                                <div flip-card-container="true">{this.props.bio}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h3 className="font-mont font-bold text-xl text-black pt-5">{this.props.name}</h3>
-                <div className="text-bengrey-300 pt-2">{this.props.title}</div>
-                <div className="text-center social-icons pt-3">
-                    {this.props.twitter &&
-                        <a href={this.props.twitter} target="_blank"><img className="m-auto" src="/images/twitter-icon.png" /></a>
-                    }
-                    {this.props.linkedin &&
-                        <a href={this.props.linkedin} target="_blank"><img className="m-auto" src="/images/linkedin-icon.png" /></a>
-                    }
-                    {this.props.email &&
-                        <a href={this.props.email} target="_blank"><img className="m-auto" src="/images/mail-icon.png" /></a>
-                    }
-                </div>
-            </div>
-        )
-    }
+  return (
+    <div className="flex flex-col items-center text-center group" ref={cardRef}>
+      {/* Image container */}
+      <div
+        className="relative w-56 h-72 rounded-2xl overflow-hidden cursor-pointer transition-shadow duration-300 group-hover:shadow-lg"
+        onClick={() => bio && setShowBio(!showBio)}
+      >
+        {/* Photo */}
+        <img
+          src={image}
+          alt={`${name} — ${title}`}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-transform duration-500 group-hover:scale-105"
+          style={{ backgroundColor: "#E1E1E1" }}
+        />
+
+        {/* Hover gradient overlay */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0) 50%, transparent)",
+          }}
+        />
+
+        {/* Bio overlay */}
+        {bio && (
+          <div
+            className={`absolute inset-0 p-5 flex items-center transition-all duration-300 ${
+              showBio
+                ? "opacity-100 transform translate-y-0"
+                : "opacity-0 transform translate-y-2 pointer-events-none"
+            }`}
+            style={{ backgroundColor: "rgba(32, 33, 39, 0.92)" }}
+          >
+            <p
+              className="text-white text-sm leading-relaxed font-inter overflow-y-auto"
+              style={{ maxHeight: "100%", opacity: 0.9 }}
+            >
+              {bio}
+            </p>
+          </div>
+        )}
+
+        {/* Bio hint icon */}
+        {bio && !showBio && (
+          <div
+            className="absolute bottom-3 right-3 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </div>
+        )}
+      </div>
+
+      {/* Name & Title */}
+      <h3 className="font-mont font-bold text-lg text-black mt-5 leading-tight">
+        {name}
+      </h3>
+      {title && (
+        <p
+          className="text-bengrey-300 text-sm mt-1 font-inter"
+          style={{ maxWidth: "200px" }}
+        >
+          {title}
+        </p>
+      )}
+
+      {/* Social links */}
+      {(twitter || linkedin || email) && (
+        <div className="flex items-center gap-3 mt-3">
+          {linkedin && (
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="team-social-icon"
+              aria-label={`${name} on LinkedIn`}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </a>
+          )}
+          {twitter && (
+            <a
+              href={twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="team-social-icon"
+              aria-label={`${name} on Twitter`}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+          )}
+          {email && (
+            <a
+              href={email.startsWith("mailto:") ? email : `mailto:${email}`}
+              className="team-social-icon"
+              aria-label={`Email ${name}`}
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="M22 7l-10 6L2 7" />
+              </svg>
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
-
-// const NationalTeamCard = (props) => {
-
-
-
-
-// }
-
-export default NationalTeamCard

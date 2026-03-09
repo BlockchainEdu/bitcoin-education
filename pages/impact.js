@@ -53,32 +53,6 @@ export default function Impact() {
       </Head>
       
       <section className="container pt-10 mx-auto">
-  <h1 className="text-center mx-auto text-4xl font-black m-4">Podcasts</h1>
-
-  <div className="text-center mx-auto text-black text-2xl pl-4 pb-6 pr-4 max-w-xl">We've published <strong className="text-3xl">43</strong> podcast episodes with <strong className="text-3xl">4,225</strong> downloads 🎙️🎧🔥</div>
-
-  <div className="flex flex-col md:flex-row justify-between items-center w-12/12 mx-auto">
-
-    <div className="left w-full md:w-1/3 p-4 md:ml-20">
-      <img
-        src="/images/podcast-image.jpg"
-        alt="Podcast Image"
-        className="w-1/3 mx-auto md:w-2/3 md:h-2/3 object-cover"
-      />
-    </div>
-
-    <div className="right w-full md:w-2/3 p-4">
-      <ul className="text-left text-xl">
-        <div className=""><p><strong>Top Episodes</strong></p></div>
-        <li><p>- <a target="_blank" className="text-blue-600 underline" href="https://www.buzzsprout.com/1829321/episodes/10581607">Monetizing Your Consciousness with Personal.ai</a></p></li>
-        <li><p>- <a target="_blank" className="text-blue-600 underline" href="https://www.buzzsprout.com/1829321/episodes/8975558">How I Became a Blockchain Developer While in College</a></p></li>
-        <li><p>- <a target="_blank" className="text-blue-600 underline" href="https://www.buzzsprout.com/1829321/episodes/9270469">How Polygon Will Help Bring Mass Adoption to Ethereum</a></p></li>
-        <li><p>- <a target="_blank" className="text-blue-600 underline" href="https://www.buzzsprout.com/1829321/episodes/9877782">Enterprise Utility with Chainlink</a></p></li>
-        <li><p>- <a target="_blank" className="text-blue-600 underline" href="https://www.buzzsprout.com/1829321/episodes/10454513">The Music NFT Revolution with BLOND:ISH and Drasen</a></p></li>
-      </ul>
-    </div>
-
-  </div>
 
     <h1 className="text-center mx-auto text-4xl pt-10 font-black m-4">Events</h1>
 
