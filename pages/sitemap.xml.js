@@ -24,7 +24,6 @@ export async function getServerSideProps({ res }) {
     "/get-involved",
     "/get-funding",
     "/volunteer",
-    "/subscribe",
   ];
 
   const posts = getAllPostsMeta();

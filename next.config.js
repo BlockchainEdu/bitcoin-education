@@ -51,6 +51,12 @@ module.exports = withBundleAnalyzer({
     ];
   },
   async redirects() {
-    return [];
+    return [
+      {
+        source: "/subscribe",
+        destination: "/blog",
+        permanent: true,
+      },
+    ];
   },
 });
