@@ -6,7 +6,6 @@ import Footer from "../components/footer";
 import { TeamMemberService } from "../services";
 import { slugify } from "../lib/slugify";
 import {
-  OFFICIAL_LINKS,
   COMPANIES_FROM_BEN,
   FOUNDERS_AND_PROJECTS,
   UNICORNS,
@@ -290,6 +289,7 @@ function parseTitleToRoleCompany(titleText) {
     .split(",")
     .map((x) => x.trim())
     .filter(Boolean);
+
   if (parts.length <= 1) return { role: t, company: "" };
 
   return { role: parts[0], company: parts.slice(1).join(", ") };
@@ -334,8 +334,9 @@ function parseNumberFromMonday(cv) {
 }
 
 function buildPageWindow(current, total, maxVisible = 5) {
-  if (total <= maxVisible)
+  if (total <= maxVisible) {
     return Array.from({ length: total }, (_, i) => i + 1);
+  }
 
   const half = Math.floor(maxVisible / 2);
   let start = current - half;
@@ -356,7 +357,31 @@ function buildPageWindow(current, total, maxVisible = 5) {
   return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 }
 
-export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
+function sortUniversitiesDesc(items = []) {
+  return [...items].sort((a, b) => {
+    const peopleDiff =
+      Number(b?.peopleCount || 0) - Number(a?.peopleCount || 0);
+    if (peopleDiff !== 0) return peopleDiff;
+    return String(a?.name || "").localeCompare(String(b?.name || ""));
+  });
+}
+
+function chunkUniversitiesForColumns(items = [], columnCount = 3) {
+  if (!items.length) return [];
+
+  const rowsPerColumn = Math.ceil(items.length / columnCount);
+  const columns = [];
+
+  for (let colIndex = 0; colIndex < columnCount; colIndex += 1) {
+    const start = colIndex * rowsPerColumn;
+    const end = start + rowsPerColumn;
+    columns.push(items.slice(start, end));
+  }
+
+  return columns;
+}
+
+export default function BenNetwork({ alumni = [], universities = [] }) {
   const onDominantBgLoad = useDominantBg();
 
   const companiesFromBen = COMPANIES_FROM_BEN;
@@ -365,22 +390,9 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
   const users = USERS;
   const testimonials = TESTIMONIALS;
 
-  const visibleUniGroups = useMemo(() => {
-    return (universitiesGroups || [])
-      .filter((g) => (g?.items?.length || 0) > 0)
-      .map((g) => ({
-        ...g,
-        items: (g.items || []).filter((it) => it?.name),
-      }));
-  }, [universitiesGroups]);
-
   const allUniFlat = useMemo(() => {
-    const out = [];
-    visibleUniGroups.forEach((g) => {
-      (g.items || []).forEach((it) => out.push({ ...it, groupId: g.id }));
-    });
-    return out;
-  }, [visibleUniGroups]);
+    return sortUniversitiesDesc((universities || []).filter((it) => it?.name));
+  }, [universities]);
 
   const uniRankById = useMemo(() => {
     const m = new Map();
@@ -413,6 +425,10 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
   const uniPaged = allUniFlat.slice(uniStart, uniStart + PAGE_SIZE);
   const uniPagesWindow = buildPageWindow(uniPageClamped, uniTotalPages, 5);
 
+  const uniColumns = useMemo(() => {
+    return chunkUniversitiesForColumns(uniPaged, 3);
+  }, [uniPaged]);
+
   return (
     <div className={`${styles.root} ${BG_BASE} min-h-screen text-benblack-500`}>
       <Head>
@@ -429,62 +445,63 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-benorange-100 opacity-90" />
         <div className="hero-vignette" aria-hidden="true" />
 
-        <div className="relative container mx-auto pt-24 pb-16 px-6 hero-content">
-          <div className="hero-badge inline-flex items-center gap-4 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs mb-6 shadow-sm">
-            <span className="font-semibold">Proof of impact</span>
-            <span className="opacity-70">
-              $20B+ in value created, 160+ chapters in 35+ countries and 2.2M
-              impressions on X
-            </span>
-          </div>
-
-          <div className="max-w-xl mx-auto text-center hero-glass">
-            <div className="hero-glass-content">
-              <h1 className="flex justify-center leading-none">
-                <img
-                  src="/images/ben-network/ben-network-logo.png"
-                  alt="BEN Network"
-                  className="h-auto max-w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
-                  style={{ width: "clamp(220px, 42vw, 560px)" }}
-                  loading="eager"
-                  decoding="async"
-                />
-              </h1>
-
-              <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-2xl mx-auto">
-                A global network of student founders, alumni and companies built
-                through the Blockchain Education Network
-              </p>
-
-              <div className="hero-media mt-8">
-                <div className="benevents-card">
-                  <div className="benevents-frame">
-                    <img
-                      src={BENEVENTS_IMG}
-                      alt="BEN Events"
-                      className="benevents-img"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
+        <div className="relative container mx-auto pt-24 pb-16 px-6">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="order-2 lg:order-1 flex justify-center">
+              <div className="benevents-card">
+                <div className="benevents-frame">
+                  <img
+                    src={BENEVENTS_IMG}
+                    alt="BEN Events"
+                    className="benevents-img"
+                    loading="eager"
+                    decoding="async"
+                  />
                 </div>
               </div>
+            </div>
 
-              <div className="mt-8 text-center">
-                <div className="flex justify-center">
-                  {users.map((src, i) => (
-                    <img
-                      key={i}
-                      src={src}
-                      alt={`User ${i + 1}`}
-                      className="w-10 h-10 rounded-full border-2 border-benorange -ml-2 object-cover"
-                    />
-                  ))}
+            <div className="order-1 lg:order-2 flex justify-center">
+              <div className="hero-copy">
+                <div className="hero-badge inline-flex items-center justify-center gap-3 rounded-full bg-white/70 backdrop-blur border border-black/5 px-4 py-2 text-xs shadow-sm">
+                  <span className="font-semibold">Proof of impact</span>
+                  <span className="opacity-70">
+                    $20B+ created across 160+ chapters in 35+ countries
+                  </span>
                 </div>
 
-                <p className="mt-2 text-sm text-bengrey-500">
-                  📡 Followed by 25k+ in Web3
+                <div className="hero-logoWrap mt-6">
+                  <img
+                    src="/images/ben-network/ben-network-logo.png"
+                    alt="BEN Network"
+                    className="h-auto max-w-full drop-shadow-[0_10px_18px_rgba(0,0,0,0.12)]"
+                    style={{ width: "clamp(220px, 34vw, 520px)" }}
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+
+                <p className="mt-5 text-base md:text-lg text-benblack-500/80 max-w-xl text-center">
+                  A global network of student founders, alumni and companies
+                  built through the Blockchain Education Network
                 </p>
+
+                <div className="mt-8 flex flex-col items-center w-full">
+                  <div className="hero-users">
+                    {users.map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt={`User ${i + 1}`}
+                        className="hero-user-avatar"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="mt-3 text-sm text-bengrey-500 text-center">
+                    📡 Followed by 25k+ in Web3
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -642,8 +659,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
                 ].map((img) => (
                   <div
                     key={img.src}
-                    className={`absolute ${img.pos} w-[170px] h-[170px] sm:w-[190px] sm:h-[190px]
-                      rounded-full overflow-hidden border border-black/5 bg-white shadow-sm`}
+                    className={`absolute ${img.pos} w-[170px] h-[170px] sm:w-[190px] sm:h-[190px] rounded-full overflow-hidden border border-black/5 bg-white shadow-sm`}
                   >
                     <img
                       src={img.src}
@@ -669,7 +685,7 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
         </div>
       </section>
 
-      <section className={`py-16 ${BG_WHITE} border-t border-black/5`}>
+      <section className={`${BG_WHITE} py-16 border-t border-black/5`}>
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <header className="text-center mb-10">
@@ -953,79 +969,87 @@ export default function BenNetwork({ alumni = [], universitiesGroups = [] }) {
               ) : (
                 <>
                   <div className="uni-grid">
-                    {uniPaged.map((u) => {
-                      const globalRank = uniRankById.get(String(u.id)) || 0;
-                      const badge = Number(u.peopleCount || 0);
-                      const href = `/universities/${slugify(u.name)}`;
-                      const isLoading = navigatingTo === u.id;
+                    {uniColumns.map((column, columnIndex) => (
+                      <div key={columnIndex} className="uni-column">
+                        {column.map((u) => {
+                          const globalRank = uniRankById.get(String(u.id)) || 0;
+                          const badge = Number(u.peopleCount || 0);
+                          const href = `/universities/${slugify(u.name)}`;
+                          const isLoading = navigatingTo === u.id;
 
-                      return (
-                        <Link key={u.id} href={href} prefetch>
-                          <a
-                            className={`uni-item ${
-                              isLoading ? "is-loading" : ""
-                            }`}
-                            title={u.name}
-                            onClick={() => setNavigatingTo(u.id)}
-                            aria-label={`Open ${u.name}`}
-                          >
-                            <div className="uni-rank">{globalRank}</div>
-
-                            <div className="uni-logoWrap" data-dominant-bg>
-                              {u.image ? (
-                                <SmartImage
-                                  src={imgSrc(u.image)}
-                                  fallbackSrcs={[]}
-                                  alt={u.name}
-                                  className="uni-logoImg"
-                                  loading="lazy"
-                                  onLoad={onDominantBgLoad}
-                                />
-                              ) : (
-                                <div
-                                  className="uni-logoFallback"
-                                  aria-label={u.name}
-                                >
-                                  {initialsFromName(u.name)}
-                                </div>
-                              )}
-                            </div>
-
-                            <div className="uni-name">
-                              {u.name}
-                              {isLoading ? (
-                                <div className="uni-loading">Loading...</div>
-                              ) : null}
-                            </div>
-
-                            <div className="uni-badgeWrap">
-                              <span
-                                className={`uni-badge ${
-                                  badge > 0 ? "" : "is-zero"
+                          return (
+                            <Link key={u.id} href={href} prefetch>
+                              <a
+                                className={`uni-item ${
+                                  isLoading ? "is-loading" : ""
                                 }`}
-                                aria-label={`Number of People: ${badge}`}
-                                title={`Number of People: ${badge}`}
-                                onClick={(e) => e.preventDefault()}
+                                title={u.name}
+                                onClick={() => setNavigatingTo(u.id)}
+                                aria-label={`Open ${u.name}`}
                               >
-                                <svg
-                                  className="uni-badgeIcon"
-                                  viewBox="0 0 24 24"
-                                  width="14"
-                                  height="14"
-                                  aria-hidden="true"
-                                >
-                                  <path
-                                    fill="currentColor"
-                                    d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
-                                  />
-                                </svg>
-                                <span className="uni-badgeNum">{badge}</span>
-                              </span>
-                            </div>
-                          </a>
-                        </Link>
-                      );
-                    })}
+                                <div className="uni-rank">{globalRank}</div>
+
+                                <div className="uni-logoWrap" data-dominant-bg>
+                                  {u.image ? (
+                                    <SmartImage
+                                      src={imgSrc(u.image)}
+                                      fallbackSrcs={[]}
+                                      alt={u.name}
+                                      className="uni-logoImg"
+                                      loading="lazy"
+                                      onLoad={onDominantBgLoad}
+                                    />
+                                  ) : (
+                                    <div
+                                      className="uni-logoFallback"
+                                      aria-label={u.name}
+                                    >
+                                      {initialsFromName(u.name)}
+                                    </div>
+                                  )}
+                                </div>
+
+                                <div className="uni-name">
+                                  {u.name}
+                                  {isLoading ? (
+                                    <div className="uni-loading">
+                                      Loading...
+                                    </div>
+                                  ) : null}
+                                </div>
+
+                                <div className="uni-badgeWrap">
+                                  <span
+                                    className={`uni-badge ${
+                                      badge > 0 ? "" : "is-zero"
+                                    }`}
+                                    aria-label={`Number of People: ${badge}`}
+                                    title={`Number of People: ${badge}`}
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <svg
+                                      className="uni-badgeIcon"
+                                      viewBox="0 0 24 24"
+                                      width="14"
+                                      height="14"
+                                      aria-hidden="true"
+                                    >
+                                      <path
+                                        fill="currentColor"
+                                        d="M16 11c1.66 0 3-1.79 3-4s-1.34-4-3-4-3 1.79-3 4 1.34 4 3 4ZM8 11c1.66 0 3-1.79 3-4S9.66 3 8 3 5 4.79 5 7s1.34 4 3 4Zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4Zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2h6v-2c0-2.66-5.33-3.5-7-3.5Z"
+                                      />
+                                    </svg>
+                                    <span className="uni-badgeNum">
+                                      {badge}
+                                    </span>
+                                  </span>
+                                </div>
+                              </a>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    ))}
                   </div>
 
                   <div className="uni-footerMeta uni-footerMeta--pager">
@@ -1130,12 +1154,10 @@ export async function getStaticProps() {
     boards (ids: 18394872099) {
       id
       columns { id title type }
-      groups { id title }
       items_page (limit: 500) {
         items {
           id
           name
-          group { id title }
           assets { id public_url }
           column_values { id value text }
         }
@@ -1197,6 +1219,7 @@ export async function getStaticProps() {
 
   const uniPicturesId =
     pickId(uniColumnsMap, ["Pictures", "files", "pictures"]) || "files";
+
   const uniPeopleId =
     pickId(uniColumnsMap, [
       "Number of People",
@@ -1207,57 +1230,32 @@ export async function getStaticProps() {
       "numbers",
     ]) || "numbers";
 
-  const groupsIndex = new Map(
-    (uniBoard?.groups ?? []).map((g, idx) => [String(g.id), idx]),
+  const universities = sortUniversitiesDesc(
+    uniItems.map((item) => {
+      const picsCv = col(item, uniPicturesId);
+      const assetId = extractAssetIdFromFilesColumn(picsCv);
+      const assetsById = buildAssetsById(item?.assets ?? []);
+      const imgFromAssets =
+        (assetId ? assetsById.get(assetId) : null) ||
+        item?.assets?.[0]?.public_url ||
+        null;
+
+      const imgFallback =
+        extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
+
+      const peopleCount = parseNumberFromMonday(col(item, uniPeopleId));
+
+      return {
+        id: item.id,
+        name: item.name,
+        image: imgFromAssets || imgFallback || null,
+        peopleCount,
+      };
+    }),
   );
 
-  const groupBuckets = new Map();
-
-  for (const item of uniItems) {
-    const groupId = String(item?.group?.id || "unknown");
-    const groupTitle = item?.group?.title || "Other";
-
-    const picsCv = col(item, uniPicturesId);
-    const assetId = extractAssetIdFromFilesColumn(picsCv);
-    const assetsById = buildAssetsById(item?.assets ?? []);
-    const imgFromAssets =
-      (assetId ? assetsById.get(assetId) : null) ||
-      item?.assets?.[0]?.public_url ||
-      null;
-
-    const imgFallback =
-      extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
-
-    const peopleCount = parseNumberFromMonday(col(item, uniPeopleId));
-
-    if (!groupBuckets.has(groupId)) {
-      groupBuckets.set(groupId, {
-        id: groupId,
-        title: groupTitle,
-        items: [],
-      });
-    }
-
-    groupBuckets.get(groupId).items.push({
-      id: item.id,
-      name: item.name,
-      image: imgFromAssets || imgFallback || null,
-      peopleCount,
-    });
-  }
-
-  const universitiesGroups = Array.from(groupBuckets.values()).sort((a, b) => {
-    const ai = groupsIndex.has(String(a.id))
-      ? groupsIndex.get(String(a.id))
-      : 9999;
-    const bi = groupsIndex.has(String(b.id))
-      ? groupsIndex.get(String(b.id))
-      : 9999;
-    return ai - bi;
-  });
-
   return {
-    props: { alumni, universitiesGroups },
+    props: { alumni, universities },
     revalidate: 3600,
   };
 }
