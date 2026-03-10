@@ -47,7 +47,11 @@ const Stories = [
     new Story("/images/stories/ben-no-picture.jpg", "Ryan Jones", "University of Texas", "I was fortunate enough to hear about the BEN team. The BEN team educates the youth and demonstrates why blockchain is the future, and for that I am thankful to potentially have this opportunity."),
     new Story("/images/stories/william-blakeley.jpg", "William Blakeley", "Duke University", "I hope this conference will inspire new ideas for business models as I return to Duke to work on our capstone project, which tasks us with presenting a new blockchain venture to professors, students, and outside professionals. This is a great time to step back from learning autodidactically to open my ears to others' ideas, conceptualize the big picture of what is possible, and practice articulating to others why blockchain could be useful and even necessary to solve real-world problems."),
     new Story("/images/stories/timothy-hein.jpg", "Timothy Hein", "", "I'm particularly excited to get insight to the world of NFTs and the industry that surrounds it. My colleagues and I at Purdue have a very technical experience with web3. The industry is much more broad than that and where the really exciting projects show up is at intersections between web3 and other industries."),
-    new Story("/images/stories/ben-no-picture.jpg", "Alex Kim", "")
+    new Story("/images/stories/ben-no-picture.jpg", "Alex Kim", ""),
+    new Story("/images/stories/ben-eth-oxford.jpg", "BEN Students at ETH Oxford", "Oxford, UK"),
+    new Story("/images/stories/ben-eth-oxford-2.jpg", "BEN Hackathon at ETH Oxford", "Oxford, UK"),
+    new Story("/images/stories/ben-nyc-meetup.jpg", "BEN Meetup in New York", "New York City"),
+    new Story("/images/stories/ben-conference-2025.jpg", "BEN at Blockchain Conference", "2025")
 ]
 
 export default Stories

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import Popup from "./popup";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Footer() {
+  const router = useRouter();
   const popupDelayInSeconds = 15;
   const [showPopup, setShowPopup] = useState(false);
 
@@ -55,11 +56,15 @@ export default function Footer() {
               Navigate
             </h4>
             <ul className="space-y-2.5 font-inter text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-              <li><Link href="/opportunities"><a className="transition-colors duration-200 hover:text-white">Get Involved</a></Link></li>
-              <li><Link href="/blog"><a className="transition-colors duration-200 hover:text-white">Blog</a></Link></li>
-              <li><Link href="/team"><a className="transition-colors duration-200 hover:text-white">Our People</a></Link></li>
-              <li><Link href="/donate"><a className="transition-colors duration-200 hover:text-white">Support Us</a></Link></li>
-              <li><Link href="/contact"><a className="transition-colors duration-200 hover:text-white">Contact</a></Link></li>
+              {[
+                { label: "Get Involved", path: "/opportunities" },
+                { label: "Blog", path: "/blog" },
+                { label: "Our People", path: "/team" },
+                { label: "Support Us", path: "/donate" },
+                { label: "Contact", path: "/contact" },
+              ].map((item) => (
+                <li key={item.path}><span onClick={() => router.push(item.path)} className="transition-colors duration-200 hover:text-white cursor-pointer">{item.label}</span></li>
+              ))}
             </ul>
           </div>
 
@@ -69,8 +74,8 @@ export default function Footer() {
               Get Started
             </h4>
             <ul className="space-y-2.5 font-inter text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-              <li><a href="/opportunities#apply" className="transition-colors duration-200 hover:text-white">Join BEN</a></li>
-              <li><a href="https://bit.ly/ben-media-kit" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-white">Media Kit</a></li>
+              <li><span onClick={() => router.push("/opportunities#apply")} className="transition-colors duration-200 hover:text-white cursor-pointer">Join BEN</span></li>
+              <li><span onClick={() => window.open("https://bit.ly/ben-media-kit", "_blank", "noopener,noreferrer")} className="transition-colors duration-200 hover:text-white cursor-pointer">Media Kit</span></li>
             </ul>
           </div>
 
@@ -80,10 +85,14 @@ export default function Footer() {
               Connect
             </h4>
             <ul className="space-y-2.5 font-inter text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-              <li><a href="https://twitter.com/blockchainedu" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-white">X / Twitter</a></li>
-              <li><a href="https://linkedin.com/company/blockchainedu" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-white">LinkedIn</a></li>
-              <li><a href="https://www.youtube.com/@BlockchainEdu" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-white">YouTube</a></li>
-              <li><a href="https://t.me/+SMwh8vkel1KnZArV" target="_blank" rel="noopener noreferrer" className="transition-colors duration-200 hover:text-white">Telegram</a></li>
+              {[
+                { label: "X / Twitter", url: "https://twitter.com/blockchainedu" },
+                { label: "LinkedIn", url: "https://linkedin.com/company/blockchainedu" },
+                { label: "YouTube", url: "https://www.youtube.com/@BlockchainEdu" },
+                { label: "Telegram", url: "https://t.me/+SMwh8vkel1KnZArV" },
+              ].map((item) => (
+                <li key={item.label}><span onClick={() => window.open(item.url, "_blank", "noopener,noreferrer")} className="transition-colors duration-200 hover:text-white cursor-pointer">{item.label}</span></li>
+              ))}
             </ul>
           </div>
         </div>

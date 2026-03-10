@@ -25,7 +25,7 @@ export default function GetInvolved() {
         },
         {
             name: "Alumni",
-            description: "We are looking for prestigious speakers for club events, teachers for BEN Learn, and mentors for our career center."
+            description: "We are looking for prestigious speakers for club events, teachers for BEN Academy, and mentors for our career center."
         }
     ]
 
@@ -34,7 +34,16 @@ export default function GetInvolved() {
         <div id="partners-page">
             <HeaderWithLogoDark />
             <Head>
-                <title>Get Involved | Blockchain Education Network</title>
+                <title>Get Involved with BEN — Start or Join a Blockchain Club</title>
+                <meta name="description" content="Start a blockchain club at your university, volunteer as a mentor, or partner with BEN. Join 200+ campuses building the future of web3." />
+                <link rel="canonical" href="https://www.blockchainedu.org/get-involved" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.blockchainedu.org/get-involved" />
+                <meta property="og:title" content="Get Involved with BEN — Start or Join a Blockchain Club" />
+                <meta property="og:description" content="Start a blockchain club, volunteer as a mentor, or partner with BEN at 200+ universities." />
+                <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
             </Head>
             <div className="pt-20 md:py-24 pb-20 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">
@@ -132,7 +141,7 @@ export default function GetInvolved() {
                             Alumni
                         </h2>
                         <p className="font-mont text-center lg:text-left m-auto text-sm lg:m-0 text-black max-w-lg leading-normal" style={{maxWidth:"440px;"}}>
-                            If you’ve already graduated from college but still want ways to help BEN, join us as an alumni! We are looking for prestigious speakers for club events, teachers for BEN Learn, and mentors for our career center. Get involved and become an advisor to help us grow to the next level. Support the next generation of B.E.N. students with a donation and see the impact you have on students. <br /><br />Connect with fellow alumni through our extended network online or join us as national and international events.
+                            If you’ve already graduated from college but still want ways to help BEN, join us as an alumni! We are looking for prestigious speakers for club events, teachers for BEN Academy, and mentors for our career center. Get involved and become an advisor to help us grow to the next level. Support the next generation of B.E.N. students with a donation and see the impact you have on students. <br /><br />Connect with fellow alumni through our extended network online or join us as national and international events.
                         </p>
                         <a href="https://beats.blockchainedu.org/" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border border-benblack-500 hover:border-bengrey-300 font-bold text-xl bg-benblack-500 px-16 rounded-full py-4 transition duration-500 hover:text-white text-white hover:bg-bengrey-300 shadow-button">Join Us</button>
@@ -148,7 +157,7 @@ export default function GetInvolved() {
                             University Club
                         </h2>
                         <p className="font-mont text-center lg:text-left m-auto text-sm lg:m-0 text-bengrey-400 max-w-lg leading-normal" style={{maxWidth:"440px;"}}>
-                            If you’ve already graduated from college but still want ways to help BEN, join us as an alumni! We are looking for prestigious speakers for club events, teachers for BEN Learn, and mentors for our career center. Get involved and become an advisor to help us grow to the next level. Support the next generation of B.E.N. students with a donation and see the impact you have on students. <br /><br />Connect with fellow alumni through our extended network online or join us as national and international events.
+                            If you’ve already graduated from college but still want ways to help BEN, join us as an alumni! We are looking for prestigious speakers for club events, teachers for BEN Academy, and mentors for our career center. Get involved and become an advisor to help us grow to the next level. Support the next generation of B.E.N. students with a donation and see the impact you have on students. <br /><br />Connect with fellow alumni through our extended network online or join us as national and international events.
                         </p>
                         <a href="https://beats.blockchainedu.org/" target="_blank">
                         <button className="flex mx-auto lg:mx-0 mt-10 border border-white hover:border-benorange-500 font-bold text-xl bg-white px-16 rounded-full py-4 transition duration-500 hover:text-white text-black hover:bg-benorange-500 shadow-button">Join Us</button>

@@ -36,7 +36,7 @@ export default function NewsletterSignup() {
         </div>
 
         <p className="mt-3 text-xs text-bengrey-500/40">
-          No spam. Unsubscribe anytime.
+          Join 12,000+ subscribers.
         </p>
       </div>
     </section>

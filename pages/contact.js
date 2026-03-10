@@ -65,17 +65,18 @@ export default function Contact() {
     <div id="contact-page">
       <HeaderWithLogoDark />
       <Head>
-        <title>Talk to Us | Blockchain Education Network</title>
-        <meta
-          name="description"
-          content="Partner with the world's largest university blockchain network. Access 10,000+ students and alumni who founded $20B+ in companies across 35+ countries. Recruit, sponsor, and grow with BEN."
-        />
+        <title>Partner with BEN — Recruit 10K+ Blockchain Students & Alumni</title>
+        <meta name="description" content="Access 10,000+ blockchain-native students and alumni who founded $20B+ in companies across 35 countries. Recruit talent, sponsor events, fund research, and grow your ecosystem." />
         <link rel="canonical" href="https://www.blockchainedu.org/contact" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.blockchainedu.org/contact" />
-        <meta property="og:title" content="Talk to Us | Blockchain Education Network" />
-        <meta property="og:description" content="Access 10,000+ blockchain-native students and alumni across 35+ countries. Recruit talent, fund research, and grow your ecosystem with BEN." />
+        <meta property="og:title" content="Partner with BEN — Recruit 10K+ Blockchain Students & Alumni" />
+        <meta property="og:description" content="Recruit talent, sponsor campus events, and grow your ecosystem with the world's largest university blockchain network." />
+        <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Partner with BEN — 10K+ Students, 200+ Universities" />
+        <meta name="twitter:description" content="Recruit blockchain talent, sponsor hackathons, and grow your ecosystem with BEN." />
+        <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
       </Head>
 
       <main>

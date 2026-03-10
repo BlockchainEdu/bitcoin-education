@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function PopUpVideo(props) {
+export default function PopUpVideo({ thumbnail, videoUrl }) {
+    const defaultUrl = "https://player.vimeo.com/video/653049643?h=c1fa5c7bdf&autoplay=1&title=0&byline=0&portrait=0";
+    const src = videoUrl || defaultUrl;
     const [showModal, setShowModal] = React.useState(false);
     return (
         <>
@@ -9,7 +11,7 @@ export default function PopUpVideo(props) {
                 type="button"
                 onClick={() => setShowModal(true)}
             >
-                <img className="rounded-md" src={props.thumbnail} />
+                <img className="rounded-md" src={thumbnail} />
             </button>
             {showModal ? (
                 <>
@@ -31,7 +33,7 @@ export default function PopUpVideo(props) {
                                     </button>
                                 </div>
                                 {/*body*/}
-                                <iframe className="popup-video-frame rounded-b-xl" src="https://player.vimeo.com/video/653049643?h=c1fa5c7bdf&autoplay=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                                <iframe className="popup-video-frame rounded-b-xl" src={src} frameBorder="0" allow="autoplay; fullscreen; picture-in-picture" allowFullScreen></iframe>
                             </div>
                         </div>
                     </div>

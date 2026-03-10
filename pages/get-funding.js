@@ -12,7 +12,16 @@ export default function GetFunding() {
         <div id="partners-page">
             <HeaderWithLogoDark />
             <Head>
-                <title>Get Funding | Blockchain Education Network</title>
+                <title>Get Funding for Your Blockchain Project — Grants & Bounties | BEN</title>
+                <meta name="description" content="Apply for blockchain grants, bounties, and funding through BEN's network. We connect student builders with protocols and VCs looking to fund the next big idea." />
+                <link rel="canonical" href="https://www.blockchainedu.org/get-funding" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.blockchainedu.org/get-funding" />
+                <meta property="og:title" content="Get Funding for Your Blockchain Project | BEN" />
+                <meta property="og:description" content="Grants, bounties, and funding for student blockchain builders." />
+                <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
             </Head>
             <div className="pt-0 pt-0 md:pb-0 px-0">
                 <section 

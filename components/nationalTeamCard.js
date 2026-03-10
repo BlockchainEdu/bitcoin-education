@@ -69,7 +69,7 @@ export default function NationalTeamCard({
       <div className="flex flex-col items-center text-center group" ref={cardRef}>
         {/* Image container */}
         <div
-          className="relative w-full h-40 sm:w-44 sm:h-56 rounded-2xl overflow-hidden cursor-pointer transition-shadow duration-300 group-hover:shadow-lg"
+          className="relative w-full h-56 sm:w-44 sm:h-56 rounded-2xl overflow-hidden cursor-pointer transition-shadow duration-300 group-hover:shadow-lg"
           onClick={handleCardClick}
         >
           {/* Photo */}
@@ -93,7 +93,7 @@ export default function NationalTeamCard({
           {/* Bio overlay (all cards with bio) */}
           {bio && (
             <div
-              className={`absolute inset-0 p-5 flex items-center transition-all duration-300 ${
+              className={`absolute inset-0 p-3 sm:p-5 flex items-start transition-all duration-300 ${
                 showBio
                   ? "opacity-100 transform translate-y-0"
                   : "opacity-0 transform translate-y-2 pointer-events-none"
@@ -101,8 +101,8 @@ export default function NationalTeamCard({
               style={{ backgroundColor: "rgba(32, 33, 39, 0.92)" }}
             >
               <p
-                className="text-white text-sm leading-relaxed font-inter overflow-y-auto"
-                style={{ maxHeight: "100%", opacity: 0.9 }}
+                className="text-white text-xs sm:text-sm leading-relaxed font-inter overflow-y-auto"
+                style={{ maxHeight: "100%", opacity: 0.9, WebkitOverflowScrolling: "touch" }}
               >
                 {bio}
               </p>
@@ -131,30 +131,31 @@ export default function NationalTeamCard({
             </div>
           )}
 
-          {/* Bio hint icon — shows on all cards with bio, when bio is hidden */}
+          {/* Bio button — always visible on cards with bio, when bio is hidden */}
           {bio && !showBio && (
             <div
-              className="absolute bottom-3 right-3 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
-              style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+              className="absolute bottom-3 left-3 right-3 flex justify-center cursor-pointer"
               onClick={(e) => {
                 e.stopPropagation();
                 setShowBio(true);
               }}
             >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              <span
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full font-inter font-semibold text-xs text-white transition-all duration-300"
+                style={{
+                  backgroundColor: "rgba(0,0,0,0.55)",
+                  backdropFilter: "blur(8px)",
+                  WebkitBackdropFilter: "blur(8px)",
+                  letterSpacing: "0.02em",
+                }}
               >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4" />
-                <path d="M12 8h.01" />
-              </svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 16v-4" />
+                  <path d="M12 8h.01" />
+                </svg>
+                Read Story
+              </span>
             </div>
           )}
         </div>

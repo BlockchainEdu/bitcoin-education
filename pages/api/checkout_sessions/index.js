@@ -1,5 +1,4 @@
 import { formatAmountForStripe } from '../../../utils/stripe-helpers';
-import { giftFrequency } from "../../../components/modals/donateModal";
 
 import Stripe from 'stripe';
 
@@ -7,18 +6,19 @@ const currency = 'usd';
 
 function getExtraParams(origin, amount) {
   const success_url = `${origin}/thank-you-donor?session_id={CHECKOUT_SESSION_ID}`;
-  const cancel_url = `${origin}/`;
-  if (amount.frequency === giftFrequency.monthly) {
+  const cancel_url = `${origin}/donate`;
+
+  if (amount.frequency === 'monthly') {
     return {
       mode: 'subscription',
-      payment_method_types: ['card'],
+      // Omitting payment_method_types lets Stripe auto-enable Apple Pay, Google Pay, etc.
       line_items: [
         {
           quantity: 1,
           price_data: {
             currency,
             product_data: {
-              name: 'Monthly donation',
+              name: 'Monthly Donation to BEN',
             },
             unit_amount_decimal: formatAmountForStripe(amount.amount, currency),
             recurring: {
@@ -31,15 +31,21 @@ function getExtraParams(origin, amount) {
       cancel_url,
     };
   }
+
+  // One-time donation — modern format with price_data
   return {
+    mode: 'payment',
     submit_type: 'donate',
-    payment_method_types: ['card'],
     line_items: [
       {
-          name: 'Custom amount donation',
-          amount: formatAmountForStripe(amount.amount, currency),
-          currency: currency,
         quantity: 1,
+        price_data: {
+          currency,
+          product_data: {
+            name: 'Donation to BEN',
+          },
+          unit_amount: formatAmountForStripe(amount.amount, currency),
+        },
       },
     ],
     success_url,
@@ -49,13 +55,11 @@ function getExtraParams(origin, amount) {
 
 export default async function handler(req, res) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-    // https://github.com/stripe/stripe-node#configuration
-    apiVersion: '2020-03-02',
+    apiVersion: '2023-10-16',
   });
   if (req.method === 'POST') {
     try {
       const amount = req.body.amount;
-      // Create Checkout Sessions from body params.
       const params = getExtraParams(req.headers.origin, amount);
       const checkoutSession =
             await stripe.checkout.sessions.create(params);

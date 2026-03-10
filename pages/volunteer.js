@@ -22,7 +22,16 @@ export default function VolunteerPage() {
       <Header />
 
       <Head>
-        <title>Volunteer with BEN | Make an Impact</title>
+        <title>Volunteer with BEN — Mentor Students & Shape Blockchain Education</title>
+        <meta name="description" content="Volunteer as a mentor, workshop leader, or event organizer with BEN. Help students at 200+ universities launch blockchain careers." />
+        <link rel="canonical" href="https://www.blockchainedu.org/volunteer" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.blockchainedu.org/volunteer" />
+        <meta property="og:title" content="Volunteer with BEN — Mentor the Next Generation of Builders" />
+        <meta property="og:description" content="Mentor students, lead workshops, and shape blockchain education at 200+ universities." />
+        <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
       </Head>
 
       <Script

@@ -19,7 +19,7 @@ export default function ThankYou() {
           <div className="mb-6">To-Do List:</div>
           <div className="mb-6 show-bullets">
               <ol>
-                <li className="mb-3"><strong>Don't forget to shoot us an "OK" in response to our welcome email.</strong> That way, you won't miss a beat with our weekly newsletters!</li>
+                <li className="mb-3"><strong>Don't forget to shoot us an "OK" in response to our welcome email.</strong> That way, you won't miss any updates from us!</li>
                 <li className="mb-3"><strong>Make sure you've got our email in your inbox.</strong> If you <strong>can't see</strong> it, check your <strong>spam folder</strong> and make sure to add us to <strong>your 'not spam' section.</strong></li>
               </ol>
           </div>

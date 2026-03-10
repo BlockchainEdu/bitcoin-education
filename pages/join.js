@@ -8,15 +8,24 @@ export default function Join() {
     <div id="join-page">
       <Header />
       <Head>
-        <title>Join | Blockchain Education Network</title>
+        <title>Join BEN — Connect with 10K+ Blockchain Students & Alumni</title>
+        <meta name="description" content="Join the world's largest university blockchain network. Access courses, scholarships, hackathons, conferences, jobs, and a global community of 10,000+ builders." />
+        <link rel="canonical" href="https://www.blockchainedu.org/join" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.blockchainedu.org/join" />
+        <meta property="og:title" content="Join BEN — 10K+ Blockchain Students & Alumni" />
+        <meta property="og:description" content="Courses, scholarships, hackathons, conferences, jobs, and a global community of builders." />
+        <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
       </Head>
 
       <section className="py-20 bg-black text-white mt-5">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <img src="/images/ben_hat_white.png" alt="Image" className="mx-auto mb-4 w-28" />
-            <h1 className="text-4xl font-bold mb-6">Join BEN Learn</h1>
-            <p className="text-lg mb-8">Get exclusive courses, a premium community, and guided mentorship.</p>
+            <h1 className="text-4xl font-bold mb-6">Join BEN Academy</h1>
+            <p className="text-lg mb-8">Self-paced courses, scholarships, a job board, and a global community of 10,000+ builders.</p>
             <a href="#pricingmodule" className="bg-white text-black font-bold py-3 px-8 rounded-full shadow-lg uppercase tracking-wide hover:bg-gray-500" onClick={(e) => {
               e.preventDefault();
               const section = document.getElementById("pricingmodule");

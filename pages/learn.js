@@ -12,12 +12,21 @@ export default function Learn() {
         <div id="learn-page">
             <HeaderWithLogoDark />
             <Head>
-                <title>Learn | Blockchain Education Network</title>
+                <title>BEN Academy — Blockchain Courses, Job Board & Scholarships</title>
+                <meta name="description" content="Self-paced blockchain courses from zero to Solidity. A job board connecting graduates with Web3 companies. Scholarships so talent is never blocked by tuition." />
+                <link rel="canonical" href="https://www.blockchainedu.org/learn" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.blockchainedu.org/learn" />
+                <meta property="og:title" content="BEN Academy — Blockchain Courses, Job Board & Scholarships" />
+                <meta property="og:description" content="Self-paced blockchain courses from zero to Solidity. A job board for Web3 careers. Scholarships available." />
+                <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
             </Head>
             <section className="px-7">
                 <div className="pt-10 max-w-7xl m-auto lg:pt-24">
                     <h1 className="font-black text-4xl md:text-5xl text-black text-center md:text-left">
-                        What is BEN Learn?
+                        What is BEN Academy?
                     </h1>
                     <div className="flex flex-col md:flex-row pt-14 space-y-10 md:space-y-0 gap-x-0 md:gap-x-14 font-mont text-center md:text-left">
                         <div className="what-is-learn-blurb mx-auto">
@@ -86,7 +95,7 @@ export default function Learn() {
                             Teachers
                         </h2>
                         <div className="font-mont py-6 text-center md:text-left">
-                            Whether you’re a professor at an accredited University, an Alumni of a BEN University, or even an experienced professional in the industry with a unique topic. BEN Learn relies mainly on volunteers helping to create content, especially in the early stages of our platform, so your help would be greatly appreciated. Share what you know with the world today, as we make it super simple to create and upload a course!
+                            Whether you’re a professor at an accredited University, an Alumni of a BEN University, or even an experienced professional in the industry with a unique topic. BEN Academy relies mainly on volunteers helping to create content, especially in the early stages of our platform, so your help would be greatly appreciated. Share what you know with the world today, as we make it super simple to create and upload a course!
                         </div>
                         <div className="flex items-center gap-x-0 md:gap-x-10">
                             <div className="border-r-none md:border-r md:border-4 md:border-benorange-500  h-36">
@@ -94,7 +103,7 @@ export default function Learn() {
                             </div>
                             <div>
                                 <p className="font-mont text-center md:text-left mx-auto md:mx-0 text-xl md:text-2xl font-bold">
-                                    We invite anyone interested in creating a course on BEN Learn to fill out the form below and we will get back to you as soon as we can with whether we can support your course.
+                                    We invite anyone interested in creating a course on BEN Academy to fill out the form below and we will get back to you as soon as we can with whether we can support your course.
                                 </p>
                             </div>
                         </div>
@@ -119,7 +128,7 @@ export default function Learn() {
                             The 10:10 Plan
                         </h2>
                         <div className="font-mont max-w-full md:max-w-md text-center md:text-left">
-                            Largely with the help of the BEN Learn Platform, we intend to educate over 10 million people in the next 10 years. We believe in providing borderless access to Blockchain Education. Your support of the BEN Learn Platform can help us get closer to that goal!
+                            Largely with the help of the BEN Academy Platform, we intend to educate over 10 million people in the next 10 years. We believe in providing borderless access to Blockchain Education. Your support of the BEN Academy Platform can help us get closer to that goal!
                         </div>
                         <div className="m-auto flex content-center items-center justify-center md:justify-start pt-10">
                             <div className="flex">
@@ -128,7 +137,7 @@ export default function Learn() {
                                 </div>
                                 <div>
                                     <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3 mt-2">2,00+</div>
-                                    <div className="uppercase font-mont text-sm">BEN Learn accounts created</div>
+                                    <div className="uppercase font-mont text-sm">BEN Academy accounts created</div>
                                 </div>
                             </div>
                         </div>

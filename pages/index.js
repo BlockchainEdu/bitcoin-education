@@ -8,7 +8,7 @@ import { slugify } from "../lib/slugify";
 import { USERS } from "../content/ben-network.data";
 import styles from "../styles/ben-network.module.css";
 
-const BENEVENTS_IMG = "/images/benevents.png";
+const BENEVENTS_IMG = "/images/benevents-opt.jpg";
 
 function imgSrc(path) {
   if (!path) return path;
@@ -319,6 +319,35 @@ export default function BenNetwork({ universities = [] }) {
   const [uniSearch, setUniSearch] = useState("");
   const [navigatingTo, setNavigatingTo] = useState(null);
 
+  // Crossfade carousel for About section
+  const aboutImages = [
+    BENEVENTS_IMG,
+    "/images/ben-network/ben-group-pic-1.jpg",
+    "/images/ben-network/ben-group-pic-2.jpg",
+    "/images/ben-network/ben-group-pic-3.jpg",
+    "/images/ben-network/ben-group-pic-4.jpg",
+    "/images/ben-network/ben-group-pic-5.jpg",
+    "/images/ben-network/ben-group-pic-6.jpg",
+    "/images/ben-network/ben-group-pic-7.jpg",
+    "/images/ben-network/ben-group-pic-8.jpg",
+    "/images/ben-network/ben-group-pic-9.jpg",
+    "/images/ben-network/ben-group-pic-10.jpg",
+    "/images/ben-network/ben-group-pic-11.jpg",
+    "/images/ben-network/ben-group-pic-12.jpg",
+  ];
+  const [aboutIdx, setAboutIdx] = useState(0);
+  const [aboutPrev, setAboutPrev] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setAboutIdx((prev) => {
+        setAboutPrev(prev);
+        return (prev + 1) % aboutImages.length;
+      });
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   useEffect(() => {
     setUniPage(1);
   }, [allUniFlat.length, uniSearch]);
@@ -356,11 +385,18 @@ export default function BenNetwork({ universities = [] }) {
   return (
     <div className={`${styles.root} min-h-screen text-benblack-500`}>
       <Head>
-        <title>BEN Network | Blockchain Education Network</title>
-        <meta
-          name="description"
-          content="BEN Network: a global network of student founders, alumni and companies built through the Blockchain Education Network"
-        />
+        <title>Blockchain Education Network — 10K+ Students, 200+ Universities, 35 Countries</title>
+        <meta name="description" content="The world's largest university blockchain network. Join 10,000+ students and alumni building the future of web3 across 200+ campuses. Courses, scholarships, hackathons, conferences, and jobs." />
+        <link rel="canonical" href="https://www.blockchainedu.org/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.blockchainedu.org/" />
+        <meta property="og:title" content="Blockchain Education Network — The Largest University Blockchain Network" />
+        <meta property="og:description" content="10,000+ students and alumni building the future of web3 across 200+ universities in 35 countries. Courses, scholarships, hackathons, conferences, and jobs." />
+        <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blockchain Education Network — 10K+ Students, 200+ Universities" />
+        <meta name="twitter:description" content="The world's largest university blockchain network. Courses, scholarships, hackathons, conferences & jobs for students and alumni." />
+        <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
       </Head>
 
       <HeaderWithLogoDark />
@@ -417,127 +453,121 @@ export default function BenNetwork({ universities = [] }) {
         </div>
       </section>
 
-      {/* ── COMMUNITY PHOTOS ── Cream section */}
-      <section style={{ backgroundColor: "#FFFBF2" }} className="py-12 sm:py-16 md:py-24">
-        <div className="max-w-6xl mx-auto px-5 sm:px-10">
-          {/* Stacks vertically on mobile with tighter gaps */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-8 items-center">
-            <div>
-              <img
-                src={BENEVENTS_IMG}
-                alt="BEN Events"
-                className="w-full h-auto rounded-xl sm:rounded-2xl"
-                style={{ boxShadow: "0 12px 40px rgba(0,0,0,0.06)" }}
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-            <div className="grid grid-cols-3 lg:grid-cols-2 gap-3 sm:gap-4">
-              {[
-                "/images/ben-network/ben-group-pic-1.jpg",
-                "/images/ben-network/ben-group-pic-2.png",
-                "/images/ben-network/ben-group-pic-3.png",
-              ].map((src, i) => (
-                <div
-                  key={src}
-                  className={`rounded-lg sm:rounded-xl overflow-hidden ${i === 2 ? "lg:col-span-2" : ""}`}
-                  style={{ aspectRatio: "1 / 1" }}
-                >
-                  <img
-                    src={src}
-                    alt="BEN community"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHO WE ARE ── */}
-      <section style={{ backgroundColor: "#FFFBF2" }} className="py-12 sm:py-16 md:py-24">
+      {/* ── ABOUT BEN ── Single clean section, one image, breathing room */}
+      <section style={{ backgroundColor: "#FFFBF2" }} className="py-16 sm:py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-5 sm:px-10">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
+          {/* About text + image beside it */}
+          <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-inter font-semibold tracking-wide uppercase" style={{ backgroundColor: "rgba(255,135,42,0.08)", color: "#FF872A" }}>
                 About BEN
               </span>
-              <h2 className="mt-3 sm:mt-4 font-mont font-bold text-2xl sm:text-3xl md:text-4xl text-benblack-500 tracking-tight leading-tight">
+              <h2 className="mt-4 sm:mt-5 font-mont font-bold text-2xl sm:text-3xl md:text-4xl text-benblack-500 tracking-tight leading-tight">
                 From dorm rooms to{" "}
                 <span className="text-benorange-500">billion-dollar protocols</span>
               </h2>
-              <p className="mt-4 sm:mt-5 font-inter text-sm sm:text-base text-benblack-500/60 leading-relaxed">
-                Founded in 2014, BEN is one of the largest and longest-running networks connecting blockchain students, professors, and alumni worldwide. We help founders launch and scale real projects through events, mentorship, and warm intros across the ecosystem. BEN Ventures backs student founders building Web3 startups, and our partnerships with university blockchain labs — including UF&apos;s Algorand-funded Blockchain Lab — bridge academic research and industry.
+              <p className="mt-5 sm:mt-6 font-inter text-sm sm:text-base leading-relaxed" style={{ color: "rgba(0,0,0,0.5)" }}>
+                Founded in 2014, BEN is one of the largest and longest-running networks connecting blockchain students, professors, and alumni worldwide. We help founders launch and scale real projects through events, mentorship, and warm intros across the ecosystem.
               </p>
+              {/* Stats — compact row under the text */}
+              <div className="grid grid-cols-2 gap-x-6 gap-y-4 mt-8">
+                {[
+                  { value: "10k+", label: "Students & alumni" },
+                  { value: "200+", label: "Universities" },
+                  { value: "35+", label: "Countries" },
+                  { value: "15+", label: "Alumni startups" },
+                ].map((s) => (
+                  <div key={s.label}>
+                    <div className="font-mont font-black text-xl sm:text-2xl text-benblack-500 tracking-tight">{s.value}</div>
+                    <div className="font-inter text-xs mt-0.5" style={{ color: "rgba(0,0,0,0.35)" }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="space-y-0">
-              {[
-                { value: "25k+", label: "X / Twitter followers" },
-                { value: "8k+", label: "Newsletter subscribers" },
-                { value: "4k+", label: "Students and alumni" },
-                { value: "60+", label: "University blockchain clubs" },
-                { value: "15+", label: "Startups founded by alumni" },
-              ].map((s) => (
-                <div key={s.label} className="flex items-baseline gap-3 sm:gap-4 py-3" style={{ borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-                  <span className="font-mont font-black text-lg sm:text-xl md:text-2xl text-benblack-500 tracking-tight" style={{ minWidth: "70px" }}>{s.value}</span>
-                  <span className="font-inter text-xs sm:text-sm" style={{ color: "#4a4d55" }}>{s.label}</span>
-                </div>
-              ))}
+            {/* Crossfade image — only 2 images in DOM at a time for iOS performance */}
+            <div className="flex justify-center">
+              <div className="relative w-full rounded-2xl overflow-hidden" style={{ maxWidth: "440px", aspectRatio: "4 / 3", boxShadow: "0 16px 48px rgba(0,0,0,0.06)" }}>
+                {/* Outgoing image */}
+                <img
+                  key={`prev-${aboutPrev}`}
+                  src={aboutImages[aboutPrev]}
+                  alt="BEN community"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ opacity: aboutPrev === aboutIdx ? 1 : 0, transition: "opacity 1.2s ease-in-out" }}
+                  decoding="async"
+                />
+                {/* Incoming image */}
+                <img
+                  key={`curr-${aboutIdx}`}
+                  src={aboutImages[aboutIdx]}
+                  alt="BEN community"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ opacity: 1, transition: "opacity 1.2s ease-in-out" }}
+                  decoding="async"
+                />
+                {/* Preload next image */}
+                <link rel="prefetch" href={aboutImages[(aboutIdx + 1) % aboutImages.length]} />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── BEN LEARN ── */}
-      <section style={{ backgroundColor: "#f5f7f7" }} className="py-12 sm:py-16 md:py-24">
-        <div className="max-w-5xl mx-auto px-5 sm:px-10">
-          {/* On mobile: images first (visual hook), then text */}
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-inter font-semibold tracking-wide uppercase" style={{ backgroundColor: "rgba(255,135,42,0.08)", color: "#FF872A" }}>
-                BEN Learn
-              </span>
-              <h2 className="mt-3 sm:mt-4 font-mont font-bold text-2xl sm:text-3xl md:text-4xl text-benblack-500 tracking-tight leading-tight">
-                Education meets{" "}
-                <span className="text-benorange-500">entrepreneurship</span>
-              </h2>
-              <p className="mt-4 sm:mt-5 font-inter text-sm sm:text-base text-benblack-500/60 leading-relaxed">
-                One scalable platform to empower learners, identify their needs, and connect them with the right resources — scalable to thousands of potential Web3 builders.
-              </p>
-              <div className="mt-6 sm:mt-8">
-                <span
-                  onClick={() => router.push("/opportunities")}
-                  className="inline-flex items-center gap-2 font-mont font-bold text-sm text-white px-6 py-3.5 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
-                  style={{ backgroundColor: "#FF872A" }}
-                >
-                  Get Involved
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
-                </span>
+      {/* ── BEN ACADEMY ── Clean text-forward section, no image grid */}
+      <section className="bg-white py-16 sm:py-24 md:py-32">
+        <div className="max-w-3xl mx-auto px-5 sm:px-10 text-center">
+          <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-inter font-semibold tracking-wide uppercase" style={{ backgroundColor: "rgba(255,135,42,0.08)", color: "#FF872A" }}>
+            BEN Academy
+          </span>
+          <h2 className="mt-5 font-mont font-bold text-3xl sm:text-4xl md:text-5xl text-benblack-500 tracking-tight leading-tight">
+            From zero to{" "}
+            <span className="text-benorange-500">Web3 career</span>
+          </h2>
+          <p className="mt-5 sm:mt-6 font-inter text-base sm:text-lg leading-relaxed mx-auto" style={{ color: "rgba(0,0,0,0.45)", maxWidth: "540px" }}>
+            Self-paced courses from blockchain basics to full-stack Solidity. A job board that connects graduates with companies hiring now. Scholarships so talent is never blocked by tuition.
+          </p>
+
+          {/* Three pillars — icon-driven, no photos */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 mt-12 sm:mt-16">
+            {[
+              { icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253", title: "Courses", desc: "Blockchain basics to Solidity. Learn at your own pace." },
+              { icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Job Board", desc: "Companies hiring Web3 talent. Internships and full-time." },
+              { icon: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342", title: "Scholarships", desc: "Apply for funding. Talent should never be blocked by tuition." },
+            ].map((pillar) => (
+              <div key={pillar.title}>
+                <div className="mx-auto mb-4 flex items-center justify-center rounded-2xl" style={{ width: "56px", height: "56px", backgroundColor: "rgba(255,135,42,0.08)" }}>
+                  <svg className="w-6 h-6 text-benorange-500" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={pillar.icon} />
+                  </svg>
+                </div>
+                <h3 className="font-mont font-bold text-base text-benblack-500">{pillar.title}</h3>
+                <p className="mt-2 font-inter text-sm leading-relaxed" style={{ color: "rgba(0,0,0,0.4)" }}>{pillar.desc}</p>
               </div>
-            </div>
-            <div className="order-1 lg:order-2 flex justify-center">
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full" style={{ maxWidth: "320px" }}>
-                {[
-                  "/images/ben-network/ben-learn-1.png",
-                  "/images/ben-network/ben-learn-2.png",
-                  "/images/ben-network/ben-learn-3.png",
-                  "/images/ben-network/ben-learn-4.png",
-                ].map((src) => (
-                  <div key={src} className="rounded-xl sm:rounded-2xl overflow-hidden" style={{ aspectRatio: "1", boxShadow: "0 6px 20px rgba(0,0,0,0.05)" }}>
-                    <img src={src} alt="BEN Learn" className="w-full h-full object-cover" loading="lazy" decoding="async" />
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="mt-10 sm:mt-12 flex flex-wrap justify-center gap-3">
+            <span
+              onClick={() => router.push("/learn")}
+              className="inline-flex items-center gap-2 font-mont font-bold text-sm text-white px-7 py-3.5 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+              style={{ backgroundColor: "#FF872A" }}
+            >
+              Explore Courses
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
+            </span>
+            <span
+              onClick={() => router.push("/donate")}
+              className="inline-flex items-center gap-2 font-mont font-bold text-sm px-7 py-3.5 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+              style={{ color: "#FF872A", border: "2px solid rgba(255,135,42,0.3)" }}
+            >
+              Fund a Scholarship
+            </span>
           </div>
         </div>
       </section>
 
       {/* ── UNIVERSITIES ── Premium leaderboard */}
-      <section id="universities" style={{ backgroundColor: "#f8f8fa" }} className="py-14 sm:py-20 md:py-28 overflow-hidden">
+      <section id="universities" style={{ backgroundColor: "#eeeef0" }} className="py-14 sm:py-20 md:py-28 overflow-hidden">
         <div className="max-w-6xl mx-auto px-5 sm:px-10 overflow-hidden">
           <div className="text-center mb-10 sm:mb-14">
             <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-inter font-semibold tracking-wide uppercase" style={{ backgroundColor: "rgba(255,135,42,0.08)", color: "#FF872A" }}>
@@ -742,11 +772,11 @@ export default function BenNetwork({ universities = [] }) {
               className="inline-flex items-center justify-center gap-2 font-mont font-bold text-sm px-8 py-4 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer"
               style={{ color: "rgba(255,255,255,0.85)", border: "1px solid rgba(255,255,255,0.2)", backgroundColor: "rgba(255,255,255,0.05)" }}
             >
-              Subscribe to Newsletter
+              Read Our Blog
             </span>
           </div>
           <p className="mt-5 sm:mt-6 font-inter text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
-            Free weekly newsletter. No spam.
+            Join 12,000+ subscribers.
           </p>
         </div>
       </section>

@@ -333,7 +333,16 @@ export default function Opportunities({ events, eventDeals }) {
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>Opportunities for Student Builders</title>
+        <title>Blockchain Jobs & Grants for Students — Opportunities | BEN</title>
+        <meta name="description" content="Find blockchain internships, jobs, grants, and bounties curated for university students. Updated weekly by BEN's global network." />
+        <link rel="canonical" href="https://www.blockchainedu.org/opportunities" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.blockchainedu.org/opportunities" />
+        <meta property="og:title" content="Blockchain Jobs & Grants for Students | BEN" />
+        <meta property="og:description" content="Internships, jobs, grants, and bounties curated for university blockchain students." />
+        <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
       </Head>
 
       <HeaderWithLogoDark />

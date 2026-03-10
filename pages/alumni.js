@@ -12,7 +12,16 @@ export default function Alumni() {
         <div id="partners-page">
             <HeaderWithLogoDark />
             <Head>
-                <title>Alumni | Blockchain Education Network</title>
+                <title>BEN Alumni — Founders of Augur, Optimism, CoinList & More</title>
+                <meta name="description" content="BEN alumni have founded $20B+ in blockchain companies including Augur, Optimism, Bolt, CoinList, and Injective. See who came through the network." />
+                <link rel="canonical" href="https://www.blockchainedu.org/alumni" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.blockchainedu.org/alumni" />
+                <meta property="og:title" content="BEN Alumni — Founders of Augur, Optimism, CoinList & More" />
+                <meta property="og:description" content="BEN alumni have founded $20B+ in blockchain companies. See who came through the network." />
+                <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
             </Head>
             <div className="pt-0 lg:pt-10 md:pb-0 px-7">
                 <div className="max-w-7xl m-auto flex flex-col lg:flex-row items-center">

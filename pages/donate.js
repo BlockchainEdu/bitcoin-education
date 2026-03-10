@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Footer from "../components/footer";
@@ -17,12 +17,17 @@ const CRYPTO_WALLETS = Object.freeze([
   Object.freeze({ name: "Ethereum",  ticker: "ETH",  address: "0xe727784c6067A5756b02a79428b118A172455761",                                   image: "/images/ethereum-icon.svg" }),
   Object.freeze({ name: "Solana",    ticker: "SOL",  address: "HuqXTadhYsP933NsgMJjYBMHhwRz9eS6jtah5ebkBruD",                                image: "/images/solana-icon.svg" }),
   Object.freeze({ name: "XRP",       ticker: "XRP",  address: "rLK54LQLjfYB2NzSuqvywHNM7m632SJfVu",                                          image: "/images/xrp-icon.svg" }),
-  Object.freeze({ name: "BNB",       ticker: "BNB",  address: "0xe727784c6067A5756b02a79428b118A172455761" }),
+  Object.freeze({ name: "BNB",       ticker: "BNB",  address: "0xe727784c6067A5756b02a79428b118A172455761",                                   image: "/images/bnb-icon.svg" }),
   Object.freeze({ name: "Dogecoin",  ticker: "DOGE", address: "D6Y61k78mp4zPeQdxg5sX6vhsD61itapt2",                                          image: "/images/dogecoin-icon.svg" }),
-  Object.freeze({ name: "Zcash",     ticker: "ZEC",  address: "t1UBjqQ9trKrWC99yYicyBo3tvZM87hjxGW" }),
-  Object.freeze({ name: "Algorand",  ticker: "ALGO", address: "G4E2Z7RB47PGN6SAP5JQ6MIMF5CIKNSIMZNPTQFQFV7UEKVRIDIGHMC6FI" }),
-  Object.freeze({ name: "EOS",       ticker: "EOS",  address: "kpdcwg4j1bww" }),
-  Object.freeze({ name: "Tron",      ticker: "TRX",  address: "TL6iEShVVceEzcAMQjjg69CUoZYQh19EyA" }),
+  Object.freeze({ name: "Zcash",     ticker: "ZEC",  address: "t1UBjqQ9trKrWC99yYicyBo3tvZM87hjxGW",                                         image: "/images/zcash-icon.svg" }),
+  Object.freeze({ name: "Algorand",  ticker: "ALGO", address: "G4E2Z7RB47PGN6SAP5JQ6MIMF5CIKNSIMZNPTQFQFV7UEKVRIDIGHMC6FI",                  image: "/images/algorand-icon.svg" }),
+  Object.freeze({ name: "EOS",       ticker: "EOS",  address: "kpdcwg4j1bww",                                                                image: "/images/eos-icon.svg" }),
+  Object.freeze({ name: "Tron",      ticker: "TRX",  address: "TL6iEShVVceEzcAMQjjg69CUoZYQh19EyA",                                          image: "/images/tron-icon.svg" }),
+  Object.freeze({ name: "Litecoin",  ticker: "LTC",  address: "LZiPanfqmausHLupZ6kJa5Zd9NJKd8c8Kt",                                          image: "/images/litecoin-icon.svg" }),
+  Object.freeze({ name: "Dash",      ticker: "DASH", address: "Xd3Vz9vVo1b6czHxQsgSdyK86FhPwkcDQD",                                          image: "/images/dash-icon.svg" }),
+  Object.freeze({ name: "Hedera",    ticker: "HBAR", address: "0.0.774440",                                                                   image: "/images/hedera-icon.svg" }),
+  // ── Tokens on Ethereum ──
+  Object.freeze({ name: "Aave",      ticker: "AAVE", network: "Ethereum", address: "0xe727784c6067A5756b02a79428b118A172455761",               image: "/images/aave-icon.svg" }),
   // ── USDT (Tether) ──
   Object.freeze({ name: "USDT",      ticker: "USDT-ETH",  network: "Ethereum",  address: "0xe727784c6067A5756b02a79428b118A172455761",          image: "/images/tether-icon.svg" }),
   Object.freeze({ name: "USDT",      ticker: "USDT-TRX",  network: "Tron",      address: "TL6iEShVVceEzcAMQjjg69CUoZYQh19EyA",                image: "/images/tether-icon.svg" }),
@@ -30,8 +35,8 @@ const CRYPTO_WALLETS = Object.freeze([
   Object.freeze({ name: "USDT",      ticker: "USDT-POLY", network: "Polygon",   address: "0xe727784c6067A5756b02a79428b118A172455761",          image: "/images/tether-icon.svg" }),
   Object.freeze({ name: "USDT",      ticker: "USDT-BNB",  network: "BNB Chain", address: "0xe727784c6067A5756b02a79428b118A172455761",          image: "/images/tether-icon.svg" }),
   // ── USDC ──
-  Object.freeze({ name: "USDC",      ticker: "USDC-ETH",  network: "Ethereum",  address: "0xe727784c6067A5756b02a79428b118A172455761" }),
-  Object.freeze({ name: "USDC",      ticker: "USDC-POLY", network: "Polygon",   address: "0xe727784c6067A5756b02a79428b118A172455761" }),
+  Object.freeze({ name: "USDC",      ticker: "USDC-ETH",  network: "Ethereum",  address: "0xe727784c6067A5756b02a79428b118A172455761",          image: "/images/usdc-icon.svg" }),
+  Object.freeze({ name: "USDC",      ticker: "USDC-POLY", network: "Polygon",   address: "0xe727784c6067A5756b02a79428b118A172455761",          image: "/images/usdc-icon.svg" }),
 ]);
 
 const VIDEO_IDS = [
@@ -55,8 +60,13 @@ export default function Donate() {
   const [playingVideo, setPlayingVideo] = useState(null);
   const [showAllVideos, setShowAllVideos] = useState(false);
   const [showAllStories, setShowAllStories] = useState(false);
-  const [cardView, setCardView] = useState("donate"); // "donate" | "wire" | "crypto" | "tax"
+  const [cardView, setCardView] = useState("donate"); // "donate" | "wire" | "crypto" | "tax" | "daf"
+  const [mounted, setMounted] = useState(false);
   const donateRef = useRef(null);
+
+  // Sensitive financial data (wire numbers, crypto addresses) renders ONLY client-side.
+  // SSR HTML seen by crawlers, bots, and search engines will show "Loading..." instead.
+  useEffect(() => { setMounted(true); }, []);
 
   const currentAmount = isCustom ? (parseInt(customAmount) || 0) : selectedAmount;
   const studentsImpacted = Math.max(1, Math.floor(currentAmount / 12));
@@ -68,9 +78,12 @@ export default function Donate() {
   }
 
   function handleCustomInput(e) {
-    setCustomAmount(e.target.value.replace(/[^0-9]/g, ""));
+    const raw = e.target.value.replace(/[^0-9]/g, "");
+    setCustomAmount(raw);
     setIsCustom(true);
   }
+
+  const customAmountDisplay = customAmount ? parseInt(customAmount).toLocaleString() : "";
 
   async function handleDonate() {
     if (currentAmount < 1) return;
@@ -119,8 +132,18 @@ export default function Donate() {
     <div>
       <HeaderWithLogoDark />
       <Head>
-        <title>Donate | Blockchain Education Network</title>
-        <meta name="description" content="Support blockchain education for students at 200+ universities worldwide. Your tax-deductible donation funds conferences, hackathons, and mentorship programs." />
+        <title>Donate to BEN — Fund the Next Generation of Blockchain Builders</title>
+        <meta name="description" content="Tax-deductible donations fund BEN's blockchain academy, scholarships, student conferences, and hackathons at 200+ universities in 35 countries. Pay with card, crypto, PayPal, or wire." />
+        <link rel="canonical" href="https://www.blockchainedu.org/donate" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.blockchainedu.org/donate" />
+        <meta property="og:title" content="Donate to BEN — Fund the Next Generation of Blockchain Builders" />
+        <meta property="og:description" content="Tax-deductible donations fund BEN's blockchain academy, scholarships, student conferences, and hackathons at 200+ universities worldwide." />
+        <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Donate to BEN — Fund Blockchain Education Worldwide" />
+        <meta name="twitter:description" content="Your donation funds BEN's academy, scholarships, conferences & hackathons for 10K+ students at 200+ universities. Card, crypto, PayPal, or wire." />
+        <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
       </Head>
 
       {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -155,8 +178,8 @@ export default function Donate() {
                 </span>
               </h1>
               <p className="font-inter text-lg md:text-xl leading-relaxed max-w-lg mx-auto lg:mx-0" style={{ color: "rgba(255,255,255,0.5)" }}>
-                Your donation sends students to conferences, funds hackathons,
-                and builds blockchain communities at 200+ universities worldwide.
+                Your donation funds our academy and scholarships, sends students to
+                conferences, and builds blockchain communities at 200+ universities worldwide.
               </p>
             </div>
 
@@ -170,63 +193,90 @@ export default function Donate() {
                     {/* ── DONATE VIEW ── */}
                     {cardView === "donate" && (
                       <>
-                        {/* Monthly / One-time toggle */}
-                        <div className="flex items-center justify-center mb-8">
-                          <div className="inline-flex rounded-full p-1" style={{ backgroundColor: "rgba(0,0,0,0.08)" }}>
+                        {/* Monthly label on top */}
+                        <p className="text-center font-inter text-xs text-gray-400 mb-3">
+                          {frequency === "monthly" ? "Monthly donation" : "One-time donation"}
+                        </p>
+
+                        {/* Monthly / One-time toggle — large iOS tap targets */}
+                        <div className="flex items-center justify-center mb-7">
+                          <div className="inline-flex rounded-full p-1 w-full" style={{ backgroundColor: "rgba(0,0,0,0.06)", maxWidth: "320px" }}>
                             <button
-                              className={`px-6 py-2 rounded-full font-inter font-semibold text-sm transition-all duration-200 ${frequency === "monthly" ? "bg-benorange-500 text-white shadow-md" : "text-gray-500 hover:text-gray-700"}`}
+                              className={`flex-1 py-3 rounded-full font-mont font-bold text-sm transition-all duration-200 ${frequency === "monthly" ? "bg-benorange-500 text-white shadow-md" : "text-gray-500 active:text-gray-700"}`}
                               onClick={() => setFrequency("monthly")}
                             >Monthly</button>
                             <button
-                              className={`px-6 py-2 rounded-full font-inter font-semibold text-sm transition-all duration-200 ${frequency === "onetime" ? "bg-benorange-500 text-white shadow-md" : "text-gray-500 hover:text-gray-700"}`}
+                              className={`flex-1 py-3 rounded-full font-mont font-bold text-sm transition-all duration-200 ${frequency === "onetime" ? "bg-benorange-500 text-white shadow-md" : "text-gray-500 active:text-gray-700"}`}
                               onClick={() => setFrequency("onetime")}
                             >One-time</button>
                           </div>
                         </div>
 
-                        {/* Preset amounts */}
+                        {/* Preset amounts — 48px min height for iOS touch */}
                         <div className="grid grid-cols-3 gap-3 mb-4">
                           {PRESET_AMOUNTS.map((amt) => (
                             <button
                               key={amt}
                               onClick={() => selectPreset(amt)}
-                              className={`py-3 rounded-xl font-inter font-bold text-lg transition-all duration-200 border-2 ${
+                              className={`rounded-xl font-mont font-black text-xl transition-all duration-150 border-2 active:scale-95 ${
                                 !isCustom && selectedAmount === amt
                                   ? "bg-benorange-500 text-white border-benorange-500 shadow-md"
-                                  : "bg-white text-gray-800 border-gray-200 hover:border-benorange-500"
+                                  : "bg-white text-gray-900 border-gray-200 active:border-benorange-500"
                               }`}
+                              style={{ letterSpacing: "-0.02em", minHeight: "56px" }}
                             >${amt.toLocaleString()}</button>
                           ))}
                         </div>
 
-                        {/* Custom amount */}
-                        <div className={`flex items-center border-2 rounded-xl px-4 py-3 mb-5 transition-all duration-200 ${isCustom ? "border-benorange-500" : "border-gray-200"}`}>
-                          <span className="font-inter font-bold text-lg text-gray-400 mr-1">$</span>
+                        {/* Custom amount — anchored high to inspire big gifts */}
+                        <div className={`flex items-center border-2 rounded-xl px-4 mb-5 transition-all duration-200 ${isCustom ? "border-benorange-500" : "border-gray-200"}`} style={{ minHeight: "56px" }}>
+                          <span className="font-mont font-black text-xl text-gray-400 mr-1">$</span>
                           <input
-                            type="text" inputMode="numeric" placeholder="Other amount"
-                            value={customAmount} onChange={handleCustomInput} onFocus={() => setIsCustom(true)}
-                            className="w-full font-inter font-bold text-lg text-gray-800 outline-none bg-transparent"
+                            type="text" inputMode="numeric" placeholder="Enter any amount"
+                            value={customAmountDisplay} onChange={handleCustomInput} onFocus={() => setIsCustom(true)}
+                            className="w-full font-mont font-black text-xl text-gray-900 outline-none bg-transparent placeholder-gray-300"
+                            style={{ fontSize: "20px" }}
                           />
                         </div>
-
-                        {/* Impact message */}
-                        {currentAmount > 0 && (
-                          <p className="text-center font-inter text-gray-600 text-sm mb-5">
-                            Your <span className="font-bold text-gray-900">${currentAmount.toLocaleString()}{frequency === "monthly" ? "/mo" : ""}</span> educates{" "}
-                            <span className="font-bold text-benorange-500">{studentsImpacted} {studentsImpacted === 1 ? "student" : "students"}</span>
+                        {!isCustom && (
+                          <p className="text-center font-inter text-xs text-gray-400 -mt-3 mb-5">
+                            Some of our donors give $100K, $400K, or more
                           </p>
                         )}
 
-                        {/* Donate button */}
+                        {/* Impact message + inspiring quote */}
+                        {currentAmount > 0 && (
+                          <div className="text-center mb-5">
+                            <p className="font-inter text-gray-600 text-sm">
+                              Your <span className="font-bold text-gray-900">${currentAmount.toLocaleString()}{frequency === "monthly" ? "/mo" : ""}</span> educates{" "}
+                              <span className="font-bold text-benorange-500">{studentsImpacted.toLocaleString()} {studentsImpacted === 1 ? "student" : "students"}</span>
+                            </p>
+                            <p className="font-inter text-xs mt-1.5 text-gray-500">
+                              {currentAmount >= 100000
+                                ? "You're building the future of an entire generation"
+                                : currentAmount >= 25000
+                                ? "This kind of generosity changes the trajectory of lives"
+                                : currentAmount >= 5000
+                                ? "You're funding scholarships that open real doors"
+                                : currentAmount >= 1000
+                                ? "That's a semester of blockchain education for a student"
+                                : currentAmount >= 100
+                                ? "Every student you reach becomes a builder"
+                                : "Every dollar moves the mission forward"}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Donate button — extra tall for easy thumb tap */}
                         <button
                           onClick={handleDonate} disabled={loading || currentAmount < 1}
-                          className="w-full bg-benorange-500 hover:bg-yellow-500 text-white font-mont font-bold text-xl py-5 rounded-2xl transition-all duration-300 shadow-lg disabled:opacity-50"
-                          style={{ letterSpacing: "-0.01em" }}
+                          className="w-full bg-benorange-500 text-white font-mont font-black text-xl rounded-2xl transition-all duration-200 shadow-lg disabled:opacity-50 active:scale-98 active:bg-yellow-500"
+                          style={{ letterSpacing: "-0.02em", minHeight: "60px" }}
                         >
                           {loading ? "Processing..." : `Donate $${currentAmount.toLocaleString()}${frequency === "monthly" ? "/month" : ""}`}
                         </button>
 
-                        {/* Payment icons row */}
+                        {/* Trust row */}
                         <div className="flex items-center justify-center gap-2 mt-4">
                           <svg viewBox="0 0 24 24" fill="none" className="text-gray-400" style={{ width: "14px", height: "14px" }}>
                             <path d="M12 2C9.24 2 7 4.24 7 7v3H5v12h14V10h-2V7c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3v3H9V7c0-1.66 1.34-3 3-3z" fill="currentColor"/>
@@ -236,22 +286,41 @@ export default function Donate() {
                           <span className="font-inter text-xs text-gray-400">Apple Pay, Google Pay, Visa, Mastercard</span>
                         </div>
 
-                        {/* Alt payment methods */}
-                        <div className="flex items-center justify-center gap-2 mt-3 font-inter text-xs flex-wrap">
-                          <a target="_blank" rel="noopener noreferrer" href="https://www.paypal.com/donate/?hosted_button_id=JZT2VJ5WA6GJJ" className="font-semibold text-gray-400 hover:text-benorange-500 underline transition-colors">PayPal</a>
-                          <span className="text-gray-300">&middot;</span>
-                          <button onClick={() => setCardView("crypto")} className="font-semibold text-gray-400 hover:text-benorange-500 underline transition-colors">Crypto</button>
-                          <span className="text-gray-300">&middot;</span>
-                          <button onClick={() => setCardView("wire")} className="font-semibold text-gray-400 hover:text-benorange-500 underline transition-colors">Wire</button>
-                          <span className="text-gray-300">&middot;</span>
-                          <button onClick={() => setCardView("tax")} className="font-semibold text-gray-400 hover:text-benorange-500 underline transition-colors">Tax Benefits</button>
+                        {/* Alt payment methods — pill buttons for easy iOS tapping */}
+                        <div className="flex items-center justify-center gap-1.5 mt-4 flex-wrap">
+                          {[
+                            { label: "PayPal", href: "https://www.paypal.com/donate/?hosted_button_id=JZT2VJ5WA6GJJ" },
+                            { label: "Venmo", href: "https://www.venmo.com/u/blockchainedu" },
+                          ].map((link) => (
+                            <span
+                              key={link.label}
+                              onClick={() => window.open(link.href, "_blank", "noopener,noreferrer")}
+                              className="font-inter font-semibold text-xs text-gray-500 px-3 py-2 rounded-full transition-colors active:text-benorange-500 cursor-pointer"
+                              style={{ backgroundColor: "rgba(0,0,0,0.04)" }}
+                            >{link.label}</span>
+                          ))}
+                          {[
+                            { label: "Crypto", view: "crypto" },
+                            { label: "Wire", view: "wire" },
+                            { label: "DAF & Stock", view: "daf" },
+                            { label: "Tax Info", view: "tax" },
+                          ].map((item) => (
+                            <button
+                              key={item.label}
+                              onClick={() => setCardView(item.view)}
+                              className="font-inter font-semibold text-xs text-gray-500 px-3 py-2 rounded-full transition-colors active:text-benorange-500"
+                              style={{ backgroundColor: "rgba(0,0,0,0.04)" }}
+                            >{item.label}</button>
+                          ))}
                         </div>
                       </>
                     )}
 
                     {/* ── WIRE VIEW ── */}
+                    {/* data-nosnippet: tells Google not to use this block in search snippets */}
+                    {/* mounted gate: wire details render ONLY client-side, invisible to crawlers/SSR */}
                     {cardView === "wire" && (
-                      <>
+                      <div data-nosnippet="">
                         <div className="flex items-center justify-between mb-6">
                           <h3 className="font-mont font-bold text-lg text-gray-900">Wire Transfer</h3>
                           <button
@@ -264,47 +333,54 @@ export default function Donate() {
                             Back
                           </button>
                         </div>
-                        <p className="font-inter text-gray-500 text-sm mb-6">
-                          Send a wire directly to BEN. Funds are processed immediately.
-                        </p>
-                        <div className="space-y-4">
-                          {[
-                            { label: "Bank Name", value: "Mercury", key: null },
-                            { label: "Routing Number", value: "121145433", key: "routing", mono: true },
-                            { label: "Account Number", value: "843763775352889", key: "account", mono: true },
-                          ].map((item) => (
-                            <div key={item.label} className="flex items-center justify-between">
+                        {!mounted ? (
+                          <p className="font-inter text-gray-400 text-sm text-center py-8">Loading secure details...</p>
+                        ) : (
+                          <>
+                            <p className="font-inter text-gray-500 text-sm mb-6">
+                              Send a wire directly to BEN. Funds are processed immediately.
+                            </p>
+                            <div className="space-y-4">
+                              {[
+                                { label: "Bank Name", value: "Mercury", key: null },
+                                { label: "Routing Number", value: "121145433", key: "routing", mono: true },
+                                { label: "Account Number", value: "843763775352889", key: "account", mono: true },
+                              ].map((item) => (
+                                <div key={item.label} className="flex items-center justify-between">
+                                  <div>
+                                    <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">{item.label}</div>
+                                    <div className={`font-bold text-gray-900 text-base ${item.mono ? "font-mono" : "font-inter"}`}>{item.value}</div>
+                                  </div>
+                                  {item.key && (
+                                    <button onClick={() => copyText(item.value, item.key)} className="font-inter text-xs font-semibold text-benorange-500 hover:text-yellow-600 transition-colors px-3 py-1 rounded-lg" style={{ backgroundColor: "rgba(255,135,42,0.08)" }}>
+                                      {copiedField === item.key ? "Copied!" : "Copy"}
+                                    </button>
+                                  )}
+                                </div>
+                              ))}
                               <div>
-                                <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">{item.label}</div>
-                                <div className={`font-semibold text-gray-900 ${item.mono ? "font-mono" : "font-inter"}`}>{item.value}</div>
+                                <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">Bank Address</div>
+                                <div className="font-inter text-gray-900 text-sm">1 Letterman Drive, Building A, Suite A4-700, San Francisco, CA 94129</div>
                               </div>
-                              {item.key && (
-                                <button onClick={() => copyText(item.value, item.key)} className="font-inter text-xs font-semibold text-benorange-500 hover:text-yellow-600 transition-colors px-3 py-1 rounded-lg" style={{ backgroundColor: "rgba(255,135,42,0.08)" }}>
-                                  {copiedField === item.key ? "Copied!" : "Copy"}
-                                </button>
-                              )}
+                              <div>
+                                <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">Beneficiary</div>
+                                <div className="font-inter font-semibold text-gray-900">Blockchain Education Network Inc.</div>
+                              </div>
                             </div>
-                          ))}
-                          <div>
-                            <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">Bank Address</div>
-                            <div className="font-inter text-gray-900 text-sm">1 Letterman Drive, Building A, Suite A4-700, San Francisco, CA 94129</div>
-                          </div>
-                          <div>
-                            <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">Beneficiary</div>
-                            <div className="font-inter font-semibold text-gray-900">Blockchain Education Network Inc.</div>
-                          </div>
-                        </div>
-                        <div className="mt-6 pt-5 border-t border-gray-100">
-                          <p className="font-inter text-xs text-gray-400 text-center">
-                            Tax-deductible &middot; EIN: 46-5280397 &middot; Need a receipt? <a href="/contact" className="text-benorange-500 underline">Contact us</a>
-                          </p>
-                        </div>
-                      </>
+                            <div className="mt-6 pt-5 border-t border-gray-100">
+                              <p className="font-inter text-xs text-gray-400 text-center">
+                                Tax-deductible &middot; EIN: 46-5280397 &middot; Need a receipt? <span onClick={() => { window.location.href = "/contact"; }} className="text-benorange-500 underline cursor-pointer">Contact us</span>
+                              </p>
+                            </div>
+                          </>
+                        )}
+                      </div>
                     )}
 
                     {/* ── CRYPTO VIEW ── */}
+                    {/* data-nosnippet + mounted gate: addresses invisible to crawlers */}
                     {cardView === "crypto" && (
-                      <>
+                      <div data-nosnippet="">
                         <div className="flex items-center justify-between mb-6">
                           <h3 className="font-mont font-bold text-lg text-gray-900">Crypto</h3>
                           <button
@@ -317,44 +393,77 @@ export default function Donate() {
                             Back
                           </button>
                         </div>
-                        <p className="font-inter text-gray-500 text-sm mb-4">
-                          Tap any address to copy. You may qualify for capital gains tax deductions.
-                        </p>
-                        <div className="space-y-2" style={{ maxHeight: "420px", overflowY: "auto", paddingRight: "4px" }}>
-                          {CRYPTO_WALLETS.map((crypto, i) => (
-                            <button
-                              key={crypto.ticker}
-                              onClick={() => copyText(crypto.address, crypto.ticker)}
-                              className="w-full text-left p-3 rounded-xl transition-colors active:bg-gray-100 flex items-start gap-3"
-                              style={{ backgroundColor: copiedField === crypto.ticker ? "rgba(255,135,42,0.10)" : "rgba(0,0,0,0.03)" }}
-                            >
-                              {crypto.image ? (
-                                <img src={crypto.image} alt={crypto.name} className="w-7 h-7 flex-shrink-0 mt-0.5" />
-                              ) : (
-                                <span className="w-7 h-7 flex-shrink-0 mt-0.5 rounded-full flex items-center justify-center font-inter font-bold text-xs text-white" style={{ backgroundColor: "#FF872A" }}>
-                                  {crypto.ticker.slice(0, 1)}
-                                </span>
-                              )}
-                              <div className="flex-1 min-w-0">
-                                <div className="flex items-center justify-between">
-                                  <span className="font-inter font-bold text-sm text-gray-900">
-                                    {crypto.name}{crypto.network ? <span className="font-normal text-gray-400"> on {crypto.network}</span> : ""}
-                                  </span>
-                                  <span className="font-inter text-xs font-semibold flex-shrink-0 ml-2" style={{ color: copiedField === crypto.ticker ? "#16a34a" : "#FF872A" }}>
-                                    {copiedField === crypto.ticker ? "Copied!" : "Copy"}
-                                  </span>
+                        {!mounted ? (
+                          <p className="font-inter text-gray-400 text-sm text-center py-8">Loading secure details...</p>
+                        ) : (
+                          <>
+                            <p className="font-inter text-gray-500 text-sm mb-4">
+                              Tap any address to copy. You may qualify for capital gains tax deductions.
+                            </p>
+                            <div className="space-y-2" style={{ maxHeight: "420px", overflowY: "auto", paddingRight: "4px", WebkitOverflowScrolling: "touch" }}>
+                              {CRYPTO_WALLETS.map((crypto) => (
+                                <button
+                                  key={crypto.ticker}
+                                  onClick={() => copyText(crypto.address, crypto.ticker)}
+                                  className="w-full text-left p-3 rounded-xl transition-colors active:bg-gray-100 flex items-start gap-3"
+                                  style={{ backgroundColor: copiedField === crypto.ticker ? "rgba(255,135,42,0.10)" : "rgba(0,0,0,0.03)" }}
+                                >
+                                  {crypto.image ? (
+                                    <img src={crypto.image} alt={crypto.name} className="w-7 h-7 flex-shrink-0 mt-0.5" />
+                                  ) : (
+                                    <span className="w-7 h-7 flex-shrink-0 mt-0.5 rounded-full flex items-center justify-center font-inter font-bold text-xs text-white" style={{ backgroundColor: "#FF872A" }}>
+                                      {crypto.ticker.slice(0, 1)}
+                                    </span>
+                                  )}
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center justify-between">
+                                      <span className="font-inter font-bold text-sm text-gray-900">
+                                        {crypto.name}{crypto.network ? <span className="font-normal text-gray-400"> on {crypto.network}</span> : ""}
+                                      </span>
+                                      <span className="font-inter text-xs font-semibold flex-shrink-0 ml-2" style={{ color: copiedField === crypto.ticker ? "#16a34a" : "#FF872A" }}>
+                                        {copiedField === crypto.ticker ? "Copied!" : "Copy"}
+                                      </span>
+                                    </div>
+                                    <div className="font-mono text-xs text-gray-400 mt-1 break-all leading-relaxed select-all">{crypto.address}</div>
+                                  </div>
+                                </button>
+                              ))}
+                            </div>
+                            {/* Trust & support footer */}
+                            <div className="mt-6 pt-5 border-t border-gray-100 space-y-4">
+                              <div className="rounded-xl p-4" style={{ backgroundColor: "rgba(255,135,42,0.05)", border: "1px solid rgba(255,135,42,0.1)" }}>
+                                <div className="flex items-start gap-3">
+                                  <svg className="w-5 h-5 text-benorange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                  </svg>
+                                  <div>
+                                    <p className="font-inter font-semibold text-sm text-gray-900 mb-1">Need a receipt or donating $20K+?</p>
+                                    <p className="font-inter text-xs text-gray-500 leading-relaxed">
+                                      We provide tax receipts for all donations. For large gifts, we&#39;ll work with you personally to ensure everything is documented.
+                                    </p>
+                                    <a
+                                      href="mailto:finance@blockchainedu.org"
+                                      className="inline-flex items-center gap-1.5 font-inter font-semibold text-xs text-benorange-500 hover:text-yellow-600 transition-colors mt-2"
+                                    >
+                                      <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                                        <path d="M22 7l-10 6L2 7" />
+                                      </svg>
+                                      finance@blockchainedu.org
+                                    </a>
+                                  </div>
                                 </div>
-                                <div className="font-mono text-xs text-gray-400 mt-1 break-all leading-relaxed select-all">{crypto.address}</div>
                               </div>
-                            </button>
-                          ))}
-                        </div>
-                        <div className="mt-6 pt-5 border-t border-gray-100">
-                          <p className="font-inter text-xs text-gray-400 text-center">
-                            All crypto donations are nonrefundable &middot; Need another coin? <a href="/contact" className="text-benorange-500 underline">Contact us</a>
-                          </p>
-                        </div>
-                      </>
+                              <p className="font-inter text-xs text-gray-400 text-center">
+                                501(c)(3) tax-deductible &middot; EIN: 46-5280397 &middot; All crypto donations are non-refundable
+                              </p>
+                              <p className="font-inter text-xs text-gray-400 text-center mt-3" style={{ fontStyle: "italic" }}>
+                                &ldquo;Best way to offset crypto gains is to donate them directly.&rdquo; &mdash; <span onClick={() => window.open("https://x.com/Disruptepreneur/status/1338992208398045184", "_blank", "noopener,noreferrer")} className="text-benorange-500 cursor-pointer">Jeremy Gardner</span>, Co-Founder
+                              </p>
+                            </div>
+                          </>
+                        )}
+                      </div>
                     )}
 
                     {/* ── TAX BENEFITS VIEW ── */}
@@ -394,8 +503,87 @@ export default function Donate() {
                         </div>
                         <div className="pt-5 border-t border-gray-100">
                           <p className="font-inter text-xs text-gray-400 text-center">
-                            Need a tax receipt? <a href="/contact" className="text-benorange-500 underline">Contact us</a> after your donation.
+                            Need a tax receipt? <span onClick={() => { window.location.href = "/contact"; }} className="text-benorange-500 underline cursor-pointer">Contact us</span> after your donation.
                           </p>
+                        </div>
+                      </>
+                    )}
+
+                    {/* ── DAF & STOCK VIEW ── */}
+                    {cardView === "daf" && (
+                      <>
+                        <div className="flex items-center justify-between mb-6">
+                          <h3 className="font-mont font-bold text-lg text-gray-900">DAF &amp; Stock</h3>
+                          <button
+                            onClick={() => setCardView("donate")}
+                            className="font-inter text-sm font-semibold text-benorange-500 hover:text-yellow-600 transition-colors flex items-center gap-1"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                            </svg>
+                            Back
+                          </button>
+                        </div>
+                        <p className="font-inter text-gray-500 text-sm mb-5">
+                          Donate from your Donor Advised Fund or give stock directly. Often the most tax-efficient way to give.
+                        </p>
+                        <div className="space-y-3 mb-6">
+                          <div className="p-4 rounded-xl" style={{ backgroundColor: "rgba(0,0,0,0.03)" }}>
+                            <div className="flex items-start gap-3">
+                              <svg className="w-5 h-5 text-benorange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                              </svg>
+                              <div>
+                                <div className="font-inter font-bold text-sm text-gray-900">Donor Advised Fund (DAF)</div>
+                                <p className="font-inter text-xs text-gray-500 mt-1 leading-relaxed">
+                                  Recommend a grant to <strong>Blockchain Education Network Inc.</strong> from your DAF (Fidelity Charitable, Schwab Charitable, etc). EIN: <span className="font-mono">46-5280397</span>
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-4 rounded-xl" style={{ backgroundColor: "rgba(0,0,0,0.03)" }}>
+                            <div className="flex items-start gap-3">
+                              <svg className="w-5 h-5 text-benorange-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                              </svg>
+                              <div>
+                                <div className="font-inter font-bold text-sm text-gray-900">Stock &amp; Securities</div>
+                                <p className="font-inter text-xs text-gray-500 mt-1 leading-relaxed">
+                                  Donating appreciated stock avoids capital gains tax and lets you deduct the full market value. We accept public equities and mutual funds.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        {/* The Giving Block widget */}
+                        <div className="mb-4">
+                          <span
+                            onClick={() => window.open("https://thegivingblock.com/donate/blockchain-education-network", "_blank", "noopener,noreferrer")}
+                            className="w-full flex items-center justify-center gap-2 font-inter font-semibold text-sm text-white py-3.5 rounded-xl transition-all duration-300 hover:shadow-md cursor-pointer"
+                            style={{ backgroundColor: "#FF872A" }}
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                              <path d="M15 3h6v6" />
+                              <path d="M10 14L21 3" />
+                            </svg>
+                            Donate via The Giving Block
+                          </span>
+                        </div>
+                        <div className="rounded-xl p-4" style={{ backgroundColor: "rgba(255,135,42,0.05)", border: "1px solid rgba(255,135,42,0.1)" }}>
+                          <p className="font-inter text-xs text-gray-500 leading-relaxed">
+                            <strong className="text-gray-700">For gifts over $20K</strong> or to coordinate a DAF/stock transfer, reach out directly and we&#39;ll guide you through it:
+                          </p>
+                          <a
+                            href="mailto:finance@blockchainedu.org"
+                            className="inline-flex items-center gap-1.5 font-inter font-semibold text-xs text-benorange-500 hover:text-yellow-600 transition-colors mt-2"
+                          >
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="2" y="4" width="20" height="16" rx="2" />
+                              <path d="M22 7l-10 6L2 7" />
+                            </svg>
+                            finance@blockchainedu.org
+                          </a>
                         </div>
                       </>
                     )}
@@ -415,47 +603,78 @@ export default function Donate() {
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
           {/* Hero stat — fundraising total */}
           <div className="text-center mb-10">
-            <div className="font-mont font-black text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-benorange-500 to-yellow-400" style={{ letterSpacing: "-0.03em" }}>$600K+</div>
-            <div className="font-inter text-sm uppercase tracking-widest mt-3" style={{ color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em" }}>in donations received</div>
+            <div className="font-mont font-black text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-benorange-500 to-yellow-400" style={{ letterSpacing: "-0.03em" }}>$1M+</div>
+            <div className="font-inter text-sm uppercase tracking-widest mt-3" style={{ color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em" }}>in donations &amp; grants received</div>
           </div>
 
-          {/* Supporting stats */}
-          <div className="flex items-center justify-center gap-10 md:gap-20">
+          {/* Supporting stats — grid for mobile, flex for desktop */}
+          <div className="grid grid-cols-3 gap-4 md:gap-10 max-w-md md:max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="font-mont font-black text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>10,000+</div>
-              <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.15em" }}>Students &amp; Alumni</div>
+              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>10K+</div>
+              <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>Students</div>
             </div>
-            <div style={{ width: "1px", height: "48px", background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.12), transparent)" }} />
-            <div className="text-center">
-              <div className="font-mont font-black text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>200+</div>
-              <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.15em" }}>Universities</div>
+            <div className="text-center" style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", borderRight: "1px solid rgba(255,255,255,0.08)" }}>
+              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>200+</div>
+              <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>Universities</div>
             </div>
-            <div style={{ width: "1px", height: "48px", background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.12), transparent)" }} />
             <div className="text-center">
-              <div className="font-mont font-black text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>35+</div>
-              <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.15em" }}>Countries</div>
+              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>35+</div>
+              <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>Countries</div>
             </div>
           </div>
 
-          {/* Bullish — centered endorsement card */}
-          <div className="flex justify-center mt-12">
-            <a
-              href="https://www.bullish.com/eu/news-insights/bullishs-trading-game-winnings-help-save-the-children-and-the-blockchain-education-network"
-              target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-5 group rounded-2xl px-8 py-5 transition-all duration-300"
-              style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}
-            >
-              <img src="/images/bullish-logo.svg" alt="Bullish" style={{ height: "36px", filter: "invert(1)", opacity: 0.9 }} />
-              <div style={{ width: "1px", height: "36px", backgroundColor: "rgba(255,255,255,0.08)" }} />
-              <div>
-                <div className="font-mont font-bold text-lg text-white" style={{ letterSpacing: "-0.01em" }}>
-                  $100,000 <span className="font-inter font-normal text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>donated to BEN</span>
+          {/* Social proof — symmetric endorsement cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-12" style={{ maxWidth: "640px", margin: "48px auto 0" }}>
+            {[
+              {
+                avatar: <img src="/images/bullish-logo.svg" alt="Bullish" style={{ width: "36px", height: "36px", objectFit: "contain" }} />,
+                amount: "$100,000",
+                label: "donated to BEN",
+                sub: "Bullish",
+                url: "https://www.bullish.com/eu/news-insights/bullishs-trading-game-winnings-help-save-the-children-and-the-blockchain-education-network",
+                external: true,
+              },
+              {
+                avatar: <img src="/images/team/jeremy-gardner-new.jpeg" alt="Jeremy Gardner" className="rounded-full object-cover" style={{ width: "36px", height: "36px" }} />,
+                amount: "$400,000",
+                label: "donated by Co-Founder",
+                sub: "Jeremy Gardner",
+                url: "/blog/blockchain-education-challenge-jeremy-gardner",
+                external: false,
+              },
+            ].map((card) => (
+              <span
+                key={card.sub}
+                onClick={() => card.external ? window.open(card.url, "_blank", "noopener,noreferrer") : (window.location.href = card.url)}
+                className="flex items-center gap-4 group rounded-2xl px-5 py-4 transition-all duration-300 cursor-pointer"
+                style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}
+              >
+                <div className="flex-shrink-0 flex items-center justify-center rounded-full" style={{ width: "44px", height: "44px", backgroundColor: "rgba(255,255,255,0.06)" }}>
+                  {card.avatar}
                 </div>
-                <div className="font-inter text-xs group-hover:text-benorange-500 transition-colors mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>
-                  Read the story &rarr;
+                <div className="min-w-0">
+                  <div className="font-mont font-bold text-base text-white" style={{ letterSpacing: "-0.01em" }}>
+                    {card.amount}
+                  </div>
+                  <div className="font-inter text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>
+                    {card.sub} &middot; {card.label}
+                  </div>
+                  <div className="font-inter text-xs group-hover:text-benorange-500 transition-colors mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>
+                    Read the story &rarr;
+                  </div>
                 </div>
-              </div>
-            </a>
+              </span>
+            ))}
+          </div>
+
+          {/* Student testimonial */}
+          <div className="text-center mt-10 max-w-lg mx-auto">
+            <p className="font-inter text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontStyle: "italic" }}>
+              &ldquo;BEN helped me get exposure to new crypto concepts before mainstream. The experience to attend ETHDenver was invaluable. You&#39;re a trailblazer for the youth.&rdquo;
+            </p>
+            <span onClick={() => window.open("https://x.com/juellz3/status/1344754639560839169", "_blank", "noopener,noreferrer")} className="font-inter text-xs mt-2 inline-block hover:text-benorange-500 transition-colors cursor-pointer" style={{ color: "rgba(255,255,255,0.3)" }}>
+              — @juellz3, BEN Member
+            </span>
           </div>
         </div>
       </section>
@@ -464,31 +683,165 @@ export default function Donate() {
           3. STUDENT VIDEOS — Individual grid. Show 6, reveal rest.
              Apple principle: progressive disclosure.
           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-      <section className="bg-white py-20 md:py-28 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="font-mont font-black text-3xl md:text-5xl text-gray-900 mb-4">
-              Hear From Our Students
+      <section className="relative overflow-hidden py-24 md:py-32 px-6" style={{ backgroundColor: "#f5f5f7" }}>
+        <div className="max-w-6xl mx-auto">
+          {/* ── Mission header ── */}
+          <div className="text-center mb-12 md:mb-16">
+            <div
+              className="inline-flex items-center gap-2 font-inter text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full mb-6"
+              style={{ backgroundColor: "rgba(255,135,42,0.08)", color: "#FF872A", border: "1px solid rgba(255,135,42,0.12)" }}
+            >
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+              The 10:10 Plan
+            </div>
+            <h2 className="font-mont font-black text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-6" style={{ letterSpacing: "-0.03em", lineHeight: "1.1" }}>
+              10 Million People.<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-benorange-500 to-yellow-400">10 Years.</span>
             </h2>
-            <p className="font-inter text-gray-500 max-w-lg mx-auto">
-              Real stories from students whose lives were changed by BEN.
+            <p className="font-inter text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: "#86868b" }}>
+              Since 2014, we&#39;ve been flying students to conferences, funding hackathons, matching them with jobs, and building blockchain communities on every continent. That was just the beginning. We&#39;re now building an academy and job board to train 10 million people in blockchain over the next decade, with scholarships so no student gets left behind. Your donation doesn&#39;t just fund a program. It changes the trajectory of someone&#39;s life.
+            </p>
+
+            {/* Founder quote — social proof */}
+            <div className="flex items-center justify-center gap-3 mt-8 max-w-xl mx-auto">
+              <img src="/images/team/jeremy-gardner-new.jpeg" alt="Jeremy Gardner" className="rounded-full object-cover flex-shrink-0" style={{ width: "44px", height: "44px" }} />
+              <p className="font-inter text-sm text-left" style={{ color: "#86868b" }}>
+                <span style={{ color: "#1d1d1f" }}>&ldquo;This org was critical to my success and I hope I will inspire others to give.&rdquo;</span>
+                <br />
+                <span className="text-xs">Jeremy Gardner, Co-Founder &middot; <span onClick={() => { window.location.href = "/blog/blockchain-education-challenge-jeremy-gardner"; }} className="text-benorange-500 cursor-pointer">Donated $400K to BEN</span></span>
+              </p>
+            </div>
+          </div>
+
+          {/* ── Featured video — The 10:10 Plan ── */}
+          <div className="mb-10 md:mb-14">
+            <div
+              className="relative rounded-2xl md:rounded-3xl overflow-hidden mx-auto"
+              style={{
+                aspectRatio: "16/9",
+                maxWidth: "960px",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.12), 0 4px 20px rgba(0,0,0,0.06)",
+              }}
+            >
+              {playingVideo === visibleVideos[0] ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${visibleVideos[0]}?autoplay=1&rel=0&modestbranding=1`}
+                  allow="autoplay; encrypted-media" allowFullScreen
+                  className="absolute inset-0 w-full h-full" frameBorder="0"
+                />
+              ) : (
+                <button
+                  onClick={() => setPlayingVideo(visibleVideos[0])}
+                  className="relative w-full h-full group"
+                >
+                  <img
+                    src={`https://img.youtube.com/vi/${visibleVideos[0]}/maxresdefault.jpg`}
+                    alt="The 10:10 Plan — Educate 10 million people in blockchain"
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Cinematic gradient */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.15) 100%)",
+                    }}
+                  />
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                      className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                      style={{
+                        backgroundColor: "rgba(255,135,42,0.95)",
+                        boxShadow: "0 8px 32px rgba(255,135,42,0.4), 0 0 0 4px rgba(255,255,255,0.2)",
+                      }}
+                    >
+                      <svg className="w-8 h-8 md:w-10 md:h-10 text-white" style={{ marginLeft: "4px" }} fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
+                  {/* Bottom label */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+                    <span className="inline-block font-mont font-bold text-white text-sm md:text-base" style={{ opacity: 0.95 }}>
+                      Watch: The 10:10 Plan
+                    </span>
+                    <span className="block font-inter text-xs mt-1" style={{ color: "rgba(255,255,255,0.5)" }}>
+                      Our vision to educate 10 million people in blockchain
+                    </span>
+                  </div>
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* ── Vision pillars ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-14 md:mb-16" style={{ maxWidth: "960px", margin: "0 auto" }}>
+            {[
+              { icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253", title: "Academy & Scholarships", desc: "Self-paced courses from zero to Solidity and full-stack web3. Students can apply for scholarships so talent is never blocked by tuition." },
+              { icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Job Board & Careers", desc: "We connect students with blockchain companies hiring right now. Internships, full-time roles, and the mentorship to actually land them." },
+              { icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z", title: "Global Community", desc: "200+ universities across 35 countries. Hackathons, conferences, and campus clubs that turn curious students into founders." },
+            ].map((pillar) => (
+              <div key={pillar.title} className="text-center md:text-left px-2">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl mb-4" style={{ backgroundColor: "rgba(255,135,42,0.08)" }}>
+                  <svg className="w-5 h-5" fill="none" stroke="#FF872A" strokeWidth="1.5" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
+                    <path d={pillar.icon} />
+                  </svg>
+                </div>
+                <h3 className="font-mont font-bold text-base text-gray-900 mb-2">{pillar.title}</h3>
+                <p className="font-inter text-sm leading-relaxed" style={{ color: "#86868b" }}>{pillar.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Section transition: more stories ── */}
+          <div className="text-center mt-16 md:mt-20 mb-10 md:mb-12" style={{ maxWidth: "960px", margin: "0 auto", paddingTop: "64px" }}>
+            <h3 className="font-mont font-black text-2xl md:text-3xl text-gray-900">
+              More Student Stories
+            </h3>
+            <p className="font-inter text-sm mt-3" style={{ color: "#86868b" }}>
+              Watch how BEN changed their lives
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {visibleVideos.map((videoId) => (
-              <div key={videoId} className="rounded-2xl overflow-hidden shadow-md" style={{ aspectRatio: "16/9" }}>
+
+          {/* ── Grid of remaining videos ── */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5" style={{ maxWidth: "960px", margin: "0 auto" }}>
+            {visibleVideos.slice(1).map((videoId) => (
+              <div
+                key={videoId}
+                className="relative rounded-xl md:rounded-2xl overflow-hidden"
+                style={{
+                  aspectRatio: "16/9",
+                  boxShadow: "0 4px 20px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04)",
+                }}
+              >
                 {playingVideo === videoId ? (
                   <iframe
                     src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
                     allow="autoplay; encrypted-media" allowFullScreen
-                    className="w-full h-full" frameBorder="0"
+                    className="absolute inset-0 w-full h-full" frameBorder="0"
                   />
                 ) : (
                   <button onClick={() => setPlayingVideo(videoId)} className="relative w-full h-full group">
-                    <img src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} alt="Student testimonial" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 flex items-center justify-center" style={{ background: "rgba(0,0,0,0.15)" }}>
-                      <div className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200" style={{ backgroundColor: "rgba(255,135,42,0.9)" }}>
-                        <svg className="w-6 h-6 text-white" style={{ marginLeft: "2px" }} fill="currentColor" viewBox="0 0 24 24">
+                    <img
+                      src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+                      alt="Student testimonial"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Subtle overlay */}
+                    <div
+                      className="absolute inset-0 transition-opacity duration-300"
+                      style={{ background: "linear-gradient(to top, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 50%)" }}
+                    />
+                    {/* Play button */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div
+                        className="w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                        style={{
+                          backgroundColor: "rgba(255,135,42,0.9)",
+                          boxShadow: "0 4px 16px rgba(255,135,42,0.3), 0 0 0 3px rgba(255,255,255,0.15)",
+                        }}
+                      >
+                        <svg className="w-4 h-4 md:w-6 md:h-6 text-white" style={{ marginLeft: "2px" }} fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       </div>
@@ -498,16 +851,46 @@ export default function Donate() {
               </div>
             ))}
           </div>
+
+          {/* ── Show more ── */}
           {!showAllVideos && (
-            <div className="text-center mt-8">
+            <div className="text-center mt-10 md:mt-14">
               <button
                 onClick={() => setShowAllVideos(true)}
-                className="font-inter font-semibold text-sm text-benorange-500 hover:text-yellow-600 transition-colors"
+                className="inline-flex items-center gap-2 font-inter font-semibold text-sm px-6 py-3 rounded-full transition-all duration-300"
+                style={{
+                  color: "#FF872A",
+                  backgroundColor: "rgba(255,135,42,0.08)",
+                  border: "1px solid rgba(255,135,42,0.15)",
+                }}
               >
-                Show {VIDEO_IDS.length - 6} more videos &darr;
+                Show {VIDEO_IDS.length - 6} more videos
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
               </button>
             </div>
           )}
+
+          {/* ── Motivating CTA ── */}
+          <div className="text-center mt-16 md:mt-20 pt-12 md:pt-16" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+            <p className="font-inter text-base md:text-lg max-w-xl mx-auto mb-8" style={{ color: "#86868b" }}>
+              Every one of these students started with a single opportunity someone believed in them enough to fund. A scholarship. A conference ticket. A hackathon that changed everything. <span className="text-gray-900 font-semibold">You can be that person for someone right now.</span>
+            </p>
+            <button
+              onClick={scrollToDonate}
+              className="inline-flex items-center gap-2 font-mont font-bold text-base md:text-lg px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg text-white"
+              style={{
+                backgroundColor: "#FF872A",
+                boxShadow: "0 4px 24px rgba(255,135,42,0.3)",
+              }}
+            >
+              Donate Now
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -523,9 +906,6 @@ export default function Donate() {
             </h2>
             <p className="font-inter text-gray-500 max-w-lg mx-auto mb-2">
               Every dollar directly impacts a student&rsquo;s journey into blockchain.
-            </p>
-            <p className="font-inter text-benorange-500 font-bold">
-              {Stories.length}+ students and communities reached
             </p>
           </div>
 
@@ -545,9 +925,10 @@ export default function Donate() {
             <div className="text-center mt-10">
               <button
                 onClick={() => setShowAllStories(true)}
-                className="font-inter font-semibold text-sm text-benorange-500 hover:text-yellow-600 transition-colors"
+                className="font-mont font-bold text-base text-white bg-benorange-500 px-8 py-3 rounded-full shadow-lg active:scale-95 transition-all duration-200 hover:bg-yellow-500"
+                style={{ minHeight: "48px" }}
               >
-                Show all {Stories.length} stories &darr;
+                Show All {Stories.length} Stories &darr;
               </button>
             </div>
           )}
@@ -721,14 +1102,14 @@ export default function Donate() {
               { href: "https://drive.google.com/file/d/1DeVoRAEAOzxJQ1jSlykklOakaLs8o_fb/view?usp=sharing", icon: "/images/about-us.svg", title: "501(c)(3) Status", desc: "EIN: 46-5280397" },
               { href: "https://drive.google.com/file/d/1FmpY4Lmy5kX1U26q2b13NtQBf4mni5Es/view", icon: "/images/blockchain-partners.svg", title: "1101 Status (PR)", desc: "Puerto Rico educational org" },
             ].map((card, i) => (
-              <a key={i} target="_blank" rel="noopener noreferrer" href={card.href}
-                className="border border-gray-200 p-5 rounded-2xl hover:shadow-md hover:border-benorange-500 transition-all duration-300 group flex items-start gap-4">
+              <span key={i} onClick={() => window.open(card.href, "_blank", "noopener,noreferrer")}
+                className="border border-gray-200 p-5 rounded-2xl hover:shadow-md hover:border-benorange-500 transition-all duration-300 group flex items-start gap-4 cursor-pointer">
                 <Image width={56} height={56} src={card.icon} />
                 <div>
                   <div className="font-inter font-bold text-gray-900 text-base mb-1 group-hover:text-benorange-500 transition-colors">{card.title} {"\u2197"}</div>
                   <div className="font-inter text-sm text-gray-400">{card.desc}</div>
                 </div>
-              </a>
+              </span>
             ))}
           </div>
 

@@ -159,25 +159,18 @@ export default function BlogIndexPage({ allPosts }) {
     <div id="blog-page">
       <HeaderWithLogoDark />
       <Head>
-        <title>Blog | Blockchain Education Network</title>
-        <meta
-          name="description"
-          content="Founder interviews, market breakdowns and crypto career resources from the Blockchain Education Network. 200+ schools, 60+ clubs, 35+ countries."
-        />
+        <title>BEN Blog — Crypto Careers, Founder Stories & Market Insights</title>
+        <meta name="description" content="Founder interviews, market breakdowns, Solidity tutorials, and blockchain career resources from the world's largest university crypto network. New posts weekly." />
         <link rel="canonical" href="https://www.blockchainedu.org/blog" />
         <meta property="og:type" content="blog" />
-        <meta
-          property="og:title"
-          content="Blog | Blockchain Education Network"
-        />
-        <meta
-          property="og:description"
-          content="Founder interviews, market breakdowns and crypto career resources from BEN."
-        />
-        <meta
-          property="og:url"
-          content="https://www.blockchainedu.org/blog"
-        />
+        <meta property="og:title" content="BEN Blog — Crypto Careers, Founder Stories & Market Insights" />
+        <meta property="og:description" content="Founder interviews, market breakdowns, and blockchain career resources from the world's largest university crypto network." />
+        <meta property="og:url" content="https://www.blockchainedu.org/blog" />
+        <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="BEN Blog — Crypto Careers, Founder Stories & Market Insights" />
+        <meta name="twitter:description" content="Founder interviews, Solidity tutorials, and blockchain career resources from BEN." />
+        <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
       </Head>
 
       <main>
@@ -257,7 +250,7 @@ export default function BlogIndexPage({ allPosts }) {
                 className="mt-2 text-xs font-inter"
                 style={{ color: "rgba(255,255,255,0.25)" }}
               >
-                Free weekly newsletter. No spam.
+                Join 12,000+ subscribers.
               </p>
             </div>
 
@@ -533,7 +526,7 @@ export default function BlogIndexPage({ allPosts }) {
                 className="mt-2 text-xs font-inter"
                 style={{ color: "rgba(255,255,255,0.25)" }}
               >
-                No spam. Unsubscribe anytime.
+                Join 12,000+ subscribers.
               </p>
             </div>
           </div>

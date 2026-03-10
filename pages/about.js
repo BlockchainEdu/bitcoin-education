@@ -9,7 +9,18 @@ export default function About() {
         <div id="about-page">
             <HeaderWithLogo />
             <Head>
-                <title>About | Blockchain Education Network</title>
+                <title>About BEN — The World's Largest University Blockchain Network</title>
+                <meta name="description" content="Founded in 2014, BEN connects 10,000+ students and alumni across 200+ universities in 35 countries. Learn how we're building the next generation of blockchain builders." />
+                <link rel="canonical" href="https://www.blockchainedu.org/about" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.blockchainedu.org/about" />
+                <meta property="og:title" content="About BEN — The World's Largest University Blockchain Network" />
+                <meta property="og:description" content="Founded in 2014, BEN connects 10,000+ students across 200+ universities in 35 countries." />
+                <meta property="og:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="About BEN — 10K+ Students, 200+ Universities, Since 2014" />
+                <meta name="twitter:description" content="The world's largest university blockchain network. Learn our story." />
+                <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
             </Head>
             <div className="about-header pt-10 pb-20 px-7">
                 <div className="max-w-7xl m-auto flex flex-col md:flex-row">
