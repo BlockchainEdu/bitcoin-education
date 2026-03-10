@@ -25,7 +25,8 @@ const Partners = () => {
     },
   ];
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchClubs() {
     let body = {
       query: `{
         boards (ids: 1452150315) {
@@ -43,7 +44,7 @@ const Partners = () => {
                 value
               }
               assets {
-                public_url 
+                public_url
               }
             }
           }
@@ -51,7 +52,6 @@ const Partners = () => {
       }`,
     };
     let result = await TeamMemberService.getMembers(body);
-    console.log(result);
     if (result?.data?.data?.boards) {
       let temp_locations = []
       let temp = result.data.data.boards[0].items_page.items.map(item => {
@@ -67,6 +67,8 @@ const Partners = () => {
       setClubs(temp);
       setLocations(temp_locations);
     }
+    }
+    fetchClubs();
   }, []);
 
   const onSelected = (param) => {
@@ -97,7 +99,7 @@ const Partners = () => {
               content, job opportunities, and much much more.
             </p>
             <div className="m-auto flex content-center justify-center lg:justify-start">
-              <a href="https://beats.blockchainedu.org/" target="_blank">
+              <a href="https://beats.blockchainedu.org/" target="_blank" rel="noopener noreferrer">
                 <button className="mb-20 lg:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-16 rounded-full py-4 mt-10">
                   Sign Up
                 </button>
@@ -105,7 +107,7 @@ const Partners = () => {
             </div>
           </div>
           <div className="w-full lg:w-10/12 m-auto">
-            <img className="m-auto" src="/images/clubs-hero.png" />
+            <img className="m-auto" src="/images/clubs-hero.png" alt="BEN Clubs" />
           </div>
         </div>
       </div>
@@ -144,7 +146,7 @@ const Partners = () => {
             {clubs.map(club => (
               <div className="font-mont m-auto">
                 <div className="flex items-center" style={{ height: "130px" }}>
-                  <img className="m-auto" src={club.url} style={{ maxWidth: "200px" }} />
+                  <img className="m-auto" src={club.url} style={{ maxWidth: "200px" }} alt={club.name || "Club logo"} />
                 </div>
                 <p className="font-bold text-lg pt-10 text-center">{club.name}</p>
               </div>

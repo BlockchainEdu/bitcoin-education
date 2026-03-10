@@ -70,7 +70,7 @@ const PartnerSlider = ({ data = [], title }) => {
           );
 
           return item?.link ? (
-            <a href={item.link} target="_blank" rel="noreferrer" key={key}>
+            <a href={item.link} target="_blank" rel="noopener noreferrer" key={key}>
               {content}
             </a>
           ) : (

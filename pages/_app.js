@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }) {
           {/* crazy egg */}
           <script
             type="text/javascript"
-            src="//script.crazyegg.com/pages/scripts/0120/4754.js"
+            src="https://script.crazyegg.com/pages/scripts/0120/4754.js"
             async="async"
           />
 
@@ -136,7 +136,7 @@ function MyApp({ Component, pageProps }) {
           {/* CrazyEgg Analytics (segundo script) */}
           <script
             type="text/javascript"
-            src="//script.crazyegg.com/pages/scripts/0118/3905.js"
+            src="https://script.crazyegg.com/pages/scripts/0118/3905.js"
             async="async"
           />
 

@@ -35,8 +35,7 @@ export default function DonationSlider(props) {
     }
     const numPixels = currPercentage / 100 * (sliderRef.current.getBoundingClientRect().width - (sliderCoverRef.current.getBoundingClientRect().width * 3 / 4));
     sliderCoverRef.current.style.left = `${Math.max(numPixels, 0)}px`;
-    console.log(sliderCoverRef.current.style.left);
-    sliderCoverAmountRef.current.innerHTML = `\$${Math.floor(currValue)}`;
+    sliderCoverAmountRef.current.textContent = `\$${Math.floor(currValue)}`;
     props.onChange(currValue);
   }
 

@@ -112,6 +112,8 @@ export default function VolunteerPage() {
                 </p>
                 <a
                   href="https://t.me/cryptoniooo"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block px-5 py-2 rounded-xl font-semibold text-xs tracking-wide text-white bg-benorange-500 transition-all duration-300 hover:text-white hover:bg-benorange-500 hover:scale-105 shadow-md hover:shadow-lg"
                 >
                   Apply Now
@@ -173,6 +175,8 @@ export default function VolunteerPage() {
         </p>
         <a
           href="https://t.me/cryptoniooo"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-block px-8 py-3 bg-white text-benorange-500 font-semibold rounded-full hover:bg-gray-100 transition"
         >
           Contact Us

@@ -1,66 +1,69 @@
 function appendUtmParameters() {
   if (typeof window !== 'undefined') {
-    // Retrieve the UTM parameters from the URL query string
     const urlParams = new URLSearchParams(window.location.search);
     const utmSource = urlParams.get('utm_source');
     const utmMedium = urlParams.get('utm_medium');
     const utmCampaign = urlParams.get('utm_campaign');
 
-    // Append the UTM parameters to the URLs of links or forms
+    // Validate UTM values: alphanumeric, hyphens, underscores, dots only. Max 100 chars.
+    const UTM_PATTERN = /^[a-zA-Z0-9._-]{1,100}$/;
+    function isValidUtm(value) {
+      return value !== null && UTM_PATTERN.test(value);
+    }
+
+    const safeSource = isValidUtm(utmSource) ? utmSource : null;
+    const safeMedium = isValidUtm(utmMedium) ? utmMedium : null;
+    const safeCampaign = isValidUtm(utmCampaign) ? utmCampaign : null;
+
+    // No valid UTM params — skip all DOM manipulation
+    if (!safeSource && !safeMedium && !safeCampaign) return;
+
     const links = document.querySelectorAll('a');
     links.forEach((link) => {
       const href = link.getAttribute('href');
-      const updatedHref = new URL(href, window.location.origin);
+      if (!href) return;
 
-      if (utmSource !== null) {
-        updatedHref.searchParams.set('utm_source', utmSource);
-      }
-      if (utmMedium !== null) {
-        updatedHref.searchParams.set('utm_medium', utmMedium);
-      }
-      if (utmCampaign !== null) {
-        updatedHref.searchParams.set('utm_campaign', utmCampaign);
-      }
+      try {
+        const updatedHref = new URL(href, window.location.origin);
 
-      link.setAttribute('href', updatedHref.toString());
+        // Only modify same-origin links with UTM params
+        if (updatedHref.origin === window.location.origin) {
+          if (safeSource) updatedHref.searchParams.set('utm_source', safeSource);
+          if (safeMedium) updatedHref.searchParams.set('utm_medium', safeMedium);
+          if (safeCampaign) updatedHref.searchParams.set('utm_campaign', safeCampaign);
+        } else {
+          // External links: only set source attribution
+          updatedHref.searchParams.set('utm_source', 'blockchainedu.org');
+        }
 
-      // Check if the link is leaving the website
-      if (!link.href.startsWith(window.location.origin)) {
-        updatedHref.searchParams.set('utm_source', 'blockchainedu.org');
-        updatedHref.searchParams.delete('utm_medium');
-        updatedHref.searchParams.delete('utm_campaign');
         link.setAttribute('href', updatedHref.toString());
+      } catch {
+        // Invalid URL — skip this link
       }
     });
 
-    // Similarly, update form actions if necessary
     const forms = document.querySelectorAll('form');
     forms.forEach((form) => {
       const action = form.getAttribute('action');
-      const updatedAction = new URL(action, window.location.origin);
+      if (!action) return;
 
-      if (utmSource !== null) {
-        updatedAction.searchParams.set('utm_source', utmSource);
-      }
-      if (utmMedium !== null) {
-        updatedAction.searchParams.set('utm_medium', utmMedium);
-      }
-      if (utmCampaign !== null) {
-        updatedAction.searchParams.set('utm_campaign', utmCampaign);
-      }
+      try {
+        const updatedAction = new URL(action, window.location.origin);
 
-      form.setAttribute('action', updatedAction.toString());
+        if (updatedAction.origin === window.location.origin) {
+          if (safeSource) updatedAction.searchParams.set('utm_source', safeSource);
+          if (safeMedium) updatedAction.searchParams.set('utm_medium', safeMedium);
+          if (safeCampaign) updatedAction.searchParams.set('utm_campaign', safeCampaign);
+        } else {
+          updatedAction.searchParams.set('utm_source', 'blockchainedu.org');
+        }
 
-      // Check if the form action is leaving the website
-      if (!updatedAction.href.startsWith(window.location.origin)) {
-        updatedAction.searchParams.set('utm_source', 'blockchainedu.org');
-        updatedAction.searchParams.delete('utm_medium');
-        updatedAction.searchParams.delete('utm_campaign');
         form.setAttribute('action', updatedAction.toString());
+      } catch {
+        // Invalid action URL — skip
       }
     });
   }
 }
 
-// Execute the appendUtmParameters function on each page load
 appendUtmParameters();

@@ -10,15 +10,14 @@ function BlogGrid() {
       try {
         const response = await fetch('/api/rss');
         const feed = await response.json();
-        console.log(feed[0].enclosure)
         const sortedPosts = Array.isArray(feed) && feed.length > 0
           ? feed
               .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
               .slice(0, 6) // display only the 3 most recent posts
           : [];
         setPosts(sortedPosts);
-      } catch (error) {
-        setError(error.message);
+      } catch (err) {
+        setError('Failed to load posts.');
       }
     };
     fetchPosts();

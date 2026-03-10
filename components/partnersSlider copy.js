@@ -16,7 +16,8 @@ export default function About() {
   const [teamMembers, setTeamMembers] = useState([]);
 
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchPartners() {
     // Get Members list
     let body = {
       query: `{
@@ -41,12 +42,12 @@ export default function About() {
         }`}
     let result = await TeamMemberService.getMembers(body);
     if (result?.data?.data?.boards) {
-      console.log(result.data.data.boards[0].items);
       setTeamMembers(result.data.data.boards[0].items);
     } else {
       setTeamMembers([]);
     }
-
+    }
+    fetchPartners();
   }, [setTeamMembers]);
 
   const settings = {

@@ -24,7 +24,7 @@ export default function Professor() {
                             <p className="text-center lg:text-left mx-auto lg:mx-0 text-black text-md pt-10 max-w-sm">
                                 Professors are an integral part of expanding blockchain education and pushing the industry forward. By engaging directly with professors, we hope to expand education access at universities, publish academic research, and collaborate on blockchain/crypto projects.
                             </p>
-                            <a target="_blank" href="https://forms.monday.com/forms/embed/02ce7c2a2ae0643fb4b7223aad523258?r=use1">
+                            <a target="_blank" rel="noopener noreferrer" href="https://forms.monday.com/forms/embed/02ce7c2a2ae0643fb4b7223aad523258?r=use1">
                                 <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
                                     Sign Up as Professor
                                 </button>

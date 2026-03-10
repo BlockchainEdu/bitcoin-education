@@ -46,7 +46,8 @@ const FeatureSlider = () => {
       },
     ],
   };
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetchFeatures() {
     let body = {
       query: `{
         boards (ids: 1515443648) {
@@ -70,17 +71,18 @@ const FeatureSlider = () => {
       }`,
     };
     let result = await TeamMemberService.getMembers(body);
-    console.log(result);
     if (result?.data?.data?.boards) {
       let temp = result?.data?.data?.boards[0].items;
       temp = temp.map((item) => {
         return {
           name: item.name,
-          url: item.assets[0].public_url,
+          url: item.assets[0]?.public_url,
         };
       });
       setFeatures(temp);
     }
+    }
+    fetchFeatures();
   }, []);
   return (
     <div className="mb-6">
@@ -96,6 +98,7 @@ const FeatureSlider = () => {
                   className="m-auto"
                   style={{maxWidth:"300px"}}
                   src={item.url}
+                  alt={item.name || "Featured in"}
                 />
               </div>
             </div>

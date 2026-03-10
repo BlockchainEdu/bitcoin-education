@@ -14,7 +14,7 @@ class IndustyIconContainer extends React.Component {
     render() {
         return (
             <div className="font-mont">
-            <img src={this.props.image} style={{maxWidth:"300px", margin: "auto"}}/>
+            <img src={this.props.image} style={{maxWidth:"300px", margin: "auto"}} alt={this.props.name || "Partner"}/>
             <p className="text-center font-bold text-lg pt-10">{this.props.name}</p>
           </div>
         )

@@ -22,10 +22,11 @@ export default function NewsletterSignup() {
           <iframe
             src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
             data-test-id="beehiiv-embed"
-           
+            title="Newsletter signup"
             height="52"
             frameBorder="0"
             scrolling="no"
+            sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
             style={{
               margin: 0,
               borderRadius: "0px",

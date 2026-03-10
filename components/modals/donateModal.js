@@ -70,17 +70,17 @@ export default function DonateModal(props) {
                   </button>
                 </div>
                 <div className="flex flex-col md:flex-row gap-y-3 md:gap-y-0 pt-10 gap-x-10 justify-center">
-                  <a className="text-center" target="_blank" href="https://www.paypal.com/donate/?hosted_button_id=JZT2VJ5WA6GJJ">
+                  <a className="text-center" target="_blank" rel="noopener noreferrer" href="https://www.paypal.com/donate/?hosted_button_id=JZT2VJ5WA6GJJ">
                     <button className="text-benblack-500 underline text-md font-semibold">
                       Give with PayPal
                     </button>
                   </a>
-                  <a className="text-center" target="_blank" href="/donate#crypto">
+                  <a className="text-center" target="_blank" rel="noopener noreferrer" href="/donate#crypto">
                     <button className="text-benblack-500 underline font-semibold">
                       Give with Crypto
                     </button>
                   </a>
-                  <a className="text-center" target="_blank" href="/images/ben-wire-details.pdf">
+                  <a className="text-center" target="_blank" rel="noopener noreferrer" href="/images/ben-wire-details.pdf">
                     <button className="text-benblack-500 underline font-semibold">
                       Give with Wire Transfer
                     </button>

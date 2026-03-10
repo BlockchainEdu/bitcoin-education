@@ -1,8 +1,27 @@
 import NationalTeamCard from '../components/nationalTeamCard'
 import { TeamMemberService } from '../services';
 
-
 import React, { useState, useEffect } from 'react';
+
+function safeParse(value, fallback = "") {
+  if (!value || typeof value !== "string") return fallback;
+  try {
+    const parsed = JSON.parse(value);
+    if (typeof parsed === "string" || typeof parsed === "number") return String(parsed);
+    if (parsed && typeof parsed === "object" && parsed.text) return String(parsed.text);
+    return fallback;
+  } catch { return fallback; }
+}
+
+function safeParseUrl(value) {
+  const url = safeParse(value);
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    if (["https:", "http:"].includes(parsed.protocol)) return parsed.href;
+    return null;
+  } catch { return null; }
+}
 
 export default function IndividualProgram() {
 
@@ -38,7 +57,6 @@ export default function IndividualProgram() {
     let result = await TeamMemberService.getMembers(body);
     if (result?.data?.data?.boards) {
       let items = result.data.data.boards[0].items;
-      console.log(items);
       setTeamMembers(items);
     } else {
       setTeamMembers([]);
@@ -65,22 +83,24 @@ export default function IndividualProgram() {
                   {global.name}
                 </h1>
                 <ul className="space-y-10 text-black text-md pt-10 max-w-lg m-auto lg:m-0 text-center lg:text-left font-medium">
-                  <li>{JSON.parse(global.column_values[1].value)}</li>
-                  <li>{JSON.parse(global.column_values[7].value)}</li>
-                  <li>{JSON.parse(global.column_values[8].value)}</li>
-                  <li>{JSON.parse(global.column_values[9].value)}</li>
-                  <li>{JSON.parse(global.column_values[10].value)}</li>
+                  <li>{safeParse(global.column_values[1]?.value)}</li>
+                  <li>{safeParse(global.column_values[7]?.value)}</li>
+                  <li>{safeParse(global.column_values[8]?.value)}</li>
+                  <li>{safeParse(global.column_values[9]?.value)}</li>
+                  <li>{safeParse(global.column_values[10]?.value)}</li>
                 </ul>
                 <div className="flex gap-x-10 flex-col lg:flex-row mx-auto">
-                  <a className="mx-auto lg:mx-0" target="_blank" href={JSON.parse(global.column_values[4].value)}>
+                  {safeParseUrl(global.column_values[4]?.value) &&
+                  <a className="mx-auto lg:mx-0" target="_blank" rel="noopener noreferrer" href={safeParseUrl(global.column_values[4].value)}>
                     <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
-                      {JSON.parse(global.column_values[3].value)}
+                      {safeParse(global.column_values[3]?.value)}
                     </button>
                   </a>
-                  {JSON.parse(global.column_values[5].value) &&
-                  <a className="border-b-10 mx-auto lg:mx-0" target="_blank" href={JSON.parse(global.column_values[6].value)}>
+                  }
+                  {safeParse(global.column_values[5]?.value) &&
+                  <a className="border-b-10 mx-auto lg:mx-0" target="_blank" rel="noopener noreferrer" href={safeParseUrl(global.column_values[6]?.value)}>
                     <button className="mb-20 md:mb-0 bg-benorange-500 hover:bg-bengrey-300 shadow-button transition duration-500 text-white font-bold text-xl px-12 rounded-full py-4 mt-10">
-                      {JSON.parse(global.column_values[5].value)}
+                      {safeParse(global.column_values[5]?.value)}
                     </button>
                   </a>
                   }

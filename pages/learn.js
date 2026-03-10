@@ -62,7 +62,7 @@ export default function Learn() {
                             <div className="pb-3">Blockchain Development</div>
                             <div className="pb-3">CELO L-EARN</div>
                         </div>
-                        <a href="https://learn.blockchainedu.org" target="_blank">
+                        <a href="https://learn.blockchainedu.org" target="_blank" rel="noopener noreferrer">
                             <StandardButton
                                 styling="px-8 mt-5"
                                 color="orange"
@@ -85,7 +85,7 @@ export default function Learn() {
             <section className="max-w-7xl m-auto pt-14 pb-4 md:py-24 pb-0 px-7">
                 <div className="flex flex-col md:flex-row justify-between md:space-x-20 items-center">
                     <div className="w-full md:w-3/6 pb-20 md:pb-0">
-                        <img className="mx-auto md:mx-0" src="/images/learn-teachers-illustration.png" />
+                        <img className="mx-auto md:mx-0" src="/images/learn-teachers-illustration.png" alt="BEN Academy teachers" />
                     </div>
                     <div className="w-full md:w-3/6">
                         <div className="font-mont text-center md:text-left text-xs uppercase pb-7">
@@ -133,7 +133,7 @@ export default function Learn() {
                         <div className="m-auto flex content-center items-center justify-center md:justify-start pt-10">
                             <div className="flex">
                                 <div className="-mr-4">
-                                    <img src="/images/accounts-created-icon.svg" />
+                                    <img src="/images/accounts-created-icon.svg" alt="Accounts created" />
                                 </div>
                                 <div>
                                     <div className="font-medium font-mont text-benorange-500 text-4xl pt-6 pb-3 mt-2">2,00+</div>

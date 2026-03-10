@@ -35,13 +35,13 @@ class StoryCard extends React.Component {
                 <div className="text-bengrey-300 pt-2">{this.props.title}</div>
                 <div className="text-center social-icons pt-3">
                     {this.props.twitter &&
-                        <a href={this.props.twitter} target="_blank"><img className="m-auto" src="/images/twitter-icon.png" /></a>
+                        <a href={this.props.twitter} target="_blank" rel="noopener noreferrer"><img className="m-auto" src="/images/twitter-icon.png" alt="Twitter" /></a>
                     }
                     {this.props.linkedin &&
-                        <a href={this.props.linkedin} target="_blank"><img className="m-auto" src="/images/linkedin-icon.png" /></a>
+                        <a href={this.props.linkedin} target="_blank" rel="noopener noreferrer"><img className="m-auto" src="/images/linkedin-icon.png" alt="LinkedIn" /></a>
                     }
                     {this.props.email &&
-                        <a href={this.props.email} target="_blank"><img className="m-auto" src="/images/mail-icon.png" /></a>
+                        <a href={this.props.email} target="_blank" rel="noopener noreferrer"><img className="m-auto" src="/images/mail-icon.png" alt="Email" /></a>
                     }
                 </div>
             </div>

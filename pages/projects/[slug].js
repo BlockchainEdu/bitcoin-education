@@ -91,7 +91,7 @@ const Project = ({ project }) => {
             </Link>
             <p className="text-lg font-bold mt-14 mb-2">Summary:</p>
             <p className="text-black text-md lg:pr-10 lg:pb-14">
-              <ReactMarkdown children={project.place_story} />
+              <ReactMarkdown children={project.place_story} disallowedElements={['script', 'style', 'iframe', 'object', 'embed', 'form']} unwrapDisallowed />
             </p>
             <div>
               <div className="w-full gap-y-7 flex-wrap flex flex-col lg:flex-row items-center justify-center py-14 lg:space-y-0 lg:py-0 mt-14 lg:mt-0 space-x-0 lg:space-x-7">

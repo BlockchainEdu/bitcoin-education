@@ -14,7 +14,7 @@ export default function Deductions() {
                 <h1 className="text-center text-3xl md:text-5xl font-mont font-black mx-auto max-w-4xl">Donations to 501 (c)(3) nonprofits are tax deductible</h1>
             </div>
             <div className="pt-24 flex flex-col lg:flex-row max-w-7xl mx-auto items-center justify-between">
-                <img src="/images/ben-deductible.png" />
+                <img src="/images/ben-deductible.png" alt="Tax deductible donation illustration" />
                 <div className="font-mont text-md max-w-xl text-center">
                     Donations to 501(c)(3) nonprofits are tax deductible. Under the IRS code section 170, <b>when you make a donation to
                         an organization that has been designated as a 501(c)(3) by the IRS</b>, you are eligible to receive a tax deduction on
@@ -30,10 +30,10 @@ export default function Deductions() {
                     the Fair Market Value on the date of donation or the actual amount you paid to acquire the properties. If you donate after
                     you own the property for one year, you can deduct a full amount of the FMV of the properties on the date of donation.
                 </div>
-                <img src="/images/ben-deductible.png" />
+                <img src="/images/ben-deductible.png" alt="Tax deductible donation illustration" />
             </div>
             <div className="mb-20">
-                <img className="m-auto mb-5" src="/images/deductions-examples.png" />
+                <img className="m-auto mb-5" src="/images/deductions-examples.png" alt="Deduction examples" />
                 <p className="font-mont font-bold text-2xl text-center max-w-2xl mx-auto">
                     Here are a couple of examples that can help you understand how the deductions work
                 </p>
@@ -53,7 +53,7 @@ export default function Deductions() {
                         return. Assuming your effective tax rate is 30%, you can get a tax savings of $7,200 from the deduction. Your total tax savings
                         from this donation is $8,000.
                     </p>
-                    <table class="mb-10 lg:mb-0 table-auto flex justify-center lg:justify-start">
+                    <table className="mb-10 lg:mb-0 table-auto flex justify-center lg:justify-start">
                         <thead>
                         </thead>
                         <tbody className="border-black font-mont font-bold text-sm">
@@ -89,12 +89,12 @@ export default function Deductions() {
                     </table>
                 </div>
                 <div className="w-full lg:w-1/2">
-                    <img className="m-auto" src="/images/ben-deductible.png" />
+                    <img className="m-auto" src="/images/ben-deductible.png" alt="Tax deductible donation illustration" />
                 </div>
             </div>
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center px-7 mt-24">
                 <div className="w-full lg:w-1/2">
-                    <img className="m-auto" src="/images/ben-deductible.png" />
+                    <img className="m-auto" src="/images/ben-deductible.png" alt="Tax deductible donation illustration" />
                 </div>
                 <div className="w-full lg:w-1/2">
                     <div className="flex justify-center lg:justify-start">
@@ -109,7 +109,7 @@ export default function Deductions() {
                         deductions when you file the tax return. Assuming your effective tax rate is 30%, you can get a tax savings of $6,000 from the
                         deduction. The total tax savings you can get from the donation is $7,480.
                     </p>
-                    <table class="mb-10 lg:mb-0 table-auto flex justify-center lg:justify-start">
+                    <table className="mb-10 lg:mb-0 table-auto flex justify-center lg:justify-start">
                         <thead>
                         </thead>
                         <tbody className="border-black font-mont font-bold text-sm">
@@ -146,7 +146,7 @@ export default function Deductions() {
                 </div>
             </div>
             <div className="py-24 px-7">
-                <img className="m-auto mb-5" src="/images/deductions-examples.png" />
+                <img className="m-auto mb-5" src="/images/deductions-examples.png" alt="Deduction examples" />
                 <div className="font-mont font-bold text-2xl text-center max-w-2xl mx-auto">
                     Same rules apply to crypto currency.
                 </div>
@@ -159,7 +159,7 @@ export default function Deductions() {
             <div className="space-y-14 max-w-7xl mx-auto px-7 pb-20">
                 <div className="flex">
                     <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 lg:space-x-14">
-                        <img className="mb-10 lg:mb-0" src="/images/deductions-1.svg" />
+                        <img className="mb-10 lg:mb-0" src="/images/deductions-1.svg" alt="Step 1: Verify tax-exempt status" />
                         <p className="font-mont max-w-4xl text-center lg:text-left">
                             Verify that the organization you are donating to has been granted tax-exempt status by the IRS and is
                             eligible to receive tax-deductible, charitable contributions. If you're not sure, ask the organization <b>or
@@ -169,7 +169,7 @@ export default function Deductions() {
                 </div>
                 <div className="flex">
                     <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 mx-auto lg:mx-0 lg:space-x-14">
-                        <img className="mb-10 lg:mb-0" src="/images/deductions-2.svg" />
+                        <img className="mb-10 lg:mb-0" src="/images/deductions-2.svg" alt="Step 2: Transfer ownership" />
                         <p className="font-mont max-w-4xl text-center lg:text-left">
                             Donate the property to the organization by <b>transferring the ownership</b> of the properties.
                         </p>
@@ -177,7 +177,7 @@ export default function Deductions() {
                 </div>
                 <div className="flex">
                     <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 mx-auto lg:mx-0 lg:space-x-14">
-                        <img className="mb-10 lg:mb-0" src="/images/deductions-3.svg" />
+                        <img className="mb-10 lg:mb-0" src="/images/deductions-3.svg" alt="Step 3: Receive receipt" />
                         <p className="font-mont max-w-4xl text-center lg:text-left">
                             The organization will send you a <b>receipt document</b> to acknowledge the gift.
                         </p>
@@ -185,7 +185,7 @@ export default function Deductions() {
                 </div>
                 <div className="flex">
                     <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 mx-auto lg:mx-0 lg:space-x-14">
-                        <img className="mb-10 lg:mb-0" src="/images/deductions-4.svg" />
+                        <img className="mb-10 lg:mb-0" src="/images/deductions-4.svg" alt="Step 4: Keep receipt for tax return" />
                         <p className="font-mont max-w-4xl text-center lg:text-left">
                             The organization will senaKeep the receipt till the <b>year end</b> when you file your <b>tax return</b>
                         </p>
@@ -193,7 +193,7 @@ export default function Deductions() {
                 </div>
                 <div className="flex">
                     <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 mx-auto lg:mx-0 lg:space-x-14">
-                        <img className="mb-10 lg:mb-0" src="/images/deductions-5.svg" />
+                        <img className="mb-10 lg:mb-0" src="/images/deductions-5.svg" alt="Step 5: Claim deduction" />
                         <p className="font-mont max-w-4xl text-center lg:text-left">
                             Claim a <b>deduction</b> on your Schedule A line 11 or 12
                         </p>
@@ -206,7 +206,7 @@ export default function Deductions() {
                 </h3>
                 <div className="flex max-w-7xl mx-auto items-center">
                     <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 mx-auto lg:mx-0 lg:space-x-14">
-                        <img className="mb-10 lg:mb-0" src="/images/faq-deductions-1.png" />
+                        <img className="mb-10 lg:mb-0" src="/images/faq-deductions-1.png" alt="FAQ: Deduction limitations" />
                         <div>
                             <div className="font-mont font-bold text-2xl mb-6 text-center lg:text-left">Q: Are there any limitations on the deductions of donations on the individual tax returns?</div>
                             <p className="font-mont max-w-4xl text-center lg:text-left">
@@ -217,7 +217,7 @@ export default function Deductions() {
                 </div>
                 <div className="flex max-w-7xl mx-auto items-center">
                     <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 mx-auto lg:mx-0 lg:space-x-14">
-                        <img className="mb-10 lg:mb-0" src="/images/faq-deductions-2.png" />
+                        <img className="mb-10 lg:mb-0" src="/images/faq-deductions-2.png" alt="FAQ: Corporate donations" />
                         <div>
                             <div className="font-mont font-bold text-2xl mb-6 text-center lg:text-left">Q: Can a US corporation donate to 503(c)(3) and get a tax deduction?</div>
                             <p className="font-mont max-w-4xl text-center lg:text-left">
@@ -228,7 +228,7 @@ export default function Deductions() {
                 </div>
                 <div className="flex max-w-7xl mx-auto items-center">
                     <div className="flex flex-col lg:flex-row justify-between items-center space-x-0 mx-auto lg:mx-0 lg:space-x-14">
-                        <img className="mb-10 lg:mb-0" src="/images/faq-deductions-3.png" />
+                        <img className="mb-10 lg:mb-0" src="/images/faq-deductions-3.png" alt="FAQ: International donations" />
                         <div>
                             <div className="font-mont font-bold text-2xl mb-6 text-center lg:text-left">Q: How would individuals outside the U.S potentially benefit from tax benefits or any incentives.</div>
                             <p className="font-mont max-w-4xl text-center lg:text-left">

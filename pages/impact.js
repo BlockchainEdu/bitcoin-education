@@ -36,7 +36,6 @@ export default function Impact() {
       let result = await TeamMemberService.getMembers(body);
       if (result?.data?.data?.boards) {
         let items = result.data.data.boards[0].items;
-        console.log(items);
         setTeamMembers(items);
       } else {
         setTeamMembers([]);
@@ -77,7 +76,7 @@ export default function Impact() {
                   description = descriptionObj.text;
                 }
               } catch (error) {
-                console.error("Error parsing JSON:", error);
+                // JSON parse error — skip this item
               }
             }
 
@@ -97,15 +96,15 @@ export default function Impact() {
                     if (column.value) {
                       try {
                         const parsedValue = JSON.parse(column.value);
-                        if (parsedValue && parsedValue.url) {
+                        if (parsedValue && parsedValue.url && /^https?:\/\//.test(parsedValue.url)) {
                           return (
                             <a key={idx} href={parsedValue.url} target="_blank" rel="noopener noreferrer">
-                              <img className="m-auto" src={global.assets.length > 0 ? global.assets[0]?.public_url : ""} />
+                              <img className="m-auto" src={global.assets.length > 0 ? global.assets[0]?.public_url : ""} alt={global.name || "Event"} />
                             </a>
                           );
                         }
                       } catch (error) {
-                        console.error("Error parsing JSON:", error);
+                        // JSON parse error — skip this item
                       }
                     }
                     return null;

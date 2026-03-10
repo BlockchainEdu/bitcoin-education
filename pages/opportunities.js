@@ -157,7 +157,7 @@ function EventTile({ event }) {
               <a
                 href={event.url}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="
                   inline-flex items-center justify-center
                   h-8 px-4 rounded-md

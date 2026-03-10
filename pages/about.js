@@ -37,7 +37,7 @@ export default function About() {
                         </p>
                     </div>
                     <div className="w-full md:w-1/2 m-auto">
-                        <img className="mt-14" src="/images/about-header-illustration.png" />
+                        <img className="mt-14" src="/images/about-header-illustration.png" alt="About BEN illustration" />
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@ export default function About() {
                             <h2 className="font-mont font-black text-5xl">
                                 The 10:10 Plan
                             </h2>
-                            <img className="ml-auto -mt-2 mr-6" src="/images/10-plan-underline-orange.png" />
+                            <img className="ml-auto -mt-2 mr-6" src="/images/10-plan-underline-orange.png" alt="" />
                         </div>
                         <div className="flex items-center gap-x-0 lg:gap-x-10 justify-center">
                             <div className="border-r-none lg:border-r lg:border-4 lg:border-benorange-500  h-24">
@@ -70,13 +70,13 @@ export default function About() {
                         </div>
                     </div>
                     <div>
-                        <img className="mt-14 lg:mt-0 mx-auto md:mx-0" src="/images/10-plan-home.png" />
+                        <img className="mt-14 lg:mt-0 mx-auto md:mx-0" src="/images/10-plan-home.png" alt="BEN 10-year plan" />
                     </div>
                 </div>
             </section>
             <section>
                 <div className="flex flex-col lg:flex-row max-w-7xl m-auto justify-between items-center py-24 pb-10 px-7">
-                    <div className="w-full lg:w-3/5"><img className="m-auto lg:m-0 pb-20 lg:pb-0" src="/images/about-globe.png" /></div>
+                    <div className="w-full lg:w-3/5"><img className="m-auto lg:m-0 pb-20 lg:pb-0" src="/images/about-globe.png" alt="BEN global network" /></div>
                     <div className="w-full lg:w-2/5">
                         <h2 className="font-black text-center lg:text-left m-auto lg:m-0 text-4xl md:text-5xl text-black pb-10 max-w-md md:max-w-xs leading-10">
                             501(c)(3) non-profit charitable organization
@@ -95,7 +95,7 @@ export default function About() {
                             Since blockchain was ﬁrst invented in 2008, most universities around the world haven't been able to create a dedicated curriculum around  it , thus creating a high demand from students to learn about blockchain. We address students' desire to learn about blockchain and pursue opportunities in the industry.
                         </p>
                     </div>
-                    <div className=""><img className="m-auto lg:m-0 pb-20 md:pb-0" src="/images/about-computer.png" /></div>
+                    <div className=""><img className="m-auto lg:m-0 pb-20 md:pb-0" src="/images/about-computer.png" alt="BEN programs" /></div>
                 </div>
             </section>
             <Footer />
