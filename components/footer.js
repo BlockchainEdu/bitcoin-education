@@ -34,10 +34,12 @@ export default function Footer() {
 
       {/* Main footer content */}
       <div className="max-w-5xl mx-auto px-6 sm:px-10 pt-16 pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 text-center">
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Image width="56px" height="58px" src="/images/ben-footer.svg" />
+            <div className="flex justify-center">
+              <Image width="56px" height="58px" src="/images/ben-footer.svg" />
+            </div>
             <p className="mt-4 font-inter text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
               Blockchain Education Network
               <br />
@@ -100,10 +102,25 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="max-w-5xl mx-auto px-6 sm:px-10" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="flex flex-col sm:flex-row justify-between items-center py-6 gap-4">
+        <div className="flex flex-col items-center py-6 gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#34D399" }} />
+            <div className="relative flex items-center justify-center">
+              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#34D399" }} />
+              <div
+                className="absolute w-2 h-2 rounded-full"
+                style={{
+                  backgroundColor: "#34D399",
+                  animation: "statusPulse 2s ease-in-out infinite",
+                }}
+              />
+            </div>
             <span className="font-inter text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>All systems operational</span>
+            <style jsx>{`
+              @keyframes statusPulse {
+                0%, 100% { opacity: 1; transform: scale(1); }
+                50% { opacity: 0; transform: scale(2.5); }
+              }
+            `}</style>
           </div>
           <span className="font-inter text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
             &copy; {new Date().getFullYear()} Blockchain Education Network

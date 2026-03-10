@@ -796,15 +796,15 @@ export default function Donate() {
           {/* ── Section transition: more stories ── */}
           <div className="text-center mt-16 md:mt-20 mb-10 md:mb-12" style={{ maxWidth: "960px", margin: "0 auto", paddingTop: "64px" }}>
             <h3 className="font-mont font-black text-2xl md:text-3xl text-gray-900">
-              More Student Stories
+              Student Testimonials &amp; Highlights
             </h3>
             <p className="font-inter text-sm mt-3" style={{ color: "#86868b" }}>
-              Watch how BEN changed their lives
+              Hear from students and see them represent BEN at global conferences
             </p>
           </div>
 
           {/* ── Grid of remaining videos ── */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5" style={{ maxWidth: "960px", margin: "0 auto" }}>
+          <div className="grid grid-cols-3 lg:grid-cols-4 gap-2 md:gap-4" style={{ maxWidth: "960px", margin: "0 auto" }}>
             {visibleVideos.slice(1).map((videoId) => (
               <div
                 key={videoId}
@@ -835,7 +835,7 @@ export default function Donate() {
                     {/* Play button */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div
-                        className="w-11 h-11 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                        className="w-9 h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110"
                         style={{
                           backgroundColor: "rgba(255,135,42,0.9)",
                           boxShadow: "0 4px 16px rgba(255,135,42,0.3), 0 0 0 3px rgba(255,255,255,0.15)",

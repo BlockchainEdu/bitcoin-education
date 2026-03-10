@@ -541,6 +541,11 @@ export default function About() {
       {/* ── In Memoriam ── */}
       <section aria-label="In memoriam" className="py-10 md:py-12" style={{ backgroundColor: "#18181b" }}>
         <div className="max-w-4xl mx-auto px-6 sm:px-10">
+          <div className="mb-4">
+            <span className="font-inter text-xs font-semibold uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.25)" }}>
+              In Memoriam
+            </span>
+          </div>
           <div className="flex items-center" style={{ gap: "1.25rem" }}>
             <div className="shrink-0">
               <div
@@ -564,8 +569,8 @@ export default function About() {
                   1995 &ndash; 2023
                 </span>
               </div>
-              <p className="mt-0.5 text-xs sm:text-sm font-inter" style={{ color: "rgba(255,255,255,0.4)" }}>
-                Global Director of Community. Co-founded BlockHack and organized Delaware&apos;s first blockchain hackathon.
+              <p className="mt-1 text-xs sm:text-sm font-inter leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
+                Our beloved Global Director of Community. Jesse co-founded BlockHack and organized Delaware&apos;s first blockchain hackathon. His passion for connecting people lives on through every BEN event.
               </p>
             </div>
             <div className="shrink-0 hidden sm:block">

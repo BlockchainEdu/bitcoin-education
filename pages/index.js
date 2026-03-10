@@ -321,29 +321,43 @@ export default function BenNetwork({ universities = [] }) {
 
   // Crossfade carousel for About section
   const aboutImages = [
-    BENEVENTS_IMG,
-    "/images/ben-network/ben-group-pic-1.jpg",
-    "/images/ben-network/ben-group-pic-2.jpg",
-    "/images/ben-network/ben-group-pic-3.jpg",
-    "/images/ben-network/ben-group-pic-4.jpg",
-    "/images/ben-network/ben-group-pic-5.jpg",
-    "/images/ben-network/ben-group-pic-6.jpg",
-    "/images/ben-network/ben-group-pic-7.jpg",
-    "/images/ben-network/ben-group-pic-8.jpg",
-    "/images/ben-network/ben-group-pic-9.jpg",
-    "/images/ben-network/ben-group-pic-10.jpg",
-    "/images/ben-network/ben-group-pic-11.jpg",
-    "/images/ben-network/ben-group-pic-12.jpg",
+    BENEVENTS_IMG,                                    // Coinvention group
+    "/images/ben-network/ben-group-pic-19.jpg",       // India group selfie
+    "/images/ben-network/ben-group-pic-1.jpg",        // Mainnet conference group
+    "/images/ben-network/ben-group-pic-17.jpg",       // Madrid street selfie
+    "/images/ben-network/ben-group-pic-13.jpg",       // Turkey amphitheater 40+ people
+    "/images/ben-network/ben-group-pic-22.jpg",       // TNABC stage group (pro photo)
+    "/images/ben-network/ben-group-pic-3.jpg",        // ETH Boston large group
+    "/images/ben-network/ben-group-pic-18.jpg",       // Africa campus group w/ banner
+    "/images/ben-network/ben-group-pic-14.jpg",       // SF Blockchain Week letters
+    "/images/ben-network/ben-group-pic-28.jpg",       // Portugal BEN shirts outdoors
+    "/images/ben-network/ben-group-pic-4.jpg",        // Group on blue LED stage
+    "/images/ben-network/ben-group-pic-20.jpg",       // La Conexion Argentina audience
+    "/images/ben-network/ben-group-pic-5.jpg",        // Blockchain Center Miami
+    "/images/ben-network/ben-group-pic-30.jpg",       // Prague Dai Dappy Hour group
+    "/images/ben-network/ben-group-pic-10.jpg",       // DApperNetwork meetup
+    "/images/ben-network/ben-group-pic-21.jpg",       // Colombia presentation audience
+    "/images/ben-network/ben-group-pic-24.jpg",       // Beach group casual
+    "/images/ben-network/ben-group-pic-11.jpg",       // West Africa WAD Alliance
+    "/images/ben-network/ben-group-pic-25.jpg",       // TNABC BEN students group
+    "/images/ben-network/ben-group-pic-15.jpg",       // DCentral Miami students
+    "/images/ben-network/ben-group-pic-29.jpg",       // Italy Digital Hub panel
+    "/images/ben-network/ben-group-pic-9.jpg",        // College Crypto Network (legacy)
+    "/images/ben-network/ben-group-pic-23.jpg",       // Miami sponsor backdrop group
+    "/images/ben-network/ben-group-pic-12.jpg",       // WAD Alliance close-up
+    "/images/ben-network/ben-group-pic-27.jpg",       // Erick presenting BEN Regions
+    "/images/ben-network/ben-group-pic-2.jpg",        // Sabanci University BEN flag
+    "/images/ben-network/ben-group-pic-31.jpg",       // CharityStars BEN booth
+    "/images/ben-network/ben-group-pic-16.jpg",       // Workshop classroom scene
+    "/images/ben-network/ben-group-pic-26.jpg",       // Hackathon working scene
   ];
   const [aboutIdx, setAboutIdx] = useState(0);
-  const [aboutPrev, setAboutPrev] = useState(0);
+  const [aboutPrev, setAboutPrev] = useState(aboutImages.length - 1);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setAboutIdx((prev) => {
-        setAboutPrev(prev);
-        return (prev + 1) % aboutImages.length;
-      });
+      setAboutPrev((prev) => (prev + 1) % aboutImages.length);
+      setAboutIdx((prev) => (prev + 1) % aboutImages.length);
     }, 4000);
     return () => clearInterval(timer);
   }, []);
@@ -469,17 +483,19 @@ export default function BenNetwork({ universities = [] }) {
               <p className="mt-5 sm:mt-6 font-inter text-sm sm:text-base leading-relaxed" style={{ color: "rgba(0,0,0,0.5)" }}>
                 Founded in 2014, BEN is one of the largest and longest-running networks connecting blockchain students, professors, and alumni worldwide. We help founders launch and scale real projects through events, mentorship, and warm intros across the ecosystem.
               </p>
-              {/* Stats — compact row under the text */}
-              <div className="grid grid-cols-2 gap-x-6 gap-y-4 mt-8">
+              {/* Stats */}
+              <div className="grid grid-cols-4 mt-10" style={{ borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: "1.5rem" }}>
                 {[
-                  { value: "10k+", label: "Students & alumni" },
-                  { value: "200+", label: "Universities" },
-                  { value: "35+", label: "Countries" },
-                  { value: "15+", label: "Alumni startups" },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <div className="font-mont font-black text-xl sm:text-2xl text-benblack-500 tracking-tight">{s.value}</div>
-                    <div className="font-inter text-xs mt-0.5" style={{ color: "rgba(0,0,0,0.35)" }}>{s.label}</div>
+                  { num: "10k", suffix: "+", label: "Students & alumni" },
+                  { num: "200", suffix: "+", label: "Universities" },
+                  { num: "35", suffix: "+", label: "Countries" },
+                  { num: "15", suffix: "+", label: "Alumni startups" },
+                ].map((s, i) => (
+                  <div key={s.label} style={i > 0 ? { borderLeft: "1px solid rgba(0,0,0,0.06)", paddingLeft: "1rem" } : {}}>
+                    <div className="font-mont font-black text-2xl sm:text-3xl tracking-tight" style={{ color: "#1d1d1f", lineHeight: 1 }}>
+                      {s.num}<span style={{ color: "#FF872A" }}>{s.suffix}</span>
+                    </div>
+                    <div className="font-inter mt-1.5" style={{ fontSize: "11px", color: "rgba(0,0,0,0.4)", letterSpacing: "0.01em", lineHeight: 1.3 }}>{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -495,6 +511,7 @@ export default function BenNetwork({ universities = [] }) {
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ opacity: aboutPrev === aboutIdx ? 1 : 0, transition: "opacity 1.2s ease-in-out" }}
                   decoding="async"
+                  loading="lazy"
                 />
                 {/* Incoming image */}
                 <img
@@ -504,6 +521,7 @@ export default function BenNetwork({ universities = [] }) {
                   className="absolute inset-0 w-full h-full object-cover"
                   style={{ opacity: 1, transition: "opacity 1.2s ease-in-out" }}
                   decoding="async"
+                  loading="lazy"
                 />
                 {/* Preload next image */}
                 <link rel="prefetch" href={aboutImages[(aboutIdx + 1) % aboutImages.length]} />

@@ -40,14 +40,33 @@ export default function NationalTeamCard({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showBio]);
 
-  // Lock body scroll when video modal is open
+  // Lock body scroll when video modal is open (iOS-safe)
   useEffect(() => {
     if (showVideo) {
+      const scrollY = window.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
       document.body.style.overflow = "hidden";
     } else {
+      const top = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
       document.body.style.overflow = "";
+      if (top) window.scrollTo(0, parseInt(top || "0") * -1);
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      const top = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.overflow = "";
+      if (top) window.scrollTo(0, parseInt(top || "0") * -1);
+    };
   }, [showVideo]);
 
   const handleCardClick = () => {
@@ -264,10 +283,10 @@ export default function NationalTeamCard({
             </svg>
           </button>
 
-          {/* Video container */}
+          {/* Video container — padding-bottom fallback for iOS < 15 */}
           <div
             className="relative w-full max-w-4xl mx-4"
-            style={{ aspectRatio: "16 / 9" }}
+            style={{ paddingBottom: "56.25%" }}
             onClick={(e) => e.stopPropagation()}
           >
             <iframe
