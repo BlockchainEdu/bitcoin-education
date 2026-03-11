@@ -1,13 +1,15 @@
 import Footer from "../components/footer";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
+import HeroNetwork from "../components/HeroNetwork";
+import AnimatedCounter from "../components/AnimatedCounter";
 import Head from "next/head";
 
 export default function Contact() {
   const stats = [
-    { value: "10K+", label: "Students & alumni" },
-    { value: "35+", label: "Countries" },
-    { value: "200+", label: "Universities reached" },
-    { value: "$20B+", label: "Alumni company value" },
+    { value: 10, suffix: "K+", label: "Students & alumni" },
+    { value: 35, suffix: "+", label: "Countries" },
+    { value: 200, suffix: "+", label: "Universities reached" },
+    { value: 20, prefix: "$", suffix: "B+", label: "Alumni company value" },
   ];
 
   const products = [
@@ -99,8 +101,9 @@ export default function Contact() {
               backgroundSize: "40px 40px",
             }}
           />
+          <HeroNetwork />
 
-          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center">
+          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center" style={{ zIndex: 2 }}>
             <span
               className="inline-block text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-6"
               style={{
@@ -138,7 +141,7 @@ export default function Contact() {
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
                   <div className="text-2xl sm:text-3xl font-black text-white font-mont">
-                    {stat.value}
+                    <AnimatedCounter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                   </div>
                   <div className="mt-1 text-xs font-inter" style={{ color: "rgba(255,255,255,0.3)" }}>
                     {stat.label}

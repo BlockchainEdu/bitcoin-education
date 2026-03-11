@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import HeaderWithLogoDark from "../../../components/headerWithLogoDark";
 import Footer from "../../../components/footer";
+import HeroNetwork from "../../../components/HeroNetwork";
 import { getPostsPage } from "../../../lib/posts";
 
 function formatDate(d) {
@@ -180,8 +181,9 @@ export default function BlogPage({ posts, pagination }) {
               backgroundSize: "40px 40px",
             }}
           />
+          <HeroNetwork />
 
-          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-14 md:py-20 text-center">
+          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-14 md:py-20 text-center" style={{ zIndex: 2 }}>
             <Link
               href="/blog"
               className="inline-flex items-center text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-5 transition-all duration-200"

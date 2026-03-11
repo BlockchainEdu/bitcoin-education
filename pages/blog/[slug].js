@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import HeaderWithLogoDark from "../../components/headerWithLogoDark";
 import Footer from "../../components/footer";
+import HeroNetwork from "../../components/HeroNetwork";
 import { getAllPostsMeta, getPostBySlug } from "../../lib/posts";
 
 function formatDate(d) {
@@ -166,8 +167,9 @@ export default function ArticlePage({ post }) {
               backgroundSize: "40px 40px",
             }}
           />
+          <HeroNetwork />
 
-          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center">
+          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center" style={{ zIndex: 2 }}>
             <Link
               href="/blog"
               className="inline-flex items-center text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-6 transition-all duration-200"

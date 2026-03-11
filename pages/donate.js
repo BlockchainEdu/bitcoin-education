@@ -3,6 +3,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Footer from "../components/footer";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
+import HeroNetwork from "../components/HeroNetwork";
+import AnimatedCounter from "../components/AnimatedCounter";
 import Stories from "../content/stories";
 import NationalTeamCard from "../components/nationalTeamCard";
 import { fetchPostJSON } from "../utils/api-helpers";
@@ -208,8 +210,9 @@ export default function Donate() {
           backgroundImage: "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
           backgroundSize: "40px 40px"
         }} />
+        <HeroNetwork />
 
-        <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 lg:pt-32 lg:pb-36">
+        <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 lg:pt-32 lg:pb-36" style={{ zIndex: 2 }}>
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             {/* Left: one clear message */}
             <div className="w-full lg:w-1/2 text-center lg:text-left">
@@ -643,22 +646,22 @@ export default function Donate() {
         <div className="max-w-5xl mx-auto px-6 py-16 md:py-20">
           {/* Hero stat — fundraising total */}
           <div className="text-center mb-10">
-            <div className="font-mont font-black text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-benorange-500 to-yellow-400" style={{ letterSpacing: "-0.03em" }}>$1M+</div>
+            <div className="font-mont font-black text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-benorange-500 to-yellow-400" style={{ letterSpacing: "-0.03em" }}><AnimatedCounter value={1000000} prefix="$" suffix="+" format={(n) => n >= 1000000 ? "1M" : n.toLocaleString()} /></div>
             <div className="font-inter text-sm uppercase tracking-widest mt-3" style={{ color: "rgba(255,255,255,0.4)", letterSpacing: "0.15em" }}>in donations &amp; grants received</div>
           </div>
 
           {/* Supporting stats — grid for mobile, flex for desktop */}
           <div className="grid grid-cols-3 gap-4 md:gap-10 max-w-md md:max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>10K+</div>
+              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}><AnimatedCounter value={10} suffix="K+" /></div>
               <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>Students</div>
             </div>
             <div className="text-center" style={{ borderLeft: "1px solid rgba(255,255,255,0.08)", borderRight: "1px solid rgba(255,255,255,0.08)" }}>
-              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>200+</div>
+              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}><AnimatedCounter value={200} suffix="+" /></div>
               <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>Universities</div>
             </div>
             <div className="text-center">
-              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}>35+</div>
+              <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white" style={{ letterSpacing: "-0.02em" }}><AnimatedCounter value={35} suffix="+" /></div>
               <div className="font-inter text-xs uppercase tracking-widest mt-2" style={{ color: "rgba(255,255,255,0.35)", letterSpacing: "0.1em" }}>Countries</div>
             </div>
           </div>

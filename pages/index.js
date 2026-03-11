@@ -6,6 +6,7 @@ import Footer from "../components/footer";
 import { slugify } from "../lib/slugify";
 import { USERS } from "../content/ben-network.data";
 import styles from "../styles/ben-network.module.css";
+import AnimatedCounter from "../components/AnimatedCounter";
 
 const BENEVENTS_IMG = "/images/benevents-opt.jpg";
 
@@ -206,15 +207,20 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
     }
     resize();
 
-    // Particles spawn from center and burst outward
+    // Particles spawn from a single point and explode outward (big bang)
     const cx = W / 2, cy = H * 0.42;
     const pts = Array.from({ length: N }, () => {
       const isHub = Math.random() < 0.12;
+      // Tight cluster at center — all particles start at the same point
+      const angle = Math.random() * Math.PI * 2;
+      const dist = Math.random() * 4;
       return {
-        x: cx + (Math.random() - 0.5) * 20,
-        y: cy + (Math.random() - 0.5) * 20,
+        x: cx + Math.cos(angle) * dist,
+        y: cy + Math.sin(angle) * dist,
         tx: Math.random() * W, ty: Math.random() * H,
-        vx: 0, vy: 0,
+        // Give initial outward velocity for the explosion feel
+        vx: Math.cos(angle) * (2 + Math.random() * 4),
+        vy: Math.sin(angle) * (2 + Math.random() * 4),
         r: isHub ? 2.2 + Math.random() * 1.5 : 0.7 + Math.random() * 1.3,
         o: Math.random() < 0.3,       // orange accent node
         hub: isHub,                     // larger "hub" nodes (people)
@@ -224,16 +230,43 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
     });
 
     const t0 = performance.now();
+    // Shockwave ring that expands from center
+    let shockwave = { r: 0, a: 0.7 };
 
     function draw() {
       const now = performance.now();
       const age = (now - t0) / 1000;
       const mx = pointerRef.current.x, my = pointerRef.current.y;
-      const expanding = age < 2;
+      const expanding = age < 2.5;
       const ps = pulsesRef.current;
       const breathe = Math.sin(now * 0.001) * 0.12 + 1;
 
       ctx.clearRect(0, 0, W, H);
+
+      // Big bang center flash — bright glow that fades over first 1.5s
+      if (age < 1.5) {
+        const flashAlpha = (1 - age / 1.5) * 0.6;
+        const flashR = 30 + age * 200;
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, flashR);
+        grad.addColorStop(0, `rgba(255,135,42,${flashAlpha})`);
+        grad.addColorStop(0.3, `rgba(255,135,42,${flashAlpha * 0.4})`);
+        grad.addColorStop(1, "rgba(255,135,42,0)");
+        ctx.beginPath(); ctx.arc(cx, cy, flashR, 0, Math.PI * 2);
+        ctx.fillStyle = grad; ctx.fill();
+      }
+
+      // Expanding shockwave ring
+      if (shockwave.a > 0) {
+        shockwave.r += 6;
+        shockwave.a -= 0.008;
+        ctx.beginPath(); ctx.arc(cx, cy, shockwave.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255,135,42,${shockwave.a})`;
+        ctx.lineWidth = 2.5; ctx.stroke();
+        // Inner ring
+        ctx.beginPath(); ctx.arc(cx, cy, shockwave.r * 0.6, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255,255,255,${shockwave.a * 0.3})`;
+        ctx.lineWidth = 1; ctx.stroke();
+      }
 
       // Update pulse rings
       for (let i = ps.length - 1; i >= 0; i--) {
@@ -244,11 +277,11 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
       // Update particles
       for (const p of pts) {
         if (expanding) {
-          // Spring burst toward target
-          const spring = 0.015 + Math.min(age * 0.01, 0.025);
+          // Explosive burst then spring toward target
+          const spring = age < 0.5 ? 0.005 : 0.02 + Math.min(age * 0.012, 0.03);
           p.vx += (p.tx - p.x) * spring;
           p.vy += (p.ty - p.y) * spring;
-          p.vx *= 0.92; p.vy *= 0.92;
+          p.vx *= age < 0.5 ? 0.96 : 0.92; p.vy *= age < 0.5 ? 0.96 : 0.92;
         } else {
           // Gentle ambient drift (alive, not static)
           p.phase += 0.008;
@@ -393,39 +426,7 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
   return <canvas ref={cvs} className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} aria-hidden="true" />;
 }
 
-// ── Animated counter that counts up when scrolled into view ──────────
-function AnimatedCounter({ value, prefix, suffix }) {
-  const ref = useRef(null);
-  const [n, setN] = useState(0);
-  const [go, setGo] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setGo(true); obs.disconnect(); } },
-      { threshold: 0.3 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!go) return;
-    const t0 = performance.now();
-    let raf;
-    function tick(now) {
-      const p = Math.min((now - t0) / 2000, 1);
-      const ease = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-      setN(Math.round(ease * value));
-      if (p < 1) raf = requestAnimationFrame(tick);
-    }
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [go, value]);
-
-  return <span ref={ref}>{prefix || ""}{n.toLocaleString()}{suffix || ""}</span>;
-}
+// AnimatedCounter extracted to components/AnimatedCounter.js
 
 
 function buildPageWindow(current, total, maxVisible = 5) {
@@ -657,7 +658,7 @@ export default function BenNetwork({ universities = [] }) {
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">
-                  <AnimatedCounter value={s.value} prefix={s.prefix} suffix={s.suffix} />
+                  <AnimatedCounter value={s.value} prefix={s.prefix} suffix={s.suffix} delay={1200} />
                 </div>
                 <div className="mt-1 text-xs font-inter uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
               </div>
@@ -697,14 +698,14 @@ export default function BenNetwork({ universities = [] }) {
               {/* Stats */}
               <div className="grid grid-cols-4 mt-10" style={{ borderTop: "1px solid rgba(0,0,0,0.06)", paddingTop: "1.5rem" }}>
                 {[
-                  { num: "10k", suffix: "+", label: "Students & alumni" },
-                  { num: "200", suffix: "+", label: "Universities" },
-                  { num: "35", suffix: "+", label: "Countries" },
-                  { num: "15", suffix: "+", label: "Alumni startups" },
+                  { value: 10, suffix: "k+", label: "Students & alumni" },
+                  { value: 200, suffix: "+", label: "Universities" },
+                  { value: 35, suffix: "+", label: "Countries" },
+                  { value: 15, suffix: "+", label: "Alumni startups" },
                 ].map((s, i) => (
                   <div key={s.label} style={i > 0 ? { borderLeft: "1px solid rgba(0,0,0,0.06)", paddingLeft: "1rem" } : {}}>
                     <div className="font-mont font-black text-2xl sm:text-3xl tracking-tight" style={{ color: "#1d1d1f", lineHeight: 1 }}>
-                      {s.num}<span style={{ color: "#FF872A" }}>{s.suffix}</span>
+                      <AnimatedCounter value={s.value} suffix={s.suffix} />
                     </div>
                     <div className="font-inter mt-1.5" style={{ fontSize: "11px", color: "rgba(0,0,0,0.4)", letterSpacing: "0.01em", lineHeight: 1.3 }}>{s.label}</div>
                   </div>

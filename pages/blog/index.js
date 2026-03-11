@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import HeaderWithLogoDark from "../../components/headerWithLogoDark";
 import Footer from "../../components/footer";
+import HeroNetwork from "../../components/HeroNetwork";
 import { getAllPostsMeta } from "../../lib/posts";
 
 const PAGE_SIZE = 9;
@@ -194,8 +195,9 @@ export default function BlogIndexPage({ allPosts }) {
               backgroundSize: "40px 40px",
             }}
           />
+          <HeroNetwork />
 
-          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center">
+          <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center" style={{ zIndex: 2 }}>
             <span
               className="inline-block text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-6"
               style={{
