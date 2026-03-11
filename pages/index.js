@@ -191,6 +191,9 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
     if (!c) return;
     const ctx = c.getContext("2d");
     const mob = window.innerWidth < 768;
+    const N = mob ? 50 : 120;
+    const LINK = mob ? 90 : 150;
+    const PR = 240;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let W, H, raf;
 
@@ -203,259 +206,182 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
     }
     resize();
 
-    // ── Galaxy clusters ──
-    const GALAXIES = mob ? 5 : 8;
-    const STARS_PER = mob ? 12 : 18;
-    const DUST = mob ? 40 : 80;
-    const LINK = mob ? 100 : 160;
-    const PR = 220;
-
-    // Create galaxy center nodes
-    const galaxies = Array.from({ length: GALAXIES }, (_, i) => {
-      const angle = (i / GALAXIES) * Math.PI * 2 + Math.random() * 0.5;
-      const dist = 0.15 + Math.random() * 0.28;
+    // Particles spawn from center and burst outward
+    const cx = W / 2, cy = H * 0.42;
+    const pts = Array.from({ length: N }, () => {
+      const isHub = Math.random() < 0.12;
       return {
-        x: W / 2 + Math.cos(angle) * W * dist,
-        y: H / 2 + Math.sin(angle) * H * dist * 0.7,
-        tx: 0, ty: 0,
-        baseR: mob ? 3 : 4.5,
-        r: mob ? 3 : 4.5,
-        orbit: 0.0003 + Math.random() * 0.0003,
-        orbitR: 15 + Math.random() * 25,
+        x: cx + (Math.random() - 0.5) * 20,
+        y: cy + (Math.random() - 0.5) * 20,
+        tx: Math.random() * W, ty: Math.random() * H,
+        vx: 0, vy: 0,
+        r: isHub ? 2.2 + Math.random() * 1.5 : 0.7 + Math.random() * 1.3,
+        o: Math.random() < 0.3,       // orange accent node
+        hub: isHub,                     // larger "hub" nodes (people)
+        drift: 0.15 + Math.random() * 0.35,  // ambient drift speed
         phase: Math.random() * Math.PI * 2,
-        hue: Math.random() < 0.4 ? 25 : (Math.random() < 0.5 ? 35 : 210),
-        glow: 25 + Math.random() * 15,
-        type: "galaxy",
       };
     });
-    // Save original positions for orbit
-    for (const g of galaxies) { g.ox = g.x; g.oy = g.y; }
 
-    // Create orbiting stars around each galaxy
-    const stars = [];
-    for (const g of galaxies) {
-      for (let i = 0; i < STARS_PER; i++) {
-        const a = (i / STARS_PER) * Math.PI * 2 + Math.random() * 0.8;
-        const d = 20 + Math.random() * (mob ? 45 : 70);
-        stars.push({
-          x: g.ox + Math.cos(a) * d,
-          y: g.oy + Math.sin(a) * d,
-          cx: g.ox, cy: g.oy,
-          angle: a,
-          dist: d,
-          speed: 0.0006 + Math.random() * 0.001,
-          r: 0.6 + Math.random() * 1.2,
-          hue: g.hue + (Math.random() - 0.5) * 20,
-          vx: 0, vy: 0,
-          type: "star",
-          parent: g,
-        });
-      }
-    }
-
-    // Background dust particles for depth
-    const dust = Array.from({ length: DUST }, () => ({
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: 0.3 + Math.random() * 0.6,
-      speed: 0.05 + Math.random() * 0.15,
-      alpha: 0.08 + Math.random() * 0.12,
-      type: "dust",
-    }));
-
-    const all = [...galaxies, ...stars];
     const t0 = performance.now();
 
     function draw() {
       const now = performance.now();
       const age = (now - t0) / 1000;
       const mx = pointerRef.current.x, my = pointerRef.current.y;
+      const expanding = age < 2;
       const ps = pulsesRef.current;
-      const intro = Math.min(age / 3, 1); // 3 second fade in
-      const breathe = Math.sin(now * 0.0008) * 0.15 + 1;
+      const breathe = Math.sin(now * 0.001) * 0.12 + 1;
 
       ctx.clearRect(0, 0, W, H);
-      ctx.globalAlpha = intro;
 
       // Update pulse rings
       for (let i = ps.length - 1; i >= 0; i--) {
-        ps[i].r += 2.5; ps[i].a -= 0.008;
+        ps[i].r += 5; ps[i].a -= 0.012;
         if (ps[i].a <= 0) ps.splice(i, 1);
       }
 
-      // ── Update galaxy positions (slow orbit) ──
-      for (const g of galaxies) {
-        g.phase += g.orbit;
-        g.x = g.ox + Math.cos(g.phase) * g.orbitR;
-        g.y = g.oy + Math.sin(g.phase) * g.orbitR * 0.6;
-        g.r = g.baseR * breathe;
+      // Update particles
+      for (const p of pts) {
+        if (expanding) {
+          // Spring burst toward target
+          const spring = 0.015 + Math.min(age * 0.01, 0.025);
+          p.vx += (p.tx - p.x) * spring;
+          p.vy += (p.ty - p.y) * spring;
+          p.vx *= 0.92; p.vy *= 0.92;
+        } else {
+          // Gentle ambient drift (alive, not static)
+          p.phase += 0.008;
+          p.vx += Math.sin(p.phase + p.y * 0.003) * p.drift * 0.02;
+          p.vy += Math.cos(p.phase + p.x * 0.003) * p.drift * 0.02;
 
-        // Pointer gravity on galaxies
-        if (!mob) {
-          const dx = mx - g.x, dy = my - g.y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < PR && d > 0) {
-            g.x += (dx / d) * 0.4;
-            g.y += (dy / d) * 0.4;
+          // Pulse wave force
+          for (const pu of ps) {
+            const dx = p.x - pu.x, dy = p.y - pu.y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (Math.abs(d - pu.r) < 50 && d > 0) {
+              const f = (1 - Math.abs(d - pu.r) / 50) * 0.8;
+              p.vx += (dx / d) * f; p.vy += (dy / d) * f;
+            }
           }
+
+          // Pointer attraction
+          if (!mob) {
+            const dx = mx - p.x, dy = my - p.y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < PR && d > 0) {
+              const pull = p.hub ? 0.06 : 0.04;
+              p.vx += (dx / d) * pull;
+              p.vy += (dy / d) * pull;
+            }
+          }
+          p.vx *= 0.985; p.vy *= 0.985;
         }
+        p.x += p.vx; p.y += p.vy;
+        // Wrap edges
+        if (p.x < -20) p.x += W + 40; if (p.x > W + 20) p.x -= W + 40;
+        if (p.y < -20) p.y += H + 40; if (p.y > H + 20) p.y -= H + 40;
       }
 
-      // ── Update star orbits ──
-      for (const s of stars) {
-        s.angle += s.speed;
-        const g = s.parent;
-        s.cx += (g.x - s.cx) * 0.02;
-        s.cy += (g.y - s.cy) * 0.02;
-        s.x = s.cx + Math.cos(s.angle) * s.dist;
-        s.y = s.cy + Math.sin(s.angle) * s.dist;
-
-        // Pulse wave displacement
-        for (const pu of ps) {
-          const dx = s.x - pu.x, dy = s.y - pu.y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (Math.abs(d - pu.r) < 50 && d > 0) {
-            const f = (1 - Math.abs(d - pu.r) / 50) * 0.4;
-            s.x += (dx / d) * f; s.y += (dy / d) * f;
-          }
-        }
-
-        // Pointer pull on stars
-        if (!mob) {
-          const dx = mx - s.x, dy = my - s.y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < PR && d > 0) {
-            s.x += (dx / d) * 0.15;
-            s.y += (dy / d) * 0.15;
-          }
-        }
-      }
-
-      // ── Update dust (slow drift) ──
-      for (const d of dust) {
-        d.y -= d.speed * 0.3;
-        d.x += Math.sin(now * 0.0003 + d.x * 0.01) * 0.08;
-        if (d.y < -5) { d.y = H + 5; d.x = Math.random() * W; }
-      }
-
-      // ── Draw neural connections between galaxies ──
-      for (let i = 0; i < all.length; i++) {
-        for (let j = i + 1; j < all.length; j++) {
-          const a = all[i], b = all[j];
+      // ── Draw connections ──
+      // Batch by style to reduce state changes
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const a = pts[i], b = pts[j];
           const dx = a.x - b.x, dy = a.y - b.y;
-          const d = Math.sqrt(dx * dx + dy * dy);
-          const maxD = (a.type === "galaxy" && b.type === "galaxy") ? LINK * 2.5 : LINK;
-          if (d < maxD) {
+          const dsq = dx * dx + dy * dy;
+          // Hub-to-hub links reach further (like strong ties in a network)
+          const maxD = (a.hub && b.hub) ? LINK * 1.8 : LINK;
+          if (dsq < maxD * maxD) {
+            const d = Math.sqrt(dsq);
             const t = 1 - d / maxD;
-            const isGalaxyLink = a.type === "galaxy" && b.type === "galaxy";
 
             // Pointer proximity boost
-            const midx = (a.x + b.x) / 2, midy = (a.y + b.y) / 2;
-            const md = Math.sqrt((midx - mx) * (midx - mx) + (midy - my) * (midy - my));
-            const boost = md < PR ? 0.15 : 0;
+            const mdx = (a.x + b.x) / 2 - mx, mdy = (a.y + b.y) / 2 - my;
+            const mdsq = mdx * mdx + mdy * mdy;
+            const nearPtr = mdsq < PR * PR;
+            const boost = nearPtr ? 0.22 : 0;
 
-            if (isGalaxyLink) {
-              // Flowing neural pathway between galaxies
-              const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
-              const pulse = Math.sin(now * 0.001 + i + j) * 0.5 + 0.5;
-              const aHue = a.hue, bHue = b.hue;
-              const warm = aHue < 50 || bHue < 50;
-              if (warm) {
-                grad.addColorStop(0, `rgba(255,135,42,${t * 0.08 * (1 + pulse) + boost})`);
-                grad.addColorStop(0.5, `rgba(255,180,100,${t * 0.12 * (1 + pulse) + boost})`);
-                grad.addColorStop(1, `rgba(255,135,42,${t * 0.08 * (1 + pulse) + boost})`);
-              } else {
-                grad.addColorStop(0, `rgba(120,160,255,${t * 0.06 * (1 + pulse) + boost})`);
-                grad.addColorStop(0.5, `rgba(180,200,255,${t * 0.1 * (1 + pulse) + boost})`);
-                grad.addColorStop(1, `rgba(120,160,255,${t * 0.06 * (1 + pulse) + boost})`);
-              }
+            const isOrange = a.o || b.o;
+            const isHubLink = a.hub && b.hub;
+
+            if (isHubLink) {
+              // Strong network backbone -- visible, pulsing
+              const pulse = Math.sin(now * 0.002 + i * 0.5) * 0.3 + 0.7;
               ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = grad;
-              ctx.lineWidth = 0.8 + t * 0.8;
+              ctx.strokeStyle = isOrange
+                ? `rgba(255,135,42,${t * 0.25 * pulse + boost})`
+                : `rgba(255,255,255,${t * 0.18 * pulse + boost})`;
+              ctx.lineWidth = 1 + t * 0.8;
               ctx.stroke();
             } else {
-              // Subtle star-to-star or star-to-galaxy links
-              const warm = (a.hue || 25) < 50 || (b.hue || 25) < 50;
               ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
-              ctx.strokeStyle = warm
-                ? `rgba(255,135,42,${t * 0.07 + boost})`
-                : `rgba(160,190,255,${t * 0.05 + boost})`;
-              ctx.lineWidth = 0.4;
+              ctx.strokeStyle = isOrange
+                ? `rgba(255,135,42,${t * 0.13 + boost})`
+                : `rgba(255,255,255,${t * 0.09 + boost})`;
+              ctx.lineWidth = 0.5;
               ctx.stroke();
             }
           }
         }
       }
 
-      // ── Draw dust ──
-      for (const d of dust) {
-        ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${d.alpha})`;
-        ctx.fill();
-      }
+      // ── Draw particles ──
+      for (const p of pts) {
+        const dx = mx - p.x, dy = my - p.y;
+        const dsq = dx * dx + dy * dy;
+        const near = dsq < PR * PR;
+        const d = near ? Math.sqrt(dsq) : PR;
+        const proximity = near ? 1 - d / PR : 0;
 
-      // ── Draw stars ──
-      for (const s of stars) {
-        const dx = mx - s.x, dy = my - s.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        const near = d < PR;
-        const alpha = near ? 0.8 : 0.3;
-        const rad = near ? s.r * 1.5 : s.r;
-        const warm = s.hue < 50;
-        ctx.beginPath(); ctx.arc(s.x, s.y, rad, 0, Math.PI * 2);
-        ctx.fillStyle = warm
-          ? `rgba(255,${150 + Math.round(s.hue)},80,${alpha})`
-          : `rgba(${150 + Math.round(s.hue * 0.3)},180,255,${alpha})`;
-        ctx.fill();
-      }
+        const baseAlpha = p.hub ? 0.6 : 0.3;
+        const alpha = baseAlpha + proximity * 0.5;
+        const rad = p.hub
+          ? p.r * breathe * (1 + proximity * 0.6)
+          : p.r * (1 + proximity * 0.5);
 
-      // ── Draw galaxy cores with glow ──
-      for (const g of galaxies) {
-        const dx = mx - g.x, dy = my - g.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        const near = d < PR;
-        const glowSize = g.glow * breathe * (near ? 1.5 : 1);
-        const warm = g.hue < 50;
-
-        // Outer nebula glow
-        const grad = ctx.createRadialGradient(g.x, g.y, 0, g.x, g.y, glowSize);
-        if (warm) {
-          grad.addColorStop(0, `rgba(255,135,42,${near ? 0.15 : 0.06})`);
-          grad.addColorStop(0.5, `rgba(255,100,30,${near ? 0.06 : 0.02})`);
-          grad.addColorStop(1, "rgba(255,80,20,0)");
-        } else {
-          grad.addColorStop(0, `rgba(100,150,255,${near ? 0.12 : 0.05})`);
-          grad.addColorStop(0.5, `rgba(80,120,220,${near ? 0.05 : 0.02})`);
-          grad.addColorStop(1, "rgba(60,100,200,0)");
+        // Glow for hub nodes near pointer
+        if (p.hub && near) {
+          const glowR = rad * 5;
+          const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
+          if (p.o) {
+            grad.addColorStop(0, `rgba(255,135,42,${0.12 * proximity})`);
+            grad.addColorStop(1, "rgba(255,135,42,0)");
+          } else {
+            grad.addColorStop(0, `rgba(255,255,255,${0.08 * proximity})`);
+            grad.addColorStop(1, "rgba(255,255,255,0)");
+          }
+          ctx.beginPath(); ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
+          ctx.fillStyle = grad; ctx.fill();
         }
-        ctx.beginPath(); ctx.arc(g.x, g.y, glowSize, 0, Math.PI * 2);
-        ctx.fillStyle = grad; ctx.fill();
 
-        // Core
-        ctx.beginPath(); ctx.arc(g.x, g.y, g.r, 0, Math.PI * 2);
-        ctx.fillStyle = warm
-          ? `rgba(255,180,100,${near ? 1 : 0.7})`
-          : `rgba(180,210,255,${near ? 1 : 0.7})`;
+        // Core dot
+        ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
+        ctx.fillStyle = p.o
+          ? `rgba(255,135,42,${alpha})`
+          : `rgba(255,255,255,${alpha})`;
         ctx.fill();
 
-        // Inner bright spot
-        ctx.beginPath(); ctx.arc(g.x, g.y, g.r * 0.4, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(255,255,255,0.8)";
-        ctx.fill();
+        // Bright center on hubs
+        if (p.hub) {
+          ctx.beginPath(); ctx.arc(p.x, p.y, rad * 0.35, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${0.3 + proximity * 0.5})`;
+          ctx.fill();
+        }
       }
 
       // ── Draw pulse rings ──
       for (const pu of ps) {
         ctx.beginPath(); ctx.arc(pu.x, pu.y, pu.r, 0, Math.PI * 2);
-        const grad = ctx.createRadialGradient(pu.x, pu.y, Math.max(pu.r - 3, 0), pu.x, pu.y, pu.r + 3);
-        grad.addColorStop(0, `rgba(255,135,42,0)`);
-        grad.addColorStop(0.5, `rgba(255,135,42,${pu.a})`);
-        grad.addColorStop(1, `rgba(255,135,42,0)`);
-        ctx.strokeStyle = grad;
+        ctx.strokeStyle = `rgba(255,135,42,${pu.a})`;
         ctx.lineWidth = 2; ctx.stroke();
+        // Second fainter ring
+        ctx.beginPath(); ctx.arc(pu.x, pu.y, pu.r * 0.7, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255,135,42,${pu.a * 0.4})`;
+        ctx.lineWidth = 1; ctx.stroke();
       }
 
-      ctx.globalAlpha = 1;
       raf = requestAnimationFrame(draw);
     }
     draw();
