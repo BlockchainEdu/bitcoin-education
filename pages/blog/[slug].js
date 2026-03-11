@@ -59,10 +59,8 @@ export default function ArticlePage({ post }) {
               Article not found
             </h1>
             <div className="mt-6">
-              <Link href="/blog">
-                <a className="inline-flex items-center px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition-all duration-200">
+              <Link href="/blog" className="inline-flex items-center px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition-all duration-200">
                   ← Back to Blog
-                </a>
               </Link>
             </div>
           </div>
@@ -170,24 +168,23 @@ export default function ArticlePage({ post }) {
           />
 
           <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center">
-            <Link href="/blog">
-              <a
-                className="inline-flex items-center text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-6 transition-all duration-200"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                  color: "rgba(255,255,255,0.5)",
-                  borderColor: "rgba(255,255,255,0.08)",
-                  letterSpacing: "0.18em",
-                  fontSize: "10px",
-                  gap: "0.4rem",
-                }}
-              >
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-6 transition-all duration-200"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.06)",
+                color: "rgba(255,255,255,0.5)",
+                borderColor: "rgba(255,255,255,0.08)",
+                letterSpacing: "0.18em",
+                fontSize: "10px",
+                gap: "0.4rem",
+              }}
+            >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M19 12H5" />
                   <path d="m12 19-7-7 7-7" />
                 </svg>
                 Back to Blog
-              </a>
             </Link>
 
             {meta.tags?.[0] ? (
@@ -309,7 +306,7 @@ export default function ArticlePage({ post }) {
 
             <div className="max-w-sm mx-auto">
               <iframe
-                src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
+                src={`https://embeds.beehiiv.com/${process.env.NEXT_PUBLIC_BEEHIIV_EMBED_ID || "cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c"}?slim=true`}
                 data-test-id="beehiiv-embed"
                 title="Newsletter signup"
                 height="52"
@@ -332,22 +329,21 @@ export default function ArticlePage({ post }) {
             </div>
 
             <div className="mt-8">
-              <Link href="/blog">
-                <a
-                  className="inline-flex items-center px-6 py-3 font-inter font-semibold text-sm rounded-full transition-all duration-200"
-                  style={{
-                    backgroundColor: "rgba(255,255,255,0.06)",
-                    color: "rgba(255,255,255,0.7)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    gap: "0.5rem",
-                  }}
-                >
+              <Link
+                href="/blog"
+                className="inline-flex items-center px-6 py-3 font-inter font-semibold text-sm rounded-full transition-all duration-200"
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.06)",
+                  color: "rgba(255,255,255,0.7)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  gap: "0.5rem",
+                }}
+              >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M19 12H5" />
                     <path d="m12 19-7-7 7-7" />
                   </svg>
                   All posts
-                </a>
               </Link>
             </div>
           </div>

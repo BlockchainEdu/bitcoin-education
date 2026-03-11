@@ -19,6 +19,7 @@ export default function NationalTeamCard({
   name,
   title,
   bio,
+  bioLabel = "Bio",
   linkedin,
   twitter,
   email,
@@ -173,7 +174,7 @@ export default function NationalTeamCard({
                   <path d="M12 16v-4" />
                   <path d="M12 8h.01" />
                 </svg>
-                Read Story
+                {bioLabel}
               </span>
             </div>
           )}

@@ -17,14 +17,14 @@ function formatDate(d) {
 
 function PostCard({ post }) {
   return (
-    <Link href={`/blog/${post.slug}`}>
-      <a
-        className="group block rounded-2xl overflow-hidden transition-all duration-200"
-        style={{
-          backgroundColor: "#fff",
-          border: "1px solid rgba(0,0,0,0.06)",
-        }}
-      >
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group block rounded-2xl overflow-hidden transition-all duration-200"
+      style={{
+        backgroundColor: "#fff",
+        border: "1px solid rgba(0,0,0,0.06)",
+      }}
+    >
         <div className="blog-card-media">
           {post.cover ? (
             <img
@@ -70,7 +70,6 @@ function PostCard({ post }) {
             <span>{post.readingMinutes} min read</span>
           </div>
         </div>
-      </a>
     </Link>
   );
 }
@@ -88,17 +87,16 @@ function Pagination({ currentPage, totalPages }) {
       style={{ gap: "1rem" }}
     >
       {currentPage > 1 ? (
-        <Link href={prevHref}>
-          <a
-            className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter transition-all duration-200"
-            style={{
-              backgroundColor: "#fff",
-              border: "1px solid rgba(0,0,0,0.1)",
-              color: "#202127",
-            }}
-          >
+        <Link
+          href={prevHref}
+          className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter transition-all duration-200"
+          style={{
+            backgroundColor: "#fff",
+            border: "1px solid rgba(0,0,0,0.1)",
+            color: "#202127",
+          }}
+        >
             ← Previous
-          </a>
         </Link>
       ) : (
         <span
@@ -120,17 +118,16 @@ function Pagination({ currentPage, totalPages }) {
       </span>
 
       {currentPage < totalPages ? (
-        <Link href={nextHref}>
-          <a
-            className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter transition-all duration-200"
-            style={{
-              backgroundColor: "#fff",
-              border: "1px solid rgba(0,0,0,0.1)",
-              color: "#202127",
-            }}
-          >
+        <Link
+          href={nextHref}
+          className="px-5 py-2.5 rounded-full text-sm font-semibold font-inter transition-all duration-200"
+          style={{
+            backgroundColor: "#fff",
+            border: "1px solid rgba(0,0,0,0.1)",
+            color: "#202127",
+          }}
+        >
             Next →
-          </a>
         </Link>
       ) : (
         <span
@@ -185,24 +182,23 @@ export default function BlogPage({ posts, pagination }) {
           />
 
           <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-14 md:py-20 text-center">
-            <Link href="/blog">
-              <a
-                className="inline-flex items-center text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-5 transition-all duration-200"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                  color: "rgba(255,255,255,0.5)",
-                  borderColor: "rgba(255,255,255,0.08)",
-                  letterSpacing: "0.18em",
-                  fontSize: "10px",
-                  gap: "0.4rem",
-                }}
-              >
+            <Link
+              href="/blog"
+              className="inline-flex items-center text-xs font-semibold uppercase px-4 py-1 rounded-full border mb-5 transition-all duration-200"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.06)",
+                color: "rgba(255,255,255,0.5)",
+                borderColor: "rgba(255,255,255,0.08)",
+                letterSpacing: "0.18em",
+                fontSize: "10px",
+                gap: "0.4rem",
+              }}
+            >
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M19 12H5" />
                   <path d="m12 19-7-7 7-7" />
                 </svg>
                 BEN Blog
-              </a>
             </Link>
 
             <h1
@@ -268,7 +264,7 @@ export default function BlogPage({ posts, pagination }) {
 
             <div className="max-w-sm mx-auto">
               <iframe
-                src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
+                src={`https://embeds.beehiiv.com/${process.env.NEXT_PUBLIC_BEEHIIV_EMBED_ID || "cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c"}?slim=true`}
                 data-test-id="beehiiv-embed"
                
                 height="52"

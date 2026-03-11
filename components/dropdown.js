@@ -8,14 +8,6 @@ const solutions = [
     href: '/about'
   },
   {
-    name: 'Learn',
-    href: '/learn'
-  },
-  {
-    name: 'Clubs',
-    href: '/about/clubs'
-  },
-  {
     name: 'Team',
     href: '/about/team',
   },
@@ -27,10 +19,6 @@ const solutions = [
     name: 'Alumni',
     href: '/about/alumni'
   },
-  {
-    name: 'Professors',
-    href: '/about/professor'
-  }
 ]
 
 export default function Dropdown() {

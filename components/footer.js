@@ -1,44 +1,18 @@
-import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Popup from "./popup";
 import Image from "next/image";
 
 export default function Footer() {
   const router = useRouter();
-  const popupDelayInSeconds = 15;
-  const [showPopup, setShowPopup] = useState(false);
-
-  useEffect(() => {
-    let timeoutId;
-
-    if (
-      typeof window !== "undefined" &&
-      !window.sessionStorage.getItem("hasShownPopup")
-    ) {
-      timeoutId = setTimeout(() => {
-        window.sessionStorage.setItem("hasShownPopup", true);
-        setShowPopup(true);
-      }, popupDelayInSeconds * 1000);
-    }
-
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
-  }, []);
 
   return (
     <footer style={{ backgroundColor: "#131416" }}>
-      {showPopup && <Popup />}
-
       {/* Main footer content */}
       <div className="max-w-5xl mx-auto px-6 sm:px-10 pt-16 pb-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 text-center">
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex justify-center">
-              <Image width="56px" height="58px" src="/images/ben-footer.svg" />
+              <Image width={56} height={58} src="/images/ben-footer.svg" alt="BEN logo" />
             </div>
             <p className="mt-4 font-inter text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
               Blockchain Education Network

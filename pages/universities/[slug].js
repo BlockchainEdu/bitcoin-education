@@ -1,22 +1,13 @@
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import HeaderWithLogoDark from "../../components/headerWithLogoDark";
 import Footer from "../../components/footer";
-import { TeamMemberService } from "../../services";
 import styles from "../../styles/ben-network.module.css";
-import { slugify } from "../../lib/slugify";
 import {
-  buildTitleToId,
-  pickId,
-  col,
-  extractAssetIdFromFilesColumn,
-  buildAssetsById,
-  extractUrlFromMondayValue,
   parseTitleToRoleCompany,
   imgSrc,
   initialsFromName,
-} from "../../lib/mondayHelpers";
+} from "../../lib/helpers";
 
 const PER_PAGE = 24;
 
@@ -51,9 +42,6 @@ function Avatar({ src, name, size }) {
     />
   );
 }
-
-const UNIVERSITIES_BOARD_ID = 18394872099;
-const STUDENTS_BOARD_ID = 18398134588;
 
 // Pinned members who should appear first on specific university pages
 const PINNED_MEMBERS = {
@@ -157,23 +145,20 @@ export default function UniversityPage({ university, students }) {
       {/* Hero header */}
       <div className="border-b" style={{ backgroundColor: "#fff", borderColor: "rgba(0,0,0,0.06)" }}>
         <div className="max-w-3xl mx-auto px-5 py-10 sm:py-14 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white flex items-center justify-center overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+          <div className="flex justify-center mb-6">
+            <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-3xl bg-white flex items-center justify-center overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
               {uniLogo ? (
-                <img src={imgSrc(uniLogo)} alt={uniName} className="w-full h-full object-contain p-2" loading="eager" />
+                <img src={imgSrc(uniLogo)} alt={uniName} className="w-full h-full object-contain p-4" loading="eager" />
               ) : (
-                <span className="text-lg font-mont font-bold" style={{ color: "#9FA9B9" }}>
+                <span className="text-5xl font-mont font-bold" style={{ color: "#9FA9B9" }}>
                   {initialsFromName(uniName)}
                 </span>
               )}
             </div>
           </div>
-          <h1 className="font-mont font-bold text-2xl sm:text-3xl tracking-tight text-benblack-500">
+          <h1 className="font-mont font-bold text-5xl sm:text-7xl tracking-tight text-benblack-500">
             {uniName}
           </h1>
-          <p className="mt-2 font-inter text-sm" style={{ color: "#8e8e93" }}>
-            {allStudents.length} alumni in the BEN network
-          </p>
         </div>
       </div>
 
@@ -197,6 +182,7 @@ export default function UniversityPage({ university, students }) {
                 placeholder="Search alumni..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                aria-label="Search alumni"
                 className="w-full pl-12 pr-4 py-3.5 rounded-xl font-inter text-sm focus:outline-none"
                 style={{
                   backgroundColor: "#fff",
@@ -365,110 +351,56 @@ export default function UniversityPage({ university, students }) {
 }
 
 export async function getStaticPaths() {
-  const universitiesQuery = `{
-    boards (ids: ${UNIVERSITIES_BOARD_ID}) {
-      columns { id title type }
-      items_page (limit: 500) {
-        items { name column_values { id value text } }
-      }
-    }
-  }`;
+  const { supabase } = await import("../../lib/supabase");
 
-  const uniRes = await TeamMemberService.getMembers({ query: universitiesQuery });
-  const uniBoard = uniRes?.data?.data?.boards?.[0];
-  const uniItems = uniBoard?.items_page?.items ?? [];
-  const uniColumnsMap = buildTitleToId(uniBoard?.columns ?? []);
-  const uniTitleId = pickId(uniColumnsMap, ["Title", "title", "Name"]) || "name";
+  const { data: unis } = await supabase
+    .from("universities")
+    .select("slug");
 
-  const paths = uniItems.map((it) => ({
-    params: { slug: slugify(col(it, uniTitleId)?.text || it?.name || "") },
-  })).filter((p) => p.params.slug);
+  const paths = (unis || [])
+    .filter((u) => u.slug)
+    .map((u) => ({ params: { slug: u.slug } }));
 
   return { paths, fallback: "blocking" };
 }
 
 export async function getStaticProps({ params }) {
   const slug = params?.slug || "";
+  const { supabase } = await import("../../lib/supabase");
 
-  const uniQuery = `{
-    boards (ids: ${UNIVERSITIES_BOARD_ID}) {
-      items_page (limit: 500) {
-        items { id name assets { id public_url } column_values { id value text } }
-      }
-    }
-  }`;
+  // Fetch university
+  const { data: uni } = await supabase
+    .from("universities")
+    .select("id, name, slug, image_url")
+    .eq("slug", slug)
+    .single();
 
-  const uniRes = await TeamMemberService.getMembers({ query: uniQuery });
-  const uniItems = uniRes?.data?.data?.boards?.[0]?.items_page?.items ?? [];
-
-  const uniItem = uniItems.find((it) => slugify(it?.name || "") === slug);
-  if (!uniItem) return { notFound: true, revalidate: 3600 };
-
-  const uniTitle = uniItem?.name || "University";
-  const remoteImg = uniItem?.assets?.[0]?.public_url || null;
-  const logoExt = remoteImg && /\.png/i.test(remoteImg) ? ".png" : ".jpg";
+  if (!uni) return { notFound: true, revalidate: 3600 };
 
   const university = {
-    id: uniItem.id,
-    name: uniTitle,
-    image: `/images/universities/${slug}${logoExt}`,
-    slug,
+    id: String(uni.id),
+    name: uni.name,
+    image: uni.image_url,
+    slug: uni.slug,
   };
 
-  const titleId = "text";
-  const universityColId = "text_mm059kda";
-  const picturesId = "files";
-  const linkedinId = "text2";
-  const twitterId = "text4";
+  // Fetch students for this university
+  const { data: studentRows } = await supabase
+    .from("students")
+    .select("id, name, title, image_url, linkedin, twitter")
+    .eq("university", uni.name)
+    .order("name");
 
-  const escapedName = uniTitle.replace(/"/g, '\\"');
-  const studentsQuery = `{
-    boards (ids: ${STUDENTS_BOARD_ID}) {
-      items_page (limit: 500, query_params: {rules: [{column_id: "${universityColId}", compare_value: ["${escapedName}"]}]}) {
-        cursor
-        items { id name assets { id public_url } column_values { id value text } }
-      }
-    }
-  }`;
-
-  const studentsRes = await TeamMemberService.getMembers({ query: studentsQuery });
-  const firstPage = studentsRes?.data?.data?.boards?.[0]?.items_page;
-  let studentsItems = firstPage?.items ?? [];
-  let cursor = firstPage?.cursor ?? null;
-
-  while (cursor) {
-    const nextRes = await TeamMemberService.getMembers({
-      query: `{ next_items_page (limit: 500, cursor: "${cursor}") { cursor items { id name assets { id public_url } column_values { id value text } } } }`,
-    });
-    const nextPage = nextRes?.data?.data?.next_items_page;
-    studentsItems = studentsItems.concat(nextPage?.items ?? []);
-    cursor = nextPage?.cursor ?? null;
-  }
-
-  const students = studentsItems.map((it) => {
-    const titleText = col(it, titleId)?.text ?? "";
-    const { role, company } = parseTitleToRoleCompany(titleText);
-
-    const ln = extractUrlFromMondayValue(col(it, linkedinId)) || col(it, linkedinId)?.text || null;
-    const tw = extractUrlFromMondayValue(col(it, twitterId)) || col(it, twitterId)?.text || null;
-
-    const picsCv = col(it, picturesId);
-    const assetId = extractAssetIdFromFilesColumn(picsCv);
-    const assetsById = buildAssetsById(it?.assets ?? []);
-    const imgFromAssets =
-      (assetId ? assetsById.get(assetId) : null) ||
-      it?.assets?.[0]?.public_url ||
-      null;
-    const imgFallback = extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
-
+  const students = (studentRows || []).map((s) => {
+    const { role, company } = parseTitleToRoleCompany(s.title || "");
     return {
-      id: it.id,
-      name: it.name,
+      id: String(s.id),
+      name: s.name,
       role,
       company,
-      image: imgFromAssets || imgFallback || null,
-      linkedin: ln,
-      twitter: tw,
+      image: s.image_url || null,
+      linkedin: s.linkedin || null,
+      twitter: s.twitter || null,
     };
   });
 

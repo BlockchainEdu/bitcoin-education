@@ -14,19 +14,20 @@ export async function getServerSideProps({ res }) {
     "/contact",
     "/donate",
     "/opportunities",
-    "/programs",
     "/alumni",
     "/team",
-    "/learn",
-    "/clubs",
-    "/professors",
-    "/impact",
     "/get-involved",
     "/get-funding",
     "/volunteer",
+    "/join",
+    "/deductions",
   ];
 
   const posts = getAllPostsMeta();
+
+  // Fetch university slugs from Supabase
+  const { supabase } = await import("../lib/supabase");
+  const { data: unis } = await supabase.from("universities").select("slug");
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -46,6 +47,16 @@ ${posts
     <lastmod>${new Date(post.date).toISOString().split("T")[0]}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+  </url>`
+  )
+  .join("\n")}
+${(unis || [])
+  .filter((u) => u.slug)
+  .map(
+    (u) => `  <url>
+    <loc>${SITE_URL}/universities/${u.slug}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>`
   )
   .join("\n")}

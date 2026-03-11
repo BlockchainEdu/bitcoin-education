@@ -5,12 +5,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   trailingSlash: false,
   images: {
-    domains: [
-      'img.youtube.com',
-      'cdn-images-1.medium.com',
-      'images.unsplash.com',
-      'iq.wiki',
-      'cdn.sanity.io',
+    remotePatterns: [
+      { protocol: 'https', hostname: 'img.youtube.com' },
+      { protocol: 'https', hostname: 'cdn-images-1.medium.com' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'iq.wiki' },
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
     ],
   },
   async headers() {
@@ -24,6 +24,23 @@ module.exports = withBundleAnalyzer({
           { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           { key: "X-DNS-Prefetch-Control", value: "off" },
+          { key: "X-Powered-By", value: "" },
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' www.googletagmanager.com script.crazyegg.com connect.facebook.net www.google-analytics.com js.stripe.com",
+              "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+              "img-src 'self' data: blob: https:",
+              "font-src 'self' fonts.gstatic.com",
+              "frame-src 'self' www.youtube.com www.youtube-nocookie.com embeds.beehiiv.com js.stripe.com player.vimeo.com",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co www.googletagmanager.com api.stripe.com https://*.google-analytics.com https://*.google.com https://script.crazyegg.com",
+              "media-src 'self' https:",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self' https://js.stripe.com",
+            ].join("; "),
+          },
         ],
       },
       {
@@ -51,6 +68,12 @@ module.exports = withBundleAnalyzer({
           { key: "Content-Type", value: "text/plain; charset=utf-8" },
         ],
       },
+      {
+        source: "/_next/static/(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
     ];
   },
   async redirects() {
@@ -58,6 +81,36 @@ module.exports = withBundleAnalyzer({
       {
         source: "/subscribe",
         destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/clubs",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/impact",
+        destination: "/about",
+        permanent: true,
+      },
+      {
+        source: "/partners",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/programs",
+        destination: "/opportunities",
+        permanent: true,
+      },
+      {
+        source: "/professors",
+        destination: "/get-involved",
+        permanent: true,
+      },
+      {
+        source: "/learn",
+        destination: "/join",
         permanent: true,
       },
     ];

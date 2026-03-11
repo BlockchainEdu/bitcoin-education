@@ -36,7 +36,7 @@ export default function VolunteerPage() {
 
       <Script
         src="https://cdn.lordicon.com/lordicon.js"
-        strategy="beforeInteractive"
+        strategy="afterInteractive"
       />
 
       {/* Hero Section */}

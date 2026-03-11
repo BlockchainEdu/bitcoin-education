@@ -2,54 +2,6 @@ import React, { useMemo, useState, useEffect } from "react";
 import Head from "next/head";
 import Footer from "../components/footer";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
-import { TeamMemberService } from "../services";
-
-function safeJsonParse(value) {
-  if (!value || typeof value !== "string") return value;
-  try {
-    return JSON.parse(value);
-  } catch {
-    return value;
-  }
-}
-
-function buildTitleToId(columns = []) {
-  const map = new Map();
-  columns.forEach((c) => {
-    if (c?.id && c?.title) map.set(c.title.trim().toLowerCase(), c.id);
-  });
-  return map;
-}
-
-function pickId(map, titles) {
-  for (const t of titles) {
-    const id = map.get(t.toLowerCase());
-    if (id) return id;
-  }
-  return null;
-}
-
-function col(item, id) {
-  return item?.column_values?.find((c) => c.id === id) ?? null;
-}
-
-function parseMondayDate(cv) {
-  const raw = cv?.value ?? cv?.text;
-  const parsed = safeJsonParse(raw);
-  const date = parsed?.date || raw;
-  if (!date) return null;
-  const d = new Date(date);
-  return Number.isNaN(d.getTime()) ? null : d;
-}
-
-function formatRange(start, end) {
-  if (!start) return "";
-  const f = (d) =>
-    d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  return end && end.getTime() !== start.getTime()
-    ? `${f(start)} - ${f(end)}`
-    : f(start);
-}
 
 function getYouTubeEmbedUrl(url) {
   if (!url || typeof url !== "string") return "";
@@ -589,92 +541,8 @@ export default function Opportunities({ events, eventDeals }) {
 }
 
 export async function getStaticProps() {
-  const ALIASES = {
-    location: ["location", "local"],
-    link: ["link", "url", "website"],
-    description: ["description", "details", "about"],
-    start: ["start date", "date", "start"],
-    end: ["end date", "end"],
-  };
-
-  const eventsRes = await TeamMemberService.getMembers({
-    query: `{
-      boards (ids: 18392867276) {
-        columns { id title }
-        items_page (limit: 500) {
-          items {
-            id
-            name
-            assets { public_url }
-            column_values { id value text }
-          }
-        }
-      }
-    }`,
-  });
-
-  const dealsRes = await TeamMemberService.getMembers({
-    query: `{
-      boards (ids: 5775320038) {
-        items_page (limit: 500) {
-          items {
-            name
-            column_values { id value text }
-          }
-        }
-      }
-    }`,
-  });
-
-  const board = eventsRes?.data?.data?.boards?.[0];
-  const items = board?.items_page?.items ?? [];
-  buildTitleToId(board?.columns ?? []);
-
-  const map = buildTitleToId(board?.columns ?? []);
-  const now = new Date();
-
-  const locationId = pickId(map, ALIASES.location);
-  const linkId = pickId(map, ALIASES.link);
-  const descriptionId = pickId(map, ALIASES.description);
-  const startId = pickId(map, ALIASES.start);
-  const endId = pickId(map, ALIASES.end);
-
-  const events = items
-    .map((item) => {
-      const start = parseMondayDate(col(item, startId));
-      const end = parseMondayDate(col(item, endId));
-      const effective = end || start;
-
-      if (!effective || effective < now) return null;
-
-      const urlObj = safeJsonParse(col(item, linkId)?.value);
-      const url = urlObj?.url ?? col(item, linkId)?.text ?? "";
-
-      return {
-        id: item.id,
-        name: item.name,
-        dateLabel: formatRange(start, end),
-        location: col(item, locationId)?.text ?? "",
-        url,
-        description: col(item, descriptionId)?.text ?? "",
-        image: item.assets?.[0]?.public_url ?? null,
-        sort: effective.getTime(),
-      };
-    })
-    .filter(Boolean)
-    .sort((a, b) => a.sort - b.sort);
-
-  const dealItems = dealsRes?.data?.data?.boards?.[0]?.items_page?.items ?? [];
-
-  const eventDeals = dealItems.reduce((acc, item) => {
-    const eventRef = item?.column_values?.[0]?.text ?? "";
-    if (!eventRef) return acc;
-    acc[eventRef] = { message: item.name, link: item.column_values?.[1] };
-    return acc;
-  }, {});
-
   return {
-    props: { events, eventDeals },
+    props: { events: [], eventDeals: {} },
     revalidate: 3600,
   };
 }

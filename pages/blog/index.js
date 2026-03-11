@@ -19,14 +19,14 @@ function formatDate(d) {
 
 function PostCard({ post }) {
   return (
-    <Link href={`/blog/${post.slug}`}>
-      <a
-        className="group block rounded-2xl overflow-hidden transition-all duration-200"
-        style={{
-          backgroundColor: "#fff",
-          border: "1px solid rgba(0,0,0,0.06)",
-        }}
-      >
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group block rounded-2xl overflow-hidden transition-all duration-200"
+      style={{
+        backgroundColor: "#fff",
+        border: "1px solid rgba(0,0,0,0.06)",
+      }}
+    >
         <div className="blog-card-media">
           {post.cover ? (
             <img
@@ -72,7 +72,6 @@ function PostCard({ post }) {
             <span>{post.readingMinutes} min read</span>
           </div>
         </div>
-      </a>
     </Link>
   );
 }
@@ -233,7 +232,7 @@ export default function BlogIndexPage({ allPosts }) {
             {/* Newsletter inline */}
             <div className="mt-8 max-w-sm mx-auto">
               <iframe
-                src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
+                src={`https://embeds.beehiiv.com/${process.env.NEXT_PUBLIC_BEEHIIV_EMBED_ID || "cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c"}?slim=true`}
                 data-test-id="beehiiv-embed"
 
                 height="52"
@@ -294,14 +293,14 @@ export default function BlogIndexPage({ allPosts }) {
                 </div>
               </div>
 
-              <Link href={`/blog/${featured.slug}`}>
-                <a
-                  className="group grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden transition-all duration-200"
-                  style={{
-                    backgroundColor: "#fff",
-                    border: "1px solid rgba(0,0,0,0.06)",
-                  }}
-                >
+              <Link
+                href={`/blog/${featured.slug}`}
+                className="group grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden transition-all duration-200"
+                style={{
+                  backgroundColor: "#fff",
+                  border: "1px solid rgba(0,0,0,0.06)",
+                }}
+              >
                   <div className="overflow-hidden">
                     {featured.cover ? (
                       <img
@@ -380,7 +379,6 @@ export default function BlogIndexPage({ allPosts }) {
                       </svg>
                     </div>
                   </div>
-                </a>
               </Link>
             </div>
           </section>
@@ -439,6 +437,7 @@ export default function BlogIndexPage({ allPosts }) {
                   placeholder="Search posts by title, tag, or author..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
+                  aria-label="Search blog posts"
                   className="w-full pl-12 pr-4 py-3.5 rounded-xl font-inter text-sm focus:outline-none"
                   style={{
                     backgroundColor: "#fff",
@@ -509,7 +508,7 @@ export default function BlogIndexPage({ allPosts }) {
 
             <div className="max-w-sm mx-auto">
               <iframe
-                src="https://embeds.beehiiv.com/cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c?slim=true"
+                src={`https://embeds.beehiiv.com/${process.env.NEXT_PUBLIC_BEEHIIV_EMBED_ID || "cfab9b0e-aa74-4e4d-bf81-2a81e1904f6c"}?slim=true`}
                 data-test-id="beehiiv-embed"
 
                 height="52"

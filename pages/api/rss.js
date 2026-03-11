@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     }
 
     const parser = new Parser();
-    const feed = await parser.parseURL('https://rss.beehiiv.com/feeds/gfjLR7z5O9.xml');
+    const feed = await parser.parseURL(`https://rss.beehiiv.com/feeds/${process.env.NEXT_PUBLIC_BEEHIIV_RSS_ID || "gfjLR7z5O9"}.xml`);
     const sortedPosts = feed.items
       .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
       .slice(0, 6);

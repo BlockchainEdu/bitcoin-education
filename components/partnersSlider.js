@@ -1,5 +1,7 @@
 import React, { useMemo } from "react";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const PartnerSlider = ({ data = [], title }) => {
   const safeData = Array.isArray(data) ? data : [];

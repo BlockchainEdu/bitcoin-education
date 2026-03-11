@@ -3,7 +3,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
-import { TeamMemberService } from "../services";
 import { slugify } from "../lib/slugify";
 import { USERS } from "../content/ben-network.data";
 import styles from "../styles/ben-network.module.css";
@@ -183,72 +182,6 @@ function initialsFromName(name) {
   return (a + b).toUpperCase();
 }
 
-function safeJsonParse(value) {
-  if (!value || typeof value !== "string") return value;
-  try {
-    return JSON.parse(value);
-  } catch {
-    return value;
-  }
-}
-
-function buildTitleToId(columns = []) {
-  const map = new Map();
-  columns.forEach((c) => {
-    if (c?.id && c?.title) map.set(c.title.trim().toLowerCase(), c.id);
-  });
-  return map;
-}
-
-function pickId(map, titles) {
-  for (const t of titles) {
-    const id = map.get(String(t).toLowerCase());
-    if (id) return id;
-  }
-  return null;
-}
-
-function col(item, id) {
-  return item?.column_values?.find((c) => c.id === id) ?? null;
-}
-
-function extractUrlFromMondayValue(cv) {
-  const raw = cv?.value ?? cv?.text;
-  const parsed = safeJsonParse(raw);
-
-  const url =
-    parsed?.url ||
-    parsed?.link?.url ||
-    parsed?.link?.url?.url ||
-    parsed?.files?.[0]?.url ||
-    parsed?.files?.[0]?.public_url ||
-    parsed?.files?.[0]?.publicUrl ||
-    null;
-
-  return url || null;
-}
-
-function extractAssetIdFromFilesColumn(cv) {
-  const parsed = safeJsonParse(cv?.value);
-  const id = parsed?.files?.[0]?.assetId;
-  return id ? String(id) : null;
-}
-
-function buildAssetsById(assets = []) {
-  const m = new Map();
-  assets.forEach((a) => {
-    if (a?.id && a?.public_url) m.set(String(a.id), a.public_url);
-  });
-  return m;
-}
-
-function parseNumberFromMonday(cv) {
-  const parsed = safeJsonParse(cv?.value);
-  if (typeof parsed === "number") return parsed;
-  if (parsed?.number != null) return Number(parsed.number) || 0;
-  const n = Number(String(cv?.text || "").replace(/[^\d.-]/g, ""));
-  return Number.isFinite(n) ? n : 0;
-}
 
 function buildPageWindow(current, total, maxVisible = 5) {
   if (total <= maxVisible) {
@@ -411,6 +344,22 @@ export default function BenNetwork({ universities = [] }) {
         <meta name="twitter:title" content="Blockchain Education Network — 10K+ Students, 200+ Universities" />
         <meta name="twitter:description" content="The world's largest university blockchain network. Courses, scholarships, hackathons, conferences & jobs for students and alumni." />
         <meta name="twitter:image" content="https://www.blockchainedu.org/images/light-2-logo.jpg" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "NGO",
+          "name": "Blockchain Education Network",
+          "alternateName": "BEN",
+          "url": "https://www.blockchainedu.org",
+          "logo": "https://www.blockchainedu.org/images/ben-logo-color-no-slogan.svg",
+          "foundingDate": "2014",
+          "description": "The largest and longest running network of blockchain students, professors, and alumni.",
+          "nonprofitStatus": "501(c)(3)",
+          "sameAs": [
+            "https://twitter.com/BlockchainEdu",
+            "https://www.linkedin.com/company/blockchainedu",
+            "https://www.instagram.com/blockchainedu"
+          ]
+        })}} />
       </Head>
 
       <HeaderWithLogoDark />
@@ -566,11 +515,11 @@ export default function BenNetwork({ universities = [] }) {
 
           <div className="mt-10 sm:mt-12 flex flex-wrap justify-center gap-3">
             <span
-              onClick={() => router.push("/learn")}
+              onClick={() => router.push("/opportunities")}
               className="inline-flex items-center gap-2 font-mont font-bold text-sm text-white px-7 py-3.5 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
               style={{ backgroundColor: "#FF872A" }}
             >
-              Explore Courses
+              Get Involved
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
             </span>
             <span
@@ -612,6 +561,7 @@ export default function BenNetwork({ universities = [] }) {
                 placeholder="Search universities..."
                 value={uniSearch}
                 onChange={(e) => setUniSearch(e.target.value)}
+                aria-label="Search universities"
               />
             </div>
 
@@ -805,71 +755,19 @@ export default function BenNetwork({ universities = [] }) {
 }
 
 export async function getStaticProps() {
-  const universitiesQuery = `{
-    boards (ids: 18394872099) {
-      id
-      columns { id title type }
-      items_page (limit: 500) {
-        items {
-          id
-          name
-          assets { id public_url }
-          column_values { id value text }
-        }
-      }
-    }
-  }`;
+  const { supabase } = await import("../lib/supabase");
 
-  const uniRes = await TeamMemberService.getMembers({
-    query: universitiesQuery,
-  });
+  const { data: rows } = await supabase
+    .from("universities")
+    .select("id, name, slug, image_url, num_people")
+    .order("num_people", { ascending: false });
 
-  const uniBoard = uniRes?.data?.data?.boards?.[0];
-  const uniItems = uniBoard?.items_page?.items ?? [];
-  const uniColumnsMap = buildTitleToId(uniBoard?.columns ?? []);
-
-  const uniPicturesId =
-    pickId(uniColumnsMap, ["Pictures", "files", "pictures"]) || "files";
-
-  const uniPeopleId =
-    pickId(uniColumnsMap, [
-      "Number of People",
-      "number of people",
-      "People",
-      "people",
-      "Number",
-      "numbers",
-    ]) || "numbers";
-
-  const universities = sortUniversitiesDesc(
-    uniItems.map((item) => {
-      const picsCv = col(item, uniPicturesId);
-      const assetId = extractAssetIdFromFilesColumn(picsCv);
-      const assetsById = buildAssetsById(item?.assets ?? []);
-      const imgFromAssets =
-        (assetId ? assetsById.get(assetId) : null) ||
-        item?.assets?.[0]?.public_url ||
-        null;
-
-      const imgFallback =
-        extractUrlFromMondayValue(picsCv) || picsCv?.text || null;
-
-      const peopleCount = parseNumberFromMonday(col(item, uniPeopleId));
-
-      // Use local logo file instead of slow Monday.com S3 signed URLs
-      const slug = slugify(item.name);
-      const remoteUrl = imgFromAssets || imgFallback || null;
-      const ext = remoteUrl && /\.png/i.test(remoteUrl) ? ".png" : ".jpg";
-      const localImage = `/images/universities/${slug}${ext}`;
-
-      return {
-        id: item.id,
-        name: item.name,
-        image: localImage,
-        peopleCount,
-      };
-    }),
-  );
+  const universities = (rows || []).map((u) => ({
+    id: String(u.id),
+    name: u.name,
+    image: u.image_url,
+    peopleCount: u.num_people || 0,
+  }));
 
   return {
     props: { universities },

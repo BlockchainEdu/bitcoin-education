@@ -10,6 +10,7 @@ export default function ThankYou() {
       <Header />
       <Head>
         <title>Thank You | Blockchain Education Network</title>
+        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <section className="flex mt-24 lg:mt-auto mb-24 lg:mb-auto px-7 lg:px-0">
         <div className="max-w-lg m-auto py-4">

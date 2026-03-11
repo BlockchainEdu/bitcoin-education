@@ -422,24 +422,23 @@ export default function Contact() {
             </div>
 
             <div
-              className="rounded-2xl overflow-hidden mx-auto"
+              className="rounded-2xl overflow-hidden mx-auto text-center py-12"
               style={{
                 maxWidth: "640px",
                 backgroundColor: "rgba(255,255,255,0.04)",
                 border: "1px solid rgba(255,255,255,0.08)",
               }}
             >
-              <iframe
-                src="https://forms.monday.com/forms/embed/498adfc24b900b7c8d04e66a88d15d51?r=use1"
-                title="Contact BEN"
-                className="w-full"
-                style={{
-                  height: "1200px",
-                  border: "none",
-                  overflow: "hidden",
-                }}
-                scrolling="no"
-              />
+              <p className="font-inter text-base mb-6" style={{ color: "rgba(255,255,255,0.7)" }}>
+                Reach out to us directly:
+              </p>
+              <a
+                href="mailto:team@blockchainedu.org"
+                className="inline-flex items-center gap-2 font-mont font-bold text-sm text-white px-8 py-4 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95"
+                style={{ backgroundColor: "#FF872A" }}
+              >
+                team@blockchainedu.org
+              </a>
             </div>
           </div>
         </section>

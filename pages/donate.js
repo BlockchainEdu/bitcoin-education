@@ -68,6 +68,47 @@ export default function Donate() {
   // SSR HTML seen by crawlers, bots, and search engines will show "Loading..." instead.
   useEffect(() => { setMounted(true); }, []);
 
+  // Auto-advance hero videos: when one ends, play the next, then loop back
+  const heroVideoIds = useRef(["geBcmjzpqVY", VIDEO_IDS[0]]);
+  const playingRef = useRef(playingVideo);
+  playingRef.current = playingVideo;
+
+  useEffect(() => {
+    function onMessage(e) {
+      if (e.origin !== "https://www.youtube.com") return;
+      let data = e.data;
+      if (typeof data === "string") {
+        try { data = JSON.parse(data); } catch (_) { return; }
+      }
+      if (!data) return;
+      // YT iframe API: info === 0 means video ended
+      if (data.event === "onStateChange" && data.info === 0) {
+        const ids = heroVideoIds.current;
+        const cur = playingRef.current;
+        const idx = ids.indexOf(cur);
+        if (idx !== -1) {
+          const nextId = ids[(idx + 1) % ids.length];
+          setPlayingVideo(null);
+          setTimeout(() => setPlayingVideo(nextId), 150);
+        }
+      }
+    }
+
+    // Subscribe to YT iframe events by sending "listening" command
+    function initListener() {
+      const iframe = document.getElementById("hero-yt-player");
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.postMessage(JSON.stringify({ event: "listening", id: 1 }), "https://www.youtube.com");
+        iframe.contentWindow.postMessage(JSON.stringify({ event: "command", func: "addEventListener", args: ["onStateChange"] }), "https://www.youtube.com");
+      }
+    }
+
+    window.addEventListener("message", onMessage);
+    // Re-init listener whenever playingVideo changes (new iframe mounts)
+    const timer = setTimeout(initListener, 1000);
+    return () => { window.removeEventListener("message", onMessage); clearTimeout(timer); };
+  }, [playingVideo]);
+
   const currentAmount = isCustom ? (parseInt(customAmount) || 0) : selectedAmount;
   const studentsImpacted = Math.max(1, Math.floor(currentAmount / 12));
 
@@ -116,14 +157,21 @@ export default function Donate() {
     donateRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
+  // Strip zero-width chars injected for bot protection, then copy clean text
   async function copyText(text, field) {
     try {
-      await navigator.clipboard.writeText(text);
+      const clean = text.replace(/[\u200B\u200C\u200D\uFEFF]/g, "");
+      await navigator.clipboard.writeText(clean);
       setCopiedField(field);
       setTimeout(() => setCopiedField(null), 2000);
     } catch (e) {
       console.error(e);
     }
+  }
+
+  // Inject zero-width chars between digits so JS-bundle scrapers get garbage
+  function armored(str) {
+    return str.split("").map((c, i) => i > 0 && i % 3 === 0 ? "\u200B" + c : c).join("");
   }
 
   const visibleVideos = showAllVideos ? VIDEO_IDS : VIDEO_IDS.slice(0, 6);
@@ -289,7 +337,7 @@ export default function Donate() {
                         {/* Alt payment methods — pill buttons for easy iOS tapping */}
                         <div className="flex items-center justify-center gap-1.5 mt-4 flex-wrap">
                           {[
-                            { label: "PayPal", href: "https://www.paypal.com/donate/?hosted_button_id=JZT2VJ5WA6GJJ" },
+                            { label: "PayPal", href: `https://www.paypal.com/donate/?hosted_button_id=${process.env.NEXT_PUBLIC_PAYPAL_BUTTON_ID || "JZT2VJ5WA6GJJ"}` },
                             { label: "Venmo", href: "https://www.venmo.com/u/blockchainedu" },
                           ].map((link) => (
                             <span
@@ -342,30 +390,22 @@ export default function Donate() {
                             </p>
                             <div className="space-y-4">
                               {[
-                                { label: "Bank Name", value: "Mercury", key: null },
-                                { label: "Routing Number", value: "121145433", key: "routing", mono: true },
-                                { label: "Account Number", value: "843763775352889", key: "account", mono: true },
+                                { label: "Bank Name", value: "Mercury", raw: "Mercury", key: "bank" },
+                                { label: "Routing Number", value: armored("121145433"), raw: "121145433", key: "routing", mono: true },
+                                { label: "Account Number", value: armored("843763775352889"), raw: "843763775352889", key: "account", mono: true },
+                                { label: "Bank Address", value: "1 Letterman Drive, Building A, Suite A4-700, San Francisco, CA 94129", raw: "1 Letterman Drive, Building A, Suite A4-700, San Francisco, CA 94129", key: "address", small: true },
+                                { label: "Beneficiary", value: "Blockchain Education Network Inc.", raw: "Blockchain Education Network Inc.", key: "beneficiary", bold: true },
                               ].map((item) => (
-                                <div key={item.label} className="flex items-center justify-between">
-                                  <div>
+                                <div key={item.label} className="flex items-center justify-between gap-3">
+                                  <div className="min-w-0">
                                     <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">{item.label}</div>
-                                    <div className={`font-bold text-gray-900 text-base ${item.mono ? "font-mono" : "font-inter"}`}>{item.value}</div>
+                                    <div className={`text-gray-900 ${item.mono ? "font-mono font-bold text-base" : ""} ${item.small ? "font-inter text-sm" : ""} ${item.bold ? "font-inter font-semibold" : ""} ${!item.mono && !item.small && !item.bold ? "font-inter font-bold text-base" : ""}`}>{item.value}</div>
                                   </div>
-                                  {item.key && (
-                                    <button onClick={() => copyText(item.value, item.key)} className="font-inter text-xs font-semibold text-benorange-500 hover:text-yellow-600 transition-colors px-3 py-1 rounded-lg" style={{ backgroundColor: "rgba(255,135,42,0.08)" }}>
-                                      {copiedField === item.key ? "Copied!" : "Copy"}
-                                    </button>
-                                  )}
+                                  <button onClick={() => copyText(item.raw, item.key)} className="font-inter text-xs font-semibold text-benorange-500 hover:text-yellow-600 transition-colors px-3 py-1 rounded-lg flex-shrink-0" style={{ backgroundColor: "rgba(255,135,42,0.08)" }}>
+                                    {copiedField === item.key ? "Copied!" : "Copy"}
+                                  </button>
                                 </div>
                               ))}
-                              <div>
-                                <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">Bank Address</div>
-                                <div className="font-inter text-gray-900 text-sm">1 Letterman Drive, Building A, Suite A4-700, San Francisco, CA 94129</div>
-                              </div>
-                              <div>
-                                <div className="font-inter text-xs text-gray-400 uppercase tracking-wider">Beneficiary</div>
-                                <div className="font-inter font-semibold text-gray-900">Blockchain Education Network Inc.</div>
-                              </div>
                             </div>
                             <div className="mt-6 pt-5 border-t border-gray-100">
                               <p className="font-inter text-xs text-gray-400 text-center">
@@ -713,66 +753,89 @@ export default function Donate() {
             </div>
           </div>
 
-          {/* ── Featured video — The 10:10 Plan ── */}
-          <div className="mb-10 md:mb-14">
-            <div
-              className="relative rounded-2xl md:rounded-3xl overflow-hidden mx-auto"
-              style={{
-                aspectRatio: "16/9",
-                maxWidth: "960px",
-                boxShadow: "0 20px 60px rgba(0,0,0,0.12), 0 4px 20px rgba(0,0,0,0.06)",
-              }}
-            >
-              {playingVideo === visibleVideos[0] ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${visibleVideos[0]}?autoplay=1&rel=0&modestbranding=1`}
-                  allow="autoplay; encrypted-media" allowFullScreen
-                  className="absolute inset-0 w-full h-full" frameBorder="0"
-                />
-              ) : (
-                <button
-                  onClick={() => setPlayingVideo(visibleVideos[0])}
-                  className="relative w-full h-full group"
+          {/* ── Featured videos — auto-advances, loops ── */}
+          {(() => {
+            const HERO_VIDEOS = [
+              { id: "geBcmjzpqVY", label: "The BEN Story: From a Dorm Room to 200+ Universities", sub: "How a student-led movement became the world's largest blockchain education network", start: 7 },
+              { id: visibleVideos[0], label: "10 Million People. One Mission.", sub: "The plan to bring blockchain education to every corner of the world" },
+            ];
+            const activeHero = playingVideo === HERO_VIDEOS[1].id ? 1 : 0;
+            const current = HERO_VIDEOS[activeHero];
+            const next = HERO_VIDEOS[1 - activeHero];
+            return (
+              <div className="mb-10 md:mb-14" style={{ maxWidth: "960px", margin: "0 auto" }}>
+                <div
+                  className="relative rounded-2xl md:rounded-3xl overflow-hidden"
+                  style={{
+                    aspectRatio: "16/9",
+                    boxShadow: "0 20px 60px rgba(0,0,0,0.12), 0 4px 20px rgba(0,0,0,0.06)",
+                  }}
                 >
-                  <img
-                    src={`https://img.youtube.com/vi/${visibleVideos[0]}/maxresdefault.jpg`}
-                    alt="The 10:10 Plan — Educate 10 million people in blockchain"
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Cinematic gradient */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.15) 100%)",
-                    }}
-                  />
-                  {/* Play button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div
-                      className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                      style={{
-                        backgroundColor: "rgba(255,135,42,0.95)",
-                        boxShadow: "0 8px 32px rgba(255,135,42,0.4), 0 0 0 4px rgba(255,255,255,0.2)",
-                      }}
+                  {playingVideo === current.id ? (
+                    <iframe
+                      id="hero-yt-player"
+                      src={`https://www.youtube.com/embed/${current.id}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1${current.start ? `&start=${current.start}` : ""}`}
+                      allow="autoplay; encrypted-media" allowFullScreen
+                      className="absolute inset-0 w-full h-full" frameBorder="0"
+                    />
+                  ) : (
+                    <button
+                      onClick={() => setPlayingVideo(current.id)}
+                      className="relative w-full h-full group"
                     >
-                      <svg className="w-8 h-8 md:w-10 md:h-10 text-white" style={{ marginLeft: "4px" }} fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                      <img
+                        src={`https://img.youtube.com/vi/${current.id}/maxresdefault.jpg`}
+                        alt={current.label}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.15) 100%)" }} />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div
+                          className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                          style={{ backgroundColor: "rgba(255,135,42,0.95)", boxShadow: "0 8px 32px rgba(255,135,42,0.4), 0 0 0 4px rgba(255,255,255,0.2)" }}
+                        >
+                          <svg className="w-8 h-8 md:w-10 md:h-10 text-white" style={{ marginLeft: "4px" }} fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+                        <span className="inline-block font-mont font-bold text-white text-sm md:text-base" style={{ opacity: 0.95 }}>
+                          {current.label}
+                        </span>
+                        <span className="block font-inter text-xs mt-1" style={{ color: "rgba(255,255,255,0.5)" }}>
+                          {current.sub}
+                        </span>
+                      </div>
+                    </button>
+                  )}
+                </div>
+
+                {/* Up Next — switch to the other video */}
+                <button
+                  onClick={() => { setPlayingVideo(null); setTimeout(() => setPlayingVideo(next.id), 50); }}
+                  className="flex items-center gap-4 mt-8 mb-6 mx-auto group"
+                  style={{ maxWidth: "480px" }}
+                >
+                  <div className="relative rounded-xl overflow-hidden flex-shrink-0" style={{ width: "200px", aspectRatio: "16/9" }}>
+                    <img
+                      src={`https://img.youtube.com/vi/${next.id}/mqdefault.jpg`}
+                      alt={next.label}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center" style={{ backgroundColor: "rgba(0,0,0,0.3)" }}>
+                      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                     </div>
                   </div>
-                  {/* Bottom label */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8">
-                    <span className="inline-block font-mont font-bold text-white text-sm md:text-base" style={{ opacity: 0.95 }}>
-                      Watch: The 10:10 Plan
-                    </span>
-                    <span className="block font-inter text-xs mt-1" style={{ color: "rgba(255,255,255,0.5)" }}>
-                      Our vision to educate 10 million people in blockchain
-                    </span>
+                  <div className="text-left">
+                    <span className="font-inter text-xs font-semibold uppercase tracking-wider" style={{ color: "#FF872A" }}>Up next</span>
+                    <span className="block font-mont font-bold text-base text-gray-900 group-hover:text-benorange-500 transition-colors">{next.label}</span>
+                    <span className="block font-inter text-xs mt-1" style={{ color: "#86868b" }}>{next.sub}</span>
                   </div>
                 </button>
-              )}
-            </div>
-          </div>
+              </div>
+            );
+          })()}
 
           {/* ── Vision pillars ── */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-14 md:mb-16" style={{ maxWidth: "960px", margin: "0 auto" }}>
@@ -918,6 +981,7 @@ export default function Donate() {
                 name={story.name}
                 title={story.title}
                 bio={story.bio}
+                bioLabel="Our Story"
               />
             ))}
           </div>
@@ -1104,7 +1168,7 @@ export default function Donate() {
             ].map((card, i) => (
               <span key={i} onClick={() => window.open(card.href, "_blank", "noopener,noreferrer")}
                 className="border border-gray-200 p-5 rounded-2xl hover:shadow-md hover:border-benorange-500 transition-all duration-300 group flex items-start gap-4 cursor-pointer">
-                <Image width={56} height={56} src={card.icon} />
+                <Image width={56} height={56} src={card.icon} alt={card.title} />
                 <div>
                   <div className="font-inter font-bold text-gray-900 text-base mb-1 group-hover:text-benorange-500 transition-colors">{card.title} {"\u2197"}</div>
                   <div className="font-inter text-sm text-gray-400">{card.desc}</div>

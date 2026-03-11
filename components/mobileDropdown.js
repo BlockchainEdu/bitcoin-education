@@ -59,7 +59,7 @@ export default function MobileDropdown(props) {
       <Popover>
         {({ open }) => (
           <>
-            <Popover.Button className="block" style={{ width: "24px" }}>
+            <Popover.Button className="block" style={{ width: "24px" }} aria-label="Open menu">
               <FontAwesomeIcon
                 icon={faBars}
                 className={`${
@@ -71,7 +71,7 @@ export default function MobileDropdown(props) {
             <Popover.Panel className="absolute z-40 top-0 right-0 bg-white md:max-w-none lg:max-w-3xl w-min whitespace-nowrap">
               <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-4 h-screen flex flex-col">
                 <div className="text-right">
-                  <Popover.Button>
+                  <Popover.Button aria-label="Close menu">
                     <svg
                       className="h-6 w-6"
                       xmlns="http://www.w3.org/2000/svg"

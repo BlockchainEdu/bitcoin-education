@@ -2,7 +2,7 @@ import Footer from "../components/footer";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import NationalTeamCard from "../components/nationalTeamCard";
 import AlumniCard from "../components/alumniCard";
-import { TeamMember } from "../services";
+import { TeamMember } from "../lib/TeamMember";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -302,10 +302,6 @@ export default function About() {
     ],
   });
 
-  // Monday.com API disabled — leadership is hardcoded above with
-  // real LinkedIn photos and updated bios. Re-enable if Monday.com
-  // board photos are updated from DALL-E cartoons to real headshots.
-
   return (
     <div
       id="team-page"
@@ -574,17 +570,16 @@ export default function About() {
               </p>
             </div>
             <div className="shrink-0 hidden sm:block">
-              <Link href="/blog/memorial-of-jesse-xiong">
-                <a
-                  className="inline-flex items-center text-xs font-inter font-semibold transition-all duration-200"
-                  style={{ color: "rgba(255,255,255,0.35)", gap: "0.3rem" }}
-                >
+              <Link
+                href="/blog/memorial-of-jesse-xiong"
+                className="inline-flex items-center text-xs font-inter font-semibold transition-all duration-200"
+                style={{ color: "rgba(255,255,255,0.35)", gap: "0.3rem" }}
+              >
                   Memorial
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14" />
                     <path d="m12 5 7 7-7 7" />
                   </svg>
-                </a>
               </Link>
             </div>
           </div>
@@ -714,11 +709,11 @@ export default function About() {
             Join the network, meet the team, or just show up.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link href="/opportunities#apply">
-              <a
-                className="inline-flex items-center px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition-all duration-200"
-                style={{ boxShadow: "0 8px 20px rgba(255, 135, 42, 0.2)" }}
-              >
+            <Link
+              href="/opportunities#apply"
+              className="inline-flex items-center px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition-all duration-200"
+              style={{ boxShadow: "0 8px 20px rgba(255, 135, 42, 0.2)" }}
+            >
                 Join BEN
                 <svg
                   width="14"
@@ -734,19 +729,17 @@ export default function About() {
                   <path d="M5 12h14" />
                   <path d="m12 5 7 7-7 7" />
                 </svg>
-              </a>
             </Link>
-            <Link href="/opportunities">
-              <a
-                className="inline-flex items-center px-6 py-3 font-inter font-semibold text-sm rounded-full transition-all duration-200"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.06)",
-                  color: "rgba(255,255,255,0.7)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}
-              >
+            <Link
+              href="/opportunities"
+              className="inline-flex items-center px-6 py-3 font-inter font-semibold text-sm rounded-full transition-all duration-200"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.06)",
+                color: "rgba(255,255,255,0.7)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
                 Explore Opportunities
-              </a>
             </Link>
           </div>
         </div>

@@ -12,7 +12,9 @@ cp .env.example .env.local
 ```
 
 2. Update the environment variables in `.env.local` with your actual values:
-- `MONDAY_API_KEY`: Your Monday.com API key
+- `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+- `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase service role key (server-side only)
 - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Your Stripe publishable key (if using Stripe)
 - `STRIPE_SECRET_KEY`: Your Stripe secret key (if using Stripe)
 - `NEXT_PUBLIC_MAPBOX_KEY`: Your Mapbox key (if using maps)

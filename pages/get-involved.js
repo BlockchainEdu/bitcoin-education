@@ -2,7 +2,6 @@ import Footer from '../components/footer';
 import HeaderWithLogoDark from '../components/headerWithLogoDark';
 import Header from '../components/header'
 import Image from 'next/image'
-import TestComponent from '../components/testComponent';
 import PartnerShipBenefits from '../components/partnershipBenefits';
 import PartnersSlider from '../components/partnersSlider';
 import PartnersSliderAlt from '../components/partnersSliderAlt'
@@ -64,10 +63,11 @@ export default function GetInvolved() {
                         </a>
                     </div>
                     <div className="py-20 lg:py-0">
-                    <Image 
+                    <Image
                             src="/images/get-involved-hero.png"
                             width={593}
                             height={721}
+                            alt="Get involved with BEN"
                     />
                     </div>
                     <div className="pl-4 flex flex-col space-y-10 font-mont" style={{ marginRight: "1rem" }}>
@@ -87,11 +87,12 @@ export default function GetInvolved() {
             <section className="get-involved-bg">
                 <div className="flex flex-col lg:flex-row max-w-7xl gap-x-20 m-auto justify-between items-center pt-10 lg:pt-36 py-24 px-7">
                     <div className="w-full lg:w-3/5 flex justify-center lg:justify-start">
-                        <Image 
+                        <Image
                             className="m-auto lg:m-0 pb-20 lg:pb-0"
                             src="/images/are-you-a-student.png"
-                            width="686"
-                            height="519"
+                            width={686}
+                            height={519}
+                            alt="Are you a student"
                         />
                     </div>
                     <div className="w-full lg:w-2/5">
@@ -110,11 +111,12 @@ export default function GetInvolved() {
             <section className="get-involved-bg">
                 <div className="flex flex-col lg:flex-row max-w-7xl gap-x-20 m-auto justify-between items-center pt-0 lg:py-24 pb-10 lg:pb-36 px-7">
                     <div className="w-full lg:w-3/5 flex justify-center lg:justify-start">
-                        <Image 
+                        <Image
                             className="m-auto lg:m-0 pb-20 lg:pb-0"
                             src="/images/are-you-a-professor.png"
-                            width="686"
-                            height="519"
+                            width={686}
+                            height={519}
+                            alt="Are you a professor"
                         />
                     </div>
                     <div className="w-full lg:w-2/5">
