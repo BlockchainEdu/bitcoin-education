@@ -8,7 +8,7 @@ export default function Popup() {
   };
 
   const router = useRouter();
-  const hidePopupOnPage = ['/join'];
+  const hidePopupOnPage = [];
   const shouldHidePopup = hidePopupOnPage.includes(router.pathname);
 
   if (shouldHidePopup) {

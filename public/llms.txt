@@ -12,11 +12,10 @@ BEN provides education, mentorship, and career access to students entering the b
 - [Blog](https://www.blockchainedu.org/blog)
 - [About](https://www.blockchainedu.org/about)
 - [Opportunities](https://www.blockchainedu.org/opportunities)
-- [Alumni](https://www.blockchainedu.org/alumni)
 - [Team](https://www.blockchainedu.org/team)
 - [Contact](https://www.blockchainedu.org/contact)
-- [Get Involved](https://www.blockchainedu.org/get-involved)
 - [Donate](https://www.blockchainedu.org/donate)
+- [Retreats](https://www.blockchainedu.org/retreats)
 
 ## Leadership
 

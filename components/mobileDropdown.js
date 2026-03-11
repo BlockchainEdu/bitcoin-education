@@ -38,7 +38,7 @@ const solutions = [
 export default function MobileDropdown(props) {
   const router = useRouter();
 
-  const hideButtonOnPage = ["/join"];
+  const hideButtonOnPage = [];
   const shouldHideButton = hideButtonOnPage.includes(router.pathname);
 
   return (

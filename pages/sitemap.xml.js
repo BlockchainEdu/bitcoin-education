@@ -14,13 +14,8 @@ export async function getServerSideProps({ res }) {
     "/contact",
     "/donate",
     "/opportunities",
-    "/alumni",
     "/team",
-    "/get-involved",
-    "/get-funding",
-    "/volunteer",
-    "/join",
-    "/deductions",
+    "/retreats",
   ];
 
   const posts = getAllPostsMeta();

@@ -29,11 +29,11 @@ export default function About() {
                             The Blockchain Education Network (BEN)
                         </h1>
                         <p className="text-black text-md pt-10 max-w-xl">
-                            The Blockchain Education Network (BEN) is a 501(c)(3) non-porfit charitable organization founded in 2014.<br/><br/>
+                            The Blockchain Education Network (BEN) is a 501(c)(3) non-profit charitable organization founded in 2014.<br/><br/>
                             We exist to provide borderless education in blockchain technology, making it accessible to anyone 
                             and everyone while building a global transparent community.<br/><br/>
                             BEN educates students about blockchain technology and inspires them to find their talent and 
-                            own it! Either as a disrupter, entrepreneur, investor, and team member.
+                            own it! Either as a disruptor, entrepreneur, investor, or team member.
                         </p>
                     </div>
                     <div className="w-full md:w-1/2 m-auto">
@@ -92,7 +92,7 @@ export default function About() {
                             Providing students with accessible, high quality blockchain education
                         </h2>
                         <p className="font-mont text-center lg:text-left m-auto lg:m-0 text-bengrey-400 max-w-lg">
-                            Since blockchain was ﬁrst invented in 2008, most universities around the world haven't been able to create a dedicated curriculum around  it , thus creating a high demand from students to learn about blockchain. We address students' desire to learn about blockchain and pursue opportunities in the industry.
+                            Since blockchain was first invented in 2008, most universities around the world haven't been able to create a dedicated curriculum around it, thus creating a high demand from students to learn about blockchain. We address students' desire to learn about blockchain and pursue opportunities in the industry.
                         </p>
                     </div>
                     <div className=""><img className="m-auto lg:m-0 pb-20 md:pb-0" src="/images/about-computer.png" alt="BEN programs" /></div>

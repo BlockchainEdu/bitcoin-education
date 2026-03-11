@@ -31,7 +31,7 @@ function isRateLimited(ip) {
 }
 
 function getExtraParams(amount) {
-  const success_url = `${ALLOWED_ORIGIN}/thank-you-donor?session_id={CHECKOUT_SESSION_ID}`;
+  const success_url = `${ALLOWED_ORIGIN}/donate?success=true&session_id={CHECKOUT_SESSION_ID}`;
   const cancel_url = `${ALLOWED_ORIGIN}/donate`;
 
   if (amount.frequency === 'monthly') {

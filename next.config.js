@@ -105,12 +105,62 @@ module.exports = withBundleAnalyzer({
       },
       {
         source: "/professors",
-        destination: "/get-involved",
+        destination: "/about",
         permanent: true,
       },
       {
         source: "/learn",
-        destination: "/join",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/ericeiraHouse",
+        destination: "/retreats",
+        permanent: true,
+      },
+      {
+        source: "/ibiza",
+        destination: "/retreats",
+        permanent: true,
+      },
+      {
+        source: "/get-involved",
+        destination: "/opportunities",
+        permanent: true,
+      },
+      {
+        source: "/join",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/alumni",
+        destination: "/team",
+        permanent: true,
+      },
+      {
+        source: "/deductions",
+        destination: "/donate",
+        permanent: true,
+      },
+      {
+        source: "/get-funding",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/volunteer",
+        destination: "/opportunities",
+        permanent: true,
+      },
+      {
+        source: "/thank-you-donor",
+        destination: "/donate",
+        permanent: true,
+      },
+      {
+        source: "/thank-you",
+        destination: "/",
         permanent: true,
       },
     ];

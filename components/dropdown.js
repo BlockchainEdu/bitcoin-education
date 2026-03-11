@@ -9,15 +9,11 @@ const solutions = [
   },
   {
     name: 'Team',
-    href: '/about/team',
+    href: '/team',
   },
   {
     name: 'Contact',
     href: '/contact'
-  },
-  {
-    name: 'Alumni',
-    href: '/about/alumni'
   },
 ]
 

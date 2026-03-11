@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useCallback } from "react";
+import React, { useMemo, useState, useEffect, useCallback, useRef } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
@@ -182,6 +182,175 @@ function initialsFromName(name) {
   return (a + b).toUpperCase();
 }
 
+// ── Interactive network canvas for hero ──────────────────────────────
+function NetworkCanvas({ pointerRef, pulsesRef }) {
+  const cvs = useRef(null);
+
+  useEffect(() => {
+    const c = cvs.current;
+    if (!c) return;
+    const ctx = c.getContext("2d");
+    const mob = window.innerWidth < 768;
+    const N = mob ? 30 : 70;
+    const LINK = mob ? 80 : 140;
+    const PR = 200;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let W, H, raf;
+
+    function resize() {
+      const r = c.parentElement.getBoundingClientRect();
+      W = r.width; H = r.height;
+      c.width = W * dpr; c.height = H * dpr;
+      c.style.width = W + "px"; c.style.height = H + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+
+    // Particles start clustered at center for "big bang" expansion
+    const cx = W / 2, cy = H * 0.42;
+    const pts = Array.from({ length: N }, () => ({
+      x: cx + (Math.random() - 0.5) * 16,
+      y: cy + (Math.random() - 0.5) * 16,
+      tx: Math.random() * W, ty: Math.random() * H,
+      vx: 0, vy: 0,
+      r: Math.random() * 1.5 + 0.8,
+      o: Math.random() < 0.25,
+    }));
+
+    const t0 = performance.now();
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      const mx = pointerRef.current.x, my = pointerRef.current.y;
+      const age = (performance.now() - t0) / 1000;
+      const expanding = age < 2.5;
+      const ps = pulsesRef.current;
+
+      // Update pulse rings
+      for (let i = ps.length - 1; i >= 0; i--) {
+        ps[i].r += 4; ps[i].a -= 0.012;
+        if (ps[i].a <= 0) ps.splice(i, 1);
+      }
+
+      // Update particles
+      for (const p of pts) {
+        if (expanding) {
+          // Spring toward target position
+          const spring = 0.012 + Math.min(age * 0.008, 0.02);
+          p.vx += (p.tx - p.x) * spring;
+          p.vy += (p.ty - p.y) * spring;
+          p.vx *= 0.93; p.vy *= 0.93;
+        } else {
+          // Pulse wave force
+          for (const pu of ps) {
+            const dx = p.x - pu.x, dy = p.y - pu.y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (Math.abs(d - pu.r) < 40 && d > 0) {
+              const f = (1 - Math.abs(d - pu.r) / 40) * 0.6;
+              p.vx += (dx / d) * f; p.vy += (dy / d) * f;
+            }
+          }
+          // Pointer attraction
+          if (!mob) {
+            const dx = mx - p.x, dy = my - p.y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < PR && d > 0) { p.vx += (dx / d) * 0.03; p.vy += (dy / d) * 0.03; }
+          }
+          p.vx *= 0.99; p.vy *= 0.99;
+        }
+        p.x += p.vx; p.y += p.vy;
+        // Wrap edges
+        if (p.x < -10) p.x += W + 20; if (p.x > W + 10) p.x -= W + 20;
+        if (p.y < -10) p.y += H + 20; if (p.y > H + 10) p.y -= H + 20;
+      }
+
+      // Draw connections
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const a = pts[i], b = pts[j];
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK) {
+            const t = 1 - d / LINK;
+            const mdx = (a.x + b.x) / 2 - mx, mdy = (a.y + b.y) / 2 - my;
+            const md = Math.sqrt(mdx * mdx + mdy * mdy);
+            const boost = md < PR ? 0.2 : 0;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = (a.o || b.o)
+              ? `rgba(255,135,42,${t * 0.15 + boost})`
+              : `rgba(255,255,255,${t * 0.12 + boost})`;
+            ctx.lineWidth = 0.6; ctx.stroke();
+          }
+        }
+      }
+
+      // Draw particles
+      for (const p of pts) {
+        const dx = mx - p.x, dy = my - p.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        const near = d < PR;
+        const alpha = near ? 0.9 : 0.35;
+        const rad = near ? p.r * 1.8 : p.r;
+        ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
+        ctx.fillStyle = p.o ? `rgba(255,135,42,${alpha})` : `rgba(255,255,255,${alpha})`;
+        ctx.fill();
+        if (near && p.o) {
+          ctx.beginPath(); ctx.arc(p.x, p.y, rad * 4, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(255,135,42,0.08)"; ctx.fill();
+        }
+      }
+
+      // Draw pulse rings
+      for (const pu of ps) {
+        ctx.beginPath(); ctx.arc(pu.x, pu.y, pu.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255,135,42,${pu.a})`; ctx.lineWidth = 1.5; ctx.stroke();
+      }
+
+      raf = requestAnimationFrame(draw);
+    }
+    draw();
+
+    window.addEventListener("resize", resize);
+    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+  }, [pointerRef, pulsesRef]);
+
+  return <canvas ref={cvs} className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} aria-hidden="true" />;
+}
+
+// ── Animated counter that counts up when scrolled into view ──────────
+function AnimatedCounter({ value, prefix, suffix }) {
+  const ref = useRef(null);
+  const [n, setN] = useState(0);
+  const [go, setGo] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setGo(true); obs.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!go) return;
+    const t0 = performance.now();
+    let raf;
+    function tick(now) {
+      const p = Math.min((now - t0) / 2000, 1);
+      const ease = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+      setN(Math.round(ease * value));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [go, value]);
+
+  return <span ref={ref}>{prefix || ""}{n.toLocaleString()}{suffix || ""}</span>;
+}
+
 
 function buildPageWindow(current, total, maxVisible = 5) {
   if (total <= maxVisible) {
@@ -236,6 +405,10 @@ export default function BenNetwork({ universities = [] }) {
   const onDominantBgLoad = useDominantBg();
 
   const users = USERS;
+
+  // Hero interactive network
+  const heroPointer = useRef({ x: -9999, y: -9999 });
+  const heroPulses = useRef([]);
 
   const allUniFlat = useMemo(() => {
     return sortUniversitiesDesc((universities || []).filter((it) => it?.name));
@@ -364,46 +537,59 @@ export default function BenNetwork({ universities = [] }) {
 
       <HeaderWithLogoDark />
 
-      {/* ── HERO ── Deep charcoal with warm glow */}
-      <section className="relative overflow-hidden" style={{ background: "linear-gradient(165deg, #1a1b20 0%, #202127 40%, #1a1b20 100%)" }}>
+      {/* ── HERO ── Interactive network with entrance animation */}
+      <section
+        className="relative overflow-hidden"
+        style={{ background: "linear-gradient(165deg, #1a1b20 0%, #202127 40%, #1a1b20 100%)" }}
+        onMouseMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); heroPointer.current = { x: e.clientX - r.left, y: e.clientY - r.top }; }}
+        onMouseLeave={() => { heroPointer.current = { x: -9999, y: -9999 }; }}
+        onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); heroPulses.current.push({ x: e.clientX - r.left, y: e.clientY - r.top, r: 0, a: 0.6 }); }}
+        onTouchMove={(e) => { if (e.touches.length) { const r = e.currentTarget.getBoundingClientRect(); heroPointer.current = { x: e.touches[0].clientX - r.left, y: e.touches[0].clientY - r.top }; } }}
+        onTouchEnd={() => { heroPointer.current = { x: -9999, y: -9999 }; }}
+      >
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 50% 40%, rgba(255,135,42,0.12) 0%, transparent 50%)" }} aria-hidden="true" />
         <div className="absolute inset-0" style={{ opacity: 0.03, backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "40px 40px" }} aria-hidden="true" />
 
-        <div className="relative max-w-5xl mx-auto px-5 sm:px-10 pt-28 pb-16 sm:pt-32 md:pt-40 sm:pb-20 md:pb-28 text-center">
-          {/* Pill badge — wraps gracefully on small screens */}
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-3 sm:px-4 py-2 text-xs font-inter mb-6 sm:mb-8" style={{ backgroundColor: "rgba(255,135,42,0.12)", border: "1px solid rgba(255,135,42,0.25)", color: "rgba(255,255,255,0.85)" }}>
+        {/* Interactive network canvas */}
+        <NetworkCanvas pointerRef={heroPointer} pulsesRef={heroPulses} />
+
+        <div className="relative max-w-5xl mx-auto px-5 sm:px-10 pt-28 pb-16 sm:pt-32 md:pt-40 sm:pb-20 md:pb-28 text-center" style={{ zIndex: 2 }}>
+          {/* Pill badge */}
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full px-3 sm:px-4 py-2 text-xs font-inter mb-6 sm:mb-8 hero-reveal" style={{ backgroundColor: "rgba(255,135,42,0.12)", border: "1px solid rgba(255,135,42,0.25)", color: "rgba(255,255,255,0.85)", animation: "heroFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s forwards" }}>
             <span style={{ color: "#FF872A" }} className="font-semibold">Est. 2014</span>
             <span className="hidden sm:inline" style={{ color: "rgba(255,255,255,0.3)" }}>|</span>
             <span className="hidden sm:inline">The largest student blockchain network</span>
           </div>
 
-          {/* Logo text */}
+          {/* Logo text — "ben" slides in from left, "network" from right */}
           <h1 className="font-mont font-black tracking-tight mb-4 sm:mb-6 md:mb-8" style={{ fontSize: "clamp(2.5rem, 10vw, 6rem)", lineHeight: 1 }}>
-            <span className="text-white">ben</span>
-            <span className="text-benorange-500">network</span>
+            <span className="text-white hero-reveal" style={{ display: "inline-block", animation: "heroSlideRight 0.9s cubic-bezier(0.16,1,0.3,1) 0.6s forwards" }}>ben</span>
+            <span className="text-benorange-500 hero-reveal" style={{ display: "inline-block", animation: "heroSlideLeft 0.9s cubic-bezier(0.16,1,0.3,1) 0.7s forwards" }}>network</span>
           </h1>
 
-          <p className="font-inter text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed px-2" style={{ color: "rgba(255,255,255,0.7)" }}>
+          <p className="font-inter text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed px-2 hero-reveal" style={{ color: "rgba(255,255,255,0.7)", animation: "heroFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.9s forwards" }}>
             A global network of student founders, alumni, and companies built through the Blockchain Education Network.
           </p>
 
-          {/* Stats — 2x2 grid on mobile, single row on desktop */}
-          <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-6 sm:gap-10 md:gap-16 max-w-xs sm:max-w-none mx-auto">
+          {/* Stats with animated counters */}
+          <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-6 sm:gap-10 md:gap-16 max-w-xs sm:max-w-none mx-auto hero-reveal" style={{ animation: "heroFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 1.1s forwards" }}>
             {[
-              { value: "$20B+", label: "Value created" },
-              { value: "10,000+", label: "Students" },
-              { value: "200+", label: "Universities" },
-              { value: "35+", label: "Countries" },
+              { value: 20, prefix: "$", suffix: "B+", label: "Value created" },
+              { value: 10000, suffix: "+", label: "Students" },
+              { value: 200, suffix: "+", label: "Universities" },
+              { value: 35, suffix: "+", label: "Countries" },
             ].map((s) => (
               <div key={s.label} className="text-center">
-                <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">{s.value}</div>
+                <div className="font-mont font-black text-2xl sm:text-3xl md:text-4xl text-white tracking-tight">
+                  <AnimatedCounter value={s.value} prefix={s.prefix} suffix={s.suffix} />
+                </div>
                 <div className="mt-1 text-xs font-inter uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
               </div>
             ))}
           </div>
 
           {/* User avatars */}
-          <div className="mt-10 sm:mt-12 flex flex-col items-center">
+          <div className="mt-10 sm:mt-12 flex flex-col items-center hero-reveal" style={{ animation: "heroFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 1.3s forwards" }}>
             <div className="hero-users">
               {users.map((src, i) => (
                 <img key={i} src={src} alt={`Community member ${i + 1}`} className="hero-user-avatar" />
@@ -748,6 +934,22 @@ export default function BenNetwork({ universities = [] }) {
           </p>
         </div>
       </section>
+
+      <style jsx global>{`
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes heroSlideRight {
+          from { opacity: 0; transform: translateX(-30px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes heroSlideLeft {
+          from { opacity: 0; transform: translateX(30px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        .hero-reveal { opacity: 0; }
+      `}</style>
 
       <Footer />
     </div>

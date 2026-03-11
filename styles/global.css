@@ -327,26 +327,6 @@ p {
   }
 }
 
-.get-involved-split {
-  background: url("/images/get-involved-split-bg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.get-involved-bg {
-  background: url("/images/get-involved-orange-bg.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-@media only screen and (max-width: 1024px) {
-  .get-involved-bg,
-  .get-involved-split {
-    background: none;
-  }
-}
 
 .home-header {
   background: url("/images/home-header-dual-illustration.png");

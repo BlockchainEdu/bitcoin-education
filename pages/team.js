@@ -1,7 +1,6 @@
 import Footer from "../components/footer";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import NationalTeamCard from "../components/nationalTeamCard";
-import AlumniCard from "../components/alumniCard";
 import { TeamMember } from "../lib/TeamMember";
 import Head from "next/head";
 import Link from "next/link";

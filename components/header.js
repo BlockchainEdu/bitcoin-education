@@ -21,7 +21,7 @@ export default function HeaderWithLogo({ className = "", children }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const hideButtonOnPage = ["/join"];
+  const hideButtonOnPage = [];
   const shouldHideButton = hideButtonOnPage.includes(router.pathname);
 
   return (
