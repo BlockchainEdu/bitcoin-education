@@ -94,13 +94,8 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
-        source: "/partners",
-        destination: "/contact",
-        permanent: true,
-      },
-      {
         source: "/programs",
-        destination: "/opportunities",
+        destination: "/jobs",
         permanent: true,
       },
       {
@@ -125,7 +120,12 @@ module.exports = withBundleAnalyzer({
       },
       {
         source: "/get-involved",
-        destination: "/opportunities",
+        destination: "/jobs",
+        permanent: true,
+      },
+      {
+        source: "/opportunities",
+        destination: "/jobs",
         permanent: true,
       },
       {
@@ -150,7 +150,7 @@ module.exports = withBundleAnalyzer({
       },
       {
         source: "/volunteer",
-        destination: "/opportunities",
+        destination: "/jobs",
         permanent: true,
       },
       {

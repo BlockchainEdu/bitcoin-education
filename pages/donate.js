@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Footer from "../components/footer";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
-import HeroNetwork from "../components/HeroNetwork";
+import HeroLightspeed from "../components/HeroLightspeed";
 import AnimatedCounter from "../components/AnimatedCounter";
 import Stories from "../content/stories";
 import NationalTeamCard from "../components/nationalTeamCard";
@@ -210,7 +210,7 @@ export default function Donate() {
           backgroundImage: "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
           backgroundSize: "40px 40px"
         }} />
-        <HeroNetwork />
+        <HeroLightspeed />
 
         <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 lg:pt-32 lg:pb-36" style={{ zIndex: 2 }}>
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">

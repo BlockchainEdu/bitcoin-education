@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import HeaderWithLogoDark from "../../components/headerWithLogoDark";
 import Footer from "../../components/footer";
-import HeroNetwork from "../../components/HeroNetwork";
+import HeroLightspeed from "../../components/HeroLightspeed";
 import { getAllPostsMeta, getPostBySlug } from "../../lib/posts";
 
 function formatDate(d) {
@@ -167,7 +167,7 @@ export default function ArticlePage({ post }) {
               backgroundSize: "40px 40px",
             }}
           />
-          <HeroNetwork />
+          <HeroLightspeed />
 
           <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center" style={{ zIndex: 2 }}>
             <Link

@@ -188,15 +188,24 @@ async function scrape() {
 
     for (const s of topSeries) {
       try {
-        const seriesUrl = `https://cryptonomads.org/series/${s.slug}`;
-        console.log(`  Loading series: ${s.title} (${s.slug})...`);
+        const encodedSlug = encodeURIComponent(s.slug);
+        const seriesUrl = `https://cryptonomads.org/series/${encodedSlug}`;
+        console.log(`  Loading series: ${s.title} (${encodedSlug})...`);
         await page.goto(seriesUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
 
+        // Series pages may need extra time for Cloudflare + hydration
         try {
           await page.waitForSelector("script#__NEXT_DATA__", { state: "attached", timeout: 15000 });
         } catch (_) {
-          console.log(`    Skipping ${s.title} — page didn't load`);
-          continue;
+          // Wait for Cloudflare challenge, then retry
+          console.log(`    Waiting for Cloudflare on ${s.title}...`);
+          await page.waitForTimeout(8000);
+          try {
+            await page.waitForSelector("script#__NEXT_DATA__", { state: "attached", timeout: 10000 });
+          } catch (__) {
+            console.log(`    Skipping ${s.title} — page didn't load after retry`);
+            continue;
+          }
         }
 
         const seriesData = await page.evaluate(() => {

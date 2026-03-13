@@ -50,10 +50,10 @@ function JobRow({ job, onClick, isLocked }) {
   return (
     <div
       onClick={onClick}
-      className="flex items-center gap-4 sm:gap-5 py-4 px-4 sm:px-6 transition-all cursor-pointer"
+      className="flex items-center gap-4 sm:gap-6 py-5 sm:py-6 px-5 sm:px-8 transition-all cursor-pointer"
       style={{
         backgroundColor: isFeatured ? "rgba(255,135,42,0.03)" : "#fff",
-        borderBottom: "1px solid rgba(0,0,0,0.05)",
+        borderBottom: "1px solid rgba(0,0,0,0.04)",
         borderLeft: isFeatured ? "3px solid #FF872A" : "3px solid transparent",
       }}
       onMouseEnter={(e) => {
@@ -69,19 +69,19 @@ function JobRow({ job, onClick, isLocked }) {
     >
       {/* Company logo/initials */}
       <div
-        className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center font-mont font-bold"
+        className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center font-mont font-bold"
         style={{
-          fontSize: 14,
-          backgroundColor: "rgba(255,135,42,0.08)",
+          fontSize: 15,
+          backgroundColor: "rgba(255,135,42,0.07)",
           color: "#FF872A",
-          border: "1px solid rgba(255,135,42,0.12)",
+          border: "1px solid rgba(255,135,42,0.1)",
         }}
       >
         {job.company_logo ? (
           <img
             src={job.company_logo}
             alt={job.company_name}
-            className="w-full h-full rounded-xl object-contain"
+            className="w-full h-full rounded-2xl object-contain"
           />
         ) : (
           companyInitials(job.company_name)
@@ -90,10 +90,10 @@ function JobRow({ job, onClick, isLocked }) {
 
       {/* Title + company + tags */}
       <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2.5 flex-wrap">
           <h3
             className="font-mont font-bold truncate"
-            style={{ fontSize: 15, color: "#1d1d1f", letterSpacing: "-0.02em" }}
+            style={{ fontSize: 16, color: "#1d1d1f", letterSpacing: "-0.02em" }}
           >
             {job.title}
           </h3>
@@ -102,7 +102,7 @@ function JobRow({ job, onClick, isLocked }) {
               className="flex-shrink-0 font-inter font-semibold rounded-full"
               style={{
                 fontSize: 9,
-                padding: "2px 8px",
+                padding: "3px 10px",
                 backgroundColor: "rgba(255,135,42,0.1)",
                 color: "#FF872A",
                 textTransform: "uppercase",
@@ -113,32 +113,32 @@ function JobRow({ job, onClick, isLocked }) {
             </span>
           )}
         </div>
-        <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-          <span className="font-inter font-medium" style={{ fontSize: 13, color: "#424245" }}>
+        <div className="flex items-center gap-2.5 mt-1 flex-wrap">
+          <span className="font-inter font-medium" style={{ fontSize: 14, color: "#424245" }}>
             {job.company_name}
           </span>
-          <span style={{ color: "rgba(0,0,0,0.15)" }}>·</span>
-          <span className="font-inter" style={{ fontSize: 12, color: "#86868b" }}>
-            {isRemote(job.location) ? "🌍" : "📍"} {job.location}
+          <span style={{ color: "rgba(0,0,0,0.12)" }}>·</span>
+          <span className="font-inter" style={{ fontSize: 13, color: "#86868b" }}>
+            {isRemote(job.location) ? "Remote" : job.location}
           </span>
           {job.job_type && job.job_type !== "full-time" && (
             <>
-              <span style={{ color: "rgba(0,0,0,0.15)" }}>·</span>
-              <span className="font-inter" style={{ fontSize: 12, color: "#86868b", textTransform: "capitalize" }}>
+              <span style={{ color: "rgba(0,0,0,0.12)" }}>·</span>
+              <span className="font-inter" style={{ fontSize: 13, color: "#86868b", textTransform: "capitalize" }}>
                 {job.job_type}
               </span>
             </>
           )}
         </div>
         {/* Tags - hidden on mobile */}
-        <div className="hidden sm:flex items-center gap-1.5 mt-1.5">
+        <div className="hidden sm:flex items-center gap-2 mt-2.5">
           {(job.tags || []).slice(0, 3).map((tag) => (
             <span
               key={tag}
               className="font-inter rounded-full"
               style={{
                 fontSize: 11,
-                padding: "2px 10px",
+                padding: "3px 12px",
                 backgroundColor: "rgba(0,0,0,0.04)",
                 color: "#86868b",
                 letterSpacing: "-0.01em",
@@ -156,9 +156,9 @@ function JobRow({ job, onClick, isLocked }) {
       </div>
 
       {/* Salary + time */}
-      <div className="hidden sm:flex flex-col items-end gap-1 flex-shrink-0">
+      <div className="hidden sm:flex flex-col items-end gap-1.5 flex-shrink-0">
         {salary && !isLocked ? (
-          <span className="font-inter font-semibold" style={{ fontSize: 14, color: "#1d1d1f", letterSpacing: "-0.01em" }}>
+          <span className="font-inter font-semibold" style={{ fontSize: 15, color: "#1d1d1f", letterSpacing: "-0.01em" }}>
             {salary}
           </span>
         ) : salary && isLocked ? (
@@ -166,7 +166,7 @@ function JobRow({ job, onClick, isLocked }) {
             Salary hidden
           </span>
         ) : null}
-        <span className="font-inter" style={{ fontSize: 11, color: "#c7c7cc" }}>
+        <span className="font-inter" style={{ fontSize: 12, color: "#c7c7cc" }}>
           {timeAgo(job.posted_at)}
         </span>
       </div>
@@ -212,23 +212,23 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
       className="fixed inset-0 flex items-end sm:items-center justify-center"
       style={{
         zIndex: 9999,
-        backgroundColor: visible ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0)",
+        backgroundColor: visible ? "rgba(0,0,0,0.45)" : "rgba(0,0,0,0)",
         transition: "background-color 0.24s ease",
-        WebkitBackdropFilter: "blur(8px)",
-        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(12px)",
+        backdropFilter: "blur(12px)",
       }}
     >
       <div
-        className="relative w-full sm:max-w-2xl"
+        className="relative w-full sm:max-w-3xl"
         style={{
           backgroundColor: "#fff",
-          maxHeight: "92vh",
+          maxHeight: "90vh",
           overflowY: "auto",
-          borderRadius: 20,
-          boxShadow: "0 25px 80px rgba(0,0,0,0.15), 0 8px 24px rgba(0,0,0,0.08)",
-          transform: visible ? "translateY(0)" : "translateY(24px)",
+          borderRadius: 24,
+          boxShadow: "0 32px 100px rgba(0,0,0,0.18), 0 12px 32px rgba(0,0,0,0.1)",
+          transform: visible ? "translateY(0) scale(1)" : "translateY(20px) scale(0.98)",
           opacity: visible ? 1 : 0,
-          transition: "transform 0.32s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.24s ease",
+          transition: "transform 0.36s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.24s ease",
           WebkitOverflowScrolling: "touch",
         }}
       >
@@ -241,58 +241,60 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
         <button
           onClick={handleClose}
           className="absolute flex items-center justify-center rounded-full"
-          style={{ top: 16, right: 16, width: 32, height: 32, backgroundColor: "rgba(0,0,0,0.05)", zIndex: 10 }}
+          style={{ top: 20, right: 20, width: 36, height: 36, backgroundColor: "rgba(0,0,0,0.05)", zIndex: 10 }}
           aria-label="Close"
+          onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.1)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.05)"; }}
         >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.4)" strokeWidth="2.5" strokeLinecap="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.4)" strokeWidth="2.5" strokeLinecap="round">
             <path d="M18 6L6 18M6 6l12 12" />
           </svg>
         </button>
 
         {/* Orange accent bar */}
-        <div style={{ height: 4, backgroundColor: "#FF872A" }} />
+        <div style={{ height: 4, background: "linear-gradient(90deg, #FF872A, #ffb347)" }} />
 
-        <div className="px-6 sm:px-10 pt-7 pb-8 sm:pb-10">
+        <div className="px-7 sm:px-12 pt-10 pb-10 sm:pb-12">
           {/* Header */}
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-5">
             <div
-              className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center font-mont font-bold"
+              className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center font-mont font-bold"
               style={{
-                fontSize: 18,
-                backgroundColor: "rgba(255,135,42,0.08)",
+                fontSize: 20,
+                backgroundColor: "rgba(255,135,42,0.07)",
                 color: "#FF872A",
-                border: "1px solid rgba(255,135,42,0.12)",
+                border: "1px solid rgba(255,135,42,0.1)",
               }}
             >
               {job.company_logo ? (
-                <img src={job.company_logo} alt={job.company_name} className="w-full h-full rounded-xl object-contain" />
+                <img src={job.company_logo} alt={job.company_name} className="w-full h-full rounded-2xl object-contain" />
               ) : (
                 companyInitials(job.company_name)
               )}
             </div>
             <div className="flex-1 min-w-0">
-              <h2 className="font-mont font-black" style={{ fontSize: 24, color: "#1d1d1f", letterSpacing: "-0.03em", lineHeight: 1.15 }}>
+              <h2 className="font-mont font-black" style={{ fontSize: 28, color: "#1d1d1f", letterSpacing: "-0.03em", lineHeight: 1.15 }}>
                 {job.title}
               </h2>
-              <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+              <div className="flex items-center gap-2.5 mt-2 flex-wrap">
                 {job.company_url ? (
                   <a href={job.company_url} target="_blank" rel="noopener noreferrer"
                     className="font-inter font-semibold transition"
-                    style={{ fontSize: 15, color: "#FF872A" }}
+                    style={{ fontSize: 16, color: "#FF872A" }}
                   >
                     {job.company_name}
                   </a>
                 ) : (
-                  <span className="font-inter font-semibold" style={{ fontSize: 15, color: "#424245" }}>{job.company_name}</span>
+                  <span className="font-inter font-semibold" style={{ fontSize: 16, color: "#424245" }}>{job.company_name}</span>
                 )}
                 <span style={{ color: "rgba(0,0,0,0.12)" }}>·</span>
-                <span className="font-inter" style={{ fontSize: 13, color: "#86868b" }}>
+                <span className="font-inter" style={{ fontSize: 14, color: "#86868b" }}>
                   {timeAgo(job.posted_at)}
                 </span>
                 {isFeatured && (
                   <>
                     <span style={{ color: "rgba(0,0,0,0.12)" }}>·</span>
-                    <span className="font-inter font-semibold" style={{ fontSize: 11, color: "#FF872A" }}>Featured</span>
+                    <span className="font-inter font-semibold" style={{ fontSize: 12, color: "#FF872A" }}>Featured</span>
                   </>
                 )}
               </div>
@@ -300,36 +302,36 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
           </div>
 
           {/* Stats row */}
-          <div className="flex flex-wrap gap-4 sm:gap-6 mt-6 py-5" style={{ borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 sm:gap-8 mt-8 py-6" style={{ borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
             <div>
-              <div className="font-inter" style={{ fontSize: 11, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.04em" }}>Location</div>
-              <div className="font-inter font-medium mt-0.5" style={{ fontSize: 14, color: "#1d1d1f" }}>
-                {isRemote(job.location) ? "🌍" : "📍"} {job.location}
+              <div className="font-inter" style={{ fontSize: 11, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>Location</div>
+              <div className="font-inter font-medium mt-1.5" style={{ fontSize: 15, color: "#1d1d1f" }}>
+                {job.location}
               </div>
             </div>
             {salary && !isLocked && (
               <div>
-                <div className="font-inter" style={{ fontSize: 11, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.04em" }}>Salary</div>
-                <div className="font-inter font-semibold mt-0.5" style={{ fontSize: 14, color: "#1d1d1f" }}>{salary}</div>
+                <div className="font-inter" style={{ fontSize: 11, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>Salary</div>
+                <div className="font-inter font-semibold mt-1.5" style={{ fontSize: 15, color: "#1d1d1f" }}>{salary}</div>
               </div>
             )}
             {salary && isLocked && (
               <div>
-                <div className="font-inter" style={{ fontSize: 11, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.04em" }}>Salary</div>
-                <div className="font-inter mt-0.5" style={{ fontSize: 13, color: "#c7c7cc" }}>Members only</div>
+                <div className="font-inter" style={{ fontSize: 11, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>Salary</div>
+                <div className="font-inter mt-1.5" style={{ fontSize: 14, color: "#c7c7cc" }}>Members only</div>
               </div>
             )}
             <div>
-              <div className="font-inter" style={{ fontSize: 11, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.04em" }}>Type</div>
-              <div className="font-inter font-medium mt-0.5" style={{ fontSize: 14, color: "#1d1d1f", textTransform: "capitalize" }}>{job.job_type}</div>
+              <div className="font-inter" style={{ fontSize: 11, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>Type</div>
+              <div className="font-inter font-medium mt-1.5" style={{ fontSize: 15, color: "#1d1d1f", textTransform: "capitalize" }}>{job.job_type}</div>
             </div>
           </div>
 
           {/* Tags */}
           {job.tags?.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-5">
+            <div className="flex flex-wrap gap-2.5 mt-7">
               {job.tags.map((tag) => (
-                <span key={tag} className="font-inter rounded-full" style={{ fontSize: 12, padding: "4px 14px", backgroundColor: "rgba(0,0,0,0.04)", color: "#424245" }}>
+                <span key={tag} className="font-inter rounded-full" style={{ fontSize: 13, padding: "5px 16px", backgroundColor: "rgba(0,0,0,0.04)", color: "#424245" }}>
                   {tag}
                 </span>
               ))}
@@ -338,29 +340,29 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
 
           {/* Description — gated for non-members */}
           {isLocked ? (
-            <div className="mt-6">
-              <div className="relative rounded-xl overflow-hidden" style={{ minHeight: 120 }}>
-                <p className="font-inter" style={{ fontSize: 15, lineHeight: 1.73, color: "#424245", filter: "blur(5px)", userSelect: "none" }}>
+            <div className="mt-8">
+              <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: 160 }}>
+                <p className="font-inter" style={{ fontSize: 16, lineHeight: 1.8, color: "#424245", filter: "blur(5px)", userSelect: "none" }}>
                   {job.description}
                 </p>
                 <div className="absolute inset-0 flex flex-col items-center justify-center" style={{ background: "linear-gradient(transparent 0%, rgba(255,255,255,0.9) 40%, #fff 70%)" }}>
-                  <div className="w-10 h-10 rounded-full bg-benorange-500 flex items-center justify-center mb-3">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <div className="w-12 h-12 rounded-full bg-benorange-500 flex items-center justify-center mb-4">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                     </svg>
                   </div>
-                  <p className="font-mont font-bold text-sm text-benblack-500 mb-1">Join BEN to see full details</p>
-                  <p className="font-inter text-xs mb-3" style={{ color: "rgba(0,0,0,0.4)" }}>
+                  <p className="font-mont font-bold text-benblack-500 mb-1.5" style={{ fontSize: 16 }}>Join BEN to see full details</p>
+                  <p className="font-inter mb-4" style={{ fontSize: 13, color: "rgba(0,0,0,0.4)" }}>
                     Salary, description, and apply link
                   </p>
                   {onLogin && (
-                    <button onClick={onLogin} className="px-5 py-2.5 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full" style={{ boxShadow: "0 6px 16px rgba(255,135,42,0.25)" }}>
+                    <button onClick={onLogin} className="px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full" style={{ boxShadow: "0 8px 20px rgba(255,135,42,0.25)" }}>
                       Sign up free
                     </button>
                   )}
                   {onUpgrade && (
-                    <button onClick={onUpgrade} className="px-5 py-2.5 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full" style={{ boxShadow: "0 6px 16px rgba(255,135,42,0.25)" }}>
+                    <button onClick={onUpgrade} className="px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full" style={{ boxShadow: "0 8px 20px rgba(255,135,42,0.25)" }}>
                       Join BEN — $199
                     </button>
                   )}
@@ -369,18 +371,18 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
             </div>
           ) : (
             <>
-              <p className="font-inter mt-6" style={{ fontSize: 15, lineHeight: 1.73, color: "#424245", letterSpacing: "-0.008em" }}>
+              <p className="font-inter mt-8" style={{ fontSize: 16, lineHeight: 1.8, color: "#424245", letterSpacing: "-0.008em" }}>
                 {job.description}
               </p>
 
               {/* Apply button */}
-              <div className="flex gap-3 mt-8">
+              <div className="flex gap-3 mt-10">
                 <a
                   href={job.apply_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center font-inter font-semibold rounded-xl transition-colors"
-                  style={{ fontSize: 14, color: "#fff", backgroundColor: "#FF872A", padding: "14px 20px", letterSpacing: "-0.01em" }}
+                  className="flex-1 flex items-center justify-center font-inter font-semibold rounded-2xl transition-colors"
+                  style={{ fontSize: 15, color: "#fff", backgroundColor: "#FF872A", padding: "16px 24px", letterSpacing: "-0.01em" }}
                   onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#e87520"; }}
                   onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#FF872A"; }}
                 >
@@ -394,8 +396,8 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
                     href={job.company_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center font-inter font-medium rounded-xl transition-colors"
-                    style={{ fontSize: 14, color: "#1d1d1f", backgroundColor: "rgba(0,0,0,0.05)", padding: "14px 20px" }}
+                    className="flex items-center justify-center font-inter font-medium rounded-2xl transition-colors"
+                    style={{ fontSize: 15, color: "#1d1d1f", backgroundColor: "rgba(0,0,0,0.05)", padding: "16px 24px" }}
                     onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.09)"; }}
                     onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.05)"; }}
                   >
@@ -750,6 +752,8 @@ function PostJobModal({ onClose, user }) {
   );
 }
 
+const JOBS_PER_PAGE = 25;
+
 // ─── Main Page ──────────────────────────────────────────
 export default function JobsPage() {
   const { user, isPaid, loading } = useAuth();
@@ -761,6 +765,9 @@ export default function JobsPage() {
   const [selectedJob, setSelectedJob] = useState(null);
   const [showPostModal, setShowPostModal] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [page, setPage] = useState(1);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const listTopRef = useRef(null);
   const isPosted = router.query.posted === "true";
 
   // Fetch live jobs from Supabase
@@ -781,6 +788,13 @@ export default function JobsPage() {
       setShowPostModal(true);
     }
   }, [router.query.post, user]);
+
+  // Back-to-top button visibility
+  useEffect(() => {
+    const onScroll = () => setShowBackToTop(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isLocked = !user || !isPaid;
 
@@ -805,6 +819,20 @@ export default function JobsPage() {
     }
     return list;
   }, [jobs, search, typeFilter, locationFilter]);
+
+  // Reset page when filters change
+  useEffect(() => { setPage(1); }, [search, typeFilter, locationFilter]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / JOBS_PER_PAGE));
+  const paginatedJobs = filtered.slice((page - 1) * JOBS_PER_PAGE, page * JOBS_PER_PAGE);
+
+  const goToPage = (p) => {
+    const next = Math.max(1, Math.min(p, totalPages));
+    setPage(next);
+    if (listTopRef.current) {
+      listTopRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   const jobCount = jobs.length;
 
@@ -909,7 +937,7 @@ export default function JobsPage() {
             />
           </div>
 
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar" style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}>
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar" style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none", marginTop: 2 }}>
             {/* Remote filter */}
             <button
               onClick={() => setLocationFilter(locationFilter ? null : "remote")}
@@ -947,53 +975,153 @@ export default function JobsPage() {
       </div>
 
       {/* ── Job listings ── */}
-      <div className="max-w-5xl mx-auto px-0 sm:px-8 py-4 sm:py-8">
+      <div ref={listTopRef} className="max-w-5xl mx-auto px-0 sm:px-8 py-4 sm:py-8">
         <div className="sm:rounded-2xl overflow-hidden" style={{ backgroundColor: "#fff", border: "1px solid rgba(0,0,0,0.06)" }}>
-          <div className="flex items-center justify-between px-4 sm:px-6 py-3" style={{ borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-            <span className="font-inter font-medium" style={{ fontSize: 13, color: "#86868b" }}>
+          <div className="flex items-center justify-between px-5 sm:px-8 py-4" style={{ borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
+            <span className="font-inter font-medium" style={{ fontSize: 14, color: "#86868b" }}>
               {filtered.length} job{filtered.length !== 1 ? "s" : ""}
               {search && ` matching "${search}"`}
             </span>
-            {isLocked && (
-              <span className="font-inter" style={{ fontSize: 11, color: "#c7c7cc" }}>
-                Join BEN to see salaries & apply
+            {totalPages > 1 && (
+              <span className="font-inter" style={{ fontSize: 13, color: "#c7c7cc" }}>
+                Page {page} of {totalPages}
               </span>
             )}
           </div>
 
-          {filtered.map((job) => (
+          {paginatedJobs.map((job) => (
             <JobRow key={job.id} job={job} isLocked={isLocked} onClick={() => setSelectedJob(job)} />
           ))}
 
           {filtered.length === 0 && (
-            <div className="text-center py-16">
-              <p className="font-inter" style={{ fontSize: 15, color: "#86868b" }}>No jobs match your search.</p>
+            <div className="text-center py-20">
+              <p className="font-inter" style={{ fontSize: 16, color: "#86868b" }}>No jobs match your search.</p>
               <button
                 onClick={() => { setSearch(""); setTypeFilter(null); setLocationFilter(null); }}
-                className="font-inter font-medium mt-3"
+                className="font-inter font-medium mt-4"
                 style={{ fontSize: 14, color: "#FF872A", border: "none", background: "none", cursor: "pointer" }}
               >
                 Clear filters
               </button>
             </div>
           )}
+
+          {/* Pagination controls */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-1 px-5 sm:px-8 py-5" style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
+              {/* Previous */}
+              <button
+                onClick={() => goToPage(page - 1)}
+                disabled={page === 1}
+                className="flex items-center justify-center rounded-xl font-inter font-medium transition-colors"
+                style={{
+                  width: 40, height: 40, fontSize: 14,
+                  backgroundColor: page === 1 ? "transparent" : "rgba(0,0,0,0.04)",
+                  color: page === 1 ? "#d1d1d6" : "#1d1d1f",
+                  border: "none", cursor: page === 1 ? "default" : "pointer",
+                }}
+                onMouseEnter={(e) => { if (page > 1) e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.08)"; }}
+                onMouseLeave={(e) => { if (page > 1) e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.04)"; }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+
+              {/* Page numbers */}
+              {Array.from({ length: totalPages }, (_, i) => i + 1)
+                .filter((p) => {
+                  if (totalPages <= 7) return true;
+                  if (p === 1 || p === totalPages) return true;
+                  if (Math.abs(p - page) <= 1) return true;
+                  return false;
+                })
+                .reduce((acc, p, idx, arr) => {
+                  if (idx > 0 && p - arr[idx - 1] > 1) {
+                    acc.push("...");
+                  }
+                  acc.push(p);
+                  return acc;
+                }, [])
+                .map((p, idx) =>
+                  p === "..." ? (
+                    <span key={`dots-${idx}`} className="font-inter" style={{ fontSize: 14, color: "#c7c7cc", padding: "0 4px" }}>...</span>
+                  ) : (
+                    <button
+                      key={p}
+                      onClick={() => goToPage(p)}
+                      className="flex items-center justify-center rounded-xl font-inter font-medium transition-colors"
+                      style={{
+                        width: 40, height: 40, fontSize: 14,
+                        backgroundColor: p === page ? "#1d1d1f" : "transparent",
+                        color: p === page ? "#fff" : "#86868b",
+                        border: "none", cursor: "pointer",
+                      }}
+                      onMouseEnter={(e) => { if (p !== page) e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.04)"; }}
+                      onMouseLeave={(e) => { if (p !== page) e.currentTarget.style.backgroundColor = "transparent"; }}
+                    >
+                      {p}
+                    </button>
+                  )
+                )}
+
+              {/* Next */}
+              <button
+                onClick={() => goToPage(page + 1)}
+                disabled={page === totalPages}
+                className="flex items-center justify-center rounded-xl font-inter font-medium transition-colors"
+                style={{
+                  width: 40, height: 40, fontSize: 14,
+                  backgroundColor: page === totalPages ? "transparent" : "rgba(0,0,0,0.04)",
+                  color: page === totalPages ? "#d1d1d6" : "#1d1d1f",
+                  border: "none", cursor: page === totalPages ? "default" : "pointer",
+                }}
+                onMouseEnter={(e) => { if (page < totalPages) e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.08)"; }}
+                onMouseLeave={(e) => { if (page < totalPages) e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.04)"; }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Hiring CTA */}
-        <div className="mx-4 sm:mx-0 mt-6 rounded-2xl p-6 sm:p-8 text-center" style={{ background: "linear-gradient(135deg, #1a1b20 0%, #202127 100%)" }}>
-          <h3 className="font-mont font-bold text-xl text-white mb-2">Hiring in crypto?</h3>
-          <p className="font-inter text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)", maxWidth: 400, margin: "0 auto 20px" }}>
+        <div className="mx-4 sm:mx-0 mt-8 rounded-2xl p-8 sm:p-10 text-center" style={{ background: "linear-gradient(135deg, #1a1b20 0%, #202127 100%)" }}>
+          <h3 className="font-mont font-bold text-xl text-white mb-3">Hiring in crypto?</h3>
+          <p className="font-inter mb-6" style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", maxWidth: 420, margin: "0 auto 24px" }}>
             Reach thousands of crypto-native candidates. BEN members are builders, developers, and operators across Web3.
           </p>
           <button
             onClick={handlePostClick}
-            className="inline-flex items-center px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition"
-            style={{ boxShadow: "0 8px 20px rgba(255,135,42,0.3)", border: "none", cursor: "pointer" }}
+            className="inline-flex items-center px-7 py-3.5 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition"
+            style={{ boxShadow: "0 8px 24px rgba(255,135,42,0.3)", border: "none", cursor: "pointer" }}
           >
             Post a Job — $299/mo
           </button>
         </div>
       </div>
+
+      {/* ── Back to top ── */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        className="fixed flex items-center justify-center rounded-full transition-all"
+        style={{
+          bottom: 32, right: 32, width: 48, height: 48, zIndex: 90,
+          backgroundColor: "#1d1d1f",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+          opacity: showBackToTop ? 1 : 0,
+          transform: showBackToTop ? "translateY(0) scale(1)" : "translateY(16px) scale(0.9)",
+          pointerEvents: showBackToTop ? "auto" : "none",
+          border: "none", cursor: "pointer",
+        }}
+        aria-label="Back to top"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round">
+          <path d="M18 15l-6-6-6 6" />
+        </svg>
+      </button>
 
       {/* ── Modals ── */}
       {selectedJob && (

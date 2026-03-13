@@ -1,6 +1,6 @@
 import Footer from "../components/footer";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
-import HeroNetwork from "../components/HeroNetwork";
+import HeroLightspeed from "../components/HeroLightspeed";
 import AnimatedCounter from "../components/AnimatedCounter";
 import NationalTeamCard from "../components/nationalTeamCard";
 import { TeamMember } from "../lib/TeamMember";
@@ -391,7 +391,7 @@ export default function About() {
             backgroundSize: "40px 40px",
           }}
         />
-        <HeroNetwork />
+        <HeroLightspeed />
 
         <div className="relative max-w-4xl mx-auto px-6 sm:px-10 py-20 md:py-28 text-center" style={{ zIndex: 2 }}>
           <span

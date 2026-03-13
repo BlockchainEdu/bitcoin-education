@@ -183,8 +183,8 @@ function initialsFromName(name) {
   return (a + b).toUpperCase();
 }
 
-// ── Interactive network canvas for hero ──────────────────────────────
-function NetworkCanvas({ pointerRef, pulsesRef }) {
+// ── Gamified interactive network canvas (Fruit Ninja x Galaga x Temple Run) ──
+function NetworkCanvas({ pointerRef, pulsesRef, sparksRef, particlesRef, targetsRef, gameRef }) {
   const cvs = useRef(null);
 
   useEffect(() => {
@@ -195,6 +195,7 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
     const N = mob ? 50 : 120;
     const LINK = mob ? 90 : 150;
     const PR = 240;
+    const HIT_R = mob ? 46 : 38;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let W, H, raf;
 
@@ -207,30 +208,92 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
     }
     resize();
 
-    // Particles spawn from a single point and explode outward (big bang)
     const cx = W / 2, cy = H * 0.42;
     const pts = Array.from({ length: N }, () => {
       const isHub = Math.random() < 0.12;
-      // Tight cluster at center — all particles start at the same point
       const angle = Math.random() * Math.PI * 2;
       const dist = Math.random() * 4;
       return {
         x: cx + Math.cos(angle) * dist,
         y: cy + Math.sin(angle) * dist,
         tx: Math.random() * W, ty: Math.random() * H,
-        // Give initial outward velocity for the explosion feel
         vx: Math.cos(angle) * (2 + Math.random() * 4),
         vy: Math.sin(angle) * (2 + Math.random() * 4),
         r: isHub ? 2.2 + Math.random() * 1.5 : 0.7 + Math.random() * 1.3,
-        o: Math.random() < 0.3,       // orange accent node
-        hub: isHub,                     // larger "hub" nodes (people)
-        drift: 0.15 + Math.random() * 0.35,  // ambient drift speed
+        o: Math.random() < 0.3,
+        hub: isHub,
+        drift: 0.15 + Math.random() * 0.35,
         phase: Math.random() * Math.PI * 2,
+        energy: 0,
       };
     });
+    particlesRef.current = pts;
+
+    // Hub indices pool for spawning targets
+    const hubPool = pts.map((p, i) => p.hub ? i : -1).filter(i => i >= 0);
+    const targets = targetsRef.current; // shared array of { idx, born, lifespan }
+    const game = gameRef.current;
+
+    // ── Escalation curves (Temple Run / Galaga style) ──
+    // Returns how many targets should be alive simultaneously
+    function maxTargets() {
+      const s = game.score;
+      if (s < 5) return 1;
+      if (s < 15) return 2;
+      if (s < 30) return 3;
+      return Math.min(4, Math.floor(s / 15) + 1);
+    }
+    // Target lifespan shrinks as score increases (speed ramp)
+    function targetLife() {
+      const base = mob ? 4200 : 3800;
+      const min = mob ? 2000 : 1600;
+      return Math.max(min, base - game.score * 40);
+    }
+    // Spawn delay between waves
+    function spawnDelay() {
+      const base = 1200;
+      const min = 300;
+      return Math.max(min, base - game.score * 25);
+    }
+
+    function pickNewTarget() {
+      if (hubPool.length === 0) return -1;
+      const activeIdxs = new Set(targets.map(t => t.idx));
+      const available = hubPool.filter(i => !activeIdxs.has(i));
+      if (available.length === 0) return hubPool[Math.floor(Math.random() * hubPool.length)];
+      return available[Math.floor(Math.random() * available.length)];
+    }
+
+    function spawnTarget() {
+      if (targets.length >= maxTargets()) return;
+      const idx = pickNewTarget();
+      if (idx < 0) return;
+      targets.push({ idx, born: performance.now(), lifespan: targetLife() });
+    }
+
+    // First target after big-bang
+    let spawnTimer = setTimeout(() => {
+      spawnTarget();
+      startSpawnLoop();
+    }, 3200);
+
+    let spawnInterval = null;
+    function startSpawnLoop() {
+      if (spawnInterval) clearInterval(spawnInterval);
+      spawnInterval = setInterval(() => {
+        spawnTarget();
+      }, spawnDelay());
+    }
+    // Re-calibrate spawn rate as score changes
+    let lastScoreCheck = 0;
+    function recalibrateSpawns() {
+      if (game.score !== lastScoreCheck) {
+        lastScoreCheck = game.score;
+        startSpawnLoop();
+      }
+    }
 
     const t0 = performance.now();
-    // Shockwave ring that expands from center
     let shockwave = { r: 0, a: 0.7 };
 
     function draw() {
@@ -239,11 +302,46 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
       const mx = pointerRef.current.x, my = pointerRef.current.y;
       const expanding = age < 2.5;
       const ps = pulsesRef.current;
+      const spks = sparksRef.current;
       const breathe = Math.sin(now * 0.001) * 0.12 + 1;
+      const streak = game.streak;
+
+      // Recalibrate spawn rate periodically
+      recalibrateSpawns();
+
+      // ── Expire missed targets (Fruit Ninja: let a fruit fall = penalty) ──
+      for (let i = targets.length - 1; i >= 0; i--) {
+        const t = targets[i];
+        if (now - t.born > t.lifespan) {
+          // Missed! Streak breaks, small "poof" effect
+          const mp = pts[t.idx];
+          if (mp) {
+            for (let s = 0; s < 4; s++) {
+              const a = Math.random() * Math.PI * 2;
+              spks.push({ x: mp.x, y: mp.y, vx: Math.cos(a) * 1.5, vy: Math.sin(a) * 1.5, life: 0.4, orange: false });
+            }
+          }
+          targets.splice(i, 1);
+          if (game.streak > 0) {
+            game.streak = 0;
+            game.onStreakBreak?.();
+          }
+        }
+      }
 
       ctx.clearRect(0, 0, W, H);
 
-      // Big bang center flash — bright glow that fades over first 1.5s
+      // ── Streak intensity overlay (Temple Run speed glow) ──
+      if (streak >= 5) {
+        const intensity = Math.min((streak - 5) / 20, 0.5);
+        const glowGrad = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * 0.6);
+        glowGrad.addColorStop(0, `rgba(255,135,42,${intensity * 0.06})`);
+        glowGrad.addColorStop(1, "rgba(255,135,42,0)");
+        ctx.fillStyle = glowGrad;
+        ctx.fillRect(0, 0, W, H);
+      }
+
+      // Big bang center flash
       if (age < 1.5) {
         const flashAlpha = (1 - age / 1.5) * 0.6;
         const flashR = 30 + age * 200;
@@ -257,12 +355,10 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
 
       // Expanding shockwave ring
       if (shockwave.a > 0) {
-        shockwave.r += 6;
-        shockwave.a -= 0.008;
+        shockwave.r += 6; shockwave.a -= 0.008;
         ctx.beginPath(); ctx.arc(cx, cy, shockwave.r, 0, Math.PI * 2);
         ctx.strokeStyle = `rgba(255,135,42,${shockwave.a})`;
         ctx.lineWidth = 2.5; ctx.stroke();
-        // Inner ring
         ctx.beginPath(); ctx.arc(cx, cy, shockwave.r * 0.6, 0, Math.PI * 2);
         ctx.strokeStyle = `rgba(255,255,255,${shockwave.a * 0.3})`;
         ctx.lineWidth = 1; ctx.stroke();
@@ -274,16 +370,28 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
         if (ps[i].a <= 0) ps.splice(i, 1);
       }
 
+      // Update sparks
+      for (let i = spks.length - 1; i >= 0; i--) {
+        const s = spks[i];
+        s.x += s.vx; s.y += s.vy;
+        s.vx *= 0.95; s.vy *= 0.95;
+        s.life -= 0.02;
+        if (s.life <= 0) spks.splice(i, 1);
+      }
+
+      // Build set of active target indices for glow effect
+      const activeTargetSet = new Set(targets.map(t => t.idx));
+
       // Update particles
       for (const p of pts) {
+        p.energy *= 0.95;
+
         if (expanding) {
-          // Explosive burst then spring toward target
           const spring = age < 0.5 ? 0.005 : 0.02 + Math.min(age * 0.012, 0.03);
           p.vx += (p.tx - p.x) * spring;
           p.vy += (p.ty - p.y) * spring;
           p.vx *= age < 0.5 ? 0.96 : 0.92; p.vy *= age < 0.5 ? 0.96 : 0.92;
         } else {
-          // Gentle ambient drift (alive, not static)
           p.phase += 0.008;
           p.vx += Math.sin(p.phase + p.y * 0.003) * p.drift * 0.02;
           p.vy += Math.cos(p.phase + p.x * 0.003) * p.drift * 0.02;
@@ -295,64 +403,58 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
             if (Math.abs(d - pu.r) < 50 && d > 0) {
               const f = (1 - Math.abs(d - pu.r) / 50) * 0.8;
               p.vx += (dx / d) * f; p.vy += (dy / d) * f;
+              p.energy = Math.min(p.energy + f * 0.5, 1);
             }
           }
 
-          // Pointer attraction
+          // Pointer attraction (desktop)
           if (!mob) {
             const dx = mx - p.x, dy = my - p.y;
             const d = Math.sqrt(dx * dx + dy * dy);
             if (d < PR && d > 0) {
-              const pull = p.hub ? 0.06 : 0.04;
-              p.vx += (dx / d) * pull;
-              p.vy += (dy / d) * pull;
+              p.vx += (dx / d) * (p.hub ? 0.06 : 0.04);
+              p.vy += (dy / d) * (p.hub ? 0.06 : 0.04);
             }
           }
           p.vx *= 0.985; p.vy *= 0.985;
         }
         p.x += p.vx; p.y += p.vy;
-        // Wrap edges
         if (p.x < -20) p.x += W + 40; if (p.x > W + 20) p.x -= W + 40;
         if (p.y < -20) p.y += H + 40; if (p.y > H + 20) p.y -= H + 40;
       }
 
       // ── Draw connections ──
-      // Batch by style to reduce state changes
       ctx.lineWidth = 0.5;
       for (let i = 0; i < pts.length; i++) {
         for (let j = i + 1; j < pts.length; j++) {
           const a = pts[i], b = pts[j];
           const dx = a.x - b.x, dy = a.y - b.y;
           const dsq = dx * dx + dy * dy;
-          // Hub-to-hub links reach further (like strong ties in a network)
           const maxD = (a.hub && b.hub) ? LINK * 1.8 : LINK;
           if (dsq < maxD * maxD) {
             const d = Math.sqrt(dsq);
             const t = 1 - d / maxD;
-
-            // Pointer proximity boost
             const mdx = (a.x + b.x) / 2 - mx, mdy = (a.y + b.y) / 2 - my;
             const mdsq = mdx * mdx + mdy * mdy;
             const nearPtr = mdsq < PR * PR;
             const boost = nearPtr ? 0.22 : 0;
-
+            const eBoost = (a.energy + b.energy) * 0.15;
             const isOrange = a.o || b.o;
             const isHubLink = a.hub && b.hub;
 
             if (isHubLink) {
-              // Strong network backbone -- visible, pulsing
               const pulse = Math.sin(now * 0.002 + i * 0.5) * 0.3 + 0.7;
               ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
               ctx.strokeStyle = isOrange
-                ? `rgba(255,135,42,${t * 0.25 * pulse + boost})`
-                : `rgba(255,255,255,${t * 0.18 * pulse + boost})`;
+                ? `rgba(255,135,42,${t * 0.25 * pulse + boost + eBoost})`
+                : `rgba(255,255,255,${t * 0.18 * pulse + boost + eBoost})`;
               ctx.lineWidth = 1 + t * 0.8;
               ctx.stroke();
             } else {
               ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
               ctx.strokeStyle = isOrange
-                ? `rgba(255,135,42,${t * 0.13 + boost})`
-                : `rgba(255,255,255,${t * 0.09 + boost})`;
+                ? `rgba(255,135,42,${t * 0.13 + boost + eBoost})`
+                : `rgba(255,255,255,${t * 0.09 + boost + eBoost})`;
               ctx.lineWidth = 0.5;
               ctx.stroke();
             }
@@ -361,7 +463,8 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
       }
 
       // ── Draw particles ──
-      for (const p of pts) {
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
         const dx = mx - p.x, dy = my - p.y;
         const dsq = dx * dx + dy * dy;
         const near = dsq < PR * PR;
@@ -369,50 +472,119 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
         const proximity = near ? 1 - d / PR : 0;
 
         const baseAlpha = p.hub ? 0.6 : 0.3;
-        const alpha = baseAlpha + proximity * 0.5;
+        const alpha = baseAlpha + proximity * 0.5 + p.energy * 0.4;
         const rad = p.hub
-          ? p.r * breathe * (1 + proximity * 0.6)
-          : p.r * (1 + proximity * 0.5);
+          ? p.r * breathe * (1 + proximity * 0.6 + p.energy * 0.5)
+          : p.r * (1 + proximity * 0.5 + p.energy * 0.3);
 
-        // Glow for hub nodes near pointer
-        if (p.hub && near) {
-          const glowR = rad * 5;
+        // Glow for energized or near-pointer particles
+        if ((p.hub && near) || p.energy > 0.3) {
+          const glowR = rad * (5 + p.energy * 3);
+          const gAlpha = Math.max(0.12 * proximity, p.energy * 0.15);
           const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowR);
           if (p.o) {
-            grad.addColorStop(0, `rgba(255,135,42,${0.12 * proximity})`);
+            grad.addColorStop(0, `rgba(255,135,42,${gAlpha})`);
             grad.addColorStop(1, "rgba(255,135,42,0)");
           } else {
-            grad.addColorStop(0, `rgba(255,255,255,${0.08 * proximity})`);
+            grad.addColorStop(0, `rgba(255,255,255,${gAlpha * 0.7})`);
             grad.addColorStop(1, "rgba(255,255,255,0)");
           }
           ctx.beginPath(); ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
           ctx.fillStyle = grad; ctx.fill();
         }
 
-        // Core dot
         ctx.beginPath(); ctx.arc(p.x, p.y, rad, 0, Math.PI * 2);
         ctx.fillStyle = p.o
           ? `rgba(255,135,42,${alpha})`
           : `rgba(255,255,255,${alpha})`;
         ctx.fill();
 
-        // Bright center on hubs
         if (p.hub) {
           ctx.beginPath(); ctx.arc(p.x, p.y, rad * 0.35, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,255,255,${0.3 + proximity * 0.5})`;
+          ctx.fillStyle = `rgba(255,255,255,${0.3 + proximity * 0.5 + p.energy * 0.3})`;
           ctx.fill();
         }
+      }
+
+      // ── Draw target indicators (Fruit Ninja countdown ring) ──
+      if (!expanding) {
+        for (const t of targets) {
+          const p = pts[t.idx];
+          if (!p) continue;
+          const elapsed = now - t.born;
+          const remaining = 1 - elapsed / t.lifespan; // 1 → 0
+          const urgent = remaining < 0.3;
+          const pulse = Math.sin(now * (urgent ? 0.012 : 0.004)) * 0.5 + 0.5;
+
+          const ringR = HIT_R * (0.75 + pulse * 0.25);
+
+          // Outer glow — intensifies as time runs out
+          const glowA = (0.1 + pulse * 0.08) * (urgent ? 1.8 : 1);
+          const glowGrad = ctx.createRadialGradient(p.x, p.y, ringR * 0.2, p.x, p.y, ringR * 2);
+          glowGrad.addColorStop(0, `rgba(255,135,42,${glowA})`);
+          glowGrad.addColorStop(1, "rgba(255,135,42,0)");
+          ctx.beginPath(); ctx.arc(p.x, p.y, ringR * 2, 0, Math.PI * 2);
+          ctx.fillStyle = glowGrad; ctx.fill();
+
+          // Countdown arc — sweeps from full circle to empty (like a fuse)
+          const startAngle = -Math.PI / 2;
+          const endAngle = startAngle + remaining * Math.PI * 2;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, ringR, startAngle, endAngle);
+          ctx.strokeStyle = urgent
+            ? `rgba(255,${80 + Math.floor(pulse * 55)},42,${0.7 + pulse * 0.3})`
+            : `rgba(255,135,42,${0.5 + pulse * 0.3})`;
+          ctx.lineWidth = urgent ? 3 : 2;
+          ctx.stroke();
+
+          // Background ring (faded full circle)
+          ctx.beginPath(); ctx.arc(p.x, p.y, ringR, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(255,135,42,0.1)";
+          ctx.lineWidth = 1; ctx.stroke();
+
+          // Inner rotating dashes
+          const rot = now * (urgent ? 0.003 : 0.001);
+          const segs = 6;
+          for (let s = 0; s < segs; s++) {
+            const a1 = rot + (s / segs) * Math.PI * 2;
+            const a2 = a1 + (0.4 / segs) * Math.PI * 2;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, ringR * 0.55, a1, a2);
+            ctx.strokeStyle = `rgba(255,135,42,${0.15 + pulse * 0.1})`;
+            ctx.lineWidth = 1; ctx.stroke();
+          }
+
+          // Center crosshair dot
+          ctx.beginPath(); ctx.arc(p.x, p.y, 2 + pulse, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,135,42,${0.6 + pulse * 0.4})`;
+          ctx.fill();
+        }
+      }
+
+      // ── Draw sparks ──
+      for (const s of spks) {
+        const a = s.life;
+        const sparkR = s.big ? 2 + a * 3 : 1.2 + a * 2;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, sparkR, 0, Math.PI * 2);
+        ctx.fillStyle = s.orange
+          ? `rgba(255,135,42,${a * 0.9})`
+          : `rgba(255,255,255,${a * 0.7})`;
+        ctx.fill();
       }
 
       // ── Draw pulse rings ──
       for (const pu of ps) {
         ctx.beginPath(); ctx.arc(pu.x, pu.y, pu.r, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(255,135,42,${pu.a})`;
-        ctx.lineWidth = 2; ctx.stroke();
-        // Second fainter ring
-        ctx.beginPath(); ctx.arc(pu.x, pu.y, pu.r * 0.7, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(255,135,42,${pu.a * 0.4})`;
-        ctx.lineWidth = 1; ctx.stroke();
+        ctx.strokeStyle = pu.hit
+          ? `rgba(255,135,42,${pu.a})`
+          : `rgba(255,255,255,${pu.a * 0.25})`;
+        ctx.lineWidth = pu.hit ? 2.5 : 1; ctx.stroke();
+        if (pu.hit) {
+          ctx.beginPath(); ctx.arc(pu.x, pu.y, pu.r * 0.6, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(255,135,42,${pu.a * 0.3})`;
+          ctx.lineWidth = 1; ctx.stroke();
+        }
       }
 
       raf = requestAnimationFrame(draw);
@@ -420,8 +592,13 @@ function NetworkCanvas({ pointerRef, pulsesRef }) {
     draw();
 
     window.addEventListener("resize", resize);
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
-  }, [pointerRef, pulsesRef]);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", resize);
+      clearTimeout(spawnTimer);
+      if (spawnInterval) clearInterval(spawnInterval);
+    };
+  }, [pointerRef, pulsesRef, sparksRef, particlesRef, targetsRef, gameRef]);
 
   return <canvas ref={cvs} className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }} aria-hidden="true" />;
 }
@@ -483,9 +660,136 @@ export default function BenNetwork({ universities = [] }) {
 
   const users = USERS;
 
-  // Hero interactive network
+  // Hero interactive network — Fruit Ninja x Galaga x Temple Run
   const heroPointer = useRef({ x: -9999, y: -9999 });
   const heroPulses = useRef([]);
+  const heroSparks = useRef([]);
+  const heroParticles = useRef([]);
+  const heroTargets = useRef([]); // array of { idx, born, lifespan }
+  const heroGame = useRef({ score: 0, streak: 0, bestStreak: 0, multiplier: 1, onStreakBreak: null });
+  const [displayScore, setDisplayScore] = useState(0);
+  const [displayStreak, setDisplayStreak] = useState(0);
+  const [displayMult, setDisplayMult] = useState(1);
+  const [floatingScores, setFloatingScores] = useState([]);
+  const [streakBroken, setStreakBroken] = useState(false);
+
+  // Wire up streak break callback (canvas calls this when a target expires)
+  useEffect(() => {
+    heroGame.current.onStreakBreak = () => {
+      setDisplayStreak(0);
+      setDisplayMult(1);
+      heroGame.current.multiplier = 1;
+      if (heroGame.current.score > 0) {
+        setStreakBroken(true);
+        setTimeout(() => setStreakBroken(false), 600);
+      }
+    };
+  }, []);
+
+  const handleHeroTap = useCallback((clientX, clientY, rect) => {
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const pts = heroParticles.current;
+    const targets = heroTargets.current;
+    const game = heroGame.current;
+    const mob = window.innerWidth < 768;
+    const hitR = mob ? 46 : 38;
+
+    if (targets.length === 0) {
+      heroPulses.current.push({ x, y, r: 0, a: 0.15, hit: false });
+      return;
+    }
+
+    // Check all targets — find closest hit (Fruit Ninja: you can slice multiple)
+    let hitIdx = -1;
+    let hitDist = Infinity;
+    for (let i = 0; i < targets.length; i++) {
+      const tp = pts[targets[i].idx];
+      if (!tp) continue;
+      const dx = x - tp.x, dy = y - tp.y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < hitR && d < hitDist) {
+        hitDist = d;
+        hitIdx = i;
+      }
+    }
+
+    if (hitIdx >= 0) {
+      const target = targets[hitIdx];
+      const tp = pts[target.idx];
+
+      // ── HIT! ──
+      game.streak += 1;
+      if (game.streak > game.bestStreak) game.bestStreak = game.streak;
+
+      // Multiplier escalation (Temple Run style): x1 → x2 at 5, x3 at 12, x4 at 20, x5 at 30
+      const newMult = game.streak < 5 ? 1 : game.streak < 12 ? 2 : game.streak < 20 ? 3 : game.streak < 30 ? 4 : 5;
+      game.multiplier = newMult;
+
+      const points = newMult;
+      game.score += points;
+      setDisplayScore(game.score);
+      setDisplayStreak(game.streak);
+      setDisplayMult(newMult);
+
+      // Satisfying pulse (bigger at higher multiplier)
+      heroPulses.current.push({ x: tp.x, y: tp.y, r: 0, a: 0.5 + newMult * 0.1, hit: true });
+
+      // Spark burst — scales with multiplier (Galaga bonus stage vibes)
+      const sparkCount = 8 + newMult * 3;
+      for (let i = 0; i < sparkCount; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 1.5 + Math.random() * (3 + newMult);
+        heroSparks.current.push({
+          x: tp.x, y: tp.y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 0.4 + Math.random() * 0.5,
+          orange: Math.random() < 0.5 + newMult * 0.08,
+          big: newMult >= 3 && Math.random() < 0.3,
+        });
+      }
+
+      // Milestone bursts at streak 5, 10, 15, 20... (Galaga challenging stage feel)
+      if (game.streak % 5 === 0) {
+        for (let i = 0; i < 20; i++) {
+          const a = (i / 20) * Math.PI * 2;
+          heroSparks.current.push({
+            x: tp.x, y: tp.y,
+            vx: Math.cos(a) * 6,
+            vy: Math.sin(a) * 6,
+            life: 0.7 + Math.random() * 0.3,
+            orange: true,
+            big: true,
+          });
+        }
+      }
+
+      tp.energy = 1;
+
+      // Floating score popup
+      const id = Date.now() + Math.random();
+      setFloatingScores((prev) => [...prev.slice(-8), {
+        id, x: tp.x, y: tp.y, points, mult: newMult, streak: game.streak,
+        milestone: game.streak % 5 === 0 && game.streak > 0,
+      }]);
+      setTimeout(() => setFloatingScores((prev) => prev.filter((f) => f.id !== id)), 1100);
+
+      // Remove this target
+      targets.splice(hitIdx, 1);
+    } else {
+      // Miss — faint ripple, streak resets
+      heroPulses.current.push({ x, y, r: 0, a: 0.12, hit: false });
+      if (game.streak > 0) {
+        game.streak = 0;
+        game.multiplier = 1;
+        setDisplayStreak(0);
+        setDisplayMult(1);
+        setStreakBroken(true);
+        setTimeout(() => setStreakBroken(false), 600);
+      }
+    }
+  }, []);
 
   const allUniFlat = useMemo(() => {
     return sortUniversitiesDesc((universities || []).filter((it) => it?.name));
@@ -620,15 +924,78 @@ export default function BenNetwork({ universities = [] }) {
         style={{ background: "linear-gradient(165deg, #1a1b20 0%, #202127 40%, #1a1b20 100%)" }}
         onMouseMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); heroPointer.current = { x: e.clientX - r.left, y: e.clientY - r.top }; }}
         onMouseLeave={() => { heroPointer.current = { x: -9999, y: -9999 }; }}
-        onClick={(e) => { const r = e.currentTarget.getBoundingClientRect(); heroPulses.current.push({ x: e.clientX - r.left, y: e.clientY - r.top, r: 0, a: 0.6 }); }}
+        onClick={(e) => { handleHeroTap(e.clientX, e.clientY, e.currentTarget.getBoundingClientRect()); }}
+        onTouchStart={(e) => { if (e.touches.length) { const r = e.currentTarget.getBoundingClientRect(); handleHeroTap(e.touches[0].clientX, e.touches[0].clientY, r); } }}
         onTouchMove={(e) => { if (e.touches.length) { const r = e.currentTarget.getBoundingClientRect(); heroPointer.current = { x: e.touches[0].clientX - r.left, y: e.touches[0].clientY - r.top }; } }}
         onTouchEnd={() => { heroPointer.current = { x: -9999, y: -9999 }; }}
       >
         <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(ellipse at 50% 40%, rgba(255,135,42,0.12) 0%, transparent 50%)" }} aria-hidden="true" />
         <div className="absolute inset-0" style={{ opacity: 0.03, backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)", backgroundSize: "40px 40px" }} aria-hidden="true" />
 
-        {/* Interactive network canvas */}
-        <NetworkCanvas pointerRef={heroPointer} pulsesRef={heroPulses} />
+        {/* Interactive network canvas — tap the glowing nodes */}
+        <NetworkCanvas pointerRef={heroPointer} pulsesRef={heroPulses} sparksRef={heroSparks} particlesRef={heroParticles} targetsRef={heroTargets} gameRef={heroGame} />
+
+        {/* Floating score popups */}
+        {floatingScores.map((s) => (
+          <div
+            key={s.id}
+            className="absolute font-mont font-black pointer-events-none select-none"
+            style={{
+              left: s.x,
+              top: s.y,
+              zIndex: 3,
+              color: s.milestone ? "#fff" : "#FF872A",
+              fontSize: s.milestone ? 30 : s.mult >= 3 ? 26 : s.mult >= 2 ? 22 : 18,
+              transform: "translate(-50%, -50%)",
+              animation: "heroScoreFloat 1.1s cubic-bezier(0.16,1,0.3,1) forwards",
+              textShadow: s.milestone ? "0 0 20px rgba(255,135,42,0.8)" : "none",
+            }}
+          >
+            +{s.points}{s.mult > 1 ? <span style={{ fontSize: "0.65em", opacity: 0.7 }}>{" "}x{s.mult}</span> : ""}
+            {s.milestone ? <div style={{ fontSize: "0.5em", color: "#FF872A", marginTop: -2 }}>{s.streak} streak!</div> : null}
+          </div>
+        ))}
+
+        {/* Streak broken flash */}
+        {streakBroken && (
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              zIndex: 2,
+              background: "radial-gradient(ellipse at center, rgba(255,50,50,0.08), transparent 60%)",
+              animation: "heroFlashOut 0.6s ease-out forwards",
+            }}
+          />
+        )}
+
+        {/* HUD — score + streak + multiplier */}
+        {displayScore > 0 && (
+          <div
+            className="absolute font-inter select-none pointer-events-none"
+            style={{
+              bottom: "1.2rem",
+              right: "1.2rem",
+              zIndex: 3,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-end",
+              gap: "0.2rem",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "baseline", gap: "0.35rem" }}>
+              <span className="font-mont font-black" style={{ fontSize: displayScore >= 100 ? "1.6rem" : "1.3rem", color: "rgba(255,135,42,0.6)", transition: "all 0.3s" }}>{displayScore}</span>
+              <span className="text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.2)" }}>pts</span>
+            </div>
+            {displayStreak >= 3 && (
+              <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                <span className="text-xs font-semibold" style={{ color: "rgba(255,135,42,0.4)" }}>{displayStreak} streak</span>
+                {displayMult > 1 && (
+                  <span className="font-mont font-black text-xs px-1.5 py-0.5 rounded-full" style={{ backgroundColor: "rgba(255,135,42,0.15)", color: "#FF872A", fontSize: 11 }}>x{displayMult}</span>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="relative max-w-5xl mx-auto px-5 sm:px-10 pt-28 pb-16 sm:pt-32 md:pt-40 sm:pb-20 md:pb-28 text-center" style={{ zIndex: 2 }}>
           {/* Pill badge */}
@@ -747,22 +1114,22 @@ export default function BenNetwork({ universities = [] }) {
       <section className="bg-white py-16 sm:py-24 md:py-32">
         <div className="max-w-3xl mx-auto px-5 sm:px-10 text-center">
           <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-inter font-semibold tracking-wide uppercase" style={{ backgroundColor: "rgba(255,135,42,0.08)", color: "#FF872A" }}>
-            BEN Academy
+            BEN Membership
           </span>
           <h2 className="mt-5 font-mont font-bold text-3xl sm:text-4xl md:text-5xl text-benblack-500 tracking-tight leading-tight">
-            From zero to{" "}
-            <span className="text-benorange-500">Web3 career</span>
+            Learn. Build.{" "}
+            <span className="text-benorange-500">Get funded.</span>
           </h2>
           <p className="mt-5 sm:mt-6 font-inter text-base sm:text-lg leading-relaxed mx-auto" style={{ color: "rgba(0,0,0,0.45)", maxWidth: "540px" }}>
-            Self-paced courses from blockchain basics to full-stack Solidity. A job board that connects graduates with companies hiring now. Scholarships so talent is never blocked by tuition.
+            One membership unlocks courses, a job board, conference directory, builder community, and a path to venture funding. Everything you need to go from student to founder.
           </p>
 
           {/* Three pillars — icon-driven, no photos */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 mt-12 sm:mt-16">
             {[
-              { icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253", title: "Courses", desc: "Blockchain basics to Solidity. Learn at your own pace." },
-              { icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Job Board", desc: "Companies hiring Web3 talent. Internships and full-time." },
-              { icon: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342", title: "Scholarships", desc: "Apply for funding. Talent should never be blocked by tuition." },
+              { icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253", title: "Academy", desc: "Blockchain basics to Solidity. Self-paced courses and live workshops." },
+              { icon: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z", title: "Jobs", desc: "Companies hiring Web3 talent. Apply directly through BEN." },
+              { icon: "M13 10V3L4 14h7v7l9-11h-7z", title: "Ventures", desc: "Apply for funding. We back student-led startups with capital and intros." },
             ].map((pillar) => (
               <div key={pillar.title}>
                 <div className="mx-auto mb-4 flex items-center justify-center rounded-2xl" style={{ width: "56px", height: "56px", backgroundColor: "rgba(255,135,42,0.08)" }}>
@@ -778,19 +1145,19 @@ export default function BenNetwork({ universities = [] }) {
 
           <div className="mt-10 sm:mt-12 flex flex-wrap justify-center gap-3">
             <span
-              onClick={() => router.push("/opportunities")}
+              onClick={() => router.push("/academy")}
               className="inline-flex items-center gap-2 font-mont font-bold text-sm text-white px-7 py-3.5 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
               style={{ backgroundColor: "#FF872A" }}
             >
-              Get Involved
+              Join BEN — $199
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5l7 7-7 7" /></svg>
             </span>
             <span
-              onClick={() => router.push("/donate")}
+              onClick={() => router.push("/jobs")}
               className="inline-flex items-center gap-2 font-mont font-bold text-sm px-7 py-3.5 rounded-full transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
               style={{ color: "#FF872A", border: "2px solid rgba(255,135,42,0.3)" }}
             >
-              Fund a Scholarship
+              Browse Jobs
             </span>
           </div>
         </div>
@@ -1026,6 +1393,15 @@ export default function BenNetwork({ universities = [] }) {
           to { opacity: 1; transform: translateX(0); }
         }
         .hero-reveal { opacity: 0; }
+        @keyframes heroScoreFloat {
+          0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+          15% { opacity: 1; transform: translate(-50%, -65%) scale(1.25); }
+          100% { opacity: 0; transform: translate(-50%, -170%) scale(0.6); }
+        }
+        @keyframes heroFlashOut {
+          0% { opacity: 1; }
+          100% { opacity: 0; }
+        }
       `}</style>
 
       <Footer />

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Head from "next/head";
 import Script from "next/script";
 import { useRouter } from "next/router";
+import { AuthProvider } from "../lib/auth";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -136,7 +137,9 @@ function MyApp({ Component, pageProps }) {
           strategy="afterInteractive"
         />
 
-        <Component {...pageProps} />
+        <AuthProvider>
+          <Component {...pageProps} />
+        </AuthProvider>
       </>
   );
 }

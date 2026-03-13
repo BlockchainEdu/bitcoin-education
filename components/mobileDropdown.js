@@ -92,21 +92,59 @@ export default function MobileDropdown(props) {
                 <div className="mobile-menu relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                   <ul className="font-mont text-chablack-300 font-semibold">
                     <li className="my-8">
-                      <span className="cursor-pointer" onClick={() => router.push("/opportunities")}>Get Involved</span>
+                      <span className="cursor-pointer" onClick={() => router.push("/academy")}>Academy</span>
+                    </li>
+                    <li className="my-8">
+                      <span className="cursor-pointer" onClick={() => router.push("/ventures")}>Ventures</span>
+                    </li>
+                    <li className="my-8">
+                      <span className="cursor-pointer" onClick={() => router.push("/jobs")}>Jobs</span>
+                    </li>
+                    <li className="my-8">
+                      <span className="cursor-pointer" onClick={() => router.push("/conferences")}>Conferences</span>
+                    </li>
+                    <li className="my-8">
+                      <Disclosure>
+                        {({ open }) => (
+                          <>
+                            <Disclosure.Button className="flex items-center gap-2 cursor-pointer w-full">
+                              Co-Living
+                              <svg
+                                className="h-3 w-3 transition-transform"
+                                style={{ transform: open ? "rotate(180deg)" : "rotate(0)" }}
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </Disclosure.Button>
+                            <Disclosure.Panel className="mt-4 ml-4 space-y-4">
+                              <div>
+                                <span className="cursor-pointer text-sm" style={{ color: "#6e6e73" }} onClick={() => router.push("/coliving/ibiza")}>Ibiza</span>
+                              </div>
+                              <div>
+                                <span className="cursor-pointer text-sm" style={{ color: "#6e6e73" }} onClick={() => router.push("/coliving/ericeira")}>Ericeira</span>
+                              </div>
+                              <div>
+                                <span className="cursor-pointer text-sm font-bold" style={{ color: "#FF872A" }} onClick={() => router.push("/coliving/apply")}>Apply Now</span>
+                              </div>
+                            </Disclosure.Panel>
+                          </>
+                        )}
+                      </Disclosure>
                     </li>
                     <li className="my-8">
                       <span className="cursor-pointer" onClick={() => router.push("/blog")}>Blog</span>
                     </li>
-                    <li className="my-8">
-                      <span className="cursor-pointer" onClick={() => router.push("/team")}>Our People</span>
-                    </li>
                     <li className="mt-8">
-                      <span className="cursor-pointer" onClick={() => router.push("/donate")}>Support Us</span>
+                      <span className="cursor-pointer" onClick={() => router.push("/team")}>Our People</span>
                     </li>
                   </ul>
                 </div>
                 <StandardButton
-                  link="/opportunities#apply"
+                  link="/academy"
                   text="Join BEN"
                   color="orange"
                   textColor="white"
