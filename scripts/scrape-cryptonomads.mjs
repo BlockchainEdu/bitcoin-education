@@ -166,8 +166,6 @@ async function scrape() {
       series: normalizedSeries,
     };
 
-    writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
-    console.log(`\nSaved to ${OUTPUT}`);
     console.log(
       `\nTop series by event count:`
     );
@@ -178,9 +176,97 @@ async function scrape() {
         console.log(`  ${s.numEvents} events — ${s.title} (${s.location})`);
       });
 
+    // ── Phase 2: Scrape top series pages for side events ──
+    const topSeries = normalizedSeries
+      .filter((s) => s.numEvents > 3 && s.slug)
+      .sort((a, b) => b.numEvents - a.numEvents)
+      .slice(0, 20); // top 20 series
+
+    console.log(`\nScraping ${topSeries.length} series pages for side events...`);
+    const sideEvents = [];
+    const seenIds = new Set(events.map((e) => e.id));
+
+    for (const s of topSeries) {
+      try {
+        const seriesUrl = `https://cryptonomads.org/series/${s.slug}`;
+        console.log(`  Loading series: ${s.title} (${s.slug})...`);
+        await page.goto(seriesUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
+
+        try {
+          await page.waitForSelector("script#__NEXT_DATA__", { state: "attached", timeout: 15000 });
+        } catch (_) {
+          console.log(`    Skipping ${s.title} — page didn't load`);
+          continue;
+        }
+
+        const seriesData = await page.evaluate(() => {
+          const el = document.getElementById("__NEXT_DATA__");
+          return el ? JSON.parse(el.textContent) : null;
+        });
+
+        const sp = seriesData?.props?.pageProps;
+        if (!sp) continue;
+
+        const seriesEvents = sp.allEvents || sp.events || [];
+        let newCount = 0;
+
+        for (const e of seriesEvents) {
+          const eid = e.id || e.slug;
+          if (seenIds.has(eid)) continue;
+          seenIds.add(eid);
+          newCount++;
+          sideEvents.push({
+            id: eid,
+            name: e.event || e.name || e.title || "",
+            slug: e.slug || e.shortSlug || "",
+            description: e.description || "",
+            startDate: e.startDate || null,
+            endDate: e.endDate || null,
+            timezone: e.timezone || null,
+            cities: e.city || [],
+            countries: e.country || [],
+            regions: e.region || [],
+            link: e.link || null,
+            organizer: e.organizer || null,
+            twitter: e.twitter || null,
+            telegram: e.telegram || null,
+            tags: e.tags || [],
+            topics: e.topics || [],
+            series: e.series || [],
+            banner: e.banner || null,
+            logo: e.logo || null,
+            paidEvent: e.paidEvent || false,
+            promoted: e.promoted || false,
+            goingCount: (e.usersGoingObj || []).length,
+            interestedCount: (e.usersInterestedObj || []).length,
+            isSideEvent: true,
+            parentSeries: s.title,
+          });
+        }
+        console.log(`    ${s.title}: ${seriesEvents.length} total, ${newCount} new side events`);
+
+        // Rate limit between series pages
+        await page.waitForTimeout(1500);
+      } catch (err) {
+        console.log(`    Error on ${s.title}: ${err.message}`);
+      }
+    }
+
+    console.log(`\nFound ${sideEvents.length} additional side events from series pages`);
+
+    // Merge side events into main events list
+    const allMergedEvents = [...events, ...sideEvents];
+
+    output.stats.sideEvents = sideEvents.length;
+    output.stats.totalEvents = allMergedEvents.length;
+    output.events = allMergedEvents;
+
+    writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
+    console.log(`\nSaved ${allMergedEvents.length} total events to ${OUTPUT}`);
+
     // Show upcoming events
     const now = new Date().toISOString().split("T")[0];
-    const upcoming = events
+    const upcoming = allMergedEvents
       .filter((e) => e.startDate && e.startDate >= now)
       .sort((a, b) => a.startDate.localeCompare(b.startDate));
     console.log(`\nUpcoming events: ${upcoming.length}`);

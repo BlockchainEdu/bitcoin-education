@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-13T02:37:51.161Z",
+  "generatedAt": "2026-03-13T02:52:00.047Z",
   "events": [
     {
       "id": "cn-recjFFIIK2Y38m6r2",
@@ -16,8 +16,8 @@
       "ticketUrl": "https://lu.ma/ftc-sf-2026",
       "coverImage": "https://images.lumacdn.com/event-covers/nv/40382bbc-9834-4c9f-b8a5-62a4e37a66c6.jpg",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "33 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Festival",
@@ -29,9 +29,11 @@
         "Community",
         "Public Goods"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "SF Crypto Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recJDGwHp3ByVmna6",
@@ -48,8 +50,8 @@
       "ticketUrl": "https://lu.ma/renaissance26",
       "coverImage": "https://images.lumacdn.com/event-covers/48/5ec1cec1-0b2c-41fa-a7f5-f850fb95ec09.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "37 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -57,9 +59,11 @@
       "topics": [
         "AI"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "SF Crypto Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rect94xbIF7PFwhpm",
@@ -74,10 +78,10 @@
       "description": "NVIDIA GTC is the premier global AI conference, where developers, researchers, and business leaders come together to explore the next wave of AI innovation. From physical AI and AI factories to agentic AI and inference, GTC 2026 will showcase the breakthroughs shaping every industry. \n\nJoin us in venues throughout downtown San Jose for inspiring sessions, hands-on training, and opportunities to connect with experts and peers—and be part of the unique GTC experience.   ",
       "url": "https://www.nvidia.com/gtc/",
       "ticketUrl": "https://www.nvidia.com/gtc/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/San-Francisco.webp?t=2024-01-05T16%3A53%3A17.223Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "30 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -85,9 +89,11 @@
       "topics": [
         "AI"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "SF Crypto Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recHvGOzw4fj93Fkm",
@@ -104,8 +110,8 @@
       "ticketUrl": "https://www.mmerge.io/merge-sao-paulo-2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "12 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -115,7 +121,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recA8k9eSOgjzsMYJ",
@@ -132,8 +140,8 @@
       "ticketUrl": "https://www.dcblockchainsummit.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "21 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -141,9 +149,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "DC Blockchain Week",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recVjOnBh3UKfTcV5",
@@ -160,8 +170,8 @@
       "ticketUrl": "cryptopeaks.xyz",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "5 going",
+      "priceRange": "Paid",
       "tags": [
         "Other Chains",
         "Coliving"
@@ -171,7 +181,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recDHyXrRpixfUfuC",
@@ -188,7 +200,7 @@
       "ticketUrl": "https://lu.ma/stripecommonscdmx",
       "coverImage": "https://images.lumacdn.com/event-covers/va/81e11306-a3b5-46f1-88ae-25322420c933.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "2 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -199,7 +211,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recRAscrDLv8qffW7",
@@ -216,8 +230,8 @@
       "ticketUrl": "https://lu.ma/gttihhxt",
       "coverImage": "https://images.lumacdn.com/event-covers/as/6c714574-d485-4b0e-bc51-f6ce76414197.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Hack",
         "Bitcoin",
@@ -230,7 +244,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recaef8Viyg4ywW8V",
@@ -247,7 +263,7 @@
       "ticketUrl": "https://alephhackathon.notion.site/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/AlephHackathon_2026-02-04T12:01.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "2 going",
       "priceRange": null,
       "tags": [
         "Hack",
@@ -260,7 +276,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reciyCWxeHGMNzatM",
@@ -277,7 +295,7 @@
       "ticketUrl": "https://lu.ma/nepg7a02",
       "coverImage": "https://images.lumacdn.com/event-covers/3c/52682d79-5bfa-4232-90eb-9bf2c6fa1234.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "6 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -292,7 +310,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recYSe2O2EW2QZPGa",
@@ -309,8 +329,8 @@
       "ticketUrl": "https://www.fintechamericas.co/en/conference-miami",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -320,7 +340,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recI9CL4hcAFz5yyB",
@@ -335,10 +357,10 @@
       "description": "Crypto’s premiere institutional conference returns to New York City in March 2026.",
       "url": "https://blockworks.co/event/digital-asset-summit-nyc-2026",
       "ticketUrl": "https://blockworks.co/event/digital-asset-summit-nyc-2026",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/New%20York%20City.webp?t=2024-01-05T17%3A02%3A06.147Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "90 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -346,9 +368,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "DAS 2026 Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recbdp7JvwoNiP5JD",
@@ -363,10 +387,10 @@
       "description": "Next Block Expo (NBX) – The Blockchain Festival of Europe is one of the largest crypto events in CEE. NBX stands out as a premier European Web3 gathering, bringing together a diverse community of experts, builders, investors, traders, and regulators. The event offers exceptional opportunities for tech-driven networking, collaboration, and learning - all under one roof.",
       "url": "https://nextblockexpo.com/",
       "ticketUrl": "https://nextblockexpo.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Warsaw.webp?t=2024-01-05T17%3A04%3A46.397Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "9 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum",
@@ -375,9 +399,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Polish Block Chain Week",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recbrtcT1VK7oqx1R",
@@ -394,8 +420,8 @@
       "ticketUrl": "https://crypto-assets-conference.de/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -405,7 +431,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recXpKmvl24YcvwxG",
@@ -422,8 +450,8 @@
       "ticketUrl": "https://dec26.eventbrite.de",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/DigitalEuroConference2026DEC26_2025-09-18T07:59.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "8 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum",
@@ -436,7 +464,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recZyH2vxvSUudRcx",
@@ -453,8 +483,8 @@
       "ticketUrl": "https://regtechconference.co.uk/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -465,7 +495,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec2QhNJMDm5bmAWZ",
@@ -482,7 +514,7 @@
       "ticketUrl": "https://www.ethcapetown.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "2 going",
       "priceRange": null,
       "tags": [
         "Hack",
@@ -493,7 +525,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec5nvzhLJhSzbhTJ",
@@ -510,8 +544,8 @@
       "ticketUrl": "https://www.gbc-uae.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -521,7 +555,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec7mXA0VfT83u8A1",
@@ -536,10 +572,10 @@
       "description": "Our Hong Kong fair features premier galleries from Asia and beyond. It provides an in-depth overview of Asia-Pacific's astonishing diversity, as well as global artistic perspectives through Modern and contemporary works.",
       "url": "https://www.artbasel.com/hong-kong",
       "ticketUrl": "https://www.artbasel.com/hong-kong",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Hong%20Kong.webp?t=2024-01-05T17%3A02%3A25.061Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Festival",
         "Other Chains"
@@ -549,9 +585,11 @@
         "AI",
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Art Basel HK Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recuhwj3vF5VpVhcW",
@@ -568,7 +606,7 @@
       "ticketUrl": "https://www.pennblockchain.com/",
       "coverImage": "https://images.lumacdn.com/event-covers/wd/a505e99a-011e-4c0d-b22e-fa15445d527b.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "7 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -582,7 +620,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recWoMKmNa0foFstH",
@@ -599,8 +639,8 @@
       "ticketUrl": "https://www.stablesummit.xyz/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/StableSummitIVCannes_2026-02-24T11-55.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "39 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -610,9 +650,11 @@
         "Institutional",
         "Infrastructure"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHCC [9] Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recBzz4Wb5g44znvd",
@@ -629,7 +671,7 @@
       "ticketUrl": "https://lu.ma/ScalingEthCC2026",
       "coverImage": "https://images.lumacdn.com/event-covers/4u/96991264-a2ef-422b-9fe6-bd73cc4acd3e.jpg",
       "logo": null,
-      "attendees": null,
+      "attendees": "16 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -640,9 +682,11 @@
         "Chain",
         "AI"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHCC [9] Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recDnKNb6HcNf0SmW",
@@ -659,8 +703,8 @@
       "ticketUrl": "https://ethcc.io/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "153 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -668,9 +712,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHCC [9] Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec5zeActqcf4cEPK",
@@ -687,8 +733,8 @@
       "ticketUrl": "https://agora.kaiko.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "47 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -696,9 +742,11 @@
       "topics": [
         "Institutional"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHCC [9] Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recIWy2WILSCRLH7h",
@@ -713,10 +761,10 @@
       "description": "Get insights from the experts\nAttend presentations, case studies, panels, training, fireside chats and keynotes from public and private sector crypto leaders.\n\nConnect across industries\nMeet fellow experts from the leading crypto native firms, traditional financial institutions, government agencies, DeFi projects and more. Be part of the conversation.\n\nGet hands-on\nExperience our products firsthand by exploring live demos, discovering the latest releases, and meeting the Chainalysis team.",
       "url": "https://www.chainalysis.com/links-nyc/",
       "ticketUrl": "https://www.chainalysis.com/links-nyc/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/New%20York%20City.webp?t=2024-01-05T17%3A02%3A06.147Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "76 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -725,9 +773,11 @@
         "DeFi",
         "Institutional"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "DAS 2026 Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recKi7lpaP9sIxxdR",
@@ -744,8 +794,8 @@
       "ticketUrl": "https://x.com/Vault__Summit",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/VaultSummitCannes_2026-02-24T12-01.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "35 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -755,9 +805,11 @@
         "Institutional",
         "Other"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHCC [9] Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec6z04VEF1zLaZqs",
@@ -774,7 +826,7 @@
       "ticketUrl": "https://protoville.xyz",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/ProtoVille_2026-02-02T11:57.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "4 going",
       "priceRange": null,
       "tags": [
         "Coliving",
@@ -787,7 +839,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec5pxIOiaJl5nJkM",
@@ -804,8 +858,8 @@
       "ticketUrl": "https://ethglobal.com/events/cannes2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "40 going",
+      "priceRange": "Paid",
       "tags": [
         "Hack",
         "Ethereum"
@@ -813,9 +867,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHCC [9] Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recNjQ73Hr33BGca1",
@@ -832,8 +888,8 @@
       "ticketUrl": "https://aibc.world/south-america/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -844,7 +900,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recjnGeh73v8MJrlY",
@@ -861,8 +919,8 @@
       "ticketUrl": "https://ipe.city/village2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Coliving",
         "Solana",
@@ -874,7 +932,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rectgWm1kjzTwSZBN",
@@ -891,8 +951,8 @@
       "ticketUrl": "https://www.humanx.co/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -902,7 +962,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec5ovzacFEyrSThl",
@@ -917,10 +979,10 @@
       "description": "Japan’s Premier Web3 & AI Conference, April 7-8",
       "url": "https://www.teamz.co.jp/en",
       "ticketUrl": "https://www.teamz.co.jp/en",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Tokyo.webp?t=2024-01-05T16%3A53%3A42.436Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -928,9 +990,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "TEAMZ Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recvddfx7LFTpXhC1",
@@ -947,8 +1011,8 @@
       "ticketUrl": "https://dubaiaifestival.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Festival",
         "Other Chains"
@@ -958,7 +1022,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recDwBmZrortRaflr",
@@ -975,8 +1041,8 @@
       "ticketUrl": "https://moneyexpoglobal.com/abudhabi/register/en",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -986,7 +1052,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recBJBnuLt4Kv5TZP",
@@ -1003,8 +1071,8 @@
       "ticketUrl": "https://www.tahawultech.com/the-future-of-finance-conference/2026/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1014,7 +1082,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recrozoVpP8VZL7PP",
@@ -1031,8 +1101,8 @@
       "ticketUrl": "https://bitblockboom.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -1042,7 +1112,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recLq3mQWgEq452RL",
@@ -1059,8 +1131,8 @@
       "ticketUrl": "https://www.zukas.city/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Coliving",
         "Ethereum"
@@ -1070,7 +1142,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recRmoODvsUDQ0ANf",
@@ -1087,8 +1161,8 @@
       "ticketUrl": "https://ethereumzuri.ch/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/EthereumZri2026_2026-01-10T10:01.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "5 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Hack",
@@ -1101,7 +1175,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recEHz3wdRzKFz66Z",
@@ -1118,8 +1194,8 @@
       "ticketUrl": "https://zukascity.com/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/ZuKa_2026-02-14T22:15.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Coliving",
         "Conference",
@@ -1132,7 +1208,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recMpdzIjHTvDb7NT",
@@ -1149,8 +1227,8 @@
       "ticketUrl": "https://mitbitcoinexpo.org/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/MITBitcoinExpo2026_2026-01-29T04:12.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Hack",
         "Conference",
@@ -1164,7 +1242,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recDimMZIXFMbTohA",
@@ -1181,8 +1261,8 @@
       "ticketUrl": "https://zuafrique.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Coliving",
         "Ethereum"
@@ -1192,7 +1272,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rect3dFusy8enMogu",
@@ -1209,8 +1291,8 @@
       "ticketUrl": "https://www.parisblockchainweek.com/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/ParisBlockchainWeek2026_2025-07-25T13:54.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "21 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin",
@@ -1221,9 +1303,11 @@
         "Cryptography",
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Paris Blockchain Week",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recMDmWicIDmp3TsO",
@@ -1240,8 +1324,8 @@
       "ticketUrl": "https://blockchain.forum/en",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -1253,7 +1337,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recbpN1vyRrAZrUtD",
@@ -1270,8 +1356,8 @@
       "ticketUrl": "https://ai-future.com/en/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -1283,7 +1369,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec3cWRE6GtG5D47o",
@@ -1300,8 +1388,8 @@
       "ticketUrl": "https://opnext.dev/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -1312,7 +1400,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recaKtHI1hGexAXO4",
@@ -1327,10 +1417,10 @@
       "description": "​​Web3 Festival is a premier Web3 gathering co-hosted by Wanxiang Blockchain Labs and HashKey Group and organized by W3ME. Hong Kong Web3 Festival 2026 will take place on 20-23 Apr. at HKCEC. This four-day event is expecting over 50,000 visitors, more than 300 influential speaker, 150 promising Web3 projects, communities and media from all over the world.",
       "url": "https://luma.com/hkweb3festival_2026",
       "ticketUrl": "https://luma.com/hkweb3festival_2026",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Hong%20Kong.webp?t=2024-01-05T17%3A02%3A25.061Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "13 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1338,9 +1428,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Web3 Festival Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec0u47U2IR9GMCil",
@@ -1357,8 +1449,8 @@
       "ticketUrl": "https://summit2026.evewealth.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1368,7 +1460,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recME0qe3Pjl1iBRn",
@@ -1383,10 +1477,10 @@
       "description": "Featuring leaders from regulatory, ecosystem, investment, institutional finance, RWA, technical, and global categories.",
       "url": "https://sezdubai.com/",
       "ticketUrl": "https://sezdubai.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Dubai.webp?t=2024-01-05T17%3A01%3A43.414Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Festival",
@@ -1397,7 +1491,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recBqZ7wkZ57qmIRJ",
@@ -1414,8 +1510,8 @@
       "ticketUrl": "https://asia.money2020.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1425,7 +1521,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recg4mnCSxLBnsG1g",
@@ -1443,7 +1541,7 @@
       "coverImage": null,
       "logo": null,
       "attendees": null,
-      "priceRange": null,
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1453,7 +1551,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recrdEpX0jcz08WJE",
@@ -1470,7 +1570,7 @@
       "ticketUrl": "https://stellar.org/community/events/stellar-house-mexico-city",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "2 going",
       "priceRange": null,
       "tags": [
         "Hack",
@@ -1481,7 +1581,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recIfJGsM1qU3ThVa",
@@ -1498,7 +1600,7 @@
       "ticketUrl": "https://www.googlecloudevents.com/next-vegas",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "1 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -1509,7 +1611,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recDvBvlGUf3TKYOV",
@@ -1526,8 +1630,8 @@
       "ticketUrl": "https://www.reactmiami.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1537,7 +1641,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec7ncgjQx7H7imZR",
@@ -1554,8 +1660,8 @@
       "ticketUrl": "https://www.cornellblockchainconference.com/",
       "coverImage": "https://images.lumacdn.com/event-covers/wv/319c049f-1ac2-447e-9f66-f0487f290e96.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1565,7 +1671,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recLrFA8uXYklDqBP",
@@ -1582,8 +1690,8 @@
       "ticketUrl": "https://b.tc/conference/2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "16 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -1591,9 +1699,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Bitcoin 2026 Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recfXDQLQq0nNMlBZ",
@@ -1610,8 +1720,8 @@
       "ticketUrl": "https://planxconf.com/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/PlanX_2025-12-15T15:47.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "15 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1621,9 +1731,11 @@
         "Web2",
         "Real World Assets"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Token2049 Dubai Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recp2uwHhSgMG2RTS",
@@ -1638,10 +1750,10 @@
       "description": "CoinFerenceX unites the full Web3 ecosystem from foundations to builders and protocols, creating the leading hub where the decentralized economy connects, collaborates, and drives future growth.",
       "url": "https://coinferencex.com/",
       "ticketUrl": "https://coinferencex.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Dubai.webp?t=2024-01-05T17%3A01%3A43.414Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "9 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains",
@@ -1650,9 +1762,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Token2049 Dubai Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recCzYUW9EJN2Z4OF",
@@ -1667,10 +1781,10 @@
       "description": "​TOKEN2049 Dubai brings together the global Web3 industry, uniting entrepreneurs, investors, developers, industry insiders and global media - and creates unparalleled networking opportunities. This is the community that will define what’s next in the space.",
       "url": "https://www.dubai.token2049.com/",
       "ticketUrl": "https://www.dubai.token2049.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Dubai.webp?t=2024-01-05T17%3A01%3A43.414Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "53 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1679,9 +1793,11 @@
         "Chain",
         "VC"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Token2049 Dubai Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rece7kJWPEAgjRT3s",
@@ -1698,7 +1814,7 @@
       "ticketUrl": "https://stripesessions.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "1 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -1709,7 +1825,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recUGfOrRIhC6V1QL",
@@ -1726,8 +1844,8 @@
       "ticketUrl": "https://unchainedsummit.com/dubai/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "5 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1737,7 +1855,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recmnOr8W9gAzTgEn",
@@ -1752,10 +1872,10 @@
       "description": "HederaCon 2026 will be taking place in sunny Miami Beach on May 4, 2026, at the iconic Faena Forum.\n\nAfter a successful inaugural HederaCon in Denver, the Hedera community will gather for a day of collaboration and connection.\n\nPositioned between two of the most high-energy events of the year in Miami, the Formula 1 Miami Grand Prix and Consensus 2026, this will be a one-of-a-kind experience where builders, Council members, enterprises, and industry leaders come together to explore the future of trust and real-world innovation.",
       "url": "https://hederacon.hedera.com/home",
       "ticketUrl": "https://hederacon.hedera.com/home",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Miami.webp?t=2024-01-05T17%3A01%3A59.622Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1763,9 +1883,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Consensus Miami Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recAvKclsAErsp7hn",
@@ -1780,10 +1902,10 @@
       "description": "The annual gathering for Farcaster enthusiasts",
       "url": "https://www.farcon.eu/",
       "ticketUrl": "https://www.farcon.eu/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Rome.webp?t=2024-01-14T09%3A48%3A46.426Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "7 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1791,9 +1913,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Farcon Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recTd047TMD0WS7rf",
@@ -1821,7 +1945,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recfIFjxIw4rtaRWu",
@@ -1836,10 +1962,10 @@
       "description": "Since 2015, Consensus has been more than an event–it's the annual gathering of the tribes. It's where the most influential voices in blockchain, web3, and decentralized AI come together to drive innovation forward.\n\nIn 2026, Consensus brings its flagship event to Miami, an electric hub embracing crypto innovation with open arms. As the emerging capital of digital assets in North America and a vibrant gateway to Latin American markets, Miami blends entrepreneurial energy with forward-thinking policy leadership.\n\nBuilt on CoinDesk's foundation of independent, unbiased journalism, Consensus Miami will weave together breakthrough technologies, from digital assets to artificial intelligence, fostering the collaborations that define what's next.\n\nDon't miss this moment—meet us in Miami.",
       "url": "https://consensus.coindesk.com/",
       "ticketUrl": "https://consensus.coindesk.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Miami.webp?t=2024-01-05T17%3A01%3A59.622Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "17 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1847,9 +1973,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Consensus Miami Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recHF8N58aGpDCApA",
@@ -1866,8 +1994,8 @@
       "ticketUrl": "https://www.digitalfinanceforum.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1877,7 +2005,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recITe6YIFYRuOL77",
@@ -1894,8 +2024,8 @@
       "ticketUrl": "https://informaconnect.com/finovatespring/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -1905,7 +2035,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recY0n0hWEOKpWlSy",
@@ -1922,7 +2054,7 @@
       "ticketUrl": "https://lu.ma/accelerate-miami",
       "coverImage": "https://images.lumacdn.com/event-covers/0t/a797eaad-a4b7-43ae-8954-1d51d802e535.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "4 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -1931,9 +2063,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Consensus Miami Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recikd8TJr2gbUTFw",
@@ -1948,10 +2082,10 @@
       "description": "The EasyA Consensus Hackathon is where emerging developers in Web3, AI, and blockchain gather to build groundbreaking solutions.\n\nMeet us in Miami for the opportunity to compete for cash prizes, pitch live to top developers and protocols, and join our hackathon alumni who have secured millions in funding from the world’s best VCs like a16z, Founders Fund, Y Combinator and more.\n\nApply by March 17, 2026\nApproved participants receive a complimentary Developer’s Pass ($1199 USD Value).",
       "url": "https://consensus.coindesk.com/hackathon",
       "ticketUrl": "https://consensus.coindesk.com/hackathon",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Miami.webp?t=2024-01-05T17%3A01%3A59.622Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Hack",
         "Other Chains"
@@ -1960,9 +2094,11 @@
         "AI",
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Consensus Miami Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recFMfHU2BU0UnSA7",
@@ -1979,7 +2115,7 @@
       "ticketUrl": "https://events.sui.io/suifrommiami/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/SuiFromMiami_2026-03-06T07-08.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "1 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -1989,9 +2125,11 @@
         "Chain",
         "DeFi"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Consensus Miami Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec7OLdDU6Sn4aUCl",
@@ -2008,8 +2146,8 @@
       "ticketUrl": "ethprague.com",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/ETHPrague2026_2025-10-30T19:55.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "10 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Hack",
@@ -2020,9 +2158,11 @@
         "Public Goods",
         "Privacy"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHPrague Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reci32muy5g0Fipaj",
@@ -2039,8 +2179,8 @@
       "ticketUrl": "https://eurocrypt.iacr.org/2026/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -2050,7 +2190,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recFCo8la9DUtoS5T",
@@ -2067,8 +2209,8 @@
       "ticketUrl": "https://mushanghai.xyz",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/muShanghaiBeaChineseBuilderforaMonth_2026-01-22T00:22.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Coliving",
         "Festival",
@@ -2081,7 +2223,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recdHR6EsZ3FXjqx6",
@@ -2098,8 +2242,8 @@
       "ticketUrl": "https://vancouver.websummit.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2109,7 +2253,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec55FMGkW1cUkrXx",
@@ -2126,7 +2272,7 @@
       "ticketUrl": "https://www.ethcluj.org/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "3 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -2137,7 +2283,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recusOb3NjING01Jy",
@@ -2155,7 +2303,7 @@
       "coverImage": null,
       "logo": null,
       "attendees": null,
-      "priceRange": null,
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2165,7 +2313,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec24l7Giipk9nSa0",
@@ -2183,7 +2333,7 @@
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/Reg3Forum2026_2026-03-04T10-04.png",
       "logo": null,
       "attendees": null,
-      "priceRange": null,
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2195,7 +2345,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec8ilfn0KFI6kNpj",
@@ -2212,8 +2364,8 @@
       "ticketUrl": "https://lu.ma/yq4jknw5",
       "coverImage": "https://images.lumacdn.com/event-covers/oy/2a758aa9-bb81-4ddc-aafb-49fae07dcd69.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin",
@@ -2226,7 +2378,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recrkySFxAY79uJaJ",
@@ -2243,8 +2397,8 @@
       "ticketUrl": "https://stablecon.com/emea/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -2254,7 +2408,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recG4CAj6gdckep3W",
@@ -2271,8 +2427,8 @@
       "ticketUrl": "https://bankingtransformationsummit.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2282,7 +2438,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recJxt8Lk3LTog3bg",
@@ -2300,7 +2458,7 @@
       "coverImage": null,
       "logo": null,
       "attendees": null,
-      "priceRange": null,
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2310,7 +2468,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec9aR8DbMvFLQd2o",
@@ -2325,10 +2485,10 @@
       "description": "Italy's largest ETH & Web3 Conference.",
       "url": "https://www.ethmilan.xyz/",
       "ticketUrl": "https://www.ethmilan.xyz/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Milan.webp?t=2024-01-05T17%3A01%3A02.300Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "8 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum",
@@ -2337,9 +2497,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHMilan Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recplqaUPaMYax6LR",
@@ -2356,7 +2518,7 @@
       "ticketUrl": "https://hack.dev3pack.xyz",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "2 going",
       "priceRange": null,
       "tags": [
         "Hack",
@@ -2370,7 +2532,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recaXMO1mUl1qvaOU",
@@ -2387,8 +2551,8 @@
       "ticketUrl": "https://www.nordicblockchain.com/conference-2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2398,7 +2562,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recmsPD1wgPYwWelQ",
@@ -2415,8 +2581,8 @@
       "ticketUrl": "https://www.tech-week.com/boston",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2428,7 +2594,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recgiGU8CJwjYRATK",
@@ -2445,8 +2613,8 @@
       "ticketUrl": "https://unchainedsummit.com/vietnam/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2457,7 +2625,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rectwPYR70jpKrtof",
@@ -2474,8 +2644,8 @@
       "ticketUrl": "https://www.edgeesmeralda.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Coliving",
         "Ethereum"
@@ -2485,7 +2655,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reclrzFNmcq2F4Ud5",
@@ -2500,10 +2672,10 @@
       "description": "Our inaugural SXSW London Trend Report takes a deep dive into the 8 standout ideas and future-facing themes from our first event in June 2025. These ideas include:\nAgentic AI will transform work\nSpace: The Next Business Frontier\nCollective Individualism\nCommunity Driven Brands\nBusiness With Conscience\nThe HealthTech Revolution\nExperience Led Marketing\nRedefining Influence & Authority",
       "url": "https://www.sxswlondon.com/",
       "ticketUrl": "https://www.sxswlondon.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/London.webp?t=2024-01-05T16%3A52%3A42.036Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Festival",
         "Other Chains"
@@ -2511,9 +2683,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "SXSW London Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec7JjcN5cAbiE6JO",
@@ -2530,8 +2704,8 @@
       "ticketUrl": "https://icbc2026.ieee-icbc.org/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2541,7 +2715,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recUBBgSnV9S8uRYE",
@@ -2556,10 +2732,10 @@
       "description": "Tech Week is a decentralized tech conference presented by a16z. Every Tech Week, hundreds of events take place across the host city - from hackathons to panel events, community meetups and more. Every event is organized individually by startups, companies and VCs.",
       "url": "https://www.tech-week.com/",
       "ticketUrl": "https://www.tech-week.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/New%20York%20City.webp?t=2024-01-05T17%3A02%3A06.147Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2567,9 +2743,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "NYC Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reckGbq1K69Po0g1e",
@@ -2586,8 +2764,8 @@
       "ticketUrl": "https://lu.ma/yld6olfs",
       "coverImage": "https://images.lumacdn.com/event-covers/oi/55cd57a0-31cc-47aa-8eea-e5eb78bbab95.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum",
@@ -2598,9 +2776,11 @@
         "DeFi",
         "Real World Assets"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Amsterdam June Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recTsWzyAsBbszwvC",
@@ -2617,8 +2797,8 @@
       "ticketUrl": "https://europe.money2020.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "6 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2628,7 +2808,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recer0YjxKftdPxRk",
@@ -2645,8 +2827,8 @@
       "ticketUrl": "https://istanbulblockchainweek.com/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/IstanbulBlockchainWeek2026_2025-11-25T15:11.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "10 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2656,9 +2838,11 @@
         "DeFi",
         "Institutional"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Istanbul Blockchain Week ",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recnrU5Bf42gZ7wsj",
@@ -2675,7 +2859,7 @@
       "ticketUrl": "https://rio.websummit.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "7 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -2686,7 +2870,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recIyLQMFyGB6dBOP",
@@ -2703,8 +2889,8 @@
       "ticketUrl": "https://ethconf.com",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/ETHConf_2025-10-21T18:56.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "10 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -2714,9 +2900,11 @@
         "DeFi",
         "Institutional"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "NYC Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recdq1B1VkhWc9VaJ",
@@ -2733,8 +2921,8 @@
       "ticketUrl": "https://dacfp.com/events/dacfp-crypto-convergence-2026/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2744,7 +2932,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recqa3MQTSXwqUosz",
@@ -2761,8 +2951,8 @@
       "ticketUrl": "https://www.waibsummit.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Aptos",
@@ -2775,7 +2965,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recBLAxXLVErvRfF5",
@@ -2792,8 +2984,8 @@
       "ticketUrl": "https://www.superai.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2803,7 +2995,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recVEHVbyB7pJHkGR",
@@ -2820,8 +3014,8 @@
       "ticketUrl": "https://btcprague.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -2831,7 +3025,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recmIcPP0Upx6sKQ4",
@@ -2848,8 +3044,8 @@
       "ticketUrl": "https://www.ctrlshift.events/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -2860,7 +3056,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recnLBwu6iQitk2sV",
@@ -2877,7 +3075,7 @@
       "ticketUrl": "https://lu.ma/f47k4xnd",
       "coverImage": "https://images.lumacdn.com/event-covers/4v/c80dcfc1-71f1-4a97-aa91-dfb5121ec9a1.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "4 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -2889,9 +3087,11 @@
         "Privacy",
         "Infrastructure"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Berlin Blockchain Week 2026",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recd2NiUu5OAc6tJV",
@@ -2908,8 +3108,8 @@
       "ticketUrl": "https://business.bitso.com/stablecoin-conference-june-2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2919,7 +3119,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recaGwDviGT4VwXow",
@@ -2936,7 +3138,7 @@
       "ticketUrl": "https://blockchainweek.berlin",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "1 going",
       "priceRange": null,
       "tags": [
         "Festival",
@@ -2949,7 +3151,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recQIYWaFYYYfgtuX",
@@ -2964,10 +3168,10 @@
       "description": "Where the next generation discovers they don't have to rent their financial future.",
       "url": "https://dappcon.io/",
       "ticketUrl": "https://dappcon.io/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Berlin.webp?t=2024-01-05T17%3A00%3A54.591Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "5 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -2975,9 +3179,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Berlin Blockchain Week 2026",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recihWlHbhRNccdbP",
@@ -2994,8 +3200,8 @@
       "ticketUrl": "https://www.artbasel.com/basel",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "7 going",
+      "priceRange": "Paid",
       "tags": [
         "Festival",
         "Other Chains"
@@ -3004,9 +3210,11 @@
         "Other",
         "NFTs"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Art Basel Swiss Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recO4ExGK2vR60LZS",
@@ -3023,8 +3231,8 @@
       "ticketUrl": "https://lu.ma/4f1qbg8g",
       "coverImage": "https://images.lumacdn.com/event-covers/xo/6244cf3a-1fa6-44f2-bebe-6bc390e46459.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Hack",
         "Ethereum",
@@ -3037,7 +3245,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec0jXvgHy8BkasOz",
@@ -3054,8 +3264,8 @@
       "ticketUrl": "https://dutchblockchainweek.com/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/DutchBlockchainWeek_2025-11-24T11:53.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "6 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum",
@@ -3068,7 +3278,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reciDvSXf5AdzXlni",
@@ -3085,8 +3297,8 @@
       "ticketUrl": "https://www.web3experts.com.br/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/Web3ExpertsBrazil2026_2026-01-13T21:39.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum",
@@ -3099,7 +3311,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recVTExH1hddq0Xii",
@@ -3116,8 +3330,8 @@
       "ticketUrl": "https://www.globalaishow.com/riyadh/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3127,7 +3341,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recVGz1QRbV53bHJ8",
@@ -3144,8 +3360,8 @@
       "ticketUrl": "https://www.globalblockchainshow.com/riyadh/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3155,7 +3371,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recWQZ0AEHRzqyVKL",
@@ -3172,8 +3390,8 @@
       "ticketUrl": "https://www.globalgamesshow.com/riyadh/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3183,7 +3401,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recgKvU2OBU7FaCZn",
@@ -3200,8 +3420,8 @@
       "ticketUrl": "https://www.ivs.events/ja/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -3209,9 +3429,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "IVS2026 Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recmD83QHVKwvmxdC",
@@ -3228,8 +3450,8 @@
       "ticketUrl": "https://icml.cc/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3239,7 +3461,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recwD4xUvTPQOSMZu",
@@ -3256,7 +3480,7 @@
       "ticketUrl": "https://supervietnam.com",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/SUPERVIETNAM2026_2026-03-09T03-04.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "3 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -3270,7 +3494,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recS9v4Ag2gHDq14i",
@@ -3285,10 +3511,10 @@
       "description": "WebX2026 is produced by CoinPost, Japan's largest Web3 media.\nThe event will take place on July 13rd and 14th, 2026 at The Prince Park Tower in Tokyo.\n\nWebX2026 is Asia's largest global conference gathering professionals related to crypto assets, blockchain, and other Web3 technologies, offering visitors a direct interaction with companies, experts, entrepreneurs, investors, government officials, and media from Japan and abroad.",
       "url": "https://webx-asia.com/",
       "ticketUrl": "https://webx-asia.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Tokyo.webp?t=2024-01-05T16%3A53%3A42.436Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "7 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum",
@@ -3303,9 +3529,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "WebX2026 Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recGm6594boG7aGpL",
@@ -3322,8 +3550,8 @@
       "ticketUrl": "https://www.outeastsummit.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3333,7 +3561,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recawNawycylmBqDb",
@@ -3350,8 +3580,8 @@
       "ticketUrl": "https://www.futuristconference.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3359,9 +3589,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Blockchain Futurist Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recjthz10HGGwAPBk",
@@ -3378,8 +3610,8 @@
       "ticketUrl": "https://miningdisrupt.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -3389,7 +3621,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recvlIcMhvJPEgB94",
@@ -3406,7 +3640,7 @@
       "ticketUrl": "https://ethglob.al/NOMADSIIBRQ",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/ETHGlobalLisbon_2025-11-24T15:18.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "7 going",
       "priceRange": null,
       "tags": [
         "Hack",
@@ -3419,9 +3653,11 @@
         "DeFi",
         "Community"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Onchain Lisbon Week",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recIN3HUFrjBv3WY7",
@@ -3436,10 +3672,10 @@
       "description": "The conference focuses on technical innovations in the blockchain ecosystem, and brings together researchers and practioners working in the space. We aim to foster collaboration among the different communities working on blockchain protocols, cryptography, distributed systems, secure computing, and crypto-economics.",
       "url": "https://www.sbc-conference.com/2026/",
       "ticketUrl": "https://www.sbc-conference.com/2026/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Stanford.webp?t=2024-01-05T16%3A53%3A31.571Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3448,9 +3684,11 @@
         "Chain",
         "Cryptography"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "SBC Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recBZ0j8wwlO0q44g",
@@ -3467,8 +3705,8 @@
       "ticketUrl": "https://rareevo.io/2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3478,7 +3716,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec4RxEqKKNT2E2Zv",
@@ -3495,8 +3735,8 @@
       "ticketUrl": "https://www.fwbfest.info/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Festival",
         "Ethereum",
@@ -3507,7 +3747,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recbrBE6kFSOcR6SC",
@@ -3524,8 +3766,8 @@
       "ticketUrl": "https://blockchainrio.com.br/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "5 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3533,9 +3775,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Blockchain Rio Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recC7piF1LnBd9hHj",
@@ -3552,7 +3796,7 @@
       "ticketUrl": "https://www.conviction.vn/",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/CONVICTION2026_2025-12-22T03:14.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "7 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -3566,7 +3810,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec94qlP2N6qmxsqL",
@@ -3583,8 +3829,8 @@
       "ticketUrl": "https://www.salt.org/events/wyoming-blockchain-symposium-2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3594,7 +3840,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rechoWtog32JQBAGC",
@@ -3609,10 +3857,10 @@
       "description": "Our unique concept at Coinfest Asia ensures memorable engagement and valuable insights every year.",
       "url": "https://coinfest.asia/",
       "ticketUrl": "https://coinfest.asia/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Bali.webp?t=2024-01-05T16%3A50%3A03.413Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "5 going",
+      "priceRange": "Paid",
       "tags": [
         "Festival",
         "Other Chains"
@@ -3620,9 +3868,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Coinfest Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reczwxUhjYEOyp9CI",
@@ -3639,8 +3889,8 @@
       "ticketUrl": "https://www.valleyofthecommons.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Coliving",
         "Ethereum"
@@ -3652,7 +3902,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recUCrA6EAg4xjiZJ",
@@ -3669,8 +3921,8 @@
       "ticketUrl": "https://asia.b.tc/2026",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -3680,7 +3932,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recuj1Bfh8bQ1lcCx",
@@ -3697,8 +3951,8 @@
       "ticketUrl": "https://ethsafari.xyz/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -3708,7 +3962,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recywleWQHGOvoG5J",
@@ -3723,10 +3979,10 @@
       "description": "Common S3nse is a two-day conference and hackathon taking place 4-5 September during in Cypherpunk Week 🐈‍⬛️ in Amsterdam. This event brings together privacy engineers, security researchers, cryptographers, philosophers, and cypherpunks from around the world.Across talks, workshops, we will explore the technologies and ideas driving digital freedom and cryptographic protocols, privacy-preserving tools, and the political philosophy behind them. Whether you’re a builder, a thinker, or simply privacy-curious, Common S3nse is a space to learn, collaborate, and contribute to a future where Privacy, Security, and Liberty remain fundamental rights. Join us to meet the community, prototype new ideas, and push the boundaries of what’s possible.",
       "url": "https://lu.ma/commons3nse",
       "ticketUrl": "https://lu.ma/commons3nse",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Amsterdam.webp?t=2024-01-05T16%3A50%3A49.994Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Hack",
@@ -3737,9 +3993,11 @@
         "Privacy",
         "Security"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "CypherPunk Week",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec16UgO56pp4FeRO",
@@ -3756,8 +4014,8 @@
       "ticketUrl": "https://stablecon.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -3767,7 +4025,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recmZ8xPjIcLGiVBL",
@@ -3784,8 +4044,8 @@
       "ticketUrl": "https://informaconnect.com/finovatefall/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3795,7 +4055,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec5njLwoIrDSKfBg",
@@ -3812,8 +4074,8 @@
       "ticketUrl": "https://cryptoexpodubai.com/dubai",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3823,7 +4085,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec9vF9rRucykIbQm",
@@ -3840,8 +4104,8 @@
       "ticketUrl": "https://money2020middleeast.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3851,7 +4115,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recpd2Xdf1I6tLpJF",
@@ -3868,8 +4134,8 @@
       "ticketUrl": "https://www.conf3rence.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3879,7 +4145,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec6tQmQLMWsQladJ",
@@ -3896,8 +4164,8 @@
       "ticketUrl": "https://eblockchainconvention.com/european-blockchain-convention-12/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3907,7 +4175,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recKkz8hzcuuyJHKC",
@@ -3924,8 +4194,8 @@
       "ticketUrl": "https://www.humanx.co/europe",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3935,7 +4205,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rechAPqWCfqLWV3J3",
@@ -3952,7 +4224,7 @@
       "ticketUrl": "https://ethglobal.com/events/tokyo2026",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/ETHGlobalTokyo_2026-01-23T19:58.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "8 going",
       "priceRange": null,
       "tags": [
         "Hack",
@@ -3963,9 +4235,11 @@
         "AI",
         "Infrastructure"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "ETHGlobal Tokyo Week",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recYTZyEWatyMOxaz",
@@ -3982,8 +4256,8 @@
       "ticketUrl": "https://lu.ma/cvsummit2026",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/CVSummit2026_2025-12-01T13:01.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -3995,7 +4269,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec9EL6jmvTt7l3Yi",
@@ -4012,8 +4288,8 @@
       "ticketUrl": "https://www.sibos.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "7 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4023,7 +4299,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recd3lhrmHEA6eE2H",
@@ -4038,10 +4316,10 @@
       "description": "Since its inception in 2018, KBW has evolved remarkably, driven by a steadfast commitment to the community. We are deeply grateful for your continuous engagement and support.\n\nOur mission to bridge the gap between Korean and global markets and to bolster the blockchain industry has seen significant progress. KBW: IMPACT remains a vital hub where blockchain and Web3 projects, experts, and the community collaborate to share insights and establish the industry's foundation.\n",
       "url": "https://koreablockchainweek.com/",
       "ticketUrl": "https://koreablockchainweek.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Seoul.webp?t=2024-01-05T16%3A50%3A35.316Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4049,9 +4327,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Korea Blockhain Week",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reclUDTyQNpwn0z1h",
@@ -4066,10 +4346,10 @@
       "description": "The premier event will bring together entrepreneurs, regulators, founders, tech pioneers, and thought leaders to explore how businesses can innovate and maintain their competitive edge.",
       "url": "https://summit.cardano.org/",
       "ticketUrl": "https://summit.cardano.org/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Singapore.webp?t=2024-01-05T16%3A51%3A06.193Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4077,9 +4357,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "TOKEN2049 SG Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recIqkwSq82pnBdp6",
@@ -4096,8 +4378,8 @@
       "ticketUrl": "https://www.tech-week.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4109,7 +4391,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec6DEiqGsSsumQTR",
@@ -4124,9 +4408,9 @@
       "description": "Take your idea from concept to working product in just 36 hours. Whether you’re building in DeFi, infrastructure, NFTs, or AI x Web3, you’ll gain hands-on experience, personalized mentorship, and the chance to pitch your project for prizes, funding, and global recognition.\n\nBring your skills, ambition, and creativity – and help shape the future of crypto.",
       "url": "https://www.token2049.com/singapore/2049-origins",
       "ticketUrl": "https://www.token2049.com/singapore/2049-origins",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Singapore.webp?t=2024-01-05T16%3A51%3A06.193Z",
       "logo": null,
-      "attendees": null,
+      "attendees": "3 going",
       "priceRange": null,
       "tags": [
         "Hack",
@@ -4135,9 +4419,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "TOKEN2049 SG Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rectcvMwigJPr9gx7",
@@ -4152,10 +4438,10 @@
       "description": "Taking over all five floors of the iconic Marina Bay Sands, TOKEN2049 Singapore will be our biggest edition yet. Ziplining, climbing, pickleball, cold plunges, gong ceremonies and on-site massages are just the start – get ready to experience a pop-up city, hosting endless immersive experiences and unmissable side events all under one roof.",
       "url": "https://www.asia.token2049.com/",
       "ticketUrl": "https://www.asia.token2049.com/",
-      "coverImage": null,
+      "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/City%20Guide%20Banners/Singapore.webp?t=2024-01-05T16%3A51%3A06.193Z",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "14 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4165,9 +4451,11 @@
         "Chain",
         "VC"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "TOKEN2049 SG Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recZmmOOOIKlfDrjJ",
@@ -4184,8 +4472,8 @@
       "ticketUrl": "https://7.tabconf.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -4195,7 +4483,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reciwmcvrccpm8C8y",
@@ -4212,8 +4502,8 @@
       "ticketUrl": "https://us.money2020.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4223,7 +4513,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec8A6Ch3hUw4NoO2",
@@ -4240,7 +4532,7 @@
       "ticketUrl": "https://linktr.ee/ethereum.br",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "5 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -4251,7 +4543,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reci9A98QGdzSk8mq",
@@ -4268,8 +4562,8 @@
       "ticketUrl": "https://planb.lugano.ch/planb-forum/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin"
@@ -4279,7 +4573,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-rec4hioLaQL80lS2Y",
@@ -4296,8 +4592,8 @@
       "ticketUrl": "https://lu.ma/encode-london-2026",
       "coverImage": "https://images.lumacdn.com/event-covers/rp/e8523f04-ff5d-420f-8a15-84300a528b42.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Hack",
         "Other Chains",
@@ -4310,7 +4606,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recGtv4veChLC2JUE",
@@ -4327,7 +4625,7 @@
       "ticketUrl": "https://www.mmerge.io/merge-madrid-26",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
+      "attendees": "3 going",
       "priceRange": null,
       "tags": [
         "Conference",
@@ -4338,7 +4636,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recDljsFL4mQrYZ2J",
@@ -4355,8 +4655,8 @@
       "ticketUrl": "https://lu.ma/TheBridge2026",
       "coverImage": "https://images.lumacdn.com/event-covers/f0/0e2a7dd3-940d-41a3-8364-ad4fd6fbff67.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Bitcoin",
@@ -4369,7 +4669,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recdfBrWLeTYiwCFc",
@@ -4386,8 +4688,8 @@
       "ticketUrl": "https://www.fintechweek.hk/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4397,7 +4699,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recYGGdFJ2K4AQPY8",
@@ -4414,8 +4718,8 @@
       "ticketUrl": "https://lu.ma/CosmoverseHongKong",
       "coverImage": "https://images.lumacdn.com/event-covers/cj/dbf11366-bd01-4ff3-b3e3-beb629739f7e.jpg",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "5 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Cosmos"
@@ -4423,9 +4727,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Cosmoverse Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recHE1PGpMFw2l2p9",
@@ -4442,8 +4748,8 @@
       "ticketUrl": "https://devcon.org/en/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "5 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -4451,9 +4757,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Devcon 8 Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recW72C014LA54X3M",
@@ -4470,7 +4778,7 @@
       "ticketUrl": "https://ethglobal.com/events/mumbai",
       "coverImage": "https://sbcbnzaajijsbkrjsmec.supabase.co/storage/v1/object/public/event_submission_banners/ETHGlobalMumbai_2026-01-23T20:07.png",
       "logo": null,
-      "attendees": null,
+      "attendees": "5 going",
       "priceRange": null,
       "tags": [
         "Hack",
@@ -4481,9 +4789,11 @@
         "AI",
         "Infrastructure"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Devcon 8 Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recVopyGjY4X5cu3T",
@@ -4500,8 +4810,8 @@
       "ticketUrl": "https://websummit.com/web-summit-2026/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "4 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4511,7 +4821,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recwTdD83fe3d0ITC",
@@ -4528,8 +4840,8 @@
       "ticketUrl": "https://lu.ma/breakpoint2026",
       "coverImage": "https://images.lumacdn.com/event-covers/66/6b914a25-469f-47ad-8183-bb46a344de5b.png",
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "8 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Solana"
@@ -4537,9 +4849,11 @@
       "topics": [
         "Chain"
       ],
-      "cryptoWeek": null,
+      "cryptoWeek": "Breakpoint 2026 Side Events",
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recfz0VjHG14S4qIX",
@@ -4556,8 +4870,8 @@
       "ticketUrl": "https://slush.org/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4567,7 +4881,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recMqLsUj5EtDkmV8",
@@ -4584,8 +4900,8 @@
       "ticketUrl": "https://www.fintechfestival.sg/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Festival",
         "Other Chains"
@@ -4595,7 +4911,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recnu9ADV8RdSZAii",
@@ -4612,8 +4930,8 @@
       "ticketUrl": "https://auscryptocon.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4623,7 +4941,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reccaQMV5jICfJBHN",
@@ -4640,8 +4960,8 @@
       "ticketUrl": "https://blockchain-life.com/autumn2026/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4651,7 +4971,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recS8sxxU5ijggmUY",
@@ -4668,8 +4990,8 @@
       "ticketUrl": "https://blackhatmea.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "1 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4679,7 +5001,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-reck2biN2XX9ar202",
@@ -4696,8 +5020,8 @@
       "ticketUrl": "https://www.gitex.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "2 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4707,7 +5031,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recWPyQgzGUBiDv5i",
@@ -4724,8 +5050,8 @@
       "ticketUrl": "https://www.adfw.com/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "3 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Other Chains"
@@ -4735,7 +5061,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recdDM5KiU0OfKKwA",
@@ -4752,8 +5080,8 @@
       "ticketUrl": "https://ethcc.io/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "8 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -4765,7 +5093,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     },
     {
       "id": "cn-recMA1iqSYDelmgPI",
@@ -4782,8 +5112,8 @@
       "ticketUrl": "https://ethcc.io/",
       "coverImage": null,
       "logo": null,
-      "attendees": null,
-      "priceRange": null,
+      "attendees": "8 going",
+      "priceRange": "Paid",
       "tags": [
         "Conference",
         "Ethereum"
@@ -4794,7 +5124,9 @@
       ],
       "cryptoWeek": null,
       "sideEvents": [],
-      "source": "cryptonomads"
+      "source": "cryptonomads",
+      "isSideEvent": false,
+      "parentSeries": null
     }
   ],
   "series": [
