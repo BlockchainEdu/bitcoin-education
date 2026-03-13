@@ -3,6 +3,44 @@ import { createClient } from "@supabase/supabase-js";
 
 const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_SITE_URL || "https://www.blockchainedu.org";
 
+const PLAN_CONFIG = {
+  monthly: {
+    mode: "subscription",
+    price_data: {
+      currency: "usd",
+      product_data: {
+        name: "BEN Membership — Monthly",
+        description: "Full access to courses, community, job board, partner deals, and more.",
+      },
+      unit_amount: 1900, // $19.00
+      recurring: { interval: "month" },
+    },
+  },
+  annual: {
+    mode: "subscription",
+    price_data: {
+      currency: "usd",
+      product_data: {
+        name: "BEN Membership — Annual",
+        description: "Full access to courses, community, job board, partner deals, and more. Save 35%.",
+      },
+      unit_amount: 14900, // $149.00
+      recurring: { interval: "year" },
+    },
+  },
+  lifetime: {
+    mode: "payment",
+    price_data: {
+      currency: "usd",
+      product_data: {
+        name: "BEN Membership — Lifetime Access",
+        description: "Courses, community, job applications, partner deals, events, and more. Pay once, own forever.",
+      },
+      unit_amount: 29900, // $299.00
+    },
+  },
+};
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -31,25 +69,27 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Default to lifetime if no plan specified (backwards compat)
+    const plan = req.body?.plan || "lifetime";
+    const config = PLAN_CONFIG[plan];
+
+    if (!config) {
+      return res.status(400).json({ error: "Invalid plan. Use: monthly, annual, or lifetime." });
+    }
+
     const params = {
-      mode: "payment",
+      mode: config.mode,
       line_items: [
         {
           quantity: 1,
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: "BEN Membership — Lifetime Access",
-              description: "Courses, community, job applications, partner deals, events, and more.",
-            },
-            unit_amount: 19900, // $199.00
-          },
+          price_data: config.price_data,
         },
       ],
       success_url: `${ALLOWED_ORIGIN}/dashboard?welcome=true`,
-      cancel_url: `${ALLOWED_ORIGIN}/academy`,
+      cancel_url: `${ALLOWED_ORIGIN}/pricing`,
       metadata: {
         type: "membership",
+        plan,
         user_id: userId || "",
       },
     };

@@ -7,20 +7,69 @@ const supabaseAdmin = () =>
   );
 
 export default async function handler(req, res) {
-  // ── GET: List active jobs ──
+  // ── GET: List active jobs with optional filters ──
   if (req.method === "GET") {
     const supabase = supabaseAdmin();
-    const { data, error } = await supabase
+    const { q, type, remote, salary_min, tags, page, limit } = req.query;
+
+    let query = supabase
       .from("jobs")
-      .select("*")
-      .eq("status", "active")
-      .order("tier", { ascending: true }) // featured (f) before standard (s)
-      .order("posted_at", { ascending: false })
-      .limit(2000);
+      .select("*", { count: "exact" })
+      .eq("status", "active");
+
+    // Text search — title or company (sanitize input for .or() filter string)
+    if (q) {
+      const safeQ = q.replace(/[%_'"\\,().]/g, "");
+      if (safeQ.length > 0) {
+        query = query.or(`title.ilike.%${safeQ}%,company_name.ilike.%${safeQ}%`);
+      }
+    }
+
+    // Job type filter
+    if (type) {
+      query = query.eq("job_type", type);
+    }
+
+    // Remote filter
+    if (remote === "true") {
+      query = query.ilike("location", "%remote%");
+    }
+
+    // Salary floor — show jobs where salary_max >= threshold
+    if (salary_min) {
+      const min = parseInt(salary_min);
+      if (!isNaN(min)) {
+        query = query.gte("salary_max", min);
+      }
+    }
+
+    // Tag filter — job must contain this tag
+    if (tags) {
+      const tagList = tags.split(",").map((t) => t.trim()).filter(Boolean);
+      if (tagList.length > 0) {
+        query = query.contains("tags", tagList);
+      }
+    }
+
+    // Ordering: featured first, then newest
+    query = query
+      .order("tier", { ascending: true })
+      .order("posted_at", { ascending: false });
+
+    // Pagination (optional — clients can still fetch all)
+    const pageSize = Math.min(parseInt(limit) || 2000, 2000);
+    const pageNum = Math.max(parseInt(page) || 1, 1);
+    const from = (pageNum - 1) * pageSize;
+    query = query.range(from, from + pageSize - 1);
+
+    const { data, error, count } = await query;
 
     if (error) {
       return res.status(500).json({ error: "Failed to fetch jobs" });
     }
+
+    // Include total count in response header for pagination
+    res.setHeader("X-Total-Count", count || 0);
     return res.status(200).json(data || []);
   }
 

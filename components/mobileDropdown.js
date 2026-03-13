@@ -95,6 +95,9 @@ export default function MobileDropdown(props) {
                       <span className="cursor-pointer" onClick={() => router.push("/academy")}>Academy</span>
                     </li>
                     <li className="my-8">
+                      <span className="cursor-pointer" onClick={() => router.push("/pricing")}>Pricing</span>
+                    </li>
+                    <li className="my-8">
                       <span className="cursor-pointer" onClick={() => router.push("/ventures")}>Ventures</span>
                     </li>
                     <li className="my-8">

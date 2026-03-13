@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import HeaderWithLogoDark from "../../components/headerWithLogoDark";
 import Footer from "../../components/footer";
 import HeroLightspeed from "../../components/HeroLightspeed";
+import EmailGate from "../../components/EmailGate";
 import { getAllPostsMeta, getPostBySlug } from "../../lib/posts";
 
 function formatDate(d) {
@@ -272,10 +273,39 @@ export default function ArticlePage({ post }) {
               </p>
             ) : null}
 
-            <div
-              className="max-w-none blog-prose"
-              dangerouslySetInnerHTML={{ __html: contentHtml }}
-            />
+            <EmailGate
+              fallback={
+                <div>
+                  <div
+                    className="max-w-none blog-prose"
+                    style={{ maxHeight: "400px", overflow: "hidden", position: "relative" }}
+                    dangerouslySetInnerHTML={{ __html: contentHtml }}
+                  />
+                  <div
+                    style={{
+                      position: "relative",
+                      marginTop: "-120px",
+                      paddingTop: "120px",
+                      background: "linear-gradient(transparent, #FFFBF2 70%)",
+                    }}
+                  >
+                    <div className="text-center py-8">
+                      <p className="font-mont font-bold text-lg mb-2" style={{ color: "#1d1d1f" }}>
+                        Sign up free to keep reading
+                      </p>
+                      <p className="font-inter text-sm mb-5" style={{ color: "rgba(0,0,0,0.4)" }}>
+                        Create a free account to read the full article.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              }
+            >
+              <div
+                className="max-w-none blog-prose"
+                dangerouslySetInnerHTML={{ __html: contentHtml }}
+              />
+            </EmailGate>
           </div>
         </article>
 

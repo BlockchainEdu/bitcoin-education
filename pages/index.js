@@ -3,6 +3,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
+import { useAuth } from "../lib/auth";
+import LoginModal from "../components/LoginModal";
 import { slugify } from "../lib/slugify";
 import { USERS } from "../content/ben-network.data";
 import styles from "../styles/ben-network.module.css";
@@ -657,6 +659,8 @@ function chunkUniversitiesForColumns(items = [], columnCount = 3) {
 export default function BenNetwork({ universities = [] }) {
   const router = useRouter();
   const onDominantBgLoad = useDominantBg();
+  const { user, isPaid } = useAuth();
+  const [showLogin, setShowLogin] = useState(false);
 
   const users = USERS;
 
@@ -1043,6 +1047,47 @@ export default function BenNetwork({ universities = [] }) {
               Followed by 25k+ in Web3
             </p>
           </div>
+
+          {/* CTA buttons */}
+          <div className="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center hero-reveal" style={{ gap: "0.75rem", animation: "heroFadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 1.5s forwards" }}>
+            {user ? (
+              isPaid ? (
+                <button
+                  onClick={() => router.push("/academy")}
+                  className="px-8 py-3.5 rounded-full bg-benorange-500 text-white font-inter font-semibold text-sm tracking-wide transition"
+                  style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
+                >
+                  Go to Academy
+                </button>
+              ) : (
+                <button
+                  onClick={() => router.push("/pricing")}
+                  className="px-8 py-3.5 rounded-full bg-benorange-500 text-white font-inter font-semibold text-sm tracking-wide transition"
+                  style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
+                >
+                  See Plans
+                </button>
+              )
+            ) : (
+              <button
+                onClick={() => setShowLogin(true)}
+                className="px-8 py-3.5 rounded-full bg-benorange-500 text-white font-inter font-semibold text-sm tracking-wide transition"
+                style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
+              >
+                Start for Free
+              </button>
+            )}
+            <button
+              onClick={() => router.push("/pricing")}
+              className="px-8 py-3.5 rounded-full font-inter font-semibold text-sm tracking-wide transition"
+              style={{
+                color: "rgba(255,255,255,0.5)",
+                border: "1px solid rgba(255,255,255,0.12)",
+              }}
+            >
+              See Pricing
+            </button>
+          </div>
         </div>
       </section>
 
@@ -1405,6 +1450,7 @@ export default function BenNetwork({ universities = [] }) {
       `}</style>
 
       <Footer />
+      <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
     </div>
   );
 }

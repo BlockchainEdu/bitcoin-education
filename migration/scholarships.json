@@ -1,0 +1,52 @@
+{
+    "data": {
+        "boards": [
+            {
+                "columns": [
+                    {
+                        "id": "name",
+                        "title": "Name",
+                        "type": "name"
+                    },
+                    {
+                        "id": "text",
+                        "title": "Event Name",
+                        "type": "text"
+                    },
+                    {
+                        "id": "link",
+                        "title": "Link",
+                        "type": "link"
+                    }
+                ],
+                "items_page": {
+                    "items": [
+                        {
+                            "id": "5775320112",
+                            "name": "\u2708\ufe0f Get a Free Flight to ETHDenver",
+                            "group": {
+                                "title": "Deals"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "text",
+                                    "text": "ETHDenver",
+                                    "value": "\"ETHDenver\""
+                                },
+                                {
+                                    "id": "link",
+                                    "text": "https://bit.ly/3tIjAZt",
+                                    "value": "{\"url\":\"https://bit.ly/3tIjAZt\",\"text\":\"https://bit.ly/3tIjAZt\"}"
+                                }
+                            ],
+                            "assets": []
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "extensions": {
+        "request_id": "7b22a2cc-da95-93b8-86db-3aa2d1ad2538"
+    }
+}

@@ -42,8 +42,47 @@ function isRemote(location) {
   return (location || "").toLowerCase().includes("remote");
 }
 
+// ─── Salary range presets ────────────────────────────────
+const SALARY_RANGES = [
+  { id: null, label: "Any salary" },
+  { id: 80000, label: "$80k+" },
+  { id: 120000, label: "$120k+" },
+  { id: 150000, label: "$150k+" },
+  { id: 200000, label: "$200k+" },
+];
+
+// Top skills for quick filter (most common across crypto jobs)
+const QUICK_TAGS = [
+  "Solidity", "Rust", "TypeScript", "Python", "React",
+  "DeFi", "Smart Contracts", "Web3", "Security", "Backend",
+];
+
+// ─── Saved searches (localStorage) ──────────────────────
+const SAVED_SEARCHES_KEY = "ben_jobs_saved_searches";
+const LAST_VISIT_KEY = "ben_jobs_last_visit";
+
+function loadSavedSearches() {
+  try {
+    return JSON.parse(localStorage.getItem(SAVED_SEARCHES_KEY) || "[]");
+  } catch { return []; }
+}
+
+function saveSavedSearches(searches) {
+  try { localStorage.setItem(SAVED_SEARCHES_KEY, JSON.stringify(searches)); } catch {}
+}
+
+function buildSearchLabel(filters) {
+  const parts = [];
+  if (filters.search) parts.push(`"${filters.search}"`);
+  if (filters.typeFilter) parts.push(filters.typeFilter);
+  if (filters.locationFilter) parts.push("Remote");
+  if (filters.salaryFilter) parts.push(`$${filters.salaryFilter / 1000}k+`);
+  if (filters.tagFilter) parts.push(filters.tagFilter);
+  return parts.join(" · ") || "All jobs";
+}
+
 // ─── Job Row ────────────────────────────────────────────
-function JobRow({ job, onClick, isLocked }) {
+function JobRow({ job, onClick, isLocked, isNew }) {
   const salary = formatSalary(job.salary_min, job.salary_max, job.salary_currency);
   const isFeatured = job.tier === "featured";
 
@@ -97,6 +136,21 @@ function JobRow({ job, onClick, isLocked }) {
           >
             {job.title}
           </h3>
+          {isNew && (
+            <span
+              className="flex-shrink-0 font-inter font-semibold rounded-full"
+              style={{
+                fontSize: 9,
+                padding: "3px 10px",
+                backgroundColor: "rgba(52,199,89,0.1)",
+                color: "#34c759",
+                textTransform: "uppercase",
+                letterSpacing: "0.05em",
+              }}
+            >
+              New
+            </span>
+          )}
           {isFeatured && (
             <span
               className="flex-shrink-0 font-inter font-semibold rounded-full"
@@ -761,14 +815,132 @@ export default function JobsPage() {
   const [jobs, setJobs] = useState(SEED_JOBS);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState(null);
-  const [locationFilter, setLocationFilter] = useState(null); // "remote" or null
+  const [locationFilter, setLocationFilter] = useState(null);
+  const [salaryFilter, setSalaryFilter] = useState(null); // min salary threshold
+  const [tagFilter, setTagFilter] = useState(null); // single tag
   const [selectedJob, setSelectedJob] = useState(null);
   const [showPostModal, setShowPostModal] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [page, setPage] = useState(1);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [savedSearches, setSavedSearches] = useState([]);
+  const [lastVisit, setLastVisit] = useState(null);
+  const [showMoreTags, setShowMoreTags] = useState(false);
+  const [alertEmail, setAlertEmail] = useState("");
+  const [alertFreq, setAlertFreq] = useState("daily");
+  const [showAlertForm, setShowAlertForm] = useState(false);
+  const [alertStatus, setAlertStatus] = useState(null); // "saving" | "saved" | "error"
   const listTopRef = useRef(null);
   const isPosted = router.query.posted === "true";
+  const initializedRef = useRef(false);
+
+  // Load saved searches and last visit from localStorage
+  useEffect(() => {
+    setSavedSearches(loadSavedSearches());
+    const lv = localStorage.getItem(LAST_VISIT_KEY);
+    if (lv) setLastVisit(lv);
+    // Update last visit timestamp for next time
+    localStorage.setItem(LAST_VISIT_KEY, new Date().toISOString());
+  }, []);
+
+  // Restore filters from URL query params on mount
+  useEffect(() => {
+    if (initializedRef.current) return;
+    initializedRef.current = true;
+    const { q, type, remote, salary, tag } = router.query;
+    if (q) setSearch(q);
+    if (type) setTypeFilter(type);
+    if (remote === "true") setLocationFilter("remote");
+    if (salary) setSalaryFilter(parseInt(salary));
+    if (tag) setTagFilter(tag);
+  }, [router.query]);
+
+  // Sync filters to URL (shallow, no page reload)
+  const syncFiltersToUrl = useCallback((overrides = {}) => {
+    const params = {};
+    const s = overrides.search !== undefined ? overrides.search : search;
+    const t = overrides.typeFilter !== undefined ? overrides.typeFilter : typeFilter;
+    const l = overrides.locationFilter !== undefined ? overrides.locationFilter : locationFilter;
+    const sal = overrides.salaryFilter !== undefined ? overrides.salaryFilter : salaryFilter;
+    const tag = overrides.tagFilter !== undefined ? overrides.tagFilter : tagFilter;
+    if (s) params.q = s;
+    if (t) params.type = t;
+    if (l === "remote") params.remote = "true";
+    if (sal) params.salary = sal;
+    if (tag) params.tag = tag;
+    // Keep non-filter params
+    if (router.query.posted) params.posted = router.query.posted;
+    if (router.query.post) params.post = router.query.post;
+    router.replace({ pathname: "/jobs", query: params }, undefined, { shallow: true });
+  }, [search, typeFilter, locationFilter, salaryFilter, tagFilter, router]);
+
+  // Debounced URL sync for search (avoids router spam on every keystroke)
+  const searchTimerRef = useRef(null);
+  const updateSearch = (val) => {
+    setSearch(val);
+    clearTimeout(searchTimerRef.current);
+    searchTimerRef.current = setTimeout(() => syncFiltersToUrl({ search: val }), 400);
+  };
+  const updateTypeFilter = (val) => { setTypeFilter(val); syncFiltersToUrl({ typeFilter: val }); };
+  const updateLocationFilter = (val) => { setLocationFilter(val); syncFiltersToUrl({ locationFilter: val }); };
+  const updateSalaryFilter = (val) => { setSalaryFilter(val); syncFiltersToUrl({ salaryFilter: val }); };
+  const updateTagFilter = (val) => { setTagFilter(val); syncFiltersToUrl({ tagFilter: val }); };
+
+  const clearAllFilters = () => {
+    setSearch(""); setTypeFilter(null); setLocationFilter(null);
+    setSalaryFilter(null); setTagFilter(null);
+    router.replace("/jobs", undefined, { shallow: true });
+  };
+
+  const hasActiveFilters = search || typeFilter || locationFilter || salaryFilter || tagFilter;
+
+  // Saved search management
+  const saveCurrentSearch = () => {
+    const filters = { search, typeFilter, locationFilter, salaryFilter, tagFilter };
+    const label = buildSearchLabel(filters);
+    if (label === "All jobs") return;
+    const updated = [...savedSearches.filter((s) => s.label !== label), { label, filters }].slice(-5);
+    setSavedSearches(updated);
+    saveSavedSearches(updated);
+  };
+
+  const applySavedSearch = (saved) => {
+    setSearch(saved.filters.search || "");
+    setTypeFilter(saved.filters.typeFilter || null);
+    setLocationFilter(saved.filters.locationFilter || null);
+    setSalaryFilter(saved.filters.salaryFilter || null);
+    setTagFilter(saved.filters.tagFilter || null);
+    syncFiltersToUrl(saved.filters);
+  };
+
+  const deleteSavedSearch = (label) => {
+    const updated = savedSearches.filter((s) => s.label !== label);
+    setSavedSearches(updated);
+    saveSavedSearches(updated);
+  };
+
+  // Email alert subscription
+  const submitAlert = async () => {
+    if (!alertEmail || !alertEmail.includes("@")) return;
+    const filters = { search, typeFilter, locationFilter, salaryFilter, tagFilter };
+    const label = buildSearchLabel(filters) || "All Web3 jobs";
+    setAlertStatus("saving");
+    try {
+      const res = await fetch("/api/jobs/alerts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: alertEmail, filters, label, frequency: alertFreq }),
+      });
+      if (res.ok) {
+        setAlertStatus("saved");
+        setTimeout(() => { setShowAlertForm(false); setAlertStatus(null); }, 3000);
+      } else {
+        setAlertStatus("error");
+      }
+    } catch {
+      setAlertStatus("error");
+    }
+  };
 
   // Fetch live jobs from Supabase
   useEffect(() => {
@@ -798,6 +970,12 @@ export default function JobsPage() {
 
   const isLocked = !user || !isPaid;
 
+  // Check if job is new since last visit
+  const isJobNew = useCallback((job) => {
+    if (!lastVisit) return false;
+    return new Date(job.posted_at) > new Date(lastVisit);
+  }, [lastVisit]);
+
   // Filtered jobs
   const filtered = useMemo(() => {
     let list = [...jobs];
@@ -817,11 +995,29 @@ export default function JobsPage() {
     if (locationFilter === "remote") {
       list = list.filter((j) => isRemote(j.location));
     }
+    if (salaryFilter) {
+      list = list.filter((j) => {
+        const max = j.salary_max || j.salary_min || 0;
+        return max >= salaryFilter;
+      });
+    }
+    if (tagFilter) {
+      list = list.filter((j) =>
+        (j.tags || []).some((t) => t.toLowerCase() === tagFilter.toLowerCase())
+      );
+    }
     return list;
-  }, [jobs, search, typeFilter, locationFilter]);
+  }, [jobs, search, typeFilter, locationFilter, salaryFilter, tagFilter]);
+
+  // Count new jobs since last visit
+  const newJobCount = useMemo(() => {
+    if (!lastVisit) return 0;
+    const lv = new Date(lastVisit);
+    return jobs.filter((j) => new Date(j.posted_at) > lv).length;
+  }, [jobs, lastVisit]);
 
   // Reset page when filters change
-  useEffect(() => { setPage(1); }, [search, typeFilter, locationFilter]);
+  useEffect(() => { setPage(1); }, [search, typeFilter, locationFilter, salaryFilter, tagFilter]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / JOBS_PER_PAGE));
   const paginatedJobs = filtered.slice((page - 1) * JOBS_PER_PAGE, page * JOBS_PER_PAGE);
@@ -876,7 +1072,7 @@ export default function JobsPage() {
         <div className="relative max-w-5xl mx-auto px-5 sm:px-8 pt-20 sm:pt-28 pb-16 sm:pb-20">
           <div className="inline-flex items-center gap-2 font-inter font-medium rounded-full mb-6" style={{ fontSize: 12, padding: "7px 16px", color: "rgba(255,255,255,0.5)", backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", letterSpacing: "0.02em" }}>
             <span style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: "#34c759" }} />
-            {jobCount} open positions
+            {jobCount} open positions{newJobCount > 0 ? ` · ${newJobCount} new` : ""}
           </div>
 
           <h1 className="font-mont font-black" style={{ fontSize: "clamp(36px, 6vw, 64px)", lineHeight: 1.05, color: "#fff", letterSpacing: "-0.04em", maxWidth: 700 }}>
@@ -922,6 +1118,7 @@ export default function JobsPage() {
       {/* ── Sticky search + filter bar ── */}
       <div className="sticky top-0" style={{ zIndex: 100, backgroundColor: "rgba(248,248,250,0.85)", WebkitBackdropFilter: "blur(20px) saturate(180%)", backdropFilter: "blur(20px) saturate(180%)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
         <div className="max-w-5xl mx-auto px-5 sm:px-8 py-4">
+          {/* Search input */}
           <div className="relative mb-3">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#86868b" strokeWidth="2" strokeLinecap="round" className="absolute" style={{ left: 14, top: "50%", transform: "translateY(-50%)" }}>
               <circle cx="11" cy="11" r="8" />
@@ -931,16 +1128,27 @@ export default function JobsPage() {
               type="text"
               placeholder="Search jobs, companies, or skills..."
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => updateSearch(e.target.value)}
               className="w-full font-inter"
               style={{ fontSize: 14, padding: "10px 14px 10px 40px", borderRadius: 12, border: "1px solid rgba(0,0,0,0.08)", backgroundColor: "#fff", color: "#1d1d1f", outline: "none" }}
             />
+            {search && (
+              <button
+                onClick={() => updateSearch("")}
+                className="absolute flex items-center justify-center rounded-full"
+                style={{ right: 10, top: "50%", transform: "translateY(-50%)", width: 20, height: 20, backgroundColor: "rgba(0,0,0,0.06)", border: "none", cursor: "pointer" }}
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#86868b" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            )}
           </div>
 
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar" style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none", marginTop: 2 }}>
-            {/* Remote filter */}
+          {/* Row 1: Location + Job type */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar" style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}>
             <button
-              onClick={() => setLocationFilter(locationFilter ? null : "remote")}
+              onClick={() => updateLocationFilter(locationFilter ? null : "remote")}
               className="flex-shrink-0 font-inter font-medium rounded-full transition-all"
               style={{
                 fontSize: 12, padding: "6px 14px",
@@ -949,16 +1157,15 @@ export default function JobsPage() {
                 border: "none", cursor: "pointer",
               }}
             >
-              🌍 Remote
+              Remote
             </button>
 
             <div className="flex-shrink-0" style={{ width: 1, height: 20, backgroundColor: "rgba(0,0,0,0.08)" }} />
 
-            {/* Job type filters */}
             {JOB_TYPES.map((t) => (
               <button
                 key={t.id}
-                onClick={() => setTypeFilter(typeFilter === t.id ? null : t.id)}
+                onClick={() => updateTypeFilter(typeFilter === t.id ? null : t.id)}
                 className="flex-shrink-0 font-inter font-medium rounded-full transition-all"
                 style={{
                   fontSize: 12, padding: "6px 14px",
@@ -970,18 +1177,222 @@ export default function JobsPage() {
                 {t.label}
               </button>
             ))}
+
+            <div className="flex-shrink-0" style={{ width: 1, height: 20, backgroundColor: "rgba(0,0,0,0.08)" }} />
+
+            {/* Salary range filters */}
+            {SALARY_RANGES.filter((s) => s.id !== null).map((s) => (
+              <button
+                key={s.id}
+                onClick={() => updateSalaryFilter(salaryFilter === s.id ? null : s.id)}
+                className="flex-shrink-0 font-inter font-medium rounded-full transition-all"
+                style={{
+                  fontSize: 12, padding: "6px 14px",
+                  backgroundColor: salaryFilter === s.id ? "#1d1d1f" : "rgba(0,0,0,0.04)",
+                  color: salaryFilter === s.id ? "#fff" : "#86868b",
+                  border: "none", cursor: "pointer",
+                }}
+              >
+                {s.label}
+              </button>
+            ))}
           </div>
+
+          {/* Row 2: Skill/tag filters */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 mt-2 hide-scrollbar" style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}>
+            <span className="flex-shrink-0 font-inter" style={{ fontSize: 11, color: "#c7c7cc", textTransform: "uppercase", letterSpacing: "0.04em" }}>Skills</span>
+            {(showMoreTags ? JOB_TAGS : QUICK_TAGS).map((tag) => (
+              <button
+                key={tag}
+                onClick={() => updateTagFilter(tagFilter === tag ? null : tag)}
+                className="flex-shrink-0 font-inter font-medium rounded-full transition-all"
+                style={{
+                  fontSize: 11, padding: "4px 12px",
+                  backgroundColor: tagFilter === tag ? "#FF872A" : "rgba(0,0,0,0.04)",
+                  color: tagFilter === tag ? "#fff" : "#86868b",
+                  border: "none", cursor: "pointer",
+                }}
+              >
+                {tag}
+              </button>
+            ))}
+            <button
+              onClick={() => setShowMoreTags(!showMoreTags)}
+              className="flex-shrink-0 font-inter font-medium transition-all"
+              style={{ fontSize: 11, color: "#FF872A", border: "none", background: "none", cursor: "pointer" }}
+            >
+              {showMoreTags ? "Less" : `+${JOB_TAGS.length - QUICK_TAGS.length} more`}
+            </button>
+          </div>
+
+          {/* Saved searches + active filter actions */}
+          {(savedSearches.length > 0 || hasActiveFilters) && (
+            <div className="flex items-center gap-2 mt-2 overflow-x-auto hide-scrollbar" style={{ WebkitOverflowScrolling: "touch", scrollbarWidth: "none" }}>
+              {/* Saved search pills */}
+              {savedSearches.map((s) => (
+                <div key={s.label} className="flex items-center gap-1 flex-shrink-0 rounded-full" style={{ backgroundColor: "rgba(255,135,42,0.06)", border: "1px solid rgba(255,135,42,0.12)", padding: "3px 4px 3px 12px" }}>
+                  <button
+                    onClick={() => applySavedSearch(s)}
+                    className="font-inter font-medium"
+                    style={{ fontSize: 11, color: "#FF872A", border: "none", background: "none", cursor: "pointer" }}
+                  >
+                    {s.label}
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); deleteSavedSearch(s.label); }}
+                    className="flex items-center justify-center rounded-full"
+                    style={{ width: 18, height: 18, border: "none", background: "rgba(255,135,42,0.1)", cursor: "pointer" }}
+                  >
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#FF872A" strokeWidth="3" strokeLinecap="round">
+                      <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              ))}
+
+              {/* Save current / Clear all */}
+              {hasActiveFilters && (
+                <>
+                  <button
+                    onClick={saveCurrentSearch}
+                    className="flex-shrink-0 font-inter font-medium"
+                    style={{ fontSize: 11, color: "#FF872A", border: "none", background: "none", cursor: "pointer" }}
+                  >
+                    Save search
+                  </button>
+                  <span style={{ color: "rgba(0,0,0,0.1)" }}>·</span>
+                  <button
+                    onClick={clearAllFilters}
+                    className="flex-shrink-0 font-inter font-medium"
+                    style={{ fontSize: 11, color: "#86868b", border: "none", background: "none", cursor: "pointer" }}
+                  >
+                    Clear all
+                  </button>
+                </>
+              )}
+            </div>
+          )}
         </div>
+      </div>
+
+      {/* ── Email alert banner ── */}
+      <div className="max-w-5xl mx-auto px-5 sm:px-8">
+        {!showAlertForm ? (
+          <button
+            onClick={() => setShowAlertForm(true)}
+            className="w-full flex items-center justify-center gap-2 font-inter font-medium rounded-xl transition-all"
+            style={{
+              fontSize: 13, padding: "12px 20px", marginTop: 8,
+              backgroundColor: "rgba(255,135,42,0.04)", color: "#FF872A",
+              border: "1px solid rgba(255,135,42,0.1)", cursor: "pointer",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "rgba(255,135,42,0.08)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "rgba(255,135,42,0.04)"; }}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF872A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg>
+            Get email alerts{hasActiveFilters ? ` for "${buildSearchLabel({ search, typeFilter, locationFilter, salaryFilter, tagFilter })}"` : " for new jobs"}
+          </button>
+        ) : (
+          <div className="rounded-xl overflow-hidden" style={{ marginTop: 8, backgroundColor: "#fff", border: "1px solid rgba(0,0,0,0.06)", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+            <div className="px-5 py-4">
+              <div className="flex items-center justify-between mb-3">
+                <div className="font-inter font-semibold" style={{ fontSize: 14, color: "#1d1d1f" }}>
+                  {hasActiveFilters
+                    ? `Alert: ${buildSearchLabel({ search, typeFilter, locationFilter, salaryFilter, tagFilter })}`
+                    : "Alert: All new Web3 jobs"
+                  }
+                </div>
+                <button
+                  onClick={() => { setShowAlertForm(false); setAlertStatus(null); }}
+                  style={{ border: "none", background: "none", cursor: "pointer", padding: 4 }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c7c7cc" strokeWidth="2" strokeLinecap="round">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {alertStatus === "saved" ? (
+                <div className="flex items-center gap-2 py-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34c759" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span className="font-inter font-medium" style={{ fontSize: 14, color: "#34c759" }}>
+                    Alert saved. You'll get {alertFreq} emails when new jobs match.
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 flex-wrap">
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    value={alertEmail}
+                    onChange={(e) => setAlertEmail(e.target.value)}
+                    className="flex-1 font-inter"
+                    style={{ fontSize: 14, padding: "9px 14px", borderRadius: 10, border: "1px solid rgba(0,0,0,0.08)", backgroundColor: "#fff", color: "#1d1d1f", outline: "none", minWidth: 200 }}
+                    onKeyDown={(e) => e.key === "Enter" && submitAlert()}
+                  />
+                  <div className="flex items-center gap-1 flex-shrink-0">
+                    {["daily", "weekly"].map((f) => (
+                      <button
+                        key={f}
+                        onClick={() => setAlertFreq(f)}
+                        className="font-inter font-medium rounded-lg"
+                        style={{
+                          fontSize: 12, padding: "8px 12px",
+                          backgroundColor: alertFreq === f ? "#1d1d1f" : "rgba(0,0,0,0.04)",
+                          color: alertFreq === f ? "#fff" : "#86868b",
+                          border: "none", cursor: "pointer", textTransform: "capitalize",
+                        }}
+                      >
+                        {f}
+                      </button>
+                    ))}
+                  </div>
+                  <button
+                    onClick={submitAlert}
+                    disabled={alertStatus === "saving"}
+                    className="flex-shrink-0 font-inter font-semibold rounded-lg transition-colors"
+                    style={{
+                      fontSize: 13, padding: "9px 20px",
+                      backgroundColor: alertStatus === "saving" ? "#ccc" : "#FF872A",
+                      color: "#fff", border: "none",
+                      cursor: alertStatus === "saving" ? "not-allowed" : "pointer",
+                    }}
+                  >
+                    {alertStatus === "saving" ? "Saving..." : "Create alert"}
+                  </button>
+                </div>
+              )}
+
+              {alertStatus === "error" && (
+                <p className="font-inter mt-2" style={{ fontSize: 12, color: "#ff3b30" }}>
+                  Something went wrong. Please try again.
+                </p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ── Job listings ── */}
       <div ref={listTopRef} className="max-w-5xl mx-auto px-0 sm:px-8 py-4 sm:py-8">
         <div className="sm:rounded-2xl overflow-hidden" style={{ backgroundColor: "#fff", border: "1px solid rgba(0,0,0,0.06)" }}>
           <div className="flex items-center justify-between px-5 sm:px-8 py-4" style={{ borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
-            <span className="font-inter font-medium" style={{ fontSize: 14, color: "#86868b" }}>
-              {filtered.length} job{filtered.length !== 1 ? "s" : ""}
-              {search && ` matching "${search}"`}
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="font-inter font-medium" style={{ fontSize: 14, color: "#86868b" }}>
+                {filtered.length} job{filtered.length !== 1 ? "s" : ""}
+                {search && ` matching "${search}"`}
+              </span>
+              {newJobCount > 0 && !hasActiveFilters && (
+                <span className="font-inter font-semibold rounded-full" style={{ fontSize: 11, padding: "2px 10px", backgroundColor: "rgba(52,199,89,0.1)", color: "#34c759" }}>
+                  {newJobCount} new since last visit
+                </span>
+              )}
+            </div>
             {totalPages > 1 && (
               <span className="font-inter" style={{ fontSize: 13, color: "#c7c7cc" }}>
                 Page {page} of {totalPages}
@@ -990,18 +1401,23 @@ export default function JobsPage() {
           </div>
 
           {paginatedJobs.map((job) => (
-            <JobRow key={job.id} job={job} isLocked={isLocked} onClick={() => setSelectedJob(job)} />
+            <JobRow key={job.id} job={job} isLocked={isLocked} isNew={isJobNew(job)} onClick={() => setSelectedJob(job)} />
           ))}
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="font-inter" style={{ fontSize: 16, color: "#86868b" }}>No jobs match your search.</p>
+              <p className="font-inter" style={{ fontSize: 16, color: "#86868b" }}>No jobs match your filters.</p>
+              {salaryFilter && (
+                <p className="font-inter mt-2" style={{ fontSize: 13, color: "#c7c7cc" }}>
+                  Try lowering the salary minimum or removing skill filters.
+                </p>
+              )}
               <button
-                onClick={() => { setSearch(""); setTypeFilter(null); setLocationFilter(null); }}
+                onClick={clearAllFilters}
                 className="font-inter font-medium mt-4"
                 style={{ fontSize: 14, color: "#FF872A", border: "none", background: "none", cursor: "pointer" }}
               >
-                Clear filters
+                Clear all filters
               </button>
             </div>
           )}

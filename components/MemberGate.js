@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { useAuth } from "../lib/auth";
 import LoginModal from "./LoginModal";
 
-// Hard gate — requires $199 membership to see content.
+// Hard gate — requires paid membership to see content.
 // Shows blurred preview + upgrade CTA for non-members.
 export default function MemberGate({ children, fallback }) {
   const { user, isPaid, loading } = useAuth();
@@ -32,6 +33,8 @@ export default function MemberGate({ children, fallback }) {
 }
 
 function DefaultMemberWall({ upgrade, onLogin }) {
+  const router = useRouter();
+
   return (
     <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: "200px" }}>
       {/* Blurred placeholder */}
@@ -53,18 +56,18 @@ function DefaultMemberWall({ upgrade, onLogin }) {
         </h3>
         <p className="font-inter text-sm mb-5" style={{ color: "rgba(0,0,0,0.45)", maxWidth: "320px" }}>
           {upgrade
-            ? "Get lifetime access to courses, community, job applications, partner deals, and more."
+            ? "Get access to courses, community, job applications, partner deals, and more. Starting at $19/month."
             : "Sign up and join BEN to unlock this content."
           }
         </p>
         {upgrade ? (
-          <a
-            href="/api/checkout/membership"
+          <button
+            onClick={() => router.push("/pricing")}
             className="inline-flex items-center px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition"
             style={{ boxShadow: "0 8px 20px rgba(255,135,42,0.2)" }}
           >
-            Join BEN — $199
-          </a>
+            See Plans
+          </button>
         ) : (
           <button
             onClick={onLogin}

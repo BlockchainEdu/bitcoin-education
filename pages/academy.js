@@ -147,8 +147,8 @@ const FAQ = [
     a: "No. Tech hiring is based on what you can build, not how old you are. Plenty of developers started in their 30s, 40s, and 50s. The average career switcher into tech is 33 years old.",
   },
   {
-    q: "Why $199 when bootcamps charge $15,000?",
-    a: "Bootcamps have classrooms, staff, and overhead. We don't. You get the same curriculum depth at a fraction of the cost. Plus you keep lifetime access, including every future update and new module we add.",
+    q: "Why so cheap compared to bootcamps?",
+    a: "Bootcamps have classrooms, staff, and overhead. We don't. You get the same curriculum depth starting at $19/month. Go lifetime for $299 and get every future update and new module for free.",
   },
   {
     q: "What if I want both tracks?",
@@ -202,14 +202,7 @@ export default function AcademyPage() {
       setShowLogin(true);
       return;
     }
-    fetch("/api/checkout/membership", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.url) window.location.href = data.url;
-      });
+    router.push("/pricing");
   }
 
   function scrollTo(id) {
@@ -328,9 +321,8 @@ export default function AcademyPage() {
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
               Learn full-stack development from scratch or go deep on Solidity
-              smart contracts. Two career tracks. {allLessons}+ lessons. $199
-              for lifetime access. No subscriptions, no bootcamp debt, no
-              gatekeeping.
+              smart contracts. Two career tracks. {allLessons}+ lessons. From $19/month
+              or $299 for lifetime access. No bootcamp debt, no gatekeeping.
             </p>
 
             <div
@@ -351,7 +343,7 @@ export default function AcademyPage() {
                   className="px-10 py-4 rounded-full bg-benorange-500 text-white font-inter font-semibold text-sm tracking-wide transition"
                   style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
                 >
-                  Get Full Access — $199
+                  See Plans — From $19/mo
                 </button>
               )}
               <button
@@ -404,10 +396,10 @@ export default function AcademyPage() {
                   sub: "3-6 months, rigid schedule",
                 },
                 {
-                  top: "$199",
+                  top: "$19/mo",
                   topColor: "#FF872A",
                   label: "BEN Academy",
-                  sub: "Lifetime access. Your pace.",
+                  sub: "Or $299 lifetime. Your pace.",
                 },
               ].map((item) => (
                 <div
@@ -1159,18 +1151,24 @@ export default function AcademyPage() {
               style={{ color: "rgba(255,255,255,0.4)" }}
             >
               Both tracks. {allLessons}+ lessons. Every future update. Community
-              access. Job board. Conference discounts. One payment.
+              access. Job board. Conference discounts.
             </p>
 
             <div className="mt-10 inline-block">
               <span className="font-mont font-black text-5xl md:text-6xl text-white">
-                $199
+                $19
               </span>
               <span
-                className="font-inter text-base ml-3"
+                className="font-inter text-base ml-1"
                 style={{ color: "rgba(255,255,255,0.3)" }}
               >
-                lifetime
+                /mo
+              </span>
+              <span
+                className="font-inter text-sm ml-4"
+                style={{ color: "rgba(255,255,255,0.2)" }}
+              >
+                or $149/yr or $299 lifetime
               </span>
             </div>
 
@@ -1185,7 +1183,7 @@ export default function AcademyPage() {
                 "BEN community and Telegram group",
                 "Job board with direct applications",
                 "Partner deals and conference discounts",
-                "No subscriptions. No renewals. Ever.",
+                "Cancel anytime. Or pay once with lifetime.",
               ].map((item) => (
                 <div
                   key={item}
@@ -1239,7 +1237,7 @@ export default function AcademyPage() {
               className="mt-6 font-inter text-xs"
               style={{ color: "rgba(255,255,255,0.2)" }}
             >
-              Not $199/month. Not $199/year. $199 once. That's it.
+              $19/mo. $149/yr. Or $299 lifetime. Pick what works for you.
             </p>
           </div>
         </section>

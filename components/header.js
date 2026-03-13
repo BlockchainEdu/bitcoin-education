@@ -25,6 +25,7 @@ export default function HeaderWithLogo({ className = "", children }) {
 
   const navLinks = [
     { label: "Academy", href: "/academy" },
+    { label: "Pricing", href: "/pricing" },
     { label: "Ventures", href: "/ventures" },
     { label: "Jobs", href: "/jobs" },
     { label: "Conferences", href: "/conferences" },
@@ -131,7 +132,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                 </span>
                 {!isPaid && (
                   <StandardButton
-                    link="/academy"
+                    link="/pricing"
                     text="Upgrade"
                     textColor="white"
                     color="orange"

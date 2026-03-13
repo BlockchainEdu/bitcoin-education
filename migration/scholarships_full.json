@@ -1,0 +1,32 @@
+{
+    "data": {
+        "boards": [
+            {
+                "items_page": {
+                    "items": [
+                        {
+                            "id": "5775320112",
+                            "name": "\u2708\ufe0f Get a Free Flight to ETHDenver",
+                            "column_values": [
+                                {
+                                    "id": "text",
+                                    "text": "ETHDenver",
+                                    "value": "\"ETHDenver\""
+                                },
+                                {
+                                    "id": "link",
+                                    "text": "https://bit.ly/3tIjAZt",
+                                    "value": "{\"url\":\"https://bit.ly/3tIjAZt\",\"text\":\"https://bit.ly/3tIjAZt\"}"
+                                }
+                            ],
+                            "assets": []
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "extensions": {
+        "request_id": "23c37e57-f1bf-9c2f-b468-49863e6e0bde"
+    }
+}

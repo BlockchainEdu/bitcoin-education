@@ -4,11 +4,11 @@ import fs from "fs";
 import path from "path";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
+import EmailGate from "../components/EmailGate";
 import {
   CONFERENCES,
   CRYPTO_WEEKS,
   getEventStatus,
-  TIER_CONFIG,
 } from "../content/conferences";
 
 // ─── Helpers ────────────────────────────────────────────
@@ -64,19 +64,136 @@ function icalUrl(conf) {
   return `data:text/calendar;charset=utf-8,${encodeURIComponent(ical)}`;
 }
 
-// ─── Month nav ──────────────────────────────────────────
+function extractCountry(location) {
+  if (!location || location === "TBA") return null;
+  const parts = location.split(",");
+  const raw = parts[parts.length - 1].trim();
+  return raw.replace(/[\u{1F1E0}-\u{1F1FF}]/gu, "").trim();
+}
+
+const REGION_MAP = {
+  "Americas": ["USA", "US", "United States", "Canada", "Mexico", "Brazil", "Argentina", "Colombia", "Honduras", "Bermuda"],
+  "Europe": ["France", "England", "UK", "Germany", "Netherlands", "Portugal", "Spain", "Italy", "Switzerland", "Czech Republic", "Czechia", "Austria", "Belgium", "Poland", "Finland", "Sweden", "Romania", "Monaco", "Montenegro"],
+  "Asia": ["Singapore", "Japan", "South Korea", "Korea", "Hong Kong", "India", "China", "Taiwan", "Vietnam", "Indonesia", "Philippines", "Malaysia", "Thailand"],
+  "Middle East & Africa": ["UAE", "Turkey", "Saudi Arabia", "Nigeria", "Kenya", "South Africa"],
+};
+
+function getRegion(country) {
+  if (!country) return null;
+  for (const [region, countries] of Object.entries(REGION_MAP)) {
+    if (countries.includes(country)) return region;
+  }
+  return "Other";
+}
+
+function tierDisplay(tier) {
+  const map = {
+    flagship: { label: "Tier 1", color: "#FF872A" },
+    major: { label: "Tier 2", color: "#6366f1" },
+    conference: { label: "Tier 2", color: "#6366f1" },
+    regional: { label: "Tier 3", color: "#10b981" },
+    community: { label: "Community", color: "#06b6d4" },
+    hackathon: { label: "Hackathon", color: "#8b5cf6" },
+    "side-event": { label: "Side Event", color: "#f59e0b" },
+  };
+  return map[tier] || { label: "Event", color: "#86868b" };
+}
+
+// ─── Filter definitions ─────────────────────────────────
+const PERSONAS = [
+  {
+    key: "all",
+    label: "All Events",
+    sub: "Everything in one view",
+    color: "#1d1d1f",
+    filter: () => true,
+  },
+  {
+    key: "bizdev",
+    label: "BD & Networking",
+    sub: "Meet partners & close deals",
+    color: "#FF872A",
+    filter: (e) => {
+      if (["flagship", "major"].includes(e.tier)) return true;
+      const tags = (e.tags || []).map((t) => t.toLowerCase());
+      return tags.some((t) => ["institutional", "networking", "tradfi"].includes(t));
+    },
+  },
+  {
+    key: "fundraising",
+    label: "Fundraising",
+    sub: "Find investors & pitch",
+    color: "#10b981",
+    filter: (e) => {
+      if (e.tier === "flagship") return true;
+      const tags = (e.tags || []).map((t) => t.toLowerCase());
+      if (tags.some((t) => ["institutional", "tradfi"].includes(t))) return true;
+      if ((e.sideEvents || []).some((se) => se.type === "pitch")) return true;
+      return false;
+    },
+  },
+  {
+    key: "builders",
+    label: "Builders & Devs",
+    sub: "Hack, ship, learn",
+    color: "#8b5cf6",
+    filter: (e) => {
+      if (e.tier === "hackathon") return true;
+      const tags = (e.tags || []).map((t) => t.toLowerCase());
+      return tags.some((t) => ["builders", "ethereum", "solana", "hack", "hackathon"].includes(t));
+    },
+  },
+  {
+    key: "jobs",
+    label: "Job Seekers",
+    sub: "Get hired in crypto",
+    color: "#6366f1",
+    filter: (e) => {
+      if (e.tier === "hackathon") return true;
+      if (["flagship", "major"].includes(e.tier)) return true;
+      const tags = (e.tags || []).map((t) => t.toLowerCase());
+      return tags.some((t) => ["hack", "hackathon"].includes(t));
+    },
+  },
+  {
+    key: "community",
+    label: "Side Events",
+    sub: "Meetups, parties, free events",
+    color: "#f59e0b",
+    filter: (e) => e.tier === "side-event" || e.tier === "community" || e.isSideEvent,
+  },
+];
+
+const TIER_FILTERS = [
+  { key: null, label: "All Tiers" },
+  { key: "tier1", label: "Tier 1", tiers: ["flagship"], color: "#FF872A" },
+  { key: "tier2", label: "Tier 2", tiers: ["major", "conference"], color: "#6366f1" },
+  { key: "tier3", label: "Tier 3", tiers: ["regional", "community"], color: "#10b981" },
+  { key: "hackathon", label: "Hackathon", tiers: ["hackathon"], color: "#8b5cf6" },
+  { key: "side", label: "Side Event", tiers: ["side-event"], color: "#f59e0b" },
+];
+
+const REGION_FILTERS = [
+  { key: null, label: "Worldwide" },
+  { key: "Americas", label: "Americas" },
+  { key: "Europe", label: "Europe" },
+  { key: "Asia", label: "Asia" },
+  { key: "Middle East & Africa", label: "ME & Africa" },
+];
+
 const MONTHS = ["Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const MONTH_MAP = { Mar: "03", Apr: "04", May: "05", Jun: "06", Jul: "07", Aug: "08", Sep: "09", Oct: "10", Nov: "11", Dec: "12" };
 
+// ─── Month strip ────────────────────────────────────────
 function MonthStrip({ activeMonth, onSelect, eventCounts }) {
   return (
-    <div className="flex gap-2 overflow-x-auto pb-1 hide-scrollbar" style={{ WebkitOverflowScrolling: "touch" }}>
+    <div className="flex gap-1.5 overflow-x-auto hide-scrollbar" style={{ WebkitOverflowScrolling: "touch" }}>
       <button
         onClick={() => onSelect(null)}
         className="flex-shrink-0 font-inter font-semibold rounded-full"
         style={{
-          fontSize: 15,
-          padding: "10px 22px",
+          fontSize: 13,
+          padding: "7px 16px",
           backgroundColor: !activeMonth ? "#1d1d1f" : "rgba(0,0,0,0.04)",
           color: !activeMonth ? "#fff" : "#86868b",
         }}
@@ -90,10 +207,10 @@ function MonthStrip({ activeMonth, onSelect, eventCounts }) {
           <button
             key={m}
             onClick={() => onSelect(active ? null : MONTH_MAP[m])}
-            className="flex-shrink-0 flex items-center gap-2 font-inter font-semibold rounded-full"
+            className="flex-shrink-0 flex items-center gap-1.5 font-inter font-semibold rounded-full"
             style={{
-              fontSize: 15,
-              padding: "10px 20px",
+              fontSize: 13,
+              padding: "7px 14px",
               backgroundColor: active ? "#1d1d1f" : "rgba(0,0,0,0.04)",
               color: active ? "#fff" : count ? "#1d1d1f" : "#c7c7cc",
               opacity: count ? 1 : 0.4,
@@ -101,7 +218,7 @@ function MonthStrip({ activeMonth, onSelect, eventCounts }) {
           >
             {m}
             {count > 0 && (
-              <span style={{ fontSize: 13, fontWeight: 500, color: active ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.2)" }}>
+              <span style={{ fontSize: 11, fontWeight: 500, color: active ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.2)" }}>
                 {count}
               </span>
             )}
@@ -184,7 +301,7 @@ function CalendarButton({ conf }) {
 function EventCard({ conf, onSelect }) {
   const status = getEventStatus(conf);
   const days = daysUntil(conf.startDate);
-  const tier = TIER_CONFIG[conf.tier] || TIER_CONFIG.major;
+  const tier = tierDisplay(conf.tier);
   const hasSideEvents = conf.sideEvents?.length > 0;
   const isPast = status === "past";
   const hasLuma = isLumaUrl(conf.url) || isLumaUrl(conf.ticketUrl);
@@ -220,38 +337,33 @@ function EventCard({ conf, onSelect }) {
         <div style={{ height: 4, backgroundColor: tier.color }} />
       )}
 
-      <div className="px-6 pb-6" style={{ paddingTop: conf.coverImage ? 0 : 24 }}>
+      <div className="px-5 pb-5" style={{ paddingTop: conf.coverImage ? 0 : 20 }}>
         {/* Tier + countdown row */}
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between mb-2.5">
+          <div className="flex items-center gap-2">
             <span
               className="font-inter font-bold rounded-full"
               style={{
                 fontSize: 11,
-                padding: "4px 12px",
+                padding: "3px 10px",
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
                 color: tier.color,
-                backgroundColor: tier.color + "10",
+                backgroundColor: tier.color + "12",
               }}
             >
               {tier.label}
             </span>
             {hasLuma && (
-              <span className="font-inter font-semibold rounded-full" style={{ fontSize: 10, padding: "4px 10px", backgroundColor: "rgba(99,102,241,0.08)", color: "#6366f1", letterSpacing: "0.03em" }}>
+              <span className="font-inter font-semibold rounded-full" style={{ fontSize: 10, padding: "3px 9px", backgroundColor: "rgba(99,102,241,0.08)", color: "#6366f1" }}>
                 LUMA
-              </span>
-            )}
-            {conf.cryptoWeek && (
-              <span className="font-inter hidden sm:inline" style={{ fontSize: 12, color: "#86868b" }}>
-                {conf.cryptoWeek}
               </span>
             )}
           </div>
           {!isPast && days >= 0 && (
             <span
               className="font-inter font-semibold"
-              style={{ fontSize: 13, color: days <= 7 ? "#FF872A" : "#86868b" }}
+              style={{ fontSize: 12, color: days <= 7 ? "#FF872A" : "#86868b" }}
             >
               {daysLabel(days)}
             </span>
@@ -261,28 +373,28 @@ function EventCard({ conf, onSelect }) {
         {/* Name */}
         <h3
           className="font-mont font-black leading-tight"
-          style={{ fontSize: 24, color: "#1d1d1f", letterSpacing: "-0.025em" }}
+          style={{ fontSize: 22, color: "#1d1d1f", letterSpacing: "-0.025em" }}
         >
           {conf.name}
         </h3>
 
         {/* Date + Location */}
-        <div className="mt-3 flex flex-col gap-1.5">
-          <div className="flex items-center gap-2.5">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#86868b" strokeWidth="1.8" strokeLinecap="round">
+        <div className="mt-2.5 flex flex-col gap-1">
+          <div className="flex items-center gap-2">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86868b" strokeWidth="1.8" strokeLinecap="round">
               <rect x="3" y="4" width="18" height="18" rx="2" />
               <path d="M16 2v4M8 2v4M3 10h18" />
             </svg>
-            <span className="font-inter font-medium" style={{ fontSize: 16, color: "#1d1d1f" }}>
+            <span className="font-inter font-medium" style={{ fontSize: 15, color: "#1d1d1f" }}>
               {conf.dates}
             </span>
           </div>
-          <div className="flex items-center gap-2.5">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#86868b" strokeWidth="1.8" strokeLinecap="round">
+          <div className="flex items-center gap-2">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#86868b" strokeWidth="1.8" strokeLinecap="round">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <span className="font-inter" style={{ fontSize: 15, color: "#86868b" }}>
+            <span className="font-inter" style={{ fontSize: 14, color: "#86868b" }}>
               {conf.flag} {conf.location}
             </span>
           </div>
@@ -291,10 +403,10 @@ function EventCard({ conf, onSelect }) {
         {/* Description */}
         {conf.description && (
           <p
-            className="font-inter mt-4"
+            className="font-inter mt-3"
             style={{
-              fontSize: 15,
-              lineHeight: 1.65,
+              fontSize: 14,
+              lineHeight: 1.6,
               color: "#424245",
               display: "-webkit-box",
               WebkitLineClamp: 2,
@@ -307,16 +419,21 @@ function EventCard({ conf, onSelect }) {
         )}
 
         {/* Bottom row */}
-        <div className="flex items-center justify-between mt-5 pt-4" style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
-          <div className="flex items-center gap-4">
+        <div className="flex items-center justify-between mt-4 pt-3" style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
+          <div className="flex items-center gap-3">
             {conf.attendees && (
-              <span className="font-inter font-semibold" style={{ fontSize: 14, color: "#1d1d1f" }}>
+              <span className="font-inter font-semibold" style={{ fontSize: 13, color: "#1d1d1f" }}>
                 {conf.attendees}
               </span>
             )}
             {hasSideEvents && (
-              <span className="font-inter font-medium" style={{ fontSize: 13, color: "#FF872A" }}>
+              <span className="font-inter font-medium" style={{ fontSize: 12, color: "#FF872A" }}>
                 {conf.sideEvents.length} side events
+              </span>
+            )}
+            {conf.cryptoWeek && (
+              <span className="font-inter hidden sm:inline" style={{ fontSize: 12, color: "#86868b" }}>
+                {conf.cryptoWeek}
               </span>
             )}
           </div>
@@ -329,8 +446,8 @@ function EventCard({ conf, onSelect }) {
                 onClick={(e) => e.stopPropagation()}
                 className="font-inter font-semibold rounded-xl"
                 style={{
-                  fontSize: 14,
-                  padding: "8px 18px",
+                  fontSize: 13,
+                  padding: "7px 16px",
                   backgroundColor: hasLuma ? "#6366f1" : "#FF872A",
                   color: "#fff",
                 }}
@@ -338,7 +455,7 @@ function EventCard({ conf, onSelect }) {
                 {hasLuma ? "RSVP" : "Tickets"}
               </a>
             )}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c7c7cc" strokeWidth="2" strokeLinecap="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c7c7cc" strokeWidth="2" strokeLinecap="round">
               <path d="M9 18l6-6-6-6" />
             </svg>
           </div>
@@ -373,7 +490,7 @@ function EventModal({ conf, onClose }) {
 
   const status = getEventStatus(conf);
   const days = daysUntil(conf.startDate);
-  const tier = TIER_CONFIG[conf.tier] || TIER_CONFIG.major;
+  const tier = tierDisplay(conf.tier);
   const hasLuma = isLumaUrl(conf.url) || isLumaUrl(conf.ticketUrl);
 
   return (
@@ -435,7 +552,7 @@ function EventModal({ conf, onClose }) {
           <div className="flex items-center gap-3 mb-4">
             <span
               className="font-inter font-bold rounded-full"
-              style={{ fontSize: 12, padding: "5px 14px", textTransform: "uppercase", letterSpacing: "0.05em", color: tier.color, backgroundColor: tier.color + "10" }}
+              style={{ fontSize: 12, padding: "5px 14px", textTransform: "uppercase", letterSpacing: "0.05em", color: tier.color, backgroundColor: tier.color + "12" }}
             >
               {tier.label}
             </span>
@@ -516,82 +633,92 @@ function EventModal({ conf, onClose }) {
             )}
           </div>
 
-          {/* Description */}
-          <p className="font-inter mt-6" style={{ fontSize: 16, lineHeight: 1.75, color: "#424245" }}>
-            {conf.description}
-          </p>
+          {/* Description + details -- gated */}
+          <EmailGate
+            fallback={
+              <div className="mt-6 text-center py-6" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+                <p className="font-inter text-sm mb-1" style={{ color: "rgba(0,0,0,0.4)" }}>
+                  Sign up free to see full event details, speakers, and side events.
+                </p>
+              </div>
+            }
+          >
+            <p className="font-inter mt-6" style={{ fontSize: 16, lineHeight: 1.75, color: "#424245" }}>
+              {conf.description}
+            </p>
 
-          {/* Speakers */}
-          {conf.speakers?.length > 0 && (
-            <div className="mt-7">
-              <h4 className="font-mont font-bold" style={{ fontSize: 14, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                Notable Speakers
-              </h4>
-              <div className="flex flex-wrap gap-2.5 mt-3">
-                {conf.speakers.map((s) => (
-                  <span key={s} className="font-inter font-medium" style={{ fontSize: 15, color: "#1d1d1f", backgroundColor: "rgba(0,0,0,0.04)", borderRadius: 100, padding: "8px 18px" }}>
-                    {s}
+            {/* Speakers */}
+            {conf.speakers?.length > 0 && (
+              <div className="mt-7">
+                <h4 className="font-mont font-bold" style={{ fontSize: 14, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  Notable Speakers
+                </h4>
+                <div className="flex flex-wrap gap-2.5 mt-3">
+                  {conf.speakers.map((s) => (
+                    <span key={s} className="font-inter font-medium" style={{ fontSize: 15, color: "#1d1d1f", backgroundColor: "rgba(0,0,0,0.04)", borderRadius: 100, padding: "8px 18px" }}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Side events */}
+            {conf.sideEvents?.length > 0 && (
+              <div className="mt-7">
+                <h4 className="font-mont font-bold" style={{ fontSize: 14, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.04em" }}>
+                  Side Events
+                </h4>
+                <div className="mt-3 flex flex-col gap-3">
+                  {conf.sideEvents.map((se, i) => (
+                    <div key={i} className="flex items-center gap-3 rounded-xl" style={{ padding: "10px 14px", backgroundColor: "rgba(0,0,0,0.02)" }}>
+                      <div style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: tier.color, flexShrink: 0 }} />
+                      <span className="font-inter font-medium" style={{ fontSize: 15, color: "#1d1d1f" }}>
+                        {se.name}
+                      </span>
+                      <span className="font-inter ml-auto" style={{ fontSize: 13, color: "#c7c7cc", textTransform: "capitalize" }}>
+                        {se.type}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Tags & Topics (community events) */}
+            {conf.tags?.length > 0 && conf.source === "cryptonomads" && (
+              <div className="flex flex-wrap gap-2 mt-6">
+                {conf.tags.map((t) => (
+                  <span key={t} className="font-inter" style={{ fontSize: 13, color: "#86868b", backgroundColor: "rgba(0,0,0,0.04)", borderRadius: 100, padding: "5px 14px" }}>
+                    {t}
+                  </span>
+                ))}
+                {(conf.topics || []).map((t) => (
+                  <span key={t} className="font-inter" style={{ fontSize: 13, color: "#06b6d4", backgroundColor: "rgba(6,182,212,0.06)", borderRadius: 100, padding: "5px 14px" }}>
+                    {t}
                   </span>
                 ))}
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Side events */}
-          {conf.sideEvents?.length > 0 && (
-            <div className="mt-7">
-              <h4 className="font-mont font-bold" style={{ fontSize: 14, color: "#86868b", textTransform: "uppercase", letterSpacing: "0.04em" }}>
-                Side Events
-              </h4>
-              <div className="mt-3 flex flex-col gap-3">
-                {conf.sideEvents.map((se, i) => (
-                  <div key={i} className="flex items-center gap-3 rounded-xl" style={{ padding: "10px 14px", backgroundColor: "rgba(0,0,0,0.02)" }}>
-                    <div style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: tier.color, flexShrink: 0 }} />
-                    <span className="font-inter font-medium" style={{ fontSize: 15, color: "#1d1d1f" }}>
-                      {se.name}
-                    </span>
-                    <span className="font-inter ml-auto" style={{ fontSize: 13, color: "#c7c7cc", textTransform: "capitalize" }}>
-                      {se.type}
-                    </span>
-                  </div>
-                ))}
+            {/* Crypto Week callout */}
+            {conf.cryptoWeek && (
+              <div className="mt-7 rounded-2xl p-5" style={{ backgroundColor: "rgba(255,135,42,0.04)", border: "1px solid rgba(255,135,42,0.1)" }}>
+                <div className="flex items-center gap-2.5">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF872A" strokeWidth="1.8" strokeLinecap="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                  <span className="font-inter font-bold" style={{ fontSize: 15, color: "#FF872A" }}>
+                    {conf.cryptoWeek}
+                  </span>
+                </div>
+                <p className="font-inter mt-2" style={{ fontSize: 14, color: "#86868b", lineHeight: 1.6 }}>
+                  This conference anchors a full week of satellite events, networking dinners, hackathons, and side parties across the city.
+                </p>
               </div>
-            </div>
-          )}
-
-          {/* Tags & Topics (community events) */}
-          {conf.tags?.length > 0 && conf.source === "cryptonomads" && (
-            <div className="flex flex-wrap gap-2.5 mt-6">
-              {conf.tags.map((t) => (
-                <span key={t} className="font-inter" style={{ fontSize: 14, color: "#86868b", backgroundColor: "rgba(0,0,0,0.04)", borderRadius: 100, padding: "6px 16px" }}>
-                  {t}
-                </span>
-              ))}
-              {(conf.topics || []).map((t) => (
-                <span key={t} className="font-inter" style={{ fontSize: 14, color: "#06b6d4", backgroundColor: "rgba(6,182,212,0.06)", borderRadius: 100, padding: "6px 16px" }}>
-                  {t}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Crypto Week callout */}
-          {conf.cryptoWeek && (
-            <div className="mt-7 rounded-2xl p-5" style={{ backgroundColor: "rgba(255,135,42,0.04)", border: "1px solid rgba(255,135,42,0.1)" }}>
-              <div className="flex items-center gap-2.5">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF872A" strokeWidth="1.8" strokeLinecap="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-                <span className="font-inter font-bold" style={{ fontSize: 15, color: "#FF872A" }}>
-                  {conf.cryptoWeek}
-                </span>
-              </div>
-              <p className="font-inter mt-2" style={{ fontSize: 14, color: "#86868b", lineHeight: 1.6 }}>
-                This conference anchors a full week of satellite events, networking dinners, hackathons, and side parties across the city.
-              </p>
-            </div>
-          )}
+            )}
+          </EmailGate>
 
           {/* Action buttons */}
           <div className="flex flex-col sm:flex-row gap-3 mt-8">
@@ -636,44 +763,68 @@ function EventModal({ conf, onClose }) {
   );
 }
 
-// ─── Source tabs ─────────────────────────────────────────
-const SOURCE_TABS = [
-  { key: "curated", label: "Main Conferences" },
-  { key: "community", label: "Side Events & Community" },
-  { key: "all", label: "All Events" },
-];
-
 // ─── Page ───────────────────────────────────────────────
 export default function ConferencesPage({ communityEvents = [] }) {
-  const [monthFilter, setMonthFilter] = useState(null);
+  const [persona, setPersona] = useState("all");
   const [tierFilter, setTierFilter] = useState(null);
-  const [sourceTab, setSourceTab] = useState("curated");
+  const [regionFilter, setRegionFilter] = useState(null);
+  const [monthFilter, setMonthFilter] = useState(null);
   const [selectedConf, setSelectedConf] = useState(null);
 
+  // Merge all events into one sorted list
   const allEvents = useMemo(() => {
-    if (sourceTab === "curated") return [...CONFERENCES];
-    if (sourceTab === "community") return communityEvents;
     const merged = [...CONFERENCES, ...communityEvents];
-    merged.sort((a, b) => a.startDate.localeCompare(b.startDate));
+    merged.sort((a, b) => (a.startDate || "").localeCompare(b.startDate || ""));
     return merged;
-  }, [sourceTab, communityEvents]);
+  }, [communityEvents]);
 
-  const eventCounts = useMemo(() => {
+  // Apply persona filter
+  const personaFiltered = useMemo(() => {
+    const p = PERSONAS.find((p) => p.key === persona);
+    if (!p || p.key === "all") return allEvents;
+    return allEvents.filter(p.filter);
+  }, [persona, allEvents]);
+
+  // Count events per persona (for badge counts)
+  const personaCounts = useMemo(() => {
     const counts = {};
-    allEvents.forEach((c) => {
-      const m = c.startDate.slice(5, 7);
-      counts[m] = (counts[m] || 0) + 1;
+    PERSONAS.forEach((p) => {
+      counts[p.key] = p.key === "all" ? allEvents.length : allEvents.filter(p.filter).length;
     });
     return counts;
   }, [allEvents]);
 
+  // Apply tier + region + month filters
   const filtered = useMemo(() => {
-    let list = [...allEvents];
-    if (monthFilter) list = list.filter((c) => c.startDate.slice(5, 7) === monthFilter);
-    if (tierFilter) list = list.filter((c) => c.tier === tierFilter);
-    return list;
-  }, [monthFilter, tierFilter, allEvents]);
+    let list = [...personaFiltered];
 
+    if (tierFilter) {
+      const tf = TIER_FILTERS.find((t) => t.key === tierFilter);
+      if (tf) list = list.filter((e) => tf.tiers.includes(e.tier));
+    }
+
+    if (regionFilter) {
+      list = list.filter((e) => getRegion(extractCountry(e.location)) === regionFilter);
+    }
+
+    if (monthFilter) {
+      list = list.filter((c) => c.startDate.slice(5, 7) === monthFilter);
+    }
+
+    return list;
+  }, [personaFiltered, tierFilter, regionFilter, monthFilter]);
+
+  // Event counts by month (for month strip)
+  const eventCounts = useMemo(() => {
+    const counts = {};
+    personaFiltered.forEach((c) => {
+      const m = c.startDate.slice(5, 7);
+      counts[m] = (counts[m] || 0) + 1;
+    });
+    return counts;
+  }, [personaFiltered]);
+
+  // Group by month for display
   const grouped = useMemo(() => {
     const groups = [];
     let currentMonth = "";
@@ -690,12 +841,26 @@ export default function ConferencesPage({ communityEvents = [] }) {
 
   const upcomingCount = allEvents.filter((c) => getEventStatus(c) !== "past").length;
 
+  function clearAllFilters() {
+    setPersona("all");
+    setTierFilter(null);
+    setRegionFilter(null);
+    setMonthFilter(null);
+  }
+
+  const activeFilterCount = [
+    persona !== "all" ? 1 : 0,
+    tierFilter ? 1 : 0,
+    regionFilter ? 1 : 0,
+    monthFilter ? 1 : 0,
+  ].reduce((a, b) => a + b, 0);
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#f5f5f7" }}>
       <Head>
         <title>Crypto Conferences & Side Events 2026 | BEN</title>
         <meta name="robots" content="index,follow" />
-        <meta name="description" content="Every major crypto conference, hackathon, and side event in 2026. Luma RSVPs, calendar links, and curated picks for the BEN community." />
+        <meta name="description" content="Every major crypto conference, hackathon, and side event in 2026. Filter by persona, tier, region. Luma RSVPs, calendar links, and curated picks." />
       </Head>
 
       <HeaderWithLogoDark />
@@ -722,7 +887,7 @@ export default function ConferencesPage({ communityEvents = [] }) {
           </h1>
 
           <p className="font-inter mt-5" style={{ fontSize: "clamp(17px, 2.2vw, 21px)", lineHeight: 1.55, color: "rgba(255,255,255,0.4)", maxWidth: 520 }}>
-            Every major event, hackathon, and side event worth attending in 2026. RSVP links, calendar sync, and curated picks.
+            Every major event, hackathon, and side event in 2026. Filter by what matters to you.
           </p>
         </div>
       </div>
@@ -738,52 +903,142 @@ export default function ConferencesPage({ communityEvents = [] }) {
           borderBottom: "1px solid rgba(0,0,0,0.06)",
         }}
       >
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 py-4">
-          {/* Source toggle */}
-          <div className="flex gap-1 mb-3 overflow-x-auto hide-scrollbar" style={{ WebkitOverflowScrolling: "touch" }}>
-            {SOURCE_TABS.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => { setSourceTab(tab.key); setMonthFilter(null); setTierFilter(null); }}
-                className="flex-shrink-0 font-inter font-bold rounded-xl"
-                style={{
-                  fontSize: 15,
-                  padding: "10px 20px",
-                  backgroundColor: sourceTab === tab.key ? "#1d1d1f" : "transparent",
-                  color: sourceTab === tab.key ? "#fff" : "#86868b",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                {tab.label}
-                <span className="font-inter ml-2" style={{ fontSize: 13, fontWeight: 500, color: sourceTab === tab.key ? "rgba(255,255,255,0.35)" : "rgba(0,0,0,0.15)" }}>
-                  {tab.key === "curated" ? CONFERENCES.length : tab.key === "community" ? communityEvents.length : CONFERENCES.length + communityEvents.length}
-                </span>
-              </button>
-            ))}
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 py-3">
+          {/* Row 1: Persona pills */}
+          <div className="flex gap-1.5 overflow-x-auto hide-scrollbar pb-2" style={{ WebkitOverflowScrolling: "touch" }}>
+            {PERSONAS.map((p) => {
+              const active = persona === p.key;
+              const count = personaCounts[p.key] || 0;
+              return (
+                <button
+                  key={p.key}
+                  onClick={() => { setPersona(p.key); setTierFilter(null); setRegionFilter(null); setMonthFilter(null); }}
+                  className="flex-shrink-0 font-inter font-bold rounded-xl"
+                  style={{
+                    fontSize: 14,
+                    padding: "10px 18px",
+                    backgroundColor: active ? p.color : "rgba(0,0,0,0.04)",
+                    color: active ? "#fff" : "#6e6e73",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "all 0.15s ease",
+                  }}
+                >
+                  {p.label}
+                  <span
+                    className="font-inter ml-1.5"
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 500,
+                      color: active ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.2)",
+                    }}
+                  >
+                    {count}
+                  </span>
+                </button>
+              );
+            })}
           </div>
 
+          {/* Row 2: Tier + Region pills */}
+          <div className="flex gap-4 overflow-x-auto hide-scrollbar pb-2" style={{ WebkitOverflowScrolling: "touch" }}>
+            {/* Tier pills */}
+            <div className="flex gap-1 flex-shrink-0">
+              {TIER_FILTERS.map((t) => {
+                const active = tierFilter === t.key;
+                return (
+                  <button
+                    key={t.key || "all-tiers"}
+                    onClick={() => setTierFilter(active ? null : t.key)}
+                    className="flex-shrink-0 font-inter font-semibold rounded-full"
+                    style={{
+                      fontSize: 12,
+                      padding: "5px 12px",
+                      backgroundColor: active ? (t.color || "#1d1d1f") : "transparent",
+                      color: active ? "#fff" : "#86868b",
+                      border: active ? "none" : "1px solid rgba(0,0,0,0.08)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {t.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Divider */}
+            <div className="flex-shrink-0" style={{ width: 1, backgroundColor: "rgba(0,0,0,0.08)", margin: "4px 0" }} />
+
+            {/* Region pills */}
+            <div className="flex gap-1 flex-shrink-0">
+              {REGION_FILTERS.map((r) => {
+                const active = regionFilter === r.key;
+                return (
+                  <button
+                    key={r.key || "all-regions"}
+                    onClick={() => setRegionFilter(active ? null : r.key)}
+                    className="flex-shrink-0 font-inter font-semibold rounded-full"
+                    style={{
+                      fontSize: 12,
+                      padding: "5px 12px",
+                      backgroundColor: active ? "#1d1d1f" : "transparent",
+                      color: active ? "#fff" : "#86868b",
+                      border: active ? "none" : "1px solid rgba(0,0,0,0.08)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {r.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Row 3: Month strip */}
           <MonthStrip activeMonth={monthFilter} onSelect={setMonthFilter} eventCounts={eventCounts} />
         </div>
       </div>
 
+      {/* ── Active persona context ── */}
+      {persona !== "all" && (
+        <div className="max-w-5xl mx-auto px-4 sm:px-8 pt-6">
+          <div className="flex items-center justify-between rounded-2xl px-5 py-4" style={{ backgroundColor: "#fff", border: "1px solid rgba(0,0,0,0.06)" }}>
+            <div>
+              <div className="font-inter font-bold" style={{ fontSize: 15, color: "#1d1d1f" }}>
+                {PERSONAS.find((p) => p.key === persona)?.label}
+              </div>
+              <div className="font-inter" style={{ fontSize: 13, color: "#86868b", marginTop: 2 }}>
+                {PERSONAS.find((p) => p.key === persona)?.sub} &middot; {filtered.length} events match
+              </div>
+            </div>
+            <button
+              onClick={clearAllFilters}
+              className="font-inter font-semibold"
+              style={{ fontSize: 13, color: "#FF872A", border: "none", background: "none", cursor: "pointer" }}
+            >
+              Clear all
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* ── Event list ── */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 py-6 sm:py-10">
         {grouped.map((group) => (
-          <div key={group.month} className="mb-12">
+          <div key={group.month} className="mb-10">
             {/* Month header */}
-            <div className="flex items-center gap-5 mb-6 px-2">
+            <div className="flex items-center gap-5 mb-5 px-1">
               <h2 className="font-mont font-black" style={{ fontSize: 20, color: "#1d1d1f", letterSpacing: "-0.02em" }}>
                 {group.month}
               </h2>
               <div className="flex-1" style={{ height: 1, backgroundColor: "rgba(0,0,0,0.08)" }} />
-              <span className="font-inter font-semibold" style={{ fontSize: 14, color: "#86868b" }}>
+              <span className="font-inter font-semibold" style={{ fontSize: 13, color: "#86868b" }}>
                 {group.events.length} event{group.events.length !== 1 ? "s" : ""}
               </span>
             </div>
 
-            {/* Cards - single column on mobile for bigger cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+            {/* Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
               {group.events.map((conf) => (
                 <EventCard key={conf.id} conf={conf} onSelect={setSelectedConf} />
               ))}
@@ -795,11 +1050,11 @@ export default function ConferencesPage({ communityEvents = [] }) {
           <div className="text-center py-24">
             <p className="font-inter" style={{ fontSize: 17, color: "#86868b" }}>No events match your filters.</p>
             <button
-              onClick={() => { setMonthFilter(null); setTierFilter(null); }}
+              onClick={clearAllFilters}
               className="font-inter font-semibold mt-4"
               style={{ fontSize: 16, color: "#FF872A", border: "none", background: "none", cursor: "pointer" }}
             >
-              Clear filters
+              Clear all filters
             </button>
           </div>
         )}

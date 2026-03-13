@@ -3,6 +3,14 @@
     {
       "path": "/api/jobs/ingest",
       "schedule": "0 */6 * * *"
+    },
+    {
+      "path": "/api/jobs/alerts/send",
+      "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/coliving/sync-availability",
+      "schedule": "0 */2 * * *"
     }
   ]
 }

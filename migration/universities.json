@@ -1,0 +1,2937 @@
+{
+    "data": {
+        "boards": [
+            {
+                "columns": [
+                    {
+                        "id": "name",
+                        "title": "Name",
+                        "type": "name"
+                    },
+                    {
+                        "id": "subitems",
+                        "title": "Subitems",
+                        "type": "subtasks"
+                    },
+                    {
+                        "id": "files",
+                        "title": "Pictures",
+                        "type": "file"
+                    },
+                    {
+                        "id": "text2",
+                        "title": "Number of People",
+                        "type": "text"
+                    }
+                ],
+                "items_page": {
+                    "items": [
+                        {
+                            "id": "11150444238",
+                            "name": "Stanford University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2725981363/Unidentified%20Logo%20G.png",
+                                    "value": "{\"files\":[{\"name\":\"Unidentified Logo G.png\",\"assetId\":2725981363,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1769987267513,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "344",
+                                    "value": "\"344\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2725981363/Unidentified%20Logo%20G.png?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=448eea0655cb57846433c679699b7e8d0a10980101d6d2dedfcad21abf6cba48"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161120476",
+                            "name": "Harvard University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727835632/Harvard.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Harvard.jpg\",\"assetId\":2727835632,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044089844,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "268",
+                                    "value": "\"268\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727835632/Harvard.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=bf7b226c4c59fbd0edbd7d50541f9ac4c6bbacb18ba2a085bde24c46512a8212"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161120443",
+                            "name": "Berkeley University of California",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727843722/Berkeley.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Berkeley.jpg\",\"assetId\":2727843722,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044158558,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "237",
+                                    "value": "\"237\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727843722/Berkeley.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=3e0b424cbe56c5238597e7092841a3a787a4b92fe3327771b8303150932106ab"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161101643",
+                            "name": "Massachusetts Institute of Technology",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727848093/MIT.jpg",
+                                    "value": "{\"files\":[{\"name\":\"MIT.jpg\",\"assetId\":2727848093,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044197208,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "226",
+                                    "value": "\"226\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727848093/MIT.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=60109891fc5b884deea5b29783e0d479c605565c0e5f5d8492155182a7081f43"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161136574",
+                            "name": "Columbia University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727852617/Columbia.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Columbia.jpg\",\"assetId\":2727852617,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044235716,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "224",
+                                    "value": "\"224\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727852617/Columbia.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=e719d7c98587319023359c75675ac10c46e9024bc8322d0e8f1a87eecd5f5fe3"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161134009",
+                            "name": "University of Pennsylvania",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727856364/Pennsylvania.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Pennsylvania.jpg\",\"assetId\":2727856364,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044277897,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "178",
+                                    "value": "\"178\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727856364/Pennsylvania.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f30ebbc239846f3f40d84a6c9f4c15f1601095a32fc92b938c5d11421d36fefe"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161132933",
+                            "name": "New York University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727859513/NYU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"NYU.jpg\",\"assetId\":2727859513,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044313182,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "177",
+                                    "value": "\"177\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727859513/NYU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=71b1f5eff65d70882ca877e3e8c72ea70739c869d5dfef0b5286705cf93d218a"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161143351",
+                            "name": "Cornell University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727863303/Cornell.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Cornell.jpg\",\"assetId\":2727863303,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044362149,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "116",
+                                    "value": "\"116\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727863303/Cornell.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=cbac7a8fdbe98d2200466f02aa34f9e3d3255c9214f6d586ea1a2c65fbd5c0ea"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161156356",
+                            "name": "Tsinghua University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727866521/Tsinghua.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Tsinghua.jpg\",\"assetId\":2727866521,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044412268,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "114",
+                                    "value": "\"114\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727866521/Tsinghua.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=1a4d27f47ebcd2eefa99d548adc280dbbb1383fa054157123b9cd12275aa4f81"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161156883",
+                            "name": "University of Southern California",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727870430/USC.jpg",
+                                    "value": "{\"files\":[{\"name\":\"USC.jpg\",\"assetId\":2727870430,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044474172,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "113",
+                                    "value": "\"113\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727870430/USC.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=5ad192db8f417bd8cf98cac2a8d47cdcd094fbbd1e36ec5f7aa829bf37685228"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161156422",
+                            "name": "UCLA",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727872296/UCLA.jpg",
+                                    "value": "{\"files\":[{\"name\":\"UCLA.jpg\",\"assetId\":2727872296,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044506458,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "111",
+                                    "value": "\"111\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727872296/UCLA.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=bafb28058caf0ddb841e338ca34a23a242fef56fc5abe82f0a0c60c7cad457ef"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161174405",
+                            "name": "University of Michigan",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727874495/UM.jpg",
+                                    "value": "{\"files\":[{\"name\":\"UM.jpg\",\"assetId\":2727874495,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044543625,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "111",
+                                    "value": "\"111\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727874495/UM.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=87a741edcb3df9d31bac581f88a8b3a8f96d079b89ee9bfe2fdc3445fca2feeb"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161189721",
+                            "name": "University of Oxford",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727876933/Oxford.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Oxford.jpg\",\"assetId\":2727876933,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044581757,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "109",
+                                    "value": "\"109\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727876933/Oxford.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=798ff929328378689af7fcac17c72bd48386b1362702ef0e997ffaade55a9473"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161181548",
+                            "name": "National University of Singapore",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727880578/NUS.jpg",
+                                    "value": "{\"files\":[{\"name\":\"NUS.jpg\",\"assetId\":2727880578,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044620827,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "107",
+                                    "value": "\"107\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727880578/NUS.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c8757f20970f801581ffad87d2547d32745448b5f6abc5902006468a20356f57"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11161206620",
+                            "name": "London School of Economics and Political Science",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2727883850/LSE.jpg",
+                                    "value": "{\"files\":[{\"name\":\"LSE.jpg\",\"assetId\":2727883850,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770044656503,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "100",
+                                    "value": "\"100\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2727883850/LSE.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=7c4671858675d6437da33f2ac424348186135b235ef608f994a4878136af1593"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170010036",
+                            "name": "Yale University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730049434/Yale.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Yale.jpg\",\"assetId\":2730049434,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099166478,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "97",
+                                    "value": "\"97\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730049434/Yale.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=16021fa734b846d05994237d9db937f01a090c11791d36f672bd65343e229e43"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11169950791",
+                            "name": "University of Cambridge",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730050152/Cambridge.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Cambridge.jpg\",\"assetId\":2730050152,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099226708,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "95",
+                                    "value": "\"95\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730050152/Cambridge.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=1c8002f67ae5cbf2574252dbf11ecc40fefeeba01a4c2ccb57c662b03cad6858"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11169947671",
+                            "name": "Carnegie Mellon University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730050774/CMU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"CMU.jpg\",\"assetId\":2730050774,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099281272,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "90",
+                                    "value": "\"90\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730050774/CMU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f4188d583892d54ef63ae8406cbae7c3bc155e96e2ce720d044004090d8104e5"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11169963680",
+                            "name": "Peking University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730051478/Peking.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Peking.jpg\",\"assetId\":2730051478,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099354726,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "89",
+                                    "value": "\"89\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730051478/Peking.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ac017ac17670a058cb3cd866379d2389476b8a50efb9a31fc433ec45e35a47fe"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170012982",
+                            "name": "University of Waterloo",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730052441/Waterloo.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Waterloo.jpg\",\"assetId\":2730052441,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099433520,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "82",
+                                    "value": "\"82\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730052441/Waterloo.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=aa5c4c8c5465c6f66cdfb5462c20f2cd14a90404b8de652a0ef27c8bcea64225"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11169978881",
+                            "name": "Princeton University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730053497/Princeton.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Princeton.jpg\",\"assetId\":2730053497,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099520119,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "81",
+                                    "value": "\"81\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730053497/Princeton.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=e6010bf1da9c08ea36b4b27520b68c58ffde11677db40c78b0ccb599aa19301c"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11169975327",
+                            "name": "University College London",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730054948/UCL.jpg",
+                                    "value": "{\"files\":[{\"name\":\"UCL.jpg\",\"assetId\":2730054948,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099644500,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "79",
+                                    "value": "\"79\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730054948/UCL.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=9e004842e974e0d2859443c77db05cbd25f36aa08b0f1f6c347c0a8cba64bb27"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11169992595",
+                            "name": "Duke University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730056053/Duke.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Duke.jpg\",\"assetId\":2730056053,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099725020,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "80",
+                                    "value": "\"80\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730056053/Duke.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ccccf30aff9308f93bebc183d08c2befa3c9ab26b1dfdb38be2469e02b7f23ad"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11169996239",
+                            "name": "Nanyang Technological University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730057401/Nanyang.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Nanyang.jpg\",\"assetId\":2730057401,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770099833739,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "77",
+                                    "value": "\"77\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730057401/Nanyang.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=fa13ea25b19029cccdcc3f35e843139d75d64a856f6f82b63b4ced400aa135cf"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170016401",
+                            "name": "University of Toronto",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730059974/Toronto.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Toronto.jpg\",\"assetId\":2730059974,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770100019811,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "76",
+                                    "value": "\"76\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730059974/Toronto.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c11e94d5f4ede82f016cb934f901ca1088fa9e23f04788717f1740519c36f724"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170001262",
+                            "name": "University of Chicago",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730061390/Chicago.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Chicago.jpg\",\"assetId\":2730061390,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770100123536,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "75",
+                                    "value": "\"75\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730061390/Chicago.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f9343bd88f259a7568e174540c85af6503d10b43b36b78ad5a7e4fc13bb260dc"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170080273",
+                            "name": "Northwestern University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730062882/NU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"NU.jpg\",\"assetId\":2730062882,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770100215675,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "73",
+                                    "value": "\"73\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730062882/NU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=9efa73e8ddc79f3f05fe2d988cab3069700d06a21aadfd25bfd43089dcc125ae"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170020015",
+                            "name": "The University of Hong Kong",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730064856/HongKong.jpg",
+                                    "value": "{\"files\":[{\"name\":\"HongKong.jpg\",\"assetId\":2730064856,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770100325767,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "71",
+                                    "value": "\"71\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730064856/HongKong.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f66b3d6fea8ffc1ff000e8933317aaf90fdc8e796e107d99463c4c0b16a9b488"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170036697",
+                            "name": "University of Illinois Urbana-Champaign",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730066944/Illinois.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Illinois.jpg\",\"assetId\":2730066944,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770100444638,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "69",
+                                    "value": "\"69\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730066944/Illinois.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d85a8968ab43526037f7fce994e5ae69384f088187c0e301f2f4a633cff53081"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170033299",
+                            "name": "University of Washington",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730068814/Washington.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Washington.jpg\",\"assetId\":2730068814,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770100561217,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "64",
+                                    "value": "\"64\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730068814/Washington.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6b9531aa9d8f38c3047da220ab740f5f651b6282ebd1d5281bdb98a533bcfa21"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170056335",
+                            "name": "Fudan University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730072531/Fudan.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Fudan.jpg\",\"assetId\":2730072531,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770100851140,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "61",
+                                    "value": "\"61\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730072531/Fudan.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=e4b89ec1b9d0ae96f293fb5357a1b29454d4d6ec24ed1f78226250ee598cb6a0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170059530",
+                            "name": "Shanghai Jiaotong University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730074778/Shanghai.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Shanghai.jpg\",\"assetId\":2730074778,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770101049904,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "60",
+                                    "value": "\"60\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730074778/Shanghai.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b75835128bb3b8e20c12730f80e179385900a118712ff9035e1c8c899cdcd4b8"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170163137",
+                            "name": "Brown University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730075666/Brown.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Brown.jpg\",\"assetId\":2730075666,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770101117760,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "54",
+                                    "value": "\"54\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730075666/Brown.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=3030e3b1e6d77aa85d20ea74f1437532f51f7eb80cd900b8d05797436207df0f"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170131808",
+                            "name": "Imperial College",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730076817/Imperial.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Imperial.jpg\",\"assetId\":2730076817,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770101200544,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "54",
+                                    "value": "\"54\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730076817/Imperial.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=647e710d9d5bd1a70dea8fba945bdac6098b3608c8eb6f27c64cae9f91764b04"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170151115",
+                            "name": "Zhejiang University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730077766/Zhejiang.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Zhejiang.jpg\",\"assetId\":2730077766,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770101278909,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "52",
+                                    "value": "\"52\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730077766/Zhejiang.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6565876c8f4df82eb0df8683e0905b16ba22c96addcabfe60d3b6b623a1f684c"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170077587",
+                            "name": "Boston University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730078572/Boston.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Boston.jpg\",\"assetId\":2730078572,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770101337754,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "51",
+                                    "value": "\"51\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730078572/Boston.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6367f885603a9f726016ed553585709185b2d970c1196c97dd627f43a67c6702"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170690770",
+                            "name": "McGill University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730242428/McGill.jpg",
+                                    "value": "{\"files\":[{\"name\":\"McGill.jpg\",\"assetId\":2730242428,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770108801553,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "48",
+                                    "value": "\"48\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730242428/McGill.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=122577350070b1a304019718f2ed4ddd1c28f811f0bb523f82266d4fe39a204f"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170692063",
+                            "name": "Georgetown University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730243374/GU.png",
+                                    "value": "{\"files\":[{\"name\":\"GU.png\",\"assetId\":2730243374,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770108845891,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "46",
+                                    "value": "\"46\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730243374/GU.png?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c5fa767fe49cfb4a0f94409e177f76e4ca9f17b1582682ed1de8d714b7133a3a"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170671732",
+                            "name": "University of California San Diego",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730244313/UCSD.jpg",
+                                    "value": "{\"files\":[{\"name\":\"UCSD.jpg\",\"assetId\":2730244313,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770108892134,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "44",
+                                    "value": "\"44\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730244313/UCSD.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c84e947bfc8edb7d6e984197a0e796a7f66f6b2e2aeb998916325caec3cdc570"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170695469",
+                            "name": "The Chinese University of Hong Kong",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730245688/Chinese%20HongKong.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Chinese HongKong.jpg\",\"assetId\":2730245688,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770108944642,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "45",
+                                    "value": "\"45\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730245688/Chinese%20HongKong.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8d938b0d8dee5947ad5572c12b8f06e0ead81cc182a0b8b24b4eafb7edc642ae"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170692914",
+                            "name": "University of Sydney",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730247246/Sydney.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Sydney.jpg\",\"assetId\":2730247246,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109016379,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "43",
+                                    "value": "\"43\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730247246/Sydney.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b49abbc259a3bcb99c09762be6e246fbae68fd94e3ef62ace45df1a59f6b65f7"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170704824",
+                            "name": "Singapore Management University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730248675/SMU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"SMU.jpg\",\"assetId\":2730248675,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109067335,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "41",
+                                    "value": "\"41\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730248675/SMU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6ac695413ca69a4a88221383ab55aad51f0e7fb7e4d41df343d9765634b9e1e5"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170704633",
+                            "name": "Georgia Institute of Technology",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730250656/GIT.jpg",
+                                    "value": "{\"files\":[{\"name\":\"GIT.jpg\",\"assetId\":2730250656,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109138992,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "41",
+                                    "value": "\"41\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730250656/GIT.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=333fa053743f27e681f5ec7af0e71c13b847beeadf7b19552c818cbb7b38f86d"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170699413",
+                            "name": "The University of Manchester",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730251826/Manchester.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Manchester.jpg\",\"assetId\":2730251826,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109186903,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "39",
+                                    "value": "\"39\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730251826/Manchester.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=5f3b37af2120495a22e8b571b31a5ea875b25acf46354697ecc8569af1c9bde0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170714159",
+                            "name": "The University of British Columbia",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730253317/UBC.jpg",
+                                    "value": "{\"files\":[{\"name\":\"UBC.jpg\",\"assetId\":2730253317,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109237489,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "38",
+                                    "value": "\"38\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730253317/UBC.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=bb336b62d10c9280aaf13a41f4e062a1915d1f0be2036e83e4905d1dce8abc65"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170716377",
+                            "name": "The George Washington University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730254708/GWU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"GWU.jpg\",\"assetId\":2730254708,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109289991,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "38",
+                                    "value": "\"38\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730254708/GWU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=019c366977a057df70e29cf4a2bc5c53575a994ddab8ee94c617ee489d20e33f"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170732449",
+                            "name": "The Hong Kong University of Science and Technology",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730257095/HongKong%20S_T.jpg",
+                                    "value": "{\"files\":[{\"name\":\"HongKong S_T.jpg\",\"assetId\":2730257095,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109366815,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "39",
+                                    "value": "\"39\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730257095/HongKong%20S_T.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=1f5285628bf9642220e2b4fe9ef27dab17e8757a224fa387e830b304a04949ca"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170759944",
+                            "name": "The University of Texas at Austin",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730266648/Texas.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Texas.jpg\",\"assetId\":2730266648,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109643077,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "34",
+                                    "value": "\"34\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730266648/Texas.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=3053479722c069277f3cbcd7d86ccfc2737dfa1bd23a84e944af8cc5aa8beb6b"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170766735",
+                            "name": "University of Florida",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730267910/Florida.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Florida.jpg\",\"assetId\":2730267910,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109694543,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "34",
+                                    "value": "\"34\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730267910/Florida.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8bccb256ccc8e477a3af487188fd1f5ff00eed11c6d7ccc226b281591755aa87"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170770917",
+                            "name": "Dartmouth College",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730269383/Dartmouth.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Dartmouth.jpg\",\"assetId\":2730269383,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109745260,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "33",
+                                    "value": "\"33\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730269383/Dartmouth.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=a164e033b46e21466f6730af0b4fa0cb47389a026fff7498de487053f03860ad"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170789486",
+                            "name": "The University of New South Wales (UNSW)",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730271727/UNSW.jpg",
+                                    "value": "{\"files\":[{\"name\":\"UNSW.jpg\",\"assetId\":2730271727,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109812517,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "32",
+                                    "value": "\"32\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730271727/UNSW.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=f33512024849a220055665e214a39d635d99aeddb8ca44cd69b22d40d32b7b93"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170795153",
+                            "name": "The University of Edinburgh",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730273815/Edin.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Edin.jpg\",\"assetId\":2730273815,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109877601,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "32",
+                                    "value": "\"32\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730273815/Edin.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=4920d42b39da49305ddf2f3413257fb842eb9894d5e2ea88abac45bf869237d6"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170790914",
+                            "name": "Purdue University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730276182/PU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"PU.jpg\",\"assetId\":2730276182,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109929470,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "31",
+                                    "value": "\"31\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730276182/PU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=bd3cec8968fd89556bf9249b5bbb751dde94ce486dd208d50025de2dfa840d18"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170801934",
+                            "name": "Western University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730278172/WU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"WU.jpg\",\"assetId\":2730278172,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770109981121,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "31",
+                                    "value": "\"31\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730278172/WU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8966f576d293db683b5eb896603e23553603b2e9d685e7b76e2199f38351fca8"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170807001",
+                            "name": "Tel Aviv University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730287646/Aviv.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Aviv.jpg\",\"assetId\":2730287646,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110058725,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "31",
+                                    "value": "\"31\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730287646/Aviv.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8f15da3245680cf6d5e4b14a12e8dd07b2f3535c50a05ce20eb78254f5051359"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170823585",
+                            "name": "University of Melbourne, Australia",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730293667/Australia.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Australia.jpg\",\"assetId\":2730293667,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110123482,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "30",
+                                    "value": "\"30\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730293667/Australia.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ff26269d931cf790c5579992066ef49727cd06a969766c7526593fe6e4469e7c"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170840623",
+                            "name": "University of Warwick",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730295997/Warwick.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Warwick.jpg\",\"assetId\":2730295997,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110179252,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "30",
+                                    "value": "\"30\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730295997/Warwick.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=fddd372474a528f2c516d182d54683b78258fad63f2ef822f73d6fb6af5345d0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170840106",
+                            "name": "Northeastern University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730297953/NEU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"NEU.jpg\",\"assetId\":2730297953,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110239415,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "29",
+                                    "value": "\"29\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730297953/NEU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=335a4aead45155b228eaade1165a8e00789de2444a4008a3e2daeefb8dea5505"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170860049",
+                            "name": "University of Wisconsin-Madison",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730299253/Madison.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Madison.jpg\",\"assetId\":2730299253,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110288571,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "29",
+                                    "value": "\"29\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730299253/Madison.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=4a9df9d93a2710e985fd33ece25b68a168673b0226200dd16d02db7b7fd28474"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170840698",
+                            "name": "University of Colorado Boulder",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730300721/Boulder.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Boulder.jpg\",\"assetId\":2730300721,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110338123,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "28",
+                                    "value": "\"28\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730300721/Boulder.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0cabc312cb0580fda57811673ce2b653be353ffd7f6702c8fbdc0af37022adb5"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170859151",
+                            "name": "UC Santa Barbara",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730301898/Barbara.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Barbara.jpg\",\"assetId\":2730301898,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110388492,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "29",
+                                    "value": "\"29\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730301898/Barbara.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=4375d2b8a04a49f91a3974b532d611202037b642343d96e735239bc8fc91b6bb"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170861052",
+                            "name": "Arizona State University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730302870/ASU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"ASU.jpg\",\"assetId\":2730302870,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110443436,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "28",
+                                    "value": "\"28\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730302870/ASU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b63e6d9ca2d975acfb9ab97b6d0bf0a41432288d547c586b432b577b9550b1de"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170846906",
+                            "name": "Technion - Israel Institute of Technology",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730304139/IIT.jpg",
+                                    "value": "{\"files\":[{\"name\":\"IIT.jpg\",\"assetId\":2730304139,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770110507484,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "27",
+                                    "value": "\"27\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730304139/IIT.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=506d07e437c6696182d408869b0f09c1695664f7da055453df2a556a74dc64be"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170938953",
+                            "name": "National Taiwan University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730325224/NTU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"NTU.jpg\",\"assetId\":2730325224,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770111147525,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "27",
+                                    "value": "\"27\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730325224/NTU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=cbf8b7bd31be0f7f17b19c2e39e7666844141858a0d03b8b756cd1b44bbb3886"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170957940",
+                            "name": "University of Virginia",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730326739/UV.jpg",
+                                    "value": "{\"files\":[{\"name\":\"UV.jpg\",\"assetId\":2730326739,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770111217213,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "27",
+                                    "value": "\"27\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730326739/UV.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d6600c4de110d3e8a3bc5c0b4ec2c08cfcbd643c32b93617a47727bfe42b6fa9"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170928748",
+                            "name": "Washington University in St. Louis",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730328437/WUSL.jpg",
+                                    "value": "{\"files\":[{\"name\":\"WUSL.jpg\",\"assetId\":2730328437,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770111281448,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "28",
+                                    "value": "\"28\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730328437/WUSL.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=99f6f0ed36119f22fb6402b38c3691643729a2d7cbbd671d87ecb02695bebf28"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170948516",
+                            "name": "The Johns Hopkins University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730329317/Johns.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Johns.jpg\",\"assetId\":2730329317,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770111329581,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "26",
+                                    "value": "\"26\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730329317/Johns.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=79533833f3a37d480b9cd602c3525a2ca2dd04ca383a494e17b2c2110cfa24af"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170957358",
+                            "name": "City University of Hong Kong",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730330739/CUHK.jpg",
+                                    "value": "{\"files\":[{\"name\":\"CUHK.jpg\",\"assetId\":2730330739,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770111385874,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "25",
+                                    "value": "\"25\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730330739/CUHK.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8d302af3da9009b480d5898d0d791ce8b885b77a3f553241d045dca5e6e65d9c"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11170953078",
+                            "name": "Seoul National University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730331947/SNU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"SNU.jpg\",\"assetId\":2730331947,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770111434810,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "25",
+                                    "value": "\"25\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730331947/SNU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=fa920b0aa39eee5a2112e38e5cb75f222dfcb08139efab3ebb01463630506d4c"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171081238",
+                            "name": "The Pennsylvania State University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730366530/PennSU.jpg",
+                                    "value": "{\"files\":[{\"name\":\"PennSU.jpg\",\"assetId\":2730366530,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770112789037,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "25",
+                                    "value": "\"25\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730366530/PennSU.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=78105bcc5fb25be51a661d41d93c262db08dd2c1adc3bf9220c4ab34c83c766f"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171101068",
+                            "name": "University of Science and Technology of China",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730368575/USTC.jpg",
+                                    "value": "{\"files\":[{\"name\":\"USTC.jpg\",\"assetId\":2730368575,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770112875523,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "24",
+                                    "value": "\"24\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730368575/USTC.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=63eaf348380a14faf291d5b6fb7038f3e118aec70bc19f8da8e3441fef8fd127"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171101987",
+                            "name": "University of Maryland",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730370262/Maryland.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Maryland.jpg\",\"assetId\":2730370262,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770112940631,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "23",
+                                    "value": "\"23\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730370262/Maryland.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=459f270c201a6d653a0ced84505c9fca80a7c0a9dd0dd00b45542a0e338c1c56"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171118322",
+                            "name": "University of York",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730371740/York.jpg",
+                                    "value": "{\"files\":[{\"name\":\"York.jpg\",\"assetId\":2730371740,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113009512,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "21",
+                                    "value": "\"21\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730371740/York.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=735990000c8aaf1933e0718f55ef1749cb568b1bd834df2caa752410bbd9011d"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171107882",
+                            "name": "The University of Queensland",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730373660/Queensland.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Queensland.jpg\",\"assetId\":2730373660,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113085664,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "21",
+                                    "value": "\"21\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730373660/Queensland.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=35ff9cfdaeffd68a4753d6be0824c4bb248a88882236a2b6008ddcf83eb0f08a"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171105394",
+                            "name": "King's College London",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730375158/College.jpg",
+                                    "value": "{\"files\":[{\"name\":\"College.jpg\",\"assetId\":2730375158,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113146597,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "22",
+                                    "value": "\"22\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730375158/College.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ab58af5cfdd9729ec6bc1b35e8a9e760fa974de2390f4f2e04b600ce68ab11c2"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171131103",
+                            "name": "Nanjing University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730376678/Nanjing%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Nanjing University.jpg\",\"assetId\":2730376678,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113209199,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "19",
+                                    "value": "\"19\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730376678/Nanjing%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=88b87db84ccfbb7d6fb4af97f80d26304e55360e4b515b2454909806d125ccd6"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171113981",
+                            "name": "University of California, Irvine",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730378001/University%20of%20California_%20Irvine.jpg",
+                                    "value": "{\"files\":[{\"name\":\"University of California_ Irvine.jpg\",\"assetId\":2730378001,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113271125,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "18",
+                                    "value": "\"18\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730378001/University%20of%20California_%20Irvine.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=9faf5e577d66089071b63fe15bd9ab8ba754dacbb5b418d17f07e6e75d10657d"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171123859",
+                            "name": "Renmin University of China",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730380730/Renmin%20University%20of%20China.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Renmin University of China.jpg\",\"assetId\":2730380730,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113330379,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "18",
+                                    "value": "\"18\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730380730/Renmin%20University%20of%20China.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=abcc1f563697750155899ef0cf45b5997613c4d139ad0cc7e75c0268ba5c6594"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171143986",
+                            "name": "Emory University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730383423/Emory%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Emory University.jpg\",\"assetId\":2730383423,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113408529,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "18",
+                                    "value": "\"18\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730383423/Emory%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0690b506443ae09d0cf8b8d00ef383d0006c8ba778f0e43da6c51b754bd6b93e"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171146009",
+                            "name": "Indian Institute of Technology, Bombay",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730384981/Indian%20Institute%20of%20Technology_%20Bombay.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Indian Institute of Technology_ Bombay.jpg\",\"assetId\":2730384981,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113465916,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "17",
+                                    "value": "\"17\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730384981/Indian%20Institute%20of%20Technology_%20Bombay.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=a8fa53ceb93e0effc058e7640aa20b836b46abe99a3e6fcb05c018acebb16ff6"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171162827",
+                            "name": "Yonsei University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730386884/Yonsei%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Yonsei University.jpg\",\"assetId\":2730386884,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113526472,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "17",
+                                    "value": "\"17\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730386884/Yonsei%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=aea57d68adbbff01c0f8c626f25627e4d4cba94829fe4714b821ef4910c28837"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171175028",
+                            "name": "University of Minnesota",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730388381/University%20of%20Minnesota.jpg",
+                                    "value": "{\"files\":[{\"name\":\"University of Minnesota.jpg\",\"assetId\":2730388381,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113593222,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "17",
+                                    "value": "\"17\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730388381/University%20of%20Minnesota.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=6989a47ae0fd78ad613d9749373736267af80a5ce6d4c508497783566a33a583"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171183562",
+                            "name": "Technical University of Munich",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730389683/Technical%20University%20of%20Munich.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Technical University of Munich.jpg\",\"assetId\":2730389683,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113643037,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "16",
+                                    "value": "\"16\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730389683/Technical%20University%20of%20Munich.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=ce41f7936ff6e05b5f6fa146513d17fe745fa27d6aec68402835a7a0c15ace8a"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171182270",
+                            "name": "University of Massachusetts Amherst",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730391468/University%20of%20Massachusetts%20Amherst.jpg",
+                                    "value": "{\"files\":[{\"name\":\"University of Massachusetts Amherst.jpg\",\"assetId\":2730391468,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113716080,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "16",
+                                    "value": "\"16\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730391468/University%20of%20Massachusetts%20Amherst.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=7dba4f9c35cb7e0b7330fc2aee0251fc742576b4a907e3451617ffe1b49386a5"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171198643",
+                            "name": "University of California, Davis",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730393749/University%20of%20California_%20Davis.jpg",
+                                    "value": "{\"files\":[{\"name\":\"University of California_ Davis.jpg\",\"assetId\":2730393749,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113810668,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "16",
+                                    "value": "\"16\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730393749/University%20of%20California_%20Davis.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8799b6e2972f53f4649bc5edac90caac947d6f80067f8a316aaf18ef18804c10"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171199253",
+                            "name": "University of California, Santa Cruz",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730395355/University%20of%20California_%20Santa%20Cruz.jpg",
+                                    "value": "{\"files\":[{\"name\":\"University of California_ Santa Cruz.jpg\",\"assetId\":2730395355,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113873371,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "16",
+                                    "value": "\"16\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730395355/University%20of%20California_%20Santa%20Cruz.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=0cd63c1bcbf5ed364052226297a1a603cf003d5a261549e20740758fa19092cf"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171212661",
+                            "name": "University of Nottingham",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730396809/University%20of%20Nottingham.jpg",
+                                    "value": "{\"files\":[{\"name\":\"University of Nottingham.jpg\",\"assetId\":2730396809,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770113934450,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "16",
+                                    "value": "\"16\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730396809/University%20of%20Nottingham.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=fe43b9bb4335e2c98624a609f13e34cd3709e93385218c0a7720074b842885ca"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171227230",
+                            "name": "Wuhan University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730402188/Wuhan%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Wuhan University.jpg\",\"assetId\":2730402188,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114031657,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "16",
+                                    "value": "\"16\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730402188/Wuhan%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=1f1935e6ba76755f49dc602b1e680bd8958982a1acd72384b2943175bd714432"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171237132",
+                            "name": "The Hong Kong Polytechnic University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730404703/The%20Hong%20Kong%20Polytechnic%20University.png",
+                                    "value": "{\"files\":[{\"name\":\"The Hong Kong Polytechnic University.png\",\"assetId\":2730404703,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114100213,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "15",
+                                    "value": "\"15\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730404703/The%20Hong%20Kong%20Polytechnic%20University.png?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=eab33a577c46a674ad9aa0f554f0f2b3b40b8d8a6e913714f2ec0371e77fdc37"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171235875",
+                            "name": "Rutgers University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730406964/Rutgers%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Rutgers University.jpg\",\"assetId\":2730406964,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114175608,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "15",
+                                    "value": "\"15\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730406964/Rutgers%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=864ba287dd350cabb83274815ffd631c0e0f52cdd713a38d47dad58ec8b903e0"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171258722",
+                            "name": "The University of Auckland",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730408836/The%20University%20of%20Auckland.jpg",
+                                    "value": "{\"files\":[{\"name\":\"The University of Auckland.jpg\",\"assetId\":2730408836,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114255464,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "15",
+                                    "value": "\"15\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730408836/The%20University%20of%20Auckland.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=e8d88fa35ef42c319edef0856f7ac1e547cfeb3693068ebe773cffea9a1744e9"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171258935",
+                            "name": "Huazhong University of Science and Technology",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730410137/Huazhong%20University%20of%20Science%20and%20Technology.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Huazhong University of Science and Technology.jpg\",\"assetId\":2730410137,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114318729,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "15",
+                                    "value": "\"15\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730410137/Huazhong%20University%20of%20Science%20and%20Technology.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=b4306a328adf817e1047f48b35da58811f60df67ab622a3e29ee37fbaf5c3430"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171250894",
+                            "name": "Sun Yat-sen University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730411225/Sun%20Yat-sen%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Sun Yat-sen University.jpg\",\"assetId\":2730411225,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114375833,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "15",
+                                    "value": "\"15\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730411225/Sun%20Yat-sen%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=80605b85265d74a5621239d2c04904b8c388f4352337c27e4904d9211ba870ce"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171252963",
+                            "name": "Vanderbilt University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730412761/Vanderbilt%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Vanderbilt University.jpg\",\"assetId\":2730412761,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114449773,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "14",
+                                    "value": "\"14\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730412761/Vanderbilt%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c7ca0c71f80fbc8f20f6ef0a77af1e270ec6dad5f173350f58b818b21142e27c"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171260472",
+                            "name": "Rice University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730414740/Rice%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Rice University.jpg\",\"assetId\":2730414740,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114522274,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "14",
+                                    "value": "\"14\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730414740/Rice%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=168d7e8725196739a97286f0c591aaeb6228a58b0c6ee6c0345fe59f48a09132"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171254068",
+                            "name": "Durham University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730416192/Durham%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Durham University.jpg\",\"assetId\":2730416192,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114589164,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "14",
+                                    "value": "\"14\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730416192/Durham%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=bb53e9818b56fd0e7d09ffddc8f6846499c0981735cf774e81e8ad7e5aad34bf"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171265803",
+                            "name": "Nankai University",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730418071/Nankai%20University.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Nankai University.jpg\",\"assetId\":2730418071,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114660855,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "14",
+                                    "value": "\"14\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730418071/Nankai%20University.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=2d64979b03140119dab261e81a1e96e56f83dc281cdc92fd2f97dbeb8ca5039a"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171272152",
+                            "name": "University of Southampton",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730423194/University%20of%20Southampton.jpg",
+                                    "value": "{\"files\":[{\"name\":\"University of Southampton.jpg\",\"assetId\":2730423194,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114733413,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "13",
+                                    "value": "\"13\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730423194/University%20of%20Southampton.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=406378e7917540e6cfdde27398f89f34c35a26c89f0032cdfc32c459bcc6ba20"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171300002",
+                            "name": "University of Birmingham",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730425487/University%20of%20Birmingham.jpg",
+                                    "value": "{\"files\":[{\"name\":\"University of Birmingham.jpg\",\"assetId\":2730425487,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114820832,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "13",
+                                    "value": "\"13\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730425487/University%20of%20Birmingham.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=96a3ef0133ff0847a07f7ea3e7c5bf4921b06d0c9cba4d3597f1bc44d1d4395b"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "11171318756",
+                            "name": "Universidad de Buenos Aires",
+                            "group": {
+                                "title": "Universities"
+                            },
+                            "column_values": [
+                                {
+                                    "id": "subitems",
+                                    "text": null,
+                                    "value": null
+                                },
+                                {
+                                    "id": "files",
+                                    "text": "https://blockchainedu.monday.com/protected_static/8712944/resources/2730428566/Universidad%20de%20Buenos%20Aires.jpg",
+                                    "value": "{\"files\":[{\"name\":\"Universidad de Buenos Aires.jpg\",\"assetId\":2730428566,\"isImage\":\"true\",\"fileType\":\"ASSET\",\"createdAt\":1770114929444,\"createdBy\":\"21415662\"}]}"
+                                },
+                                {
+                                    "id": "text2",
+                                    "text": "13",
+                                    "value": "\"13\""
+                                }
+                            ],
+                            "assets": [
+                                {
+                                    "public_url": "https://files-monday-com.s3.amazonaws.com/8712944/resources/2730428566/Universidad%20de%20Buenos%20Aires.jpg?response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4MPVJMFXBU3HSM42%2F20260310%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260310T193940Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=90504e447b8f93364b7cbb32d2f82b224b3da8b6699fdfb9ba82a4b2b5d87e7d"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "extensions": {
+        "request_id": "f4fbb1a0-6103-95be-8325-ab012880fcd5"
+    }
+}
