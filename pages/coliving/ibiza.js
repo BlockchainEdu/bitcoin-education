@@ -954,8 +954,8 @@ export default function IbizaColiving() {
           <div className="flex flex-col md:flex-row gap-3">
             <div className="md:w-2/5 flex flex-col gap-3">
               <img
-                src="/images/hackerhouses/ibiza/datcha-spa.png"
-                alt="Ibiza coastline"
+                src="/images/hackerhouses/ibiza/es-vedra-sunset.jpg"
+                alt="Es Vedra at sunset, Ibiza"
                 className="w-full rounded-2xl flex-1"
                 style={{ objectFit: "cover", minHeight: 200 }}
               />
@@ -1086,8 +1086,8 @@ export default function IbizaColiving() {
       {/* ── Full-bleed: Aerial ── */}
       <section className="relative" style={{ backgroundColor: "#000" }}>
         <img
-          src="/images/hackerhouses/ibiza/datcha-spa.png"
-          alt="Ibiza coastline near Casa Datcha"
+          src="/images/hackerhouses/ibiza/es-vedra-sunset.jpg"
+          alt="Es Vedra at sunset, Ibiza"
           className="w-full"
           style={{ display: "block", height: "55vh", objectFit: "cover", minHeight: 320 }}
         />

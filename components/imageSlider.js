@@ -15,7 +15,7 @@ const ImageSlider = ({ location }) => {
 
       "/images/hackerhouses/ibiza/airbnb-view.jpeg",
       // Casa Datcha website photos (clean, no watermarks)
-      "/images/hackerhouses/ibiza/datcha-spa.png",
+      "/images/hackerhouses/ibiza/es-vedra-sunset.jpg",
 
       "/images/hackerhouses/ibiza/datcha-garden.png",
       "/images/hackerhouses/ibiza/datcha-beach-salada.jpg",
