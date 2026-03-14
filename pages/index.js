@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import { useAuth } from "../lib/auth";
 import LoginModal from "../components/LoginModal";
 import { slugify } from "../lib/slugify";
-import { USERS } from "../content/ben-network.data";
+
 import styles from "../styles/ben-network.module.css";
 import AnimatedCounter from "../components/AnimatedCounter";
 
@@ -656,13 +656,13 @@ function chunkUniversitiesForColumns(items = [], columnCount = 3) {
   return columns;
 }
 
-export default function BenNetwork({ universities = [] }) {
+export default function BenNetwork({ universities = [], memberAvatars = [], memberCount = 0 }) {
   const router = useRouter();
   const onDominantBgLoad = useDominantBg();
   const { user, isPaid } = useAuth();
   const [showLogin, setShowLogin] = useState(false);
 
-  const users = USERS;
+  const users = memberAvatars;
 
   // Hero interactive network — Fruit Ninja x Galaga x Temple Run
   const heroPointer = useRef({ x: -9999, y: -9999 });
@@ -1044,7 +1044,7 @@ export default function BenNetwork({ universities = [] }) {
               ))}
             </div>
             <p className="mt-3 text-xs sm:text-sm font-inter" style={{ color: "rgba(255,255,255,0.5)" }}>
-              Followed by 25k+ in Web3
+              {memberCount > 0 ? `${memberCount.toLocaleString()}+ members` : "Join the community"}
             </p>
           </div>
 
@@ -1470,8 +1470,24 @@ export async function getStaticProps() {
     peopleCount: u.num_people || 0,
   }));
 
+  // Fetch total member count
+  const { count: memberCount } = await supabase
+    .from("students")
+    .select("id", { count: "exact", head: true });
+
+  // Fetch random sample of members with photos for hero avatars
+  const { data: avatarRows } = await supabase
+    .from("students")
+    .select("image_url")
+    .not("image_url", "is", null)
+    .limit(50);
+
+  // Shuffle and pick 8
+  const shuffled = (avatarRows || []).sort(() => Math.random() - 0.5);
+  const memberAvatars = shuffled.slice(0, 8).map((s) => s.image_url);
+
   return {
-    props: { universities },
+    props: { universities, memberAvatars, memberCount: memberCount || 0 },
     revalidate: 3600,
   };
 }
