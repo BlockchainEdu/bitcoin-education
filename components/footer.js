@@ -33,7 +33,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 font-inter text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
               {[
-                { label: "Get Involved", path: "/opportunities" },
+                { label: "Jobs", path: "/jobs" },
                 { label: "Blog", path: "/blog" },
                 { label: "Our People", path: "/team" },
                 { label: "Support Us", path: "/donate" },
@@ -50,7 +50,7 @@ export default function Footer() {
               Get Started
             </h4>
             <ul className="space-y-2.5 font-inter text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-              <li><span onClick={() => router.push("/opportunities#apply")} className="transition-colors duration-200 hover:text-white cursor-pointer">Join BEN</span></li>
+              <li><span onClick={() => router.push("/jobs")} className="transition-colors duration-200 hover:text-white cursor-pointer">Find Jobs</span></li>
               <li><span onClick={() => window.open("https://bit.ly/ben-media-kit", "_blank", "noopener,noreferrer")} className="transition-colors duration-200 hover:text-white cursor-pointer">Media Kit</span></li>
             </ul>
           </div>
