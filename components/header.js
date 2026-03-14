@@ -88,7 +88,10 @@ export default function HeaderWithLogo({ className = "", children }) {
               </span>
               {colivingOpen && (
                 <div
-                  className="absolute top-full left-0 mt-2 py-2 rounded-xl shadow-lg"
+                  className="absolute top-full left-0 pt-2"
+                >
+                <div
+                  className="py-2 rounded-xl shadow-lg"
                   style={{
                     backgroundColor: "#fff",
                     border: "1px solid rgba(0,0,0,0.08)",
@@ -118,6 +121,7 @@ export default function HeaderWithLogo({ className = "", children }) {
                       {link.label}
                     </span>
                   ))}
+                </div>
                 </div>
               )}
             </div>

@@ -12,14 +12,14 @@ const ImageSlider = ({ location }) => {
       "/images/hackerhouses/ibiza/airbnb-exterior.jpeg",
       "/images/hackerhouses/ibiza/airbnb-living.jpeg",
       "/images/hackerhouses/ibiza/airbnb-room1.jpeg",
-      "/images/hackerhouses/ibiza/airbnb-room2.jpeg",
+
       "/images/hackerhouses/ibiza/airbnb-view.jpeg",
       // Casa Datcha website photos (clean, no watermarks)
       "/images/hackerhouses/ibiza/datcha-spa.png",
-      "/images/hackerhouses/ibiza/datcha-exterior.png",
+
       "/images/hackerhouses/ibiza/datcha-garden.png",
       "/images/hackerhouses/ibiza/datcha-beach-salada.jpg",
-      "/images/hackerhouses/ibiza/datcha-aerial.jpg",
+
       // Original photos
       "/images/hackerhouses/ibiza/mesaexterior.png",
       "/images/hackerhouses/ibiza/piscina.png",

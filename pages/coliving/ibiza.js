@@ -521,9 +521,35 @@ function BookingCalendar() {
 }
 
 // ── Main Page ──
+const ROOMS = [
+  { src: "/images/hackerhouses/ibiza/airbnb-room1.jpeg", label: "Master Suite" },
+  { src: "/images/hackerhouses/ibiza/airbnb-exterior.jpeg", label: "Bohemian Suite" },
+  { src: "/images/hackerhouses/ibiza/quarto.png", label: "Terrace Room" },
+  { src: "/images/hackerhouses/ibiza/quartodois.png", label: "Garden Room" },
+  { src: "/images/hackerhouses/ibiza/quartoum.png", label: "Sea Breeze Suite" },
+  { src: "/images/hackerhouses/ibiza/quartovista.png", label: "Sunset Studio" },
+];
+
 export default function IbizaColiving() {
   const router = useRouter();
   const booked = router.query.booked === "true";
+  const [lightbox, setLightbox] = useState(null); // index into ROOMS
+
+  // Keyboard nav for lightbox
+  useEffect(() => {
+    if (lightbox === null) return;
+    const handler = (e) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowRight") setLightbox((i) => (i + 1) % ROOMS.length);
+      if (e.key === "ArrowLeft") setLightbox((i) => (i - 1 + ROOMS.length) % ROOMS.length);
+    };
+    window.addEventListener("keydown", handler);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", handler);
+      document.body.style.overflow = "";
+    };
+  }, [lightbox]);
 
   return (
     <div className="overflow-hidden">
@@ -942,7 +968,7 @@ export default function IbizaColiving() {
             </div>
             <div className="md:w-3/5">
               <img
-                src="/images/hackerhouses/ibiza/datcha-exterior.png"
+                src="/images/hackerhouses/ibiza/quartoum.png"
                 alt="Bedroom suite"
                 className="w-full rounded-2xl"
                 style={{ height: 420, objectFit: "cover" }}
@@ -952,43 +978,116 @@ export default function IbizaColiving() {
         </div>
       </section>
 
-      {/* ── Rooms Strip ── */}
-      <section style={{ backgroundColor: "#fafafa" }} className="py-16 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-7 mb-8">
-          <p className="font-inter font-medium uppercase mb-3" style={{ fontSize: 11, letterSpacing: "0.08em", color: "#FF872A" }}>
+      {/* ── Rooms Grid + Lightbox ── */}
+      <section style={{ backgroundColor: "#fafafa" }} className="py-20 px-7">
+        <div className="max-w-6xl mx-auto">
+          <p className="font-inter font-medium uppercase mb-3 text-center" style={{ fontSize: 11, letterSpacing: "0.08em", color: "#FF872A" }}>
             The Rooms
           </p>
-          <h2 className="font-mont font-black" style={{ fontSize: "clamp(24px, 3vw, 36px)", color: "#1d1d1f", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+          <h2 className="font-mont font-black text-center mb-4" style={{ fontSize: "clamp(28px, 4vw, 42px)", color: "#1d1d1f", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             14 bedrooms, each one unique
           </h2>
-        </div>
-        <div className="flex gap-4 px-7 overflow-x-auto pb-4" style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" }}>
-          {[
-            { src: "/images/hackerhouses/ibiza/airbnb-room1.jpeg", label: "Master Suite" },
-            { src: "/images/hackerhouses/ibiza/airbnb-room2.jpeg", label: "Garden Room" },
-            { src: "/images/hackerhouses/ibiza/quarto.png", label: "Terrace Room" },
-            { src: "/images/hackerhouses/ibiza/quartodois.png", label: "Pool View" },
-            { src: "/images/hackerhouses/ibiza/quartoum.png", label: "Corner Suite" },
-            { src: "/images/hackerhouses/ibiza/quartovista.png", label: "Panorama Suite" },
-          ].map((room) => (
-            <div key={room.label} className="flex-shrink-0" style={{ width: 320, scrollSnapAlign: "start" }}>
-              <img
-                src={room.src}
-                alt={room.label}
-                className="w-full rounded-2xl"
-                style={{ height: 240, objectFit: "cover" }}
-              />
-              <p className="font-inter font-medium mt-3" style={{ fontSize: 14, color: "#1d1d1f" }}>{room.label}</p>
-            </div>
-          ))}
+          <p className="font-inter text-center mb-12" style={{ fontSize: 15, color: "#86868b" }}>
+            Tap any room to explore
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {ROOMS.map((room, i) => (
+              <div
+                key={room.label}
+                className="cursor-pointer rounded-2xl overflow-hidden transition-all duration-300"
+                style={{ border: "1px solid rgba(0,0,0,0.04)" }}
+                onClick={() => setLightbox(i)}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.02)";
+                  e.currentTarget.style.boxShadow = "0 20px 60px rgba(0,0,0,0.12)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "scale(1)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <img
+                  src={room.src}
+                  alt={room.label}
+                  className="w-full"
+                  style={{ height: 280, objectFit: "cover" }}
+                />
+                <div className="bg-white px-5 py-4">
+                  <p className="font-mont font-bold" style={{ fontSize: 15, color: "#1d1d1f" }}>{room.label}</p>
+                  <p className="font-inter mt-0.5" style={{ fontSize: 12, color: "#86868b" }}>Tap to view full size</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* ── Fullscreen Lightbox ── */}
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 flex items-center justify-center"
+          style={{ zIndex: 9999, backgroundColor: "rgba(0,0,0,0.95)" }}
+          onClick={() => setLightbox(null)}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-5 right-5 flex items-center justify-center rounded-full"
+            style={{ width: 44, height: 44, backgroundColor: "rgba(255,255,255,0.1)", zIndex: 10 }}
+            onClick={() => setLightbox(null)}
+          >
+            <svg className="h-6 w-6" style={{ color: "#fff" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Prev */}
+          <button
+            className="absolute left-4 sm:left-8 flex items-center justify-center rounded-full"
+            style={{ width: 48, height: 48, backgroundColor: "rgba(255,255,255,0.1)", zIndex: 10, top: "50%", transform: "translateY(-50%)" }}
+            onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + ROOMS.length) % ROOMS.length); }}
+          >
+            <svg className="h-6 w-6" style={{ color: "#fff" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          {/* Next */}
+          <button
+            className="absolute right-4 sm:right-8 flex items-center justify-center rounded-full"
+            style={{ width: 48, height: 48, backgroundColor: "rgba(255,255,255,0.1)", zIndex: 10, top: "50%", transform: "translateY(-50%)" }}
+            onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % ROOMS.length); }}
+          >
+            <svg className="h-6 w-6" style={{ color: "#fff" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Image */}
+          <img
+            src={ROOMS[lightbox].src}
+            alt={ROOMS[lightbox].label}
+            className="rounded-xl"
+            style={{ maxHeight: "85vh", maxWidth: "90vw", objectFit: "contain" }}
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* Caption + counter */}
+          <div className="absolute bottom-6 left-0 right-0 text-center pointer-events-none">
+            <p className="font-mont font-bold" style={{ fontSize: 18, color: "#fff" }}>
+              {ROOMS[lightbox].label}
+            </p>
+            <p className="font-inter mt-1" style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
+              {lightbox + 1} / {ROOMS.length}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* ── Full-bleed: Aerial ── */}
       <section className="relative" style={{ backgroundColor: "#000" }}>
         <img
-          src="/images/hackerhouses/ibiza/datcha-aerial.jpg"
-          alt="Aerial view of Casa Datcha"
+          src="/images/hackerhouses/ibiza/datcha-spa.png"
+          alt="Ibiza coastline near Casa Datcha"
           className="w-full"
           style={{ display: "block", height: "55vh", objectFit: "cover", minHeight: 320 }}
         />

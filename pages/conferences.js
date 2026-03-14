@@ -305,6 +305,7 @@ function EventCard({ conf, onSelect }) {
   const hasSideEvents = conf.sideEvents?.length > 0;
   const isPast = status === "past";
   const hasLuma = isLumaUrl(conf.url) || isLumaUrl(conf.ticketUrl);
+  const [imgError, setImgError] = useState(false);
 
   return (
     <div
@@ -328,10 +329,23 @@ function EventCard({ conf, onSelect }) {
       }}
     >
       {/* Cover image */}
-      {conf.coverImage ? (
-        <div style={{ height: 160, overflow: "hidden", position: "relative" }}>
-          <img src={conf.coverImage} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
-          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 60, background: "linear-gradient(transparent, #fff)" }} />
+      {conf.coverImage && !imgError ? (
+        <div style={{ position: "relative", paddingTop: "45%", backgroundColor: "#f0f0f2", overflow: "hidden" }}>
+          <img
+            src={conf.coverImage}
+            alt=""
+            onError={() => setImgError(true)}
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+            loading="lazy"
+          />
+          <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 40, background: "linear-gradient(transparent, rgba(255,255,255,0.9))" }} />
         </div>
       ) : (
         <div style={{ height: 4, backgroundColor: tier.color }} />
@@ -421,11 +435,6 @@ function EventCard({ conf, onSelect }) {
         {/* Bottom row */}
         <div className="flex items-center justify-between mt-4 pt-3" style={{ borderTop: "1px solid rgba(0,0,0,0.05)" }}>
           <div className="flex items-center gap-3">
-            {conf.attendees && (
-              <span className="font-inter font-semibold" style={{ fontSize: 13, color: "#1d1d1f" }}>
-                {conf.attendees}
-              </span>
-            )}
             {hasSideEvents && (
               <span className="font-inter font-medium" style={{ fontSize: 12, color: "#FF872A" }}>
                 {conf.sideEvents.length} side events
@@ -539,9 +548,13 @@ function EventModal({ conf, onClose }) {
 
         {/* Cover */}
         {conf.coverImage ? (
-          <div style={{ height: 200, overflow: "hidden", position: "relative" }}>
-            <img src={conf.coverImage} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 80, background: "linear-gradient(transparent, #fff)" }} />
+          <div style={{ position: "relative", paddingTop: "40%", minHeight: 180, backgroundColor: "#f0f0f2", overflow: "hidden" }}>
+            <img
+              src={conf.coverImage}
+              alt=""
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+            />
+            <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 60, background: "linear-gradient(transparent, #fff)" }} />
           </div>
         ) : (
           <div style={{ height: 4, backgroundColor: tier.color }} />
@@ -615,14 +628,6 @@ function EventModal({ conf, onClose }) {
 
           {/* Stats row */}
           <div className="flex items-center gap-6 mt-6 py-5" style={{ borderTop: "1px solid rgba(0,0,0,0.06)", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
-            {conf.attendees && (
-              <div>
-                <div className="font-mont font-black" style={{ fontSize: 22, color: "#1d1d1f", letterSpacing: "-0.02em" }}>
-                  {conf.attendees}
-                </div>
-                <div className="font-inter" style={{ fontSize: 13, color: "#86868b", marginTop: 2 }}>Attendees</div>
-              </div>
-            )}
             {conf.priceRange && (
               <div>
                 <div className="font-mont font-black" style={{ fontSize: 22, color: "#1d1d1f", letterSpacing: "-0.02em" }}>
@@ -637,9 +642,6 @@ function EventModal({ conf, onClose }) {
           <EmailGate
             fallback={
               <div className="mt-6 text-center py-6" style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}>
-                <p className="font-inter text-sm mb-1" style={{ color: "rgba(0,0,0,0.4)" }}>
-                  Sign up free to see full event details, speakers, and side events.
-                </p>
               </div>
             }
           >
