@@ -148,7 +148,7 @@ const FAQ = [
   },
   {
     q: "Why so cheap compared to bootcamps?",
-    a: "Bootcamps have classrooms, staff, and overhead. We don't. You get the same curriculum depth starting at $19/month. Go lifetime for $299 and get every future update and new module for free.",
+    a: "Bootcamps have classrooms, staff, and overhead. We don't. You get the same curriculum depth for $29/month. Cancel anytime.",
   },
   {
     q: "What if I want both tracks?",
@@ -236,7 +236,7 @@ export default function AcademyPage() {
         </title>
         <meta
           name="description"
-          content="Switch careers into tech. Learn full-stack development from scratch or go deep on Solidity smart contracts. 600+ lessons, $199 lifetime. No bootcamp debt."
+          content="Switch careers into tech. Learn full-stack development from scratch or go deep on Solidity smart contracts. 600+ lessons, $29/mo. No bootcamp debt."
         />
         <link rel="canonical" href="https://www.blockchainedu.org/academy" />
         <meta property="og:type" content="website" />
@@ -246,7 +246,7 @@ export default function AcademyPage() {
         />
         <meta
           property="og:description"
-          content="Full-stack developers make $85K-$160K. Solidity engineers make $120K-$250K+. Learn both for $199. No subscriptions."
+          content="Full-stack developers make $85K-$160K. Solidity engineers make $120K-$250K+. Learn both for $29/mo. Cancel anytime."
         />
         <meta property="og:url" content="https://www.blockchainedu.org/academy" />
         <meta
@@ -256,11 +256,11 @@ export default function AcademyPage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="BEN Academy — $199 Lifetime. No Bootcamp Debt."
+          content="BEN Academy — $29/mo. No Bootcamp Debt."
         />
         <meta
           name="twitter:description"
-          content="600+ lessons. Two career tracks. Full-stack or Solidity. One payment, lifetime access."
+          content="600+ lessons. Two career tracks. Full-stack or Solidity. $29/mo, cancel anytime."
         />
       </Head>
 
@@ -321,8 +321,8 @@ export default function AcademyPage() {
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
               Learn full-stack development from scratch or go deep on Solidity
-              smart contracts. Two career tracks. {allLessons}+ lessons. From $19/month
-              or $299 for lifetime access. No bootcamp debt, no gatekeeping.
+              smart contracts. Two career tracks. {allLessons}+ lessons. $29/month,
+              cancel anytime. No bootcamp debt, no gatekeeping.
             </p>
 
             <div
@@ -343,7 +343,7 @@ export default function AcademyPage() {
                   className="px-10 py-4 rounded-full bg-benorange-500 text-white font-inter font-semibold text-sm tracking-wide transition"
                   style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
                 >
-                  See Plans — From $19/mo
+                  Join BEN — $29/mo
                 </button>
               )}
               <button
@@ -396,10 +396,10 @@ export default function AcademyPage() {
                   sub: "3-6 months, rigid schedule",
                 },
                 {
-                  top: "$19/mo",
+                  top: "$29/mo",
                   topColor: "#FF872A",
                   label: "BEN Academy",
-                  sub: "Or $299 lifetime. Your pace.",
+                  sub: "Cancel anytime. Your pace.",
                 },
               ].map((item) => (
                 <div
@@ -563,7 +563,7 @@ export default function AcademyPage() {
               style={{ color: "rgba(0,0,0,0.4)" }}
             >
               Never written code? Start with Full-Stack. Already a developer?
-              Go straight to Solidity. Your $199 unlocks both.
+              Go straight to Solidity. Your membership unlocks both.
             </p>
 
             <div
@@ -1156,19 +1156,13 @@ export default function AcademyPage() {
 
             <div className="mt-10 inline-block">
               <span className="font-mont font-black text-5xl md:text-6xl text-white">
-                $19
+                $29
               </span>
               <span
                 className="font-inter text-base ml-1"
                 style={{ color: "rgba(255,255,255,0.3)" }}
               >
                 /mo
-              </span>
-              <span
-                className="font-inter text-sm ml-4"
-                style={{ color: "rgba(255,255,255,0.2)" }}
-              >
-                or $149/yr or $299 lifetime
               </span>
             </div>
 
@@ -1183,7 +1177,7 @@ export default function AcademyPage() {
                 "BEN community and Telegram group",
                 "Job board with direct applications",
                 "Partner deals and conference discounts",
-                "Cancel anytime. Or pay once with lifetime.",
+                "Cancel anytime. No contracts.",
               ].map((item) => (
                 <div
                   key={item}
@@ -1237,7 +1231,7 @@ export default function AcademyPage() {
               className="mt-6 font-inter text-xs"
               style={{ color: "rgba(255,255,255,0.2)" }}
             >
-              $19/mo. $149/yr. Or $299 lifetime. Pick what works for you.
+              $29/mo. Cancel anytime. No contracts.
             </p>
           </div>
         </section>

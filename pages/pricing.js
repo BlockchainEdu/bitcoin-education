@@ -21,38 +21,6 @@ const allLessons =
 const fsModules = ACADEMY_COURSE.modules.length;
 const solModules = SOLIDITY_COURSE.modules.length;
 
-const PLANS = [
-  {
-    id: "monthly",
-    name: "Monthly",
-    price: "$19",
-    period: "/mo",
-    subtitle: "Cancel anytime",
-    stripe_plan: "monthly",
-    highlight: false,
-  },
-  {
-    id: "annual",
-    name: "Annual",
-    price: "$149",
-    period: "/yr",
-    subtitle: "Save 35% vs monthly",
-    savings: "$79/yr saved",
-    stripe_plan: "annual",
-    highlight: false,
-  },
-  {
-    id: "lifetime",
-    name: "Lifetime",
-    price: "$299",
-    period: "once",
-    subtitle: "Pay once, own forever",
-    savings: "Best value",
-    stripe_plan: "lifetime",
-    highlight: true,
-  },
-];
-
 const BENEFITS = [
   `${allLessons}+ lessons across ${fsModules + solModules} modules`,
   "Full-Stack + Solidity tracks",
@@ -70,7 +38,7 @@ export default function PricingPage() {
 
   useEffect(() => setMounted(true), []);
 
-  function handleCheckout(plan) {
+  function handleCheckout() {
     if (!user) {
       setShowLogin(true);
       return;
@@ -78,7 +46,7 @@ export default function PricingPage() {
     fetch("/api/checkout/membership", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plan }),
+      body: JSON.stringify({ plan: "monthly" }),
     })
       .then((r) => r.json())
       .then((data) => {
@@ -106,17 +74,17 @@ export default function PricingPage() {
     <div>
       <HeaderWithLogoDark />
       <Head>
-        <title>Pricing — From $19/mo | BEN Academy</title>
+        <title>BEN Membership — $29/mo | Everything Included</title>
         <meta
           name="description"
-          content={`Learn full-stack development and Solidity smart contracts. ${allLessons}+ lessons starting at $19/month. Or pay $299 once for lifetime access.`}
+          content={`Full-stack and Solidity courses, job board, community, partner deals. ${allLessons}+ lessons. $29/month, cancel anytime.`}
         />
         <link rel="canonical" href="https://www.blockchainedu.org/pricing" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="BEN Academy Pricing — $19/mo, $149/yr, or $299 lifetime" />
+        <meta property="og:title" content="BEN Membership — $29/mo. Everything Included." />
         <meta
           property="og:description"
-          content={`Two career tracks. ${allLessons}+ lessons. Start at $19/mo or save with annual/lifetime.`}
+          content={`Two career tracks. ${allLessons}+ lessons. Job board. Community. $29/mo.`}
         />
         <meta property="og:url" content="https://www.blockchainedu.org/pricing" />
         <meta
@@ -161,16 +129,16 @@ export default function PricingPage() {
                 fontSize: "10px",
               }}
             >
-              Pricing
+              Membership
             </span>
 
             <h1
               className="font-mont text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight"
               style={{ lineHeight: 1.08 }}
             >
-              Pick your plan.{" "}
+              One price.{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-benorange-500 to-yellow-400">
-                Start today.
+                Everything included.
               </span>
             </h1>
 
@@ -178,137 +146,96 @@ export default function PricingPage() {
               className="mt-6 text-base sm:text-lg max-w-xl mx-auto leading-relaxed font-inter"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
-              Every plan includes both career tracks, {allLessons}+ lessons, community
-              access, and the job board. No feature gating.
+              Courses, job board, community, partner deals, conference discounts.
+              $29/mo. Cancel anytime.
             </p>
           </div>
         </section>
 
-        {/* ── Pricing Cards ── */}
+        {/* ── Single Pricing Card ── */}
         <section style={{ backgroundColor: "#f5f7f7", borderTop: "1px solid rgba(0,0,0,0.04)" }}>
           <div className="max-w-5xl mx-auto px-6 sm:px-10 py-16 md:py-20">
-            {/* Plan comparison strip - replaces bootcamp anchoring */}
+            {/* Comparison strip */}
             <div className="text-center mb-4">
               <p className="font-inter text-sm" style={{ color: "rgba(0,0,0,0.35)" }}>
                 <span style={{ textDecoration: "line-through", color: "rgba(0,0,0,0.2)" }}>$40K CS degree</span>
                 {" "}/{" "}
                 <span style={{ textDecoration: "line-through", color: "rgba(0,0,0,0.2)" }}>$15K bootcamp</span>
                 {" "}/{" "}
-                <span style={{ color: "#FF872A", fontWeight: 600 }}>BEN from $19/mo</span>
+                <span style={{ color: "#FF872A", fontWeight: 600 }}>BEN $29/mo</span>
               </p>
             </div>
 
-            <div
-              className="grid grid-cols-1 md:grid-cols-3 mt-10"
-              style={{ gap: "1.25rem" }}
-            >
-              {PLANS.map((plan) => (
-                <div
-                  key={plan.id}
-                  className="rounded-2xl p-8 flex flex-col"
-                  style={{
-                    backgroundColor: "#fff",
-                    border: plan.highlight
-                      ? "2px solid #FF872A"
-                      : "1px solid rgba(0,0,0,0.06)",
-                    position: "relative",
-                  }}
+            <div className="max-w-md mx-auto mt-10">
+              <div
+                className="rounded-2xl p-8 flex flex-col"
+                style={{
+                  backgroundColor: "#fff",
+                  border: "2px solid #FF872A",
+                }}
+              >
+                <h3
+                  className="font-mont font-black text-lg"
+                  style={{ color: "#1d1d1f" }}
                 >
-                  {plan.highlight && (
-                    <span
-                      className="absolute font-inter font-bold uppercase"
-                      style={{
-                        top: -12,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        backgroundColor: "#FF872A",
-                        color: "#fff",
-                        fontSize: 10,
-                        letterSpacing: "0.1em",
-                        padding: "4px 14px",
-                        borderRadius: 20,
-                      }}
-                    >
-                      Most Popular
-                    </span>
-                  )}
+                  BEN Membership
+                </h3>
 
-                  <h3
-                    className="font-mont font-black text-lg"
-                    style={{ color: "#1d1d1f" }}
+                <div className="mt-4 flex items-end" style={{ gap: "0.25rem" }}>
+                  <span
+                    className="font-mont font-black text-5xl"
+                    style={{ color: "#1d1d1f", lineHeight: 1 }}
                   >
-                    {plan.name}
-                  </h3>
-
-                  <div className="mt-4 flex items-end" style={{ gap: "0.25rem" }}>
-                    <span
-                      className="font-mont font-black text-4xl sm:text-5xl"
-                      style={{ color: "#1d1d1f", lineHeight: 1 }}
-                    >
-                      {plan.price}
-                    </span>
-                    <span
-                      className="font-inter text-base pb-1"
-                      style={{ color: "rgba(0,0,0,0.3)" }}
-                    >
-                      {plan.period}
-                    </span>
-                  </div>
-
-                  <p
-                    className="mt-2 font-inter text-sm"
-                    style={{ color: "rgba(0,0,0,0.4)" }}
+                    $29
+                  </span>
+                  <span
+                    className="font-inter text-base pb-1"
+                    style={{ color: "rgba(0,0,0,0.3)" }}
                   >
-                    {plan.subtitle}
-                  </p>
-
-                  {plan.savings && (
-                    <span
-                      className="inline-block mt-3 font-inter font-semibold text-xs px-3 py-1 rounded-full"
-                      style={{
-                        backgroundColor: plan.highlight
-                          ? "rgba(255,135,42,0.08)"
-                          : "rgba(52,199,89,0.08)",
-                        color: plan.highlight ? "#FF872A" : "#34c759",
-                        alignSelf: "flex-start",
-                      }}
-                    >
-                      {plan.savings}
-                    </span>
-                  )}
-
-                  <div className="flex-1" />
-
-                  <div className="mt-8">
-                    {mounted && isPaid ? (
-                      <button
-                        onClick={() => router.push("/academy")}
-                        className="w-full py-3.5 rounded-full font-inter font-semibold text-sm transition"
-                        style={{
-                          backgroundColor: plan.highlight ? "#FF872A" : "rgba(0,0,0,0.06)",
-                          color: plan.highlight ? "#fff" : "#1d1d1f",
-                        }}
-                      >
-                        Go to Academy
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => handleCheckout(plan.stripe_plan)}
-                        className="w-full py-3.5 rounded-full font-inter font-semibold text-sm transition"
-                        style={{
-                          backgroundColor: plan.highlight ? "#FF872A" : "rgba(0,0,0,0.06)",
-                          color: plan.highlight ? "#fff" : "#1d1d1f",
-                          boxShadow: plan.highlight
-                            ? "0 8px 30px rgba(255,135,42,0.25)"
-                            : "none",
-                        }}
-                      >
-                        {plan.highlight ? "Get Lifetime Access" : `Start ${plan.name}`}
-                      </button>
-                    )}
-                  </div>
+                    /mo
+                  </span>
                 </div>
-              ))}
+
+                <p
+                  className="mt-2 font-inter text-sm"
+                  style={{ color: "rgba(0,0,0,0.4)" }}
+                >
+                  Cancel anytime. No contracts.
+                </p>
+
+                <div className="mt-6">
+                  {BENEFITS.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center py-2.5 font-inter text-sm"
+                      style={{ color: "rgba(0,0,0,0.55)" }}
+                    >
+                      <Check />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-8">
+                  {mounted && isPaid ? (
+                    <button
+                      onClick={() => router.push("/academy")}
+                      className="w-full py-3.5 rounded-full font-inter font-semibold text-sm transition bg-benorange-500 text-white"
+                      style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
+                    >
+                      Go to Academy
+                    </button>
+                  ) : (
+                    <button
+                      onClick={handleCheckout}
+                      className="w-full py-3.5 rounded-full font-inter font-semibold text-sm transition bg-benorange-500 text-white"
+                      style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
+                    >
+                      Join BEN — $29/mo
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
 
             {/* ── Tracks ── */}
@@ -373,28 +300,6 @@ export default function PricingPage() {
                 </div>
               </div>
             </div>
-
-            {/* ── Every plan includes ── */}
-            <div
-              className="mt-12 max-w-2xl mx-auto rounded-2xl p-8"
-              style={{ backgroundColor: "#fff", border: "1px solid rgba(0,0,0,0.06)" }}
-            >
-              <h3 className="font-mont font-black text-lg text-center mb-6" style={{ color: "#1d1d1f" }}>
-                Every plan includes
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2">
-                {BENEFITS.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center py-3 font-inter text-sm"
-                    style={{ color: "rgba(0,0,0,0.55)" }}
-                  >
-                    <Check />
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
@@ -410,20 +315,20 @@ export default function PricingPage() {
 
             {[
               {
-                q: "What's the difference between plans?",
-                a: "Nothing. Every plan unlocks the same content: both tracks, all lessons, community, job board, and partner deals. The only difference is how you pay. Monthly is flexible, annual saves you 35%, and lifetime means you never pay again.",
+                q: "What do I get for $29/mo?",
+                a: "Everything. Both career tracks, all lessons, community access, job board with direct applications, partner deals, and conference discounts. No feature gating, no add-ons.",
               },
               {
-                q: "Can I switch plans later?",
-                a: "Yes. Upgrade from monthly to annual or lifetime at any time. We'll credit what you've already paid.",
+                q: "Can I cancel anytime?",
+                a: "Yes. Cancel in one click from your dashboard. No contracts, no cancellation fees. Your access continues until the end of the billing period.",
               },
               {
-                q: "Why $299 when bootcamps charge $15,000?",
-                a: "Bootcamps have classrooms, staff, and overhead. We don't. You get the same curriculum depth at a fraction of the cost. Lifetime members also get every future update and new module for free.",
+                q: "Why $29/mo when bootcamps charge $15,000?",
+                a: "Bootcamps have classrooms, staff, and overhead. We don't. You get the same curriculum depth at a fraction of the cost, plus a job board and community that bootcamps can't match.",
               },
               {
                 q: "What if I want both tracks?",
-                a: "Every plan unlocks everything. Full-Stack, Solidity, and anything we add in the future. Start with one, switch when you're ready.",
+                a: "Your membership unlocks everything. Full-Stack, Solidity, and anything we add in the future. Start with one, switch when you're ready.",
               },
               {
                 q: "Can I get a refund?",
@@ -461,10 +366,10 @@ export default function PricingPage() {
               className="mt-4 font-inter text-base max-w-md mx-auto leading-relaxed"
               style={{ color: "rgba(255,255,255,0.4)" }}
             >
-              {allLessons}+ lessons. Two career tracks. From $19/month.
+              {allLessons}+ lessons. Two career tracks. $29/month. Cancel anytime.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center" style={{ gap: "0.75rem" }}>
+            <div className="mt-8">
               {mounted && isPaid ? (
                 <button
                   onClick={() => router.push("/academy")}
@@ -474,25 +379,13 @@ export default function PricingPage() {
                   Go to Academy
                 </button>
               ) : (
-                <>
-                  <button
-                    onClick={() => handleCheckout("lifetime")}
-                    className="px-10 py-4 rounded-full bg-benorange-500 text-white font-inter font-semibold text-sm tracking-wide transition"
-                    style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
-                  >
-                    Get Lifetime Access — $299
-                  </button>
-                  <button
-                    onClick={() => handleCheckout("monthly")}
-                    className="px-10 py-4 rounded-full font-inter font-semibold text-sm tracking-wide transition"
-                    style={{
-                      color: "rgba(255,255,255,0.5)",
-                      border: "1px solid rgba(255,255,255,0.1)",
-                    }}
-                  >
-                    Start Monthly — $19/mo
-                  </button>
-                </>
+                <button
+                  onClick={handleCheckout}
+                  className="px-10 py-4 rounded-full bg-benorange-500 text-white font-inter font-semibold text-sm tracking-wide transition"
+                  style={{ boxShadow: "0 8px 30px rgba(255,135,42,0.25)" }}
+                >
+                  Join BEN — $29/mo
+                </button>
               )}
             </div>
           </div>

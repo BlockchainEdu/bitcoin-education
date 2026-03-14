@@ -877,7 +877,10 @@ export default function ConferencesPage({ communityEvents = [] }) {
             className="inline-flex items-center gap-2.5 font-inter font-semibold rounded-full mb-7"
             style={{ fontSize: 14, padding: "9px 20px", color: "rgba(255,255,255,0.5)", backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
           >
-            <span style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: "#FF872A" }} />
+            <span className="relative flex items-center justify-center" style={{ width: 8, height: 8 }}>
+              <span style={{ position: "absolute", width: 8, height: 8, borderRadius: 4, backgroundColor: "#FF872A" }} />
+              <span style={{ position: "absolute", width: 8, height: 8, borderRadius: 4, backgroundColor: "#FF872A", animation: "orangePulse 2s ease-in-out infinite" }} />
+            </span>
             {upcomingCount} upcoming events
           </div>
 
@@ -1100,6 +1103,10 @@ export default function ConferencesPage({ communityEvents = [] }) {
       <style jsx global>{`
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes orangePulse {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0; transform: scale(2.5); }
+        }
       `}</style>
     </div>
   );

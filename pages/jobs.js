@@ -417,7 +417,7 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
                   )}
                   {onUpgrade && (
                     <button onClick={onUpgrade} className="px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full" style={{ boxShadow: "0 8px 20px rgba(255,135,42,0.25)" }}>
-                      Join BEN — $199
+                      Join BEN — $29/mo
                     </button>
                   )}
                 </div>

@@ -170,7 +170,7 @@ export default function SolidityPage() {
               { n: "16", label: "Modules" },
               { n: `${totalLessons}+`, label: "Lessons" },
               { n: "16", label: "Assignments" },
-              { n: "$19", label: "/month" },
+              { n: "$29", label: "/month" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="font-mont font-black text-3xl md:text-4xl text-white">{s.n}</div>
@@ -522,13 +522,13 @@ export default function SolidityPage() {
                 Membership
               </p>
               <h2 className="font-mont font-black text-4xl md:text-6xl text-white tracking-tight leading-none">
-                $19<span className="font-inter text-xl" style={{ color: "rgba(255,255,255,0.3)" }}>/mo</span>
+                $29<span className="font-inter text-xl" style={{ color: "rgba(255,255,255,0.3)" }}>/mo</span>
               </h2>
               <p
                 className="mt-2 font-inter text-lg"
                 style={{ color: "rgba(255,255,255,0.3)" }}
               >
-                Or $149/year. Or $299 once, lifetime access.
+                Cancel anytime. No contracts.
               </p>
 
               <div

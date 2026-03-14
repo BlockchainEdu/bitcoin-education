@@ -295,7 +295,7 @@ const FAQ = [
   },
   {
     q: "Do I need to be a BEN member?",
-    a: "No. Membership is separate. But accepted founders get lifetime BEN access as part of the deal.",
+    a: "No. Membership is separate. But accepted founders get BEN membership included as part of the deal.",
   },
   {
     q: "What makes a strong application?",

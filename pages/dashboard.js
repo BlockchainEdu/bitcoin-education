@@ -75,7 +75,7 @@ export default function Dashboard() {
                 Unlock everything
               </h2>
               <p className="font-inter text-sm mb-5" style={{ color: "rgba(255,255,255,0.5)" }}>
-                Get lifetime access to courses, community, job applications, partner deals, conference discounts, and more.
+                Get full access to courses, community, job applications, partner deals, conference discounts, and more.
               </p>
               <button
                 onClick={async () => {
@@ -89,7 +89,7 @@ export default function Dashboard() {
                 className="inline-flex items-center px-6 py-3 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition"
                 style={{ boxShadow: "0 8px 20px rgba(255,135,42,0.3)" }}
               >
-                Join BEN — $199 lifetime
+                Join BEN — $29/mo
               </button>
             </div>
           )}
