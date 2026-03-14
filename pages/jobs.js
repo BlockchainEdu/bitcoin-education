@@ -46,6 +46,8 @@ function isRemote(location) {
 function JobRow({ job, onClick, isLocked }) {
   const salary = formatSalary(job.salary_min, job.salary_max, job.salary_currency);
   const isFeatured = job.tier === "featured";
+  const [postedLabel, setPostedLabel] = useState(null);
+  useEffect(() => { setPostedLabel(timeAgo(job.posted_at)); }, [job.posted_at]);
 
   return (
     <div
@@ -166,8 +168,8 @@ function JobRow({ job, onClick, isLocked }) {
             Salary hidden
           </span>
         ) : null}
-        <span className="font-inter" style={{ fontSize: 11, color: "#c7c7cc" }} suppressHydrationWarning>
-          {timeAgo(job.posted_at)}
+        <span className="font-inter" style={{ fontSize: 11, color: "#c7c7cc" }}>
+          {postedLabel}
         </span>
       </div>
 
@@ -183,6 +185,8 @@ function JobRow({ job, onClick, isLocked }) {
 function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
   const overlayRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [postedLabel, setPostedLabel] = useState(null);
+  useEffect(() => { if (job) setPostedLabel(timeAgo(job.posted_at)); }, [job?.posted_at]);
 
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && handleClose();
@@ -286,8 +290,8 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
                   <span className="font-inter font-semibold" style={{ fontSize: 15, color: "#424245" }}>{job.company_name}</span>
                 )}
                 <span style={{ color: "rgba(0,0,0,0.12)" }}>·</span>
-                <span className="font-inter" style={{ fontSize: 13, color: "#86868b" }} suppressHydrationWarning>
-                  {timeAgo(job.posted_at)}
+                <span className="font-inter" style={{ fontSize: 13, color: "#86868b" }}>
+                  {postedLabel}
                 </span>
                 {isFeatured && (
                   <>

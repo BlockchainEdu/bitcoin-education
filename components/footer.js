@@ -1,8 +1,11 @@
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
 export default function Footer() {
   const router = useRouter();
+  const [year, setYear] = useState(null);
+  useEffect(() => { setYear(new Date().getFullYear()); }, []);
 
   return (
     <footer style={{ backgroundColor: "#131416" }}>
@@ -96,8 +99,8 @@ export default function Footer() {
               }
             `}</style>
           </div>
-          <span className="font-inter text-xs" style={{ color: "rgba(255,255,255,0.25)" }} suppressHydrationWarning>
-            &copy; {new Date().getFullYear()} Blockchain Education Network
+          <span className="font-inter text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
+            &copy; {year} Blockchain Education Network
           </span>
         </div>
       </div>
