@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
 import { useAuth } from "../lib/auth";
+import { supabase } from "../lib/supabase";
 import LoginModal from "../components/LoginModal";
 import { ACADEMY_COURSE } from "../content/academy";
 import { SOLIDITY_COURSE } from "../content/solidity";
@@ -171,9 +172,27 @@ export default function AcademyPage() {
   const [mounted, setMounted] = useState(false);
   const [trackIdx, setTrackIdx] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
+  const [progressMap, setProgressMap] = useState({});
   const router = useRouter();
 
   useEffect(() => setMounted(true), []);
+
+  // Fetch lesson progress
+  useEffect(() => {
+    if (!user) return;
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) return;
+      fetch("/api/lesson-progress", {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          const map = {};
+          (data.progress || []).forEach((p) => { map[p.lesson_id] = true; });
+          setProgressMap(map);
+        });
+    });
+  }, [user]);
 
   useEffect(() => {
     if (router.query.track === "solidity") setTrackIdx(1);
@@ -948,12 +967,24 @@ export default function AcademyPage() {
                         className="flex items-center ml-3 sm:ml-4 flex-shrink-0"
                         style={{ gap: "0.75rem" }}
                       >
-                        <span
-                          className="font-inter text-xs hidden sm:block"
-                          style={{ color: "rgba(0,0,0,0.3)" }}
-                        >
-                          {mod.lessons.length} lessons
-                        </span>
+                        {(() => {
+                          const prefix = trackIdx === 1 ? "s" : "";
+                          const done = mod.lessons.filter((l) => progressMap[prefix + l.id]).length;
+                          const total = mod.lessons.length;
+                          return (
+                            <span
+                              className="font-inter text-xs hidden sm:flex items-center gap-2"
+                              style={{ color: done > 0 ? "#FF872A" : "rgba(0,0,0,0.3)" }}
+                            >
+                              {done > 0 && (
+                                <span className="inline-block w-12 h-1.5 rounded-full" style={{ backgroundColor: "rgba(0,0,0,0.04)" }}>
+                                  <span className="block h-full rounded-full" style={{ width: `${Math.round((done / total) * 100)}%`, backgroundColor: "#FF872A" }} />
+                                </span>
+                              )}
+                              {done > 0 ? `${done}/${total}` : `${total} lessons`}
+                            </span>
+                          );
+                        })()}
                         <svg
                           width="18"
                           height="18"
@@ -984,34 +1015,42 @@ export default function AcademyPage() {
                           {mod.lessons.map((lesson, lIdx) => {
                             const showLesson =
                               !isLocked || lIdx < 3;
+                            const lessonKey = trackIdx === 1 ? `s${lesson.id}` : lesson.id;
+                            const isDone = progressMap[lessonKey];
                             return (
                               <div
                                 key={lesson.id}
-                                className="flex items-center py-2.5"
+                                className={`flex items-center py-2.5 ${showLesson ? "cursor-pointer" : ""}`}
                                 style={{
                                   opacity: showLesson ? 1 : 0.3,
                                   filter: showLesson
                                     ? "none"
                                     : "blur(3px)",
                                 }}
+                                onClick={() => showLesson && router.push(`/academy/lesson/${lessonKey}`)}
                               >
-                                <span
-                                  className="font-inter text-xs w-7 flex-shrink-0 tabular-nums"
+                                <div
+                                  className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mr-2.5"
                                   style={{
-                                    color: "rgba(0,0,0,0.2)",
+                                    backgroundColor: isDone ? "#FF872A" : "transparent",
+                                    border: isDone ? "none" : "1.5px solid rgba(0,0,0,0.12)",
                                   }}
                                 >
-                                  {String(lIdx + 1).padStart(
-                                    2,
-                                    "0"
+                                  {isDone && (
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                      <path d="M20 6L9 17l-5-5" />
+                                    </svg>
                                   )}
-                                </span>
+                                </div>
                                 <span
                                   className="font-inter text-sm leading-snug"
                                   style={{
-                                    color: showLesson
+                                    color: isDone
+                                      ? "rgba(0,0,0,0.35)"
+                                      : showLesson
                                       ? "rgba(0,0,0,0.7)"
                                       : "rgba(0,0,0,0.3)",
+                                    textDecoration: isDone ? "line-through" : "none",
                                   }}
                                 >
                                   {lesson.title}
