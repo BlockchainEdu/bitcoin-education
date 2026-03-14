@@ -99,8 +99,12 @@ function MonthStrip({ activeMonth, onSelect, eventCounts }) {
 
 // ─── Event Card ─────────────────────────────────────────
 function EventCard({ conf, onSelect }) {
-  const status = getEventStatus(conf);
-  const days = daysUntil(conf.startDate);
+  const [status, setStatus] = useState(null);
+  const [days, setDays] = useState(null);
+  useEffect(() => {
+    setStatus(getEventStatus(conf));
+    setDays(daysUntil(conf.startDate));
+  }, [conf.startDate, conf.endDate]);
   const tier = TIER_CONFIG[conf.tier] || TIER_CONFIG.major;
   const hasSideEvents = conf.sideEvents?.length > 0;
   const isPast = status === "past";
@@ -283,6 +287,8 @@ function EventCard({ conf, onSelect }) {
 function EventModal({ conf, onClose }) {
   const overlayRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [status, setStatus] = useState(null);
+  const [days, setDays] = useState(null);
 
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && handleClose();
@@ -295,6 +301,12 @@ function EventModal({ conf, onClose }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (!conf) return;
+    setStatus(getEventStatus(conf));
+    setDays(daysUntil(conf.startDate));
+  }, [conf?.startDate, conf?.endDate]);
+
   const handleClose = useCallback(() => {
     setVisible(false);
     setTimeout(onClose, 240);
@@ -302,8 +314,6 @@ function EventModal({ conf, onClose }) {
 
   if (!conf) return null;
 
-  const status = getEventStatus(conf);
-  const days = daysUntil(conf.startDate);
   const tier = TIER_CONFIG[conf.tier] || TIER_CONFIG.major;
 
   return (

@@ -96,7 +96,7 @@ export default function Footer() {
               }
             `}</style>
           </div>
-          <span className="font-inter text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
+          <span className="font-inter text-xs" style={{ color: "rgba(255,255,255,0.25)" }} suppressHydrationWarning>
             &copy; {new Date().getFullYear()} Blockchain Education Network
           </span>
         </div>

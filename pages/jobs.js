@@ -166,7 +166,7 @@ function JobRow({ job, onClick, isLocked }) {
             Salary hidden
           </span>
         ) : null}
-        <span className="font-inter" style={{ fontSize: 11, color: "#c7c7cc" }}>
+        <span className="font-inter" style={{ fontSize: 11, color: "#c7c7cc" }} suppressHydrationWarning>
           {timeAgo(job.posted_at)}
         </span>
       </div>
@@ -286,7 +286,7 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
                   <span className="font-inter font-semibold" style={{ fontSize: 15, color: "#424245" }}>{job.company_name}</span>
                 )}
                 <span style={{ color: "rgba(0,0,0,0.12)" }}>·</span>
-                <span className="font-inter" style={{ fontSize: 13, color: "#86868b" }}>
+                <span className="font-inter" style={{ fontSize: 13, color: "#86868b" }} suppressHydrationWarning>
                   {timeAgo(job.posted_at)}
                 </span>
                 {isFeatured && (
