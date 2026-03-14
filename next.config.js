@@ -109,13 +109,18 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source: "/retreats",
+        destination: "/coliving",
+        permanent: true,
+      },
+      {
         source: "/ericeiraHouse",
-        destination: "/retreats",
+        destination: "/coliving",
         permanent: true,
       },
       {
         source: "/ibiza",
-        destination: "/retreats",
+        destination: "/coliving",
         permanent: true,
       },
       {
