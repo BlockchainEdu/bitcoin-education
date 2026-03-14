@@ -1036,6 +1036,8 @@ export default function BenNetwork({ universities = [] }) {
 export async function getStaticProps() {
   const { supabase } = await import("../lib/supabase");
 
+  if (!supabase) return { props: { universities: [] }, revalidate: 3600 };
+
   const { data: rows } = await supabase
     .from("universities")
     .select("id, name, slug, image_url, num_people")

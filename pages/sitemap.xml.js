@@ -22,7 +22,7 @@ export async function getServerSideProps({ res }) {
 
   // Fetch university slugs from Supabase
   const { supabase } = await import("../lib/supabase");
-  const { data: unis } = await supabase.from("universities").select("slug");
+  const { data: unis } = supabase ? await supabase.from("universities").select("slug") : { data: [] };
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

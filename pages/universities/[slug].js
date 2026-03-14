@@ -600,6 +600,8 @@ export default function UniversityPage({ university, students }) {
 export async function getStaticPaths() {
   const { supabase } = await import("../../lib/supabase");
 
+  if (!supabase) return { paths: [], fallback: "blocking" };
+
   const { data: unis } = await supabase
     .from("universities")
     .select("slug");
@@ -616,6 +618,8 @@ export async function getStaticProps({ params }) {
   const { supabase } = await import("../../lib/supabase");
   const fs = await import("fs");
   const path = await import("path");
+
+  if (!supabase) return { notFound: true, revalidate: 3600 };
 
   // Fetch university
   const { data: uni } = await supabase
