@@ -1,5 +1,5 @@
 import "../styles/global.css";
-import "../utils/utm-tracking.js";
+import { appendUtmParameters } from "../utils/utm-tracking.js";
 
 import { useEffect, useState } from "react";
 import Head from "next/head";
@@ -17,6 +17,11 @@ function MyApp({ Component, pageProps }) {
   const ogImageUrl = `${SITE_URL}/images/light-2-logo.jpg`;
 
   const canonicalUrl = `${SITE_URL}${router.asPath.split("?")[0]}`;
+
+  // Run UTM tracking after hydration and on each route change
+  useEffect(() => {
+    appendUtmParameters();
+  }, [router.asPath]);
 
   // Global route loading indicator (no flicker)
   useEffect(() => {

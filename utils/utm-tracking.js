@@ -66,4 +66,4 @@ function appendUtmParameters() {
   }
 }
 
-appendUtmParameters();
+export { appendUtmParameters };
