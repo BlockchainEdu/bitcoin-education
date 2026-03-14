@@ -8,10 +8,8 @@ import LoginModal from "../components/LoginModal";
 import {
   JOB_TYPES,
   JOB_TAGS,
-  SEED_JOBS,
   formatSalary,
-  JOB_POST_PRICE,
-  JOB_POST_FEATURED_PRICE,
+  TIER_RANK,
 } from "../content/jobs";
 
 // ─── Helpers ────────────────────────────────────────────
@@ -85,26 +83,36 @@ function buildSearchLabel(filters) {
 function JobRow({ job, onClick, isLocked, isNew }) {
   const salary = formatSalary(job.salary_min, job.salary_max, job.salary_currency);
   const isFeatured = job.tier === "featured";
+  const isBoosted = job.tier === "boosted";
+  const isPromoted = isFeatured || isBoosted;
+
+  const bgDefault = isFeatured
+    ? "rgba(255,135,42,0.05)"
+    : isBoosted
+    ? "rgba(255,135,42,0.025)"
+    : "#fff";
+  const bgHover = isFeatured
+    ? "rgba(255,135,42,0.08)"
+    : isBoosted
+    ? "rgba(255,135,42,0.05)"
+    : "rgba(0,0,0,0.015)";
+  const borderLeft = isFeatured
+    ? "3px solid #FF872A"
+    : isBoosted
+    ? "3px solid rgba(255,135,42,0.4)"
+    : "3px solid transparent";
 
   return (
     <div
       onClick={onClick}
       className="flex items-center gap-4 sm:gap-6 py-5 sm:py-6 px-5 sm:px-8 transition-all cursor-pointer"
       style={{
-        backgroundColor: isFeatured ? "rgba(255,135,42,0.03)" : "#fff",
+        backgroundColor: bgDefault,
         borderBottom: "1px solid rgba(0,0,0,0.04)",
-        borderLeft: isFeatured ? "3px solid #FF872A" : "3px solid transparent",
+        borderLeft,
       }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = isFeatured
-          ? "rgba(255,135,42,0.06)"
-          : "rgba(0,0,0,0.015)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = isFeatured
-          ? "rgba(255,135,42,0.03)"
-          : "#fff";
-      }}
+      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = bgHover; }}
+      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = bgDefault; }}
     >
       {/* Company logo/initials */}
       <div
@@ -151,19 +159,19 @@ function JobRow({ job, onClick, isLocked, isNew }) {
               New
             </span>
           )}
-          {isFeatured && (
+          {isPromoted && (
             <span
               className="flex-shrink-0 font-inter font-semibold rounded-full"
               style={{
                 fontSize: 9,
                 padding: "3px 10px",
-                backgroundColor: "rgba(255,135,42,0.1)",
+                backgroundColor: isFeatured ? "rgba(255,135,42,0.1)" : "rgba(255,135,42,0.06)",
                 color: "#FF872A",
                 textTransform: "uppercase",
                 letterSpacing: "0.05em",
               }}
             >
-              Featured
+              {isFeatured ? "Featured" : "Boosted"}
             </span>
           )}
         </div>
@@ -258,6 +266,7 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
 
   const salary = formatSalary(job.salary_min, job.salary_max, job.salary_currency);
   const isFeatured = job.tier === "featured";
+  const isBoosted = job.tier === "boosted";
 
   return (
     <div
@@ -345,10 +354,10 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
                 <span className="font-inter" style={{ fontSize: 14, color: "#86868b" }}>
                   {timeAgo(job.posted_at)}
                 </span>
-                {isFeatured && (
+                {(isFeatured || isBoosted) && (
                   <>
                     <span style={{ color: "rgba(0,0,0,0.12)" }}>·</span>
-                    <span className="font-inter font-semibold" style={{ fontSize: 12, color: "#FF872A" }}>Featured</span>
+                    <span className="font-inter font-semibold" style={{ fontSize: 12, color: "#FF872A" }}>{isFeatured ? "Featured" : "Boosted"}</span>
                   </>
                 )}
               </div>
@@ -467,359 +476,20 @@ function JobModal({ job, onClose, isLocked, onLogin, onUpgrade }) {
   );
 }
 
-// ─── Post Job Modal ─────────────────────────────────────
-function PostJobModal({ onClose, user }) {
-  const overlayRef = useRef(null);
-  const [visible, setVisible] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState(null);
-  const [form, setForm] = useState({
-    title: "",
-    company_name: "",
-    company_url: "",
-    location: "Remote",
-    salary_min: "",
-    salary_max: "",
-    description: "",
-    apply_url: "",
-    tags: [],
-    job_type: "full-time",
-    tier: "standard",
-  });
-
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && handleClose();
-    document.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
-    requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)));
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setVisible(false);
-    setTimeout(onClose, 240);
-  }, [onClose]);
-
-  const toggleTag = (tag) => {
-    setForm((prev) => ({
-      ...prev,
-      tags: prev.tags.includes(tag)
-        ? prev.tags.filter((t) => t !== tag)
-        : prev.tags.length < 5
-        ? [...prev.tags, tag]
-        : prev.tags,
-    }));
-  };
-
-  const handleSubmit = async () => {
-    if (!form.title || !form.company_name || !form.apply_url) {
-      setError("Please fill in all required fields.");
-      return;
-    }
-
-    setSubmitting(true);
-    setError(null);
-
-    try {
-      const { supabase } = await import("../lib/supabase");
-      const { data: { session } } = await supabase.auth.getSession();
-      const token = session?.access_token;
-
-      // Step 1: Create pending job
-      const jobRes = await fetch("/api/jobs", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          ...form,
-          salary_min: form.salary_min ? parseInt(form.salary_min) : null,
-          salary_max: form.salary_max ? parseInt(form.salary_max) : null,
-        }),
-      });
-
-      if (!jobRes.ok) {
-        const err = await jobRes.json();
-        throw new Error(err.error || "Failed to create job");
-      }
-
-      const job = await jobRes.json();
-
-      // Step 2: Redirect to Stripe checkout
-      const checkoutRes = await fetch("/api/checkout/job-post", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          job_id: job.id,
-          tier: form.tier,
-        }),
-      });
-
-      if (!checkoutRes.ok) {
-        throw new Error("Failed to start checkout");
-      }
-
-      const { url } = await checkoutRes.json();
-      window.location.href = url;
-    } catch (err) {
-      setError(err.message);
-      setSubmitting(false);
-    }
-  };
-
-  const inputStyle = {
-    fontSize: 14,
-    padding: "10px 14px",
-    borderRadius: 10,
-    border: "1px solid rgba(0,0,0,0.1)",
-    backgroundColor: "#fff",
-    color: "#1d1d1f",
-    width: "100%",
-    outline: "none",
-    fontFamily: "Inter, sans-serif",
-  };
-
-  const labelStyle = {
-    fontSize: 12,
-    fontWeight: 600,
-    color: "#86868b",
-    textTransform: "uppercase",
-    letterSpacing: "0.04em",
-    marginBottom: 4,
-    display: "block",
-    fontFamily: "Inter, sans-serif",
-  };
-
-  return (
-    <div
-      ref={overlayRef}
-      onClick={(e) => e.target === overlayRef.current && handleClose()}
-      className="fixed inset-0 flex items-end sm:items-center justify-center"
-      style={{
-        zIndex: 9999,
-        backgroundColor: visible ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0)",
-        transition: "background-color 0.24s ease",
-        WebkitBackdropFilter: "blur(8px)",
-        backdropFilter: "blur(8px)",
-      }}
-    >
-      <div
-        className="relative w-full sm:max-w-2xl"
-        style={{
-          backgroundColor: "#fff",
-          maxHeight: "92vh",
-          overflowY: "auto",
-          borderRadius: 20,
-          boxShadow: "0 25px 80px rgba(0,0,0,0.15)",
-          transform: visible ? "translateY(0)" : "translateY(24px)",
-          opacity: visible ? 1 : 0,
-          transition: "transform 0.32s cubic-bezier(0.32, 0.72, 0, 1), opacity 0.24s ease",
-          WebkitOverflowScrolling: "touch",
-        }}
-      >
-        {/* Mobile handle */}
-        <div className="flex justify-center pt-3 pb-1 sm:hidden">
-          <div style={{ width: 36, height: 5, borderRadius: 3, backgroundColor: "rgba(0,0,0,0.12)" }} />
-        </div>
-
-        {/* Close */}
-        <button
-          onClick={handleClose}
-          className="absolute flex items-center justify-center rounded-full"
-          style={{ top: 16, right: 16, width: 32, height: 32, backgroundColor: "rgba(0,0,0,0.05)", zIndex: 10 }}
-          aria-label="Close"
-        >
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.4)" strokeWidth="2.5" strokeLinecap="round">
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
-        </button>
-
-        <div className="px-6 sm:px-10 pt-7 pb-8">
-          <h2 className="font-mont font-black" style={{ fontSize: 24, color: "#1d1d1f", letterSpacing: "-0.03em" }}>
-            Post a Job
-          </h2>
-          <p className="font-inter mt-1" style={{ fontSize: 13, color: "#86868b" }}>
-            Reach thousands of crypto-native candidates. $299/mo standard, $499/mo featured.
-          </p>
-
-          {error && (
-            <div className="mt-4 p-3 rounded-lg font-inter text-sm" style={{ backgroundColor: "rgba(255,59,48,0.08)", color: "#ff3b30" }}>
-              {error}
-            </div>
-          )}
-
-          <div className="mt-6 flex flex-col gap-4">
-            {/* Title */}
-            <div>
-              <label style={labelStyle}>Job Title *</label>
-              <input type="text" placeholder="Senior Solidity Engineer" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} style={inputStyle} />
-            </div>
-
-            {/* Company + URL */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label style={labelStyle}>Company *</label>
-                <input type="text" placeholder="Uniswap Labs" value={form.company_name} onChange={(e) => setForm({ ...form, company_name: e.target.value })} style={inputStyle} />
-              </div>
-              <div>
-                <label style={labelStyle}>Company URL</label>
-                <input type="url" placeholder="https://uniswap.org" value={form.company_url} onChange={(e) => setForm({ ...form, company_url: e.target.value })} style={inputStyle} />
-              </div>
-            </div>
-
-            {/* Job type + Location */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label style={labelStyle}>Job Type</label>
-                <select value={form.job_type} onChange={(e) => setForm({ ...form, job_type: e.target.value })} style={inputStyle}>
-                  {JOB_TYPES.map((t) => (
-                    <option key={t.id} value={t.id}>{t.label}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label style={labelStyle}>Location</label>
-                <input type="text" placeholder="Remote (Global)" value={form.location} onChange={(e) => setForm({ ...form, location: e.target.value })} style={inputStyle} />
-              </div>
-            </div>
-
-            {/* Salary */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label style={labelStyle}>Min Salary (USD/yr)</label>
-                <input type="number" placeholder="120000" value={form.salary_min} onChange={(e) => setForm({ ...form, salary_min: e.target.value })} style={inputStyle} />
-              </div>
-              <div>
-                <label style={labelStyle}>Max Salary (USD/yr)</label>
-                <input type="number" placeholder="180000" value={form.salary_max} onChange={(e) => setForm({ ...form, salary_max: e.target.value })} style={inputStyle} />
-              </div>
-            </div>
-
-            {/* Apply URL */}
-            <div>
-              <label style={labelStyle}>Apply URL *</label>
-              <input type="url" placeholder="https://jobs.lever.co/yourcompany/..." value={form.apply_url} onChange={(e) => setForm({ ...form, apply_url: e.target.value })} style={inputStyle} />
-            </div>
-
-            {/* Description */}
-            <div>
-              <label style={labelStyle}>Job Description</label>
-              <textarea rows={4} placeholder="What does this role involve? What will the candidate work on?" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} style={{ ...inputStyle, resize: "vertical", minHeight: 100 }} />
-            </div>
-
-            {/* Tags */}
-            <div>
-              <label style={labelStyle}>Tags (up to 5)</label>
-              <div className="flex flex-wrap gap-1.5 mt-1">
-                {JOB_TAGS.map((tag) => {
-                  const active = form.tags.includes(tag);
-                  return (
-                    <button
-                      key={tag}
-                      type="button"
-                      onClick={() => toggleTag(tag)}
-                      className="font-inter rounded-full transition-all"
-                      style={{
-                        fontSize: 12,
-                        padding: "4px 12px",
-                        backgroundColor: active ? "#FF872A" : "rgba(0,0,0,0.04)",
-                        color: active ? "#fff" : "#86868b",
-                        border: "none",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {tag}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Featured toggle */}
-            <div
-              className="rounded-xl p-4 cursor-pointer transition-all"
-              style={{
-                backgroundColor: form.tier === "featured" ? "rgba(255,135,42,0.06)" : "rgba(0,0,0,0.02)",
-                border: form.tier === "featured" ? "1px solid rgba(255,135,42,0.2)" : "1px solid rgba(0,0,0,0.06)",
-              }}
-              onClick={() => setForm({ ...form, tier: form.tier === "featured" ? "standard" : "featured" })}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-inter font-semibold" style={{ fontSize: 14, color: "#1d1d1f" }}>
-                    Featured Listing
-                  </div>
-                  <div className="font-inter" style={{ fontSize: 12, color: "#86868b", marginTop: 2 }}>
-                    Highlighted with orange accent, pinned to top. $499/mo instead of $299/mo.
-                  </div>
-                </div>
-                <div
-                  className="flex-shrink-0 w-10 h-6 rounded-full transition-all"
-                  style={{ backgroundColor: form.tier === "featured" ? "#FF872A" : "rgba(0,0,0,0.1)", padding: 2 }}
-                >
-                  <div
-                    className="w-5 h-5 rounded-full bg-white transition-all"
-                    style={{
-                      transform: form.tier === "featured" ? "translateX(16px)" : "translateX(0)",
-                      boxShadow: "0 1px 3px rgba(0,0,0,0.15)",
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Submit */}
-            <button
-              onClick={handleSubmit}
-              disabled={submitting}
-              className="w-full font-inter font-semibold rounded-xl transition-colors"
-              style={{
-                fontSize: 15,
-                padding: "14px 20px",
-                backgroundColor: submitting ? "#ccc" : "#FF872A",
-                color: "#fff",
-                cursor: submitting ? "not-allowed" : "pointer",
-                marginTop: 4,
-                border: "none",
-              }}
-            >
-              {submitting
-                ? "Creating..."
-                : `Continue to Payment — ${form.tier === "featured" ? "$499" : "$299"}/mo`
-              }
-            </button>
-
-            <p className="font-inter text-center" style={{ fontSize: 11, color: "#c7c7cc" }}>
-              Your job goes live after payment. Cancel your subscription anytime to delist.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const JOBS_PER_PAGE = 25;
 
 // ─── Main Page ──────────────────────────────────────────
 export default function JobsPage() {
   const { user, isPaid, loading } = useAuth();
   const router = useRouter();
-  const [jobs, setJobs] = useState(SEED_JOBS);
+  const [jobs, setJobs] = useState([]);
+  const [jobsLoading, setJobsLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState(null);
   const [locationFilter, setLocationFilter] = useState(null);
   const [salaryFilter, setSalaryFilter] = useState(null); // min salary threshold
   const [tagFilter, setTagFilter] = useState(null); // single tag
   const [selectedJob, setSelectedJob] = useState(null);
-  const [showPostModal, setShowPostModal] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [page, setPage] = useState(1);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -944,22 +614,24 @@ export default function JobsPage() {
 
   // Fetch live jobs from Supabase
   useEffect(() => {
+    setJobsLoading(true);
     fetch("/api/jobs")
       .then((r) => r.json())
       .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
+        if (Array.isArray(data)) {
           setJobs(data);
         }
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setJobsLoading(false));
   }, []);
 
-  // Open post modal from URL param
+  // Redirect old ?post=true param to /post-job
   useEffect(() => {
-    if (router.query.post === "true" && user) {
-      setShowPostModal(true);
+    if (router.query.post === "true") {
+      router.replace("/post-job");
     }
-  }, [router.query.post, user]);
+  }, [router.query.post]);
 
   // Back-to-top button visibility
   useEffect(() => {
@@ -1006,6 +678,13 @@ export default function JobsPage() {
         (j.tags || []).some((t) => t.toLowerCase() === tagFilter.toLowerCase())
       );
     }
+    // Sort: featured → boosted → standard, then newest first
+    list.sort((a, b) => {
+      const rankA = TIER_RANK[a.tier] || 3;
+      const rankB = TIER_RANK[b.tier] || 3;
+      if (rankA !== rankB) return rankA - rankB;
+      return new Date(b.posted_at) - new Date(a.posted_at);
+    });
     return list;
   }, [jobs, search, typeFilter, locationFilter, salaryFilter, tagFilter]);
 
@@ -1033,11 +712,7 @@ export default function JobsPage() {
   const jobCount = jobs.length;
 
   const handlePostClick = () => {
-    if (!user) {
-      setShowLogin(true);
-      return;
-    }
-    setShowPostModal(true);
+    router.push("/post-job");
   };
 
   const handleUpgrade = async () => {
@@ -1071,8 +746,8 @@ export default function JobsPage() {
 
         <div className="relative max-w-5xl mx-auto px-5 sm:px-8 pt-20 sm:pt-28 pb-16 sm:pb-20">
           <div className="inline-flex items-center gap-2 font-inter font-medium rounded-full mb-6" style={{ fontSize: 12, padding: "7px 16px", color: "rgba(255,255,255,0.5)", backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)", letterSpacing: "0.02em" }}>
-            <span style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: "#34c759" }} />
-            {jobCount} open positions{newJobCount > 0 ? ` · ${newJobCount} new` : ""}
+            <span style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: jobsLoading ? "#86868b" : "#34c759" }} />
+            {jobsLoading ? "Loading positions..." : `${jobCount} open position${jobCount !== 1 ? "s" : ""}`}{!jobsLoading && newJobCount > 0 ? ` · ${newJobCount} new` : ""}
           </div>
 
           <h1 className="font-mont font-black" style={{ fontSize: "clamp(36px, 6vw, 64px)", lineHeight: 1.05, color: "#fff", letterSpacing: "-0.04em", maxWidth: 700 }}>
@@ -1092,10 +767,10 @@ export default function JobsPage() {
               onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "#e87520"; }}
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "#FF872A"; }}
             >
-              Post a Job — $299/mo
+              Post a Job — from $299/mo
             </button>
             <span className="font-inter" style={{ fontSize: 13, color: "rgba(255,255,255,0.3)" }}>
-              Featured spots available
+              Featured + Boosted spots available
             </span>
           </div>
 
@@ -1384,8 +1059,8 @@ export default function JobsPage() {
           <div className="flex items-center justify-between px-5 sm:px-8 py-4" style={{ borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
             <div className="flex items-center gap-3">
               <span className="font-inter font-medium" style={{ fontSize: 14, color: "#86868b" }}>
-                {filtered.length} job{filtered.length !== 1 ? "s" : ""}
-                {search && ` matching "${search}"`}
+                {jobsLoading ? "Loading..." : `${filtered.length} job${filtered.length !== 1 ? "s" : ""}`}
+                {!jobsLoading && search && ` matching "${search}"`}
               </span>
               {newJobCount > 0 && !hasActiveFilters && (
                 <span className="font-inter font-semibold rounded-full" style={{ fontSize: 11, padding: "2px 10px", backgroundColor: "rgba(52,199,89,0.1)", color: "#34c759" }}>
@@ -1400,11 +1075,48 @@ export default function JobsPage() {
             )}
           </div>
 
+          {/* Loading skeleton */}
+          {jobsLoading && jobs.length === 0 && (
+            <div>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <div key={i} className="flex items-center gap-4 sm:gap-6 py-5 sm:py-6 px-5 sm:px-8" style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
+                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl" style={{ backgroundColor: "rgba(0,0,0,0.04)" }} />
+                  <div className="flex-1">
+                    <div className="rounded" style={{ width: "60%", height: 16, backgroundColor: "rgba(0,0,0,0.06)", marginBottom: 8 }} />
+                    <div className="rounded" style={{ width: "40%", height: 12, backgroundColor: "rgba(0,0,0,0.04)" }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
           {paginatedJobs.map((job) => (
             <JobRow key={job.id} job={job} isLocked={isLocked} isNew={isJobNew(job)} onClick={() => setSelectedJob(job)} />
           ))}
 
-          {filtered.length === 0 && (
+          {!jobsLoading && filtered.length === 0 && jobs.length === 0 && (
+            <div className="text-center py-20 px-6">
+              <div style={{ fontSize: 48, marginBottom: 16 }}>
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#c7c7cc" strokeWidth="1.5" strokeLinecap="round" style={{ margin: "0 auto" }}>
+                  <rect x="2" y="7" width="20" height="14" rx="2" />
+                  <path d="M16 3h-8l-2 4h12l-2-4z" />
+                </svg>
+              </div>
+              <p className="font-mont font-bold" style={{ fontSize: 18, color: "#1d1d1f" }}>No jobs yet</p>
+              <p className="font-inter mt-2" style={{ fontSize: 14, color: "#86868b", maxWidth: 360, margin: "8px auto 0" }}>
+                Jobs are auto-ingested from 50+ company career boards every 6 hours. Check back soon.
+              </p>
+              <button
+                onClick={handlePostClick}
+                className="font-inter font-semibold mt-6 rounded-full"
+                style={{ fontSize: 14, padding: "10px 24px", backgroundColor: "#FF872A", color: "#fff", border: "none", cursor: "pointer" }}
+              >
+                Post the first job
+              </button>
+            </div>
+          )}
+
+          {!jobsLoading && filtered.length === 0 && jobs.length > 0 && (
             <div className="text-center py-20">
               <p className="font-inter" style={{ fontSize: 16, color: "#86868b" }}>No jobs match your filters.</p>
               {salaryFilter && (
@@ -1514,7 +1226,7 @@ export default function JobsPage() {
             className="inline-flex items-center px-7 py-3.5 bg-benorange-500 text-white font-inter font-semibold text-sm rounded-full transition"
             style={{ boxShadow: "0 8px 24px rgba(255,135,42,0.3)", border: "none", cursor: "pointer" }}
           >
-            Post a Job — $299/mo
+            Post a Job — from $299/mo
           </button>
         </div>
       </div>
@@ -1548,10 +1260,6 @@ export default function JobsPage() {
           onLogin={!user ? () => { setSelectedJob(null); setShowLogin(true); } : null}
           onUpgrade={user && !isPaid ? () => { setSelectedJob(null); handleUpgrade(); } : null}
         />
-      )}
-
-      {showPostModal && user && (
-        <PostJobModal onClose={() => setShowPostModal(false)} user={user} />
       )}
 
       <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />

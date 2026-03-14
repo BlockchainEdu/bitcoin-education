@@ -13,8 +13,8 @@ fi
 
 echo "$(date) — Starting event scrape..."
 
-# Step 1: Scrape cryptonomads
-node scripts/scrape-cryptonomads.mjs || {
+# Step 1: Scrape cryptonomads (with series pages for side events)
+node scripts/scrape-cryptonomads.mjs --with-series || {
   echo "Scrape failed, skipping merge"
   exit 1
 }
