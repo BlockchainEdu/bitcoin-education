@@ -3,7 +3,10 @@
  * Scrape cryptonomads.org for crypto events & side events.
  * Uses Playwright to bypass Cloudflare, extracts __NEXT_DATA__ JSON.
  *
- * Usage: node scripts/scrape-cryptonomads.mjs
+ * Usage:
+ *   node scripts/scrape-cryptonomads.mjs              # homepage only (headless)
+ *   node scripts/scrape-cryptonomads.mjs --with-series # also scrape series pages (headed, visible browser)
+ *
  * Output: content/cryptonomads-events.json
  */
 
@@ -16,9 +19,21 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const OUTPUT = join(ROOT, "content", "cryptonomads-events.json");
 
+// Parse CLI flags
+const WITH_SERIES = process.argv.includes("--with-series");
+const HEADED = process.argv.includes("--headed") || WITH_SERIES;
+
 async function scrape() {
-  console.log("Launching browser...");
-  const browser = await chromium.launch({ headless: true });
+  console.log(`Launching browser (${HEADED ? "headed" : "headless"})...`);
+  if (WITH_SERIES) console.log("Series scraping enabled — will scrape all crypto week pages");
+  const browser = await chromium.launch({
+    headless: !HEADED,
+    channel: process.argv.includes("--chrome") ? "chrome" : undefined,
+    args: [
+      "--disable-blink-features=AutomationControlled",
+      "--no-sandbox",
+    ],
+  });
   // Cloudflare + session cookies (set via env vars)
   const cfClearance = process.env.CF_CLEARANCE || "";
   const sessionToken = process.env.CN_SESSION || "";
@@ -76,6 +91,14 @@ async function scrape() {
   }
   const page = await context.newPage();
 
+  // Remove webdriver detection to avoid Cloudflare bot detection
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "webdriver", { get: () => undefined });
+    // Remove Playwright/headless indicators
+    delete window.__playwright;
+    delete window.__pw_manual;
+  });
+
   try {
     console.log("Loading cryptonomads.org...");
     await page.goto("https://cryptonomads.org/", {
@@ -107,14 +130,20 @@ async function scrape() {
 
     const pp = nextData.props.pageProps;
 
-    // Extract events
+    // Extract all available data from pageProps
     const allEvents = pp.allEvents || pp.events || [];
     const series = pp.seriesMenuItems || pp.series || [];
     const colivingEvents = pp.colivingEvents || [];
+    const companies = pp.companies || [];
+    const featuredEvents = pp.featuredEvents || [];
+    const cityGuides = pp.cityGuides || [];
 
     console.log(`Found ${allEvents.length} events`);
     console.log(`Found ${series.length} series/crypto weeks`);
     console.log(`Found ${colivingEvents.length} coliving events`);
+    console.log(`Found ${companies.length} companies`);
+    console.log(`Found ${featuredEvents.length} featured events`);
+    console.log(`Found ${cityGuides.length} city guides`);
 
     // Normalize events into our format
     const events = allEvents.map((e) => ({
@@ -143,16 +172,22 @@ async function scrape() {
       interestedCount: (e.usersInterestedObj || []).length,
     }));
 
-    // Normalize series
+    // Normalize series (capture full metadata for banner/logo fallback)
     const normalizedSeries = series.map((s) => ({
       id: s.id,
       title: s.title || "",
       slug: s.slug || s.shortSlug || "",
+      shortSlug: s.shortSlug || "",
       location: s.location || "",
       date: s.date || null,
       endDate: s.endDate || null,
       numEvents: s.numEvents || 0,
       image: s.image || null,
+      banner: s.banner || null,
+      logo: s.logo || null,
+      color: s.color || null,
+      visible: s.visible || false,
+      clickable: s.clickable || false,
     }));
 
     const output = {
@@ -161,9 +196,18 @@ async function scrape() {
         events: events.length,
         series: normalizedSeries.length,
         colivingEvents: colivingEvents.length,
+        companies: companies.length,
+        featuredEvents: featuredEvents.length,
       },
       events,
       series: normalizedSeries,
+      companies: companies.map((c) => ({
+        id: c.id,
+        name: c.name || c.title || "",
+        logo: c.logo || null,
+        url: c.url || c.link || null,
+      })),
+      featuredEvents: featuredEvents.map((e) => e.id || e.slug),
     };
 
     console.log(
@@ -176,89 +220,123 @@ async function scrape() {
         console.log(`  ${s.numEvents} events — ${s.title} (${s.location})`);
       });
 
-    // ── Phase 2: Scrape top series pages for side events ──
-    const topSeries = normalizedSeries
-      .filter((s) => s.numEvents > 3 && s.slug)
-      .sort((a, b) => b.numEvents - a.numEvents)
-      .slice(0, 20); // top 20 series
-
-    console.log(`\nScraping ${topSeries.length} series pages for side events...`);
+    // ── Phase 2: Scrape series pages for side events ──
+    // Series pages live at /{slug} (NOT /series/{slug}!).
+    // They use different pageProps keys: sideEvents + mainEvents (not allEvents).
+    // Side event objects have a different shape from homepage events.
     const sideEvents = [];
     const seenIds = new Set(events.map((e) => e.id));
 
-    for (const s of topSeries) {
-      try {
-        const encodedSlug = encodeURIComponent(s.slug);
-        const seriesUrl = `https://cryptonomads.org/series/${encodedSlug}`;
-        console.log(`  Loading series: ${s.title} (${encodedSlug})...`);
-        await page.goto(seriesUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
+    if (WITH_SERIES) {
+      const topSeries = normalizedSeries
+        .filter((s) => s.numEvents > 0 && s.slug)
+        .sort((a, b) => b.numEvents - a.numEvents);
 
-        // Series pages may need extra time for Cloudflare + hydration
+      console.log(`\nScraping ${topSeries.length} series pages for side events...`);
+      let consecutiveFailures = 0;
+
+      for (const s of topSeries) {
+        if (consecutiveFailures >= 5) {
+          console.log(`\n  Stopping — ${consecutiveFailures} consecutive failures`);
+          break;
+        }
+
         try {
-          await page.waitForSelector("script#__NEXT_DATA__", { state: "attached", timeout: 15000 });
-        } catch (_) {
-          // Wait for Cloudflare challenge, then retry
-          console.log(`    Waiting for Cloudflare on ${s.title}...`);
-          await page.waitForTimeout(8000);
+          // URL format: /{slug} (no /series/ prefix)
+          const seriesUrl = `https://cryptonomads.org/${s.slug}`;
+          console.log(`  Loading: ${s.title} (${s.numEvents} listed)...`);
+
+          await page.goto(seriesUrl, { waitUntil: "domcontentloaded", timeout: 45000 });
+
           try {
-            await page.waitForSelector("script#__NEXT_DATA__", { state: "attached", timeout: 10000 });
-          } catch (__) {
-            console.log(`    Skipping ${s.title} — page didn't load after retry`);
+            await page.waitForSelector("script#__NEXT_DATA__", { state: "attached", timeout: 20000 });
+          } catch (_) {
+            console.log(`    Waiting for page to load...`);
+            await page.waitForTimeout(5000);
+            try {
+              await page.waitForSelector("script#__NEXT_DATA__", { state: "attached", timeout: 10000 });
+            } catch (__) {
+              console.log(`    Skipping ${s.title} — page didn't load`);
+              consecutiveFailures++;
+              continue;
+            }
+          }
+
+          const seriesData = await page.evaluate(() => {
+            const el = document.getElementById("__NEXT_DATA__");
+            return el ? JSON.parse(el.textContent) : null;
+          });
+
+          const sp = seriesData?.props?.pageProps;
+          if (!sp) {
+            consecutiveFailures++;
             continue;
           }
+
+          // Series pages use sideEvents + mainEvents (different from homepage's allEvents)
+          const pageSideEvents = sp.sideEvents || [];
+          const pageMainEvents = sp.mainEvents || [];
+          const allSeriesEvents = [...pageSideEvents, ...pageMainEvents];
+
+          let newCount = 0;
+          for (const e of allSeriesEvents) {
+            const eid = e.id || e.slug;
+            if (seenIds.has(eid)) continue;
+            seenIds.add(eid);
+            newCount++;
+
+            // Series page events have a different shape — normalize to match homepage format
+            const tags = typeof e.tags === "string" ? [e.tags] : (e.tags || []);
+            const chain = e.chain || [];
+            const allTags = [...new Set([...tags, ...chain])];
+
+            sideEvents.push({
+              id: eid,
+              name: e.name || e.event || "",
+              slug: e.slug || e.shortSlug || "",
+              description: e.cached_description || e.description || "",
+              startDate: e.startDate ? e.startDate.split("T")[0] : null,
+              endDate: e.endDate ? e.endDate.split("T")[0] : null,
+              timezone: e.timezone || null,
+              cities: e.city ? [e.city] : [],
+              countries: e.country ? [e.country] : [],
+              regions: e.region ? [e.region] : [],
+              link: e.website || null,
+              organizer: e.organizer || null,
+              twitter: null,
+              telegram: null,
+              tags: allTags,
+              topics: e.topics || [],
+              series: [{
+                id: sp.currentSeries?.id || null,
+                title: e.seriesName || s.title,
+                slug: e.seriesSlug || s.slug,
+                banner: sp.currentSeries?.banner || null,
+                logo: sp.currentSeries?.logo || null,
+              }],
+              banner: e.cached_banner || e.image || null,
+              logo: e.logo || null,
+              paidEvent: e.paidEvent || false,
+              promoted: e.promoStatus === "Promoted",
+              goingCount: (e.usersGoing || []).length,
+              interestedCount: (e.usersInterested || []).length,
+              isSideEvent: true,
+              parentSeries: e.seriesName || s.title,
+            });
+          }
+          console.log(`    ${s.title}: ${pageSideEvents.length} side + ${pageMainEvents.length} main, ${newCount} new`);
+          consecutiveFailures = 0;
+
+          // Human-like delay (2-4s)
+          const delay = 2000 + Math.random() * 2000;
+          await page.waitForTimeout(delay);
+        } catch (err) {
+          console.log(`    Error on ${s.title}: ${err.message.slice(0, 80)}`);
+          consecutiveFailures++;
         }
-
-        const seriesData = await page.evaluate(() => {
-          const el = document.getElementById("__NEXT_DATA__");
-          return el ? JSON.parse(el.textContent) : null;
-        });
-
-        const sp = seriesData?.props?.pageProps;
-        if (!sp) continue;
-
-        const seriesEvents = sp.allEvents || sp.events || [];
-        let newCount = 0;
-
-        for (const e of seriesEvents) {
-          const eid = e.id || e.slug;
-          if (seenIds.has(eid)) continue;
-          seenIds.add(eid);
-          newCount++;
-          sideEvents.push({
-            id: eid,
-            name: e.event || e.name || e.title || "",
-            slug: e.slug || e.shortSlug || "",
-            description: e.description || "",
-            startDate: e.startDate || null,
-            endDate: e.endDate || null,
-            timezone: e.timezone || null,
-            cities: e.city || [],
-            countries: e.country || [],
-            regions: e.region || [],
-            link: e.link || null,
-            organizer: e.organizer || null,
-            twitter: e.twitter || null,
-            telegram: e.telegram || null,
-            tags: e.tags || [],
-            topics: e.topics || [],
-            series: e.series || [],
-            banner: e.banner || null,
-            logo: e.logo || null,
-            paidEvent: e.paidEvent || false,
-            promoted: e.promoted || false,
-            goingCount: (e.usersGoingObj || []).length,
-            interestedCount: (e.usersInterestedObj || []).length,
-            isSideEvent: true,
-            parentSeries: s.title,
-          });
-        }
-        console.log(`    ${s.title}: ${seriesEvents.length} total, ${newCount} new side events`);
-
-        // Rate limit between series pages
-        await page.waitForTimeout(1500);
-      } catch (err) {
-        console.log(`    Error on ${s.title}: ${err.message}`);
       }
+    } else {
+      console.log(`\nSkipping series pages (run with --with-series to scrape side events)`);
     }
 
     console.log(`\nFound ${sideEvents.length} additional side events from series pages`);
