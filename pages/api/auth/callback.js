@@ -2,7 +2,8 @@ import { createClient } from "@supabase/supabase-js";
 
 // Handles OAuth callback (Google sign-in redirect)
 export default async function handler(req, res) {
-  const { code } = req.query;
+  const { code, next } = req.query;
+  const redirectTo = next || "/dashboard";
 
   if (code) {
     const supabase = createClient(
@@ -37,5 +38,5 @@ export default async function handler(req, res) {
     }
   }
 
-  res.redirect("/dashboard");
+  res.redirect(redirectTo);
 }
