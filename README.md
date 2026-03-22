@@ -44,3 +44,13 @@ npm install # installs dependencies
 ```bash
 npm run dev # runs in development mode
 ```
+
+## Deploy in production
+1. SSH into server adminben@20.98.152.179: `ssh adminben@20.98.152.179`
+2. Go into the project folder: `cd ~/project/ben`
+3. Pull code: `git pull`
+4. Run command to deploy: `make prd-deploy`
+
+## Connect to produciton database:
+
+`ssh -N -L 5432:127.0.0.1:5432 adminben@20.98.152.179`
