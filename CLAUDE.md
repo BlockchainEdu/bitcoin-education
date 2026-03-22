@@ -5,6 +5,7 @@
 - When the Next.js dev server is running, NEVER run `next build` simultaneously. Stop the dev server first, then build, then restart. The .next cache corruption causes white-page crashes.
 - Always use `scripts/dev-safe.sh` to start the dev server. It auto-recovers from blank-page crashes.
 - If the site goes white, run: `kill -9 $(lsof -ti:3000) && rm -rf .next && npm run dev`
+- All database tables should have singular name.
 
 ## Writing Style
 

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
-import { supabase } from "../../lib/supabase";
 
 const STEPS = [
   { id: 1, label: "About You" },
@@ -124,25 +123,33 @@ export default function ColivingApply() {
 
     setSubmitting(true);
     try {
-      const { error } = await supabase.from("applications").insert({
-        type: "coliving",
-        name: form.name.trim(),
-        email: form.email.trim(),
-        telegram: form.telegram.trim(),
-        linkedin: form.linkedin.trim(),
-        github: form.github.trim() || null,
-        country: form.country.trim(),
-        startup_name: form.startup_name.trim() || null,
-        one_liner: form.one_liner.trim() || null,
-        stage: form.stage || null,
-        what_building: form.what_building.trim(),
-        pitch_url: form.pitch_url.trim() || null,
-        preferred_location: locationLabel,
-        preferred_dates: form.preferred_dates.trim(),
-        status: "pending",
+      const res = await fetch("/api/coliving/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "coliving",
+          name: form.name.trim(),
+          email: form.email.trim(),
+          telegram: form.telegram.trim(),
+          linkedin: form.linkedin.trim(),
+          github: form.github.trim() || null,
+          country: form.country.trim(),
+          startup_name: form.startup_name.trim() || null,
+          one_liner: form.one_liner.trim() || null,
+          stage: form.stage || null,
+          what_building: form.what_building.trim(),
+          pitch_url: form.pitch_url.trim() || null,
+          preferred_location: locationLabel,
+          preferred_dates: form.preferred_dates.trim(),
+          why_join: form.why_join.trim(),
+          what_contribute: form.what_contribute.trim(),
+          dietary: form.dietary.trim() || null,
+          how_heard: form.how_heard || null,
+          status: "pending",
+        }),
       });
 
-      if (error) throw error;
+      if (!res.ok) throw new Error("Submit failed");
       setSubmitted(true);
     } catch (err) {
       console.error("Application submit error:", err);

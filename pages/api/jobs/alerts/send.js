@@ -1,10 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseAdmin = () =>
-  createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  );
+import { db } from "../../../../lib/db";
+import { jobAlert, job } from "../../../../lib/db/schema";
+import { eq, gte, inArray } from "drizzle-orm";
 
 export const config = { maxDuration: 60 };
 
@@ -19,17 +15,16 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
-  const supabase = supabaseAdmin();
   const now = new Date();
   const log = { alerts: 0, emails: 0, errors: [] };
 
   // 1. Get all active alerts
-  const { data: alerts, error: alertErr } = await supabase
-    .from("job_alerts")
-    .select("*")
-    .eq("active", true);
+  const alerts = await db
+    .select()
+    .from(jobAlert)
+    .where(eq(jobAlert.active, true));
 
-  if (alertErr || !alerts?.length) {
+  if (!alerts.length) {
     return res.status(200).json({ ...log, message: "No active alerts" });
   }
 
@@ -43,29 +38,31 @@ export default async function handler(req, res) {
     return res.status(200).json({ ...log, message: "No alerts due" });
   }
 
-  // 2. Get jobs posted in last 24h (for daily) / 7 days (for weekly)
+  // 2. Get jobs posted in last 7 days
   const oneDayAgo = new Date(now - 24 * 60 * 60 * 1000).toISOString();
   const oneWeekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000).toISOString();
 
-  const { data: recentJobs } = await supabase
-    .from("jobs")
-    .select("*")
-    .eq("status", "active")
-    .gte("posted_at", oneWeekAgo)
-    .order("posted_at", { ascending: false })
+  const recentJobs = await db
+    .select()
+    .from(job)
+    .where(eq(job.status, "active"))
+    .where(gte(job.posted_at, new Date(oneWeekAgo)))
+    .orderBy(job.posted_at)
     .limit(500);
 
-  if (!recentJobs?.length) {
+  if (!recentJobs.length) {
     return res.status(200).json({ ...log, message: "No new jobs" });
   }
 
   // 3. Match jobs to each alert's filters
-  const emailDigests = {}; // email -> { alerts: [{ label, jobs }] }
+  const emailDigests = {};
 
   for (const alert of dueAlerts) {
     const cutoff = alert.frequency === "weekly" ? oneWeekAgo : oneDayAgo;
     const sinceLast = alert.last_sent_at || cutoff;
-    const sinceDate = new Date(Math.max(new Date(sinceLast), new Date(cutoff)));
+    const sinceDate = new Date(
+      Math.max(new Date(sinceLast), new Date(cutoff))
+    );
 
     const matched = recentJobs.filter((job) => {
       if (new Date(job.posted_at) <= sinceDate) return false;
@@ -83,14 +80,16 @@ export default async function handler(req, res) {
       label: alert.label,
       frequency: alert.frequency,
       unsubscribe_token: alert.unsubscribe_token,
-      jobs: matched.slice(0, 10), // Cap at 10 per alert
+      jobs: matched.slice(0, 10),
     });
   }
 
   // 4. Send digest emails
   const RESEND_KEY = process.env.RESEND_API_KEY;
   if (!RESEND_KEY) {
-    return res.status(200).json({ ...log, message: "RESEND_API_KEY not set, skipping sends" });
+    return res
+      .status(200)
+      .json({ ...log, message: "RESEND_API_KEY not set, skipping sends" });
   }
 
   const BASE_URL = "https://www.blockchainedu.org";
@@ -119,12 +118,11 @@ export default async function handler(req, res) {
 
       if (resp.ok) {
         log.emails++;
-        // Update last_sent_at for all alerts we included
         const alertIds = digest.alerts.map((a) => a.id);
-        await supabase
-          .from("job_alerts")
-          .update({ last_sent_at: now.toISOString() })
-          .in("id", alertIds);
+        await db
+          .update(jobAlert)
+          .set({ last_sent_at: now })
+          .where(inArray(jobAlert.id, alertIds));
       } else {
         const err = await resp.text();
         log.errors.push(`${email}: ${err}`);
@@ -143,7 +141,8 @@ function matchJobToFilters(job, filters) {
 
   if (filters.search) {
     const q = filters.search.toLowerCase();
-    const searchable = `${job.title} ${job.company_name} ${(job.tags || []).join(" ")} ${job.location || ""}`.toLowerCase();
+    const searchable =
+      `${job.title} ${job.company_name} ${(job.tags || []).join(" ")} ${job.location || ""}`.toLowerCase();
     if (!searchable.includes(q)) return false;
   }
 
@@ -161,7 +160,11 @@ function matchJobToFilters(job, filters) {
   }
 
   if (filters.tagFilter) {
-    if (!(job.tags || []).some((t) => t.toLowerCase() === filters.tagFilter.toLowerCase())) {
+    if (
+      !(job.tags || []).some(
+        (t) => t.toLowerCase() === filters.tagFilter.toLowerCase()
+      )
+    ) {
       return false;
     }
   }
@@ -201,11 +204,21 @@ function buildDigestEmail(alerts, baseUrl, unsubToken) {
             ${escHtml(job.location || "Remote")}
             ${salary ? `<span style="color:#c7c7cc;margin:0 6px;">·</span><strong style="color:#1d1d1f;">${salary}</strong>` : ""}
           </div>
-          ${(job.tags || []).length > 0 ? `
+          ${
+            (job.tags || []).length > 0
+              ? `
             <div style="margin-top:8px;">
-              ${job.tags.slice(0, 4).map((t) => `<span style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;padding:3px 10px;background:#f5f5f5;color:#86868b;border-radius:20px;margin-right:4px;">${escHtml(t)}</span>`).join("")}
+              ${job.tags
+                .slice(0, 4)
+                .map(
+                  (t) =>
+                    `<span style="display:inline-block;font-family:'Inter',sans-serif;font-size:11px;padding:3px 10px;background:#f5f5f5;color:#86868b;border-radius:20px;margin-right:4px;">${escHtml(t)}</span>`
+                )
+                .join("")}
             </div>
-          ` : ""}
+          `
+              : ""
+          }
           <a href="${escHtml(job.apply_url)}" style="display:inline-block;margin-top:10px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:#FF872A;text-decoration:none;">
             Apply now &#8594;
           </a>
@@ -265,5 +278,9 @@ function buildDigestEmail(alerts, baseUrl, unsubToken) {
 
 function escHtml(str) {
   if (!str) return "";
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }

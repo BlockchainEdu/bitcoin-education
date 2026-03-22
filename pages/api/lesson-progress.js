@@ -1,30 +1,22 @@
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
+import { db } from "../../lib/db";
+import { lessonProgress } from "../../lib/db/schema";
+import { getUserFromRequest } from "../../lib/auth-helpers";
+import { eq, and } from "drizzle-orm";
 
 export default async function handler(req, res) {
-  // Get user from auth token
-  const token = req.headers.authorization?.replace("Bearer ", "");
-  if (!token) return res.status(401).json({ error: "Not authenticated" });
-
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  );
-  const { data: { user } } = await supabase.auth.getUser(token);
-  if (!user) return res.status(401).json({ error: "Invalid token" });
+  const payload = getUserFromRequest(req);
+  if (!payload) return res.status(401).json({ error: "Not authenticated" });
 
   if (req.method === "GET") {
-    // Fetch all progress for this user
-    const { data } = await supabaseAdmin
-      .from("lesson_progress")
-      .select("lesson_id, completed_at")
-      .eq("user_id", user.id);
+    const rows = await db
+      .select({
+        lesson_id: lessonProgress.lesson_id,
+        completed_at: lessonProgress.completed_at,
+      })
+      .from(lessonProgress)
+      .where(eq(lessonProgress.user_id, payload.id));
 
-    return res.json({ progress: data || [] });
+    return res.json({ progress: rows });
   }
 
   if (req.method === "POST") {
@@ -32,21 +24,26 @@ export default async function handler(req, res) {
     if (!lesson_id) return res.status(400).json({ error: "lesson_id required" });
 
     if (completed) {
-      // Upsert completion
-      const { error } = await supabaseAdmin
-        .from("lesson_progress")
-        .upsert(
-          { user_id: user.id, lesson_id, completed_at: new Date().toISOString() },
-          { onConflict: "user_id,lesson_id" }
-        );
-      if (error) return res.status(500).json({ error: error.message });
+      await db
+        .insert(lessonProgress)
+        .values({
+          user_id: payload.id,
+          lesson_id,
+          completed_at: new Date(),
+        })
+        .onConflictDoUpdate({
+          target: [lessonProgress.user_id, lessonProgress.lesson_id],
+          set: { completed_at: new Date() },
+        });
     } else {
-      // Remove completion
-      await supabaseAdmin
-        .from("lesson_progress")
-        .delete()
-        .eq("user_id", user.id)
-        .eq("lesson_id", lesson_id);
+      await db
+        .delete(lessonProgress)
+        .where(
+          and(
+            eq(lessonProgress.user_id, payload.id),
+            eq(lessonProgress.lesson_id, lesson_id)
+          )
+        );
     }
 
     return res.json({ ok: true });

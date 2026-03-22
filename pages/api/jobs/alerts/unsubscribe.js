@@ -1,4 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
+import { db } from "../../../../lib/db";
+import { jobAlert } from "../../../../lib/db/schema";
+import { eq } from "drizzle-orm";
 
 export default async function handler(req, res) {
   const { token } = req.query;
@@ -7,20 +9,16 @@ export default async function handler(req, res) {
     return res.status(400).send(unsubPage("Missing token", false));
   }
 
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  );
+  const [data] = await db
+    .update(jobAlert)
+    .set({ active: false })
+    .where(eq(jobAlert.unsubscribe_token, token))
+    .returning({ email: jobAlert.email });
 
-  const { data, error } = await supabase
-    .from("job_alerts")
-    .update({ active: false })
-    .eq("unsubscribe_token", token)
-    .select("email")
-    .single();
-
-  if (error || !data) {
-    return res.status(200).send(unsubPage("Alert not found or already unsubscribed", false));
+  if (!data) {
+    return res
+      .status(200)
+      .send(unsubPage("Alert not found or already unsubscribed", false));
   }
 
   return res.status(200).send(unsubPage(data.email, true));
@@ -39,9 +37,10 @@ function unsubPage(emailOrMsg, success) {
 </style></head><body>
 <div class="card">
   <h1>${success ? "Unsubscribed" : "Oops"}</h1>
-  <p>${success
-    ? `Job alerts for <strong>${emailOrMsg}</strong> have been turned off. You won't receive any more emails.`
-    : emailOrMsg
+  <p>${
+    success
+      ? `Job alerts for <strong>${emailOrMsg}</strong> have been turned off. You won't receive any more emails.`
+      : emailOrMsg
   }</p>
   <a href="/jobs">Browse Jobs</a>
 </div>

@@ -716,14 +716,9 @@ export default function JobsPage() {
   };
 
   const handleUpgrade = async () => {
-    const { supabase } = await import("../lib/supabase");
-    const { data: { session } } = await supabase.auth.getSession();
     const res = await fetch("/api/checkout/membership", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session?.access_token}`,
-      },
+      headers: { "Content-Type": "application/json" },
     });
     const data = await res.json();
     if (data.url) window.location.href = data.url;

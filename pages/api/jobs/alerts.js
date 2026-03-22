@@ -1,10 +1,6 @@
-import { createClient } from "@supabase/supabase-js";
-
-const supabaseAdmin = () =>
-  createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  );
+import { db } from "../../../lib/db";
+import { jobAlert } from "../../../lib/db/schema";
+import { eq } from "drizzle-orm";
 
 export default async function handler(req, res) {
   // ── POST: Create a job alert ──
@@ -21,27 +17,20 @@ export default async function handler(req, res) {
 
     const freq = frequency === "weekly" ? "weekly" : "daily";
 
-    const supabase = supabaseAdmin();
-
-    // Upsert: if same email + label exists, update filters
-    const { data, error } = await supabase
-      .from("job_alerts")
-      .upsert(
-        {
-          email: email.toLowerCase().trim(),
-          filters,
-          label,
-          frequency: freq,
-          active: true,
-        },
-        { onConflict: "email,label" }
-      )
-      .select()
-      .single();
-
-    if (error) {
-      return res.status(500).json({ error: "Failed to create alert" });
-    }
+    const [data] = await db
+      .insert(jobAlert)
+      .values({
+        email: email.toLowerCase().trim(),
+        filters,
+        label,
+        frequency: freq,
+        active: true,
+      })
+      .onConflictDoUpdate({
+        target: [jobAlert.email, jobAlert.label],
+        set: { filters, frequency: freq, active: true },
+      })
+      .returning();
 
     return res.status(201).json({ id: data.id, label: data.label });
   }
@@ -54,15 +43,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Unsubscribe token required" });
     }
 
-    const supabase = supabaseAdmin();
-    const { error } = await supabase
-      .from("job_alerts")
-      .update({ active: false })
-      .eq("unsubscribe_token", token);
-
-    if (error) {
-      return res.status(500).json({ error: "Failed to unsubscribe" });
-    }
+    await db
+      .update(jobAlert)
+      .set({ active: false })
+      .where(eq(jobAlert.unsubscribe_token, token));
 
     return res.status(200).json({ ok: true });
   }

@@ -1456,12 +1456,14 @@ export default function BenNetwork({ universities = [], memberAvatars = [], memb
 }
 
 export async function getStaticProps() {
-  const { supabase } = await import("../lib/supabase");
+  const { db } = await import("../lib/db");
+  const { university: universityTable, student } = await import("../lib/db/schema");
+  const { desc, isNotNull, sql } = await import("drizzle-orm");
 
-  const { data: rows } = await supabase
-    .from("universities")
-    .select("id, name, slug, image_url, num_people")
-    .order("num_people", { ascending: false });
+  const rows = await db
+    .select()
+    .from(universityTable)
+    .orderBy(desc(universityTable.num_people));
 
   const universities = (rows || []).map((u) => ({
     id: String(u.id),
@@ -1471,15 +1473,15 @@ export async function getStaticProps() {
   }));
 
   // Fetch total member count
-  const { count: memberCount } = await supabase
-    .from("students")
-    .select("id", { count: "exact", head: true });
+  const [{ count: memberCount }] = await db
+    .select({ count: sql`count(*)::int` })
+    .from(student);
 
   // Fetch random sample of members with photos for hero avatars
-  const { data: avatarRows } = await supabase
-    .from("students")
-    .select("image_url")
-    .not("image_url", "is", null)
+  const avatarRows = await db
+    .select({ image_url: student.image_url })
+    .from(student)
+    .where(isNotNull(student.image_url))
     .limit(50);
 
   // Shuffle and pick 8

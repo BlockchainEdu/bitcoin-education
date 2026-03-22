@@ -598,11 +598,12 @@ export default function UniversityPage({ university, students }) {
 }
 
 export async function getStaticPaths() {
-  const { supabase } = await import("../../lib/supabase");
+  const { db } = await import("../../lib/db");
+  const { university: universityTable } = await import("../../lib/db/schema");
 
-  const { data: unis } = await supabase
-    .from("universities")
-    .select("slug");
+  const unis = await db
+    .select({ slug: universityTable.slug })
+    .from(universityTable);
 
   const paths = (unis || [])
     .filter((u) => u.slug)
@@ -613,16 +614,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const slug = params?.slug || "";
-  const { supabase } = await import("../../lib/supabase");
+  const { db } = await import("../../lib/db");
+  const { university: universityTable, student } = await import("../../lib/db/schema");
+  const { eq } = await import("drizzle-orm");
   const fs = await import("fs");
   const path = await import("path");
 
   // Fetch university
-  const { data: uni } = await supabase
-    .from("universities")
-    .select("id, name, slug, image_url")
-    .eq("slug", slug)
-    .single();
+  const [uni] = await db
+    .select()
+    .from(universityTable)
+    .where(eq(universityTable.slug, slug));
 
   if (!uni) return { notFound: true, revalidate: 3600 };
 
@@ -641,11 +643,18 @@ export async function getStaticProps({ params }) {
   } catch (_) {}
 
   // Fetch students for this university
-  const { data: studentRows } = await supabase
-    .from("students")
-    .select("id, name, title, image_url, linkedin, twitter")
-    .eq("university", uni.name)
-    .order("name");
+  const studentRows = await db
+    .select({
+      id: student.id,
+      name: student.name,
+      title: student.title,
+      image_url: student.image_url,
+      linkedin: student.linkedin,
+      twitter: student.twitter,
+    })
+    .from(student)
+    .where(eq(student.university, uni.name))
+    .orderBy(student.name);
 
   const students = (studentRows || []).map((s) => {
     const { role, company } = parseTitleToRoleCompany(s.title || "");

@@ -1,11 +1,10 @@
 /**
  * Cron: Sync Airbnb availability for Casa Datcha (listing 565218907633405155)
  * Runs every 2 hours via Vercel cron.
- *
- * Uses Airbnb's public v2 calendar API — no auth token needed.
- * Stores blocked/available dates + min_nights in Supabase.
  */
-import { createClient } from "@supabase/supabase-js";
+import { db } from "../../../lib/db";
+import { colivingAvailability } from "../../../lib/db/schema";
+import { eq, lt, and } from "drizzle-orm";
 
 const AIRBNB_LISTING_ID = "565218907633405155";
 const AIRBNB_API_KEY = "d306zoyjsyarp7ifhu67rjxn52tv0t20";
@@ -27,15 +26,10 @@ export default async function handler(req, res) {
     }
   }
 
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  );
-
   try {
     // ── 1. Fetch calendar from Airbnb v2 API ──
     const now = new Date();
-    const currentMonth = now.getMonth() + 1; // 1-12
+    const currentMonth = now.getMonth() + 1;
     const currentYear = now.getFullYear();
 
     const url =
@@ -76,7 +70,6 @@ export default async function handler(req, res) {
 
     for (const month of calendarMonths) {
       for (const day of month.days) {
-        // Skip past dates
         if (day.date < today) continue;
 
         const isAvailable = day.available && day.available_for_checkin;
@@ -89,32 +82,44 @@ export default async function handler(req, res) {
           available: isAvailable,
           min_nights: day.min_nights || 3,
           source: "airbnb-api",
-          synced_at: new Date().toISOString(),
+          synced_at: new Date(),
         });
       }
     }
 
-    // ── 3. Upsert to Supabase in batches ──
+    // ── 3. Upsert to DB in batches ──
     let upserted = 0;
     for (let i = 0; i < rows.length; i += 100) {
       const batch = rows.slice(i, i + 100);
-      const { error } = await supabase
-        .from("coliving_availability")
-        .upsert(batch, { onConflict: "property,date" });
-
-      if (error) {
-        console.error(`[sync-availability] Batch ${i} error:`, error);
-        throw error;
+      for (const row of batch) {
+        await db
+          .insert(colivingAvailability)
+          .values(row)
+          .onConflictDoUpdate({
+            target: [
+              colivingAvailability.property,
+              colivingAvailability.date,
+            ],
+            set: {
+              available: row.available,
+              min_nights: row.min_nights,
+              source: row.source,
+              synced_at: row.synced_at,
+            },
+          });
       }
       upserted += batch.length;
     }
 
     // ── 4. Clean up old dates ──
-    await supabase
-      .from("coliving_availability")
-      .delete()
-      .eq("property", PROPERTY_SLUG)
-      .lt("date", today);
+    await db
+      .delete(colivingAvailability)
+      .where(
+        and(
+          eq(colivingAvailability.property, PROPERTY_SLUG),
+          lt(colivingAvailability.date, today)
+        )
+      );
 
     const result = {
       success: true,

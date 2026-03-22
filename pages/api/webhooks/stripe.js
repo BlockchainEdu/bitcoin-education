@@ -1,5 +1,7 @@
 import Stripe from "stripe";
-import { createClient } from "@supabase/supabase-js";
+import { db } from "../../../lib/db";
+import { member, job } from "../../../lib/db/schema";
+import { eq } from "drizzle-orm";
 
 // Disable body parsing — Stripe needs raw body for signature verification
 export const config = { api: { bodyParser: false } };
@@ -22,11 +24,6 @@ export default async function handler(req, res) {
     apiVersion: "2023-10-16",
   });
 
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  );
-
   const rawBody = await getRawBody(req);
   const sig = req.headers["stripe-signature"];
 
@@ -46,7 +43,9 @@ export default async function handler(req, res) {
   }
 
   if (!event) {
-    return res.status(400).json({ error: "Webhook signature verification failed" });
+    return res
+      .status(400)
+      .json({ error: "Webhook signature verification failed" });
   }
 
   // Handle events
@@ -57,41 +56,38 @@ export default async function handler(req, res) {
       const userId = session.metadata?.user_id;
 
       if (type === "membership" && userId) {
-        // Mark user as paid member
-        await supabase
-          .from("members")
-          .update({
+        await db
+          .update(member)
+          .set({
             is_paid: true,
             stripe_customer_id: session.customer,
-            paid_at: new Date().toISOString(),
+            paid_at: new Date(),
             role: "member",
           })
-          .eq("id", userId);
+          .where(eq(member.id, userId));
       }
 
       if (type === "job_post") {
-        // Activate the job listing
         const jobId = session.metadata?.job_id;
         if (jobId) {
-          await supabase
-            .from("jobs")
-            .update({
+          await db
+            .update(job)
+            .set({
               status: "active",
               stripe_subscription_id: session.subscription,
             })
-            .eq("id", jobId);
+            .where(eq(job.id, jobId));
         }
       }
       break;
     }
 
     case "customer.subscription.deleted": {
-      // Job listing subscription canceled — expire the job
       const subscription = event.data.object;
-      await supabase
-        .from("jobs")
-        .update({ status: "expired" })
-        .eq("stripe_subscription_id", subscription.id);
+      await db
+        .update(job)
+        .set({ status: "expired" })
+        .where(eq(job.stripe_subscription_id, subscription.id));
       break;
     }
 

@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import HeaderWithLogoDark from "../components/headerWithLogoDark";
 import Footer from "../components/footer";
 import { useAuth } from "../lib/auth";
-import { supabase } from "../lib/supabase";
 import LoginModal from "../components/LoginModal";
 import { ACADEMY_COURSE } from "../content/academy";
 import { SOLIDITY_COURSE } from "../content/solidity";
@@ -180,18 +179,13 @@ export default function AcademyPage() {
   // Fetch lesson progress
   useEffect(() => {
     if (!user) return;
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) return;
-      fetch("/api/lesson-progress", {
-        headers: { Authorization: `Bearer ${session.access_token}` },
-      })
-        .then((r) => r.json())
-        .then((data) => {
-          const map = {};
-          (data.progress || []).forEach((p) => { map[p.lesson_id] = true; });
-          setProgressMap(map);
-        });
-    });
+    fetch("/api/lesson-progress")
+      .then((r) => r.json())
+      .then((data) => {
+        const map = {};
+        (data.progress || []).forEach((p) => { map[p.lesson_id] = true; });
+        setProgressMap(map);
+      });
   }, [user]);
 
   useEffect(() => {

@@ -5,7 +5,6 @@ import HeaderWithLogoDark from "../../../components/headerWithLogoDark";
 import Footer from "../../../components/footer";
 import LessonChat from "../../../components/LessonChat";
 import { useAuth } from "../../../lib/auth";
-import { supabase } from "../../../lib/supabase";
 import LoginModal from "../../../components/LoginModal";
 import { ACADEMY_COURSE } from "../../../content/academy";
 import { SOLIDITY_COURSE } from "../../../content/solidity";
@@ -89,19 +88,14 @@ export default function LessonPage({
   // Fetch progress
   useEffect(() => {
     if (!user) return;
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) return;
-      fetch("/api/lesson-progress", {
-        headers: { Authorization: `Bearer ${session.access_token}` },
-      })
-        .then((r) => r.json())
-        .then((data) => {
-          const map = {};
-          (data.progress || []).forEach((p) => { map[p.lesson_id] = true; });
-          setProgressMap(map);
-          setCompleted(!!map[lesson.id]);
-        });
-    });
+    fetch("/api/lesson-progress")
+      .then((r) => r.json())
+      .then((data) => {
+        const map = {};
+        (data.progress || []).forEach((p) => { map[p.lesson_id] = true; });
+        setProgressMap(map);
+        setCompleted(!!map[lesson.id]);
+      });
   }, [user, lesson.id]);
 
   async function toggleComplete() {
@@ -114,14 +108,9 @@ export default function LessonPage({
       return copy;
     });
 
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return;
     fetch("/api/lesson-progress", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session.access_token}`,
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ lesson_id: lesson.id, completed: newState }),
     });
   }

@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { createClient } from "@supabase/supabase-js";
+import { getUserFromRequest } from "../../../lib/auth-helpers";
 
 const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_SITE_URL || "https://www.blockchainedu.org";
 
@@ -28,22 +28,9 @@ export default async function handler(req, res) {
     apiVersion: "2023-10-16",
   });
 
-  // Get user from Supabase auth token
-  const token = req.headers.authorization?.replace("Bearer ", "");
-  let userId = null;
-  let userEmail = null;
-
-  if (token) {
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-    );
-    const { data: { user } } = await supabase.auth.getUser(token);
-    if (user) {
-      userId = user.id;
-      userEmail = user.email;
-    }
-  }
+  const payload = getUserFromRequest(req);
+  const userId = payload?.id || null;
+  const userEmail = payload?.email || null;
 
   try {
     const plan = "monthly";

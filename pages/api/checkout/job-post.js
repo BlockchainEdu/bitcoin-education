@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { createClient } from "@supabase/supabase-js";
+import { getUserFromRequest } from "../../../lib/auth-helpers";
 
 const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_SITE_URL || "https://www.blockchainedu.org";
 
@@ -46,19 +46,9 @@ export default async function handler(req, res) {
     apiVersion: "2023-10-16",
   });
 
-  // Verify auth
-  const token = req.headers.authorization?.replace("Bearer ", "");
-  if (!token) {
+  const payload = getUserFromRequest(req);
+  if (!payload) {
     return res.status(401).json({ error: "Authentication required" });
-  }
-
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  );
-  const { data: { user } } = await supabase.auth.getUser(token);
-  if (!user) {
-    return res.status(401).json({ error: "Invalid token" });
   }
 
   const { job_id, addons } = req.body;
@@ -80,7 +70,8 @@ export default async function handler(req, res) {
             recurring: { interval: "month" },
             product_data: {
               name: productName,
-              description: "Your job listing stays active as long as the subscription is active. Cancel anytime.",
+              description:
+                "Your job listing stays active as long as the subscription is active. Cancel anytime.",
             },
             unit_amount: unitAmount,
           },
@@ -88,11 +79,11 @@ export default async function handler(req, res) {
       ],
       success_url: `${ALLOWED_ORIGIN}/jobs?posted=true`,
       cancel_url: `${ALLOWED_ORIGIN}/post-job`,
-      customer_email: user.email,
+      customer_email: payload.email,
       metadata: {
         type: "job_post",
         job_id: String(job_id),
-        user_id: user.id,
+        user_id: payload.id,
         addons: JSON.stringify(addons || {}),
       },
     });

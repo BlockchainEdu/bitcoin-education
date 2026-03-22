@@ -181,10 +181,6 @@ export default function PostJobPage() {
     setError(null);
 
     try {
-      const { supabase } = await import("../lib/supabase");
-      const { data: { session } } = await supabase.auth.getSession();
-      const token = session?.access_token;
-
       const tier = computeTier(activeAddons);
 
       // Step 1: Create pending job
@@ -192,7 +188,6 @@ export default function PostJobPage() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           ...form,

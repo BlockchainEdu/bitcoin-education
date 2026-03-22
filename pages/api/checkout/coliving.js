@@ -4,21 +4,35 @@
  * Body: { checkin, checkout, guests, email }
  */
 import Stripe from "stripe";
-import { createClient } from "@supabase/supabase-js";
+import { db } from "../../../lib/db";
+import { colivingAvailability } from "../../../lib/db/schema";
+import { eq, gte, lt, and } from "drizzle-orm";
 
 const PRICING = { peak: 2800, high: 2000, low: 1400 }; // USD per night
 const CLEANING_FEE = 550; // USD
 const MIN_NIGHTS = 3;
 const MAX_GUESTS = 28;
 
-const ALLOWED_ORIGIN = process.env.NEXT_PUBLIC_SITE_URL || "https://www.blockchainedu.org";
+const ALLOWED_ORIGIN =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.blockchainedu.org";
 
 function getSeason(dateStr) {
   const d = new Date(dateStr + "T00:00:00");
   const month = d.getMonth() + 1;
   const day = d.getDate();
-  if ((month === 6 && day >= 15) || (month >= 7 && month <= 8) || (month === 9 && day <= 15)) return "peak";
-  if (month === 5 || (month === 6 && day < 15) || (month === 9 && day > 15) || month === 10) return "high";
+  if (
+    (month === 6 && day >= 15) ||
+    (month >= 7 && month <= 8) ||
+    (month === 9 && day <= 15)
+  )
+    return "peak";
+  if (
+    month === 5 ||
+    (month === 6 && day < 15) ||
+    (month === 9 && day > 15) ||
+    month === 10
+  )
+    return "high";
   return "low";
 }
 
@@ -31,7 +45,9 @@ export default async function handler(req, res) {
   const { checkin, checkout, guests, email } = req.body;
 
   if (!checkin || !checkout || !email) {
-    return res.status(400).json({ error: "checkin, checkout, and email are required" });
+    return res
+      .status(400)
+      .json({ error: "checkin, checkout, and email are required" });
   }
 
   const start = new Date(checkin + "T00:00:00");
@@ -39,33 +55,39 @@ export default async function handler(req, res) {
   const nights = Math.round((end - start) / (1000 * 60 * 60 * 24));
 
   if (nights < MIN_NIGHTS) {
-    return res.status(400).json({ error: `Minimum ${MIN_NIGHTS} nights required` });
+    return res
+      .status(400)
+      .json({ error: `Minimum ${MIN_NIGHTS} nights required` });
   }
   if (guests && guests > MAX_GUESTS) {
     return res.status(400).json({ error: `Maximum ${MAX_GUESTS} guests` });
   }
 
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_ROLE_KEY
-  );
-
   // ── Verify availability ──
-  const { data: avail, error: availErr } = await supabase
-    .from("coliving_availability")
-    .select("date, available")
-    .eq("property", "casa-datcha")
-    .gte("date", checkin)
-    .lt("date", checkout);
+  const avail = await db
+    .select({
+      date: colivingAvailability.date,
+      available: colivingAvailability.available,
+    })
+    .from(colivingAvailability)
+    .where(
+      and(
+        eq(colivingAvailability.property, "casa-datcha"),
+        gte(colivingAvailability.date, checkin),
+        lt(colivingAvailability.date, checkout)
+      )
+    );
 
-  if (availErr) {
-    console.error("[checkout/coliving] availability check:", availErr);
-    return res.status(500).json({ error: "Could not verify availability" });
-  }
-
-  const unavailable = (avail || []).filter((d) => !d.available).map((d) => d.date);
+  const unavailable = (avail || [])
+    .filter((d) => !d.available)
+    .map((d) => d.date);
   if (unavailable.length > 0) {
-    return res.status(409).json({ error: "Some dates are no longer available", unavailableDates: unavailable });
+    return res
+      .status(409)
+      .json({
+        error: "Some dates are no longer available",
+        unavailableDates: unavailable,
+      });
   }
 
   // ── Calculate pricing in USD ──
@@ -74,7 +96,8 @@ export default async function handler(req, res) {
   while (cursor < end) {
     const dateStr = cursor.toISOString().split("T")[0];
     const season = getSeason(dateStr);
-    if (!nightlyBreakdown[season]) nightlyBreakdown[season] = { nights: 0, rate: PRICING[season] };
+    if (!nightlyBreakdown[season])
+      nightlyBreakdown[season] = { nights: 0, rate: PRICING[season] };
     nightlyBreakdown[season].nights++;
     cursor.setDate(cursor.getDate() + 1);
   }
@@ -89,7 +112,7 @@ export default async function handler(req, res) {
           name: `Casa Datcha — ${season.charAt(0).toUpperCase() + season.slice(1)} Season`,
           description: `$${info.rate}/night, ${checkin} to ${checkout}`,
         },
-        unit_amount: info.rate * 100, // cents
+        unit_amount: info.rate * 100,
       },
     });
   }
@@ -104,7 +127,9 @@ export default async function handler(req, res) {
   });
 
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2023-10-16" });
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2023-10-16",
+    });
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -131,15 +156,30 @@ export default async function handler(req, res) {
         date: c.toISOString().split("T")[0],
         available: false,
         source: "ben-booking-pending",
-        synced_at: new Date().toISOString(),
+        synced_at: new Date(),
       });
       c.setDate(c.getDate() + 1);
     }
-    await supabase.from("coliving_availability").upsert(pending, { onConflict: "property,date" });
+
+    for (const row of pending) {
+      await db
+        .insert(colivingAvailability)
+        .values(row)
+        .onConflictDoUpdate({
+          target: [colivingAvailability.property, colivingAvailability.date],
+          set: {
+            available: row.available,
+            source: row.source,
+            synced_at: row.synced_at,
+          },
+        });
+    }
 
     return res.status(200).json({ url: session.url });
   } catch (err) {
     console.error("[checkout/coliving]", err);
-    return res.status(500).json({ error: "Payment processing error. Please try again." });
+    return res
+      .status(500)
+      .json({ error: "Payment processing error. Please try again." });
   }
 }
