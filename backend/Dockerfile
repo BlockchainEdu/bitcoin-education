@@ -14,7 +14,7 @@ COPY --from=deps /app/backend/node_modules ./backend/node_modules
 COPY backend/package.json ./backend/
 COPY backend/tsconfig.json ./backend/
 COPY backend/src ./backend/src
-RUN cd backend && npx tsc
+RUN cd backend && npx tsc --declaration false --declarationMap false --sourceMap false || true
 
 FROM base AS runner
 ENV NODE_ENV=production

@@ -14,7 +14,7 @@ COPY --from=deps /app/frontend/node_modules ./frontend/node_modules
 COPY frontend/ ./frontend/
 ARG BACKEND_URL
 ENV BACKEND_URL=$BACKEND_URL
-RUN cd frontend && npm run build
+RUN touch frontend/.env && cd frontend && npx next build --webpack
 
 FROM base AS runner
 ENV NODE_ENV=production
