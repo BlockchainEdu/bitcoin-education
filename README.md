@@ -1,56 +1,107 @@
-# Next.js + Tailwind CSS Example
+# BEN - Blockchain Education Network
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) (v2.1) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+A full-stack platform for the Blockchain Education Network built as a pnpm monorepo.
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+## Tech Stack
 
-## Environment Setup
+- **Frontend**: Next.js 16, React 18, Tailwind CSS 2 (JIT), TypeScript
+- **Backend**: Express, Drizzle ORM, PostgreSQL, TypeScript
+- **Production**: Docker Compose, Nginx, Azure VM
 
-1. Copy `.env.example` to `.env.local`:
-```bash
-cp .env.example .env.local
+## Project Structure
+
+```
+bitcoin-education/
+├── frontend/          # Next.js app (port 3000)
+├── backend/           # Express API (port 3001)
+├── docker-compose.yml          # Local dev (PostgreSQL only)
+├── docker-compose.prod.yml     # Production (all services)
+└── Makefile                    # Deploy commands
 ```
 
-2. Update the environment variables in `.env.local` with your actual values:
-- `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
-- `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase service role key (server-side only)
-- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Your Stripe publishable key (if using Stripe)
-- `STRIPE_SECRET_KEY`: Your Stripe secret key (if using Stripe)
-- `NEXT_PUBLIC_MAPBOX_KEY`: Your Mapbox key (if using maps)
+## Local Development
 
-## Deploy your own
+### Prerequisites
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+- Node.js 22+
+- pnpm (`npm install -g pnpm`)
+- Docker (for PostgreSQL)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+### Setup
 
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
+1. Copy environment file and fill in your values:
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+cp .env.example .env
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-## Run on localhost:
-
+2. Install dependencies:
 ```bash
-npm install # installs dependencies
+pnpm install
 ```
 
+3. Start PostgreSQL:
 ```bash
-npm run dev # runs in development mode
+docker compose up -d
 ```
 
-## Deploy in production
-1. SSH into server adminben@20.98.152.179: `ssh adminben@20.98.152.179`
-2. Go into the project folder: `cd ~/project/ben`
-3. Pull code: `git pull`
-4. Run command to deploy: `make prd-deploy`
+4. Apply database schema:
+```bash
+pnpm db:push
+```
 
-## Connect to produciton database:
+5. Start dev servers (frontend + backend):
+```bash
+pnpm dev
+```
 
-`ssh -N -L 5432:127.0.0.1:5432 adminben@20.98.152.179`
+The frontend runs on http://localhost:3000 and the backend on http://localhost:3001.
+
+### Other Commands
+
+```bash
+pnpm build          # Build both frontend and backend
+pnpm db:generate    # Generate Drizzle migrations
+pnpm db:migrate     # Run Drizzle migrations
+pnpm db:studio      # Open Drizzle Studio (visual DB browser)
+pnpm typecheck      # Type-check both workspaces
+pnpm lint           # Lint both workspaces
+```
+
+## Production Deployment
+
+The site runs on an Azure VM with Docker Compose (PostgreSQL + backend + frontend behind Nginx).
+
+### Deploy Steps
+
+1. SSH into the production server
+2. Navigate to the project directory
+3. Pull latest code: `git pull`
+4. Deploy: `make prd-deploy`
+
+`make prd-deploy` builds Docker images, stops running containers, and starts fresh ones.
+
+### Make Targets
+
+```bash
+make prd-build      # Build Docker images
+make prd-stop       # Stop containers
+make prd-start      # Start containers
+make prd-deploy     # Build + stop + start (full deploy)
+```
+
+### Connect to Production Database
+
+Tunnel via SSH, then use any PostgreSQL client on `localhost:5432`:
+```bash
+ssh -N -L 5432:127.0.0.1:5432 <user>@<server>
+```
+
+## Environment Variables
+
+See `.env.example` for all required variables. Key groups:
+
+- **Database**: `DATABASE_URL`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`
+- **Auth**: `JWT_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`
+- **Stripe**: `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, webhook secrets
+- **Frontend**: `NEXT_PUBLIC_APP_URL`, `NEXT_PUBLIC_SITE_URL`, analytics IDs
+- **Backend**: `BACKEND_URL` (set to `http://backend:3001` in Docker, `http://localhost:3001` locally)
