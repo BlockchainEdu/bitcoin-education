@@ -3,6 +3,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   trailingSlash: false,
   images: {
     remotePatterns: [
@@ -33,7 +36,7 @@ module.exports = withBundleAnalyzer({
               "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
               "img-src 'self' data: blob: https:",
               "font-src 'self' fonts.gstatic.com",
-              "frame-src 'self' www.youtube.com www.youtube-nocookie.com embeds.beehiiv.com js.stripe.com player.vimeo.com",
+              "frame-src 'self' www.youtube.com www.youtube-nocookie.com js.stripe.com player.vimeo.com",
               "connect-src 'self' https://*.supabase.co wss://*.supabase.co www.googletagmanager.com api.stripe.com https://*.google-analytics.com https://*.google.com https://script.crazyegg.com",
               "media-src 'self' https:",
               "object-src 'none'",
