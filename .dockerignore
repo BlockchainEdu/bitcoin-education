@@ -1,5 +1,9 @@
 node_modules
+**/node_modules
 .next
+frontend/.next
 dist
+backend/dist
 .git
 *.md
+postgres_data

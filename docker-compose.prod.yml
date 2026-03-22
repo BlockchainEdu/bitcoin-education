@@ -59,6 +59,8 @@ services:
         BACKEND_URL: http://backend:3001
     ports:
       - "${FRONTEND_PORT:-3000}:3000"
+    environment:
+      BACKEND_URL: http://backend:3001
     depends_on:
       - backend
     restart: unless-stopped
